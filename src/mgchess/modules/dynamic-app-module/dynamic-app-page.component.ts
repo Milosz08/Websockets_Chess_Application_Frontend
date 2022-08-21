@@ -1,8 +1,8 @@
 /*
  * Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
  *
- * File name: mgchess.component.ts
- * Last modified: 21/08/2022, 18:31
+ * File name: dynamic-app-page.component.ts
+ * Last modified: 21/08/2022, 22:20
  * Project name: chess-app-frontend
  *
  * Licensed under the MIT license; you may not use this file except in compliance with the License.
@@ -21,8 +21,7 @@ import { Component } from "@angular/core";
 //----------------------------------------------------------------------------------------------------------------------
 
 @Component({
-    selector: "mgchess-root",
-    templateUrl: "./mgchess.component.html",
-    styleUrls: []
+    selector: "mg-chess-dynamic-app-page",
+    templateUrl: "dynamic-app-page.component.html",
 })
-export class MgchessComponent {}
+export class DynamicAppPageComponent {}

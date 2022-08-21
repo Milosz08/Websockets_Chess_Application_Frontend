@@ -1,8 +1,8 @@
 /*
  * Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
  *
- * File name: mgchess.component.ts
- * Last modified: 21/08/2022, 18:31
+ * File name: shared-module.module.ts
+ * Last modified: 21/08/2022, 21:59
  * Project name: chess-app-frontend
  *
  * Licensed under the MIT license; you may not use this file except in compliance with the License.
@@ -16,13 +16,19 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-import { Component } from "@angular/core";
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
+import { ContentNotFoundPageComponent } from './pages/content-not-found-page/content-not-found-page.component';
 
 //----------------------------------------------------------------------------------------------------------------------
 
-@Component({
-    selector: "mgchess-root",
-    templateUrl: "./mgchess.component.html",
-    styleUrls: []
+@NgModule({
+    declarations: [
+        ContentNotFoundPageComponent,
+    ],
+    imports: [
+        CommonModule,
+    ],
 })
-export class MgchessComponent {}
+export class SharedModuleModule {}

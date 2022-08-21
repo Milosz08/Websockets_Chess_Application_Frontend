@@ -16,23 +16,28 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from "@angular/core";
+import { BrowserModule } from "@angular/platform-browser";
+import { RouterModule } from "@angular/router";
 
-import { MgchessComponent } from './mgchess.component';
+import { MgchessComponent } from "./mgchess.component";
+import { MgchessRoutingModule } from "./mgchess-routing.module";
 
 //----------------------------------------------------------------------------------------------------------------------
 
 @NgModule({
     declarations: [
-        MgchessComponent
+        MgchessComponent,
     ],
     imports: [
-        BrowserModule
+        BrowserModule,
+        // routing
+        RouterModule,
+        MgchessRoutingModule,
     ],
     providers: [],
     bootstrap: [
-        MgchessComponent
-    ]
+        MgchessComponent,
+    ],
 })
 export class MgchessModule {}

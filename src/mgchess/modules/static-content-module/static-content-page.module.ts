@@ -1,8 +1,8 @@
 /*
  * Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
  *
- * File name: mgchess.component.ts
- * Last modified: 21/08/2022, 18:31
+ * File name: static-content-page.module.ts
+ * Last modified: 21/08/2022, 21:47
  * Project name: chess-app-frontend
  *
  * Licensed under the MIT license; you may not use this file except in compliance with the License.
@@ -16,13 +16,24 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-import { Component } from "@angular/core";
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+
+import { HomePageComponent } from "./pages/home-page/home-page.component";
+import { StaticContentPageComponent } from "./static-content-page.component";
+
+import { StaticContentPageRoutingModule } from "./static-content-page-routing.module";
 
 //----------------------------------------------------------------------------------------------------------------------
 
-@Component({
-    selector: "mgchess-root",
-    templateUrl: "./mgchess.component.html",
-    styleUrls: []
+@NgModule({
+    declarations: [
+        HomePageComponent,
+        StaticContentPageComponent,
+    ],
+    imports: [
+        CommonModule,
+        StaticContentPageRoutingModule,
+    ],
 })
-export class MgchessComponent {}
+export class StaticContentPageModule {}

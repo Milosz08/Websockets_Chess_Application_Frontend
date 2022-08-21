@@ -1,8 +1,8 @@
 /*
  * Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
  *
- * File name: mgchess.component.ts
- * Last modified: 21/08/2022, 18:31
+ * File name: auth-register-page-routing.module.ts
+ * Last modified: 21/08/2022, 22:14
  * Project name: chess-app-frontend
  *
  * Licensed under the MIT license; you may not use this file except in compliance with the License.
@@ -16,13 +16,23 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-import { Component } from "@angular/core";
+import { NgModule } from "@angular/core";
+import { RouterModule, Routes } from "@angular/router";
 
 //----------------------------------------------------------------------------------------------------------------------
 
-@Component({
-    selector: "mgchess-root",
-    templateUrl: "./mgchess.component.html",
-    styleUrls: []
+const routes: Routes = [
+
+];
+
+//----------------------------------------------------------------------------------------------------------------------
+
+@NgModule({
+    imports: [
+        RouterModule.forChild(routes),
+    ],
+    exports: [
+        RouterModule,
+    ],
 })
-export class MgchessComponent {}
+export class AuthRegisterPageRoutingModule {}
