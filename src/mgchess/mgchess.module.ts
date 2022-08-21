@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
  *
- * File name: environment.ts
+ * File name: mgchess.module.ts
  * Last modified: 21/08/2022, 18:31
  * Project name: chess-app-frontend
  *
@@ -16,6 +16,23 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-export const environment = {
-    production: false
-};
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+
+import { MgchessComponent } from './mgchess.component';
+
+//----------------------------------------------------------------------------------------------------------------------
+
+@NgModule({
+    declarations: [
+        MgchessComponent
+    ],
+    imports: [
+        BrowserModule
+    ],
+    providers: [],
+    bootstrap: [
+        MgchessComponent
+    ]
+})
+export class MgchessModule {}
