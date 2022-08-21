@@ -17,6 +17,10 @@
  */
 
 import { Component } from "@angular/core";
+import { Meta, Title } from "@angular/platform-browser";
+
+import { BrowserMetaSerializationLoader } from "../../../../../browser-meta-serialization/BrowserMetaSerializationLoader";
+import { SingleModuleType, SinglePageType } from "../../../../../browser-meta-serialization/BrowserMetaSerializationTypes";
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -25,4 +29,12 @@ import { Component } from "@angular/core";
     templateUrl: "./content-not-found-page.component.html",
     styleUrls: [ "./content-not-found-page.component.scss" ],
 })
-export class ContentNotFoundPageComponent {}
+export class ContentNotFoundPageComponent extends BrowserMetaSerializationLoader {
+
+    constructor(
+        private _titleService: Title,
+        private _metaService: Meta
+    ) {
+        super(_titleService, _metaService, SingleModuleType.SHARED_MODULE, SinglePageType.CONTENT_NOT_FOUND_PAGE);
+    };
+}

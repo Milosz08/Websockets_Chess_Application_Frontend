@@ -1,0 +1,26 @@
+{
+    "separator": "|",
+    "prefix": "Chess Online",
+    "metaContent": {
+        "staticContentModule": [
+            {
+                "pageId": "HOME_PAGE",
+                "title": "Welcome",
+                "description": "Welcome to the online chess and checkers simulator."
+            }
+        ],
+        "authRegisterModule": [
+
+        ],
+        "dynamicAppModule": [
+
+        ],
+        "sharedModule": [
+            {
+                "pageId": "CONTENT_NOT_FOUND_PAGE",
+                "title": "404",
+                "description": "The page you are trying to access to does not exist."
+            }
+        ]
+    }
+}

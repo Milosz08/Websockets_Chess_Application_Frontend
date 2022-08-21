@@ -1,8 +1,8 @@
 /*
  * Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
  *
- * File name: home-page.component.ts
- * Last modified: 21/08/2022, 22:24
+ * File name: BrowserMetaSerializationTypes.ts
+ * Last modified: 21/08/2022, 23:05
  * Project name: chess-app-frontend
  *
  * Licensed under the MIT license; you may not use this file except in compliance with the License.
@@ -16,25 +16,16 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-import { Component } from "@angular/core";
-import { Meta, Title } from "@angular/platform-browser";
-
-import { BrowserMetaSerializationLoader } from "../../../../../browser-meta-serialization/BrowserMetaSerializationLoader";
-import { SingleModuleType, SinglePageType } from "../../../../../browser-meta-serialization/BrowserMetaSerializationTypes";
+export enum SingleModuleType {
+    STATIC_CONTENT_MODULE = "staticContentModule",
+    AUTH_REGISTER_MODULE = "authRegisterModule",
+    DYNAMIC_APP_MODULE = "dynamicAppModule",
+    SHARED_MODULE = "sharedModule",
+}
 
 //----------------------------------------------------------------------------------------------------------------------
 
-@Component({
-    selector: "mgchess-home-page",
-    templateUrl: "./home-page.component.html",
-    styleUrls: [ "./home-page.component.scss" ],
-})
-export class HomePageComponent extends BrowserMetaSerializationLoader {
-
-    constructor(
-        private _titleService: Title,
-        private _metaService: Meta
-    ) {
-        super(_titleService, _metaService, SingleModuleType.STATIC_CONTENT_MODULE, SinglePageType.HOME_PAGE);
-    };
+export enum SinglePageType {
+    HOME_PAGE = "HOME_PAGE",
+    CONTENT_NOT_FOUND_PAGE = "CONTENT_NOT_FOUND_PAGE",
 }
