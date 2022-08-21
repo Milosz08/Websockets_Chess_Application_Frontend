@@ -1,8 +1,8 @@
 /*!
  * Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
  *
- * File name: computed.scss
- * Last modified: 21/08/2022, 18:47
+ * File name: _variables-partial.scss
+ * Last modified: 21/08/2022, 21:19
  * Project name: chess-app-frontend
  *
  * Licensed under the MIT license; you may not use this file except in compliance with the License.
@@ -16,6 +16,9 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-@import "fontfaces-partial";
-@import "variables-partial";
-@import "reset-partial";
+:root {
+    --primaryBackground: #191919;
+    --primaryForeground: #cda88b;
+    --secondaryForeground: #e4e4e4;
+    --thirdlyForeground: #7e7e7e;
+}
