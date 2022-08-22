@@ -19,12 +19,16 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 
+import { StaticContentPageComponent } from "./static-content-page.component";
+
 import { HomePageComponent } from "./pages/home-page/home-page.component";
 
 //----------------------------------------------------------------------------------------------------------------------
 
 const routes: Routes = [
-    { path: "", component: HomePageComponent },
+    { path: "", component: StaticContentPageComponent, children: [
+        { path: "", component: HomePageComponent },
+    ]},
 ];
 
 //----------------------------------------------------------------------------------------------------------------------
