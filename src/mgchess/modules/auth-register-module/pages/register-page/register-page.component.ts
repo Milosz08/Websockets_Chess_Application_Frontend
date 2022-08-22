@@ -1,8 +1,8 @@
 /*
  * Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
  *
- * File name: auth-register-page.module.ts
- * Last modified: 21/08/2022, 22:14
+ * File name: register-page.component.ts
+ * Last modified: 22/08/2022, 13:15
  * Project name: chess-app-frontend
  *
  * Licensed under the MIT license; you may not use this file except in compliance with the License.
@@ -16,26 +16,25 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-import { NgModule } from "@angular/core";
-import { CommonModule } from "@angular/common";
+import { Component } from "@angular/core";
+import { Meta, Title } from "@angular/platform-browser";
 
-import { LoginPageComponent } from "./pages/login-page/login-page.component";
-import { RegisterPageComponent } from "./pages/register-page/register-page.component";
-
-import { AuthRegisterPageComponent } from "./auth-register-page.component";
-import { AuthRegisterPageRoutingModule } from "./auth-register-page-routing.module";
+import { BrowserMetaSerializationLoader } from "../../../../../browser-meta-serialization/BrowserMetaSerializationLoader";
+import { SingleModuleType, SinglePageType } from "../../../../../browser-meta-serialization/BrowserMetaSerializationTypes";
 
 //----------------------------------------------------------------------------------------------------------------------
 
-@NgModule({
-    declarations: [
-        LoginPageComponent,
-        RegisterPageComponent,
-        AuthRegisterPageComponent,
-    ],
-    imports: [
-        CommonModule,
-        AuthRegisterPageRoutingModule,
-    ],
+@Component({
+    selector: "mgchess-register-page",
+    templateUrl: "./register-page.component.html",
+    styleUrls: [ "./register-page.component.scss" ]
 })
-export class AuthRegisterPageModule {}
+export class RegisterPageComponent extends BrowserMetaSerializationLoader {
+
+    constructor(
+        private _titleService: Title,
+        private _metaService: Meta
+    ) {
+        super(_titleService, _metaService, SingleModuleType.AUTH_REGISTER_MODULE, SinglePageType.REGISTER_PAGE);
+    };
+}

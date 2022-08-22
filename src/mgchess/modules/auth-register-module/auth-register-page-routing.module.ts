@@ -19,10 +19,19 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 
+import { AuthRegisterPageComponent } from "./auth-register-page.component";
+
+import { LoginPageComponent } from "./pages/login-page/login-page.component";
+import { RegisterPageComponent } from "./pages/register-page/register-page.component";
+
 //----------------------------------------------------------------------------------------------------------------------
 
 const routes: Routes = [
-
+    { path: "", component: AuthRegisterPageComponent, children: [
+        { path: "", redirectTo: "login", pathMatch: "full" },
+        { path: "login", component: LoginPageComponent },
+        { path: "register", component: RegisterPageComponent },
+    ]},
 ];
 
 //----------------------------------------------------------------------------------------------------------------------

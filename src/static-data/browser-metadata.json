@@ -10,7 +10,16 @@
             }
         ],
         "authRegisterModule": [
-
+            {
+                "pageId": "LOGIN_PAGE",
+                "title": "Login",
+                "description": "To make full use of the application, log in to the account you have created."
+            },
+            {
+                "pageId": "REGISTER_PAGE",
+                "title": "Register",
+                "description": "To use the full capabilities of the app create a free account."
+            }
         ],
         "dynamicAppModule": [
 
