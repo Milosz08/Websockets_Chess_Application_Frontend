@@ -22,6 +22,13 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { MgchessModule } from './mgchess/mgchess.module';
 import { environment } from './environments/environment';
 
+import { FaviconThemeDetector } from "./browster-utils/FaviconThemeDetector";
+
+//----------------------------------------------------------------------------------------------------------------------
+
+FaviconThemeDetector.detectBrowserThemeAndChangeFavicon();
+
+//----------------------------------------------------------------------------------------------------------------------
 
 if (environment.production) {
   enableProdMode();
