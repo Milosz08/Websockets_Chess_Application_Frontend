@@ -61,7 +61,7 @@ export abstract class BrowserMetaSerializationLoader {
         if (this.serializedData === null) return;
         const { __prefix, __separator } = this.serializedData;
         const extractedMetadata = this.serializedData.extractMetaContentBasePageAndModuleType(this.module, this.page);
-        const titleWithPrefix = `${__prefix} ${__separator} ${extractedMetadata.title}`;
+        const titleWithPrefix = `${extractedMetadata.title} ${__separator} ${__prefix}`;
         this.titleService.setTitle(prefixActive ? titleWithPrefix : extractedMetadata.title);
         this.metaService.updateTag({ name: "description", content: extractedMetadata.description });
     };
