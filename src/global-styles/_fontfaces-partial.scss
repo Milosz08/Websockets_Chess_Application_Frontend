@@ -17,46 +17,37 @@
  */
 
 @font-face {
-    font-family: "Fira Sans";
+    font-family: "Noto Sans";
     font-style: normal;
     font-weight: 300;
-    src: local("Fira Sans"),
-        url("../assets/fonts/fira-sans-v16-latin-300.woff2") format("woff2"),
-        url("../assets/fonts/fira-sans-v16-latin-300.woff") format("woff");
+    src: local("Noto Sans"),
+        url("../assets/fonts/noto-sans-v27-latin-300.woff2") format("woff2"),
+        url("../assets/fonts/noto-sans-v27-latin-300.woff") format("woff");
 }
 
 @font-face {
-    font-family: "Fira Sans";
+    font-family: "Noto Sans";
     font-style: normal;
     font-weight: 400;
-    src: local("Fira Sans"),
-        url("../assets/fonts/fira-sans-v16-latin-400.woff2") format("woff2"),
-        url("../assets/fonts/fira-sans-v16-latin-400.woff") format("woff");
+    src: local("Noto Sans"),
+        url("../assets/fonts/noto-sans-v27-latin-regular.woff2") format("woff2"),
+        url("../assets/fonts/noto-sans-v27-latin-regular.woff") format("woff");
 }
 
 @font-face {
-    font-family: "Fira Sans";
+    font-family: "Noto Sans";
     font-style: normal;
     font-weight: 500;
-    src: local("Fira Sans"),
-        url("../assets/fonts/fira-sans-v16-latin-500.woff2") format("woff2"),
-        url("../assets/fonts/fira-sans-v16-latin-500.woff") format("woff");
+    src: local("Noto Sans"),
+        url("../assets/fonts/noto-sans-v27-latin-500.woff2") format("woff2"),
+        url("../assets/fonts/noto-sans-v27-latin-500.woff") format("woff");
 }
 
 @font-face {
-    font-family: "Fira Sans";
+    font-family: "Noto Serif";
     font-style: normal;
-    font-weight: 600;
-    src: local("Fira Sans"),
-        url("../assets/fonts/fira-sans-v16-latin-600.woff2") format("woff2"),
-        url("../assets/fonts/fira-sans-v16-latin-600.woff") format("woff");
-}
-
-@font-face {
-    font-family: "Fira Sans";
-    font-style: normal;
-    font-weight: 700;
-    src: local("Fira Sans"),
-        url("../assets/fonts/fira-sans-v16-latin-700.woff2") format("woff2"),
-        url("../assets/fonts/fira-sans-v16-latin-700.woff") format("woff");
+    font-weight: 400;
+    src: local("Noto Serif"),
+    url("../assets/fonts/noto-serif-v21-latin-regular.woff2") format("woff2"),
+    url("../assets/fonts/noto-serif-v21-latin-regular.woff") format("woff");
 }
