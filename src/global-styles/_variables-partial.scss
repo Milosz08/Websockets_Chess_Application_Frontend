@@ -17,8 +17,43 @@
  */
 
 :root {
-    --primaryBackground: #191919;
-    --primaryForeground: #e7c39e;
-    --secondaryForeground: #e4e4e4;
-    --thirdlyForeground: #7e7e7e;
+    --nav-links-after-indicator-background: #cda88b;
+
+    --standard-transition-duration: .3s;
+    --standard-button-border-radius: 5px;
+    --safety-width-medium-devices: 1240px;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+body {
+    --accesibility-focusable-border: #3b1302;
+
+    --primary-background: #f4f2ed;
+    --primary-foreground: #3b1302;
+
+    --logo-aside-text-foreground: #3b1302;
+    --nav-links-foreground: #7f7f7f;
+    --nav-links-indicator-foreground: #3b1302;
+
+    --sign-up-anchor-link-background: #3b1302;
+    --sign-up-anchor-link-foreground: #f4f2ed;
+    --sign-up-anchor-link-font-bolding: 400;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+body.dark-theme--active {
+    --accesibility-focusable-border: #505050;
+
+    --primary-background: #212121;
+    --primary-foreground: #f4f2ed;
+
+    --logo-aside-text-foreground: #f4f2ed;
+    --nav-links-foreground: #616161;
+    --nav-links-indicator-foreground: #f4f2ed;
+
+    --sign-up-anchor-link-background: #f4f2ed;
+    --sign-up-anchor-link-foreground: #3b1302;
+    --sign-up-anchor-link-font-bolding: 500;
 }

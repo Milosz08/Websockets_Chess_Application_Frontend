@@ -1,0 +1,116 @@
+/*!
+ * Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
+ *
+ * File name: header-with-navigation.component.scss
+ * Last modified: 22/08/2022, 17:10
+ * Project name: chess-app-frontend
+ *
+ * Licensed under the MIT license; you may not use this file except in compliance with the License.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+ * documentation files (the "Software"), to deal in the Software without restriction, including without limitation the
+ * rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to
+ * permit persons to whom the Software is furnished to do so, subject to the following conditions:
+ *
+ * THE ABOVE COPYRIGHT NOTICE AND THIS PERMISSION NOTICE SHALL BE INCLUDED IN ALL
+ * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
+ */
+
+.header__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px auto;
+    max-width: var(--safety-width-medium-devices);
+}
+
+.header-with-navigation__logo-container {
+    display: flex;
+    align-items: center;
+    .header-with-navigation__aside-logo-titles {
+        font-size: 1.5rem;
+        text-transform: uppercase;
+        width: 100px;
+        display: flex;
+        color: var(--logo-aside-text-foreground);
+        font-family: "Noto Serif", serif;
+        &.aside-logo-titles--right-title {
+            justify-content: flex-start;
+        }
+        &.aside-logo-titles--left-title {
+            justify-content: flex-end;
+        }
+    }
+    .header-with-navigation__logo-image {
+        width: 70px;
+        height: 70px;
+        margin: 0 20px;
+    }
+}
+
+.header-with-navigation__aside-content-container {
+    flex-basis: 50%;
+    display: flex;
+    justify-content: flex-start;
+    &.aside-content-container--to-right {
+        justify-content: flex-end;
+    }
+}
+
+.navigation-list-element__anchor-element {
+    position: relative;
+    text-transform: capitalize;
+    color: var(--nav-links-foreground);
+    transition: var(--standard-transition-duration);
+    margin: 0 20px;
+    &::after {
+        position: absolute;
+        content: "";
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: -7px;
+        width: 0;
+        height: 2px;
+        background-color: var(--nav-links-after-indicator-background);
+        transition: var(--standard-transition-duration);
+    }
+    &:hover,
+    &.navigation-list-element__anchor-element--active {
+        color: var(--nav-links-indicator-foreground);
+    }
+    &:hover::after,
+    &.navigation-list-element__anchor-element--active::after {
+        width: 80%;
+    }
+}
+
+.sign-up__anchor-element {
+    text-transform: capitalize;
+    color: var(--sign-up-anchor-link-foreground);
+    margin: 0 30px;
+    padding: 4px 12px 5px;
+    font-weight: var(--sign-up-anchor-link-font-bolding);
+    background-color: var(--sign-up-anchor-link-background);
+    border-radius: var(--standard-button-border-radius);
+}
+
+.main-navigation__container {
+    margin: 40px auto;
+    max-width: var(--safety-width-medium-devices);
+}
+
+.main-navigation__navigation-list-container {
+    display: flex;
+    justify-content: center;
+}
+
+.main-navigation__link-list-element {
+    margin: 0 30px;
+    .link-list-element__anchor-element {
+        text-transform: uppercase;
+        font-weight: 300;
+        &.main-navigation__link-list-element--active {
+            text-shadow: -0.04ex 0 var(--primary-foreground), 0.04ex 0 var(--primary-foreground);
+        }
+    }
+}

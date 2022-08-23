@@ -1,7 +1,7 @@
 /*!
  * Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
  *
- * File name: _reset-partial.scss
+ * File name: _resets-partial.scss
  * Last modified: 21/08/2022, 21:30
  * Project name: chess-app-frontend
  *
@@ -22,10 +22,22 @@
     box-sizing: border-box;
     font-size: 16px;
     font-weight: normal;
+    &:focus {
+        outline: 1px dotted var(--accesibility-focusable-border);
+    }
 }
 
 body {
-    font-family: "Fira Sans", sans-serif;
-    background-color: var(--primaryBackground);
-    color: var(--primaryForeground);
+    font-family: "Noto Sans", sans-serif;
+    background-color: var(--primary-background);
+    color: var(--primary-foreground);
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+ul {
+    list-style-type: none;
 }

@@ -1,0 +1,27 @@
+[
+    {
+        "name": "home page",
+        "link": "/",
+        "metadataTitle": "Click to go to application home page."
+    },
+    {
+        "name": "about application",
+        "link": "/about",
+        "metadataTitle": "Click to go to the find more about this chess application"
+    },
+    {
+        "name": "game rules",
+        "link": "/game-rules",
+        "metadataTitle": "Click to go to the chess rules subpage"
+    },
+    {
+        "name": "report a bug",
+        "link": "/report-a-bug",
+        "metadataTitle": "Click to report a bug in application via form"
+    },
+    {
+        "name": "contact with us",
+        "link": "/contact-with-us",
+        "metadataTitle": "Click to contact with us via form"
+    }
+]

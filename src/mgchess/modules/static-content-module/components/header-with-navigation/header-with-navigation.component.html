@@ -1,0 +1,86 @@
+<!--
+  ~ Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
+  ~
+  ~ File name: header-with-navigation.component.html
+  ~ Last modified: 22/08/2022, 17:10
+  ~ Project name: chess-app-frontend
+  ~
+  ~ Licensed under the MIT license; you may not use this file except in compliance with the License.
+  ~
+  ~ Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+  ~ documentation files (the "Software"), to deal in the Software without restriction, including without limitation the
+  ~ rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to
+  ~ permit persons to whom the Software is furnished to do so, subject to the following conditions:
+  ~
+  ~ THE ABOVE COPYRIGHT NOTICE AND THIS PERMISSION NOTICE SHALL BE INCLUDED IN ALL
+  ~ COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
+  -->
+
+<header class="header__container">
+    <nav class="header-with-navigation__aside-content-container">
+        <div>
+            <a
+                routerLink="/app/chess-canvas"
+                routerLinkActive="navigation-list-element__anchor-element--active"
+                class="navigation-list-element__anchor-element"
+                title="Click to go to chess canvas application page"
+            >
+                start game
+            </a>
+            <a
+                routerLink="/rankings"
+                routerLinkActive="navigation-list-element__anchor-element--active"
+                class="navigation-list-element__anchor-element"
+                title="Click to go to players rankings subpage"
+            >
+                rankings
+            </a>
+        </div>
+    </nav>
+    <a routerLink="/" class="header-with-navigation__logo-container">
+        <span class="header-with-navigation__aside-logo-titles aside-logo-titles--left-title">chess</span>
+        <img
+            src="../../../../../assets/images/main-logo.png" alt=""
+            class="header-with-navigation__logo-image"
+        />
+        <span class="header-with-navigation__aside-logo-titles aside-logo-titles--right-title">online</span>
+    </a>
+    <nav class="header-with-navigation__aside-content-container aside-content-container--to-right">
+        <div>
+            <a
+                routerLink="/auth/login"
+                routerLinkActive="navigation-list-element__anchor-element--active"
+                class="navigation-list-element__anchor-element"
+                title="Click this link, if you already account in application"
+            >
+                log in
+            </a>
+            <a
+                routerLink="/auth/signup"
+                routerLinkActive="navigation-list-element__anchor-element--active"
+                class="sign-up__anchor-element"
+                title="Click this link, if you haven't yet account in this application"
+            >
+                sign up
+            </a>
+        </div>
+    </nav>
+</header>
+<nav class="main-navigation__container">
+    <ul class="main-navigation__navigation-list-container">
+        <li
+            *ngFor="let listElement of _mainNavigationList"
+            class="main-navigation__link-list-element"
+        >
+            <a
+                [routerLink]="listElement.link"
+                routerLinkActive="main-navigation__link-list-element--active"
+                [routerLinkActiveOptions] = "{ exact: true }"
+                [title]="listElement.metadataTitle"
+                class="link-list-element__anchor-element"
+            >
+                {{ listElement.name }}
+            </a>
+        </li>
+    </ul>
+</nav>
