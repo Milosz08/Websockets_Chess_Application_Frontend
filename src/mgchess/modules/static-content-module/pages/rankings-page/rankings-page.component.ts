@@ -1,8 +1,8 @@
 /*
  * Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
  *
- * File name: BrowserMetaSerializationTypes.ts
- * Last modified: 21/08/2022, 23:05
+ * File name: rankings-page.component.ts
+ * Last modified: 22/08/2022, 21:53
  * Project name: chess-app-frontend
  *
  * Licensed under the MIT license; you may not use this file except in compliance with the License.
@@ -16,24 +16,25 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-export enum SingleModuleType {
-    STATIC_CONTENT_MODULE = "staticContentModule",
-    AUTH_REGISTER_MODULE = "authRegisterModule",
-    DYNAMIC_APP_MODULE = "dynamicAppModule",
-    SHARED_MODULE = "sharedModule",
-}
+import { Component } from "@angular/core";
+import { Meta, Title } from "@angular/platform-browser";
+
+import { BrowserMetaSerializationLoader } from "../../../../../browser-meta-serialization/BrowserMetaSerializationLoader";
+import { SingleModuleType, SinglePageType } from "../../../../../browser-meta-serialization/BrowserMetaSerializationTypes";
 
 //----------------------------------------------------------------------------------------------------------------------
 
-export enum SinglePageType {
-    HOME_PAGE = "HOME_PAGE",
-    CONTENT_NOT_FOUND_PAGE = "CONTENT_NOT_FOUND_PAGE",
-    LOGIN_PAGE = "LOGIN_PAGE",
-    REGISTER_PAGE = "REGISTER_PAGE",
-    RANKINGS_PAGE = "RANKINGS_PAGE",
-    ABOUT_PAGE = "ABOUT_PAGE",
-    CONTACT_WITH_US_PAGE = "CONTACT_WITH_US_PAGE",
-    GAME_RULES_PAGE = "GAME_RULES_PAGE",
-    REPORT_A_BUG_PAGE = "REPORT_A_BUG_PAGE",
-    GAME_CANVAS_PAGE = "GAME_CANVAS_PAGE",
+@Component({
+    selector: "mgchess-rankings-page",
+    templateUrl: "./rankings-page.component.html",
+    styleUrls: [ "./rankings-page.component.scss" ]
+})
+export class RankingsPageComponent extends BrowserMetaSerializationLoader {
+
+    constructor(
+        private _titleService: Title,
+        private _metaService: Meta
+    ) {
+        super(_titleService, _metaService, SingleModuleType.STATIC_CONTENT_MODULE, SinglePageType.RANKINGS_PAGE);
+    };
 }

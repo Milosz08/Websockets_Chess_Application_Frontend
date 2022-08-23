@@ -7,6 +7,31 @@
                 "pageId": "HOME_PAGE",
                 "title": "Welcome",
                 "description": "Welcome to the online chess and checkers simulator."
+            },
+            {
+                "pageId": "RANKINGS_PAGE",
+                "title": "Rankings",
+                "description": "On this page you have the opportunity to check the players' ranking positions."
+            },
+            {
+                "pageId": "ABOUT_PAGE",
+                "title": "About application",
+                "description": "On this page you have the opportunity to find more about this application."
+            },
+            {
+                "pageId": "CONTACT_WITH_US_PAGE",
+                "title": "Contact with us",
+                "description": "On this page you have the opportunity to send message via form."
+            },
+            {
+                "pageId": "GAME_RULES_PAGE",
+                "title": "Game rules",
+                "description": "On this page you have the opportunity to find more about game rules in this application."
+            },
+            {
+                "pageId": "REPORT_A_BUG_PAGE",
+                "title": "Report a bug",
+                "description": "On this page you have the opportunity to report a bug in application via form."
             }
         ],
         "authRegisterModule": [

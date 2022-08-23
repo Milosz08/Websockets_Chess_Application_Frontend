@@ -20,20 +20,38 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 
 import { HomePageComponent } from "./pages/home-page/home-page.component";
-import { StaticContentPageComponent } from "./static-content-page.component";
+import { AboutPageComponent } from './pages/about-page/about-page.component';
+import { RankingsPageComponent } from "./pages/rankings-page/rankings-page.component";
+import { GameRulesPageComponent } from './pages/game-rules-page/game-rules-page.component';
+import { ReportABugPageComponent } from './pages/report-a-bug-page/report-a-bug-page.component';
+import { ContactWithUsPageComponent } from './pages/contact-with-us-page/contact-with-us-page.component';
 
+import { HeaderWithNavigationComponent } from "./components/header-with-navigation/header-with-navigation.component";
+
+import { SharedModuleModule } from "../shared-module/shared-module.module";
+import { StaticContentPageComponent } from "./static-content-page.component";
 import { StaticContentPageRoutingModule } from "./static-content-page-routing.module";
 
 //----------------------------------------------------------------------------------------------------------------------
 
 @NgModule({
     declarations: [
+        // pages
         HomePageComponent,
+        AboutPageComponent,
+        RankingsPageComponent,
+        GameRulesPageComponent,
+        ReportABugPageComponent,
+        ContactWithUsPageComponent,
+        // components
+        HeaderWithNavigationComponent,
+        // others
         StaticContentPageComponent,
     ],
     imports: [
         CommonModule,
         StaticContentPageRoutingModule,
+        SharedModuleModule,
     ],
 })
 export class StaticContentPageModule {}
