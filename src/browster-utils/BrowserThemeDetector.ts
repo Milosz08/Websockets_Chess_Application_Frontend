@@ -16,9 +16,11 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-export class FaviconThemeDetector {
+export class BrowserThemeDetector {
 
     private static readonly FAV_DIR: string = "../assets/favicons/";
+    private static readonly CSS_DARK_CLASS: string = "dark-theme--active";
+
     private static readonly FAV_LIGHT: string = this.FAV_DIR + "favicon-light.png";
     private static readonly FAV_DARK: string = this.FAV_DIR + "favicon-dark.png";
 
@@ -32,9 +34,11 @@ export class FaviconThemeDetector {
     private static changeFaviconListenerCallback(isDark: boolean) {
         if (isDark) {
             this.setFavicon(this.FAV_LIGHT);
+            document.body.classList.add(this.CSS_DARK_CLASS);
             console.log("Prefered browser color scheme is set to DARK.");
         } else {
             this.setFavicon(this.FAV_DARK);
+            document.body.classList.remove(this.CSS_DARK_CLASS);
             console.log("Prefered browser color scheme is set to LIGHT.");
         }
     };
@@ -42,5 +46,9 @@ export class FaviconThemeDetector {
     private static setFavicon(imagePath: string): void {
         const linkElement = document.querySelector("link[rel=icon]") as HTMLLinkElement;
         linkElement.href = imagePath;
+    };
+
+    static isDarkThemeActive(): boolean {
+        return document.body.classList.contains(this.CSS_DARK_CLASS);
     };
 }
