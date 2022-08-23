@@ -20,12 +20,13 @@ import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 
 import { DynamicAppPageComponent } from "./dynamic-app-page.component";
+import { ChessCanvasPageComponent } from "./pages/chess-canvas-page/chess-canvas-page.component";
 
 //----------------------------------------------------------------------------------------------------------------------
 
 const routes: Routes = [
     { path: "", component: DynamicAppPageComponent, children: [
-
+        { path: "chess-canvas", component: ChessCanvasPageComponent },
     ]},
 ];
 

@@ -1,8 +1,8 @@
 /*
  * Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
  *
- * File name: dynamic-app-page.module.ts
- * Last modified: 21/08/2022, 22:21
+ * File name: chess-canvas-page.component.ts
+ * Last modified: 23/08/2022, 18:43
  * Project name: chess-app-frontend
  *
  * Licensed under the MIT license; you may not use this file except in compliance with the License.
@@ -16,24 +16,25 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-import { NgModule } from "@angular/core";
-import { CommonModule } from "@angular/common";
+import { Component } from "@angular/core";
+import { Meta, Title } from "@angular/platform-browser";
 
-import { DynamicAppPageComponent } from "./dynamic-app-page.component";
-import { ChessCanvasPageComponent } from "./pages/chess-canvas-page/chess-canvas-page.component";
-
-import { DynamicAppPageRoutingModule } from "./dynamic-app-page-routing.module";
+import { BrowserMetaSerializationLoader } from "../../../../../browser-meta-serialization/BrowserMetaSerializationLoader";
+import { SingleModuleType, SinglePageType } from "../../../../../browser-meta-serialization/BrowserMetaSerializationTypes";
 
 //----------------------------------------------------------------------------------------------------------------------
 
-@NgModule({
-    declarations: [
-        DynamicAppPageComponent,
-        ChessCanvasPageComponent,
-    ],
-    imports: [
-        CommonModule,
-        DynamicAppPageRoutingModule,
-    ],
+@Component({
+    selector: "mgchess-chess-canvas-page",
+    templateUrl: "./chess-canvas-page.component.html",
+    styleUrls: [ "./chess-canvas-page.component.scss" ]
 })
-export class DynamicAppPageModule {}
+export class ChessCanvasPageComponent extends BrowserMetaSerializationLoader {
+
+    constructor(
+        private _titleService: Title,
+        private _metaService: Meta
+    ) {
+        super(_titleService, _metaService, SingleModuleType.DYNAMIC_APP_MODULE, SinglePageType.GAME_CANVAS_PAGE);
+    };
+}
