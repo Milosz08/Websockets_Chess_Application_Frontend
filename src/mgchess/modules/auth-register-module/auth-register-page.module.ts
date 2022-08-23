@@ -21,8 +21,9 @@ import { CommonModule } from "@angular/common";
 
 import { LoginPageComponent } from "./pages/login-page/login-page.component";
 import { RegisterPageComponent } from "./pages/register-page/register-page.component";
-
 import { AuthRegisterPageComponent } from "./auth-register-page.component";
+
+import { SharedModuleModule } from "../shared-module/shared-module.module";
 import { AuthRegisterPageRoutingModule } from "./auth-register-page-routing.module";
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -35,6 +36,7 @@ import { AuthRegisterPageRoutingModule } from "./auth-register-page-routing.modu
     ],
     imports: [
         CommonModule,
+        SharedModuleModule,
         AuthRegisterPageRoutingModule,
     ],
 })

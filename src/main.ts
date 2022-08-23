@@ -22,11 +22,11 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { MgchessModule } from './mgchess/mgchess.module';
 import { environment } from './environments/environment';
 
-import { FaviconThemeDetector } from "./browster-utils/FaviconThemeDetector";
+import { BrowserThemeDetector } from "./browster-utils/BrowserThemeDetector";
 
 //----------------------------------------------------------------------------------------------------------------------
 
-FaviconThemeDetector.detectBrowserThemeAndChangeFavicon();
+BrowserThemeDetector.detectBrowserThemeAndChangeFavicon();
 
 //----------------------------------------------------------------------------------------------------------------------
 

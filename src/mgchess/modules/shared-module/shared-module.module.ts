@@ -18,6 +18,7 @@
 
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from "@angular/router";
 
 import { ContentNotFoundPageComponent } from './pages/content-not-found-page/content-not-found-page.component';
 
@@ -29,6 +30,7 @@ import { ContentNotFoundPageComponent } from './pages/content-not-found-page/con
     ],
     imports: [
         CommonModule,
+        RouterModule,
     ],
 })
 export class SharedModuleModule {}
