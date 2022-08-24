@@ -21,7 +21,7 @@ import { Component } from "@angular/core";
 import * as NAVIGATION_LIST from "../../../../../assets/static-data/main-navigation-links.json";
 import * as QUICK_START_NAVIGATION_LIST from "../../../../../assets/static-data/quick-start-navigation-links.json";
 
-import { NavigationLinksModel } from "../../../../../models/NavigationLinksModel";
+import { NavigationLinksModel } from "../../../../models/NavigationLinksModel";
 
 //----------------------------------------------------------------------------------------------------------------------
 

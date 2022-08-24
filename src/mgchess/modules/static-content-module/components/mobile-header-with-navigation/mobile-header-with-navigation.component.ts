@@ -18,7 +18,7 @@
 
 import { Component } from "@angular/core";
 
-import { NavigationLinksModel } from "../../../../../models/NavigationLinksModel";
+import { NavigationLinksModel } from "../../../../models/NavigationLinksModel";
 import { HamburgerActivityCssClasses } from "../../models/HamburgerActivityCssClasses";
 
 import * as NAVIGATION_LINKS from "../../../../../assets/static-data/main-navigation-links.json";
