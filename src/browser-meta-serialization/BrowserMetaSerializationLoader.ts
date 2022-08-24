@@ -17,7 +17,7 @@
  */
 
 import { Meta, Title } from "@angular/platform-browser";
-import * as META_DATA from "../static-data/browser-metadata.json";
+import * as META_DATA from "../assets/static-data/browser-metadata.json";
 
 import { SingleModuleType, SinglePageType } from "./BrowserMetaSerializationTypes";
 import { BrowserMetaSerialized, SinglePageMetaContent } from "./BrowserMetaSerialized";

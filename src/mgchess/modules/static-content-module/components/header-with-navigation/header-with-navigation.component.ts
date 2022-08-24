@@ -19,7 +19,7 @@
 import { Component } from "@angular/core";
 
 import { MainNavigationLinksModel } from "../../models/MainNavigationLinksModel";
-import * as NAVIGATION_LIST from "../../../../../static-data/main-navigation-links.json";
+import * as NAVIGATION_LIST from "../../../../../assets/static-data/main-navigation-links.json";
 
 //----------------------------------------------------------------------------------------------------------------------
 
