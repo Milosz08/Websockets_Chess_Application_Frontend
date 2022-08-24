@@ -18,8 +18,8 @@
 
 export class BrowserThemeDetector {
 
-    private static readonly FAV_DIR: string = "../assets/favicons/";
-    private static readonly CSS_DARK_CLASS: string = "dark-theme--active";
+    private static readonly FAV_DIR: string = "../assets/gfx/favicons/";
+    public static readonly CSS_DARK_CLASS: string = "dark-theme--active";
 
     private static readonly FAV_LIGHT: string = this.FAV_DIR + "favicon-light.png";
     private static readonly FAV_DARK: string = this.FAV_DIR + "favicon-dark.png";

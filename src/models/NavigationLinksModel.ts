@@ -16,7 +16,7 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-export interface MainNavigationLinksModel {
+export interface NavigationLinksModel {
     name: string;
     link: string;
     metadataTitle: string;
