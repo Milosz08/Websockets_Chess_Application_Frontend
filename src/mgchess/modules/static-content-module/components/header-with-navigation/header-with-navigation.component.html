@@ -18,51 +18,46 @@
 
 <header class="header__container">
     <nav class="header-with-navigation__aside-content-container">
-        <div>
-            <a
-                routerLink="/app/chess-canvas"
-                routerLinkActive="navigation-list-element__anchor-element--active"
-                class="navigation-list-element__anchor-element"
-                title="Click to go to chess canvas application page"
-            >
-                start game
-            </a>
-            <a
-                routerLink="/rankings"
-                routerLinkActive="navigation-list-element__anchor-element--active"
-                class="navigation-list-element__anchor-element"
-                title="Click to go to players rankings subpage"
-            >
-                rankings
-            </a>
+        <div class="header-navigation__links-container">
+            <ng-container *ngFor="let quickStartLink of _quickStartNavigationList; index as i">
+                <a
+                    [routerLink]="quickStartLink.link"
+                    [title]="quickStartLink.metadataTitle"
+                    routerLinkActive="navigation-list-element__anchor-element--active"
+                    class="navigation-list-element__anchor-element"
+                >
+                    {{ quickStartLink.name }}
+                </a>
+                <span
+                    *ngIf="i !== _quickStartNavigationList.length - 1"
+                    class="nav-links__bullet-separator"
+                ></span>
+            </ng-container>
         </div>
     </nav>
     <mgchess-horizontal-title></mgchess-horizontal-title>
     <nav class="header-with-navigation__aside-content-container aside-content-container--to-right">
-        <div>
-            <a
-                routerLink="/auth/login"
-                routerLinkActive="navigation-list-element__anchor-element--active"
-                class="navigation-list-element__anchor-element"
-                title="Click this link, if you already account in application"
-            >
-                log in
-            </a>
-            <a
-                routerLink="/auth/signup"
-                routerLinkActive="navigation-list-element__anchor-element--active"
-                class="sign-up__anchor-element"
-                title="Click this link, if you haven't yet account in this application"
-            >
-                sign up
-            </a>
+        <div class="header-navigation__links-container">
+            <ng-container *ngFor="let authLink of _authNavigationList; index as i">
+                <a
+                    [routerLink]="authLink.link"
+                    routerLinkActive="navigation-list-element__anchor-element--active"
+                    [class]="cssClassCheckIfIsSignupElement(authLink)"
+                >
+                    {{ authLink.name }}
+                </a>
+                <span *ngIf="i !== _authNavigationList.length - 1" class="nav-links__bullet-separator"></span>
+            </ng-container>
         </div>
     </nav>
 </header>
+<div class="theme-toggler__container">
+    <mgchess-theme-toggler></mgchess-theme-toggler>
+</div>
 <nav class="main-navigation__container">
     <ul class="main-navigation__navigation-list-container">
         <li
-            *ngFor="let listElement of _mainNavigationList"
+            *ngFor="let listElement of _mainNavigationList; index as i"
             class="main-navigation__link-list-element"
         >
             <a
@@ -74,6 +69,10 @@
             >
                 {{ listElement.name }}
             </a>
+            <span
+                *ngIf="i !== _mainNavigationList.length - 1"
+                class="nav-links__bullet-separator"
+            ></span>
         </li>
     </ul>
 </nav>

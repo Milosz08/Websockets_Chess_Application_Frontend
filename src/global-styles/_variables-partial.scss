@@ -18,6 +18,11 @@
 
 :root {
     --nav-links-after-indicator-background: #cda88b;
+    --mobile-header-menu-foreground: #f4f2ed;
+
+    --footer-primary-foreground: #f4f2ed;
+    --footer-headlings-after-background: #cda88b;
+    --footer-copy-newsletter-background: #cda88b;
 
     --nofxsupport-wrapper-background: #f4f2ed;
     --nofxsupport-wrapper-foreground: #3b1302;
@@ -33,18 +38,25 @@
 //----------------------------------------------------------------------------------------------------------------------
 
 body {
-    --accesibility-focusable-border: #3b1302;
+    --accesibility-focusable-border: #939393;
 
     --primary-background: #f4f2ed;
     --primary-foreground: #3b1302;
 
     --logo-aside-text-foreground: #3b1302;
-    --nav-links-foreground: #7f7f7f;
+    --nav-links-with-separator-color: #7f7f7f;
     --nav-links-indicator-foreground: #3b1302;
+    --mobile-header-menu-primary-color: #3b1302;
 
     --sign-up-anchor-link-background: #3b1302;
     --sign-up-anchor-link-foreground: #f4f2ed;
     --sign-up-anchor-link-font-bolding: 400;
+
+    --footer-background: #3b1302;
+    --footer-copy-newsletter-foreground: #3b1302;
+
+    --theme-toggler-background: #3b1302;
+    --theme-toggler-bullet-with-icon-color: #f4f2ed;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -56,10 +68,17 @@ body.dark-theme--active {
     --primary-foreground: #f4f2ed;
 
     --logo-aside-text-foreground: #f4f2ed;
-    --nav-links-foreground: #616161;
+    --nav-links-with-separator-color: #767676;
     --nav-links-indicator-foreground: #f4f2ed;
+    --mobile-header-menu-primary-color: #171717;
 
-    --sign-up-anchor-link-background: #f4f2ed;
-    --sign-up-anchor-link-foreground: #3b1302;
+    --sign-up-anchor-link-background: #cda88b;
+    --sign-up-anchor-link-foreground: #171717;
     --sign-up-anchor-link-font-bolding: 500;
+
+    --footer-background: #171717;
+    --footer-copy-newsletter-foreground: #171717;
+
+    --theme-toggler-background: #f4f2ed;
+    --theme-toggler-bullet-with-icon-color: #212121;
 }

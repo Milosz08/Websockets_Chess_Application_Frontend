@@ -27,7 +27,7 @@
     }
 }
 
-body {
+body, button, input {
     font-family: "Noto Sans", sans-serif;
     background-color: var(--primary-background);
     color: var(--primary-foreground);
@@ -40,4 +40,19 @@ a {
 
 ul {
     list-style-type: none;
+}
+
+button {
+    color: inherit;
+    border: none;
+    background-color: transparent;
+    outline: none;
+    cursor: pointer;
+}
+
+input {
+    outline: none;
+    color: inherit;
+    border: none;
+    background-color: transparent;
 }

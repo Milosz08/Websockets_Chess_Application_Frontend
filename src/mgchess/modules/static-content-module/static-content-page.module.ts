@@ -27,6 +27,7 @@ import { ReportABugPageComponent } from './pages/report-a-bug-page/report-a-bug-
 import { ContactWithUsPageComponent } from './pages/contact-with-us-page/contact-with-us-page.component';
 
 import { HeaderWithNavigationComponent } from "./components/header-with-navigation/header-with-navigation.component";
+import { MobileHeaderWithNavigationComponent } from './components/mobile-header-with-navigation/mobile-header-with-navigation.component';
 
 import { SharedModuleModule } from "../shared-module/shared-module.module";
 import { StaticContentPageComponent } from "./static-content-page.component";
@@ -45,6 +46,7 @@ import { StaticContentPageRoutingModule } from "./static-content-page-routing.mo
         ContactWithUsPageComponent,
         // components
         HeaderWithNavigationComponent,
+        MobileHeaderWithNavigationComponent,
         // others
         StaticContentPageComponent,
     ],

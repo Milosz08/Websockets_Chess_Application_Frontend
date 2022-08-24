@@ -1,0 +1,73 @@
+/*!
+ * Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
+ *
+ * File name: _header-partial.scss
+ * Last modified: 24/08/2022, 23:36
+ * Project name: chess-app-frontend
+ *
+ * Licensed under the MIT license; you may not use this file except in compliance with the License.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+ * documentation files (the "Software"), to deal in the Software without restriction, including without limitation the
+ * rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to
+ * permit persons to whom the Software is furnished to do so, subject to the following conditions:
+ *
+ * THE ABOVE COPYRIGHT NOTICE AND THIS PERMISSION NOTICE SHALL BE INCLUDED IN ALL
+ * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
+ */
+
+.main-navigation__link-list-element {
+    display: flex;
+    align-items: center;
+    .link-list-element__anchor-element {
+        margin: 0 30px;
+        text-transform: uppercase;
+        font-weight: 300;
+        &.main-navigation__link-list-element--active {
+            text-shadow: 0 0 1px var(--primary-foreground);
+        }
+    }
+}
+
+.sign-up__anchor-element,
+.navigation-list-element__anchor-element {
+    display: flex;
+    align-items: center;
+}
+
+.navigation-list-element__anchor-element {
+    position: relative;
+    text-transform: capitalize;
+    color: var(--nav-links-with-separator-color);
+    transition: var(--standard-transition-duration);
+    margin: 0 20px;
+    &::after {
+        position: absolute;
+        content: "";
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: -7px;
+        width: 0;
+        height: 2px;
+        background-color: var(--nav-links-after-indicator-background);
+        transition: var(--standard-transition-duration);
+    }
+    &:hover,
+    &.navigation-list-element__anchor-element--active {
+        color: var(--nav-links-indicator-foreground);
+    }
+    &:hover::after,
+    &.navigation-list-element__anchor-element--active::after {
+        width: 80%;
+    }
+}
+
+.sign-up__anchor-element {
+    text-transform: capitalize;
+    color: var(--sign-up-anchor-link-foreground);
+    margin: 0 30px;
+    padding: 4px 12px 5px;
+    font-weight: var(--sign-up-anchor-link-font-bolding);
+    background-color: var(--sign-up-anchor-link-background);
+    border-radius: var(--standard-button-border-radius);
+}

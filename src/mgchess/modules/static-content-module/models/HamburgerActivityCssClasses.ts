@@ -1,8 +1,8 @@
-/*!
+/*
  * Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
  *
- * File name: computed.scss
- * Last modified: 21/08/2022, 18:47
+ * File name: HamburgerActivityCssClasses.ts
+ * Last modified: 24/08/2022, 22:42
  * Project name: chess-app-frontend
  *
  * Licensed under the MIT license; you may not use this file except in compliance with the License.
@@ -16,9 +16,12 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-@import "fontfaces-partial";
-@import "variables-partial";
-@import "resets-partial";
-@import "nofxsupport-partial";
-@import "controls-partial";
-@import "header-partial";
+export class HamburgerActivityCssClasses {
+    hamburgerClass: string;
+    menuClass: string;
+
+    constructor(hamburgerClass: string, menuClass: string) {
+        this.hamburgerClass = hamburgerClass;
+        this.menuClass = menuClass;
+    };
+}

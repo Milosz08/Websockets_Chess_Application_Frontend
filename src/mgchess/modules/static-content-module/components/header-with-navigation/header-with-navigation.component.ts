@@ -18,8 +18,10 @@
 
 import { Component } from "@angular/core";
 
-import { MainNavigationLinksModel } from "../../models/MainNavigationLinksModel";
+import { NavigationLinksModel } from "../../../../../models/NavigationLinksModel";
+
 import * as NAVIGATION_LIST from "../../../../../assets/static-data/main-navigation-links.json";
+import * as QUICK_AND_AUTH_NAVIGATION_LIST from "../../../../../assets/static-data/quick-start-navigation-links.json";
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -30,9 +32,23 @@ import * as NAVIGATION_LIST from "../../../../../assets/static-data/main-navigat
 })
 export class HeaderWithNavigationComponent {
 
-    readonly _mainNavigationList: Array<MainNavigationLinksModel>;
+    readonly _mainNavigationList: Array<NavigationLinksModel>;
+    readonly _quickStartNavigationList: Array<NavigationLinksModel>;
+    readonly _authNavigationList: Array<NavigationLinksModel>;
 
     constructor() {
         this._mainNavigationList = (NAVIGATION_LIST as any).default;
+        this._quickStartNavigationList = this.filterQuickStartNavigationLinks(false);
+        this._authNavigationList = this.filterQuickStartNavigationLinks(true);
+    };
+
+    private filterQuickStartNavigationLinks(isAuth: boolean): Array<NavigationLinksModel> {
+        return (QUICK_AND_AUTH_NAVIGATION_LIST as any).default
+            .filter(({ link }: NavigationLinksModel) => isAuth ? link.includes("auth") : !link.includes("auth"));
+    };
+
+    cssClassCheckIfIsSignupElement(navigationLinkData: NavigationLinksModel): string {
+        return navigationLinkData.link.includes("signup")
+            ? "sign-up__anchor-element" : "navigation-list-element__anchor-element";
     };
 }

@@ -1,0 +1,22 @@
+[
+    {
+        "name": "start game",
+        "link": "/app/chess-canvas",
+        "metadataTitle": "Click to go to chess canvas application page"
+    },
+    {
+        "name": "rankings",
+        "link": "/rankings",
+        "metadataTitle": "Click to go to players rankings subpage"
+    },
+    {
+        "name": "log in",
+        "link": "/auth/login",
+        "metadataTitle": "Click this link, if you already account in application"
+    },
+    {
+        "name": "sign up",
+        "link": "/auth/signup",
+        "metadataTitle": "Click this link, if you haven't yet account in this application"
+    }
+]
