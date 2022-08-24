@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
  *
- * File name: auth-register-page.component.ts
+ * File name: auth-sing-up-page.component.ts
  * Last modified: 21/08/2022, 22:14
  * Project name: chess-app-frontend
  *

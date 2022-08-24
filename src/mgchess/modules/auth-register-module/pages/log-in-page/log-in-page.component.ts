@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
  *
- * File name: register-page.component.ts
+ * File name: log-in-page.component.ts
  * Last modified: 22/08/2022, 13:15
  * Project name: chess-app-frontend
  *
@@ -25,16 +25,16 @@ import { SingleModuleType, SinglePageType } from "../../../../../browser-meta-se
 //----------------------------------------------------------------------------------------------------------------------
 
 @Component({
-    selector: "mgchess-register-page",
-    templateUrl: "./register-page.component.html",
-    styleUrls: [ "./register-page.component.scss" ]
+    selector: "mgchess-login-page",
+    templateUrl: "./log-in-page.component.html",
+    styleUrls: [ "./log-in-page.component.scss" ]
 })
-export class RegisterPageComponent extends BrowserMetaSerializationLoader {
+export class LogInPageComponent extends BrowserMetaSerializationLoader {
 
     constructor(
         private _titleService: Title,
         private _metaService: Meta
     ) {
-        super(_titleService, _metaService, SingleModuleType.AUTH_REGISTER_MODULE, SinglePageType.REGISTER_PAGE);
+        super(_titleService, _metaService, SingleModuleType.AUTH_REGISTER_MODULE, SinglePageType.LOG_IN_PAGE);
     };
 }

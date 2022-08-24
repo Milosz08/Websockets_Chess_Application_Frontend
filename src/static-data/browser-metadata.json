@@ -36,13 +36,13 @@
         ],
         "authRegisterModule": [
             {
-                "pageId": "LOGIN_PAGE",
-                "title": "Login",
+                "pageId": "LOG_IN_PAGE",
+                "title": "Log in",
                 "description": "To make full use of the application, log in to the account you have created."
             },
             {
-                "pageId": "REGISTER_PAGE",
-                "title": "Register",
+                "pageId": "SIGN_UP_PAGE",
+                "title": "Sign up",
                 "description": "To use the full capabilities of the app create a free account."
             }
         ],

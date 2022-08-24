@@ -19,8 +19,8 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 
-import { LoginPageComponent } from "./pages/login-page/login-page.component";
-import { RegisterPageComponent } from "./pages/register-page/register-page.component";
+import { LogInPageComponent } from "./pages/log-in-page/log-in-page.component";
+import { SingUpPageComponent } from "./pages/sign-up-page/sing-up-page.component";
 import { AuthRegisterPageComponent } from "./auth-register-page.component";
 
 import { SharedModuleModule } from "../shared-module/shared-module.module";
@@ -30,8 +30,8 @@ import { AuthRegisterPageRoutingModule } from "./auth-register-page-routing.modu
 
 @NgModule({
     declarations: [
-        LoginPageComponent,
-        RegisterPageComponent,
+        LogInPageComponent,
+        SingUpPageComponent,
         AuthRegisterPageComponent,
     ],
     imports: [
