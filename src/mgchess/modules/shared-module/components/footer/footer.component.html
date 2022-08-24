@@ -1,0 +1,61 @@
+<!--
+  ~ Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
+  ~
+  ~ File name: footer.component.html
+  ~ Last modified: 24/08/2022, 20:01
+  ~ Project name: chess-app-frontend
+  ~
+  ~ Licensed under the MIT license; you may not use this file except in compliance with the License.
+  ~
+  ~ Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+  ~ documentation files (the "Software"), to deal in the Software without restriction, including without limitation the
+  ~ rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to
+  ~ permit persons to whom the Software is furnished to do so, subject to the following conditions:
+  ~
+  ~ THE ABOVE COPYRIGHT NOTICE AND THIS PERMISSION NOTICE SHALL BE INCLUDED IN ALL
+  ~ COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
+  -->
+
+<footer class="footer__wrapper">
+    <section>
+        <a routerLink="/" class="footer__logo-container">
+            <img src="assets/gfx/images/main-logo.png" alt="" class="footer__logo-image">
+            <span class="footer__logo-text-content">chess<br>online</span>
+        </a>
+        <p class="footer__standard-paragraph">
+            An interactive web application for playing chess and checkers with friends or random people. The
+            application was built using the Angular framework in the client layer and the Java Spring Framework in
+            the server layer.
+        </p>
+    </section>
+    <section class="footer__nav-links__container">
+        <nav>
+            <h2 class="footer__navlinks__header">Quick start</h2>
+            <ul class="footer__navlinks__list">
+                <li *ngFor="let navLink of _quickStartNavigationList">
+                    <a
+                        [routerLink]="navLink.link"
+                        [title]="navLink.metadataTitle"
+                        class="footer__navlinks__anchor-element"
+                    >
+                        {{ navLink.name }}
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <nav>
+            <h2 class="footer__navlinks__header">Navigation</h2>
+            <ul class="footer__navlinks__list">
+                <li *ngFor="let navLink of _mainNavigationList">
+                    <a
+                        [routerLink]="navLink.link"
+                        [title]="navLink.metadataTitle"
+                        class="footer__navlinks__anchor-element"
+                    >
+                        {{ navLink.name }}
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </section>
+</footer>

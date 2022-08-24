@@ -1,8 +1,8 @@
 <!--
   ~ Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
   ~
-  ~ File name: auth-sing-up-page.component.html
-  ~ Last modified: 21/08/2022, 22:13
+  ~ File name: copyright-newsletter.component.html
+  ~ Last modified: 24/08/2022, 21:17
   ~ Project name: chess-app-frontend
   ~
   ~ Licensed under the MIT license; you may not use this file except in compliance with the License.
@@ -16,6 +16,12 @@
   ~ COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
   -->
 
-<router-outlet></router-outlet>
-<mgchess-footer></mgchess-footer>
-<mgchess-copyright-newsletter></mgchess-copyright-newsletter>
+<aside class="copyright-and-newsletter__container">
+    <section class="copyright__container">
+        &copy; {{ copyYearsConcate() }} source code and design by
+        <a target="_blank" href="https://github.com/Milosz08"> Miłosz Gilga</a>.
+    </section>
+    <section class="newsletter__container">
+        newsletter
+    </section>
+</aside>

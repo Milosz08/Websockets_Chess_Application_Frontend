@@ -20,7 +20,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from "@angular/router";
 
+import { FooterComponent } from './components/footer/footer.component';
+import { ThemeTogglerComponent } from './components/theme-toggler/theme-toggler.component';
 import { HorizontalTitleComponent } from './components/horizontal-title/horizontal-title.component';
+import { CopyrightNewsletterComponent } from './components/copyright-newsletter/copyright-newsletter.component';
+
 import { ContentNotFoundPageComponent } from './pages/content-not-found-page/content-not-found-page.component';
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -28,7 +32,10 @@ import { ContentNotFoundPageComponent } from './pages/content-not-found-page/con
 @NgModule({
     declarations: [
         // components
+        FooterComponent,
+        ThemeTogglerComponent,
         HorizontalTitleComponent,
+        CopyrightNewsletterComponent,
         // pages
         ContentNotFoundPageComponent,
     ],
@@ -37,7 +44,10 @@ import { ContentNotFoundPageComponent } from './pages/content-not-found-page/con
         RouterModule,
     ],
     exports: [
-        HorizontalTitleComponent
+        FooterComponent,
+        ThemeTogglerComponent,
+        HorizontalTitleComponent,
+        CopyrightNewsletterComponent,
     ],
 })
 export class SharedModuleModule {}

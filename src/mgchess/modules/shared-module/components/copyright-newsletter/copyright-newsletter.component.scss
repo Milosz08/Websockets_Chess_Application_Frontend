@@ -1,0 +1,56 @@
+/*!
+ * Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
+ *
+ * File name: copyright-newsletter.component.scss
+ * Last modified: 24/08/2022, 21:17
+ * Project name: chess-app-frontend
+ *
+ * Licensed under the MIT license; you may not use this file except in compliance with the License.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+ * documentation files (the "Software"), to deal in the Software without restriction, including without limitation the
+ * rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to
+ * permit persons to whom the Software is furnished to do so, subject to the following conditions:
+ *
+ * THE ABOVE COPYRIGHT NOTICE AND THIS PERMISSION NOTICE SHALL BE INCLUDED IN ALL
+ * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
+ */
+
+:host {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--footer-copy-newsletter-foreground);
+    background-color: var(--footer-copy-newsletter-background);
+    width: 100%;
+}
+
+.copyright-and-newsletter__container {
+    display: flex;
+    align-items: center;
+    margin: 20px 30px;
+    width: calc(100% - 60px);
+    font-weight: 500;
+    max-width: var(--safety-width-medium-devices);
+    .copyright__container,
+    .newsletter__container {
+        flex-basis: 50%;
+    }
+    .copyright__container a {
+        font-weight: 500;
+    }
+    .newsletter__container {
+        display: flex;
+    }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+@media only screen and (max-width: 790px) {
+    .copyright-and-newsletter__container {
+        flex-direction: column-reverse;
+    }
+    .copyright__container {
+        margin-top: 20px;
+    }
+}
