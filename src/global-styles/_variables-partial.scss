@@ -19,8 +19,14 @@
 :root {
     --nav-links-after-indicator-background: #cda88b;
 
+    --nofxsupport-wrapper-background: #f4f2ed;
+    --nofxsupport-wrapper-foreground: #3b1302;
+    --nofxsupport-separator-background: #3b1302;
+
     --standard-transition-duration: .3s;
     --standard-button-border-radius: 5px;
+    --standard-modal-border-radius: 10px;
+    --standard-modal-back-noise-shadow: rgb(201, 194, 188) 0px 8px 24px;
     --safety-width-medium-devices: 1240px;
 }
 

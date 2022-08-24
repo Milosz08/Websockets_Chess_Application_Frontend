@@ -4,10 +4,33 @@
     <meta charset="utf-8">
     <title>Chess Online</title>
     <base href="/">
-    <link rel="icon" type="image/png" href="/assets/gfx/favicons/favicon-light.png">
+    <link rel="icon" type="image/png" href="/assets/gfx/favicons/favicon-dark.png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
+    <!-- start disable script section -->
+    <noscript>
+        <div class="nofxsupport__container">
+            <div class="nofxsupport__wrapper-modal">
+                <div class="nofxsupport__wrapper-title__container">
+                    <span class="nofxsupport__wrapper-title__text text--left">chess</span>
+                    <img
+                        src="/assets/gfx/images/main-logo.png" alt=""
+                        class="nofxsupport__wrapper-title__logo"
+                    />
+                    <span class="nofxsupport__wrapper-title__text text--right">online</span>
+                </div>
+                <span class="nofxsupport__separator"></span>
+                <div class="nofxsupport__text-container">
+                    This application requires a modern browser and JavaScript to function correctly. Please refer to
+                    your browser settings to learn how to enable JavaScript in your browser.
+                </div>
+            </div>
+        </div>
+    </noscript>
+    <!-- end of disable script section -->
+    <!-- start application renderer section -->
     <mgchess-root></mgchess-root>
+    <!-- end application renderer section -->
 </body>
 </html>
