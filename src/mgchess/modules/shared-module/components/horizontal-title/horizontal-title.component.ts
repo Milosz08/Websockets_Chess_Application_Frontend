@@ -1,8 +1,8 @@
 /*
  * Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
  *
- * File name: shared-module.module.ts
- * Last modified: 21/08/2022, 21:59
+ * File name: horizontal-title.component.ts
+ * Last modified: 24/08/2022, 15:54
  * Project name: chess-app-frontend
  *
  * Licensed under the MIT license; you may not use this file except in compliance with the License.
@@ -16,28 +16,13 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterModule } from "@angular/router";
-
-import { HorizontalTitleComponent } from './components/horizontal-title/horizontal-title.component';
-import { ContentNotFoundPageComponent } from './pages/content-not-found-page/content-not-found-page.component';
+import { Component } from "@angular/core";
 
 //----------------------------------------------------------------------------------------------------------------------
 
-@NgModule({
-    declarations: [
-        // components
-        HorizontalTitleComponent,
-        // pages
-        ContentNotFoundPageComponent,
-    ],
-    imports: [
-        CommonModule,
-        RouterModule,
-    ],
-    exports: [
-        HorizontalTitleComponent
-    ],
+@Component({
+    selector: "mgchess-horizontal-title",
+    templateUrl: "./horizontal-title.component.html",
+    styleUrls: [ "./horizontal-title.component.scss" ]
 })
-export class SharedModuleModule {}
+export class HorizontalTitleComponent {}

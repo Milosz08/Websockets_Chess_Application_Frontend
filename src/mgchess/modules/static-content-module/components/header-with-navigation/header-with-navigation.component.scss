@@ -24,30 +24,6 @@
     max-width: var(--safety-width-medium-devices);
 }
 
-.header-with-navigation__logo-container {
-    display: flex;
-    align-items: center;
-    .header-with-navigation__aside-logo-titles {
-        font-size: 1.5rem;
-        text-transform: uppercase;
-        width: 100px;
-        display: flex;
-        color: var(--logo-aside-text-foreground);
-        font-family: "Noto Serif", serif;
-        &.aside-logo-titles--right-title {
-            justify-content: flex-start;
-        }
-        &.aside-logo-titles--left-title {
-            justify-content: flex-end;
-        }
-    }
-    .header-with-navigation__logo-image {
-        width: 70px;
-        height: 70px;
-        margin: 0 20px;
-    }
-}
-
 .header-with-navigation__aside-content-container {
     flex-basis: 50%;
     display: flex;
