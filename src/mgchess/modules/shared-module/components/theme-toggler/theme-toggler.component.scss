@@ -1,0 +1,81 @@
+/*!
+ * Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
+ *
+ * File name: theme-toggler.component.scss
+ * Last modified: 24/08/2022, 23:46
+ * Project name: chess-app-frontend
+ *
+ * Licensed under the MIT license; you may not use this file except in compliance with the License.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+ * documentation files (the "Software"), to deal in the Software without restriction, including without limitation the
+ * rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to
+ * permit persons to whom the Software is furnished to do so, subject to the following conditions:
+ *
+ * THE ABOVE COPYRIGHT NOTICE AND THIS PERMISSION NOTICE SHALL BE INCLUDED IN ALL
+ * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
+ */
+
+:host {
+    display: flex;
+    align-items: center;
+}
+
+.theme-toggler__container {
+    position: relative;
+    height: 25px;
+    cursor: pointer;
+}
+
+.theme-toggler__checkbox-input {
+    -webkit-appearance: none;
+    appearance: none;
+    position: relative;
+    z-index: 9;
+    width: 50px;
+    height: 25px;
+    cursor: pointer;
+    &::after {
+        position: absolute;
+        content: "";
+        width: 17px;
+        height: 17px;
+        background-color: var(--theme-toggler-bullet-with-icon-color);
+        top: 4px;
+        left: 5px;
+        border-radius: 50%;
+        transition: var(--standard-transition-duration);
+        transform: translateX(24px);
+    }
+    &.dark-mode--active::after {
+        transform: translateX(0);
+
+    }
+}
+
+.theme-toggler__checkbox-wrapper {
+    position: absolute;
+    border-radius: 20px;
+    top: 0;
+    width: 50px;
+    height: 25px;
+    background-color: var(--theme-toggler-background);
+}
+
+.light-mode__icon,
+.dark-mode__icon {
+    position: absolute;
+    top: 50%;
+    z-index: 8;
+    transform: translateY(-50%);
+    font-size: 1rem;
+    color: var(--theme-toggler-bullet-with-icon-color);
+}
+
+.light-mode__icon {
+    left: 6px;
+}
+
+.dark-mode__icon {
+    right: 6px;
+}
