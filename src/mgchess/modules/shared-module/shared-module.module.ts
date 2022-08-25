@@ -19,13 +19,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from "@angular/router";
+import { ReactiveFormsModule } from "@angular/forms";
 
-import { FooterComponent } from './components/footer/footer.component';
-import { ThemeTogglerComponent } from './components/theme-toggler/theme-toggler.component';
-import { HorizontalTitleComponent } from './components/horizontal-title/horizontal-title.component';
-import { CopyrightNewsletterComponent } from './components/copyright-newsletter/copyright-newsletter.component';
+import { FooterComponent } from "./components/footer/footer.component";
+import { ThemeTogglerComponent } from "./components/theme-toggler/theme-toggler.component";
+import { HorizontalTitleComponent } from "./components/horizontal-title/horizontal-title.component";
+import { CopyrightNewsletterComponent } from "./components/copyright-newsletter/copyright-newsletter.component";
 
-import { ContentNotFoundPageComponent } from './pages/content-not-found-page/content-not-found-page.component';
+import { ContentNotFoundPageComponent } from "./pages/content-not-found-page/content-not-found-page.component";
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -42,6 +43,7 @@ import { ContentNotFoundPageComponent } from './pages/content-not-found-page/con
     imports: [
         CommonModule,
         RouterModule,
+        ReactiveFormsModule,
     ],
     exports: [
         FooterComponent,

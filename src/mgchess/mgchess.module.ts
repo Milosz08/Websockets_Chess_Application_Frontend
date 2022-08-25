@@ -22,6 +22,7 @@ import { RouterModule } from "@angular/router";
 
 import { MgchessComponent } from "./mgchess.component";
 import { MgchessRoutingModule } from "./mgchess-routing.module";
+import { HttpClientModule } from "@angular/common/http";
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -33,6 +34,7 @@ import { MgchessRoutingModule } from "./mgchess-routing.module";
         BrowserModule,
         // routing
         RouterModule,
+        HttpClientModule,
         MgchessRoutingModule,
     ],
     providers: [],
