@@ -23,10 +23,17 @@
     --footer-primary-foreground: #f4f2ed;
     --footer-headlings-after-background: #cda88b;
     --footer-copy-newsletter-background: #cda88b;
+    --newsletter-submit-button-foreground: #f4f2ed;
 
     --nofxsupport-wrapper-background: #f4f2ed;
     --nofxsupport-wrapper-foreground: #3b1302;
     --nofxsupport-separator-background: #3b1302;
+
+    --standard-header-background-after: #cda88b;
+    --aside-text-form-paragraph-foreground: #6f6b69;
+
+    --form-data-paragraph-error-foreground: #901c1c;
+    --form-data-paragraph-info-foreground: #175217;
 
     --standard-transition-duration: .3s;
     --standard-button-border-radius: 5px;
@@ -54,9 +61,13 @@ body {
 
     --footer-background: #3b1302;
     --footer-copy-newsletter-foreground: #3b1302;
+    --newsletter-submit-button-background: #3b1302;
 
     --theme-toggler-background: #3b1302;
     --theme-toggler-bullet-with-icon-color: #f4f2ed;
+
+    --standard-header-light-background-text: #3b1302;
+    --standard-header-dark-background-text: #f4f2ed;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -78,7 +89,12 @@ body.dark-theme--active {
 
     --footer-background: #171717;
     --footer-copy-newsletter-foreground: #171717;
+    --newsletter-submit-button-background: #212121;
 
     --theme-toggler-background: #f4f2ed;
     --theme-toggler-bullet-with-icon-color: #212121;
+
+    --standard-header-light-background-text: #f4f2ed;
+    --standard-header-dark-background-text: #f4f2ed;
+
 }

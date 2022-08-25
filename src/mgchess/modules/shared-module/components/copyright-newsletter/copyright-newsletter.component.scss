@@ -16,6 +16,8 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
+@import "src/global-styles/mixins/controls-mixins";
+
 :host {
     display: flex;
     flex-direction: column;
@@ -36,11 +38,46 @@
     .newsletter__container {
         flex-basis: 50%;
     }
-    .copyright__container a {
-        font-weight: 500;
+    .copyright__container {
+        margin-right: 20px;
+        a {
+            font-weight: 500;
+        }
     }
-    .newsletter__container {
-        display: flex;
+}
+
+.newsletter-form__header {
+    color: var(--footer-copy-newsletter-foreground);
+    &::after {
+        display: none;
+    }
+}
+
+.newsletter-form__container {
+    margin: 15px 0;
+    display: flex;
+    .newsletter__input-form-element {
+        @include mgchess_input_mixin(var(--footer-copy-newsletter-background), var(--footer-copy-newsletter-foreground));
+        width: 350px;
+        &::placeholder {
+            color: var(--aside-text-form-paragraph-foreground);
+        }
+    }
+    .newsletter__submit-form-button {
+        @include mgchess_button__mixin(
+                var(--newsletter-submit-button-background), var(--newsletter-submit-button-foreground));
+        margin-left: 20px;
+        height: 100%;
+    }
+}
+
+.newsletter__aside-form-text-paragraph {
+    font-size: .9rem;
+    color: var(--aside-text-form-paragraph-foreground);
+    a {
+        font-size: inherit;
+        font-weight: 500;
+        color: var(--footer-copy-newsletter-foreground);
     }
 }
 
@@ -52,5 +89,25 @@
     }
     .copyright__container {
         margin-top: 20px;
+        p {
+            text-align: center;
+            &:nth-child(2) {
+                margin-top: 10px;
+            }
+        }
+    }
+    .newsletter__container,
+    .newsletter-form__container label,
+    .newsletter-form__container label .newsletter__input-form-element {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .newsletter-form__container {
+        flex-direction: column;
+        .newsletter__submit-form-button {
+            margin: 10px 0 0 0;
+        }
     }
 }

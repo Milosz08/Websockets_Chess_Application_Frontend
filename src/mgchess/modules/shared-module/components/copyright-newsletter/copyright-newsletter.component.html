@@ -18,10 +18,55 @@
 
 <aside class="copyright-and-newsletter__container">
     <section class="copyright__container">
-        &copy; {{ copyYearsConcate() }} source code and design by
-        <a target="_blank" href="https://github.com/Milosz08"> Miłosz Gilga</a>.
+        <p>
+            &copy; {{ copyYearsConcate() }} source code and design by
+            <a target="_blank" href="https://github.com/Milosz08"> Miłosz Gilga</a>.
+        </p>
+        <p>
+            Icons Provided by <a target="_blank" href="https://fonts.google.com/icons">Material Theme Icons</a>
+            and <a target="_blank" href="https://fonts.google.com">Google Fonts</a>.
+        </p>
     </section>
     <section class="newsletter__container">
-        newsletter
+        <h2 class="mgchess__header--light-background newsletter-form__header">Newsletter:</h2>
+        <form
+            [formGroup]="_newsletterForm"
+            (ngSubmit)="handleSubmitNewsletterEmail()"
+            class="newsletter-form__container"
+        >
+            <label for="newsletter__input-form">
+                <input
+                    type="email"
+                    id="newsletter__input-form"
+                    (input)="_httpService.clearServerMessage(_serverResponse)"
+                    autocomplete="off"
+                    formControlName="emailAddress"
+                    placeholder="ex. johndoe@email.com"
+                    class="newsletter__input-form-element"
+                />
+                <p
+                    *ngIf="_formHelper.fieldHasAnyErrors('emailAddress')"
+                    class="mgchess__form-data-paragraph form-data-paragraph--error"
+                >
+                    Please enter valid email address.
+                </p>
+                <p
+                    *ngIf="_serverResponse.responseMessage !== ''"
+                    [ngClass]="_httpService.responseStatusCssClass(_serverResponse.responseError)"
+                >
+                    {{ _serverResponse.responseMessage }}
+                </p>
+            </label>
+            <button
+                [disabled]="!_newsletterForm.valid"
+                title="Click to subscribe to the newsletter"
+                class="newsletter__submit-form-button"
+            >
+                subscribe
+            </button>
+        </form>
+        <p class="newsletter__aside-form-text-paragraph">
+            To unsubscribe, go under <a routerLink="/newsletter">this page</a>.
+        </p>
     </section>
 </aside>
