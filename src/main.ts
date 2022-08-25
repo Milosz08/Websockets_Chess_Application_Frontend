@@ -22,7 +22,7 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { MgchessModule } from './mgchess/mgchess.module';
 import { environment } from './environments/environment';
 
-import { BrowserThemeDetector } from "./browster-utils/BrowserThemeDetector";
+import { BrowserThemeDetector } from "./mgchess/browster-utils/BrowserThemeDetector";
 
 //----------------------------------------------------------------------------------------------------------------------
 

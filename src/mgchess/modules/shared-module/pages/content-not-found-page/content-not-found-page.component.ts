@@ -19,8 +19,8 @@
 import { Component } from "@angular/core";
 import { Meta, Title } from "@angular/platform-browser";
 
-import { BrowserMetaSerializationLoader } from "../../../../../browser-meta-serialization/BrowserMetaSerializationLoader";
-import { SingleModuleType, SinglePageType } from "../../../../../browser-meta-serialization/BrowserMetaSerializationTypes";
+import { BrowserMetaSerializationLoader } from "../../../../browser-meta-serialization/BrowserMetaSerializationLoader";
+import { SingleModuleType, SinglePageType } from "../../../../browser-meta-serialization/BrowserMetaSerializationTypes";
 
 //----------------------------------------------------------------------------------------------------------------------
 
