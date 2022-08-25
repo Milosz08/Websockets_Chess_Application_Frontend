@@ -1,8 +1,8 @@
 /*
  * Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
  *
- * File name: browser-meta-serializator.types.ts
- * Last modified: 21/08/2022, 23:05
+ * File name: newsletter-page.component.ts
+ * Last modified: 25/08/2022, 16:46
  * Project name: chess-app-frontend
  *
  * Licensed under the MIT license; you may not use this file except in compliance with the License.
@@ -16,25 +16,25 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-export enum SingleModuleType {
-    STATIC_CONTENT_MODULE = "staticContentModule",
-    AUTH_REGISTER_MODULE = "authRegisterModule",
-    DYNAMIC_APP_MODULE = "dynamicAppModule",
-    SHARED_MODULE = "sharedModule",
-}
+import { Component } from "@angular/core";
+import { Meta, Title } from "@angular/platform-browser";
+
+import { BrowserMetaSerializatorLoader } from "../../../../browser-meta-serialization/browser-meta-serializator.loader";
+import { SingleModuleType, SinglePageType } from "../../../../browser-meta-serialization/browser-meta-serializator.types";
 
 //----------------------------------------------------------------------------------------------------------------------
 
-export enum SinglePageType {
-    HOME_PAGE = "HOME_PAGE",
-    CONTENT_NOT_FOUND_PAGE = "CONTENT_NOT_FOUND_PAGE",
-    LOG_IN_PAGE = "LOG_IN_PAGE",
-    SIGN_UP_PAGE = "SIGN_UP_PAGE",
-    RANKINGS_PAGE = "RANKINGS_PAGE",
-    ABOUT_PAGE = "ABOUT_PAGE",
-    CONTACT_WITH_US_PAGE = "CONTACT_WITH_US_PAGE",
-    GAME_RULES_PAGE = "GAME_RULES_PAGE",
-    REPORT_A_BUG_PAGE = "REPORT_A_BUG_PAGE",
-    GAME_CANVAS_PAGE = "GAME_CANVAS_PAGE",
-    NEWSLETTER_PAGE = "NEWSLETTER_PAGE",
+@Component({
+    selector: "mgchess-unsubscribe-newsletter-page",
+    templateUrl: "./newsletter-page.component.html",
+    styleUrls: [ "./newsletter-page.component.scss" ]
+})
+export class NewsletterPageComponent extends BrowserMetaSerializatorLoader {
+
+    constructor(
+        private _titleService: Title,
+        private _metaService: Meta
+    ) {
+        super(_titleService, _metaService, SingleModuleType.STATIC_CONTENT_MODULE, SinglePageType.NEWSLETTER_PAGE);
+    };
 }

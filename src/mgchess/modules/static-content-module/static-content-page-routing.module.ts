@@ -27,6 +27,7 @@ import { AboutPageComponent } from "./pages/about-page/about-page.component";
 import { GameRulesPageComponent } from "./pages/game-rules-page/game-rules-page.component";
 import { ReportABugPageComponent } from "./pages/report-a-bug-page/report-a-bug-page.component";
 import { ContactWithUsPageComponent } from "./pages/contact-with-us-page/contact-with-us-page.component";
+import { NewsletterPageComponent } from "./pages/newsletter-page/newsletter-page.component";
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -38,6 +39,7 @@ const routes: Routes = [
         { path: "game-rules", component: GameRulesPageComponent },
         { path: "report-a-bug", component: ReportABugPageComponent },
         { path: "contact-with-us", component: ContactWithUsPageComponent },
+        { path: "newsletter", component: NewsletterPageComponent },
     ]},
 ];
 

@@ -32,6 +32,7 @@ import { MobileHeaderWithNavigationComponent } from './components/mobile-header-
 import { SharedModuleModule } from "../shared-module/shared-module.module";
 import { StaticContentPageComponent } from "./static-content-page.component";
 import { StaticContentPageRoutingModule } from "./static-content-page-routing.module";
+import { NewsletterPageComponent } from './pages/newsletter-page/newsletter-page.component';
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -49,6 +50,7 @@ import { StaticContentPageRoutingModule } from "./static-content-page-routing.mo
         MobileHeaderWithNavigationComponent,
         // others
         StaticContentPageComponent,
+        NewsletterPageComponent,
     ],
     imports: [
         CommonModule,
