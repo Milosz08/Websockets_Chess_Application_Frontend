@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
  *
- * File name: BrowserMetaSerializationLoader.ts
+ * File name: browser-meta-serializator.loader.ts
  * Last modified: 21/08/2022, 23:04
  * Project name: chess-app-frontend
  *
@@ -19,19 +19,19 @@
 import { Meta, Title } from "@angular/platform-browser";
 import * as META_DATA from "../../assets/static-data/browser-metadata.json";
 
-import { SingleModuleType, SinglePageType } from "./BrowserMetaSerializationTypes";
-import { BrowserMetaSerialized, SinglePageMetaContent } from "./BrowserMetaSerialized";
+import { SingleModuleType, SinglePageType } from "./browser-meta-serializator.types";
+import { BrowserMetaSerializatorModel, SinglePageMetaContent } from "./browser-meta-serializator.model";
 
 //----------------------------------------------------------------------------------------------------------------------
 
-export abstract class BrowserMetaSerializationLoader {
+export abstract class BrowserMetaSerializatorLoader {
 
     private readonly titleService: Title;
     private readonly metaService: Meta;
     private readonly module: SingleModuleType;
     private readonly page: SinglePageType;
 
-    private serializedData: BrowserMetaSerialized | null = null;
+    private serializedData: BrowserMetaSerializatorModel | null = null;
 
     protected constructor(
         titleService: Title, metaService: Meta, module: SingleModuleType, page: SinglePageType,
@@ -54,7 +54,7 @@ export abstract class BrowserMetaSerializationLoader {
                     new SinglePageMetaContent(pageId as SinglePageType, title, description));
             pagesData.set(key as SingleModuleType, multiplePagesObjectData);
         });
-        this.serializedData = new BrowserMetaSerialized(separator, prefix, pagesData);
+        this.serializedData = new BrowserMetaSerializatorModel(separator, prefix, pagesData);
     };
 
     private updateMetaWebContentData(prefixActive: boolean): void {

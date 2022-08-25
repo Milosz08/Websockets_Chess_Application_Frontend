@@ -60,20 +60,6 @@
     max-width: 450px;
 }
 
-.footer__navlinks__header {
-    position: relative;
-    font-size: 1.2rem;
-    &::after {
-        position: absolute;
-        content: "";
-        bottom: -8px;
-        left: 0;
-        width: 40px;
-        height: 2px;
-        background-color: var(--footer-headlings-after-background);
-    }
-}
-
 .footer__navlinks__list {
     margin-top: 25px;
     li {

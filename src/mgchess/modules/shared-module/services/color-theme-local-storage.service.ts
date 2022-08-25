@@ -18,7 +18,7 @@
 
 import { Injectable } from "@angular/core";
 
-import { BrowserThemeDetector } from "../../../browster-utils/BrowserThemeDetector";
+import { BrowserThemeDetector } from "../../../browster-utils/browser-theme.detector";
 
 //----------------------------------------------------------------------------------------------------------------------
 

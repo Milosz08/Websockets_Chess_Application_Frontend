@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
  *
- * File name: HamburgerActivityCssClasses.ts
+ * File name: HamburgerActivityCssClassesModel.ts
  * Last modified: 24/08/2022, 22:42
  * Project name: chess-app-frontend
  *
@@ -16,7 +16,7 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-export class HamburgerActivityCssClasses {
+export class HamburgerActivityCssClassesModel {
     hamburgerClass: string;
     menuClass: string;
 

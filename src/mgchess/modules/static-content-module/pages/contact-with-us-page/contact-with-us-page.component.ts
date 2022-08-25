@@ -19,8 +19,8 @@
 import { Component } from "@angular/core";
 import { Meta, Title } from "@angular/platform-browser";
 
-import { BrowserMetaSerializationLoader } from "../../../../browser-meta-serialization/BrowserMetaSerializationLoader";
-import { SingleModuleType, SinglePageType } from "../../../../browser-meta-serialization/BrowserMetaSerializationTypes";
+import { BrowserMetaSerializatorLoader } from "../../../../browser-meta-serialization/browser-meta-serializator.loader";
+import { SingleModuleType, SinglePageType } from "../../../../browser-meta-serialization/browser-meta-serializator.types";
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -29,7 +29,7 @@ import { SingleModuleType, SinglePageType } from "../../../../browser-meta-seria
     templateUrl: "./contact-with-us-page.component.html",
     styleUrls: [ "./contact-with-us-page.component.scss" ]
 })
-export class ContactWithUsPageComponent extends BrowserMetaSerializationLoader {
+export class ContactWithUsPageComponent extends BrowserMetaSerializatorLoader {
 
     constructor(
         private _titleService: Title,

@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
  *
- * File name: BrowserMetaSerializationTypes.ts
+ * File name: browser-meta-serializator.types.ts
  * Last modified: 21/08/2022, 23:05
  * Project name: chess-app-frontend
  *

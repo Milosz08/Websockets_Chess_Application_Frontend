@@ -16,11 +16,11 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-import { SingleModuleType, SinglePageType } from "./BrowserMetaSerializationTypes";
+import { SingleModuleType, SinglePageType } from "./browser-meta-serializator.types";
 
 //----------------------------------------------------------------------------------------------------------------------
 
-export class BrowserMetaSerialized {
+export class BrowserMetaSerializatorModel {
     private readonly separator: string;
     private readonly prefix: string;
     private metaContent: Map<SingleModuleType, Array<SinglePageMetaContent>> = new Map();

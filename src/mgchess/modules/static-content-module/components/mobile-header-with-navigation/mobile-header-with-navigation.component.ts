@@ -18,8 +18,8 @@
 
 import { Component } from "@angular/core";
 
-import { NavigationLinksModel } from "../../../../models/NavigationLinksModel";
-import { HamburgerActivityCssClasses } from "../../models/HamburgerActivityCssClasses";
+import { NavigationLinksModel } from "../../../../models/navigation-links.model";
+import { HamburgerActivityCssClassesModel } from "../../models/hamburger-activity-css-classes.model";
 
 import * as NAVIGATION_LINKS from "../../../../../assets/static-data/main-navigation-links.json";
 import * as QUICK_AUTH_NAVIGATION_LINKS from "../../../../../assets/static-data/quick-start-navigation-links.json";
@@ -53,9 +53,9 @@ export class MobileHeaderWithNavigationComponent {
         return navLink.name.includes('start') ? 'link-anchor--filled' : ''
     }
 
-    get __hamburgerToggleCssClass(): HamburgerActivityCssClasses {
+    get __hamburgerToggleCssClass(): HamburgerActivityCssClassesModel {
         return this._hamburgerMenuActive
-            ? new HamburgerActivityCssClasses(this.HAMBURGER_ACTIVE_CLASS, this.MENU_ACTIVE_CLASS)
-            : new HamburgerActivityCssClasses(this.BASIC_HAMBURGER_CLASS, this.BASIC_MENU_CLASS);
+            ? new HamburgerActivityCssClassesModel(this.HAMBURGER_ACTIVE_CLASS, this.MENU_ACTIVE_CLASS)
+            : new HamburgerActivityCssClassesModel(this.BASIC_HAMBURGER_CLASS, this.BASIC_MENU_CLASS);
     };
 }
