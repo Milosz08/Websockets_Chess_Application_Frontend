@@ -1,8 +1,8 @@
 /*
  * Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
  *
- * File name: environment.ts
- * Last modified: 21/08/2022, 18:31
+ * File name: http-default.constants.ts
+ * Last modified: 25/08/2022, 23:29
  * Project name: chess-app-frontend
  *
  * Licensed under the MIT license; you may not use this file except in compliance with the License.
@@ -16,7 +16,14 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-export const environment = {
-    production: false,
-    httpURI: "http://127.0.0.1:7575/",
-};
+import { Injectable } from "@angular/core";
+
+//----------------------------------------------------------------------------------------------------------------------
+
+@Injectable({
+    providedIn: "root",
+})
+export class HttpDefaultConstants {
+
+    readonly BASIC_SERVER_ERR_MESSAGE = "Unexpected server error!";
+}

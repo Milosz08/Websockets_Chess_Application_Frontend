@@ -1,8 +1,8 @@
 /*
  * Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
  *
- * File name: environment.ts
- * Last modified: 21/08/2022, 18:31
+ * File name: simple-message-response.model.ts
+ * Last modified: 25/08/2022, 23:01
  * Project name: chess-app-frontend
  *
  * Licensed under the MIT license; you may not use this file except in compliance with the License.
@@ -16,7 +16,21 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-export const environment = {
-    production: false,
-    httpURI: "http://127.0.0.1:7575/",
-};
+export class SimpleMessageResponseModel {
+    responseMessage: string;
+
+    constructor(responseMessage: string) {
+        this.responseMessage = responseMessage;
+    };
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+export class SimpleMessageResWithErrorModel extends SimpleMessageResponseModel {
+    responseError: boolean;
+
+    constructor(responseMessage: string, responseError: boolean) {
+        super(responseMessage);
+        this.responseError = responseError;
+    };
+}

@@ -1,8 +1,8 @@
 /*
  * Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
  *
- * File name: environment.ts
- * Last modified: 21/08/2022, 18:31
+ * File name: server-req-res.helper.ts
+ * Last modified: 25/08/2022, 22:36
  * Project name: chess-app-frontend
  *
  * Licensed under the MIT license; you may not use this file except in compliance with the License.
@@ -16,7 +16,20 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-export const environment = {
-    production: false,
-    httpURI: "http://127.0.0.1:7575/",
-};
+import { SimpleMessageResWithErrorModel } from "../models/simple-message-response.model";
+
+export abstract class ServerReqResHelper {
+
+    private readonly BASIC_FIELD_CLASS = "mgchess__form-data-paragraph" as const;
+    private readonly ERROR_FIELD_CLASS = this.BASIC_FIELD_CLASS + " form-data-paragraph--error";
+    private readonly INFO_FIELD_CLASS = this.BASIC_FIELD_CLASS + " form-data-paragraph--info";
+
+    responseStatusCssClass(ifError: boolean): string {
+        return ifError ? this.ERROR_FIELD_CLASS : this.INFO_FIELD_CLASS;
+    };
+
+    clearServerMessage(messageData: SimpleMessageResWithErrorModel): void {
+        messageData.responseMessage = "";
+        messageData.responseError = false;
+    };
+}

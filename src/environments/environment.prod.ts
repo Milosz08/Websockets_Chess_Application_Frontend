@@ -17,5 +17,6 @@
  */
 
 export const environment = {
-    production: true
+    production: true,
+    httpURI: "https://springboot.miloszgilga.pl/chess-online-backend/",
 };
