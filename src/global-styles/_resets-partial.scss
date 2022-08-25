@@ -55,4 +55,7 @@ input {
     color: inherit;
     border: none;
     background-color: transparent;
+    &:focus {
+        outline: none;
+    }
 }
