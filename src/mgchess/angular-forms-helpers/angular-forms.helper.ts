@@ -40,7 +40,7 @@ export class AngularFormsHelper {
     };
 
     getAllFieldsAndCleanup<T>(activeReset: boolean = true): T {
-        if (!this._formGroup) throw new Error("Form grounp is not valid");
+        if (!this._formGroup) throw new Error("Form group is not valid");
         const fieldsObject = this._formGroup.getRawValue() as T;
         if (activeReset) {
             this._formGroup.clearValidators();
