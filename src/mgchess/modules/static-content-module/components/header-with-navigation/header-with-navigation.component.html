@@ -54,7 +54,10 @@
 <div class="theme-toggler__container">
     <mgchess-theme-toggler></mgchess-theme-toggler>
 </div>
-<nav class="main-navigation__container">
+<nav
+    *ngIf="!_router.url.includes('privacy-policy')"
+    class="main-navigation__container"
+>
     <ul class="main-navigation__navigation-list-container">
         <li
             *ngFor="let listElement of _mainNavigationList; index as i"

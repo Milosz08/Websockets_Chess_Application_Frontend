@@ -22,6 +22,7 @@ import { NavigationLinksModel } from "../../../../models/navigation-links.model"
 
 import * as NAVIGATION_LIST from "../../../../../assets/static-data/main-navigation-links.json";
 import * as QUICK_AND_AUTH_NAVIGATION_LIST from "../../../../../assets/static-data/quick-start-navigation-links.json";
+import { Router } from "@angular/router";
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -36,7 +37,9 @@ export class HeaderWithNavigationComponent {
     readonly _quickStartNavigationList: Array<NavigationLinksModel>;
     readonly _authNavigationList: Array<NavigationLinksModel>;
 
-    constructor() {
+    constructor(
+        public _router: Router,
+    ) {
         this._mainNavigationList = (NAVIGATION_LIST as any).default;
         this._quickStartNavigationList = this.filterQuickStartNavigationLinks(false);
         this._authNavigationList = this.filterQuickStartNavigationLinks(true);
