@@ -16,7 +16,7 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-import { Component, OnDestroy } from "@angular/core";
+import { Component, HostListener, OnDestroy } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import * as moment from "moment";
 
@@ -52,7 +52,7 @@ export class CopyrightNewsletterComponent implements OnDestroy {
         public _httpService: AddToNewsletterHttpReqResService,
     ) {
         this._newsletterForm = new FormGroup({
-            emailAddress: new FormControl("", [ Validators.required, Validators.email ]),
+            emailAddress: new FormControl("", [ Validators.required, Validators.email, Validators.max(100) ]),
         });
         this._formHelper = new AngularFormsHelper(this._newsletterForm);
         this._serverResponse = new SimpleMessageResWithErrorModel("", false);
