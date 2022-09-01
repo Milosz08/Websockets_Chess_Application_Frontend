@@ -23,7 +23,9 @@ import { HomePageComponent } from "./pages/home-page/home-page.component";
 import { AboutPageComponent } from './pages/about-page/about-page.component';
 import { RankingsPageComponent } from "./pages/rankings-page/rankings-page.component";
 import { GameRulesPageComponent } from './pages/game-rules-page/game-rules-page.component';
+import { NewsletterPageComponent } from './pages/newsletter-page/newsletter-page.component';
 import { ReportABugPageComponent } from './pages/report-a-bug-page/report-a-bug-page.component';
+import { PrivacyPolicyPageComponent } from './pages/privacy-policy-page/privacy-policy-page.component';
 import { ContactWithUsPageComponent } from './pages/contact-with-us-page/contact-with-us-page.component';
 
 import { HeaderWithNavigationComponent } from "./components/header-with-navigation/header-with-navigation.component";
@@ -32,7 +34,6 @@ import { MobileHeaderWithNavigationComponent } from './components/mobile-header-
 import { SharedModuleModule } from "../shared-module/shared-module.module";
 import { StaticContentPageComponent } from "./static-content-page.component";
 import { StaticContentPageRoutingModule } from "./static-content-page-routing.module";
-import { NewsletterPageComponent } from './pages/newsletter-page/newsletter-page.component';
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -43,14 +44,15 @@ import { NewsletterPageComponent } from './pages/newsletter-page/newsletter-page
         AboutPageComponent,
         RankingsPageComponent,
         GameRulesPageComponent,
+        NewsletterPageComponent,
         ReportABugPageComponent,
+        PrivacyPolicyPageComponent,
         ContactWithUsPageComponent,
         // components
         HeaderWithNavigationComponent,
         MobileHeaderWithNavigationComponent,
         // others
         StaticContentPageComponent,
-        NewsletterPageComponent,
     ],
     imports: [
         CommonModule,
