@@ -37,6 +37,11 @@
                 "pageId": "NEWSLETTER_PAGE",
                 "title": "Newsletter",
                 "description": "On this page you have the opportunity to manage your newsletter."
+            },
+            {
+                "pageId": "PRIVACY_POLICY_PAGE",
+                "title": "Privacy Policy",
+                "description": "On this page you have the opportunity to check and read privacy policy."
             }
         ],
         "authRegisterModule": [

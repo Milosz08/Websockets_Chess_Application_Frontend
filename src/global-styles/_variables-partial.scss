@@ -20,7 +20,7 @@
     --nav-links-after-indicator-background: #cda88b;
     --mobile-header-menu-foreground: #f4f2ed;
 
-    --footer-primary-foreground: #f4f2ed;
+    --footer-with-cookie-primary-foreground: #f4f2ed;
     --footer-headlings-after-background: #cda88b;
     --footer-copy-newsletter-background: #cda88b;
     --newsletter-submit-button-foreground: #f4f2ed;
@@ -59,7 +59,7 @@ body {
     --sign-up-anchor-link-foreground: #f4f2ed;
     --sign-up-anchor-link-font-bolding: 400;
 
-    --footer-background: #3b1302;
+    --footer-with-cookie-background: #3b1302;
     --footer-copy-newsletter-foreground: #3b1302;
     --newsletter-submit-button-background: #3b1302;
 
@@ -87,7 +87,7 @@ body.dark-theme--active {
     --sign-up-anchor-link-foreground: #171717;
     --sign-up-anchor-link-font-bolding: 500;
 
-    --footer-background: #171717;
+    --footer-with-cookie-background: #171717;
     --footer-copy-newsletter-foreground: #171717;
     --newsletter-submit-button-background: #212121;
 
@@ -96,5 +96,4 @@ body.dark-theme--active {
 
     --standard-header-light-background-text: #f4f2ed;
     --standard-header-dark-background-text: #f4f2ed;
-
 }
