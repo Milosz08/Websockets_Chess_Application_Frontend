@@ -17,12 +17,12 @@
  */
 
 import { Component } from "@angular/core";
+import { Router } from "@angular/router";
 
 import { NavigationLinksModel } from "../../../../models/navigation-links.model";
 
 import * as NAVIGATION_LIST from "../../../../../assets/static-data/main-navigation-links.json";
 import * as QUICK_AND_AUTH_NAVIGATION_LIST from "../../../../../assets/static-data/quick-start-navigation-links.json";
-import { Router } from "@angular/router";
 
 //----------------------------------------------------------------------------------------------------------------------
 
