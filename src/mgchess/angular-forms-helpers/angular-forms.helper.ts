@@ -36,7 +36,7 @@ export class AngularFormsHelper {
     };
 
     fieldHasAnyErrors(fieldname: string): boolean {
-        return this.field(fieldname).touched && !this.field(fieldname).valid;
+        return this.field(fieldname).touched && this.field(fieldname).dirty && !this.field(fieldname).valid;
     };
 
     getAllFieldsAndCleanup<T>(activeReset: boolean = true): T {
