@@ -27,6 +27,7 @@ import { HorizontalTitleComponent } from "./components/horizontal-title/horizont
 import { CopyrightNewsletterComponent } from "./components/copyright-newsletter/copyright-newsletter.component";
 
 import { ContentNotFoundPageComponent } from "./pages/content-not-found-page/content-not-found-page.component";
+import { CookiesNotificationComponent } from './components/cookies-notification/cookies-notification.component';
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -39,6 +40,7 @@ import { ContentNotFoundPageComponent } from "./pages/content-not-found-page/con
         CopyrightNewsletterComponent,
         // pages
         ContentNotFoundPageComponent,
+        CookiesNotificationComponent,
     ],
     imports: [
         CommonModule,
@@ -50,6 +52,7 @@ import { ContentNotFoundPageComponent } from "./pages/content-not-found-page/con
         ThemeTogglerComponent,
         HorizontalTitleComponent,
         CopyrightNewsletterComponent,
+        CookiesNotificationComponent,
     ],
 })
 export class SharedModuleModule {}

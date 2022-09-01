@@ -1,8 +1,8 @@
 /*
  * Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
  *
- * File name: mgchess.module.ts
- * Last modified: 21/08/2022, 18:31
+ * File name: cookies-notification.component.ts
+ * Last modified: 01/09/2022, 22:48
  * Project name: chess-app-frontend
  *
  * Licensed under the MIT license; you may not use this file except in compliance with the License.
@@ -16,33 +16,26 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-import { NgModule } from "@angular/core";
-import { BrowserModule } from "@angular/platform-browser";
-import { RouterModule } from "@angular/router";
+import { Component } from "@angular/core";
 
-import { MgchessComponent } from "./mgchess.component";
-import { MgchessRoutingModule } from "./mgchess-routing.module";
-import { HttpClientModule } from "@angular/common/http";
-
-import { SharedModuleModule } from "./modules/shared-module/shared-module.module";
+import { CookiesNotificationLocalStorageService } from "../../services/cookies-notification-local-storage.service";
 
 //----------------------------------------------------------------------------------------------------------------------
 
-@NgModule({
-    declarations: [
-        MgchessComponent,
-    ],
-    imports: [
-        BrowserModule,
-        SharedModuleModule,
-        // routing
-        RouterModule,
-        HttpClientModule,
-        MgchessRoutingModule,
-    ],
-    providers: [],
-    bootstrap: [
-        MgchessComponent,
-    ],
+@Component({
+    selector: "mgchess-cookies-notification",
+    templateUrl: "./cookies-notification.component.html",
+    styleUrls: [ "./cookies-notification.component.scss" ],
+    providers: [ CookiesNotificationLocalStorageService ],
 })
-export class MgchessModule {}
+export class CookiesNotificationComponent {
+
+    constructor(
+        public _notificationLocalStorageService: CookiesNotificationLocalStorageService,
+    ) {
+    };
+
+    handleAcceptCookies(): void {
+        this._notificationLocalStorageService.rememberCookiePreferences();
+    };
+}

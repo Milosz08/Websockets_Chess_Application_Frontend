@@ -1,0 +1,102 @@
+/*!
+ * Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
+ *
+ * File name: cookies-notification.component.scss
+ * Last modified: 01/09/2022, 22:48
+ * Project name: chess-app-frontend
+ *
+ * Licensed under the MIT license; you may not use this file except in compliance with the License.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+ * documentation files (the "Software"), to deal in the Software without restriction, including without limitation the
+ * rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to
+ * permit persons to whom the Software is furnished to do so, subject to the following conditions:
+ *
+ * THE ABOVE COPYRIGHT NOTICE AND THIS PERMISSION NOTICE SHALL BE INCLUDED IN ALL
+ * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
+ */
+
+@import "src/global-styles/mixins/controls-mixins";
+
+//----------------------------------------------------------------------------------------------------------------------
+
+:host {
+    position: fixed;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    color: var(--footer-with-cookie-primary-foreground);
+    background-color: var(--footer-with-cookie-background);
+}
+
+.cookies-nofitication__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: var(--safety-width-medium-devices);
+    margin: 0 30px;
+}
+
+.cookies-notification__icon span {
+    font-size: 3.5rem;
+    color: var(--cookie-notification-icon-color);
+}
+
+.cookies-notification__text {
+    margin: 20px 50px;
+}
+
+.cookies-nofitication__buttons {
+    min-width: 150px;
+    .cookies-nofitication__accept-cookies {
+        @include mgchess_button__mixin(var(--cookie-button-primary-color), var(--footer-with-cookie-background));
+        width: 100%;
+        font-weight: 500;
+        margin: 20px 0 5px;
+    }
+    .cookies-nofitication__privacy-policy {
+        @include mgchess_hollow_button__mixin(var(--cookie-button-secondary-color), var(--cookie-button-primary-color));
+        width: 100%;
+        margin: 5px 0 20px;
+        display: block;
+    }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+@media only screen and (max-width: 790px) {
+    .cookies-nofitication__container {
+        flex-direction: column;
+        margin: 20px 30px;
+    }
+    .cookies-notification__text {
+        text-align: center;
+        margin: 20px 0;
+    }
+    .cookies-nofitication__buttons {
+        display: flex;
+        min-width: 100%;
+        margin-top: 20px;
+        .cookies-nofitication__accept-cookies,
+        .cookies-nofitication__privacy-policy {
+            margin: 0 10px;
+        }
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .cookies-nofitication__container {
+        height: 100vh;
+        justify-content: center;
+    }
+    .cookies-nofitication__buttons {
+        flex-direction: column;
+        .cookies-nofitication__accept-cookies,
+        .cookies-nofitication__privacy-policy {
+            margin: 5px 0;
+        }
+    }
+}
