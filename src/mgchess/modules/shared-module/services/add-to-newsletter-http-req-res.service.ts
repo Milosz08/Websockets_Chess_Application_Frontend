@@ -42,7 +42,7 @@ export class AddToNewsletterHttpReqResService extends ServerReqResHelper {
     };
 
     addEmailToNewsletter(request: NewsletterRequestModel): Observable<SimpleMessageResWithErrorModel> {
-        return this._http.post<SimpleMessageResponseModel>(this._endpoint.NEWSLETTER, request).pipe(
+        return this._http.post<SimpleMessageResponseModel>(this._endpoint.NEWSLETTER_SUBSCRIBE, request).pipe(
             map(({ responseMessage }) => {
                 return new SimpleMessageResWithErrorModel(responseMessage, false);
             }),

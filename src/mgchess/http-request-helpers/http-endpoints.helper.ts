@@ -26,7 +26,10 @@ import { environment } from "../../environments/environment";
 })
 export class HttpEndpointsHelper {
 
-    private static readonly BASIC_HTTP = environment.httpURI + "javabean/app/v1/";
+    private readonly BASIC_HTTP = environment.httpURI + "javabean/app/v1/";
 
-    readonly NEWSLETTER = HttpEndpointsHelper.BASIC_HTTP + "newsletter";
+    private readonly NEWSLETTER_EMAIL = this.BASIC_HTTP + "newsletter-email/";
+    readonly NEWSLETTER_SUBSCRIBE = this.NEWSLETTER_EMAIL + "subscribe";
+    readonly NEWSLETTER_ATTEMPT_UNSUBSCRIBE = this.NEWSLETTER_EMAIL + "attemp-unsubscribe";
+    readonly NEWSLETTER_UNSUBSCRIBE = this.NEWSLETTER_EMAIL + "unsubscribe";
 }
