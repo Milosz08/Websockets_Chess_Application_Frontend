@@ -23,10 +23,17 @@ import { SimpleMessageResWithErrorModel } from "../models/simple-message-respons
 export class ServerReqResHelper {
 
     private readonly BASIC_FIELD_CLASS = "mgchess__form-data-paragraph" as const;
+
     private readonly ERROR_FIELD_CLASS = this.BASIC_FIELD_CLASS + " form-data-paragraph--error";
     private readonly INFO_FIELD_CLASS = this.BASIC_FIELD_CLASS + " form-data-paragraph--info";
 
-    responseStatusCssClass(ifError: boolean): string {
+    private readonly ERROR_DARK_FIELD_CLASS = this.BASIC_FIELD_CLASS + " form-data-paragraph--error-dark-background";
+    private readonly INFO_DARK_FIELD_CLASS = this.BASIC_FIELD_CLASS + " form-data-paragraph--info-dark-background";
+
+    responseStatusCssClass(ifError: boolean, ifDark: boolean = false): string {
+        if (ifDark) {
+            return ifError ? this.ERROR_DARK_FIELD_CLASS : this.INFO_DARK_FIELD_CLASS;
+        }
         return ifError ? this.ERROR_FIELD_CLASS : this.INFO_FIELD_CLASS;
     };
 

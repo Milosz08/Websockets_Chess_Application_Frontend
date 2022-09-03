@@ -43,7 +43,7 @@
         </p>
         <p
             *ngIf="_emailServerResponse.responseMessage !== ''"
-            [ngClass]="_serverResReqHelper.responseStatusCssClass(_emailServerResponse.responseError)"
+            [ngClass]="_serverResReqHelper.responseStatusCssClass(_emailServerResponse.responseError, true)"
         >
             {{ _emailServerResponse.responseMessage }}
         </p>
@@ -90,7 +90,7 @@
             </p>
             <p
                 *ngIf="_tokenServerResponse.responseMessage !== ''"
-                [ngClass]="_serverResReqHelper.responseStatusCssClass(_tokenServerResponse.responseError)"
+                [ngClass]="_serverResReqHelper.responseStatusCssClass(_tokenServerResponse.responseError, true)"
             >
                 {{ _tokenServerResponse.responseMessage }}
             </p>

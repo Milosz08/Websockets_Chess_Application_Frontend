@@ -52,6 +52,9 @@
     &.form-data-paragraph--info {
         color: var(--form-data-paragraph-info-foreground);
     }
+    &.form-data-paragraph--info-dark-background {
+        color: var(--form-data-paragraph-info-dark-foreground);
+    }
 }
 
 .mgchess__form-label__container {
