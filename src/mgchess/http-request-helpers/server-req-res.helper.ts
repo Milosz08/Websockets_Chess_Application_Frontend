@@ -18,7 +18,9 @@
 
 import { SimpleMessageResWithErrorModel } from "../models/simple-message-response.model";
 
-export abstract class ServerReqResHelper {
+//----------------------------------------------------------------------------------------------------------------------
+
+export class ServerReqResHelper {
 
     private readonly BASIC_FIELD_CLASS = "mgchess__form-data-paragraph" as const;
     private readonly ERROR_FIELD_CLASS = this.BASIC_FIELD_CLASS + " form-data-paragraph--error";

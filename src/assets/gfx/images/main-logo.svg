@@ -8,11 +8,11 @@
       }
     </style>
     <linearGradient id="linear-gradient" x1="50" y1="93.531" x2="50" y2="6.469" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#d4b66d"/>
-      <stop offset="1" stop-color="#d4b66d"/>
+      <stop offset="0" stop-color="#d9c0b1"/>
+      <stop offset="1" stop-color="#d9c0b1"/>
     </linearGradient>
     <filter id="filter" x="6.531" y="6.469" width="86.938" height="87.062" filterUnits="userSpaceOnUse">
-      <feFlood result="flood" flood-color="#cda88b"/>
+      <feFlood result="flood" flood-color="#d9c0b1"/>
       <feComposite result="composite" operator="in" in2="SourceGraphic"/>
       <feBlend result="blend" in2="SourceGraphic"/>
     </filter>
