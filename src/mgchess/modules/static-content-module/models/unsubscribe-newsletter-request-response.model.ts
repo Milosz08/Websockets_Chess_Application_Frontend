@@ -1,8 +1,8 @@
-/*!
+/*
  * Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
  *
- * File name: newsletter-page.component.scss
- * Last modified: 25/08/2022, 16:46
+ * File name: unsubscribe-newsletter-request-response.model.ts
+ * Last modified: 03/09/2022, 18:21
  * Project name: chess-app-frontend
  *
  * Licensed under the MIT license; you may not use this file except in compliance with the License.
@@ -16,30 +16,33 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-@import "src/global-styles/mixins/global-mixins";
+export class AttemptUnsubscribeNewsletterReq {
+    emailAddress: string;
 
-//----------------------------------------------------------------------------------------------------------------------
-
-:host {
-    @include mgchess_safety-area__mixin();
-}
-
-.unsubscribe-newsletter__section {
-    flex-basis: 50%;
-}
-
-.unsubscribe-newsletter__info-list {
-    list-style-type: disc;
-    margin: 8px 0 8px 30px;
+    constructor(emailAddress: string) {
+        this.emailAddress = emailAddress;
+    };
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-@media only screen and (max-width: 790px) {
-    .unsubscribe-newsletter__container {
-        flex-direction: column-reverse;
-    }
-    .unsubscribe-newsletter__section {
-        width: 100%;
-    }
+export class UnsubscribeNewsletterFormReq {
+    token: string;
+
+    constructor(token: string) {
+        this.token = token;
+    };
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+export class UnsubscribeNewsletterReq extends UnsubscribeNewsletterFormReq {
+    isBearer: boolean;
+    emailAddress: string;
+
+    constructor(token: string, emailAddress: string, isBearer: boolean) {
+        super(token);
+        this.isBearer = isBearer;
+        this.emailAddress = emailAddress;
+    };
 }

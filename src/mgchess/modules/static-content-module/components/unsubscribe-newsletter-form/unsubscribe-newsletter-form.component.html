@@ -1,0 +1,107 @@
+<!--
+  ~ Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
+  ~
+  ~ File name: unsubscribe-newsletter-form.component.html
+  ~ Last modified: 03/09/2022, 16:40
+  ~ Project name: chess-app-frontend
+  ~
+  ~ Licensed under the MIT license; you may not use this file except in compliance with the License.
+  ~
+  ~ Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+  ~ documentation files (the "Software"), to deal in the Software without restriction, including without limitation the
+  ~ rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to
+  ~ permit persons to whom the Software is furnished to do so, subject to the following conditions:
+  ~
+  ~ THE ABOVE COPYRIGHT NOTICE AND THIS PERMISSION NOTICE SHALL BE INCLUDED IN ALL
+  ~ COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
+  -->
+
+<form
+    [formGroup]="_unsubscribeEmailForm"
+    (ngSubmit)="handleAttemptToUnusubscribe()"
+    class="unsubscribe-newsletter__form"
+>
+    <label
+        for="unsubscribe-newsletter__email-input"
+        class="mgchess__form-label__container"
+    >
+        <span class="mgchess__form-label-text">Insert here your email</span>
+        <input
+            type="email"
+            id="unsubscribe-newsletter__email-input"
+            (input)="_serverResReqHelper.clearServerMessage(_emailServerResponse)"
+            autocomplete="off"
+            formControlName="emailAddress"
+            placeholder="ex. johndoe@email.com"
+            class="mg-chess__form-standard-input"
+        />
+        <p
+            *ngIf="_emailFormHelper.fieldHasAnyErrors('emailAddress')"
+            class="mgchess__form-data-paragraph form-data-paragraph--error-dark-background"
+        >
+            Please enter valid email address.
+        </p>
+        <p
+            *ngIf="_emailServerResponse.responseMessage !== ''"
+            [ngClass]="_serverResReqHelper.responseStatusCssClass(_emailServerResponse.responseError)"
+        >
+            {{ _emailServerResponse.responseMessage }}
+        </p>
+    </label>
+    <button
+        type="submit"
+        [disabled]="!_unsubscribeEmailForm.valid"
+        title="Click to send activation message"
+        class="mg-chess__form-standard-submit"
+    >
+        Send activation link
+    </button>
+</form>
+<ng-container *ngIf="_isTokenFieldVisible">
+    <span class="mgchess__separator-with-text-inside">
+        <span class="separator-line"></span>
+        <span class="text-content">click link or type token below</span>
+        <span class="separator-line"></span>
+    </span>
+    <form
+        [formGroup]="_unsubscribeTokenForm"
+        (ngSubmit)="handleSendTokenAndUnsubscribe()"
+        class="unsubscribe-newsletter__form"
+    >
+        <label
+            for="unsubscribe-newsletter__token-input"
+            class="mgchess__form-label__container"
+        >
+            <span class="mgchess__form-label-text">Insert here OTA token</span>
+            <input
+                type="text"
+                id="unsubscribe-newsletter__token-input"
+                (input)="_serverResReqHelper.clearServerMessage(_tokenServerResponse)"
+                autocomplete="off"
+                formControlName="token"
+                placeholder="ex. XcPOS8kv5o"
+                class="mg-chess__form-standard-input"
+            />
+            <p
+                *ngIf="_tokenFormHelper.fieldHasAnyErrors('token')"
+                class="mgchess__form-data-paragraph form-data-paragraph--error-dark-background"
+            >
+                Please enter valid OTA token.
+            </p>
+            <p
+                *ngIf="_tokenServerResponse.responseMessage !== ''"
+                [ngClass]="_serverResReqHelper.responseStatusCssClass(_tokenServerResponse.responseError)"
+            >
+                {{ _tokenServerResponse.responseMessage }}
+            </p>
+        </label>
+        <button
+            type="submit"
+            [disabled]="!_unsubscribeTokenForm.valid"
+            title="Click to finish unsubscribing newsletter service"
+            class="mg-chess__form-standard-submit"
+        >
+            Unsubscribe newsletter
+        </button>
+    </form>
+</ng-container>

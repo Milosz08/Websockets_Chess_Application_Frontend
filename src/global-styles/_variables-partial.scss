@@ -17,33 +17,34 @@
  */
 
 :root {
-    --nav-links-after-indicator-background: #cda88b;
+    --nav-links-after-indicator-background: #d9c0b1;
     --mobile-header-menu-foreground: #f4f2ed;
 
     --footer-with-cookie-primary-foreground: #f4f2ed;
-    --footer-headlings-after-background: #cda88b;
-    --footer-copy-newsletter-background: #cda88b;
+    --footer-headlings-after-background: #d9c0b1;
+    --footer-copy-newsletter-background: #d9c0b1;
     --newsletter-submit-button-foreground: #f4f2ed;
 
     --nofxsupport-wrapper-background: #f4f2ed;
     --nofxsupport-wrapper-foreground: #3b1302;
     --nofxsupport-separator-background: #3b1302;
 
-    --standard-header-background-after: #cda88b;
+    --standard-header-background-after: #d9c0b1;
     --aside-text-form-paragraph-foreground: #6f6b69;
 
     --form-data-paragraph-error-foreground: #901c1c;
     --form-data-paragraph-info-foreground: #175217;
 
-    --cookie-notification-icon-color: #cda88b;
+    --cookie-notification-icon-color: #d9c0b1;
     --cookie-button-primary-color: #f4f2ed;
-    --cookie-button-secondary-color: #cda88b;
+    --cookie-button-secondary-color: #d9c0b1;
 
     --standard-transition-duration: .3s;
     --standard-button-border-radius: 5px;
     --standard-modal-border-radius: 10px;
-    --standard-modal-back-noise-shadow: rgb(201, 194, 188) 0px 8px 24px;
+    --standard-modal-back-noise-shadow: rgb(201, 194, 188) 0 8px 24px;
     --safety-width-medium-devices: 1240px;
+    --standard-controls-padding: 7px 15px 9px;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -72,6 +73,18 @@ body {
 
     --standard-header-light-background-text: #3b1302;
     --standard-header-dark-background-text: #f4f2ed;
+
+    --main-headling-foreground: #3b1302;
+    --main-headling-pseudo-background: #d9c0b1;
+    --standard-separator-background: #a7a7a7;
+
+    --standard-form-input-color: #3b1302;
+    --standard-form-submit-background: #3b1302;
+    --standard-form-submit-foreground: #f4f2ed;
+    --form-data-paragraph-error-dark-foreground: #901c1c;
+
+    --discrete-modal-background: #f4f2ed;
+    --discrete-modal-back-noise-shadow: rgba(99, 99, 99, 0.2) 0 2px 8px 0;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -87,7 +100,7 @@ body.dark-theme--active {
     --nav-links-indicator-foreground: #f4f2ed;
     --mobile-header-menu-primary-color: #171717;
 
-    --sign-up-anchor-link-background: #cda88b;
+    --sign-up-anchor-link-background: #d9c0b1;
     --sign-up-anchor-link-foreground: #171717;
     --sign-up-anchor-link-font-bolding: 500;
 
@@ -100,4 +113,16 @@ body.dark-theme--active {
 
     --standard-header-light-background-text: #f4f2ed;
     --standard-header-dark-background-text: #f4f2ed;
+
+    --main-headling-foreground: #f4f2ed;
+    --main-headling-pseudo-background: #767676;
+    --standard-separator-background: #767676;
+
+    --standard-form-input-color: #767676;
+    --standard-form-submit-background: #d9c0b1;
+    --standard-form-submit-foreground: #212121;
+    --form-data-paragraph-error-dark-foreground: #cbc72f;
+
+    --discrete-modal-background: #171717;
+    --discrete-modal-back-noise-shadow: none;
 }

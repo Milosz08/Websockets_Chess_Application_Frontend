@@ -16,6 +16,10 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
+@import "src/global-styles/mixins/controls-mixins";
+
+//----------------------------------------------------------------------------------------------------------------------
+
 .mgchess__header--light-background,
 .mgchess__header--dark-background {
     position: relative;
@@ -42,7 +46,37 @@
     &.form-data-paragraph--error {
         color: var(--form-data-paragraph-error-foreground);
     }
+    &.form-data-paragraph--error-dark-background {
+        color: var(--form-data-paragraph-error-dark-foreground);
+    }
     &.form-data-paragraph--info {
         color: var(--form-data-paragraph-info-foreground);
+    }
+}
+
+.mgchess__form-label__container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    .mgchess__form-label-text {
+        display: block;
+        margin: 0 0 5px 10px;
+    }
+    .mg-chess__form-standard-input {
+        @include mgchess_input_mixin(transparent, var(--standard-form-input-color));
+        max-width: 350px;
+    }
+}
+
+.mg-chess__form-standard-submit {
+    @include mgchess_button__mixin(var(--standard-form-submit-background), var(--standard-form-submit-foreground));
+    width: 100%;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+@media only screen and (max-width: 790px) {
+    .mgchess__form-label__container .mg-chess__form-standard-input {
+        max-width: 100%;
     }
 }

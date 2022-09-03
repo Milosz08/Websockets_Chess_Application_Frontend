@@ -18,6 +18,7 @@
 
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
+import { ReactiveFormsModule } from "@angular/forms";
 
 import { HomePageComponent } from "./pages/home-page/home-page.component";
 import { AboutPageComponent } from './pages/about-page/about-page.component';
@@ -30,6 +31,7 @@ import { ContactWithUsPageComponent } from './pages/contact-with-us-page/contact
 
 import { HeaderWithNavigationComponent } from "./components/header-with-navigation/header-with-navigation.component";
 import { MobileHeaderWithNavigationComponent } from './components/mobile-header-with-navigation/mobile-header-with-navigation.component';
+import { UnsubscribeNewsletterFormComponent } from './components/unsubscribe-newsletter-form/unsubscribe-newsletter-form.component';
 
 import { SharedModuleModule } from "../shared-module/shared-module.module";
 import { StaticContentPageComponent } from "./static-content-page.component";
@@ -51,6 +53,7 @@ import { StaticContentPageRoutingModule } from "./static-content-page-routing.mo
         // components
         HeaderWithNavigationComponent,
         MobileHeaderWithNavigationComponent,
+        UnsubscribeNewsletterFormComponent,
         // others
         StaticContentPageComponent,
     ],
@@ -58,6 +61,7 @@ import { StaticContentPageRoutingModule } from "./static-content-page-routing.mo
         CommonModule,
         StaticContentPageRoutingModule,
         SharedModuleModule,
+        ReactiveFormsModule,
     ],
 })
 export class StaticContentPageModule {}
