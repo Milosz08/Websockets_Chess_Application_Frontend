@@ -149,7 +149,10 @@
     .mobile-header__container {
         margin: 10px 15px;
     }
-    .mobile-header__logo-container .mobile-header__text-content {
+    .mobile-header__logo-container .mobile-header__logo-image {
+        margin-right: 0;
+    }
+    .mobile-header__text-content {
         display: none;
     }
 }

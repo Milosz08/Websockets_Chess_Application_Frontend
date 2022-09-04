@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
  *
- * File name: unsubscribe-newsletter-request-response.model.ts
+ * File name: unsubscribe-newsletter-req-res.model.ts
  * Last modified: 03/09/2022, 18:21
  * Project name: chess-app-frontend
  *
@@ -16,7 +16,7 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-export class AttemptUnsubscribeNewsletterReq {
+export class UnsubscribeNewsletterEmailReq {
     emailAddress: string;
 
     constructor(emailAddress: string) {
@@ -26,7 +26,7 @@ export class AttemptUnsubscribeNewsletterReq {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-export class UnsubscribeNewsletterFormReq {
+export class UnsubscribeNewsletterTokenReq {
     token: string;
 
     constructor(token: string) {
@@ -36,13 +36,11 @@ export class UnsubscribeNewsletterFormReq {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-export class UnsubscribeNewsletterReq extends UnsubscribeNewsletterFormReq {
-    isBearer: boolean;
+export class UnsubscribeNewsletterViaOtaReq extends UnsubscribeNewsletterTokenReq {
     emailAddress: string;
 
-    constructor(token: string, emailAddress: string, isBearer: boolean) {
+    constructor(token: string, emailAddress: string) {
         super(token);
-        this.isBearer = isBearer;
         this.emailAddress = emailAddress;
     };
 }

@@ -68,6 +68,8 @@
     .newsletter__submit-form-button {
         @include mgchess_button__mixin(
                 var(--newsletter-submit-button-background), var(--newsletter-submit-button-foreground));
+        display: flex;
+        align-items: center;
         margin-left: 20px;
         height: 100%;
     }
