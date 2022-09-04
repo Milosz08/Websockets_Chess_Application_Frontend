@@ -34,7 +34,6 @@
 
     --form-data-paragraph-error-foreground: #901c1c;
     --form-data-paragraph-info-foreground: #175217;
-    --form-data-paragraph-info-dark-foreground: #227b22;
 
     --cookie-notification-icon-color: #d9c0b1;
     --cookie-button-primary-color: #f4f2ed;
@@ -83,6 +82,7 @@ body {
     --standard-form-submit-background: #3b1302;
     --standard-form-submit-foreground: #f4f2ed;
     --form-data-paragraph-error-dark-foreground: #901c1c;
+    --form-data-paragraph-info-dark-foreground: #366d36;
 
     --discrete-modal-background: #f4f2ed;
     --discrete-modal-back-noise-shadow: rgba(99, 99, 99, 0.2) 0 2px 8px 0;
@@ -122,7 +122,8 @@ body.dark-theme--active {
     --standard-form-input-color: #767676;
     --standard-form-submit-background: #d9c0b1;
     --standard-form-submit-foreground: #212121;
-    --form-data-paragraph-error-dark-foreground: #cbc72f;
+    --form-data-paragraph-error-dark-foreground: #aa6161;
+    --form-data-paragraph-info-dark-foreground: #6d9c6d;
 
     --discrete-modal-background: #171717;
     --discrete-modal-back-noise-shadow: none;
