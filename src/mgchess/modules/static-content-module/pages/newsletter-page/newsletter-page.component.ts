@@ -16,11 +16,15 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { Meta, Title } from "@angular/platform-browser";
+import { Store } from "@ngrx/store";
 
 import { BrowserMetaSerializatorLoader } from "../../../../browser-meta-serialization/browser-meta-serializator.loader";
 import { SingleModuleType, SinglePageType } from "../../../../browser-meta-serialization/browser-meta-serializator.types";
+
+import { NewsletterReducerType } from "../../../../ngrx-helpers/ngrx-store.types";
+import * as NgrxAction_NWL from "../../ngrx-store/newsletter-ngrx-store/newsletter.actions";
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -30,12 +34,17 @@ import { SingleModuleType, SinglePageType } from "../../../../browser-meta-seria
     styleUrls: [ "./newsletter-page.component.scss" ],
     host: { class: "mgchess__flex-safety-container" },
 })
-export class NewsletterPageComponent extends BrowserMetaSerializatorLoader {
+export class NewsletterPageComponent extends BrowserMetaSerializatorLoader implements OnInit {
 
     constructor(
+        private _metaService: Meta,
         private _titleService: Title,
-        private _metaService: Meta
+        private _store: Store<NewsletterReducerType>,
     ) {
         super(_titleService, _metaService, SingleModuleType.STATIC_CONTENT_MODULE, SinglePageType.NEWSLETTER_PAGE);
+    };
+
+    ngOnInit(): void {
+        this._store.dispatch(NgrxAction_NWL.__initialClearAllState());
     };
 }

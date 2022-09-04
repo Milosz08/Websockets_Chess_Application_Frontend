@@ -44,6 +44,8 @@ import { SharedModuleModule } from "../shared-module/shared-module.module";
 import { StaticContentPageComponent } from "./static-content-page.component";
 import { StaticContentPageRoutingModule } from "./static-content-page-routing.module";
 
+import { NewsletterReqResService } from "./services/newsletter-req-res.service";
+
 //----------------------------------------------------------------------------------------------------------------------
 
 @NgModule({
@@ -76,5 +78,9 @@ import { StaticContentPageRoutingModule } from "./static-content-page-routing.mo
             UnsubscribeNewsletterEffects,
         ]),
     ],
+    providers: [
+        // services
+        NewsletterReqResService,
+    ]
 })
 export class StaticContentPageModule {}

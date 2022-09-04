@@ -30,6 +30,7 @@ export class HttpEndpointsHelper {
 
     private readonly NEWSLETTER_EMAIL = this.BASIC_HTTP + "newsletter-email/";
     readonly NEWSLETTER_SUBSCRIBE = this.NEWSLETTER_EMAIL + "subscribe";
-    readonly NEWSLETTER_ATTEMPT_UNSUBSCRIBE = this.NEWSLETTER_EMAIL + "attemp-unsubscribe";
-    readonly NEWSLETTER_UNSUBSCRIBE = this.NEWSLETTER_EMAIL + "unsubscribe";
+    readonly NEWSLETTER_ATTEMPT_UNSUBSCRIBE = this.NEWSLETTER_EMAIL + "attempt-unsubscribe";
+    readonly NEWSLETTER_UNSUBSCRIBE_VIA_OTA = this.NEWSLETTER_EMAIL + "unsubscribe-via-ota";
+    readonly NEWSLETTER_UNSUBSCRIBE_VIA_JWT = this.NEWSLETTER_EMAIL + "unsubscribe-via-jwt";
 }

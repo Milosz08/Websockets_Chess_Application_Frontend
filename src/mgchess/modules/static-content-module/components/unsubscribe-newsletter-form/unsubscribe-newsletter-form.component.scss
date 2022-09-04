@@ -20,6 +20,12 @@
     width: 350px;
 }
 
+.unsubscribe-newsletter__valid-info-paragraph {
+    color: var(--form-data-paragraph-info-dark-foreground);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
 //----------------------------------------------------------------------------------------------------------------------
 
 @media only screen and (max-width: 790px) {
