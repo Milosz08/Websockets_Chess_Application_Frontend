@@ -39,6 +39,11 @@
                 "description": "On this page you have the opportunity to manage your newsletter."
             },
             {
+                "pageId": "UNSUBSRIBE_NEWSLETTER_VIA_EMAIL_PAGE",
+                "title": "Unsubscribe newsletter",
+                "description": "Redirect page to unsubscribe newsletter via link from email message."
+            },
+            {
                 "pageId": "PRIVACY_POLICY_PAGE",
                 "title": "Privacy Policy",
                 "description": "On this page you have the opportunity to check and read privacy policy."

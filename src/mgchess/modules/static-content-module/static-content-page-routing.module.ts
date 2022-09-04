@@ -28,6 +28,7 @@ import { GameRulesPageComponent } from "./pages/game-rules-page/game-rules-page.
 import { ReportABugPageComponent } from "./pages/report-a-bug-page/report-a-bug-page.component";
 import { ContactWithUsPageComponent } from "./pages/contact-with-us-page/contact-with-us-page.component";
 import { NewsletterPageComponent } from "./pages/newsletter-page/newsletter-page.component";
+import { UnsubscribeNewsletterPageComponent } from "./pages/unsubscribe-newsletter-page/unsubscribe-newsletter-page.component";
 import { PrivacyPolicyPageComponent } from "./pages/privacy-policy-page/privacy-policy-page.component";
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -41,6 +42,7 @@ const routes: Routes = [
         { path: "report-a-bug", component: ReportABugPageComponent },
         { path: "contact-with-us", component: ContactWithUsPageComponent },
         { path: "newsletter", component: NewsletterPageComponent },
+        { path: "unsubscribe-newsletter/:bearerToken", component: UnsubscribeNewsletterPageComponent },
         { path: "privacy-policy", component: PrivacyPolicyPageComponent },
     ]},
 ];

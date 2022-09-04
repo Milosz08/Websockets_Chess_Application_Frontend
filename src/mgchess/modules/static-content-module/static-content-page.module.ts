@@ -28,6 +28,7 @@ import { NewsletterPageComponent } from './pages/newsletter-page/newsletter-page
 import { ReportABugPageComponent } from './pages/report-a-bug-page/report-a-bug-page.component';
 import { PrivacyPolicyPageComponent } from './pages/privacy-policy-page/privacy-policy-page.component';
 import { ContactWithUsPageComponent } from './pages/contact-with-us-page/contact-with-us-page.component';
+import { UnsubscribeNewsletterPageComponent } from './pages/unsubscribe-newsletter-page/unsubscribe-newsletter-page.component';
 
 import { HeaderWithNavigationComponent } from "./components/header-with-navigation/header-with-navigation.component";
 import { MobileHeaderWithNavigationComponent } from './components/mobile-header-with-navigation/mobile-header-with-navigation.component';
@@ -50,6 +51,7 @@ import { StaticContentPageRoutingModule } from "./static-content-page-routing.mo
         ReportABugPageComponent,
         PrivacyPolicyPageComponent,
         ContactWithUsPageComponent,
+        UnsubscribeNewsletterPageComponent,
         // components
         HeaderWithNavigationComponent,
         MobileHeaderWithNavigationComponent,
