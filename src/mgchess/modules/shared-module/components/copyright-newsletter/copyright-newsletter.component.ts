@@ -55,8 +55,6 @@ export class CopyrightNewsletterComponent implements OnDestroy {
         this._newsletterForm = new FormGroup({
             emailAddress: new FormControl("", [ Validators.required, Validators.email, Validators.max(100) ]),
         });
-        this._formHelper = new AngularFormsHelper(this._newsletterForm);
-        this._serverResponse = new SimpleMessageResWithErrorModel("", false);
     };
 
     @HostListener("document:click", [])

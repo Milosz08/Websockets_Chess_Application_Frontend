@@ -22,30 +22,37 @@ import { AbstractControl, FormGroup } from "@angular/forms";
 
 export class AngularFormsHelper {
 
-    private readonly _formGroup: FormGroup;
-
-    constructor(formGround: FormGroup) {
-        this._formGroup = formGround;
-    };
-
-    field(fieldname: string): AbstractControl<any, any> {
-        if (!this._formGroup) throw new Error("Form grounp is not valid");
-        const field = this._formGroup.get(fieldname);
+    field(fieldname: string, form: FormGroup): AbstractControl<any, any> {
+        if (!form) throw new Error("Form grounp is not valid");
+        const field = form.get(fieldname);
         if (!field) throw new Error(`Field ${fieldname} not exist in selected form group`);
         return field;
     };
 
-    fieldHasAnyErrors(fieldname: string): boolean {
-        return this.field(fieldname).touched && this.field(fieldname).dirty && !this.field(fieldname).valid;
+    static field(fieldname: string, form: FormGroup): AbstractControl<any, any> {
+        return new AngularFormsHelper().field(fieldname, form);
     };
 
-    getAllFieldsAndCleanup<T>(activeReset: boolean = true): T {
-        if (!this._formGroup) throw new Error("Form group is not valid");
-        const fieldsObject = this._formGroup.getRawValue() as T;
+    fieldHasAnyErrors(fieldname: string, form: FormGroup): boolean {
+        return this.field(fieldname, form).touched && this.field(fieldname, form).dirty
+            && !this.field(fieldname, form).valid;
+    };
+
+    static fieldHasAnyErrors(fieldname: string, form: FormGroup): boolean {
+        return new AngularFormsHelper().fieldHasAnyErrors(fieldname, form);
+    };
+
+    extractFormFields<T>(form: FormGroup, activeReset: boolean = true): T {
+        if (!form) throw new Error("Form group is not valid");
+        const fieldsObject = form.getRawValue() as T;
         if (activeReset) {
-            this._formGroup.clearValidators();
-            this._formGroup.reset();
+            form.clearValidators();
+            form.reset();
         }
         return fieldsObject;
+    };
+
+    static extractFormFields<T>(form: FormGroup, activeReset: boolean = true): T {
+        return new AngularFormsHelper().extractFormFields<T>(form, activeReset);
     };
 }

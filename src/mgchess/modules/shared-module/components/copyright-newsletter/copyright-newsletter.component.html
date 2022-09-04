@@ -45,7 +45,7 @@
                     class="newsletter__input-form-element"
                 />
                 <p
-                    *ngIf="_formHelper.fieldHasAnyErrors('emailAddress')"
+                    *ngIf="_formHelper.fieldHasAnyErrors('emailAddress', _newsletterForm)"
                     class="mgchess__form-data-paragraph form-data-paragraph--error"
                 >
                     Please enter valid email address.
