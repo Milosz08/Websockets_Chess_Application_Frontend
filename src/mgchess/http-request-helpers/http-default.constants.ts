@@ -16,14 +16,6 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-import { Injectable } from "@angular/core";
-
-//----------------------------------------------------------------------------------------------------------------------
-
-@Injectable({
-    providedIn: "root",
-})
 export class HttpDefaultConstants {
-
-    readonly BASIC_SERVER_ERR_MESSAGE = "Unexpected server error!";
+    static readonly BASIC_SERVER_ERR_MESSAGE = "Unexpected server error! Try again later." as const;
 }
