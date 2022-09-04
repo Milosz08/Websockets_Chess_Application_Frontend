@@ -20,10 +20,10 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 
 import { catchError, map, Observable, of } from "rxjs";
+import { RxjsHelper } from "../../../rxjs-helpers/rxjs.helper";
 
 import { ServerReqResHelper } from "../../../http-request-helpers/server-req-res.helper";
 import { HttpEndpointsHelper } from "../../../http-request-helpers/http-endpoints.helper";
-import { HttpDefaultConstants } from "../../../http-request-helpers/http-default.constants";
 
 import { NewsletterRequestModel } from "../models/newsletter-request-response.model";
 import { SimpleMessageResponseModel, SimpleMessageResWithErrorModel } from "../../../models/simple-message-response.model";
@@ -36,7 +36,6 @@ export class AddToNewsletterHttpReqResService extends ServerReqResHelper {
     constructor(
         private _http: HttpClient,
         private _endpoint: HttpEndpointsHelper,
-        private _httpConst: HttpDefaultConstants,
     ) {
         super();
     };
@@ -46,11 +45,8 @@ export class AddToNewsletterHttpReqResService extends ServerReqResHelper {
             map(({ responseMessage }) => {
                 return new SimpleMessageResWithErrorModel(responseMessage, false);
             }),
-            catchError(({ error }) => {
-                if (!error.message) {
-                    return of(new SimpleMessageResWithErrorModel(this._httpConst.BASIC_SERVER_ERR_MESSAGE, true));
-                }
-                return of(new SimpleMessageResWithErrorModel(error.message, true));
+            catchError(error => {
+                return of(new SimpleMessageResWithErrorModel(RxjsHelper.serverResponseError(error), true));
             }),
         );
     };

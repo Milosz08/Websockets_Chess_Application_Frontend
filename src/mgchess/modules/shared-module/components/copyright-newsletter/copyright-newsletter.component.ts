@@ -20,7 +20,9 @@ import { Component, HostListener, OnDestroy } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import * as moment from "moment";
 
-import { Subject, takeUntil } from "rxjs";
+import { delay, Subject, takeUntil } from "rxjs";
+import { RxjsHelper } from "../../../../rxjs-helpers/rxjs.helper";
+import { RxjsConstants } from "../../../../rxjs-helpers/rxjs.constants";
 
 import { NewsletterRequestModel } from "../../models/newsletter-request-response.model";
 import { AngularFormsHelper } from "../../../../angular-forms-helpers/angular-forms.helper";
@@ -81,7 +83,6 @@ export class CopyrightNewsletterComponent implements OnDestroy {
     };
 
     ngOnDestroy(): void {
-        this._ngUnsubscribe.next();
-        this._ngUnsubscribe.complete();
+        RxjsHelper.cleanupExecutor(this._ngUnsubscribe);
     };
 }
