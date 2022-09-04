@@ -20,6 +20,9 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { ReactiveFormsModule } from "@angular/forms";
 
+import { StoreModule } from "@ngrx/store";
+import { EffectsModule } from "@ngrx/effects";
+
 import { HomePageComponent } from "./pages/home-page/home-page.component";
 import { AboutPageComponent } from './pages/about-page/about-page.component';
 import { RankingsPageComponent } from "./pages/rankings-page/rankings-page.component";
@@ -33,6 +36,9 @@ import { UnsubscribeNewsletterPageComponent } from './pages/unsubscribe-newslett
 import { HeaderWithNavigationComponent } from "./components/header-with-navigation/header-with-navigation.component";
 import { MobileHeaderWithNavigationComponent } from './components/mobile-header-with-navigation/mobile-header-with-navigation.component';
 import { UnsubscribeNewsletterFormComponent } from './components/unsubscribe-newsletter-form/unsubscribe-newsletter-form.component';
+
+import { newsletterNgrxStore } from "./ngrx-store/newsletter-ngrx-store/newsletter.reducer";
+import { UnsubscribeNewsletterEffects } from "./ngrx-store/newsletter-ngrx-store/ngrx-effects/unsubscribe-newsletter.effects";
 
 import { SharedModuleModule } from "../shared-module/shared-module.module";
 import { StaticContentPageComponent } from "./static-content-page.component";
@@ -61,9 +67,14 @@ import { StaticContentPageRoutingModule } from "./static-content-page-routing.mo
     ],
     imports: [
         CommonModule,
-        StaticContentPageRoutingModule,
         SharedModuleModule,
         ReactiveFormsModule,
+        StaticContentPageRoutingModule,
+        // ngrx store
+        StoreModule.forFeature(newsletterNgrxStore.reducerName, newsletterNgrxStore.reducerFunc),
+        EffectsModule.forFeature([
+            UnsubscribeNewsletterEffects,
+        ]),
     ],
 })
 export class StaticContentPageModule {}
