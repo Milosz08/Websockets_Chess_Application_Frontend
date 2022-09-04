@@ -16,11 +16,27 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-.mgchess__safety-container__wrapper {
+.mgchess-flex-pull-up__container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.mgchess__flex-safety-container {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin: 30px 0;
+}
+
+.mgchess__flex-safety-container__wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: var(--safety-width-medium-devices);
+    max-width: var(--safety-width-medium-devices);
+    width: calc(100% - 30px);
     margin: 0 30px;
 }
 
@@ -110,14 +126,17 @@
 //----------------------------------------------------------------------------------------------------------------------
 
 @media only screen and (max-width: 790px) {
+    .mgchess__flex-safety-container__wrapper {
+        margin-top: 30px;
+    }
     .mgchess__discrete-modal-container {
         flex-direction: column-reverse;
     }
 }
 
 @media only screen and (max-width: 500px) {
-    .mgchess__safety-container__wrapper {
-        margin: 0 15px;
+    .mgchess__flex-safety-container__wrapper {
+        margin: 0 15px 0;
     }
     .mgchess__separator-with-text-inside {
         margin: 30px 0 0 0;

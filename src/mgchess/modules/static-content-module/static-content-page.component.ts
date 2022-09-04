@@ -23,6 +23,6 @@ import { Component } from "@angular/core";
 @Component({
     selector: "mgchess-static-content-page",
     templateUrl: "./static-content-page.component.html",
-    styleUrls: [],
+    host: { class: "mgchess-flex-pull-up__container" },
 })
 export class StaticContentPageComponent {}

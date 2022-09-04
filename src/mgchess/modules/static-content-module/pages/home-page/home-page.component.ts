@@ -28,6 +28,7 @@ import { SingleModuleType, SinglePageType } from "../../../../browser-meta-seria
     selector: "mgchess-home-page",
     templateUrl: "./home-page.component.html",
     styleUrls: [ "./home-page.component.scss" ],
+    host: { class: "mgchess__flex-safety-container" },
 })
 export class HomePageComponent extends BrowserMetaSerializatorLoader {
 

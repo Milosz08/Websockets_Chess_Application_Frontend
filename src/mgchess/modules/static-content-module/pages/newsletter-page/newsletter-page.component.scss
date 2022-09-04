@@ -16,14 +16,6 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-@import "src/global-styles/mixins/global-mixins";
-
-//----------------------------------------------------------------------------------------------------------------------
-
-:host {
-    @include mgchess_safety-area__mixin();
-}
-
 .unsubscribe-newsletter__section {
     flex-basis: 50%;
 }

@@ -27,7 +27,8 @@ import { SingleModuleType, SinglePageType } from "../../../../browser-meta-seria
 @Component({
     selector: "mgchess-privacy-policy-page",
     templateUrl: "./privacy-policy-page.component.html",
-    styleUrls: [ "./privacy-policy-page.component.scss" ]
+    styleUrls: [ "./privacy-policy-page.component.scss" ],
+    host: { class: "mgchess__flex-safety-container" },
 })
 export class PrivacyPolicyPageComponent extends BrowserMetaSerializatorLoader {
 

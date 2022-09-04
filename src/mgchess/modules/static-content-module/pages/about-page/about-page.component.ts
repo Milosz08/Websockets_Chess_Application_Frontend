@@ -27,7 +27,8 @@ import { SingleModuleType, SinglePageType } from "../../../../browser-meta-seria
 @Component({
     selector: "mgchess-about-page",
     templateUrl: "./about-page.component.html",
-    styleUrls: [ "./about-page.component.scss" ]
+    styleUrls: [ "./about-page.component.scss" ],
+    host: { class: "mgchess__flex-safety-container" },
 })
 export class AboutPageComponent extends BrowserMetaSerializatorLoader {
 

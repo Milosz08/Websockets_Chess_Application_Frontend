@@ -27,7 +27,8 @@ import { SingleModuleType, SinglePageType } from "../../../../browser-meta-seria
 @Component({
     selector: "mgchess-login-page",
     templateUrl: "./log-in-page.component.html",
-    styleUrls: [ "./log-in-page.component.scss" ]
+    styleUrls: [ "./log-in-page.component.scss" ],
+    host: { class: "mgchess__flex-safety-container" },
 })
 export class LogInPageComponent extends BrowserMetaSerializatorLoader {
 

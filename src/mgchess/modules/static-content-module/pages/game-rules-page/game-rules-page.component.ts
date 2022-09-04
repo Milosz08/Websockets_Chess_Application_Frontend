@@ -27,7 +27,8 @@ import { SingleModuleType, SinglePageType } from "../../../../browser-meta-seria
 @Component({
     selector: "mgchess-game-rules-page",
     templateUrl: "./game-rules-page.component.html",
-    styleUrls: [ "./game-rules-page.component.scss" ]
+    styleUrls: [ "./game-rules-page.component.scss" ],
+    host: { class: "mgchess__flex-safety-container" },
 })
 export class GameRulesPageComponent extends BrowserMetaSerializatorLoader {
 

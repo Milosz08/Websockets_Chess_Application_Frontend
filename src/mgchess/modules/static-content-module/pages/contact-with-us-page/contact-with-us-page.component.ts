@@ -27,7 +27,8 @@ import { SingleModuleType, SinglePageType } from "../../../../browser-meta-seria
 @Component({
     selector: "mgchess-contact-with-us-page",
     templateUrl: "./contact-with-us-page.component.html",
-    styleUrls: [ "./contact-with-us-page.component.scss" ]
+    styleUrls: [ "./contact-with-us-page.component.scss" ],
+    host: { class: "mgchess__flex-safety-container" },
 })
 export class ContactWithUsPageComponent extends BrowserMetaSerializatorLoader {
 

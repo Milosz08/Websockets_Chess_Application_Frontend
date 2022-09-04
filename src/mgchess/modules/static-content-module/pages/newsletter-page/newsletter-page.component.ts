@@ -27,7 +27,8 @@ import { SingleModuleType, SinglePageType } from "../../../../browser-meta-seria
 @Component({
     selector: "mgchess-unsubscribe-newsletter-page",
     templateUrl: "./newsletter-page.component.html",
-    styleUrls: [ "./newsletter-page.component.scss" ]
+    styleUrls: [ "./newsletter-page.component.scss" ],
+    host: { class: "mgchess__flex-safety-container" },
 })
 export class NewsletterPageComponent extends BrowserMetaSerializatorLoader {
 
