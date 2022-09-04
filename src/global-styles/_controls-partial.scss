@@ -73,7 +73,38 @@
 
 .mg-chess__form-standard-submit {
     @include mgchess_button__mixin(var(--standard-form-submit-background), var(--standard-form-submit-foreground));
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
+}
+
+.mg-chess__standard-button-light-background {
+    @include mgchess_button__mixin(var(--standard-form-submit-background), var(--standard-form-submit-foreground));
+}
+
+.mg-chess__button-suspense-loader {
+    display: block;
+    margin-left: 10px;
+    width: 18px;
+    height: 18px;
+}
+
+.mg-chess__suspense-loading__spinner {
+    width: 100%;
+    height: 100%;
+    border: .15em solid transparent;
+    border-top-color: var(--standard-form-submit-foreground);
+    border-left-color: var(--standard-form-submit-foreground);
+    border-radius: 50%;
+    animation: spinner-animation .75s ease-out infinite;
+    &.loading-spinner--content-loading {
+        width: 70px;
+        height: 70px;
+        border: .3em solid transparent;
+        border-top-color: var(--primary-foreground);
+        border-left-color: var(--primary-foreground);
+    }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
