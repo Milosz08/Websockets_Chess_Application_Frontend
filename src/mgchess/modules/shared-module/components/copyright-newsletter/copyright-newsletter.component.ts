@@ -38,9 +38,10 @@ import { AddToNewsletterHttpReqResService } from "../../services/add-to-newslett
 })
 export class CopyrightNewsletterComponent implements OnDestroy {
 
-    _serverResponse: SimpleMessageResWithErrorModel;
+    _serverResponse: SimpleMessageResWithErrorModel = new SimpleMessageResWithErrorModel("", false);
+    _suspenseActive: boolean = false;
 
-    readonly _formHelper: AngularFormsHelper;
+    readonly _formHelper: AngularFormsHelper = new AngularFormsHelper();
     readonly _newsletterForm: FormGroup;
 
     readonly _initialYear: number = 2022;
@@ -68,10 +69,17 @@ export class CopyrightNewsletterComponent implements OnDestroy {
     };
 
     handleSubmitNewsletterEmail(): void {
-        const request = this._formHelper.getAllFieldsAndCleanup<NewsletterRequestModel>();
+        this._suspenseActive = true;
+        const request = this._formHelper.extractFormFields<NewsletterRequestModel>(this._newsletterForm);
         this._httpService.addEmailToNewsletter(request)
-            .pipe(takeUntil(this._ngUnsubscribe))
-            .subscribe(response => this._serverResponse = response);
+            .pipe(
+                takeUntil(this._ngUnsubscribe),
+                delay(RxjsConstants.DEF_DELAY_MILIS)
+            )
+            .subscribe(response => {
+                this._suspenseActive = false;
+                this._serverResponse = response;
+            });
     };
 
     ngOnDestroy(): void {

@@ -64,6 +64,9 @@
                 class="newsletter__submit-form-button"
             >
                 Subscribe
+                <span *ngIf="_suspenseActive" class="mg-chess__button-suspense-loader">
+                    <div class="mg-chess__suspense-loading__spinner newsletter__subscribe-spinner"></div>
+                </span>
             </button>
         </form>
         <p class="newsletter__aside-form-text-paragraph">

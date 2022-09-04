@@ -83,6 +83,11 @@
     }
 }
 
+.newsletter__subscribe-spinner {
+    border-top-color: var(--newsletter-submit-button-foreground);
+    border-left-color: var(--newsletter-submit-button-foreground);
+}
+
 //----------------------------------------------------------------------------------------------------------------------
 
 @media only screen and (max-width: 790px) {
