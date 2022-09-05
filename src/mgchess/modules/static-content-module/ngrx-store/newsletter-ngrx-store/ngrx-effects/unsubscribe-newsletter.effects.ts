@@ -49,7 +49,6 @@ export class UnsubscribeNewsletterEffects {
     attemptToUnsubscribeNewsletter$ = createEffect(() => {
         return this._actions$.pipe(
             ofType(NgrxAction_NWL.__attemptToUnsubscribeNewsletter),
-            delay(RxjsConstants.DEF_DELAY_MILIS),
             mergeMap(({ emailReq }) => {
                 return this._httpService.attemptToUnsubscribeNewsletter(emailReq).pipe(
                     map(response => {
