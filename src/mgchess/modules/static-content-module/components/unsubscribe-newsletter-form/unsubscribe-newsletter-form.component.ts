@@ -29,7 +29,6 @@ import { ServerReqResHelper } from "../../../../http-request-helpers/server-req-
 import { NewsletterReducerType } from "../../../../ngrx-helpers/ngrx-store.types";
 import * as NgrxAction_NWL from "../../ngrx-store/newsletter-ngrx-store/newsletter.actions";
 import * as NgrxSelector_NWL from "../../ngrx-store/newsletter-ngrx-store/newsletter.selectors";
-import { SuspenseLoader } from "../../ngrx-store/newsletter-ngrx-store/ngrx-models/suspense-loader-res.model";
 import { EmailAndTokenResModel } from "../../ngrx-store/newsletter-ngrx-store/ngrx-models/email-and-token-res.model";
 
 import {
@@ -95,13 +94,11 @@ export class UnsubscribeNewsletterFormComponent implements OnInit, OnDestroy {
 
     handleAttemptToUnusubscribe(): void {
         const emailReq = AngularFormsHelper.extractFormFields<UnsubscribeNewsletterEmailReq>(this._unsubscribeEmailForm);
-        this._store.dispatch(NgrxAction_NWL.__activeSuspense({ for: SuspenseLoader.ATTEMPT_UNSUBSCRIBE }));
         this._store.dispatch(NgrxAction_NWL.__attemptToUnsubscribeNewsletter({ emailReq }));
     };
 
     handleSendTokenAndUnsubscribe(): void {
         const tokenReq = AngularFormsHelper.extractFormFields<UnsubscribeNewsletterViaOtaReq>(this._unsubscribeTokenForm);
-        this._store.dispatch(NgrxAction_NWL.__activeSuspense({ for: SuspenseLoader.UNSUBSCRIBE_VIA_OTA }));
         this._store.dispatch(NgrxAction_NWL.__unsubscribeNewsletter({ tokenReq }));
     };
 }

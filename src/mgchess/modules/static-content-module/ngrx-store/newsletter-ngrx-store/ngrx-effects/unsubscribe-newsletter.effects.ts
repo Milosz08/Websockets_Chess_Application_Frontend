@@ -28,6 +28,7 @@ import { newsletterNgrxStore } from "../newsletter.reducer";
 import { NewsletterReqResService } from "../../../services/newsletter-req-res.service";
 
 import * as NgrxAction_NWL from "../newsletter.actions";
+import { SuspenseLoader } from "../ngrx-models/suspense-loader-res.model";
 import { NewsletterReducerType } from "../../../../../ngrx-helpers/ngrx-store.types";
 
 import {
@@ -49,6 +50,9 @@ export class UnsubscribeNewsletterEffects {
     attemptToUnsubscribeNewsletter$ = createEffect(() => {
         return this._actions$.pipe(
             ofType(NgrxAction_NWL.__attemptToUnsubscribeNewsletter),
+            tap(() => {
+                this._store.dispatch(NgrxAction_NWL.__activeSuspense({ for: SuspenseLoader.ATTEMPT_UNSUBSCRIBE }));
+            }),
             mergeMap(({ emailReq }) => {
                 return this._httpService.attemptToUnsubscribeNewsletter(emailReq).pipe(
                     map(response => {
@@ -70,6 +74,9 @@ export class UnsubscribeNewsletterEffects {
     unsubscribeNewsletter$ = createEffect(() => {
         return this._actions$.pipe(
             ofType(NgrxAction_NWL.__unsubscribeNewsletter),
+            tap(() => {
+                this._store.dispatch(NgrxAction_NWL.__activeSuspense({ for: SuspenseLoader.UNSUBSCRIBE_VIA_OTA }));
+            }),
             delay(RxjsConstants.DEF_DELAY_MILIS),
             withLatestFrom(this._store.select(newsletterNgrxStore.reducerName)),
             mergeMap(([ action, store ]) => {
@@ -94,6 +101,9 @@ export class UnsubscribeNewsletterEffects {
     unsubscribeNewsletterViaJWT$ = createEffect(() => {
         return this._actions$.pipe(
             ofType(NgrxAction_NWL.__unsubscribeNewsletterViaJwt),
+            tap(() => {
+                this._store.dispatch(NgrxAction_NWL.__activeSuspense({ for: SuspenseLoader.UNSUBSCRIBE_VIA_JWT }));
+            }),
             delay(RxjsConstants.DEF_DELAY_MILIS),
             mergeMap(({ bearerToken }) => {
                 const tokenReq = new UnsubscribeNewsletterViaJwtReq(bearerToken);
