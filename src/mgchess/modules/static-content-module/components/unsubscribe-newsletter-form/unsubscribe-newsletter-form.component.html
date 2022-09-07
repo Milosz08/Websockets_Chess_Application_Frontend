@@ -69,8 +69,8 @@
         >
             Send activation link
             <span *ngIf="(_suspenseLoadingEmail$ | async)" class="mg-chess__button-suspense-loader">
-            <div class="mg-chess__suspense-loading__spinner"></div>
-        </span>
+                <div class="mg-chess__suspense-loading__spinner"></div>
+            </span>
         </button>
     </form>
     <ng-container *ngIf="(_isTokenFieldVisible$ | async)">
@@ -119,8 +119,8 @@
             >
                 Unsubscribe newsletter
                 <span *ngIf="(_suspenseLoadingToken$ | async)" class="mg-chess__button-suspense-loader">
-                <div class="mg-chess__suspense-loading__spinner"></div>
-            </span>
+                    <div class="mg-chess__suspense-loading__spinner"></div>
+                </span>
             </button>
         </form>
     </ng-container>

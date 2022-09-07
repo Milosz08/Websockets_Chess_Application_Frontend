@@ -47,16 +47,16 @@ export class NewsletterReqResService {
     };
 
     unsubscribeNewsletterViaOta(request: UnsubscribeNewsletterViaOtaReq): Observable<SimpleMessageResponseModel> {
-        return this._http.post<SimpleMessageResponseModel>(
+        return this._http.delete<SimpleMessageResponseModel>(
             this._endpoint.NEWSLETTER_UNSUBSCRIBE_VIA_OTA,
-            request,
+            { body: request },
         );
     };
 
     unsubscribeNewsletterViaJwt(request: UnsubscribeNewsletterViaJwtReq): Observable<SimpleMessageResponseModel> {
-        return this._http.post<SimpleMessageResponseModel>(
+        return this._http.delete<SimpleMessageResponseModel>(
             this._endpoint.NEWSLETTER_UNSUBSCRIBE_VIA_JWT,
-            request,
+            { body: request },
         );
     };
 }

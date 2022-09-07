@@ -39,6 +39,9 @@ export class RxjsHelper {
     };
 
     static serverResponseError(error: any): string {
+        if (error.error) {
+            return !error.error.errors ? HttpDefaultConstants.BASIC_SERVER_ERR_MESSAGE : error.error.errors[0];
+        }
         return !error.errors ? HttpDefaultConstants.BASIC_SERVER_ERR_MESSAGE : error.errors[0];
     };
 }
