@@ -21,17 +21,21 @@ import { CommonModule } from "@angular/common";
 
 import { LogInPageComponent } from "./pages/log-in-page/log-in-page.component";
 import { SingUpPageComponent } from "./pages/sign-up-page/sing-up-page.component";
-import { AuthRegisterPageComponent } from "./auth-register-page.component";
+import { AuthHorizontalLogoComponent } from './components/auth-horizontal-logo/auth-horizontal-logo.component';
 
 import { SharedModuleModule } from "../shared-module/shared-module.module";
+import { AuthRegisterPageComponent } from "./auth-register-page.component";
 import { AuthRegisterPageRoutingModule } from "./auth-register-page-routing.module";
 
 //----------------------------------------------------------------------------------------------------------------------
 
 @NgModule({
     declarations: [
+        // components
         LogInPageComponent,
         SingUpPageComponent,
+        AuthHorizontalLogoComponent,
+        // others
         AuthRegisterPageComponent,
     ],
     imports: [

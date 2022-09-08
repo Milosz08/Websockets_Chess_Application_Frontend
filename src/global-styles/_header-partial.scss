@@ -71,3 +71,27 @@
     background-color: var(--sign-up-anchor-link-background);
     border-radius: var(--standard-button-border-radius);
 }
+
+.mg-chess__application-logo {
+    display: flex;
+    align-items: center;
+    .application-logo__text-content {
+        font-size: 1.5rem;
+        text-transform: uppercase;
+        width: 100px;
+        display: flex;
+        color: var(--logo-aside-text-foreground);
+        font-family: "Noto Serif", serif;
+        &.text-content--right {
+            justify-content: flex-start;
+        }
+        &.text-content--left {
+            justify-content: flex-end;
+        }
+    }
+    .application-logo__image {
+        width: 70px;
+        height: 70px;
+        margin: 0 20px;
+    }
+}

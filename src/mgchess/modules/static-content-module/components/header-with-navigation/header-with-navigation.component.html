@@ -35,7 +35,17 @@
             </ng-container>
         </div>
     </nav>
-    <mgchess-horizontal-title></mgchess-horizontal-title>
+    <a
+        routerLink="/"
+        class="mg-chess__application-logo logo--login-form"
+    >
+        <span class="application-logo__text-content text-content--left text-content--login-form">chess</span>
+        <img
+            src="assets/gfx/images/main-light-logo.svg" alt=""
+            class="application-logo__image"
+        />
+        <span class="application-logo__text-content text-content--right text-content--login-form">online</span>
+    </a>
     <nav class="header-with-navigation__aside-content-container aside-content-container--to-right">
         <div class="header-navigation__links-container">
             <ng-container *ngFor="let authLink of _authNavigationList; index as i">
