@@ -33,8 +33,8 @@ import { SingleModuleType, SinglePageType } from "../../../../browser-meta-seria
 export class SingUpPageComponent extends BrowserMetaSerializatorLoader {
 
     constructor(
+        private _metaService: Meta,
         private _titleService: Title,
-        private _metaService: Meta
     ) {
         super(_titleService, _metaService, SingleModuleType.AUTH_REGISTER_MODULE, SinglePageType.SIGN_UP_PAGE);
     };

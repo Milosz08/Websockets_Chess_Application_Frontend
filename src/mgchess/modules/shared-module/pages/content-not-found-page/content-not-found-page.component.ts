@@ -32,8 +32,8 @@ import { SingleModuleType, SinglePageType } from "../../../../browser-meta-seria
 export class ContentNotFoundPageComponent extends BrowserMetaSerializatorLoader {
 
     constructor(
+        private _metaService: Meta,
         private _titleService: Title,
-        private _metaService: Meta
     ) {
         super(_titleService, _metaService, SingleModuleType.SHARED_MODULE, SinglePageType.CONTENT_NOT_FOUND_PAGE);
     };

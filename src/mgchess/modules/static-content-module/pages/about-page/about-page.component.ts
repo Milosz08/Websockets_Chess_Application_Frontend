@@ -33,8 +33,8 @@ import { SingleModuleType, SinglePageType } from "../../../../browser-meta-seria
 export class AboutPageComponent extends BrowserMetaSerializatorLoader {
 
     constructor(
+        private _metaService: Meta,
         private _titleService: Title,
-        private _metaService: Meta
     ) {
         super(_titleService, _metaService, SingleModuleType.STATIC_CONTENT_MODULE, SinglePageType.ABOUT_PAGE);
     };

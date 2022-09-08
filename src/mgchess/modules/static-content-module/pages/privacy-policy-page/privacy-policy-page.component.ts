@@ -33,8 +33,8 @@ import { SingleModuleType, SinglePageType } from "../../../../browser-meta-seria
 export class PrivacyPolicyPageComponent extends BrowserMetaSerializatorLoader {
 
     constructor(
+        private _metaService: Meta,
         private _titleService: Title,
-        private _metaService: Meta
     ) {
         super(_titleService, _metaService, SingleModuleType.STATIC_CONTENT_MODULE, SinglePageType.PRIVACY_POLICY_PAGE);
     };
