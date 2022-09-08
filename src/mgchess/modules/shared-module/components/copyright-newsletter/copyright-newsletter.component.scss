@@ -49,14 +49,12 @@
 }
 
 .newsletter-form__header {
+    font-size: 1.2rem;
     color: var(--footer-copy-newsletter-foreground);
-    &::after {
-        display: none;
-    }
 }
 
 .newsletter-form__container {
-    margin: 15px 0;
+    margin: 10px 0;
     display: flex;
     .newsletter__input-form-element {
         @include mgchess_input_mixin(var(--footer-copy-newsletter-background), var(--footer-copy-newsletter-foreground));

@@ -20,26 +20,6 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 
-.mgchess__header--light-background,
-.mgchess__header--dark-background {
-    position: relative;
-    font-size: 1.2rem;
-    color: var(--standard-header-light-background-text);
-    &::after {
-        position: absolute;
-        content: "";
-        bottom: -8px;
-        left: 0;
-        width: 40px;
-        height: 2px;
-        background-color: var(--standard-header-background-after);
-    }
-}
-
-.mgchess__header--dark-background {
-    color: var(--standard-header-dark-background-text);
-}
-
 .mgchess__form-data-paragraph {
     margin: 5px 0 0 10px;
     width: 300px;
