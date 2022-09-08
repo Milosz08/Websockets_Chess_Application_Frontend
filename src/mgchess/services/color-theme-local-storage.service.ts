@@ -2,7 +2,7 @@
  * Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
  *
  * File name: color-theme-local-storage.service.ts
- * Last modified: 25/08/2022, 00:45
+ * Last modified: 25/08/2022, 21:54
  * Project name: chess-app-frontend
  *
  * Licensed under the MIT license; you may not use this file except in compliance with the License.
@@ -18,7 +18,7 @@
 
 import { Injectable } from "@angular/core";
 
-import { BrowserThemeDetector } from "../../../browster-utils/browser-theme.detector";
+import { BrowserThemeDetector } from "../browster-utils/browser-theme.detector";
 
 //----------------------------------------------------------------------------------------------------------------------
 

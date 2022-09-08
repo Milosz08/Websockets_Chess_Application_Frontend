@@ -16,22 +16,16 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-import { enableProdMode } from '@angular/core';
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { enableProdMode } from "@angular/core";
+import { platformBrowserDynamic } from "@angular/platform-browser-dynamic";
 
-import { MgchessModule } from './mgchess/mgchess.module';
-import { environment } from './environments/environment';
-
-import { BrowserThemeDetector } from "./mgchess/browster-utils/browser-theme.detector";
-
-//----------------------------------------------------------------------------------------------------------------------
-
-BrowserThemeDetector.detectBrowserThemeAndChangeFavicon();
+import { MgchessModule } from "./mgchess/mgchess.module";
+import { environment } from "./environments/environment";
 
 //----------------------------------------------------------------------------------------------------------------------
 
 if (environment.production) {
-  enableProdMode();
+    enableProdMode();
 }
 
 platformBrowserDynamic().bootstrapModule(MgchessModule).catch(err => console.error(err));

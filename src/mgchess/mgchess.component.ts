@@ -16,13 +16,27 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
+
+import { BrowserThemeDetector } from "./browster-utils/browser-theme.detector";
+import { ColorThemeLocalStorageService } from "./services/color-theme-local-storage.service";
 
 //----------------------------------------------------------------------------------------------------------------------
 
 @Component({
     selector: "mgchess-root",
     templateUrl: "./mgchess.component.html",
-    styleUrls: []
+    providers: [ ColorThemeLocalStorageService ],
 })
-export class MgchessComponent {}
+export class MgchessComponent implements OnInit {
+
+    constructor(
+        private _service: ColorThemeLocalStorageService,
+    ) {
+    };
+
+    ngOnInit(): void {
+        BrowserThemeDetector.detectBrowserThemeAndChangeFavicon();
+        this._service.checkSavedColorThemeAndReturn();
+    };
+}

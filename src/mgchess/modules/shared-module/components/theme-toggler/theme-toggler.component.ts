@@ -18,7 +18,7 @@
 
 import { Component, OnInit } from "@angular/core";
 
-import { ColorThemeLocalStorageService } from "../../services/color-theme-local-storage.service";
+import { ColorThemeLocalStorageService } from "../../../../services/color-theme-local-storage.service";
 
 //----------------------------------------------------------------------------------------------------------------------
 
