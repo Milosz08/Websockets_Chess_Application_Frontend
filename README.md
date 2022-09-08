@@ -1,7 +1,7 @@
 # Websockets chess application (Frontend)
-[![Generic badge](https://img.shields.io/badge/Made%20with-Angular%20Framework%2014.1.0-1abc9c.svg)](https://www.java.com/en/)&nbsp;&nbsp;
-[![Generic badge](https://img.shields.io/badge/Build%20with-Angular%20CLI-green.svg)](https://maven.apache.org/)&nbsp;&nbsp;
-[![Generic badge](https://img.shields.io/badge/Packaging-Webpack%20with%20babel%20-brown.svg)](https://maven.apache.org/)&nbsp;&nbsp;
+[![Generic badge](https://img.shields.io/badge/Made%20with-Angular%20Framework%2014.1.0-1abc9c.svg)](https://angular.io/)&nbsp;&nbsp;
+[![Generic badge](https://img.shields.io/badge/Build%20with-Angular%20CLI-green.svg)](https://angular.io/cli)&nbsp;&nbsp;
+[![Generic badge](https://img.shields.io/badge/Packaging-Webpack%20with%20babel%20-brown.svg)](https://webpack.js.org/)&nbsp;&nbsp;
 <br><br>
 The client layer of an application that allows chess and checkers to be played. Written using the Angular Framework and reactive 
 programming paradigms (RXJS). The NGRX library is responsible for the application state. The application allows you to create an account,
