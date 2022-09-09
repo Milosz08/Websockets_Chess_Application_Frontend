@@ -59,6 +59,16 @@
                 "pageId": "SIGN_UP_PAGE",
                 "title": "Sign up",
                 "description": "To use the full capabilities of the app create a free account."
+            },
+            {
+                "pageId": "FORGOT_PASSWORD_PAGE",
+                "title": "Forgot Password",
+                "description": "In this page you have the opportunity to restore forgotten account password."
+            },
+            {
+                "pageId": "SUCCESSFUL_LOGIN_PAGE",
+                "title": "Welcome",
+                "description": "Successfull login page. You can redirect to main application page."
             }
         ],
         "dynamicAppModule": [

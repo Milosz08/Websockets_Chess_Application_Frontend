@@ -23,6 +23,8 @@ import { AuthRegisterPageComponent } from "./auth-register-page.component";
 
 import { LogInPageComponent } from "./pages/log-in-page/log-in-page.component";
 import { SingUpPageComponent } from "./pages/sign-up-page/sing-up-page.component";
+import { ForgotPasswordPageComponent } from "./pages/forgot-password-page/forgot-password-page.component";
+import { SuccessfulLoginPageComponent } from "./pages/successful-login-page/successful-login-page.component";
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -31,6 +33,8 @@ const routes: Routes = [
         { path: "", redirectTo: "login", pathMatch: "full" },
         { path: "login", component: LogInPageComponent },
         { path: "signup", component: SingUpPageComponent },
+        { path: "forgot-password", component: ForgotPasswordPageComponent },
+        { path: "successful-login/:token", component: SuccessfulLoginPageComponent },
     ]},
 ];
 
