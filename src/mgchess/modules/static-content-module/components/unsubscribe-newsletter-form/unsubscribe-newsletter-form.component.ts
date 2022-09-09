@@ -25,6 +25,7 @@ import { RxjsHelper } from "../../../../rxjs-helpers/rxjs.helper";
 
 import { AngularFormsHelper } from "../../../../angular-forms-helpers/angular-forms.helper";
 import { ServerReqResHelper } from "../../../../http-request-helpers/server-req-res.helper";
+import { ValidatorPatternConstants } from "../../../../validator-helpers/validator-pattern.constants";
 
 import { NewsletterReducerType } from "../../../../ngrx-helpers/ngrx-store.types";
 import * as NgrxAction_NWL from "../../ngrx-store/newsletter-ngrx-store/newsletter.actions";
@@ -42,6 +43,7 @@ import {
     templateUrl: "./unsubscribe-newsletter-form.component.html",
     styleUrls: [ "./unsubscribe-newsletter-form.component.scss" ],
     host: { class: "mgchess__flex-safety-container" },
+    providers: [ ValidatorPatternConstants ],
 })
 export class UnsubscribeNewsletterFormComponent implements OnInit, OnDestroy {
 
@@ -61,13 +63,14 @@ export class UnsubscribeNewsletterFormComponent implements OnInit, OnDestroy {
     private _ngUnsubscribe: Subject<void> = new Subject<void>();
 
     constructor(
+        private _regex: ValidatorPatternConstants,
         private _store: Store<NewsletterReducerType>,
     ) {
         this._unsubscribeEmailForm = new FormGroup({
             emailAddress: new FormControl("", [ Validators.required, Validators.email, Validators.maxLength(100) ]),
         });
         this._unsubscribeTokenForm = new FormGroup({
-            token: new FormControl("", [ Validators.required, Validators.pattern("^[a-zA-Z0-9]{10}$") ]),
+            token: new FormControl("", [ Validators.required, Validators.pattern(_regex.OTA_TOKEN_REGEX) ]),
         });
     };
 
