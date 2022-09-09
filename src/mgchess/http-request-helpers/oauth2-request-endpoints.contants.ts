@@ -1,8 +1,8 @@
 /*
  * Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
  *
- * File name: auth-horizontal-logo.component.ts
- * Last modified: 08/09/2022, 15:59
+ * File name: oauth2-request-endpoints.contants.ts
+ * Last modified: 08/09/2022, 21:46
  * Project name: chess-app-frontend
  *
  * Licensed under the MIT license; you may not use this file except in compliance with the License.
@@ -16,23 +16,16 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-import { Component } from "@angular/core";
-
-import { BrowserThemeDetector } from "../../../../browster-utils/browser-theme.detector";
+import { Injectable } from "@angular/core";
+import { environment } from "../../environments/environment";
 
 //----------------------------------------------------------------------------------------------------------------------
 
-@Component({
-    selector: "mgchess-auth-horizontal-logo",
-    templateUrl: "./auth-horizontal-logo.component.html",
-    styleUrls: [ "./auth-horizontal-logo.component.scss" ],
-})
-export class AuthHorizontalLogoComponent {
+@Injectable()
+export class Oauth2RequestEndpointsContants {
+    private readonly BASIC_OAUTH2_ENDPOINT = environment.httpBackendURI + "oauth2/authorization/";
+    private readonly REDIRECT_URI = `?redirect_uri=${environment.httpFrontEndURI}auth/login`;
 
-    private readonly LIGHT_LOGO = "assets/gfx/images/main-light-logo.svg" as const;
-    private readonly DARK_LOGO = "assets/gfx/images/main-dark-logo.svg" as const;
-
-    selectApplicationLogoBasedCurrentTheme(): string {
-        return BrowserThemeDetector.isDarkThemeActive() ? this.DARK_LOGO : this.LIGHT_LOGO;
-    };
+    readonly OAUTH_GOOGLE_URI = this.BASIC_OAUTH2_ENDPOINT + "google" + this.REDIRECT_URI;
+    readonly OAUTH_FACEBOOK_URI = this.BASIC_OAUTH2_ENDPOINT + "facebook" + this.REDIRECT_URI;
 }

@@ -1,8 +1,8 @@
 /*
  * Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
  *
- * File name: environment.prod.ts
- * Last modified: 21/08/2022, 18:31
+ * File name: last-logins.component.ts
+ * Last modified: 08/09/2022, 16:48
  * Project name: chess-app-frontend
  *
  * Licensed under the MIT license; you may not use this file except in compliance with the License.
@@ -16,8 +16,18 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-export const environment = {
-    production: true,
-    httpBackendURI: "https://springboot.miloszgilga.pl/chess-online-backend/",
-    httpFrontEndURI: "https://chess.miloszgilga.pl/",
-};
+import { Component } from "@angular/core";
+
+//----------------------------------------------------------------------------------------------------------------------
+
+@Component({
+    selector: "mgchess-last-logins",
+    templateUrl: "./last-logins.component.html",
+    styleUrls: [ "./last-logins.component.scss" ]
+})
+export class LastLoginsComponent {
+
+    handleRemoveAllRememberAccounts(): void {
+        // TODO: remove all accounts from local storage
+    };
+}

@@ -15,3 +15,115 @@
  * THE ABOVE COPYRIGHT NOTICE AND THIS PERMISSION NOTICE SHALL BE INCLUDED IN ALL
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
+
+.login-with-last-logins__container {
+    display: flex;
+    max-width: var(--safety-width-medium-devices);
+    width: calc(100% - 60px);
+    background-color: inherit;
+    .login-form__container,
+    .last-logins__container {
+        padding: 20px 30px;
+        border-top-right-radius: var(--standard-modal-border-radius);
+        border-bottom-right-radius: var(--standard-modal-border-radius);
+        border: 1px solid var(--auth-container-background-with-border);
+    }
+    .last-logins__container {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        border-radius: var(--standard-modal-border-radius) 0 0 var(--standard-modal-border-radius);
+    }
+    .login-form__container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex-basis: 450px;
+        font-weight: var(--standard-font-weight);
+        color: var(--auth-login-form-foreground);
+        background-color: var(--auth-container-background-with-border);
+    }
+}
+
+.login-form-header {
+    color: var(--auth-login-form-foreground);
+    font-weight: var(--standard-font-weight);
+    z-index: 1;
+    &::before {
+        z-index: -1;
+        background-color: var(--auth-login-form-header-decorator-background);
+    }
+}
+
+.login-form__form-container {
+    margin-top: 10px;
+    width: 100%;
+}
+
+.social-redirect-oauth2__anchor-link {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 7px 20px 8px;
+    border-radius: var(--standard-button-border-radius);
+    .oauth2-link__image-content {
+        width: 25px;
+        height: 25px;
+        margin-right: 15px;
+    }
+    &.oauth2-link--signin-via-google {
+        margin-bottom: 8px;
+        color: var(--deep-black);
+        background-color: var(--clean-white);
+    }
+    &.oauth2-link--signin-via-facebook {
+        margin-top: 8px;
+        color: var(--clean-white);
+        background-color: var(--oauth2-social-facebook-background);
+    }
+}
+
+.additional-auth-links__container {
+    display: flex;
+    align-items: center;
+    margin: 30px 0 20px;
+    color: var(--auth-login-form-foreground);
+    .anchor--auth-links {
+        font-size: .9rem;
+    }
+}
+
+.logo--login-form {
+    margin-bottom: 30px;
+    .image--login-form {
+        margin: 0;
+    }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+@media only screen and (max-width: 790px) {
+    .login-with-last-logins__container {
+        flex-direction: column-reverse;
+        .login-form__container {
+            flex-basis: auto;
+            border-radius: var(--standard-modal-border-radius) var(--standard-modal-border-radius) 0 0;
+        }
+        .last-logins__container {
+            border-radius: 0 0 var(--standard-modal-border-radius) var(--standard-modal-border-radius);
+        }
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .login-with-last-logins__container {
+        flex-direction: column-reverse;
+        width: 100%;
+        .login-form__container,
+        .last-logins__container {
+            border: 0;
+            border-radius: 0;
+            margin: 0;
+        }
+    }
+}

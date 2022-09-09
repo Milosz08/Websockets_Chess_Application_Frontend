@@ -18,5 +18,6 @@
 
 export const environment = {
     production: false,
-    httpURI: "http://127.0.0.1:7575/",
+    httpBackendURI: "http://127.0.0.1:7575/",
+    httpFrontEndURI: "https://127.0.0.1:4200/",
 };

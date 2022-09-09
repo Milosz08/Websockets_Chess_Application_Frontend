@@ -18,6 +18,7 @@
 
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
+import { ReactiveFormsModule } from "@angular/forms";
 
 import { LogInPageComponent } from "./pages/log-in-page/log-in-page.component";
 import { SingUpPageComponent } from "./pages/sign-up-page/sing-up-page.component";
@@ -35,7 +36,7 @@ import { AuthRegisterPageRoutingModule } from "./auth-register-page-routing.modu
 
 @NgModule({
     declarations: [
-        // components
+        // pages
         LogInPageComponent,
         SingUpPageComponent,
         ForgotPasswordPageComponent,
@@ -49,6 +50,7 @@ import { AuthRegisterPageRoutingModule } from "./auth-register-page-routing.modu
     imports: [
         CommonModule,
         SharedModuleModule,
+        ReactiveFormsModule,
         AuthRegisterPageRoutingModule,
     ],
 })

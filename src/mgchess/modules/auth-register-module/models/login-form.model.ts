@@ -1,8 +1,8 @@
 /*
  * Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
  *
- * File name: environment.prod.ts
- * Last modified: 21/08/2022, 18:31
+ * File name: login-form.model.ts
+ * Last modified: 09/09/2022, 04:04
  * Project name: chess-app-frontend
  *
  * Licensed under the MIT license; you may not use this file except in compliance with the License.
@@ -16,8 +16,14 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-export const environment = {
-    production: true,
-    httpBackendURI: "https://springboot.miloszgilga.pl/chess-online-backend/",
-    httpFrontEndURI: "https://chess.miloszgilga.pl/",
-};
+export class LoginFormModel {
+    usernameEmail: string;
+    password: string
+    rememberAccount: boolean;
+
+    constructor(usernameEmail: string, password: string, rememberAccount: boolean) {
+        this.usernameEmail = usernameEmail;
+        this.password = password;
+        this.rememberAccount = rememberAccount;
+    };
+}

@@ -19,6 +19,8 @@
 import { Component } from "@angular/core";
 import { Meta, Title } from "@angular/platform-browser";
 
+import { BrowserThemeDetector } from "../../../../browster-utils/browser-theme.detector";
+import { Oauth2RequestEndpointsContants } from "../../../../http-request-helpers/oauth2-request-endpoints.contants";
 import { BrowserMetaSerializatorLoader } from "../../../../browser-meta-serialization/browser-meta-serializator.loader";
 import { SingleModuleType, SinglePageType } from "../../../../browser-meta-serialization/browser-meta-serializator.types";
 
@@ -28,14 +30,20 @@ import { SingleModuleType, SinglePageType } from "../../../../browser-meta-seria
     selector: "mgchess-login-page",
     templateUrl: "./log-in-page.component.html",
     styleUrls: [ "./log-in-page.component.scss" ],
-    host: { class: "mgchess__flex-safety-container" },
+    host: { class: "mg-chess__flex-safety-container remove-margin__small-devices" },
+    providers: [ Oauth2RequestEndpointsContants ],
 })
 export class LogInPageComponent extends BrowserMetaSerializatorLoader {
 
     constructor(
         private _metaService: Meta,
         private _titleService: Title,
+        public _oauth2Constants: Oauth2RequestEndpointsContants,
     ) {
         super(_titleService, _metaService, SingleModuleType.AUTH_REGISTER_MODULE, SinglePageType.LOG_IN_PAGE);
+    };
+
+    selectApplicationLogoBasedCurrentTheme(): string {
+        return BrowserThemeDetector.getLogoSrcBasedCurrentTheme();
     };
 }
