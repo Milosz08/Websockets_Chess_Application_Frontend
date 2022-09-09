@@ -1,7 +1,7 @@
 /*!
  * Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
  *
- * File name: animations-partial.scss
+ * File name: _animations-partial.scss
  * Last modified: 04/09/2022, 21:56
  * Project name: chess-app-frontend
  *
@@ -17,10 +17,6 @@
  */
 
 @keyframes spinner-animation {
-    from {
-        transform: rotate(0turn);
-    }
-    to {
-        transform: rotate(1turn);
-    }
+    from { transform: rotate(0turn); }
+    to { transform: rotate(1turn); }
 }

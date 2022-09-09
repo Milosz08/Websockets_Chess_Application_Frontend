@@ -16,81 +16,197 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-@import "src/global-styles/mixins/controls-mixins";
-
-//----------------------------------------------------------------------------------------------------------------------
-
-.mgchess__form-data-paragraph {
-    margin: 5px 0 0 10px;
-    width: 300px;
-    &.form-data-paragraph--error {
-        color: var(--form-data-paragraph-error-foreground);
-    }
-    &.form-data-paragraph--error-dark-background {
-        color: var(--form-data-paragraph-error-dark-foreground);
-    }
-    &.form-data-paragraph--info {
-        color: var(--form-data-paragraph-info-foreground);
-    }
-    &.form-data-paragraph--info-dark-background {
-        color: var(--form-data-paragraph-info-dark-foreground);
-    }
-}
-
-.mgchess__form-label__container {
+.mg-chess__standard-form-label__container {
     display: flex;
     flex-direction: column;
     margin-bottom: 10px;
-    .mgchess__form-label-text {
+    width: 100%;
+    position: relative;
+    .mgchess__standard-form-label__text-primary-color {
         display: block;
         margin: 0 0 5px 10px;
+        color: var(--primary-form-text-color);
+        &.text--secondary-color {
+            color: var(--secondary-form-text-and-border-color);
+        }
     }
-    .mg-chess__form-standard-input {
-        @include mgchess_input_mixin(transparent, var(--standard-form-input-color));
-        max-width: 350px;
+    .mg-chess__standard-form-input-primary-color {
+        border: 1px solid var(--primary-form-input-border-color);
+        background-color: transparent;
+        padding: var(--standard-controls-padding);
+        border-radius: var(--standard-button-border-radius);
+        &.input--secondary-color {
+            border-color: var(--secondary-form-text-and-border-color);
+            &::placeholder {
+                color: var(--secondary-form-text-and-border-color);
+            }
+        }
+        &::placeholder {
+            color: var(--primary-form-text-color);
+        }
+    }
+    .mg-chess__password-button {
+        position: absolute;
+        right: 8px;
+        top: 3px;
+        color: var(--primary-form-text-color);
+        span {
+            padding: 5px;
+            display: block;
+            height: 100%;
+        }
+        &.text--secondary-color {
+            color: var(--secondary-form-text-and-border-color);
+        }
+    }
+    &.form-label--remove-bottom-margin {
+        margin-bottom: 0;
     }
 }
 
-.mg-chess__form-standard-submit {
-    @include mgchess_button__mixin(var(--standard-form-submit-background), var(--standard-form-submit-foreground));
+.mg-chess__form-data-paragraph {
+    margin: 5px 0 0 10px;
+    &.paragraph--error {
+        color: var(--form-data-paragraph-error-primary-color);
+    }
+    &.paragraph--error-theme-change {
+        color: var(--form-data-paragraph-error-secondary-color);
+    }
+    &.paragraph--error-reverse-theme-change {
+        color: var(--form-data-paragraph-error-reverse-color);
+    }
+    &.paragraph--info {
+        color: var(--form-data-paragraph-info-primary-color);
+    }
+    &.paragraph--info-theme-change {
+        color: var(--form-data-paragraph-info-secondary-color);
+    }
+    &.paragraph--info-reverse-theme-change {
+        color: var(--form-data-paragraph-info-reverse-color);
+    }
+}
+
+.mg-chess__standard-button {
+    border-radius: var(--standard-button-border-radius);
+    padding: var(--standard-controls-padding);
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
-}
-
-.mg-chess__standard-button-light-background {
-    @include mgchess_button__mixin(var(--standard-form-submit-background), var(--standard-form-submit-foreground));
-}
-
-.mg-chess__button-suspense-loader {
-    display: block;
-    margin-left: 10px;
-    width: 18px;
-    height: 18px;
-}
-
-.mg-chess__suspense-loading__spinner {
-    width: 100%;
-    height: 100%;
-    border: .15em solid transparent;
-    border-top-color: var(--standard-form-submit-foreground);
-    border-left-color: var(--standard-form-submit-foreground);
-    border-radius: 50%;
-    animation: spinner-animation .75s ease-out infinite;
-    &.loading-spinner--content-loading {
-        width: 70px;
-        height: 70px;
-        border: .3em solid transparent;
-        border-top-color: var(--primary-foreground);
-        border-left-color: var(--primary-foreground);
+    &.button--primary-mixed-def-variant {
+        color: var(--button-primary-mixed-color);
+        background-color: var(--button-primary-mixed-background-color);
+        font-weight: var(--standard-font-weight);
     }
+    &.button--secondary-mixed-def-variant {
+        color: var(--button-secondary-mixed-color);
+        background-color: var(--button-secondary-mixed-background);
+    }
+    &.button--thirdly-mixed-def-variant {
+        color: var(--button-thirdly-mixed-color);
+        background-color: var(--button-thirdly-mixed-background);
+    }
+    &:disabled {
+        cursor: not-allowed;
+        opacity: .5;
+    }
+    .button__suspense-loading-spinner {
+        width: 18px;
+        height: 18px;
+        margin-left: 10px;
+        border: .15em solid transparent;
+        animation: spinner-animation .75s ease-out infinite;
+        border-radius: 50%;
+    }
+    &.button--primary-mixed-def-variant .button__suspense-loading-spinner {
+        border-color: var(--button-primary-mixed-color) transparent transparent var(--button-primary-mixed-color);
+    }
+    &.button--secondary-mixed-def-variant .button__suspense-loading-spinner {
+        border-color: var(--button-secondary-mixed-color) transparent transparent var(--button-secondary-mixed-color);
+    }
+    &.button--thirdly-mixed-def-variant .button__suspense-loading-spinner {
+        border-color: var(--button-thirdly-mixed-color) transparent transparent var(--button-thirdly-mixed-color);
+    }
+    &.button--fitting {
+        width: fit-content;
+    }
+}
+
+.mg-chess__standard-checkbox__container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin: 15px 0;
+}
+
+.mg-chess__standard-checkbox__label-container-primary-mixed-def-variant {
+    margin-left: 10px;
+    cursor: pointer;
+    color: var(--button-primary-mixed-color);
+    line-height: 1.1;
+}
+
+.mg-chess__standard-checkbox__input-primary-mixed-def-variant {
+    position: absolute;
+    cursor: pointer;
+    z-index: 2;
+    opacity: 0;
+    width: 17px;
+    height: 17px;
+    &:checked ~ .mg-chess__standard-checkbox__checkmark-primary-mixed-def-variant::after {
+        display: block;
+    }
+    &:checked ~ .mg-chess__standard-checkbox__checkmark-primary-mixed-def-variant {
+        background-color: var(--button-primary-mixed-color);
+    }
+    &:disabled,
+    &:disabled ~ .mg-chess__standard-checkbox__label-container,
+    &:disabled + .mg-chess__standard-checkbox__checkmark-primary-mixed-def-variant {
+        cursor: not-allowed;
+    }
+    &:disabled ~ .mg-chess__standard-checkbox__label-container,
+    &:disabled + .mg-chess__standard-checkbox__checkmark-primary-mixed-def-variant {
+        opacity: .5;
+    }
+}
+
+.mg-chess__standard-checkbox__checkmark-primary-mixed-def-variant {
+    display: inline-block;
+    position: relative;
+    border-radius: var(--standard-button-border-radius);
+    width: 17px;
+    height: 17px;
+    border: 1px solid var(--button-primary-mixed-color);
+    transition: var(--standard-transition-duration);
+    flex-shrink: 0;
+    &::after {
+        content: '';
+        position: absolute;
+        display: none;
+        left: .33rem;
+        top: .075rem;
+        width: 4px;
+        height: 7px;
+        border: solid var(--button-primary-mixed-background-color);
+        border-width: 0 2px 2px 0;
+        transform: rotate(45deg);
+    }
+}
+
+.mg-chess__sign-up__anchor-element {
+    text-transform: capitalize;
+    margin: 0 30px;
+    padding: 4px 12px 5px;
+    font-weight: var(--standard-font-weight);
+    border-radius: var(--standard-button-border-radius);
+    color: var(--button-primary-mixed-color);
+    background-color: var(--button-primary-mixed-background-color);
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-@media only screen and (max-width: 790px) {
-    .mgchess__form-label__container .mg-chess__form-standard-input {
-        max-width: 100%;
+@media only screen and (max-width: 500px) {
+    .mg-chess__standard-button.button--small-full-width {
+        width: 100%;
     }
 }
