@@ -81,6 +81,6 @@ import { NewsletterReqResService } from "./services/newsletter-req-res.service";
     providers: [
         // services
         NewsletterReqResService,
-    ]
+    ],
 })
 export class StaticContentPageModule {}

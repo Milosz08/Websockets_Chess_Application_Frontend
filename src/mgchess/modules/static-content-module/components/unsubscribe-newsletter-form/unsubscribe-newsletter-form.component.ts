@@ -55,7 +55,7 @@ export class UnsubscribeNewsletterFormComponent implements OnInit, OnDestroy {
 
     _serverResponse!: EmailAndTokenResModel;
 
-    readonly _formHelper = new AngularFormsHelper();
+    readonly _formHelper: AngularFormsHelper = new AngularFormsHelper();
     readonly _serverResReqHelper: ServerReqResHelper = new ServerReqResHelper();
 
     private _ngUnsubscribe: Subject<void> = new Subject<void>();

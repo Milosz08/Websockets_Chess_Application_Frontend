@@ -28,7 +28,7 @@ import { SingleModuleType, SinglePageType } from "../../../../browser-meta-seria
     selector: "mgchess-rankings-page",
     templateUrl: "./rankings-page.component.html",
     styleUrls: [ "./rankings-page.component.scss" ],
-    host: { class: "mgchess__flex-safety-container" },
+    host: { class: "mg-chess__flex-safety-container" },
 })
 export class RankingsPageComponent extends BrowserMetaSerializatorLoader {
 

@@ -18,10 +18,11 @@
 
 .unsubscribe-newsletter__form {
     width: 350px;
+    margin: 0 auto;
 }
 
 .unsubscribe-newsletter__valid-info-paragraph {
-    color: var(--form-data-paragraph-info-dark-foreground);
+    color: var(--form-data-paragraph-info-secondary-color);
     margin-bottom: 20px;
     text-align: center;
 }

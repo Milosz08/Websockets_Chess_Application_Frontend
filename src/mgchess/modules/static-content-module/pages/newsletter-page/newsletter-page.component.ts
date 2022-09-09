@@ -32,7 +32,7 @@ import * as NgrxAction_NWL from "../../ngrx-store/newsletter-ngrx-store/newslett
     selector: "mgchess-unsubscribe-newsletter-page",
     templateUrl: "./newsletter-page.component.html",
     styleUrls: [ "./newsletter-page.component.scss" ],
-    host: { class: "mgchess__flex-safety-container" },
+    host: { class: "mg-chess__flex-safety-container" },
 })
 export class NewsletterPageComponent extends BrowserMetaSerializatorLoader implements OnInit {
 

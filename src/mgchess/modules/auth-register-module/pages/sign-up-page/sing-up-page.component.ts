@@ -28,7 +28,7 @@ import { SingleModuleType, SinglePageType } from "../../../../browser-meta-seria
     selector: "mgchess-register-page",
     templateUrl: "./sing-up-page.component.html",
     styleUrls: [ "./sing-up-page.component.scss" ],
-    host: { class: "mgchess__flex-safety-container" },
+    host: { class: "mg-chess__flex-safety-container remove-margin__small-devices" },
 })
 export class SingUpPageComponent extends BrowserMetaSerializatorLoader {
 

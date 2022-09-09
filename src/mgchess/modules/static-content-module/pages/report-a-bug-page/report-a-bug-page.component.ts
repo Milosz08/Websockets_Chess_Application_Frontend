@@ -28,7 +28,7 @@ import { SingleModuleType, SinglePageType } from "../../../../browser-meta-seria
     selector: "mgchess-report-a-bug-page",
     templateUrl: "./report-a-bug-page.component.html",
     styleUrls: [ "./report-a-bug-page.component.scss" ],
-    host: { class: "mgchess__flex-safety-container" },
+    host: { class: "mg-chess__flex-safety-container" },
 })
 export class ReportABugPageComponent extends BrowserMetaSerializatorLoader {
 

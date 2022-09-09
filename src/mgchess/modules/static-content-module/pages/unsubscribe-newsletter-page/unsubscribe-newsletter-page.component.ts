@@ -40,7 +40,7 @@ import { SuspenseLoader } from "../../ngrx-store/newsletter-ngrx-store/ngrx-mode
     selector: "mgchess-unsubscribe-newsletter-via-email",
     templateUrl: "./unsubscribe-newsletter-page.component.html",
     styleUrls: [ "./unsubscribe-newsletter-page.component.scss" ],
-    host: { class: "mgchess__flex-safety-container" },
+    host: { class: "mg-chess__flex-safety-container" },
 })
 export class UnsubscribeNewsletterPageComponent extends BrowserMetaSerializatorLoader implements OnInit, OnDestroy {
 

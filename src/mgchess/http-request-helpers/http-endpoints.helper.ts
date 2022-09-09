@@ -21,12 +21,10 @@ import { environment } from "../../environments/environment";
 
 //----------------------------------------------------------------------------------------------------------------------
 
-@Injectable({
-    providedIn: "root",
-})
+@Injectable({ providedIn: "root" })
 export class HttpEndpointsHelper {
 
-    private readonly BASIC_HTTP = environment.httpURI + "javabean/app/v1/";
+    private readonly BASIC_HTTP = environment.httpBackendURI + "javabean/app/v1/";
 
     private readonly NEWSLETTER_EMAIL = this.BASIC_HTTP + "newsletter-email/";
     readonly NEWSLETTER_SUBSCRIBE = this.NEWSLETTER_EMAIL + "subscribe";
