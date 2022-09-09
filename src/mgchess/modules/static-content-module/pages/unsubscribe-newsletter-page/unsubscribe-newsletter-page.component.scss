@@ -25,6 +25,14 @@
     justify-content: center;
     align-items: center;
     flex-grow: 1;
+    .loading-auth-data__spinner {
+        width: 70px;
+        height: 70px;
+        animation: spinner-animation .75s ease-out infinite;
+        border-radius: 50%;
+        border: .3em solid;
+        border-color: var(--primary-spinner-color) transparent transparent var(--primary-spinner-color);
+    }
 }
 
 .unsubscribe-newsletter-jwt__container {

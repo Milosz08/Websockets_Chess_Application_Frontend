@@ -22,19 +22,27 @@ import { SimpleMessageResWithErrorModel } from "../models/simple-message-respons
 
 export class ServerReqResHelper {
 
-    private readonly BASIC_FIELD_CLASS = "mgchess__form-data-paragraph" as const;
+    private readonly BASIC_FIELD_CLASS = "mg-chess__form-data-paragraph" as const;
 
-    private readonly ERROR_FIELD_CLASS = this.BASIC_FIELD_CLASS + " form-data-paragraph--error";
-    private readonly INFO_FIELD_CLASS = this.BASIC_FIELD_CLASS + " form-data-paragraph--info";
+    private readonly ERROR_FIELD_CLASS = this.BASIC_FIELD_CLASS + " paragraph--error";
+    private readonly INFO_FIELD_CLASS = this.BASIC_FIELD_CLASS + " paragraph--info";
 
-    private readonly ERROR_DARK_FIELD_CLASS = this.BASIC_FIELD_CLASS + " form-data-paragraph--error-dark-background";
-    private readonly INFO_DARK_FIELD_CLASS = this.BASIC_FIELD_CLASS + " form-data-paragraph--info-dark-background";
+    private readonly ERROR_THEME_FIELD_CLASS = this.BASIC_FIELD_CLASS + " paragraph--error-theme-change";
+    private readonly INFO_THEME_FIELD_CLASS = this.BASIC_FIELD_CLASS + " paragraph--info-theme-change";
 
-    responseStatusCssClass(ifError: boolean, ifDark: boolean = false): string {
-        if (ifDark) {
-            return ifError ? this.ERROR_DARK_FIELD_CLASS : this.INFO_DARK_FIELD_CLASS;
-        }
+    private readonly ERROR_REVERSE_THEME_FIELD_CLASS = this.BASIC_FIELD_CLASS + " paragraph--error-reverse-theme-change";
+    private readonly INFO_REVERSE_THEME_FIELD_CLASS = this.BASIC_FIELD_CLASS + " paragraph--info-reverse-theme-change";
+
+    responseCssClass(ifError: boolean): string {
         return ifError ? this.ERROR_FIELD_CLASS : this.INFO_FIELD_CLASS;
+    };
+
+    responseThemeCssClass(ifError: boolean): string {
+        return ifError ? this.ERROR_THEME_FIELD_CLASS : this.INFO_THEME_FIELD_CLASS;
+    };
+
+    responseReverseThemeCssClass(ifError: boolean): string {
+        return ifError ? this.ERROR_REVERSE_THEME_FIELD_CLASS : this.INFO_REVERSE_THEME_FIELD_CLASS;
     };
 
     clearServerMessage(messageData: SimpleMessageResWithErrorModel): void {

@@ -27,8 +27,8 @@
     padding: 30px;
     margin: 0 30px;
     border-radius: var(--standard-modal-border-radius);
-    color: var(--nofxsupport-wrapper-foreground);
-    background-color: var(--nofxsupport-wrapper-background);
+    color: var(--primary-dark-tint-color);
+    background-color: var(--primary-light-color);
     box-shadow: var(--standard-modal-back-noise-shadow);
     max-width: 800px;
     width: calc(100% - 60px);
@@ -63,7 +63,7 @@
     margin: 20px 0;
     width: 100%;
     height: 1px;
-    background-color: var(--nofxsupport-separator-background);
+    background-color: var(--primary-dark-tint-color);
 }
 
 .nofxsupport__text-container {

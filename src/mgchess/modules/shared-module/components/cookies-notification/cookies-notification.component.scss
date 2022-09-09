@@ -16,10 +16,6 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-@import "src/global-styles/mixins/controls-mixins";
-
-//----------------------------------------------------------------------------------------------------------------------
-
 :host {
     position: fixed;
     z-index: 10;
@@ -28,8 +24,8 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    color: var(--footer-with-cookie-primary-foreground);
-    background-color: var(--footer-with-cookie-background);
+    color: var(--primary-light-color);
+    background-color: var(--primary-dark-color);
 }
 
 .cookies-nofitication__container {
@@ -42,7 +38,7 @@
 
 .cookies-notification__icon span {
     font-size: 3.5rem;
-    color: var(--cookie-notification-icon-color);
+    color: var(--primary-tint-color);
 }
 
 .cookies-notification__text {
@@ -52,16 +48,15 @@
 .cookies-nofitication__buttons {
     min-width: 150px;
     .cookies-nofitication__accept-cookies {
-        @include mgchess_button__mixin(var(--cookie-button-primary-color), var(--footer-with-cookie-background));
-        width: 100%;
+        color: var(--primary-dark-color);
+        background-color: var(--primary-light-color);
         font-weight: 500;
-        margin: 20px 0 5px;
+        margin: 20px 0 10px;
     }
     .cookies-nofitication__privacy-policy {
-        @include mgchess_hollow_button__mixin(var(--cookie-button-secondary-color), var(--cookie-button-primary-color));
-        width: 100%;
-        margin: 5px 0 20px;
-        display: block;
+        color: var(--primary-light-color);
+        border: 1px solid var(--primary-tint-color);
+        margin: 10px 0 20px;
     }
 }
 

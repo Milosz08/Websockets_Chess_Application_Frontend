@@ -16,8 +16,8 @@
   ~ COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
   -->
 
-<div class="mgchess__flex-safety-container__wrapper unsubscribe-newsletter-flex-full-space__container">
-    <h2 class="mgchess__standard-header-with-decorator">
+<div class="mg-chess__flex-safety-container__wrapper unsubscribe-newsletter-flex-full-space__container">
+    <h2 class="mg-chess__standard-header-with-decorator">
         <span class="text-content">Unsubscribe the newsletter</span>
         <span class="separator"></span>
     </h2>
@@ -25,7 +25,7 @@
         *ngIf="(_suspenseLoading$ | async) else contentAfterLoaded"
         class="unsubscribe-newsletter-loading__container"
     >
-        <div class="mg-chess__suspense-loading__spinner loading-spinner--content-loading"></div>
+        <div class="loading-auth-data__spinner"></div>
     </aside>
     <ng-template #contentAfterLoaded>
         <div
@@ -34,7 +34,7 @@
         >
             <p
                 [ngClass]="[
-                    _serverResReqHelper.responseStatusCssClass(_serverJwtResponse.responseError, true),
+                    _serverResReqHelper.responseThemeCssClass(_serverJwtResponse.responseError),
                     'unsubscribe-newsletter-jwt__text-info',
                 ]"
             >
@@ -43,7 +43,7 @@
             <a
                 routerLink="/"
                 title="Click to return to start page"
-                class="mg-chess__standard-button-light-background"
+                class="mg-chess__standard-button button--primary-mixed-def-variant"
             >
                 Return to start page
             </a>

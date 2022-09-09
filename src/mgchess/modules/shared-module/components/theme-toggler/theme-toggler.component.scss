@@ -40,7 +40,7 @@
         content: "";
         width: 17px;
         height: 17px;
-        background-color: var(--theme-toggler-bullet-with-icon-color);
+        background-color: var(--primary-background);
         top: 4px;
         left: 5px;
         border-radius: 50%;
@@ -59,7 +59,7 @@
     top: 0;
     width: 50px;
     height: 25px;
-    background-color: var(--theme-toggler-background);
+    background-color: var(--primary-foreground);
 }
 
 .light-mode__icon,
@@ -69,7 +69,7 @@
     z-index: 8;
     transform: translateY(-50%);
     font-size: 1rem;
-    color: var(--theme-toggler-bullet-with-icon-color);
+    color: var(--primary-background);
 }
 
 .light-mode__icon {

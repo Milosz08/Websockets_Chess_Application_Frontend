@@ -16,16 +16,12 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-@import "src/global-styles/mixins/controls-mixins";
-
-//----------------------------------------------------------------------------------------------------------------------
-
 :host {
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: var(--footer-copy-newsletter-foreground);
-    background-color: var(--footer-copy-newsletter-background);
+    color: var(--primary-dark-color);
+    background-color: var(--primary-tint-color);
     width: 100%;
 }
 
@@ -50,42 +46,28 @@
 
 .newsletter-form__header {
     font-size: 1.2rem;
-    color: var(--footer-copy-newsletter-foreground);
+}
+
+.newsletter-submit-button {
+    width: fit-content;
+    height: fit-content;
+    margin-left: 20px;
 }
 
 .newsletter-form__container {
     margin: 10px 0;
     display: flex;
-    .newsletter__input-form-element {
-        @include mgchess_input_mixin(var(--footer-copy-newsletter-background), var(--footer-copy-newsletter-foreground));
-        width: 350px;
-        &::placeholder {
-            color: var(--aside-text-form-paragraph-foreground);
-        }
-    }
-    .newsletter__submit-form-button {
-        @include mgchess_button__mixin(
-                var(--newsletter-submit-button-background), var(--newsletter-submit-button-foreground));
-        display: flex;
-        align-items: center;
-        margin-left: 20px;
-        height: 100%;
-    }
+    max-width: 500px;
 }
 
 .newsletter__aside-form-text-paragraph {
     font-size: .9rem;
-    color: var(--aside-text-form-paragraph-foreground);
+    color: var(--secondary-tint-color);
     a {
         font-size: inherit;
         font-weight: 500;
-        color: var(--footer-copy-newsletter-foreground);
+        color: var(--primary-dark-color);
     }
-}
-
-.newsletter__subscribe-spinner {
-    border-top-color: var(--newsletter-submit-button-foreground);
-    border-left-color: var(--newsletter-submit-button-foreground);
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -104,8 +86,8 @@
         }
     }
     .newsletter__container,
-    .newsletter-form__container label,
-    .newsletter-form__container label .newsletter__input-form-element {
+    .newsletter-form__container {
+        max-width: 100%;
         width: 100%;
     }
 }
@@ -113,8 +95,9 @@
 @media only screen and (max-width: 500px) {
     .newsletter-form__container {
         flex-direction: column;
-        .newsletter__submit-form-button {
-            margin: 10px 0 0 0;
+        .newsletter-submit-button {
+            width: 100%;
+            margin: 10px 0 0;
         }
     }
 }

@@ -23,7 +23,7 @@
     font-size: 16px;
     font-weight: normal;
     &:focus {
-        outline: 2px dotted var(--accesibility-focusable-border);
+        outline: 2px dotted var(--secondary-tint-color);
     }
 }
 

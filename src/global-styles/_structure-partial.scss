@@ -16,13 +16,13 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-.mgchess-flex-pull-up__container {
+.mg-chess-flex-pull-up__container {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
 }
 
-.mgchess__flex-safety-container {
+.mg-chess__flex-safety-container {
     display: flex;
     flex-grow: 1;
     flex-direction: column;
@@ -31,7 +31,7 @@
     margin: 30px 0;
 }
 
-.mgchess__flex-safety-container__wrapper {
+.mg-chess__flex-safety-container__wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -40,46 +40,7 @@
     margin: 0 30px;
 }
 
-.mgchess__standard-header-with-decorator {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-    font-size: 1.6rem;
-    width: 100%;
-    .text-content {
-        position: relative;
-        font-size: 1em;
-        font-weight: 500;
-        color: var(--main-headling-foreground);
-        font-family: "Noto Serif", serif;
-        &::before {
-            position: absolute;
-            content: "";
-            width: 40%;
-            max-width: 150px;
-            height: 15px;
-            bottom: 1px;
-            left: 5px;
-            border-radius: var(--standard-button-border-radius);
-            z-index: -1;
-            background-color: var(--main-headling-pseudo-background);
-            opacity: .7;
-            font-size: 1.5em;
-        }
-    }
-    .separator {
-        display: block;
-        margin-left: 30px;
-        flex-grow: 1;
-        height: 1px;
-        background-color: var(--standard-separator-background);
-    }
-    &.header--smaller {
-        font-size: 1.4rem;
-    }
-}
-
-.mgchess__discrete-modal-container {
+.mg-chess__discrete-modal-container {
     display: flex;
     align-items: center;
     width: 100%;
@@ -91,7 +52,7 @@
     }
 }
 
-.mgchess__separator-with-text-inside {
+.mg-chess__separator-with-text-inside {
     display: flex;
     align-items: center;
     width: 100%;
@@ -100,16 +61,26 @@
         margin: 0 10px;
         font-size: .8rem;
         text-transform: uppercase;
-        color: var(--standard-separator-background);
+        color: var(--secondary-tint-color);
     }
     .separator-line {
         flex-grow: 1;
         height: 1px;
-        background-color: var(--standard-separator-background);
+        background-color: var(--secondary-tint-color);
     }
 }
 
-.mgchess__info-paragraph {
+.mg-chess__standard-bullet-separator {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: var(--secondary-tint-color);
+    &.bullet--around-margins {
+        margin: 0 10px;
+    }
+}
+
+.mg-chess__info-paragraph {
     position: relative;
     display: block;
     z-index: 0;
@@ -119,7 +90,7 @@
         font-size: 12rem;
         line-height: 1;
         font-weight: 700;
-        color: var(--main-headling-pseudo-background);
+        color: var(--header-decorator-element-color);
         top: 0;
         right: 60px;
         z-index: -1;
@@ -130,24 +101,31 @@
 //----------------------------------------------------------------------------------------------------------------------
 
 @media only screen and (max-width: 790px) {
-    .mgchess__flex-safety-container__wrapper {
+    .mg-chess__flex-safety-container__wrapper {
         margin-top: 30px;
     }
-    .mgchess__discrete-modal-container {
+    .mg-chess__discrete-modal-container {
         flex-direction: column-reverse;
     }
 }
 
 @media only screen and (max-width: 500px) {
-    .mgchess__flex-safety-container__wrapper {
+    .mg-chess__flex-safety-container__wrapper {
         margin: 0 15px 0;
     }
-    .mgchess__separator-with-text-inside {
+    .mg-chess__separator-with-text-inside {
         margin: 30px 0 0 0;
+        &.separator--prevent-remove-margin {
+            margin: 30px 0;
+        }
     }
-    .mgchess__discrete-modal-container {
+    .mg-chess__flex-safety-container.remove-margin__small-devices {
+        margin: 0;
+    }
+    .mg-chess__discrete-modal-container {
         border-radius: 0;
         box-shadow: none;
+        background-color: transparent;
         .mgchess__discrete-modal-section {
             padding: 0;
         }

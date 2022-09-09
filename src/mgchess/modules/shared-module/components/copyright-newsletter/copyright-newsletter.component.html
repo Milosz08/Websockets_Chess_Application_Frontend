@@ -34,7 +34,10 @@
             (ngSubmit)="handleSubmitNewsletterEmail()"
             class="newsletter-form__container"
         >
-            <label for="newsletter__input-form">
+            <label
+                for="newsletter__input-form"
+                class="mg-chess__standard-form-label__container form-label--remove-bottom-margin"
+            >
                 <input
                     type="email"
                     id="newsletter__input-form"
@@ -42,17 +45,17 @@
                     autocomplete="off"
                     formControlName="emailAddress"
                     placeholder="ex. johndoe@email.com"
-                    class="newsletter__input-form-element"
+                    class="mg-chess__standard-form-input-primary-color"
                 />
                 <p
                     *ngIf="_formHelper.fieldHasAnyErrors('emailAddress', _newsletterForm)"
-                    class="mgchess__form-data-paragraph form-data-paragraph--error"
+                    class="mg-chess__form-data-paragraph paragraph--error"
                 >
                     Please enter valid email address.
                 </p>
                 <p
                     *ngIf="_serverResponse.responseMessage !== ''"
-                    [ngClass]="_httpService.responseStatusCssClass(_serverResponse.responseError)"
+                    [ngClass]="_httpService.responseCssClass(_serverResponse.responseError)"
                 >
                     {{ _serverResponse.responseMessage }}
                 </p>
@@ -61,12 +64,13 @@
                 type="submit"
                 [disabled]="!_newsletterForm.valid"
                 title="Click to subscribe to the newsletter"
-                class="newsletter__submit-form-button"
+                class="mg-chess__standard-button button--secondary-mixed-def-variant newsletter-submit-button"
             >
                 Subscribe
-                <span *ngIf="_suspenseActive" class="mg-chess__button-suspense-loader">
-                    <div class="mg-chess__suspense-loading__spinner newsletter__subscribe-spinner"></div>
-                </span>
+                <div
+                    *ngIf="_suspenseActive"
+                    class="button__suspense-loading-spinner"
+                ></div>
             </button>
         </form>
         <p class="newsletter__aside-form-text-paragraph">

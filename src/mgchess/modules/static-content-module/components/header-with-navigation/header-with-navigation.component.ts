@@ -52,6 +52,6 @@ export class HeaderWithNavigationComponent {
 
     cssClassCheckIfIsSignupElement(navigationLinkData: NavigationLinksModel): string {
         return navigationLinkData.link.includes("signup")
-            ? "sign-up__anchor-element" : "navigation-list-element__anchor-element";
+            ? "mg-chess__sign-up__anchor-element" : "navigation-list-element__anchor-element";
     };
 }

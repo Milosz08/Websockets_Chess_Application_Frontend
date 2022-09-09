@@ -30,7 +30,7 @@
                 </a>
                 <span
                     *ngIf="i !== _quickStartNavigationList.length - 1"
-                    class="nav-links__bullet-separator"
+                    class="mg-chess__standard-bullet-separator"
                 ></span>
             </ng-container>
         </div>
@@ -56,7 +56,10 @@
                 >
                     {{ authLink.name }}
                 </a>
-                <span *ngIf="i !== _authNavigationList.length - 1" class="nav-links__bullet-separator"></span>
+                <span
+                    *ngIf="i !== _authNavigationList.length - 1"
+                    class="mg-chess__standard-bullet-separator"
+                ></span>
             </ng-container>
         </div>
     </nav>
@@ -84,7 +87,7 @@
             </a>
             <span
                 *ngIf="i !== _mainNavigationList.length - 1"
-                class="nav-links__bullet-separator"
+                class="mg-chess__standard-bullet-separator"
             ></span>
         </li>
     </ul>

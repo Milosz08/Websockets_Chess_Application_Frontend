@@ -23,7 +23,7 @@
     <a
         routerLink="/"
         title="Click to return to start page"
-        class="mg-chess__standard-button-light-background"
+        class="mg-chess__standard-button button--primary-mixed-def-variant"
     >
         Return to start page
     </a>
@@ -36,9 +36,9 @@
     >
         <label
             for="unsubscribe-newsletter__email-input"
-            class="mgchess__form-label__container"
+            class="mg-chess__standard-form-label__container"
         >
-            <span class="mgchess__form-label-text">Insert here your email</span>
+            <span class="mgchess__standard-form-label__text-primary-color">Insert here your email</span>
             <input
                 type="email"
                 id="unsubscribe-newsletter__email-input"
@@ -46,17 +46,17 @@
                 autocomplete="off"
                 formControlName="emailAddress"
                 placeholder="ex. johndoe@email.com"
-                class="mg-chess__form-standard-input"
+                class="mg-chess__standard-form-input-primary-color"
             />
             <p
                 *ngIf="_formHelper.fieldHasAnyErrors('emailAddress', _unsubscribeEmailForm)"
-                class="mgchess__form-data-paragraph form-data-paragraph--error-dark-background"
+                class="mg-chess__form-data-paragraph paragraph--error-theme-change"
             >
                 Please enter valid email address.
             </p>
             <p
                 *ngIf="_serverResponse.emailResponse.responseMessage !== ''"
-                [ngClass]="_serverResReqHelper.responseStatusCssClass(_serverResponse.emailResponse.responseError, true)"
+                [ngClass]="_serverResReqHelper.responseThemeCssClass(_serverResponse.emailResponse.responseError)"
             >
                 {{ _serverResponse.emailResponse.responseMessage }}
             </p>
@@ -65,16 +65,17 @@
             type="submit"
             [disabled]="!_unsubscribeEmailForm.valid"
             title="Click to send activation message"
-            class="mg-chess__form-standard-submit"
+            class="mg-chess__standard-button button--primary-mixed-def-variant"
         >
             Send activation link
-            <span *ngIf="(_suspenseLoadingEmail$ | async)" class="mg-chess__button-suspense-loader">
-                <div class="mg-chess__suspense-loading__spinner"></div>
-            </span>
+            <div
+                *ngIf="(_suspenseLoadingEmail$ | async)"
+                class="button__suspense-loading-spinner"
+            ></div>
         </button>
     </form>
     <ng-container *ngIf="(_isTokenFieldVisible$ | async)">
-    <span class="mgchess__separator-with-text-inside">
+    <span class="mg-chess__separator-with-text-inside">
         <span class="separator-line"></span>
         <span class="text-content">click link or type token below</span>
         <span class="separator-line"></span>
@@ -86,9 +87,9 @@
         >
             <label
                 for="unsubscribe-newsletter__token-input"
-                class="mgchess__form-label__container"
+                class="mg-chess__standard-form-label__container"
             >
-                <span class="mgchess__form-label-text">Insert here OTA token</span>
+                <span class="mgchess__standard-form-label__text-primary-color">Insert here OTA token</span>
                 <input
                     type="text"
                     id="unsubscribe-newsletter__token-input"
@@ -96,17 +97,17 @@
                     autocomplete="off"
                     formControlName="token"
                     placeholder="ex. XcPOS8kv5o"
-                    class="mg-chess__form-standard-input"
+                    class="mg-chess__standard-form-input-primary-color"
                 />
                 <p
                     *ngIf="_formHelper.fieldHasAnyErrors('token', _unsubscribeTokenForm)"
-                    class="mgchess__form-data-paragraph form-data-paragraph--error-dark-background"
+                    class="mg-chess__form-data-paragraph paragraph--error-theme-change"
                 >
                     Please enter valid OTA token.
                 </p>
                 <p
                     *ngIf="_serverResponse.tokenResponse.responseMessage !== ''"
-                    [ngClass]="_serverResReqHelper.responseStatusCssClass(_serverResponse.tokenResponse.responseError, true)"
+                    [ngClass]="_serverResReqHelper.responseThemeCssClass(_serverResponse.tokenResponse.responseError)"
                 >
                     {{ _serverResponse.tokenResponse.responseMessage }}
                 </p>
@@ -115,12 +116,13 @@
                 type="submit"
                 [disabled]="!_unsubscribeTokenForm.valid"
                 title="Click to finish unsubscribing newsletter service"
-                class="mg-chess__form-standard-submit"
+                class="mg-chess__standard-button button--primary-mixed-def-variant"
             >
                 Unsubscribe newsletter
-                <span *ngIf="(_suspenseLoadingToken$ | async)" class="mg-chess__button-suspense-loader">
-                    <div class="mg-chess__suspense-loading__spinner"></div>
-                </span>
+                <div
+                    *ngIf="(_suspenseLoadingToken$ | async)"
+                    class="button__suspense-loading-spinner"
+                ></div>
             </button>
         </form>
     </ng-container>
