@@ -2,7 +2,7 @@
  * Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
  *
  * File name: suspense-loader-res.model.ts
- * Last modified: 04/09/2022, 20:55
+ * Last modified: 04/09/2022, 21:13
  * Project name: chess-app-frontend
  *
  * Licensed under the MIT license; you may not use this file except in compliance with the License.
@@ -21,6 +21,7 @@ export enum SuspenseLoader {
     ATTEMPT_UNSUBSCRIBE = "ATTEMPT_UNSUBSCRIBE",
     UNSUBSCRIBE_VIA_OTA = "UNSUBSCRIBE_VIA_OTA",
     UNSUBSCRIBE_VIA_JWT = "UNSUBSCRIBE_VIA_JWT",
+    ATTEMPT_LOGIN_VIA_LOCAL = "ATTEMPT_LOGIN_VIA_LOCAL",
 }
 
 //----------------------------------------------------------------------------------------------------------------------

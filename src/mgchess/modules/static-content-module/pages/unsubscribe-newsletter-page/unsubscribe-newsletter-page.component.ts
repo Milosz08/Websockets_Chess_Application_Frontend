@@ -24,6 +24,7 @@ import { Store } from "@ngrx/store";
 import { Observable, Subject } from "rxjs";
 import { RxjsHelper } from "../../../../rxjs-helpers/rxjs.helper";
 
+import { SuspenseLoader } from "../../../../models/suspense-loader-res.model";
 import { ServerReqResHelper } from "../../../../http-request-helpers/server-req-res.helper";
 import { SimpleMessageResWithErrorModel } from "../../../../models/simple-message-response.model";
 import { BrowserMetaSerializatorLoader } from "../../../../browser-meta-serialization/browser-meta-serializator.loader";
@@ -32,7 +33,6 @@ import { SingleModuleType, SinglePageType } from "../../../../browser-meta-seria
 import { NewsletterReducerType } from "../../../../ngrx-helpers/ngrx-store.types";
 import * as NgrxAction_NWL from "../../ngrx-store/newsletter-ngrx-store/newsletter.actions";
 import * as NgrxSelector_NWL from "../../ngrx-store/newsletter-ngrx-store/newsletter.selectors";
-import { SuspenseLoader } from "../../ngrx-store/newsletter-ngrx-store/ngrx-models/suspense-loader-res.model";
 
 //----------------------------------------------------------------------------------------------------------------------
 

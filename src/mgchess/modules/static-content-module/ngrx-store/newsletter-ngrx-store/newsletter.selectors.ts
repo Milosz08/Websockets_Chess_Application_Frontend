@@ -20,7 +20,7 @@ import { createFeatureSelector, createSelector } from "@ngrx/store";
 
 import { newsletterNgrxStore } from "./newsletter.reducer";
 import { NewsletterStateTypes } from "./newsletter.initial";
-import { SuspenseLoader } from "./ngrx-models/suspense-loader-res.model";
+import { SuspenseLoader } from "../../../../models/suspense-loader-res.model";
 import { EmailAndTokenResModel } from "./ngrx-models/email-and-token-res.model";
 
 //----------------------------------------------------------------------------------------------------------------------

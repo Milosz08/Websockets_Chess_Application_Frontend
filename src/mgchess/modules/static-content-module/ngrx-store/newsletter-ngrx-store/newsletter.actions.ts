@@ -18,7 +18,7 @@
 
 import { createAction, props } from "@ngrx/store";
 
-import { SuspenseLoader } from "./ngrx-models/suspense-loader-res.model";
+import { SuspenseLoader } from "../../../../models/suspense-loader-res.model";
 import { UnsubscribeNewsletterEmailReq, UnsubscribeNewsletterViaOtaReq } from "./ngrx-models/unsubscribe-newsletter-req-res.model";
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -28,15 +28,15 @@ const CLEANUP_EMAIL_SERVER_RESPONSE = "[NEWSLETTER] CLEANUP EMAIL SERVER RESPONS
 const CLEANUP_TOKEN_SERVER_RESPONSE = "[NEWSLETTER] CLEANUP TOKEN SERVER RESPONSE" as const;
 
 const ATTEMPT_TO_UNSUBSCRIBE_NEWSLETTER = "[NEWSLETTER] ATTEMPT TO UNSUBSCRIBE NEWSLETTER" as const;
-const SUCCESSFULL_ATTEMPT_TO_UNSUBSCRIBE_NEWSLETTER = "[NEWSLETTER] SUCCESSFULL ATTEMPT TO UNSUBSCRIBE NEWSLETTER" as const;
+const SUCCESSFUL_ATTEMPT_TO_UNSUBSCRIBE_NEWSLETTER = "[NEWSLETTER] SUCCESSFUL ATTEMPT TO UNSUBSCRIBE NEWSLETTER" as const;
 const FAILURE_ATTEMPT_TO_UNSUBSCRIBE_NEWSLETTER = "[NEWSLETTER] FAILURE ATTEMPT TO UNSUBSCRIBE NEWSLETTER" as const;
 
 const UNSUBSCRIBE_NEWSLETTER = "[NEWSLETTER] UNSUBSCRIBE NEWSLETTER" as const;
-const SUCCESSFULL_UNSUBSCRIBE_NEWSLETTER = "[NEWSLETTER] SUCCESSFULL UNSUBSCRIBE NEWSLETTER" as const;
+const SUCCESSFUL_UNSUBSCRIBE_NEWSLETTER = "[NEWSLETTER] SUCCESSFUL UNSUBSCRIBE NEWSLETTER" as const;
 const FAILURE_UNSUBSCRIBE_NEWSLETTER = "[NEWSLETTER] FAILURE UNSUBSCRIBE NEWSLETTER" as const;
 
 const UNSUBSCRIBE_NEWSLETTER_VIA_JWT = "[NEWSLETTER] UNSUBSCRIBE NEWSLETTER VIA JWT" as const;
-const SUCCESSFULL_UNSUBSCRIBE_NEWSLETTER_VIA_JWT = "[NEWSLETTER] SUCCESSFULL UNSUBSCRIBE NEWSLETTER VIA JWT" as const;
+const SUCCESSFUL_UNSUBSCRIBE_NEWSLETTER_VIA_JWT = "[NEWSLETTER] SUCCESSFUL UNSUBSCRIBE NEWSLETTER VIA JWT" as const;
 const FAILURE_UNSUBSCRIBE_NEWSLETTER_VIA_JWT = "[NEWSLETTER] FAILURE UNSUBSCRIBE NEWSLETTER VIA JWT" as const;
 
 const ACTIVE_SUSPENSE_LOADER = "[NEWSLETTER] ACTIVE SUSPENSE LOADER" as const;
@@ -64,8 +64,8 @@ export const __attemptToUnsubscribeNewsletter = createAction(
     props<{ emailReq: UnsubscribeNewsletterEmailReq }>(),
 );
 
-export const __successfullAttemptToUnsubscribeNewsletter = createAction(
-    SUCCESSFULL_ATTEMPT_TO_UNSUBSCRIBE_NEWSLETTER,
+export const __successfulAttemptToUnsubscribeNewsletter = createAction(
+    SUCCESSFUL_ATTEMPT_TO_UNSUBSCRIBE_NEWSLETTER,
     props<{ serverResponse: string, userEmail: string }>(),
 );
 
@@ -79,8 +79,8 @@ export const __unsubscribeNewsletter = createAction(
     props<{ tokenReq: UnsubscribeNewsletterViaOtaReq }>(),
 );
 
-export const __successfullUnsubscribeNewsletter = createAction(
-    SUCCESSFULL_UNSUBSCRIBE_NEWSLETTER,
+export const __successfulUnsubscribeNewsletter = createAction(
+    SUCCESSFUL_UNSUBSCRIBE_NEWSLETTER,
     props<{ serverResponse: string }>(),
 );
 
@@ -94,8 +94,8 @@ export const __unsubscribeNewsletterViaJwt = createAction(
     props<{ bearerToken: string }>(),
 );
 
-export const __successfullUnsubscribeNewsletterViaJwt = createAction(
-    SUCCESSFULL_UNSUBSCRIBE_NEWSLETTER_VIA_JWT,
+export const __successfulUnsubscribeNewsletterViaJwt = createAction(
+    SUCCESSFUL_UNSUBSCRIBE_NEWSLETTER_VIA_JWT,
     props<{ serverResponse: string }>(),
 );
 

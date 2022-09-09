@@ -20,7 +20,7 @@ import { createReducer, on } from "@ngrx/store";
 
 import { initialNewsletterState } from "./newsletter.initial";
 import { SimpleMessageResWithErrorModel } from "../../../../models/simple-message-response.model";
-import { SuspenseLoader, SuspenseLoaderResModel } from "./ngrx-models/suspense-loader-res.model";
+import { SuspenseLoader, SuspenseLoaderResModel } from "../../../../models/suspense-loader-res.model";
 
 import * as NgrxAction from "./newsletter.actions";
 
@@ -43,7 +43,7 @@ const _newsletterReducer = createReducer(
             tokenServerResponse: new SimpleMessageResWithErrorModel("", false),
         };
     }),
-    on(NgrxAction.__successfullAttemptToUnsubscribeNewsletter, (state, action) => {
+    on(NgrxAction.__successfulAttemptToUnsubscribeNewsletter, (state, action) => {
         return { ...state,
             emailServerResponse: new SimpleMessageResWithErrorModel(action.serverResponse, false),
             removingEmail: action.userEmail,
@@ -55,7 +55,7 @@ const _newsletterReducer = createReducer(
             emailServerResponse: new SimpleMessageResWithErrorModel(action.serverResponse, true),
         };
     }),
-    on(NgrxAction.__successfullUnsubscribeNewsletter, (state, action) => {
+    on(NgrxAction.__successfulUnsubscribeNewsletter, (state, action) => {
         return { ...state,
             tokenServerResponse: new SimpleMessageResWithErrorModel(action.serverResponse, false),
             removingEmail: "",
@@ -66,7 +66,7 @@ const _newsletterReducer = createReducer(
             tokenServerResponse: new SimpleMessageResWithErrorModel(action.serverResponse, true),
         };
     }),
-    on(NgrxAction.__successfullUnsubscribeNewsletterViaJwt, (state, action) => {
+    on(NgrxAction.__successfulUnsubscribeNewsletterViaJwt, (state, action) => {
         return { ...state,
             jwtServerResponse: new SimpleMessageResWithErrorModel(action.serverResponse, false),
         };

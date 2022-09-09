@@ -17,7 +17,7 @@
  */
 
 import { SimpleMessageResWithErrorModel } from "../../../../models/simple-message-response.model";
-import { SuspenseLoader, SuspenseLoaderResModel } from "./ngrx-models/suspense-loader-res.model";
+import { SuspenseLoader, SuspenseLoaderResModel } from "../../../../models/suspense-loader-res.model";
 
 //----------------------------------------------------------------------------------------------------------------------
 

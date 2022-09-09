@@ -28,7 +28,7 @@ import { newsletterNgrxStore } from "../newsletter.reducer";
 import { NewsletterReqResService } from "../../../services/newsletter-req-res.service";
 
 import * as NgrxAction_NWL from "../newsletter.actions";
-import { SuspenseLoader } from "../ngrx-models/suspense-loader-res.model";
+import { SuspenseLoader } from "../../../../../models/suspense-loader-res.model";
 import { NewsletterReducerType } from "../../../../../ngrx-helpers/ngrx-store.types";
 
 import {
@@ -56,7 +56,7 @@ export class UnsubscribeNewsletterEffects {
             mergeMap(({ emailReq }) => {
                 return this._httpService.attemptToUnsubscribeNewsletter(emailReq).pipe(
                     map(response => {
-                        return NgrxAction_NWL.__successfullAttemptToUnsubscribeNewsletter({
+                        return NgrxAction_NWL.__successfulAttemptToUnsubscribeNewsletter({
                             serverResponse: response.responseMessage, userEmail: emailReq.emailAddress });
                     }),
                     catchError(({ error }) => {
@@ -83,7 +83,7 @@ export class UnsubscribeNewsletterEffects {
                 const req = new UnsubscribeNewsletterViaOtaReq(action.tokenReq.token, store.removingEmail);
                 return this._httpService.unsubscribeNewsletterViaOta(req).pipe(
                     map(response => {
-                        return NgrxAction_NWL.__successfullUnsubscribeNewsletter({
+                        return NgrxAction_NWL.__successfulUnsubscribeNewsletter({
                             serverResponse: response.responseMessage });
                     }),
                     catchError(error => {
@@ -109,7 +109,7 @@ export class UnsubscribeNewsletterEffects {
                 const tokenReq = new UnsubscribeNewsletterViaJwtReq(bearerToken);
                 return this._httpService.unsubscribeNewsletterViaJwt(tokenReq).pipe(
                     map(response => {
-                        return NgrxAction_NWL.__successfullUnsubscribeNewsletterViaJwt({
+                        return NgrxAction_NWL.__successfulUnsubscribeNewsletterViaJwt({
                             serverResponse: response.responseMessage });
                     }),
                     catchError(error => {
