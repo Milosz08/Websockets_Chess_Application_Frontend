@@ -16,10 +16,12 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-import { Component, OnInit } from "@angular/core";
+import { Component, OnDestroy, OnInit } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { Store } from "@ngrx/store";
 
-import { Observable } from "rxjs";
+import { Observable, Subject } from "rxjs";
+import { RxjsHelper } from "../../../../rxjs-helpers/rxjs.helper";
 
 import { LoginFormModel } from "../../models/login-form.model";
 import { AngularFormsHelper } from "../../../../angular-forms-helpers/angular-forms.helper";
@@ -28,6 +30,10 @@ import { SimpleMessageResWithErrorModel } from "../../../../models/simple-messag
 import { ValidatorPatternConstants } from "../../../../validator-helpers/validator-pattern.constants";
 import { PasswordInputClassesModel } from "../../../shared-module/models/password-input-classes.model";
 
+import { AuthReducerType } from "../../../../ngrx-helpers/ngrx-store.types";
+import * as NgrxAction_ATH from "../../ngrx-store/auth-ngrx-store/auth.actions";
+import * as NgrxSelector_ATH from "../../ngrx-store/auth-ngrx-store/auth.selectors";
+
 //----------------------------------------------------------------------------------------------------------------------
 
 @Component({
@@ -35,19 +41,21 @@ import { PasswordInputClassesModel } from "../../../shared-module/models/passwor
     templateUrl: "./login-form.component.html",
     providers: [ ValidatorPatternConstants ],
 })
-export class LoginFormComponent implements OnInit {
+export class LoginFormComponent implements OnInit, OnDestroy {
 
     _loginForm: FormGroup;
-    _suspenseLoader$: Observable<boolean> = new Observable<boolean>();
-
-    _serverResponse: SimpleMessageResWithErrorModel = new SimpleMessageResWithErrorModel("123", false);
+    _serverResponse!: SimpleMessageResWithErrorModel;
+    _suspenseLoader$: Observable<boolean> = this._store.select(NgrxSelector_ATH.sel_loginViaLocalSupense);
 
     readonly _formHelper: AngularFormsHelper = new AngularFormsHelper();
     readonly _serverResReqHelper: ServerReqResHelper = new ServerReqResHelper();
     readonly _cssClasses: PasswordInputClassesModel = new PasswordInputClassesModel(
         "text--secondary-color", "input--secondary-color", "paragraph--error-reverse-theme-change");
 
+    private _ngUnsubscribe: Subject<void> = new Subject<void>();
+
     constructor(
+        private _store: Store<AuthReducerType>,
         private _regex: ValidatorPatternConstants,
     ) {
         this._loginForm = new FormGroup({
@@ -59,16 +67,23 @@ export class LoginFormComponent implements OnInit {
 
     ngOnInit(): void {
         this._formHelper.field("rememberAccount", this._loginForm).setValue(true);
+        RxjsHelper.subscribeData(this._store, NgrxSelector_ATH.sel_serverResponse, this._ngUnsubscribe)
+            .subscribe(data => this._serverResponse = data);
+    };
+
+    ngOnDestroy(): void {
+        RxjsHelper.cleanupExecutor(this._ngUnsubscribe);
     };
 
     handleSubmitCredentialsAndAttemptLoginUser(): void {
         const req = this._formHelper.extractFormFields<LoginFormModel>(this._loginForm, false);
+        this._store.dispatch(NgrxAction_ATH.__attemptToLoginViaLocal({ loginForm: req }));
         this._loginForm.reset(new LoginFormModel("", "", false));
-
-        // TODO: send credentials
     };
 
     clearLoginServerResponse(): void {
-        // TODO: clear server response
+        if (this._serverResponse.responseMessage !== "") {
+            this._store.dispatch(NgrxAction_ATH.__cleanServerResponse());
+        }
     };
 }

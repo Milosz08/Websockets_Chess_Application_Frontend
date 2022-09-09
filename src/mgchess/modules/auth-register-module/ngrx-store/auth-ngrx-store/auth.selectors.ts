@@ -1,8 +1,8 @@
 /*
  * Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
  *
- * File name: login-form.model.ts
- * Last modified: 09/09/2022, 04:04
+ * File name: auth.selectors.ts
+ * Last modified: 09/09/2022, 14:43
  * Project name: chess-app-frontend
  *
  * Licensed under the MIT license; you may not use this file except in compliance with the License.
@@ -16,15 +16,24 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-import { LoginReqestModel } from "../ngrx-store/auth-ngrx-store/ngrx-models/login-data-req.model";
+import { createFeatureSelector, createSelector } from "@ngrx/store";
+
+import { authNgrxStore } from "./auth.reducer";
+import { AuthStateTypes } from "./auth.initial";
+import { SuspenseLoader } from "../../../../models/suspense-loader-res.model";
 
 //----------------------------------------------------------------------------------------------------------------------
 
-export class LoginFormModel extends LoginReqestModel {
-    rememberAccount: boolean;
+const selectorWithInjectedStore = (payload: (state: any, action?: any) => any) => (
+    createSelector(createFeatureSelector<AuthStateTypes>(authNgrxStore.reducerName), payload)
+);
 
-    constructor(usernameEmail: string, password: string, rememberAccount: boolean) {
-        super(usernameEmail, password);
-        this.rememberAccount = rememberAccount;
-    };
-}
+//----------------------------------------------------------------------------------------------------------------------
+
+export const sel_loginViaLocalSupense = selectorWithInjectedStore(state =>
+    state.suspenseLoader.isSuspenseLoading && state.suspenseLoader.loadingFor === SuspenseLoader.ATTEMPT_LOGIN_VIA_LOCAL,
+);
+
+export const sel_serverResponse = selectorWithInjectedStore(state =>
+    state.serverResponse,
+);

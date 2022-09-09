@@ -1,8 +1,8 @@
 /*
  * Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
  *
- * File name: login-form.model.ts
- * Last modified: 09/09/2022, 04:04
+ * File name: user-credentials-data.model.ts
+ * Last modified: 09/09/2022, 17:11
  * Project name: chess-app-frontend
  *
  * Licensed under the MIT license; you may not use this file except in compliance with the License.
@@ -16,15 +16,10 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-import { LoginReqestModel } from "../ngrx-store/auth-ngrx-store/ngrx-models/login-data-req.model";
+export class UserCredentialsDataResModel {
+    usernameOrLogin: string;
 
-//----------------------------------------------------------------------------------------------------------------------
-
-export class LoginFormModel extends LoginReqestModel {
-    rememberAccount: boolean;
-
-    constructor(usernameEmail: string, password: string, rememberAccount: boolean) {
-        super(usernameEmail, password);
-        this.rememberAccount = rememberAccount;
+    constructor(usernameOrLogin: string) {
+        this.usernameOrLogin = usernameOrLogin;
     };
 }

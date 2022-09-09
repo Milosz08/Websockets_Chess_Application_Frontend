@@ -18,11 +18,15 @@
 
 import { Component } from "@angular/core";
 import { Meta, Title } from "@angular/platform-browser";
+import { Store } from "@ngrx/store";
 
 import { BrowserThemeDetector } from "../../../../browster-utils/browser-theme.detector";
 import { Oauth2RequestEndpointsContants } from "../../../../http-request-helpers/oauth2-request-endpoints.contants";
 import { BrowserMetaSerializatorLoader } from "../../../../browser-meta-serialization/browser-meta-serializator.loader";
 import { SingleModuleType, SinglePageType } from "../../../../browser-meta-serialization/browser-meta-serializator.types";
+
+import { AuthReducerType } from "../../../../ngrx-helpers/ngrx-store.types";
+import * as NgrxAction_ATH from "../../ngrx-store/auth-ngrx-store/auth.actions";
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -38,9 +42,11 @@ export class LogInPageComponent extends BrowserMetaSerializatorLoader {
     constructor(
         private _metaService: Meta,
         private _titleService: Title,
+        private _store: Store<AuthReducerType>,
         public _oauth2Constants: Oauth2RequestEndpointsContants,
     ) {
         super(_titleService, _metaService, SingleModuleType.AUTH_REGISTER_MODULE, SinglePageType.LOG_IN_PAGE);
+        this._store.dispatch(NgrxAction_ATH.__cleanServerResponse());
     };
 
     selectApplicationLogoBasedCurrentTheme(): string {

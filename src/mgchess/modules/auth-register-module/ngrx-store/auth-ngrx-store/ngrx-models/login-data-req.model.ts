@@ -1,8 +1,8 @@
 /*
  * Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
  *
- * File name: login-form.model.ts
- * Last modified: 09/09/2022, 04:04
+ * File name: login-data-req.model.ts
+ * Last modified: 09/09/2022, 17:19
  * Project name: chess-app-frontend
  *
  * Licensed under the MIT license; you may not use this file except in compliance with the License.
@@ -16,15 +16,20 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-import { LoginReqestModel } from "../ngrx-store/auth-ngrx-store/ngrx-models/login-data-req.model";
+import { LoginFormModel } from "../../../models/login-form.model";
 
 //----------------------------------------------------------------------------------------------------------------------
 
-export class LoginFormModel extends LoginReqestModel {
-    rememberAccount: boolean;
+export class LoginReqestModel {
+    usernameEmail: string;
+    password: string;
 
-    constructor(usernameEmail: string, password: string, rememberAccount: boolean) {
-        super(usernameEmail, password);
-        this.rememberAccount = rememberAccount;
+    constructor(usernameEmail: string, password: string) {
+        this.usernameEmail = usernameEmail;
+        this.password = password;
+    };
+
+    static factoryLoginRequstModelFromForm(form: LoginFormModel): LoginReqestModel {
+        return new LoginReqestModel(form.usernameEmail, form.password);
     };
 }

@@ -19,6 +19,10 @@
 import { newsletterNgrxStore } from "../modules/static-content-module/ngrx-store/newsletter-ngrx-store/newsletter.reducer";
 import { NewsletterStateTypes } from "../modules/static-content-module/ngrx-store/newsletter-ngrx-store/newsletter.initial";
 
+import { authNgrxStore } from "../modules/auth-register-module/ngrx-store/auth-ngrx-store/auth.reducer";
+import { AuthStateTypes } from "../modules/auth-register-module/ngrx-store/auth-ngrx-store/auth.initial";
+
 //----------------------------------------------------------------------------------------------------------------------
 
 export type NewsletterReducerType = { [newsletterNgrxStore.reducerName]: NewsletterStateTypes };
+export type AuthReducerType = { [authNgrxStore.reducerName]: AuthStateTypes };

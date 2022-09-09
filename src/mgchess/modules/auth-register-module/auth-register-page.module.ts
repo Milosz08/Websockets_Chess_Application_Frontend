@@ -19,6 +19,8 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { ReactiveFormsModule } from "@angular/forms";
+import { EffectsModule } from "@ngrx/effects";
+import { StoreModule } from "@ngrx/store";
 
 import { LogInPageComponent } from "./pages/log-in-page/log-in-page.component";
 import { SingUpPageComponent } from "./pages/sign-up-page/sing-up-page.component";
@@ -31,6 +33,11 @@ import { LastLoginsComponent } from "./components/last-logins/last-logins.compon
 import { SharedModuleModule } from "../shared-module/shared-module.module";
 import { AuthRegisterPageComponent } from "./auth-register-page.component";
 import { AuthRegisterPageRoutingModule } from "./auth-register-page-routing.module";
+
+import { authNgrxStore } from "./ngrx-store/auth-ngrx-store/auth.reducer";
+import { LoginViaLocalEffects } from "./ngrx-store/auth-ngrx-store/ngrx-effects/login-via-local.effects";
+
+import { AuthReqResService } from "./services/auth-req-res.service";
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -52,6 +59,14 @@ import { AuthRegisterPageRoutingModule } from "./auth-register-page-routing.modu
         SharedModuleModule,
         ReactiveFormsModule,
         AuthRegisterPageRoutingModule,
+        StoreModule.forFeature(authNgrxStore.reducerName, authNgrxStore.reducerFunc),
+        EffectsModule.forFeature([
+            LoginViaLocalEffects,
+        ]),
+    ],
+    providers: [
+        // services
+        AuthReqResService,
     ],
 })
 export class AuthRegisterPageModule {}

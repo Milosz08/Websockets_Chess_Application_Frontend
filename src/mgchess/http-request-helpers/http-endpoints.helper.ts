@@ -31,4 +31,12 @@ export class HttpEndpointsHelper {
     readonly NEWSLETTER_ATTEMPT_UNSUBSCRIBE = this.NEWSLETTER_EMAIL + "attempt-unsubscribe";
     readonly NEWSLETTER_UNSUBSCRIBE_VIA_OTA = this.NEWSLETTER_EMAIL + "unsubscribe-via-ota";
     readonly NEWSLETTER_UNSUBSCRIBE_VIA_JWT = this.NEWSLETTER_EMAIL + "unsubscribe-via-jwt";
+
+    private readonly AUTH_LOCAL = this.BASIC_HTTP + "auth-local/";
+    readonly LOGIN_VIA_LOCAL = this.AUTH_LOCAL + "login";
+    readonly REGISTER_VIA_LOCAL = this.AUTH_LOCAL + "register";
+
+    private readonly RENEW_CREDETIALS_LOCAL = this.BASIC_HTTP + "renew-credentials/";
+    readonly ATTEMPT_TO_CHANGE_PASSWORD = this.AUTH_LOCAL + "attempt-to-change-password";
+    readonly CHANGE_PASSWORD_VIA_OTA = this.AUTH_LOCAL + "change-password-via-ota";
 }

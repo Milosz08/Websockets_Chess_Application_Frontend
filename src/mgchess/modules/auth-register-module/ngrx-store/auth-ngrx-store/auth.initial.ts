@@ -1,8 +1,8 @@
 /*
  * Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
  *
- * File name: login-form.model.ts
- * Last modified: 09/09/2022, 04:04
+ * File name: auth.initial.ts
+ * Last modified: 09/09/2022, 14:43
  * Project name: chess-app-frontend
  *
  * Licensed under the MIT license; you may not use this file except in compliance with the License.
@@ -16,15 +16,22 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-import { LoginReqestModel } from "../ngrx-store/auth-ngrx-store/ngrx-models/login-data-req.model";
+import { SuspenseLoader, SuspenseLoaderResModel } from "../../../../models/suspense-loader-res.model";
+import { SimpleMessageResWithErrorModel } from "../../../../models/simple-message-response.model";
+import { UserCredentialsDataResModel } from "./ngrx-models/user-credentials-data-res.model";
 
 //----------------------------------------------------------------------------------------------------------------------
 
-export class LoginFormModel extends LoginReqestModel {
-    rememberAccount: boolean;
-
-    constructor(usernameEmail: string, password: string, rememberAccount: boolean) {
-        super(usernameEmail, password);
-        this.rememberAccount = rememberAccount;
-    };
+export interface AuthStateTypes {
+    suspenseLoader: SuspenseLoaderResModel;
+    serverResponse: SimpleMessageResWithErrorModel;
+    userCredentialsData: UserCredentialsDataResModel | null;
 }
+
+//----------------------------------------------------------------------------------------------------------------------
+
+export const initialAuthState: AuthStateTypes = {
+    suspenseLoader: new SuspenseLoaderResModel(false, SuspenseLoader.INACTIVE),
+    serverResponse: new SimpleMessageResWithErrorModel("", false),
+    userCredentialsData: null,
+};

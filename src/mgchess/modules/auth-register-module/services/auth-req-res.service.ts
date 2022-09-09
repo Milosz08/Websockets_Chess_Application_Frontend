@@ -1,8 +1,8 @@
 /*
  * Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
  *
- * File name: login-form.model.ts
- * Last modified: 09/09/2022, 04:04
+ * File name: auth-req-res.service.ts
+ * Last modified: 09/09/2022, 15:06
  * Project name: chess-app-frontend
  *
  * Licensed under the MIT license; you may not use this file except in compliance with the License.
@@ -16,15 +16,32 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+
+import { Observable } from "rxjs";
+
+import { HttpEndpointsHelper } from "../../../http-request-helpers/http-endpoints.helper";
+
 import { LoginReqestModel } from "../ngrx-store/auth-ngrx-store/ngrx-models/login-data-req.model";
+import { UserCredentialsDataResModel } from "../ngrx-store/auth-ngrx-store/ngrx-models/user-credentials-data-res.model";
 
 //----------------------------------------------------------------------------------------------------------------------
 
-export class LoginFormModel extends LoginReqestModel {
-    rememberAccount: boolean;
+@Injectable()
+export class AuthReqResService {
 
-    constructor(usernameEmail: string, password: string, rememberAccount: boolean) {
-        super(usernameEmail, password);
-        this.rememberAccount = rememberAccount;
+    constructor(
+        private _http: HttpClient,
+        private _endpoint: HttpEndpointsHelper,
+    ) {
     };
+
+    loginViaLocal(req: LoginReqestModel): Observable<UserCredentialsDataResModel> {
+        return this._http.post<UserCredentialsDataResModel>(
+            this._endpoint.LOGIN_VIA_LOCAL,
+            req,
+        );
+    };
+
 }
