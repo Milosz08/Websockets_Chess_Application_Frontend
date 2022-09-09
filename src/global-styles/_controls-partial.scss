@@ -151,8 +151,8 @@
     cursor: pointer;
     z-index: 2;
     opacity: 0;
-    width: 17px;
-    height: 17px;
+    width: 19px;
+    height: 19px;
     &:checked ~ .mg-chess__standard-checkbox__checkmark-primary-mixed-def-variant::after {
         display: block;
     }
@@ -174,8 +174,8 @@
     display: inline-block;
     position: relative;
     border-radius: var(--standard-button-border-radius);
-    width: 17px;
-    height: 17px;
+    width: 19px;
+    height: 19px;
     border: 1px solid var(--button-primary-mixed-color);
     transition: var(--standard-transition-duration);
     flex-shrink: 0;
@@ -183,12 +183,12 @@
         content: '';
         position: absolute;
         display: none;
-        left: .33rem;
-        top: .075rem;
+        left: .375rem;
+        top: .15rem;
         width: 4px;
         height: 7px;
         border: solid var(--button-primary-mixed-background-color);
-        border-width: 0 2px 2px 0;
+        border-width: 0 .15rem .15rem 0;
         transform: rotate(45deg);
     }
 }
