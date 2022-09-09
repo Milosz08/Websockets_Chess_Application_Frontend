@@ -23,6 +23,7 @@ import { ReactiveFormsModule } from "@angular/forms";
 
 import { FooterComponent } from "./components/footer/footer.component";
 import { ThemeTogglerComponent } from "./components/theme-toggler/theme-toggler.component";
+import { PasswordInputComponent } from './components/password-input/password-input.component';
 import { CopyrightNewsletterComponent } from "./components/copyright-newsletter/copyright-newsletter.component";
 
 import { ContentNotFoundPageComponent } from "./pages/content-not-found-page/content-not-found-page.component";
@@ -35,6 +36,7 @@ import { CookiesNotificationComponent } from './components/cookies-notification/
         // components
         FooterComponent,
         ThemeTogglerComponent,
+        PasswordInputComponent,
         CopyrightNewsletterComponent,
         // pages
         ContentNotFoundPageComponent,
@@ -48,6 +50,7 @@ import { CookiesNotificationComponent } from './components/cookies-notification/
     exports: [
         FooterComponent,
         ThemeTogglerComponent,
+        PasswordInputComponent,
         CopyrightNewsletterComponent,
         CookiesNotificationComponent,
     ],
