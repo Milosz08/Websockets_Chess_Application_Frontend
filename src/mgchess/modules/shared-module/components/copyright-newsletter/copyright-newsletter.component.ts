@@ -46,6 +46,7 @@ export class CopyrightNewsletterComponent implements OnDestroy {
     _suspenseActive: boolean = false;
 
     readonly _formHelper: AngularFormsHelper = new AngularFormsHelper();
+    readonly _serverResponseHelper: ServerReqResHelper = new ServerReqResHelper();
     readonly _newsletterForm: FormGroup;
 
     readonly _initialYear: number = 2022;

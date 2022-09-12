@@ -33,8 +33,8 @@ export class HttpEndpointsHelper {
     readonly NEWSLETTER_UNSUBSCRIBE_VIA_JWT = this.NEWSLETTER_EMAIL + "unsubscribe-via-jwt";
 
     private readonly AUTH_LOCAL = this.BASIC_HTTP + "auth-local/";
-    readonly LOGIN_VIA_LOCAL = this.AUTH_LOCAL + "login";
-    readonly REGISTER_VIA_LOCAL = this.AUTH_LOCAL + "register";
+    readonly LOGIN_VIA_LOCAL = this.AUTH_LOCAL + "login-via-local";
+    readonly REGISTER_VIA_LOCAL = this.AUTH_LOCAL + "register-via-local";
 
     private readonly RENEW_CREDETIALS_LOCAL = this.BASIC_HTTP + "renew-credentials/";
     readonly ATTEMPT_TO_CHANGE_PASSWORD = this.AUTH_LOCAL + "attempt-to-change-password";

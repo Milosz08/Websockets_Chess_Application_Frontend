@@ -22,7 +22,6 @@ import { HttpClient } from "@angular/common/http";
 import { catchError, map, Observable, of } from "rxjs";
 import { RxjsHelper } from "../../../rxjs-helpers/rxjs.helper";
 
-import { ServerReqResHelper } from "../../../http-request-helpers/server-req-res.helper";
 import { HttpEndpointsHelper } from "../../../http-request-helpers/http-endpoints.helper";
 
 import { NewsletterRequestModel } from "../models/newsletter-request-response.model";
@@ -31,13 +30,12 @@ import { SimpleMessageResponseModel, SimpleMessageResWithErrorModel } from "../.
 //----------------------------------------------------------------------------------------------------------------------
 
 @Injectable()
-export class AddToNewsletterHttpReqResService extends ServerReqResHelper {
+export class AddToNewsletterHttpReqResService {
 
     constructor(
         private _http: HttpClient,
         private _endpoint: HttpEndpointsHelper,
     ) {
-        super();
     };
 
     addEmailToNewsletter(request: NewsletterRequestModel): Observable<SimpleMessageResWithErrorModel> {

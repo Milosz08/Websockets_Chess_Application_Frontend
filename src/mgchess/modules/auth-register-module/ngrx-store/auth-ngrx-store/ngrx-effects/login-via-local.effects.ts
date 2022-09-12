@@ -24,12 +24,12 @@ import { catchError, delay, map, mergeMap, of, tap } from "rxjs";
 import { RxjsHelper } from "../../../../../rxjs-helpers/rxjs.helper";
 import { RxjsConstants } from "../../../../../rxjs-helpers/rxjs.constants";
 
-import { LoginReqestModel } from "../ngrx-models/login-data-req.model";
 import { AuthReqResService } from "../../../services/auth-req-res.service";
-import { AuthReducerType } from "../../../../../ngrx-helpers/ngrx-store.types";
 import { SuspenseLoader } from "../../../../../models/suspense-loader-res.model";
 
 import * as NgrxAction_ATH from "../auth.actions";
+import { LoginReqestModel } from "../ngrx-models/login-data-req.model";
+import { AuthReducerType } from "../../../../../ngrx-helpers/ngrx-store.types";
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -50,10 +50,13 @@ export class LoginViaLocalEffects {
                 this._store.dispatch(NgrxAction_ATH.__activeSuspense({ for: SuspenseLoader.ATTEMPT_LOGIN_VIA_LOCAL }));
             }),
             delay(RxjsConstants.DEF_DELAY_MILIS),
-            mergeMap(action => {
-                const req = LoginReqestModel.factoryLoginRequstModelFromForm(action.loginForm);
+            mergeMap(({ loginForm }) => {
+                const req = LoginReqestModel.factoryLoginRequstModelFromForm(loginForm);
                 return this._httpService.loginViaLocal(req).pipe(
                     map(credentialsData => {
+                        if (loginForm.rememberAccount) {
+                            // TODO: add saving account implementation
+                        }
                         return NgrxAction_ATH.__successfulLoginViaLocal({ credentialsData });
                     }),
                     catchError(error => {
