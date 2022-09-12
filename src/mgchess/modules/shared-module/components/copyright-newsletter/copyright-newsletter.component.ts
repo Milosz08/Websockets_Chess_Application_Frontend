@@ -28,6 +28,8 @@ import { NewsletterRequestModel } from "../../models/newsletter-request-response
 import { AngularFormsHelper } from "../../../../angular-forms-helpers/angular-forms.helper";
 import { SimpleMessageResWithErrorModel } from "../../../../models/simple-message-response.model";
 
+import { ServerReqResHelper } from "../../../../http-request-helpers/server-req-res.helper";
+import { ValidatorPatternConstants } from "../../../../validator-helpers/validator-pattern.constants";
 import { AddToNewsletterHttpReqResService } from "../../services/add-to-newsletter-http-req-res.service";
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -36,7 +38,7 @@ import { AddToNewsletterHttpReqResService } from "../../services/add-to-newslett
     selector: "mgchess-copyright-newsletter",
     templateUrl: "./copyright-newsletter.component.html",
     styleUrls: [ "./copyright-newsletter.component.scss" ],
-    providers: [ AddToNewsletterHttpReqResService ],
+    providers: [ ValidatorPatternConstants, AddToNewsletterHttpReqResService ],
 })
 export class CopyrightNewsletterComponent implements OnDestroy {
 
@@ -52,9 +54,11 @@ export class CopyrightNewsletterComponent implements OnDestroy {
     private _ngUnsubscribe: Subject<void> = new Subject<void>();
 
     constructor(
+        private _regex: ValidatorPatternConstants,
         public _httpService: AddToNewsletterHttpReqResService,
     ) {
         this._newsletterForm = new FormGroup({
+            userName: new FormControl("", [ Validators.required, Validators.pattern(_regex.USERNAME_REGEX) ]),
             emailAddress: new FormControl("", [ Validators.required, Validators.email, Validators.max(100) ]),
         });
     };

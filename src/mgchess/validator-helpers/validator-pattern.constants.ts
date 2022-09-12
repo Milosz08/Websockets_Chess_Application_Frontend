@@ -23,5 +23,6 @@ import { Injectable } from "@angular/core";
 @Injectable()
 export class ValidatorPatternConstants {
     readonly OTA_TOKEN_REGEX = "^[a-zA-Z0-9]{10}$" as const;
+    readonly USERNAME_REGEX = "^[a-zA-Z]{2,30}$" as const;
     readonly PASSWORD_REGEX = "^[a-zA-Z0-9!@#$%&*]{10,}$" as const;
 }

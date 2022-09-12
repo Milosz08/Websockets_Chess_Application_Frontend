@@ -35,16 +35,36 @@
             class="newsletter-form__container"
         >
             <label
-                for="newsletter__input-form"
-                class="mg-chess__standard-form-label__container form-label--remove-bottom-margin"
+                for="newsletter__input-username"
+                class="mg-chess__standard-form-label__container form-label--remove-bottom-margin username-label"
             >
                 <input
                     type="email"
-                    id="newsletter__input-form"
-                    (input)="_httpService.clearServerMessage(_serverResponse)"
+                    id="newsletter__input-username"
+                    (input)="_serverResponseHelper.clearServerMessage(_serverResponse)"
+                    autocomplete="off"
+                    formControlName="userName"
+                    placeholder="Username"
+                    class="mg-chess__standard-form-input-primary-color"
+                />
+                <p
+                    *ngIf="_formHelper.fieldHasAnyErrors('userName', _newsletterForm)"
+                    class="mg-chess__form-data-paragraph paragraph--error"
+                >
+                    Please enter valid username.
+                </p>
+            </label>
+            <label
+                for="newsletter__input-email"
+                class="mg-chess__standard-form-label__container form-label--remove-bottom-margin email-label"
+            >
+                <input
+                    type="email"
+                    id="newsletter__input-email"
+                    (input)="_serverResponseHelper.clearServerMessage(_serverResponse)"
                     autocomplete="off"
                     formControlName="emailAddress"
-                    placeholder="ex. johndoe@email.com"
+                    placeholder="Email address"
                     class="mg-chess__standard-form-input-primary-color"
                 />
                 <p
@@ -52,12 +72,6 @@
                     class="mg-chess__form-data-paragraph paragraph--error"
                 >
                     Please enter valid email address.
-                </p>
-                <p
-                    *ngIf="_serverResponse.responseMessage !== ''"
-                    [ngClass]="_httpService.responseCssClass(_serverResponse.responseError)"
-                >
-                    {{ _serverResponse.responseMessage }}
                 </p>
             </label>
             <button
@@ -73,6 +87,15 @@
                 ></div>
             </button>
         </form>
+        <p
+            *ngIf="_serverResponse.responseMessage !== ''"
+            [ngClass]="[
+                _serverResponseHelper.responseCssClass(_serverResponse.responseError),
+                'newsletter-response__paragraph'
+            ]"
+        >
+            {{ _serverResponse.responseMessage }}
+        </p>
         <p class="newsletter__aside-form-text-paragraph">
             To unsubscribe, go under <a routerLink="/newsletter">this page</a>.
         </p>
