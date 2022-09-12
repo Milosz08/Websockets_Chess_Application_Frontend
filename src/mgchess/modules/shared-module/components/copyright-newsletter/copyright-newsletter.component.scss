@@ -70,6 +70,10 @@
     }
 }
 
+.newsletter-response__paragraph {
+    margin-bottom: 10px;
+}
+
 //----------------------------------------------------------------------------------------------------------------------
 
 @media only screen and (max-width: 1115px) {
@@ -104,10 +108,15 @@
 
 @media only screen and (max-width: 500px) {
     .newsletter-form__container {
-        flex-direction: column;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(3, 1fr);
+        grid-gap: 5px;
+        .email-label {
+            grid-column: initial;
+        }
         .newsletter-submit-button {
             width: 100%;
-            margin: 10px 0 0;
+            margin: 5px 0 0;
         }
     }
 }

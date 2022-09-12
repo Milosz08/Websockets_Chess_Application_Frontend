@@ -27,6 +27,11 @@
     text-align: center;
 }
 
+.return-to-start {
+    width: fit-content;
+    margin: 0 auto;
+}
+
 //----------------------------------------------------------------------------------------------------------------------
 
 @media only screen and (max-width: 790px) {
@@ -38,5 +43,8 @@
 @media only screen and (max-width: 500px) {
     .unsubscribe-newsletter__form {
         margin-top: 30px;
+    }
+    .unsubscribe-newsletter__valid-info-paragraph {
+        margin: 20px 0;
     }
 }
