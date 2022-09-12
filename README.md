@@ -7,6 +7,9 @@ The client layer of an application that allows chess and checkers to be played. 
 programming paradigms (RXJS). The NGRX library is responsible for the application state. The application allows you to create an account,
 log in and track statistics of your games.
 
+See live application at: [chess.miloszgilga.pl](https://chess.miloszgilga.pl/)<br>
+See backend (server layer): [Websockets Chess Application Backend](https://github.com/Milosz08/Websockets_Chess_Application_Backend)
+
 ## Table of content
 * [Clone and install](#clone-and-install)
 * [Run in development mode](#run-in-development-mode)
