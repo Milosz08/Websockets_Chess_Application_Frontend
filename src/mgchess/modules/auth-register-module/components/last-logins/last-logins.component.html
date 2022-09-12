@@ -19,12 +19,24 @@
 <h2 class="mg-chess__standard-header-with-decorator header--smaller">
     <span class="text-content">Last logins</span>
 </h2>
-<ul class="last-logins__grid-container">
-    <li class="last-login__single-account__container">account</li>
+<ul
+    *ngIf="_rememberAccounts.length > 0; else lastLogins"
+    class="last-logins__grid-container"
+>
+    <li class="last-logins__single-account__container">account</li>
 </ul>
+<ng-template #lastLogins>
+    <div class="last-logins__no-remember-accounts__container">
+        <p class="no-remember-accounts__text-content">
+            You currently have no saved accounts. To save an account, log into it using the form with the "remember
+            account" option checked.
+        </p>
+    </div>
+</ng-template>
 <div class="last-logins__remove-logins-button__container">
     <button
         (click)="handleRemoveAllRememberAccounts()"
+        [disabled]="_rememberAccounts.length === 0"
         title="Click to remove all remember accounts"
         class="mg-chess__standard-button button--primary-mixed-def-variant button--fitting button--small-full-width"
     >

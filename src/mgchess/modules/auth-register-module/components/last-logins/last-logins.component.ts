@@ -27,6 +27,8 @@ import { Component } from "@angular/core";
 })
 export class LastLoginsComponent {
 
+    _rememberAccounts: Array<String> = new Array<String>();
+
     handleRemoveAllRememberAccounts(): void {
         // TODO: remove all accounts from local storage
     };
