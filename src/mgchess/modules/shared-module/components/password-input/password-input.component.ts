@@ -34,6 +34,7 @@ export class PasswordInputComponent {
     readonly _formHelper: AngularFormsHelper = new AngularFormsHelper();
 
     @Input() _form!: FormGroup;
+    @Input() _topInfoLabel: string = "";
     @Input() _inputId: string = "";
     @Input() _formControlName: string = "";
     @Input() _inputPlaceholder: string = "";
