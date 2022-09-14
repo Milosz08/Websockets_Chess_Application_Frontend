@@ -45,16 +45,6 @@
     }
 }
 
-.login-form-header {
-    color: var(--auth-login-form-foreground);
-    font-weight: var(--standard-font-weight);
-    z-index: 1;
-    &::before {
-        z-index: -1;
-        background-color: var(--auth-login-form-header-decorator-background);
-    }
-}
-
 .login-form__form-container {
     margin-top: 10px;
     width: 100%;
@@ -80,16 +70,6 @@
         margin-top: 8px;
         color: var(--clean-white);
         background-color: var(--oauth2-social-facebook-background);
-    }
-}
-
-.additional-auth-links__container {
-    display: flex;
-    align-items: center;
-    margin: 30px 0 20px;
-    color: var(--auth-login-form-foreground);
-    .anchor--auth-links {
-        font-size: .9rem;
     }
 }
 

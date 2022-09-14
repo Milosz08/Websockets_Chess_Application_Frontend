@@ -21,7 +21,6 @@
     flex-direction: column;
     margin-bottom: 10px;
     width: 100%;
-    position: relative;
     .mgchess__standard-form-label__text-primary-color {
         display: block;
         margin: 0 0 5px 10px;
@@ -30,9 +29,14 @@
             color: var(--secondary-form-text-and-border-color);
         }
     }
+    .mg-chess__password-input-button__container {
+        position: relative;
+        width: 100%;
+    }
     .mg-chess__standard-form-input-primary-color {
         border: 1px solid var(--primary-form-input-border-color);
         background-color: transparent;
+        width: 100%;
         padding: var(--standard-controls-padding);
         border-radius: var(--standard-button-border-radius);
         &.input--secondary-color {
@@ -47,8 +51,9 @@
     }
     .mg-chess__password-button {
         position: absolute;
-        right: 8px;
-        top: 3px;
+        right: 4px;
+        top: 50%;
+        transform: translateY(-50%);
         color: var(--primary-form-text-color);
         span {
             padding: 5px;
@@ -143,7 +148,10 @@
     margin-left: 10px;
     cursor: pointer;
     color: var(--button-primary-mixed-color);
-    line-height: 1.1;
+    line-height: 1.4;
+    &.secondary-mixed--variant {
+        color: var(--checkbox-secondary-mixed-color);
+    }
 }
 
 .mg-chess__standard-checkbox__input-primary-mixed-def-variant {
@@ -151,13 +159,10 @@
     cursor: pointer;
     z-index: 2;
     opacity: 0;
-    width: 19px;
-    height: 19px;
+    width: 18px;
+    height: 18px;
     &:checked ~ .mg-chess__standard-checkbox__checkmark-primary-mixed-def-variant::after {
-        display: block;
-    }
-    &:checked ~ .mg-chess__standard-checkbox__checkmark-primary-mixed-def-variant {
-        background-color: var(--button-primary-mixed-color);
+        transform: rotate(45deg) scale(1);
     }
     &:disabled,
     &:disabled ~ .mg-chess__standard-checkbox__label-container,
@@ -174,22 +179,28 @@
     display: inline-block;
     position: relative;
     border-radius: var(--standard-button-border-radius);
-    width: 19px;
-    height: 19px;
+    width: 18px;
+    height: 18px;
     border: 1px solid var(--button-primary-mixed-color);
     transition: var(--standard-transition-duration);
     flex-shrink: 0;
     &::after {
         content: '';
         position: absolute;
-        display: none;
-        left: .375rem;
-        top: .15rem;
+        left: 5px;
+        top: 2px;
         width: 4px;
         height: 7px;
-        border: solid var(--button-primary-mixed-background-color);
+        border: solid var(--button-primary-mixed-color);
         border-width: 0 .15rem .15rem 0;
-        transform: rotate(45deg);
+        transform: rotate(45deg) scale(0);
+        transition: var(--standard-transition-duration);
+    }
+    &.secondary-mixed--variant {
+        border: 1px solid var(--checkbox-secondary-mixed-color);
+        &::after {
+            border-color: var(--checkbox-secondary-mixed-color);
+        }
     }
 }
 
