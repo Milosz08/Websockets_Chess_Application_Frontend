@@ -16,8 +16,9 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-import { Component, EventEmitter, Input, OnChanges, OnDestroy, Output } from "@angular/core";
+import { Component, Input, OnChanges, OnDestroy } from "@angular/core";
 import { FormGroup } from "@angular/forms";
+import { Store } from "@ngrx/store";
 
 import { Subject, takeUntil } from "rxjs";
 import { RxjsHelper } from "../../../../rxjs-helpers/rxjs.helper";
@@ -27,6 +28,9 @@ import { AngularFormsHelper } from "../../../../angular-forms-helpers/angular-fo
 import { PasswordInputClassesModel } from "../../../shared-module/models/password-input-classes.model";
 
 import { PasswordStrength, PasswordStrengthMeterService } from "../../services/password-strength-meter.service";
+
+import { AuthReducerType } from "../../../../ngrx-helpers/ngrx-store.types";
+import * as NgrxAction_ATH from "../../ngrx-store/auth-ngrx-store/auth.actions";
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -39,7 +43,6 @@ import { PasswordStrength, PasswordStrengthMeterService } from "../../services/p
 export class SignupPasswordControlGroupComponent implements OnChanges, OnDestroy {
 
     @Input() _singupForm!: FormGroup;
-    @Output() _clearResponseEmitter: EventEmitter<void> = new EventEmitter<void>();
 
     _passwordScore: PasswordStrength = new PasswordStrength(0, "none");
 
@@ -51,8 +54,13 @@ export class SignupPasswordControlGroupComponent implements OnChanges, OnDestroy
     private _ngUnsubscribe: Subject<void> = new Subject<void>();
 
     constructor(
+        private _store: Store<AuthReducerType>,
         private _passwordMeterService: PasswordStrengthMeterService,
     ) {
+    };
+
+    handleClearServerResponse(): void {
+        this._store.dispatch(NgrxAction_ATH.__cleanServerResponse());
     };
 
     ngOnChanges(): void {

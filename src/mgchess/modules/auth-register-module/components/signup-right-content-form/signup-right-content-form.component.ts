@@ -16,10 +16,14 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
 import { AbstractControl, FormGroup } from "@angular/forms";
+import { Store } from "@ngrx/store";
 
 import { AngularFormsHelper } from "../../../../angular-forms-helpers/angular-forms.helper";
+
+import { AuthReducerType } from "../../../../ngrx-helpers/ngrx-store.types";
+import * as NgrxAction_ATH from "../../ngrx-store/auth-ngrx-store/auth.actions";
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -31,20 +35,28 @@ import { AngularFormsHelper } from "../../../../angular-forms-helpers/angular-fo
 export class SignupRightContentFormComponent implements OnInit {
 
     @Input() _singupForm!: FormGroup;
-    @Output() _clearResponseEmitter: EventEmitter<void> = new EventEmitter<void>();
 
     _hasPrivacyPolicyAccept!: AbstractControl<any, any>;
     _hasNewsletterAccept!: AbstractControl<any, any>;
 
     readonly _formHelper: AngularFormsHelper = new AngularFormsHelper();
 
+    constructor(
+        private _store: Store<AuthReducerType>,
+    ) {
+    };
+
     ngOnInit(): void {
         this._hasPrivacyPolicyAccept = this._formHelper.field("hasPrivacyPolicyAccept", this._singupForm);
         this._hasNewsletterAccept = this._formHelper.field("hasNewsletterAccept", this._singupForm);
     }
 
+    handleClearServerResponse(): void {
+        this._store.dispatch(NgrxAction_ATH.__cleanServerResponse());
+    };
+
     handleSelectAllAcceptionFields(isChecked: boolean): void {
-        this._clearResponseEmitter.emit();
+        this.handleClearServerResponse();
         this._hasPrivacyPolicyAccept.setValue(isChecked);
         this._hasNewsletterAccept.setValue(isChecked);
     };

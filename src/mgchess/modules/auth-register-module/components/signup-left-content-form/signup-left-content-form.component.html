@@ -27,7 +27,6 @@
         _formControlPlaceholder="ex. JohnDoe123"
         _additionalControlText="Insert here your nickname *"
         _controlErrorText="Please enter valid nickname."
-        (_clearResponseEmitter)="_clearResponseEmitter.emit()"
     ></mgchess-signup-form-text-input>
     <mgchess-signup-form-text-input
         [_singupForm]="_singupForm"
@@ -35,7 +34,6 @@
         _formControlPlaceholder="ex. John"
         _additionalControlText="Insert here your first name *"
         _controlErrorText="Please enter valid first name."
-        (_clearResponseEmitter)="_clearResponseEmitter.emit()"
     ></mgchess-signup-form-text-input>
     <mgchess-signup-form-text-input
         [_singupForm]="_singupForm"
@@ -43,7 +41,6 @@
         _formControlPlaceholder="ex. Doe"
         _additionalControlText="Insert here your last name *"
         _controlErrorText="Please enter valid last name."
-        (_clearResponseEmitter)="_clearResponseEmitter.emit()"
     ></mgchess-signup-form-text-input>
     <mgchess-signup-form-text-input
         [_singupForm]="_singupForm"
@@ -52,7 +49,6 @@
         _formControlPlaceholder="ex. johndoe@example.com"
         _additionalControlText="Insert here your email address *"
         _controlErrorText="Please enter valid email address."
-        (_clearResponseEmitter)="_clearResponseEmitter.emit()"
     ></mgchess-signup-form-text-input>
     <div class="mg-chess__standard-checkbox__container">
         <input
@@ -77,7 +73,6 @@
         _formControlPlaceholder="ex. johndoeTwo@example.com"
         _additionalControlText="Insert here your second email address"
         _controlErrorText="Please enter valid second email address."
-        (_clearResponseEmitter)="_clearResponseEmitter.emit()"
     >
         <p
             *ngIf="_formHelper.checkCustomError(_singupForm, _emailAddressesAreTheSame)"
@@ -88,6 +83,5 @@
     </mgchess-signup-form-text-input>
     <mgchess-signup-password-control-group
         [_singupForm]="_singupForm"
-        (_clearResponseEmitter)="_clearResponseEmitter.emit()"
     ></mgchess-signup-password-control-group>
 </div>

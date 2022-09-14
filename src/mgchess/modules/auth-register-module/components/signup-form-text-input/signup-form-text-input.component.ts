@@ -16,10 +16,14 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-import { Component, EventEmitter, Input, Output } from "@angular/core";
+import { Component, Input } from "@angular/core";
 import { FormGroup } from "@angular/forms";
+import { Store } from "@ngrx/store";
 
 import { AngularFormsHelper } from "../../../../angular-forms-helpers/angular-forms.helper";
+
+import { AuthReducerType } from "../../../../ngrx-helpers/ngrx-store.types";
+import * as NgrxAction_ATH from "../../ngrx-store/auth-ngrx-store/auth.actions";
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -36,9 +40,16 @@ export class SignupFormTextInputComponent {
     @Input() _additionalControlText: string = "";
     @Input() _controlErrorText: string = "";
 
-    @Output() _clearResponseEmitter: EventEmitter<void> = new EventEmitter<void>();
-
     readonly _formHelper: AngularFormsHelper = new AngularFormsHelper();
+
+    constructor(
+        private _store: Store<AuthReducerType>,
+    ) {
+    };
+
+    handleClearServerResponse(): void {
+        this._store.dispatch(NgrxAction_ATH.__cleanServerResponse());
+    };
 
     get __inputElementId(): string {
         return `signup-form__${this._formControlName}-input`;

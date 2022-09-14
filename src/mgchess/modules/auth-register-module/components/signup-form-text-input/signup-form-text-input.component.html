@@ -27,7 +27,7 @@
     <input
         type="text"
         [id]="__inputElementId"
-        (input)="_clearResponseEmitter.emit()"
+        (input)="handleClearServerResponse()"
         autocomplete="off"
         [maxLength]="_controlMaxLength"
         [formControlName]="_formControlName"

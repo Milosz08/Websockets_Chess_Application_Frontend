@@ -43,7 +43,7 @@
         <div class="mg-chess__standard-checkbox__container sing-up-checkbox--ident">
             <input
                 type="checkbox"
-                (change)="_clearResponseEmitter.emit()"
+                (change)="handleClearServerResponse()"
                 formControlName="hasPrivacyPolicyAccept"
                 id="signup-form__privacy-policy-acceptation-checkbox"
                 class="mg-chess__standard-checkbox__input-primary-mixed-def-variant"
@@ -65,7 +65,7 @@
         <div class="mg-chess__standard-checkbox__container sing-up-checkbox--ident">
             <input
                 type="checkbox"
-                (change)="_clearResponseEmitter.emit()"
+                (change)="handleClearServerResponse()"
                 formControlName="hasNewsletterAccept"
                 id="signup-form__newsletter-acceptation-checkbox"
                 class="mg-chess__standard-checkbox__input-primary-mixed-def-variant"

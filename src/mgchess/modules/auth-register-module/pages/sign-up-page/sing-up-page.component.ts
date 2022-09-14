@@ -79,10 +79,6 @@ export class SingUpPageComponent extends BrowserMetaSerializatorLoader {
         return BrowserThemeDetector.getLogoSrcBasedCurrentTheme();
     };
 
-    handleClearSignupServerResponse(): void {
-        this._store.dispatch(NgrxAction_ATH.__cleanServerResponse());
-    };
-
     handleSubmitRegisterFormData(): void {
         const req = this._formHelper.extractFormFields<SignupFormModel>(this._signupForm, false);
         this._store.dispatch(NgrxAction_ATH.__attemptToSingUpViaLocal({ signupForm: req }));

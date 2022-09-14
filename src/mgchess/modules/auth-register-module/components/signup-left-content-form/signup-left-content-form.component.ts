@@ -16,11 +16,15 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-import { Component, EventEmitter, Input, Output } from "@angular/core";
+import { Component, Input } from "@angular/core";
 import { FormGroup } from "@angular/forms";
+import { Store } from "@ngrx/store";
 
 import { ValidatorConstraint } from "../../../../validator-helpers/angular-form.validator";
 import { AngularFormsHelper } from "../../../../angular-forms-helpers/angular-forms.helper";
+
+import { AuthReducerType } from "../../../../ngrx-helpers/ngrx-store.types";
+import * as NgrxAction_ATH from "../../ngrx-store/auth-ngrx-store/auth.actions";
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -31,15 +35,23 @@ import { AngularFormsHelper } from "../../../../angular-forms-helpers/angular-fo
 export class SignupLeftContentFormComponent {
 
     @Input() _singupForm!: FormGroup;
-    @Output() _clearResponseEmitter: EventEmitter<void> = new EventEmitter<void>();
 
     _secondEmailInputVisibility: boolean = false;
 
     readonly _formHelper: AngularFormsHelper = new AngularFormsHelper();
     readonly _emailAddressesAreTheSame = ValidatorConstraint.EMAIL_ADDRESSES_ARE_THE_SAME;
 
+    constructor(
+        private _store: Store<AuthReducerType>,
+    ) {
+    };
+
+    handleClearServerResponse(): void {
+        this._store.dispatch(NgrxAction_ATH.__cleanServerResponse());
+    };
+
     handleToggleSecondEmailInputVisibility(): void {
-        this._clearResponseEmitter.emit();
+        this.handleClearServerResponse();
         this._secondEmailInputVisibility = !this._secondEmailInputVisibility;
         this._formHelper.field("secondEmailAddress", this._singupForm).setValue("");
     };
