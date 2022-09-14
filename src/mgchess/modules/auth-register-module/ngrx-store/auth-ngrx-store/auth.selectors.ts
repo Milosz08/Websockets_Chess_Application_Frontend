@@ -34,6 +34,10 @@ export const sel_loginViaLocalSupense = selectorWithInjectedStore(state =>
     state.suspenseLoader.isSuspenseLoading && state.suspenseLoader.loadingFor === SuspenseLoader.ATTEMPT_LOGIN_VIA_LOCAL,
 );
 
+export const sel_signupViaLocalSuspense = selectorWithInjectedStore(state =>
+    state.suspenseLoader.isSuspenseLoading && state.suspenseLoader.loadingFor === SuspenseLoader.ATTEMPT_SIGNUP_VIA_LOCAL,
+);
+
 export const sel_serverResponse = selectorWithInjectedStore(state =>
     state.serverResponse,
 );

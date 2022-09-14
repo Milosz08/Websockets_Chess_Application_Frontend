@@ -21,12 +21,17 @@ import { createAction, props } from "@ngrx/store";
 import { LoginFormModel } from "../../models/login-form.model";
 import { SuspenseLoader } from "../../../../models/suspense-loader-res.model";
 import { UserCredentialsDataResModel } from "./ngrx-models/user-credentials-data-res.model";
+import { SignupFormModel } from "../../models/signup-form.model";
 
 //----------------------------------------------------------------------------------------------------------------------
 
 const ATTEMPT_LOGIN_VIA_LOCAL = "[AUTH] ATTEMPT LOGIN VIA LOCAL" as const;
 const SUCCESSFUL_LOGIN_VIA_LOCAL = "[AUTH] SUCCESSFUL ATTEMPT LOGIN VIA LOCAL" as const;
 const FAILURE_LOGIN_VIA_LOCAL = "[AUTH] FAILURE ATTEMPT LOGIN VIA LOCAL" as const;
+
+const ATTEMPT_SIGNUP_VIA_LOCAL = "[AUTH] ATTEMPT SIGNUP VIA LOCAL" as const;
+const SUCCESSFUL_SIGNUP_VIA_LOCAL = "[AUTH] SUCCESSFUL SIGNUP VIA LOCAL" as const;
+const FAILURE_SIGNUP_VIA_LOCAL = "[AUTH] FAILURE SIGNUP VIA LOCAL" as const;
 
 const ACTIVE_SUSPENSE_LOADER = "[AUTH] ACTIVE SUSPENSE LOADER" as const;
 const INACTIVE_SUSPENSE_LOADER = "[AUTH] INACTIVE SUSPENSE LOADER" as const;
@@ -47,6 +52,21 @@ export const __successfulLoginViaLocal = createAction(
 
 export const __failureLoginViaLocal = createAction(
     FAILURE_LOGIN_VIA_LOCAL,
+    props<{ serverResponse: string }>(),
+);
+
+export const __attemptToSingUpViaLocal = createAction(
+    ATTEMPT_SIGNUP_VIA_LOCAL,
+    props<{ signupForm: SignupFormModel }>(),
+);
+
+export const __successfulSingUpViaLocal = createAction(
+    SUCCESSFUL_SIGNUP_VIA_LOCAL,
+    props<{ serverResponse: string }>(),
+);
+
+export const __failureSingUpViaLocal = createAction(
+    FAILURE_SIGNUP_VIA_LOCAL,
     props<{ serverResponse: string }>(),
 );
 
