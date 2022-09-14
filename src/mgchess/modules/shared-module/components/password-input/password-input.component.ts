@@ -35,6 +35,7 @@ export class PasswordInputComponent {
 
     @Input() _form!: FormGroup;
     @Input() _topInfoLabel: string = "";
+    @Input() _maxInputLength: number = 30;
     @Input() _inputId: string = "";
     @Input() _formControlName: string = "";
     @Input() _inputPlaceholder: string = "";
