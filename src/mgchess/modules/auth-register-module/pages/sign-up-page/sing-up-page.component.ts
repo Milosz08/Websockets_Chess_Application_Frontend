@@ -18,9 +18,22 @@
 
 import { Component } from "@angular/core";
 import { Meta, Title } from "@angular/platform-browser";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { Store } from "@ngrx/store";
 
+import { Observable } from "rxjs";
+
+import { SignupFormModel } from "../../models/signup-form.model";
+import { BrowserThemeDetector } from "../../../../browster-utils/browser-theme.detector";
+import { AngularFormValidator } from "../../../../validator-helpers/angular-form.validator";
+import { ValidatorPatternConstants } from "../../../../validator-helpers/validator-pattern.constants";
 import { BrowserMetaSerializatorLoader } from "../../../../browser-meta-serialization/browser-meta-serializator.loader";
 import { SingleModuleType, SinglePageType } from "../../../../browser-meta-serialization/browser-meta-serializator.types";
+
+import { AuthReducerType } from "../../../../ngrx-helpers/ngrx-store.types";
+import * as NgrxAction_ATH from "../../ngrx-store/auth-ngrx-store/auth.actions";
+import * as NgrxSelector_ATH from "../../ngrx-store/auth-ngrx-store/auth.selectors";
+import { AngularFormsHelper } from "../../../../angular-forms-helpers/angular-forms.helper";
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -29,13 +42,50 @@ import { SingleModuleType, SinglePageType } from "../../../../browser-meta-seria
     templateUrl: "./sing-up-page.component.html",
     styleUrls: [ "./sing-up-page.component.scss" ],
     host: { class: "mg-chess__flex-safety-container remove-margin__small-devices" },
+    providers: [ AngularFormValidator, ValidatorPatternConstants ],
 })
 export class SingUpPageComponent extends BrowserMetaSerializatorLoader {
+
+    _signupForm: FormGroup;
+    _suspenseLoader$: Observable<boolean> = this._store.select(NgrxSelector_ATH.sel_signupViaLocalSuspense);
+
+    readonly _formHelper: AngularFormsHelper = new AngularFormsHelper();
 
     constructor(
         private _metaService: Meta,
         private _titleService: Title,
+        private _store: Store<AuthReducerType>,
+        private _validator: AngularFormValidator,
+        private _regex: ValidatorPatternConstants,
     ) {
         super(_titleService, _metaService, SingleModuleType.AUTH_REGISTER_MODULE, SinglePageType.SIGN_UP_PAGE);
+        this._signupForm = new FormGroup({
+            nickname: new FormControl("", [ Validators.required, Validators.pattern(_regex.NICKNAME_REGEX) ]),
+            firstName: new FormControl("", [ Validators.required, Validators.pattern(_regex.USERNAME_REGEX) ]),
+            lastName: new FormControl("", [ Validators.required, Validators.pattern(_regex.USERNAME_REGEX) ]),
+            emailAddress: new FormControl("", [ Validators.required, Validators.email ]),
+            secondEmailAddress: new FormControl("", [ Validators.email ]),
+            password: new FormControl("", [ Validators.required, Validators.pattern(_regex.PASSWORD_REGEX) ]),
+            passwordRepeat: new FormControl("", [ Validators.required ]),
+            // TODO: add birth date, phone (optional) and gender fields
+            hasNewsletterAccept: new FormControl(false),
+            hasPrivacyPolicyAccept: new FormControl(false, [ Validators.requiredTrue ])
+        }, {
+            validators: [ _validator.passwordMismatchValidate, _validator.twoEmailAddressesAreNotEqualsValidate ],
+        });
+    };
+
+    selectApplicationLogoBasedCurrentTheme(): string {
+        return BrowserThemeDetector.getLogoSrcBasedCurrentTheme();
+    };
+
+    handleClearSignupServerResponse(): void {
+        this._store.dispatch(NgrxAction_ATH.__cleanServerResponse());
+    };
+
+    handleSubmitRegisterFormData(): void {
+        const req = this._formHelper.extractFormFields<SignupFormModel>(this._signupForm, false);
+        this._store.dispatch(NgrxAction_ATH.__attemptToSingUpViaLocal({ signupForm: req }));
+        console.log(req);
     };
 }

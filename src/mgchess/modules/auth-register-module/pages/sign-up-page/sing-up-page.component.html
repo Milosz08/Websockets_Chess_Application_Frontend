@@ -16,4 +16,83 @@
   ~ COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
   -->
 
-<p>register-page works!</p>
+<form
+    [formGroup]="_signupForm"
+    (ngSubmit)="handleSubmitRegisterFormData()"
+    class="sign-up__container"
+>
+    <section class="sign-up__section-container">
+        <a
+            routerLink="/"
+            class="mg-chess__application-logo logo--register-form"
+        >
+            <img
+                [src]="selectApplicationLogoBasedCurrentTheme()" alt=""
+                class="application-logo__image image--register-form"
+            />
+        </a>
+        <h2 class="mg-chess__standard-header-with-decorator header--smaller">
+            <span class="text-content auth-form-header">Create your account</span>
+        </h2>
+        <mgchess-singup-left-content-form
+            [_singupForm]="_signupForm"
+            (_clearResponseEmitter)="handleClearSignupServerResponse()"
+        ></mgchess-singup-left-content-form>
+    </section>
+    <span class="sign-up__section-separator"></span>
+    <section class="sign-up__section-container">
+        <mgchess-singup-right-content-form
+            [_singupForm]="_signupForm"
+            (_clearResponseEmitter)="handleClearSignupServerResponse()"
+        ></mgchess-singup-right-content-form>
+        <button
+            type="submit"
+            [disabled]="!_signupForm.valid"
+            title="Click to create your account"
+            class="mg-chess__standard-button button--thirdly-mixed-def-variant"
+        >
+            Create account
+            <div
+                *ngIf="(_suspenseLoader$ | async)"
+                class="button__suspense-loading-spinner"
+            ></div>
+        </button>
+        <div class="sign-up-star-info__container">
+            <div class="single-star-info__container">
+                <span class="sign-up-star-info__stars">*</span>
+                <p class="sign-up-star-info__paragraph">
+                    These fields are required for proper submission of the registration form.
+                </p>
+            </div>
+            <div class="single-star-info__container">
+                <span class="sign-up-star-info__stars">**</span>
+                <p class="sign-up-star-info__paragraph">
+                    The additional email address provided in the form is used only for the password recovery procedure.
+                    This field is optional.
+                </p>
+            </div>
+        </div>
+        <span class="mg-chess__separator-with-text-inside separator--prevent-remove-margin bottom-margin--decrease">
+            <span class="separator-line"></span>
+            <span class="text-content">or choose another option</span>
+            <span class="separator-line"></span>
+        </span>
+        <div class="mg-chess__additional-auth-links__container auth-links--remove-bottom-margin">
+            <a
+                routerLink="/auth/login"
+                title="Click this link, if you already have account"
+                class="mg-chess__navlinks__anchor-element anchor--auth-links"
+            >
+                I already have account
+            </a>
+            <span class="mg-chess__standard-bullet-separator bullet--around-margins"></span>
+            <a
+                routerLink="/auth/forgot-password"
+                title="Click this link, if you don't remember password"
+                class="mg-chess__navlinks__anchor-element anchor--auth-links"
+            >
+                I forgot password
+            </a>
+        </div>
+    </section>
+</form>

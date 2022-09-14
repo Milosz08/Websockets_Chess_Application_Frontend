@@ -22,6 +22,7 @@
     --primary-light-color: #f4f2ed;
     --primary-light-tint-color: #bfbaba;
     --primary-dark-tint-color: #3b1302;
+    --secondary-dark-secondary-tint-color: #573f3f;
     --secondary-dark-color: #212121;
     --secondary-dark-tint-color: #171717;
     --thirdly-dark-tint-color: #454545;
@@ -29,6 +30,7 @@
     --secondary-tint-color: #898075;
 
     --standard-transition-duration: .3s;
+    --smooth-transition-duration: 1.2s;
     --standard-button-border-radius: 5px;
     --standard-modal-border-radius: 10px;
     --standard-modal-back-noise-shadow: rgb(201, 194, 188) 0 8px 24px;
@@ -58,6 +60,8 @@ body {
     --form-data-paragraph-info-reverse-color: #6d9c6d;
     --form-data-paragraph-error-secondary-color: #901c1c;
     --form-data-paragraph-error-reverse-color: #aa6161;
+    --form-data-paragraph-warn-secondary-color: #bb893f;
+    --form-data-paragraph-warn-reverse-color: #debc66;
 
     // angular controls
     --button-primary-mixed-color: var(--primary-light-color);
@@ -66,6 +70,7 @@ body {
     --button-secondary-mixed-background: var(--primary-dark-tint-color);
     --button-thirdly-mixed-color: var(--primary-dark-tint-color);
     --button-thirdly-mixed-background: var(--primary-tint-color);
+    --checkbox-secondary-mixed-color: var(--secondary-tint-color);
 
     // spinners and loaders
     --primary-spinner-color: var(--primary-dark-tint-color);
@@ -79,6 +84,8 @@ body {
     --auth-login-form-foreground: var(--primary-light-color);
     --auth-login-form-header-decorator-background: var(--secondary-tint-color);
     --aside-text-info-color: var(--primary-light-tint-color);
+    --signup-separator-element-color: var(--secondary-dark-secondary-tint-color);
+    --signup-aside-form-content-color: var(--secondary-tint-color);
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -93,6 +100,8 @@ body.dark-theme--active {
     --form-data-paragraph-info-reverse-color: #366d36;
     --form-data-paragraph-error-secondary-color: #aa6161;
     --form-data-paragraph-error-reverse-color: #901c1c;
+    --form-data-paragraph-warn-secondary-color: #debc66;
+    --form-data-paragraph-warn-reverse-color: #bb893f;
 
     // angular controls
     --button-primary-mixed-color: var(--secondary-dark-color);
@@ -101,6 +110,7 @@ body.dark-theme--active {
     --button-secondary-mixed-background: var(--secondary-dark-color);
     --button-thirdly-mixed-color: var(--primary-light-color);
     --button-thirdly-mixed-background: var(--secondary-dark-color);
+    --checkbox-secondary-mixed-color: var(--secondary-tint-color);
 
     // spinners and loaders
     --primary-spinner-color: var(--primary-light-color);
@@ -114,4 +124,6 @@ body.dark-theme--active {
     --auth-login-form-foreground: var(--secondary-dark-tint-color);
     --auth-login-form-header-decorator-background: var(--primary-light-color);
     --aside-text-info-color: var(--thirdly-dark-tint-color);
+    --signup-separator-element-color: var(--secondary-tint-color);
+    --signup-aside-form-content-color: var(--secondary-tint-color);
 }

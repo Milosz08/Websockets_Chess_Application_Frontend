@@ -1,0 +1,93 @@
+<!--
+  ~ Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
+  ~
+  ~ File name: signup-left-content-form.component.html
+  ~ Last modified: 12/09/2022, 18:44
+  ~ Project name: chess-app-frontend
+  ~
+  ~ Licensed under the MIT license; you may not use this file except in compliance with the License.
+  ~
+  ~ Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+  ~ documentation files (the "Software"), to deal in the Software without restriction, including without limitation the
+  ~ rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to
+  ~ permit persons to whom the Software is furnished to do so, subject to the following conditions:
+  ~
+  ~ THE ABOVE COPYRIGHT NOTICE AND THIS PERMISSION NOTICE SHALL BE INCLUDED IN ALL
+  ~ COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
+  -->
+
+<div
+    [formGroup]="_singupForm"
+    class="mg-chess__sign-up__left-right-container"
+>
+    <mgchess-signup-form-text-input
+        [_singupForm]="_singupForm"
+        [_controlMaxLength]="20"
+        _formControlName="nickname"
+        _formControlPlaceholder="ex. JohnDoe123"
+        _additionalControlText="Insert here your nickname *"
+        _controlErrorText="Please enter valid nickname."
+        (_clearResponseEmitter)="_clearResponseEmitter.emit()"
+    ></mgchess-signup-form-text-input>
+    <mgchess-signup-form-text-input
+        [_singupForm]="_singupForm"
+        _formControlName="firstName"
+        _formControlPlaceholder="ex. John"
+        _additionalControlText="Insert here your first name *"
+        _controlErrorText="Please enter valid first name."
+        (_clearResponseEmitter)="_clearResponseEmitter.emit()"
+    ></mgchess-signup-form-text-input>
+    <mgchess-signup-form-text-input
+        [_singupForm]="_singupForm"
+        _formControlName="lastName"
+        _formControlPlaceholder="ex. Doe"
+        _additionalControlText="Insert here your last name *"
+        _controlErrorText="Please enter valid last name."
+        (_clearResponseEmitter)="_clearResponseEmitter.emit()"
+    ></mgchess-signup-form-text-input>
+    <mgchess-signup-form-text-input
+        [_singupForm]="_singupForm"
+        [_controlMaxLength]="100"
+        _formControlName="emailAddress"
+        _formControlPlaceholder="ex. johndoe@example.com"
+        _additionalControlText="Insert here your email address *"
+        _controlErrorText="Please enter valid email address."
+        (_clearResponseEmitter)="_clearResponseEmitter.emit()"
+    ></mgchess-signup-form-text-input>
+    <div class="mg-chess__standard-checkbox__container">
+        <input
+            type="checkbox"
+            (change)="handleToggleSecondEmailInputVisibility()"
+            [checked]="_secondEmailInputVisibility"
+            id="signup-form__second-email-active-checkbox"
+            class="mg-chess__standard-checkbox__input-primary-mixed-def-variant"
+        />
+        <span class="mg-chess__standard-checkbox__checkmark-primary-mixed-def-variant"></span>
+        <label
+            for="signup-form__second-email-active-checkbox"
+            class="mg-chess__standard-checkbox__label-container-primary-mixed-def-variant"
+        >
+            I also can add second email. **
+        </label>
+    </div>
+    <mgchess-signup-form-text-input
+        *ngIf="_secondEmailInputVisibility"
+        [_singupForm]="_singupForm"
+        _formControlName="secondEmailAddress"
+        _formControlPlaceholder="ex. johndoeTwo@example.com"
+        _additionalControlText="Insert here your second email address"
+        _controlErrorText="Please enter valid second email address."
+        (_clearResponseEmitter)="_clearResponseEmitter.emit()"
+    >
+        <p
+            *ngIf="_formHelper.checkCustomError(_singupForm, _emailAddressesAreTheSame)"
+            class="mg-chess__form-data-paragraph paragraph--error-reverse-theme-change"
+        >
+            The second email address cannot be the same as the first one.
+        </p>
+    </mgchess-signup-form-text-input>
+    <mgchess-signup-password-control-group
+        [_singupForm]="_singupForm"
+        (_clearResponseEmitter)="_clearResponseEmitter.emit()"
+    ></mgchess-signup-password-control-group>
+</div>
