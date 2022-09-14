@@ -47,4 +47,9 @@ export class AngularFormsHelper {
     static extractFormFields<T>(form: FormGroup, activeReset: boolean = true): T {
         return new AngularFormsHelper().extractFormFields<T>(form, activeReset);
     };
+
+    checkCustomError(form: FormGroup, errorName: string): boolean {
+        if (!form) throw new Error("Form grounp is not valid");
+        return form.errors?.[errorName];
+    };
 }
