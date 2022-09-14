@@ -41,6 +41,15 @@
             background-color: var(--header-decorator-element-color);
             opacity: .7;
         }
+        &.auth-form-header {
+            color: var(--auth-login-form-foreground);
+            font-weight: var(--standard-font-weight);
+            z-index: 1;
+            &::before {
+                z-index: -1;
+                background-color: var(--auth-login-form-header-decorator-background);
+            }
+        }
     }
     .separator {
         display: block;
@@ -79,9 +88,11 @@
 }
 
 .mg-chess__navlinks__anchor-element {
-    text-transform: capitalize;
     transition: var(--standard-transition-duration);
     color: var(--secondary-tint-color);
+    &.anchor--auth-links {
+        font-size: .9rem;
+    }
     &:hover {
         color: inherit;
     }

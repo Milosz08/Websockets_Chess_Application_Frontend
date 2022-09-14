@@ -68,6 +68,9 @@
         height: 1px;
         background-color: var(--secondary-tint-color);
     }
+    &.bottom-margin--decrease {
+        margin: 30px 0 20px;
+    }
 }
 
 .mg-chess__standard-bullet-separator {
@@ -96,6 +99,21 @@
         z-index: -1;
         opacity: .5;
     }
+}
+
+.mg-chess__additional-auth-links__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px 0 20px;
+    color: var(--auth-login-form-foreground);
+    &.auth-links--remove-bottom-margin {
+        margin: 0 0 10px;
+    }
+}
+
+.mg-chess__sign-up__left-right-container {
+    width: 100%;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
