@@ -82,8 +82,7 @@ export class LoginFormComponent implements OnInit, OnDestroy {
     };
 
     clearLoginServerResponse(): void {
-        if (this._serverResponse.responseMessage !== "") {
-            this._store.dispatch(NgrxAction_ATH.__cleanServerResponse());
-        }
+        if (this._serverResponse.responseMessage === "") return;
+        this._store.dispatch(NgrxAction_ATH.__cleanServerResponse());
     };
 }

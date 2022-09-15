@@ -16,7 +16,7 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-export class PasswordInputClassesModel {
+export class FormInputClassesModel {
     textContent: string;
     input: string;
     paragraph: string;
