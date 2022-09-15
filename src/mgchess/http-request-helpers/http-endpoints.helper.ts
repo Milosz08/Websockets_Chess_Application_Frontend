@@ -39,4 +39,8 @@ export class HttpEndpointsHelper {
     private readonly RENEW_CREDETIALS_LOCAL = this.BASIC_HTTP + "renew-credentials/";
     readonly ATTEMPT_TO_CHANGE_PASSWORD = this.AUTH_LOCAL + "attempt-to-change-password";
     readonly CHANGE_PASSWORD_VIA_OTA = this.AUTH_LOCAL + "change-password-via-ota";
+
+    private readonly EXPOSE_STATIC_DATA = this.BASIC_HTTP + "static-data/";
+    readonly REGISTER_CALENDAR_DATA = this.EXPOSE_STATIC_DATA + "register-calendar-data";
+    readonly REGISTER_GENDER_DATA = this.EXPOSE_STATIC_DATA + "register-gender-data";
 }
