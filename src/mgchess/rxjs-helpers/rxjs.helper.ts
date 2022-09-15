@@ -38,6 +38,10 @@ export class RxjsHelper {
         return store.select(selector).pipe(takeUntil(unsubscribe));
     };
 
+    static subscribeObservable<T>(observableCollection: Observable<T>, unsubscribe: Subject<void>): Observable<T> {
+        return observableCollection.pipe(takeUntil(unsubscribe));
+    }
+
     static serverResponseError(error: any): string {
         if (error.error) {
             return !error.error.errors ? HttpDefaultConstants.BASIC_SERVER_ERR_MESSAGE : error.error.errors[0];

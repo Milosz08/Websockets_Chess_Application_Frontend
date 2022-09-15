@@ -16,11 +16,18 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-import { Component, Input, OnInit } from "@angular/core";
-import { AbstractControl, FormGroup } from "@angular/forms";
+import { Component, Input, OnDestroy } from "@angular/core";
+import { FormGroup } from "@angular/forms";
 import { Store } from "@ngrx/store";
 
+import { Subject } from "rxjs";
+import { RxjsHelper } from "../../../../rxjs-helpers/rxjs.helper";
+
+import { ComboBoxType } from "../../../shared-module/types/combo-box.type";
+import { StaticGenderDataResModel } from "../../models/static-gender-data-res.model";
+import { StaticDataReqResService } from "../../services/static-data-req-res.service";
 import { AngularFormsHelper } from "../../../../angular-forms-helpers/angular-forms.helper";
+import { FormInputClassesConstants } from "../../../../misc-constants/form-input-classes.constants";
 
 import { AuthReducerType } from "../../../../ngrx-helpers/ngrx-store.types";
 import * as NgrxAction_ATH from "../../ngrx-store/auth-ngrx-store/auth.actions";
@@ -32,24 +39,29 @@ import * as NgrxAction_ATH from "../../ngrx-store/auth-ngrx-store/auth.actions";
     templateUrl: "./signup-right-content-form.component.html",
     providers: [ StaticDataReqResService, FormInputClassesConstants ],
 })
-export class SignupRightContentFormComponent implements OnInit {
+export class SignupRightContentFormComponent implements OnDestroy {
 
     @Input() _singupForm!: FormGroup;
 
-    _hasPrivacyPolicyAccept!: AbstractControl<any, any>;
-    _hasNewsletterAccept!: AbstractControl<any, any>;
+    _staticGenderData!: StaticGenderDataResModel;
 
     readonly _formHelper: AngularFormsHelper = new AngularFormsHelper();
+    readonly _genderComboBoxType: ComboBoxType = ComboBoxType.GENDER_COMBO_BOX;
+
+    private _ngUnsubscribe: Subject<void> = new Subject<void>();
 
     constructor(
         private _store: Store<AuthReducerType>,
+        private _resReqService: StaticDataReqResService,
+        public _cssConstants: FormInputClassesConstants,
     ) {
+        RxjsHelper.subscribeObservable(this._resReqService.getRegisterGenderData(), this._ngUnsubscribe)
+            .subscribe(data => this._staticGenderData = data);
     };
 
-    ngOnInit(): void {
-        this._hasPrivacyPolicyAccept = this._formHelper.field("hasPrivacyPolicyAccept", this._singupForm);
-        this._hasNewsletterAccept = this._formHelper.field("hasNewsletterAccept", this._singupForm);
-    }
+    ngOnDestroy(): void {
+        RxjsHelper.cleanupExecutor(this._ngUnsubscribe);
+    };
 
     handleClearServerResponse(): void {
         this._store.dispatch(NgrxAction_ATH.__cleanServerResponse());
