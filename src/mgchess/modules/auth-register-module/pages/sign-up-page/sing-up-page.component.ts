@@ -26,6 +26,7 @@ import { Observable } from "rxjs";
 import { SignupFormModel } from "../../models/signup-form.model";
 import { BrowserThemeDetector } from "../../../../browster-utils/browser-theme.detector";
 import { AngularFormValidator } from "../../../../validator-helpers/angular-form.validator";
+import { AngularFormsHelper } from "../../../../angular-forms-helpers/angular-forms.helper";
 import { ValidatorPatternConstants } from "../../../../validator-helpers/validator-pattern.constants";
 import { BrowserMetaSerializatorLoader } from "../../../../browser-meta-serialization/browser-meta-serializator.loader";
 import { SingleModuleType, SinglePageType } from "../../../../browser-meta-serialization/browser-meta-serializator.types";
@@ -33,7 +34,6 @@ import { SingleModuleType, SinglePageType } from "../../../../browser-meta-seria
 import { AuthReducerType } from "../../../../ngrx-helpers/ngrx-store.types";
 import * as NgrxAction_ATH from "../../ngrx-store/auth-ngrx-store/auth.actions";
 import * as NgrxSelector_ATH from "../../ngrx-store/auth-ngrx-store/auth.selectors";
-import { AngularFormsHelper } from "../../../../angular-forms-helpers/angular-forms.helper";
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -67,7 +67,13 @@ export class SingUpPageComponent extends BrowserMetaSerializatorLoader {
             secondEmailAddress: new FormControl("", [ Validators.email ]),
             password: new FormControl("", [ Validators.required, Validators.pattern(_regex.PASSWORD_REGEX) ]),
             passwordRepeat: new FormControl("", [ Validators.required ]),
-            // TODO: add birth date, phone (optional) and gender fields
+            gender: new FormControl("", [ Validators.required ]),
+            birthDateDay: new FormControl(1, [ Validators.required, Validators.min(1), Validators.max(31) ]),
+            birthDateMonth: new FormControl(1, [ Validators.required, Validators.min(1), Validators.max(12) ]),
+            birthDateYear: new FormControl(1900, [ Validators.required, Validators.min(1900) ]),
+
+            // TODO: add phone field
+
             hasNewsletterAccept: new FormControl(false),
             hasPrivacyPolicyAccept: new FormControl(false, [ Validators.requiredTrue ])
         }, {
