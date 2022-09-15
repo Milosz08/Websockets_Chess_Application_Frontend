@@ -1,0 +1,77 @@
+<!--
+  ~ Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
+  ~
+  ~ File name: signup-form-acceptable-control-group.component.html
+  ~ Last modified: 15/09/2022, 21:00
+  ~ Project name: chess-app-frontend
+  ~
+  ~ Licensed under the MIT license; you may not use this file except in compliance with the License.
+  ~
+  ~ Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+  ~ documentation files (the "Software"), to deal in the Software without restriction, including without limitation the
+  ~ rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to
+  ~ permit persons to whom the Software is furnished to do so, subject to the following conditions:
+  ~
+  ~ THE ABOVE COPYRIGHT NOTICE AND THIS PERMISSION NOTICE SHALL BE INCLUDED IN ALL
+  ~ COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
+  -->
+
+<div
+    [formGroup]="_signupForm"
+    class="sing-up-checkbox-acceptation__container"
+>
+    <div class="mg-chess__standard-checkbox__container sing-up-checkbox--decrease-margin">
+        <input
+            type="checkbox"
+            [checked]="__globalAcceptCheckboxState"
+            (change)="handleSelectAllAcceptionFields($any($event.target)!.checked)"
+            id="signup-form__all-acceptation-checkbox"
+            class="mg-chess__standard-checkbox__input-primary-mixed-def-variant"
+        />
+        <span class="mg-chess__standard-checkbox__checkmark-primary-mixed-def-variant secondary-mixed--variant"></span>
+        <label
+            for="signup-form__all-acceptation-checkbox"
+            class="mg-chess__standard-checkbox__label-container-primary-mixed-def-variant secondary-mixed--variant"
+        >
+            Accept all of the consents below.
+        </label>
+    </div>
+    <div class="mg-chess__standard-checkbox__container sing-up-checkbox--ident">
+        <input
+            type="checkbox"
+            (change)="handleClearServerResponse()"
+            formControlName="hasPrivacyPolicyAccept"
+            id="signup-form__privacy-policy-acceptation-checkbox"
+            class="mg-chess__standard-checkbox__input-primary-mixed-def-variant"
+        />
+        <span class="mg-chess__standard-checkbox__checkmark-primary-mixed-def-variant secondary-mixed--variant"></span>
+        <label
+            for="signup-form__privacy-policy-acceptation-checkbox"
+            class="mg-chess__standard-checkbox__label-container-primary-mixed-def-variant secondary-mixed--variant"
+        >
+            I have already read and accept the
+            <a
+                routerLink="/privacy-policy"
+                class="acceptation-content__anchor-element"
+            >
+                Terms of Service and Privacy Policy
+            </a>. *
+        </label>
+    </div>
+    <div class="mg-chess__standard-checkbox__container sing-up-checkbox--ident">
+        <input
+            type="checkbox"
+            (change)="handleClearServerResponse()"
+            formControlName="hasNewsletterAccept"
+            id="signup-form__newsletter-acceptation-checkbox"
+            class="mg-chess__standard-checkbox__input-primary-mixed-def-variant"
+        />
+        <span class="mg-chess__standard-checkbox__checkmark-primary-mixed-def-variant secondary-mixed--variant"></span>
+        <label
+            for="signup-form__newsletter-acceptation-checkbox"
+            class="mg-chess__standard-checkbox__label-container-primary-mixed-def-variant secondary-mixed--variant"
+        >
+            I agree to send marketing messages to the email address provided in the form.
+        </label>
+    </div>
+</div>

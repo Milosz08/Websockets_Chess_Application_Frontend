@@ -16,67 +16,23 @@
   ~ COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
   -->
 
-<div
-    [formGroup]="_singupForm"
-    class="mg-chess__sign-up__left-right-container"
->
+<div class="mg-chess__sign-up__left-right-container">
+    <mgchess-single-choice-box-input
+        _topInfoLabel="Select here your gender *"
+        _formControlName="gender"
+        [_comboBoxType]="_genderComboBoxType"
+        [_cssClasses]="_cssConstants.authFormsClasses"
+        [_formGroup]="_signupForm"
+        [_choiceElements]="_staticGenderData ? _staticGenderData.genders : []"
+        (_emitClearServerResponse)="handleClearServerResponse()"
+    ></mgchess-single-choice-box-input>
 
-    <!-- TODO: add birth date, phone (optional) and gender fields -->
+    <!-- TODO: add phone number field -->
 
-    <div class="sing-up-checkbox-acceptation__container">
-        <div class="mg-chess__standard-checkbox__container sing-up-checkbox--decrease-margin">
-            <input
-                type="checkbox"
-                [checked]="__globalAcceptCheckboxState"
-                (change)="handleSelectAllAcceptionFields($any($event.target)!.checked)"
-                id="signup-form__all-acceptation-checkbox"
-                class="mg-chess__standard-checkbox__input-primary-mixed-def-variant"
-            />
-            <span class="mg-chess__standard-checkbox__checkmark-primary-mixed-def-variant secondary-mixed--variant"></span>
-            <label
-                for="signup-form__all-acceptation-checkbox"
-                class="mg-chess__standard-checkbox__label-container-primary-mixed-def-variant secondary-mixed--variant"
-            >
-                Accept all of the consents below.
-            </label>
-        </div>
-        <div class="mg-chess__standard-checkbox__container sing-up-checkbox--ident">
-            <input
-                type="checkbox"
-                (change)="handleClearServerResponse()"
-                formControlName="hasPrivacyPolicyAccept"
-                id="signup-form__privacy-policy-acceptation-checkbox"
-                class="mg-chess__standard-checkbox__input-primary-mixed-def-variant"
-            />
-            <span class="mg-chess__standard-checkbox__checkmark-primary-mixed-def-variant secondary-mixed--variant"></span>
-            <label
-                for="signup-form__privacy-policy-acceptation-checkbox"
-                class="mg-chess__standard-checkbox__label-container-primary-mixed-def-variant secondary-mixed--variant"
-            >
-                I have already read and accept the
-                <a
-                    routerLink="/privacy-policy"
-                    class="acceptation-content__anchor-element"
-                >
-                    Terms of Service and Privacy Policy
-                </a>. *
-            </label>
-        </div>
-        <div class="mg-chess__standard-checkbox__container sing-up-checkbox--ident">
-            <input
-                type="checkbox"
-                (change)="handleClearServerResponse()"
-                formControlName="hasNewsletterAccept"
-                id="signup-form__newsletter-acceptation-checkbox"
-                class="mg-chess__standard-checkbox__input-primary-mixed-def-variant"
-            />
-            <span class="mg-chess__standard-checkbox__checkmark-primary-mixed-def-variant secondary-mixed--variant"></span>
-            <label
-                for="signup-form__newsletter-acceptation-checkbox"
-                class="mg-chess__standard-checkbox__label-container-primary-mixed-def-variant secondary-mixed--variant"
-            >
-                I agree to send marketing messages to the email address provided in the form.
-            </label>
-        </div>
-    </div>
+    <mgchess-signup-form-birthday-control-group
+        [_signupForm]="_signupForm"
+    ></mgchess-signup-form-birthday-control-group>
+    <mgchess-signup-form-acceptable-control-group
+        [_signupForm]="_signupForm"
+    ></mgchess-signup-form-acceptable-control-group>
 </div>

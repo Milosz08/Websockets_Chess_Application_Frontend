@@ -1,8 +1,8 @@
 /*!
  * Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
  *
- * File name: signup-right-content-form.component.scss
- * Last modified: 12/09/2022, 18:44
+ * File name: signup-form-birthday-control-group.component.scss
+ * Last modified: 15/09/2022, 21:11
  * Project name: chess-app-frontend
  *
  * Licensed under the MIT license; you may not use this file except in compliance with the License.
@@ -16,15 +16,18 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-.sing-up-checkbox-acceptation__container {
-    margin: 30px 0;
-    .sing-up-checkbox--decrease-margin {
-        margin: 10px 0;
+.sing-up-birth-date__container {
+    display: flex;
+    .birth-date__day-container,
+    .birth-date__month-container {
+        flex-basis: 26%;
+        flex-shrink: 0;
     }
-    .sing-up-checkbox--ident {
-        margin: 10px 0 10px 15px;
+    .birth-date__month-container {
+        flex-basis: 33%;
+        margin: 0 10px;
     }
-    .acceptation-content__anchor-element {
-        color: var(--auth-login-form-foreground);
+    .birth-date__year-container {
+        flex-grow: 1;
     }
 }

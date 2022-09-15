@@ -33,6 +33,8 @@ import { SignupFormTextInputComponent } from './components/signup-form-text-inpu
 import { SignupLeftContentFormComponent } from './components/signup-left-content-form/signup-left-content-form.component';
 import { SignupRightContentFormComponent } from './components/signup-right-content-form/signup-right-content-form.component';
 import { SignupPasswordControlGroupComponent } from './components/signup-password-control-group/signup-password-control-group.component';
+import { SignupFormBirthdayControlGroupComponent } from './components/signup-form-birthday-control-group/signup-form-birthday-control-group.component';
+import { SignupFormAcceptableControlGroupComponent } from './components/signup-form-acceptable-control-group/signup-form-acceptable-control-group.component';
 
 import { SharedModuleModule } from "../shared-module/shared-module.module";
 import { AuthRegisterPageComponent } from "./auth-register-page.component";
@@ -59,6 +61,8 @@ import { AuthReqResService } from "./services/auth-req-res.service";
         SignupLeftContentFormComponent,
         SignupRightContentFormComponent,
         SignupPasswordControlGroupComponent,
+        SignupFormBirthdayControlGroupComponent,
+        SignupFormAcceptableControlGroupComponent,
         // others
         AuthRegisterPageComponent,
     ],
