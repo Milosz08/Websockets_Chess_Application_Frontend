@@ -25,8 +25,7 @@ import { RxjsHelper } from "../../../../rxjs-helpers/rxjs.helper";
 
 import { ValidatorConstraint } from "../../../../validator-helpers/angular-form.validator";
 import { AngularFormsHelper } from "../../../../angular-forms-helpers/angular-forms.helper";
-import { PasswordInputClassesModel } from "../../../shared-module/models/password-input-classes.model";
-
+import { FormInputClassesConstants } from "../../../../misc-constants/form-input-classes.constants";
 import { PasswordStrength, PasswordStrengthMeterService } from "../../services/password-strength-meter.service";
 
 import { AuthReducerType } from "../../../../ngrx-helpers/ngrx-store.types";
@@ -38,7 +37,7 @@ import * as NgrxAction_ATH from "../../ngrx-store/auth-ngrx-store/auth.actions";
     selector: "mgchess-signup-password-control-group",
     templateUrl: "./signup-password-control-group.component.html",
     styleUrls: [ "./signup-password-control-group.component.scss" ],
-    providers: [ PasswordStrengthMeterService ],
+    providers: [ PasswordStrengthMeterService, FormInputClassesConstants ],
 })
 export class SignupPasswordControlGroupComponent implements OnChanges, OnDestroy {
 
@@ -48,9 +47,6 @@ export class SignupPasswordControlGroupComponent implements OnChanges, OnDestroy
 
     readonly _formHelper: AngularFormsHelper = new AngularFormsHelper();
     readonly _passwordSAreNotTheSame = ValidatorConstraint.PASSWORDS_ARE_NOT_THE_SAME;
-    readonly _cssClasses: PasswordInputClassesModel = new PasswordInputClassesModel(
-        "text--secondary-color", "input--secondary-color", "paragraph--error-reverse-theme-change");
-
     private _ngUnsubscribe: Subject<void> = new Subject<void>();
 
     constructor(

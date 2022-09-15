@@ -19,7 +19,7 @@
 import { Component, EventEmitter, Input, Output } from "@angular/core";
 import { FormGroup } from "@angular/forms";
 
-import { PasswordInputClassesModel } from "../../models/password-input-classes.model";
+import { FormInputClassesModel } from "../../../../models/form-input-classes.model";
 import { AngularFormsHelper } from "../../../../angular-forms-helpers/angular-forms.helper";
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -40,7 +40,7 @@ export class PasswordInputComponent {
     @Input() _formControlName: string = "";
     @Input() _inputPlaceholder: string = "";
     @Input() _errorPlaceholder: string = "";
-    @Input() _cssClasses: PasswordInputClassesModel = new PasswordInputClassesModel("", "", "");
+    @Input() _cssClasses: FormInputClassesModel = new FormInputClassesModel("", "", "");
 
     @Output() _emitCleanErrors: EventEmitter<void> = new EventEmitter<void>();
 

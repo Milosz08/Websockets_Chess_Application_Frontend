@@ -27,8 +27,8 @@ import { LoginFormModel } from "../../models/login-form.model";
 import { AngularFormsHelper } from "../../../../angular-forms-helpers/angular-forms.helper";
 import { ServerReqResHelper } from "../../../../http-request-helpers/server-req-res.helper";
 import { SimpleMessageResWithErrorModel } from "../../../../models/simple-message-response.model";
+import { FormInputClassesConstants } from "../../../../misc-constants/form-input-classes.constants";
 import { ValidatorPatternConstants } from "../../../../validator-helpers/validator-pattern.constants";
-import { PasswordInputClassesModel } from "../../../shared-module/models/password-input-classes.model";
 
 import { AuthReducerType } from "../../../../ngrx-helpers/ngrx-store.types";
 import * as NgrxAction_ATH from "../../ngrx-store/auth-ngrx-store/auth.actions";
@@ -39,7 +39,7 @@ import * as NgrxSelector_ATH from "../../ngrx-store/auth-ngrx-store/auth.selecto
 @Component({
     selector: "mgchess-login-form",
     templateUrl: "./login-form.component.html",
-    providers: [ ValidatorPatternConstants ],
+    providers: [ ValidatorPatternConstants, FormInputClassesConstants ],
 })
 export class LoginFormComponent implements OnInit, OnDestroy {
 
@@ -49,14 +49,13 @@ export class LoginFormComponent implements OnInit, OnDestroy {
 
     readonly _formHelper: AngularFormsHelper = new AngularFormsHelper();
     readonly _serverResReqHelper: ServerReqResHelper = new ServerReqResHelper();
-    readonly _cssClasses: PasswordInputClassesModel = new PasswordInputClassesModel(
-        "text--secondary-color", "input--secondary-color", "paragraph--error-reverse-theme-change");
 
     private _ngUnsubscribe: Subject<void> = new Subject<void>();
 
     constructor(
         private _store: Store<AuthReducerType>,
         private _regex: ValidatorPatternConstants,
+        public _cssConstants: FormInputClassesConstants,
     ) {
         this._loginForm = new FormGroup({
             usernameEmail: new FormControl("", [ Validators.required ]),

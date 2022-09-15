@@ -30,7 +30,7 @@ import * as NgrxAction_ATH from "../../ngrx-store/auth-ngrx-store/auth.actions";
 @Component({
     selector: "mgchess-singup-right-content-form",
     templateUrl: "./signup-right-content-form.component.html",
-    styleUrls: [ "./signup-right-content-form.component.scss" ],
+    providers: [ StaticDataReqResService, FormInputClassesConstants ],
 })
 export class SignupRightContentFormComponent implements OnInit {
 
