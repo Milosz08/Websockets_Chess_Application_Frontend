@@ -16,13 +16,16 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-import { newsletterNgrxStore } from "../modules/static-content-module/ngrx-store/newsletter-ngrx-store/newsletter.reducer";
-import { NewsletterStateTypes } from "../modules/static-content-module/ngrx-store/newsletter-ngrx-store/newsletter.initial";
-
+import { globalNgrxStore } from "../modules/shared-module/ngrx-store/global-ngrx-store/global.reducer";
 import { authNgrxStore } from "../modules/auth-register-module/ngrx-store/auth-ngrx-store/auth.reducer";
+import { newsletterNgrxStore } from "../modules/static-content-module/ngrx-store/newsletter-ngrx-store/newsletter.reducer";
+
+import { GlobalStateTypes } from "../modules/shared-module/ngrx-store/global-ngrx-store/global.initial";
 import { AuthStateTypes } from "../modules/auth-register-module/ngrx-store/auth-ngrx-store/auth.initial";
+import { NewsletterStateTypes } from "../modules/static-content-module/ngrx-store/newsletter-ngrx-store/newsletter.initial";
 
 //----------------------------------------------------------------------------------------------------------------------
 
 export type NewsletterReducerType = { [newsletterNgrxStore.reducerName]: NewsletterStateTypes };
 export type AuthReducerType = { [authNgrxStore.reducerName]: AuthStateTypes };
+export type GlobalReducerType = { [globalNgrxStore.reducerName]: GlobalStateTypes };

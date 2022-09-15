@@ -29,11 +29,24 @@
             color: var(--secondary-form-text-and-border-color);
         }
     }
+    .mg-chess__single-choicebox-container,
     .mg-chess__password-input-button__container {
         position: relative;
         width: 100%;
     }
-    .mg-chess__standard-form-input-primary-color {
+    .mg-chess__single-choicebox-container .mg-chess__choicebox-more-icon {
+        position: absolute;
+        right: 10px;
+        top: 6px;
+        font-size: 1.7rem;
+        transition: var(--standard-transition-duration);
+        &[data-is-active="true"] {
+            top: 5px;
+            transform: rotate(180deg);
+        }
+    }
+    .mg-chess__standard-form-input-primary-color,
+    .mg-chess__standard-form-select-primary-color {
         border: 1px solid var(--primary-form-input-border-color);
         background-color: transparent;
         width: 100%;
@@ -47,6 +60,17 @@
         }
         &::placeholder {
             color: var(--primary-form-text-color);
+        }
+    }
+    .mg-chess__standard-form-select-primary-color {
+        text-align: left;
+        color: var(--primary-form-text-color);
+        &.input--secondary-color {
+            border-color: var(--secondary-form-text-and-border-color);
+            color: var(--secondary-form-text-and-border-color);
+        }
+        &[data-is-active="true"] {
+            color: inherit;
         }
     }
     .mg-chess__password-button {
@@ -212,6 +236,35 @@
     border-radius: var(--standard-button-border-radius);
     color: var(--button-primary-mixed-color);
     background-color: var(--button-primary-mixed-background-color);
+}
+
+.mg-chess__choicebox__list {
+    position: absolute;
+    margin-top: 5px;
+    z-index: 2;
+    width: 100%;
+    padding: 7px;
+    max-height: 400px;
+    overflow-y: auto;
+    border-radius: var(--standard-button-border-radius);
+    border: 1px solid var(--primary-form-input-border-color);
+    background-color: var(--auth-container-background-with-border);
+    .mg-chess__choicebox__list-element-button {
+        padding: var(--standard-controls-padding);
+        width: 100%;
+        text-align: left;
+        border-radius: var(--standard-button-border-radius);
+        &:hover {
+            color: var(--auth-container-background-with-border);
+            background-color: var(--choicebox-primary-select-hover-background);
+        }
+        &.input--secondary-color:hover {
+            font-weight: 500;
+        }
+    }
+    &.input--secondary-color {
+        border-color: var(--secondary-form-text-and-border-color);
+    }
 }
 
 //----------------------------------------------------------------------------------------------------------------------

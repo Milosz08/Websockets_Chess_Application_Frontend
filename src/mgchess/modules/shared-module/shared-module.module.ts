@@ -20,14 +20,18 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from "@angular/router";
 import { ReactiveFormsModule } from "@angular/forms";
+import { StoreModule } from "@ngrx/store";
 
 import { FooterComponent } from "./components/footer/footer.component";
 import { ThemeTogglerComponent } from "./components/theme-toggler/theme-toggler.component";
-import { PasswordInputComponent } from './components/password-input/password-input.component';
+import { PasswordInputComponent } from "./components/password-input/password-input.component";
 import { CopyrightNewsletterComponent } from "./components/copyright-newsletter/copyright-newsletter.component";
+import { CookiesNotificationComponent } from "./components/cookies-notification/cookies-notification.component";
+import { SingleChoiceBoxInputComponent } from "./components/single-choice-box-input/single-choice-box-input.component";
 
 import { ContentNotFoundPageComponent } from "./pages/content-not-found-page/content-not-found-page.component";
-import { CookiesNotificationComponent } from './components/cookies-notification/cookies-notification.component';
+
+import { globalNgrxStore } from "./ngrx-store/global-ngrx-store/global.reducer";
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -41,11 +45,13 @@ import { CookiesNotificationComponent } from './components/cookies-notification/
         // pages
         ContentNotFoundPageComponent,
         CookiesNotificationComponent,
+        SingleChoiceBoxInputComponent,
     ],
     imports: [
         CommonModule,
         RouterModule,
         ReactiveFormsModule,
+        StoreModule.forFeature(globalNgrxStore.reducerName, globalNgrxStore.reducerFunc),
     ],
     exports: [
         FooterComponent,
@@ -53,6 +59,7 @@ import { CookiesNotificationComponent } from './components/cookies-notification/
         PasswordInputComponent,
         CopyrightNewsletterComponent,
         CookiesNotificationComponent,
+        SingleChoiceBoxInputComponent,
     ],
 })
 export class SharedModuleModule {}
