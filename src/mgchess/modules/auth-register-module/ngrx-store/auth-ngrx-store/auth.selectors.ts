@@ -41,3 +41,7 @@ export const sel_signupViaLocalSuspense = selectorWithInjectedStore(state =>
 export const sel_serverResponse = selectorWithInjectedStore(state =>
     state.serverResponse,
 );
+
+export const sel_serverResponseIsEmpty = selectorWithInjectedStore(state =>
+    state.serverResponse.responseMessage === ""
+)

@@ -20,10 +20,14 @@ import { Component, Input } from "@angular/core";
 import { FormGroup } from "@angular/forms";
 import { Store } from "@ngrx/store";
 
+import { Subject } from "rxjs";
+import { RxjsHelper } from "../../../../rxjs-helpers/rxjs.helper";
+
 import { AngularFormsHelper } from "../../../../angular-forms-helpers/angular-forms.helper";
 
 import { AuthReducerType } from "../../../../ngrx-helpers/ngrx-store.types";
 import * as NgrxAction_ATH from "../../ngrx-store/auth-ngrx-store/auth.actions";
+import * as NgrxSelector_ATH from "../../ngrx-store/auth-ngrx-store/auth.selectors";
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -40,14 +44,20 @@ export class SignupFormTextInputComponent {
     @Input() _additionalControlText: string = "";
     @Input() _controlErrorText: string = "";
 
+    _serverResponseIsEmpty!: boolean;
     readonly _formHelper: AngularFormsHelper = new AngularFormsHelper();
+
+    private _ngUnsubscribe: Subject<void> = new Subject<void>();
 
     constructor(
         private _store: Store<AuthReducerType>,
     ) {
+        RxjsHelper.subscribeData(this._store, NgrxSelector_ATH.sel_serverResponseIsEmpty, this._ngUnsubscribe)
+            .subscribe(data => this._serverResponseIsEmpty = data);
     };
 
     handleClearServerResponse(): void {
+        if (this._serverResponseIsEmpty) return;
         this._store.dispatch(NgrxAction_ATH.__cleanServerResponse());
     };
 

@@ -30,6 +30,7 @@ import { PasswordStrength, PasswordStrengthMeterService } from "../../services/p
 
 import { AuthReducerType } from "../../../../ngrx-helpers/ngrx-store.types";
 import * as NgrxAction_ATH from "../../ngrx-store/auth-ngrx-store/auth.actions";
+import * as NgrxSelector_ATH from "../../ngrx-store/auth-ngrx-store/auth.selectors";
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -43,6 +44,7 @@ export class SignupPasswordControlGroupComponent implements OnChanges, OnDestroy
 
     @Input() _singupForm!: FormGroup;
 
+    _serverResponseIsEmpty!: boolean;
     _passwordScore: PasswordStrength = new PasswordStrength(0, "none");
 
     readonly _formHelper: AngularFormsHelper = new AngularFormsHelper();
@@ -51,11 +53,15 @@ export class SignupPasswordControlGroupComponent implements OnChanges, OnDestroy
 
     constructor(
         private _store: Store<AuthReducerType>,
+        public _cssConstants: FormInputClassesConstants,
         private _passwordMeterService: PasswordStrengthMeterService,
     ) {
+        RxjsHelper.subscribeData(this._store, NgrxSelector_ATH.sel_serverResponseIsEmpty, this._ngUnsubscribe)
+            .subscribe(data => this._serverResponseIsEmpty = data);
     };
 
     handleClearServerResponse(): void {
+        if (this._serverResponseIsEmpty) return;
         this._store.dispatch(NgrxAction_ATH.__cleanServerResponse());
     };
 
