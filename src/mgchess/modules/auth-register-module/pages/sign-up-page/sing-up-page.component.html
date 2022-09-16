@@ -39,18 +39,6 @@
     <span class="sign-up__section-separator"></span>
     <section class="sign-up__section-container">
         <mgchess-singup-right-content-form [_signupForm]="_signupForm"></mgchess-singup-right-content-form>
-        <button
-            type="submit"
-            [disabled]="!_signupForm.valid"
-            title="Click to create your account"
-            class="mg-chess__standard-button button--thirdly-mixed-def-variant"
-        >
-            Create account
-            <div
-                *ngIf="(_suspenseLoader$ | async)"
-                class="button__suspense-loading-spinner"
-            ></div>
-        </button>
         <div class="sign-up-star-info__container">
             <div class="single-star-info__container">
                 <span class="sign-up-star-info__stars">*</span>

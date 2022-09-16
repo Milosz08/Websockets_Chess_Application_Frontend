@@ -16,21 +16,24 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-import { Component, Input, OnDestroy } from "@angular/core";
+import { Component, Input, OnDestroy, OnInit } from "@angular/core";
 import { FormGroup } from "@angular/forms";
 import { Store } from "@ngrx/store";
 
-import { Subject } from "rxjs";
+import { Observable, Subject } from "rxjs";
 import { RxjsHelper } from "../../../../rxjs-helpers/rxjs.helper";
 
 import { StaticGenderDataResModel } from "../../models/static-gender-data-res.model";
 import { StaticDataReqResService } from "../../services/static-data-req-res.service";
 import { StaticCountryDataResModel } from "../../models/static-country-data-res.model";
 import { AngularFormsHelper } from "../../../../angular-forms-helpers/angular-forms.helper";
+import { ServerReqResHelper } from "../../../../http-request-helpers/server-req-res.helper";
+import { SimpleMessageResWithErrorModel } from "../../../../models/simple-message-response.model";
 import { FormInputClassesConstants } from "../../../../misc-constants/form-input-classes.constants";
 
 import { AuthReducerType } from "../../../../ngrx-helpers/ngrx-store.types";
 import * as NgrxAction_ATH from "../../ngrx-store/auth-ngrx-store/auth.actions";
+import * as NgrxSelector_ATH from "../../ngrx-store/auth-ngrx-store/auth.selectors";
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -39,14 +42,18 @@ import * as NgrxAction_ATH from "../../ngrx-store/auth-ngrx-store/auth.actions";
     templateUrl: "./signup-right-content-form.component.html",
     providers: [ StaticDataReqResService, FormInputClassesConstants ],
 })
-export class SignupRightContentFormComponent implements OnDestroy {
+export class SignupRightContentFormComponent implements OnInit, OnDestroy {
 
     @Input() _signupForm!: FormGroup;
 
     _staticGenderData!: StaticGenderDataResModel;
     _staticCountryData!: StaticCountryDataResModel;
+    _serverResponse!: SimpleMessageResWithErrorModel;
+    _suspenseLoader$: Observable<boolean> = this._store.select(NgrxSelector_ATH.sel_signupViaLocalSuspense);
 
     readonly _formHelper: AngularFormsHelper = new AngularFormsHelper();
+    readonly _serverResReqHelper: ServerReqResHelper = new ServerReqResHelper();
+
     private _ngUnsubscribe: Subject<void> = new Subject<void>();
 
     constructor(
@@ -54,10 +61,15 @@ export class SignupRightContentFormComponent implements OnDestroy {
         private _resReqService: StaticDataReqResService,
         public _cssConstants: FormInputClassesConstants,
     ) {
+    };
+
+    ngOnInit(): void {
         RxjsHelper.subscribeObservable(this._resReqService.getRegisterGenderData(), this._ngUnsubscribe)
             .subscribe(data => this._staticGenderData = data);
         RxjsHelper.subscribeObservable(this._resReqService.getRegisterCountryData(), this._ngUnsubscribe)
             .subscribe(data => this._staticCountryData = data);
+        RxjsHelper.subscribeData(this._store,NgrxSelector_ATH.sel_serverResponse, this._ngUnsubscribe)
+            .subscribe(data => this._serverResponse = data);
     };
 
     ngOnDestroy(): void {

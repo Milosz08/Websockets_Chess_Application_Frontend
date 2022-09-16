@@ -21,8 +21,6 @@ import { Meta, Title } from "@angular/platform-browser";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { Store } from "@ngrx/store";
 
-import { Observable } from "rxjs";
-
 import { SignupFormModel } from "../../models/signup-form.model";
 import { BrowserThemeDetector } from "../../../../browster-utils/browser-theme.detector";
 import { AngularFormValidator } from "../../../../validator-helpers/angular-form.validator";
@@ -33,7 +31,6 @@ import { SingleModuleType, SinglePageType } from "../../../../browser-meta-seria
 
 import { AuthReducerType } from "../../../../ngrx-helpers/ngrx-store.types";
 import * as NgrxAction_ATH from "../../ngrx-store/auth-ngrx-store/auth.actions";
-import * as NgrxSelector_ATH from "../../ngrx-store/auth-ngrx-store/auth.selectors";
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -47,7 +44,6 @@ import * as NgrxSelector_ATH from "../../ngrx-store/auth-ngrx-store/auth.selecto
 export class SingUpPageComponent extends BrowserMetaSerializatorLoader {
 
     _signupForm: FormGroup;
-    _suspenseLoader$: Observable<boolean> = this._store.select(NgrxSelector_ATH.sel_signupViaLocalSuspense);
 
     readonly _formHelper: AngularFormsHelper = new AngularFormsHelper();
 

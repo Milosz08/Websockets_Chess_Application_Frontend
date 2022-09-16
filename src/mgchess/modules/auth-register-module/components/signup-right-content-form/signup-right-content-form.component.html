@@ -39,4 +39,22 @@
     <mgchess-signup-form-acceptable-control-group
         [_signupForm]="_signupForm"
     ></mgchess-signup-form-acceptable-control-group>
+    <button
+        type="submit"
+        [disabled]="!_signupForm.valid"
+        title="Click to create your account"
+        class="mg-chess__standard-button button--thirdly-mixed-def-variant"
+    >
+        Create account
+        <div
+            *ngIf="(_suspenseLoader$ | async)"
+            class="button__suspense-loading-spinner"
+        ></div>
+    </button>
+    <p
+        *ngIf="_serverResponse.responseMessage !== ''"
+        [ngClass]="_serverResReqHelper.responseReverseThemeCssClass(_serverResponse.responseError)"
+    >
+        {{ _serverResponse.responseMessage }}
+    </p>
 </div>
