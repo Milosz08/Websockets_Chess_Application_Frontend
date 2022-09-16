@@ -17,11 +17,11 @@
   -->
 
 <div
-    [formGroup]="_singupForm"
+    [formGroup]="_signupForm"
     class="mg-chess__sign-up__left-right-container"
 >
     <mgchess-signup-form-text-input
-        [_singupForm]="_singupForm"
+        [_singupForm]="_signupForm"
         [_controlMaxLength]="20"
         _formControlName="nickname"
         _formControlPlaceholder="ex. JohnDoe123"
@@ -29,21 +29,21 @@
         _controlErrorText="Please enter valid nickname."
     ></mgchess-signup-form-text-input>
     <mgchess-signup-form-text-input
-        [_singupForm]="_singupForm"
+        [_singupForm]="_signupForm"
         _formControlName="firstName"
         _formControlPlaceholder="ex. John"
         _additionalControlText="Insert here your first name *"
         _controlErrorText="Please enter valid first name."
     ></mgchess-signup-form-text-input>
     <mgchess-signup-form-text-input
-        [_singupForm]="_singupForm"
+        [_singupForm]="_signupForm"
         _formControlName="lastName"
         _formControlPlaceholder="ex. Doe"
         _additionalControlText="Insert here your last name *"
         _controlErrorText="Please enter valid last name."
     ></mgchess-signup-form-text-input>
     <mgchess-signup-form-text-input
-        [_singupForm]="_singupForm"
+        [_singupForm]="_signupForm"
         [_controlMaxLength]="100"
         _formControlName="emailAddress"
         _formControlPlaceholder="ex. johndoe@example.com"
@@ -68,20 +68,20 @@
     </div>
     <mgchess-signup-form-text-input
         *ngIf="_secondEmailInputVisibility"
-        [_singupForm]="_singupForm"
+        [_singupForm]="_signupForm"
         _formControlName="secondEmailAddress"
         _formControlPlaceholder="ex. johndoeTwo@example.com"
         _additionalControlText="Insert here your second email address"
         _controlErrorText="Please enter valid second email address."
     >
         <p
-            *ngIf="_formHelper.checkCustomError(_singupForm, _emailAddressesAreTheSame)"
+            *ngIf="_formHelper.checkCustomError(_signupForm, _emailAddressesAreTheSame)"
             class="mg-chess__form-data-paragraph paragraph--error-reverse-theme-change"
         >
             The second email address cannot be the same as the first one.
         </p>
     </mgchess-signup-form-text-input>
     <mgchess-signup-password-control-group
-        [_singupForm]="_singupForm"
+        [_singupForm]="_signupForm"
     ></mgchess-signup-password-control-group>
 </div>

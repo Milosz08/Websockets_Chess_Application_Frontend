@@ -30,7 +30,7 @@ import { AngularFormsHelper } from "../../../../angular-forms-helpers/angular-fo
 })
 export class SignupLeftContentFormComponent {
 
-    @Input() _singupForm!: FormGroup;
+    @Input() _signupForm!: FormGroup;
 
     _secondEmailInputVisibility: boolean = false;
 
@@ -39,6 +39,6 @@ export class SignupLeftContentFormComponent {
 
     handleToggleSecondEmailInputVisibility(): void {
         this._secondEmailInputVisibility = !this._secondEmailInputVisibility;
-        this._formHelper.field("secondEmailAddress", this._singupForm).setValue("");
+        this._formHelper.field("secondEmailAddress", this._signupForm).setValue("");
     };
 }
