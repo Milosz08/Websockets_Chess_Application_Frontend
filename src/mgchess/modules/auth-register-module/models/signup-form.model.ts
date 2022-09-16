@@ -22,11 +22,11 @@ export class SignupFormModel {
     lastName: string;
     emailAddress: string;
     secondEmailAddress: string;
-    birthDateDay: number;
-    birthDateMonth: number;
-    birthDateYear: number;
-    countryName: string;
-    gender: string;
+    birthDateDay: number | null;
+    birthDateMonth: number | null;
+    birthDateYear: number | null;
+    countryName: string | null;
+    gender: string | null;
     password: string;
     passwordRepeat: string;
     hasNewsletterAccept: boolean;
@@ -34,8 +34,9 @@ export class SignupFormModel {
 
     constructor(
         nickname: string, firstName: string, lastName: string, emailAddress: string, secondEmailAddress: string,
-        birthDateDay: number, birthDateMonth: number, birthDateYear: number, countryName: string, gender: string,
-        password: string, passwordRepeat: string, hasNewsletterAccept: boolean, hasPrivacyPolicyAccept: boolean,
+        birthDateDay: number | null, birthDateMonth: number | null, birthDateYear: number | null,
+        countryName: string | null, gender: string | null, password: string, passwordRepeat: string,
+        hasNewsletterAccept: boolean, hasPrivacyPolicyAccept: boolean,
     ) {
         this.nickname = nickname;
         this.firstName = firstName;
@@ -51,5 +52,9 @@ export class SignupFormModel {
         this.passwordRepeat = passwordRepeat;
         this.hasNewsletterAccept = hasNewsletterAccept;
         this.hasPrivacyPolicyAccept = hasPrivacyPolicyAccept;
+    };
+
+    static getDefaultValues(): SignupFormModel {
+        return new SignupFormModel("", "", "", "", "", null, null, null, null, null, "", "", false, false);
     };
 }

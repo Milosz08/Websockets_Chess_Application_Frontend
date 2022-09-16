@@ -55,6 +55,7 @@ export class SingUpPageComponent extends BrowserMetaSerializatorLoader {
         private _regex: ValidatorPatternConstants,
     ) {
         super(_titleService, _metaService, SingleModuleType.AUTH_REGISTER_MODULE, SinglePageType.SIGN_UP_PAGE);
+        this._store.dispatch(NgrxAction_ATH.__cleanServerResponse());
         this._signupForm = new FormGroup({
             nickname: new FormControl("", [ Validators.required, Validators.pattern(_regex.NICKNAME_REGEX) ]),
             firstName: new FormControl("", [ Validators.required, Validators.pattern(_regex.USERNAME_REGEX) ]),
@@ -63,11 +64,11 @@ export class SingUpPageComponent extends BrowserMetaSerializatorLoader {
             secondEmailAddress: new FormControl("", [ Validators.email ]),
             password: new FormControl("", [ Validators.required, Validators.pattern(_regex.PASSWORD_REGEX) ]),
             passwordRepeat: new FormControl("", [ Validators.required ]),
-            gender: new FormControl("", [ Validators.required ]),
-            birthDateDay: new FormControl(1, [ Validators.required, Validators.min(1), Validators.max(31) ]),
-            birthDateMonth: new FormControl(1, [ Validators.required, Validators.min(1), Validators.max(12) ]),
-            birthDateYear: new FormControl(1900, [ Validators.required, Validators.min(1900) ]),
-            countryName: new FormControl("", [ Validators.required ]),
+            gender: new FormControl(null, [ Validators.required ]),
+            birthDateDay: new FormControl(null, [ Validators.required, Validators.min(1), Validators.max(31) ]),
+            birthDateMonth: new FormControl(null, [ Validators.required, Validators.min(1), Validators.max(12) ]),
+            birthDateYear: new FormControl(null, [ Validators.required, Validators.min(1900) ]),
+            countryName: new FormControl(null, [ Validators.required ]),
             hasNewsletterAccept: new FormControl(false),
             hasPrivacyPolicyAccept: new FormControl(false, [ Validators.requiredTrue ])
         }, {
@@ -82,6 +83,6 @@ export class SingUpPageComponent extends BrowserMetaSerializatorLoader {
     handleSubmitRegisterFormData(): void {
         const req = this._formHelper.extractFormFields<SignupFormModel>(this._signupForm, false);
         this._store.dispatch(NgrxAction_ATH.__attemptToSingUpViaLocal({ signupForm: req }));
-        console.log(req);
+        this._signupForm.reset(SignupFormModel.getDefaultValues());
     };
 }

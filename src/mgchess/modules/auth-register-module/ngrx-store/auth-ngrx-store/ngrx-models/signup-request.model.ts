@@ -20,10 +20,10 @@ import { SignupFormModel } from "../../../models/signup-form.model";
 
 //----------------------------------------------------------------------------------------------------------------------
 
-export class SignupDataReqModel {
+export class SignupRequestModel {
     nickname: string;
-    name: string;
-    surname: string;
+    firstName: string;
+    lastName: string;
     emailAddress: string;
     secondEmailAddress: string;
     birthDate: string;
@@ -35,14 +35,18 @@ export class SignupDataReqModel {
     constructor(registerForm: SignupFormModel) {
         const { birthDateDay, birthDateMonth, birthDateYear } = registerForm;
         this.nickname = registerForm.nickname;
-        this.name = registerForm.firstName;
-        this.surname = registerForm.lastName;
+        this.firstName = registerForm.firstName;
+        this.lastName = registerForm.lastName;
         this.emailAddress = registerForm.emailAddress;
         this.secondEmailAddress = registerForm.secondEmailAddress;
-        this.birthDate = `${birthDateDay}/${birthDateMonth}/${birthDateYear}`;
-        this.countryName = registerForm.countryName;
-        this.gender = registerForm.gender;
+        this.birthDate = `${this.addBeforePad(birthDateDay!)}/${this.addBeforePad(birthDateMonth!)}/${birthDateYear}`;
+        this.countryName = registerForm.countryName!;
+        this.gender = registerForm.gender!;
         this.password = registerForm.password;
         this.passwordRepeat = registerForm.passwordRepeat;
+    };
+
+    private addBeforePad(value: number): string {
+        return value.toString().padStart(2, "0");
     };
 }

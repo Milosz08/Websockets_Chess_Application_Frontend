@@ -59,7 +59,7 @@
         </ul>
     </div>
     <p
-        *ngIf="_selectedItemName === _initialLabelText && _isTouched"
+        *ngIf="__fieldHasErrors"
         [ngClass]="[ 'mg-chess__form-data-paragraph', _cssClasses.paragraph ]"
     >
         {{ _errorTextLabel }}

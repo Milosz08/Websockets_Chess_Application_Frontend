@@ -38,6 +38,16 @@ const _authReducer = createReducer(
             serverResponse: new SimpleMessageResWithErrorModel(action.serverResponse, true),
         };
     }),
+    on(NgrxAction.__successfulSingUpViaLocal, (state, action) => {
+        return { ...state,
+            serverResponse: new SimpleMessageResWithErrorModel(action.serverResponse, false),
+        };
+    }),
+    on(NgrxAction.__failureSingUpViaLocal, (state, action) => {
+        return { ...state,
+            serverResponse: new SimpleMessageResWithErrorModel(action.serverResponse, true),
+        };
+    }),
     on(NgrxAction.__cleanServerResponse, state => {
         return { ...state,
             serverResponse: new SimpleMessageResWithErrorModel("", false),

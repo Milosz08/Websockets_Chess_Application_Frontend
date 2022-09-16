@@ -16,8 +16,11 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-import { Component, EventEmitter, Input, OnChanges, Output } from "@angular/core";
+import { Component, EventEmitter, Input, OnChanges, OnDestroy, Output } from "@angular/core";
 import { FormGroup } from "@angular/forms";
+
+import { Subject, takeUntil } from "rxjs";
+import { RxjsHelper } from "../../../../rxjs-helpers/rxjs.helper";
 
 import { FormInputClassesModel } from "../../../../models/form-input-classes.model";
 import { AngularFormsHelper } from "../../../../angular-forms-helpers/angular-forms.helper";
@@ -29,7 +32,7 @@ import { SimpleDataTupleModel, TupleIdType } from "../../../../models/simple-dat
     selector: "mgchess-single-choice-box-input",
     templateUrl: "./single-choice-box-input.component.html",
 })
-export class SingleChoiceBoxInputComponent implements OnChanges {
+export class SingleChoiceBoxInputComponent implements OnChanges, OnDestroy {
 
     @Input() _formGroup!: FormGroup;
     @Input() _formControlName: string = "";
@@ -41,10 +44,10 @@ export class SingleChoiceBoxInputComponent implements OnChanges {
 
     @Output() _emitClearServerResponse: EventEmitter<void> = new EventEmitter<void>();
 
+    private _ngUnsubsribe: Subject<void> = new Subject<void>();
     readonly _formHelper: AngularFormsHelper = new AngularFormsHelper();
 
     _isVisible: boolean = false;
-    _isTouched: boolean = false;
     _initialLabelText: string = "";
     _itemListWithDef: Array<SimpleDataTupleModel<TupleIdType>> = [];
     _selectedItemName: string = this._initialLabelText;
@@ -54,6 +57,18 @@ export class SingleChoiceBoxInputComponent implements OnChanges {
         this._selectedItemName = this._initialLabelText;
         this._itemListWithDef = [...this._choiceElements];
         this._itemListWithDef.unshift(new SimpleDataTupleModel(this._selectedItemName, this._selectedItemName));
+        this.synchronizedDataWithForm();
+    };
+
+    ngOnDestroy(): void {
+        RxjsHelper.cleanupExecutor(this._ngUnsubsribe);
+    };
+
+    synchronizedDataWithForm(): void {
+        const field = this._formHelper.field(this._formControlName, this._formGroup);
+        field.valueChanges.pipe(takeUntil(this._ngUnsubsribe)).subscribe(fieldData => {
+            if (fieldData === null) this._selectedItemName =  this._initialLabelText;
+        });
     };
 
     handleToggleComboBoxList(): void {
@@ -67,7 +82,11 @@ export class SingleChoiceBoxInputComponent implements OnChanges {
     handleFilledUpWithClickedComboBoxData(clickedItem: SimpleDataTupleModel<TupleIdType>): void {
         this._selectedItemName = clickedItem.value;
         this._formHelper.field(this._formControlName, this._formGroup).patchValue(clickedItem.id);
-        this._isTouched = true;
         this._isVisible = false;
+    };
+
+    get __fieldHasErrors(): boolean {
+        return this._formHelper.field(this._formControlName, this._formGroup).value !== null
+            && this._selectedItemName === this._initialLabelText;
     };
 }

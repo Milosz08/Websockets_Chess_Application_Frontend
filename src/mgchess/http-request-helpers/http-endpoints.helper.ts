@@ -34,7 +34,7 @@ export class HttpEndpointsHelper {
 
     private readonly AUTH_LOCAL = this.BASIC_HTTP + "auth-local/";
     readonly LOGIN_VIA_LOCAL = this.AUTH_LOCAL + "login-via-local";
-    readonly REGISTER_VIA_LOCAL = this.AUTH_LOCAL + "register-via-local";
+    readonly SIGNUP_VIA_LOCAL = this.AUTH_LOCAL + "signup-via-local";
 
     private readonly RENEW_CREDETIALS_LOCAL = this.BASIC_HTTP + "renew-credentials/";
     readonly ATTEMPT_TO_CHANGE_PASSWORD = this.AUTH_LOCAL + "attempt-to-change-password";

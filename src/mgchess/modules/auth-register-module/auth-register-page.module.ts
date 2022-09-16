@@ -42,6 +42,7 @@ import { AuthRegisterPageRoutingModule } from "./auth-register-page-routing.modu
 
 import { authNgrxStore } from "./ngrx-store/auth-ngrx-store/auth.reducer";
 import { LoginViaLocalEffects } from "./ngrx-store/auth-ngrx-store/ngrx-effects/login-via-local.effects";
+import { SignupViaLocalEffects } from "./ngrx-store/auth-ngrx-store/ngrx-effects/signup-via-local.effects";
 
 import { AuthReqResService } from "./services/auth-req-res.service";
 
@@ -74,6 +75,7 @@ import { AuthReqResService } from "./services/auth-req-res.service";
         StoreModule.forFeature(authNgrxStore.reducerName, authNgrxStore.reducerFunc),
         EffectsModule.forFeature([
             LoginViaLocalEffects,
+            SignupViaLocalEffects,
         ]),
     ],
     providers: [

@@ -22,8 +22,10 @@ import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 
 import { HttpEndpointsHelper } from "../../../http-request-helpers/http-endpoints.helper";
+import { SimpleMessageResponseModel } from "../../../models/simple-message-response.model";
 
 import { LoginReqestModel } from "../ngrx-store/auth-ngrx-store/ngrx-models/login-data-req.model";
+import { SignupRequestModel } from "../ngrx-store/auth-ngrx-store/ngrx-models/signup-request.model";
 import { UserCredentialsDataResModel } from "../ngrx-store/auth-ngrx-store/ngrx-models/user-credentials-data-res.model";
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -44,4 +46,10 @@ export class AuthReqResService {
         );
     };
 
+    signupViaLocal(req: SignupRequestModel): Observable<SimpleMessageResponseModel> {
+        return this._http.post<SimpleMessageResponseModel>(
+            this._endpoint.SIGNUP_VIA_LOCAL,
+            req,
+        );
+    };
 }
