@@ -25,12 +25,17 @@
         [_choiceElements]="_staticGenderData ? _staticGenderData.genders : []"
         (_emitClearServerResponse)="handleClearServerResponse()"
     ></mgchess-single-choice-box-input>
-
-    <!-- TODO: add phone number field -->
-
     <mgchess-signup-form-birthday-control-group
         [_signupForm]="_signupForm"
     ></mgchess-signup-form-birthday-control-group>
+    <mgchess-single-choice-box-input
+        _topInfoLabel="Select here your country *"
+        _formControlName="countryName"
+        [_cssClasses]="_cssConstants.authFormsClasses"
+        [_formGroup]="_signupForm"
+        [_choiceElements]="_staticCountryData ? _staticCountryData.countries : []"
+        (_emitClearServerResponse)="handleClearServerResponse()"
+    ></mgchess-single-choice-box-input>
     <mgchess-signup-form-acceptable-control-group
         [_signupForm]="_signupForm"
     ></mgchess-signup-form-acceptable-control-group>

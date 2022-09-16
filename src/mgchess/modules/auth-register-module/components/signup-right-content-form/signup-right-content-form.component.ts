@@ -25,6 +25,7 @@ import { RxjsHelper } from "../../../../rxjs-helpers/rxjs.helper";
 
 import { StaticGenderDataResModel } from "../../models/static-gender-data-res.model";
 import { StaticDataReqResService } from "../../services/static-data-req-res.service";
+import { StaticCountryDataResModel } from "../../models/static-country-data-res.model";
 import { AngularFormsHelper } from "../../../../angular-forms-helpers/angular-forms.helper";
 import { FormInputClassesConstants } from "../../../../misc-constants/form-input-classes.constants";
 
@@ -43,6 +44,7 @@ export class SignupRightContentFormComponent implements OnDestroy {
     @Input() _signupForm!: FormGroup;
 
     _staticGenderData!: StaticGenderDataResModel;
+    _staticCountryData!: StaticCountryDataResModel;
 
     readonly _formHelper: AngularFormsHelper = new AngularFormsHelper();
     private _ngUnsubscribe: Subject<void> = new Subject<void>();
@@ -54,6 +56,8 @@ export class SignupRightContentFormComponent implements OnDestroy {
     ) {
         RxjsHelper.subscribeObservable(this._resReqService.getRegisterGenderData(), this._ngUnsubscribe)
             .subscribe(data => this._staticGenderData = data);
+        RxjsHelper.subscribeObservable(this._resReqService.getRegisterCountryData(), this._ngUnsubscribe)
+            .subscribe(data => this._staticCountryData = data);
     };
 
     ngOnDestroy(): void {

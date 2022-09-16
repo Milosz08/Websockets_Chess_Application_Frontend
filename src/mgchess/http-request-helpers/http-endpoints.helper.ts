@@ -43,4 +43,5 @@ export class HttpEndpointsHelper {
     private readonly EXPOSE_STATIC_DATA = this.BASIC_HTTP + "static-data/";
     readonly REGISTER_CALENDAR_DATA = this.EXPOSE_STATIC_DATA + "register-calendar-data";
     readonly REGISTER_GENDER_DATA = this.EXPOSE_STATIC_DATA + "register-gender-data";
+    readonly REGISTER_COUNTRY_DATA = this.EXPOSE_STATIC_DATA + "register-country-data";
 }

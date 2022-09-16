@@ -27,7 +27,7 @@ export class SignupDataReqModel {
     emailAddress: string;
     secondEmailAddress: string;
     birthDate: string;
-    phoneNumber: string;
+    countryName: string;
     gender: string;
     password: string;
     passwordRepeat: string;
@@ -40,9 +40,9 @@ export class SignupDataReqModel {
         this.emailAddress = registerForm.emailAddress;
         this.secondEmailAddress = registerForm.secondEmailAddress;
         this.birthDate = `${birthDateDay}/${birthDateMonth}/${birthDateYear}`;
-        this.phoneNumber = registerForm.phoneNumber;
+        this.countryName = registerForm.countryName;
         this.gender = registerForm.gender;
         this.password = registerForm.password;
         this.passwordRepeat = registerForm.passwordRepeat;
-    }
+    };
 }

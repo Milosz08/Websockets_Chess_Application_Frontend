@@ -22,6 +22,7 @@ import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 
 import { StaticGenderDataResModel } from "../models/static-gender-data-res.model";
+import { StaticCountryDataResModel } from "../models/static-country-data-res.model";
 import { StaticCalendarDataResModel } from "../models/static-calendar-data-res.model";
 import { HttpEndpointsHelper } from "../../../http-request-helpers/http-endpoints.helper";
 
@@ -42,5 +43,9 @@ export class StaticDataReqResService {
 
     getRegisterGenderData(): Observable<StaticGenderDataResModel> {
         return this._http.get<StaticGenderDataResModel>(this._endpoint.REGISTER_GENDER_DATA);
+    };
+
+    getRegisterCountryData(): Observable<StaticCountryDataResModel> {
+        return this._http.get<StaticCountryDataResModel>(this._endpoint.REGISTER_COUNTRY_DATA);
     };
 }

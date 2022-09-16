@@ -71,9 +71,7 @@ export class SingUpPageComponent extends BrowserMetaSerializatorLoader {
             birthDateDay: new FormControl(1, [ Validators.required, Validators.min(1), Validators.max(31) ]),
             birthDateMonth: new FormControl(1, [ Validators.required, Validators.min(1), Validators.max(12) ]),
             birthDateYear: new FormControl(1900, [ Validators.required, Validators.min(1900) ]),
-
-            // TODO: add phone field
-
+            countryName: new FormControl("", [ Validators.required ]),
             hasNewsletterAccept: new FormControl(false),
             hasPrivacyPolicyAccept: new FormControl(false, [ Validators.requiredTrue ])
         }, {

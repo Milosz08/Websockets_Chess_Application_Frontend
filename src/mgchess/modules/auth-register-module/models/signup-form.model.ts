@@ -25,7 +25,7 @@ export class SignupFormModel {
     birthDateDay: number;
     birthDateMonth: number;
     birthDateYear: number;
-    phoneNumber: string;
+    countryName: string;
     gender: string;
     password: string;
     passwordRepeat: string;
@@ -34,7 +34,7 @@ export class SignupFormModel {
 
     constructor(
         nickname: string, firstName: string, lastName: string, emailAddress: string, secondEmailAddress: string,
-        birthDateDay: number, birthDateMonth: number, birthDateYear: number, phoneNumber: string, gender: string,
+        birthDateDay: number, birthDateMonth: number, birthDateYear: number, countryName: string, gender: string,
         password: string, passwordRepeat: string, hasNewsletterAccept: boolean, hasPrivacyPolicyAccept: boolean,
     ) {
         this.nickname = nickname;
@@ -45,19 +45,11 @@ export class SignupFormModel {
         this.birthDateDay = birthDateDay;
         this.birthDateMonth = birthDateMonth;
         this.birthDateYear = birthDateYear;
-        this.phoneNumber = phoneNumber;
+        this.countryName = countryName;
         this.gender = gender;
         this.password = password;
         this.passwordRepeat = passwordRepeat;
         this.hasNewsletterAccept = hasNewsletterAccept;
         this.hasPrivacyPolicyAccept = hasPrivacyPolicyAccept;
-    }
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-export enum GenderType {
-    MALE = "male",
-    FEMALE = "female",
-    OTHER = "other",
+    };
 }
