@@ -16,14 +16,26 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-import { createReducer } from "@ngrx/store";
+import { createReducer, on } from "@ngrx/store";
 
 import { initialGlobalState } from "./global.initial";
+
+import * as NgrxAction from "./global.actions";
 
 //----------------------------------------------------------------------------------------------------------------------
 
 const _globalReducer = createReducer(
     initialGlobalState,
+    on(NgrxAction.__setSuspenseLoadingStatusActive, state => {
+        return { ...state,
+            isGlobalLoadingSuspenseActive: true,
+        };
+    }),
+    on(NgrxAction.__setSuspenseLoadingStatusInactive, state => {
+        return { ...state,
+            isGlobalLoadingSuspenseActive: false,
+        };
+    }),
 );
 
 //----------------------------------------------------------------------------------------------------------------------

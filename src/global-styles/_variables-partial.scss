@@ -87,6 +87,8 @@ body {
     --aside-text-info-color: var(--primary-light-tint-color);
     --signup-separator-element-color: var(--secondary-dark-secondary-tint-color);
     --signup-aside-form-content-color: var(--secondary-tint-color);
+    --global-suspense-loader-background: var(--primary-dark-tint-color);
+    --global-suspense-loader-spinner-color: var(--primary-tint-color);
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -128,4 +130,6 @@ body.dark-theme--active {
     --aside-text-info-color: var(--thirdly-dark-tint-color);
     --signup-separator-element-color: var(--secondary-tint-color);
     --signup-aside-form-content-color: var(--secondary-tint-color);
+    --global-suspense-loader-background: var(--secondary-dark-tint-color);
+    --global-suspense-loader-spinner-color: var(--primary-light-color);
 }

@@ -1,8 +1,8 @@
 <!--
   ~ Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
   ~
-  ~ File name: mgchess.component.html
-  ~ Last modified: 21/08/2022, 18:40
+  ~ File name: global-suspense-loader.component.html
+  ~ Last modified: 16/09/2022, 17:46
   ~ Project name: chess-app-frontend
   ~
   ~ Licensed under the MIT license; you may not use this file except in compliance with the License.
@@ -16,6 +16,10 @@
   ~ COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
   -->
 
-<mgchess-global-suspense-loader></mgchess-global-suspense-loader>
-<mgchess-cookies-notification></mgchess-cookies-notification>
-<router-outlet></router-outlet>
+<div
+    @FadeOutAnimation
+    *ngIf="(_isActive$ | async)"
+    class="global-suspense-loader__container"
+>
+    <div class="global-suspense-loader__spinner-wrapper"></div>
+</div>

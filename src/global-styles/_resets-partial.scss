@@ -33,6 +33,10 @@ body, button, input {
     color: var(--primary-foreground);
 }
 
+body.scroll--disabled {
+    overflow-y: hidden;
+}
+
 a {
     color: inherit;
     text-decoration: none;

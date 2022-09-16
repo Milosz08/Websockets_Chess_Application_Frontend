@@ -18,4 +18,5 @@
 
 export class RxjsConstants {
     static readonly DEF_DELAY_MILIS = 1500 as const;
+    static readonly DEF_SUSPENSE_MILIS = 1000 as const;
 }

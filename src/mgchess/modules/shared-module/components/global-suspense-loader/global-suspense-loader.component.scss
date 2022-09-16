@@ -1,8 +1,8 @@
-/*
+/*!
  * Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
  *
- * File name: global.initial.ts
- * Last modified: 15/09/2022, 21:33
+ * File name: global-suspense-loader.component.scss
+ * Last modified: 16/09/2022, 17:46
  * Project name: chess-app-frontend
  *
  * Licensed under the MIT license; you may not use this file except in compliance with the License.
@@ -16,12 +16,24 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-export interface GlobalStateTypes {
-    isGlobalLoadingSuspenseActive: boolean;
+.global-suspense-loader__container {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--global-suspense-loader-background);
+    .global-suspense-loader__spinner-wrapper {
+        width: 15vh;
+        height: 15vh;
+        max-width: 200px;
+        max-height: 200px;
+        margin-left: 10px;
+        border: .5em solid;
+        animation: spinner-animation .75s ease-out infinite;
+        border-radius: 50%;
+        border-color: transparent transparent transparent var(--global-suspense-loader-spinner-color);
+    }
 }
-
-//----------------------------------------------------------------------------------------------------------------------
-
-export const initialGlobalState: GlobalStateTypes = {
-    isGlobalLoadingSuspenseActive: false,
-};

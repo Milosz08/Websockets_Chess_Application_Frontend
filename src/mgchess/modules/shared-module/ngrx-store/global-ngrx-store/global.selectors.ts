@@ -28,3 +28,7 @@ const selectorWithInjectedStore = (payload: (state: any, action?: any) => any) =
 );
 
 //----------------------------------------------------------------------------------------------------------------------
+
+export const sel_globalSuspenseLoadingStatus = selectorWithInjectedStore(store =>
+    store.isGlobalLoadingSuspenseActive,
+);

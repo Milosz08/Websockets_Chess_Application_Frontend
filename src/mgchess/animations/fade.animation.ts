@@ -1,8 +1,8 @@
 /*
  * Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
  *
- * File name: global.initial.ts
- * Last modified: 15/09/2022, 21:33
+ * File name: fade.animation.ts
+ * Last modified: 16/09/2022, 21:03
  * Project name: chess-app-frontend
  *
  * Licensed under the MIT license; you may not use this file except in compliance with the License.
@@ -16,12 +16,16 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-export interface GlobalStateTypes {
-    isGlobalLoadingSuspenseActive: boolean;
-}
+import { animate, style, transition, trigger } from "@angular/animations";
 
 //----------------------------------------------------------------------------------------------------------------------
 
-export const initialGlobalState: GlobalStateTypes = {
-    isGlobalLoadingSuspenseActive: false,
-};
+export const FadeOutAnimation = trigger("FadeOutAnimation", [
+    transition(
+        ":leave",
+        [
+            style({ opacity: 1 }),
+            animate(".5s ease-out", style({ opacity: 0 })),
+        ],
+    ),
+]);

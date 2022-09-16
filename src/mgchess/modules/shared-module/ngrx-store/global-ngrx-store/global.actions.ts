@@ -15,3 +15,23 @@
  * THE ABOVE COPYRIGHT NOTICE AND THIS PERMISSION NOTICE SHALL BE INCLUDED IN ALL
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
+
+import { createAction } from "@ngrx/store";
+
+const SUSPENSE_LOADING_STATUS_ACTIVE = "[GLOBAL] SUSPENSE LOADING STATUS ACTIVE";
+const SUSPENSE_LOADING_PREPEND_INACTIVE = "[GLOBAL] SUSPENSE LOADING PREPEND INACTIVE";
+const SUSPENSE_LOADING_STATUS_INACTIVE = "[GLOBAL] SUSPENSE LOADING STATUS INACTIVE";
+
+//----------------------------------------------------------------------------------------------------------------------
+
+export const __setSuspenseLoadingStatusActive = createAction(
+    SUSPENSE_LOADING_STATUS_ACTIVE,
+);
+
+export const __setSuspenseLoadingPrependInactive = createAction(
+    SUSPENSE_LOADING_PREPEND_INACTIVE,
+);
+
+export const __setSuspenseLoadingStatusInactive = createAction(
+    SUSPENSE_LOADING_STATUS_INACTIVE,
+);

@@ -20,6 +20,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from "@angular/router";
 import { ReactiveFormsModule } from "@angular/forms";
+import { EffectsModule } from "@ngrx/effects";
 import { StoreModule } from "@ngrx/store";
 
 import { FooterComponent } from "./components/footer/footer.component";
@@ -27,6 +28,7 @@ import { ThemeTogglerComponent } from "./components/theme-toggler/theme-toggler.
 import { PasswordInputComponent } from "./components/password-input/password-input.component";
 import { CopyrightNewsletterComponent } from "./components/copyright-newsletter/copyright-newsletter.component";
 import { CookiesNotificationComponent } from "./components/cookies-notification/cookies-notification.component";
+import { GlobalSuspenseLoaderComponent } from './components/global-suspense-loader/global-suspense-loader.component';
 import { SingleChoiceBoxInputComponent } from "./components/single-choice-box-input/single-choice-box-input.component";
 
 import { ContentNotFoundPageComponent } from "./pages/content-not-found-page/content-not-found-page.component";
@@ -34,6 +36,7 @@ import { ContentNotFoundPageComponent } from "./pages/content-not-found-page/con
 import { CloseOutsideClickComponentDirective } from "./directives/close-outside-click-component.directive";
 
 import { globalNgrxStore } from "./ngrx-store/global-ngrx-store/global.reducer";
+import { GlobalEffects } from "./ngrx-store/global-ngrx-store/global-ngrx-effects/global.effects";
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -44,10 +47,11 @@ import { globalNgrxStore } from "./ngrx-store/global-ngrx-store/global.reducer";
         ThemeTogglerComponent,
         PasswordInputComponent,
         CopyrightNewsletterComponent,
+        CookiesNotificationComponent,
+        GlobalSuspenseLoaderComponent,
+        SingleChoiceBoxInputComponent,
         // pages
         ContentNotFoundPageComponent,
-        CookiesNotificationComponent,
-        SingleChoiceBoxInputComponent,
         // directives
         CloseOutsideClickComponentDirective,
     ],
@@ -55,7 +59,11 @@ import { globalNgrxStore } from "./ngrx-store/global-ngrx-store/global.reducer";
         CommonModule,
         RouterModule,
         ReactiveFormsModule,
+        // ngrx store
         StoreModule.forFeature(globalNgrxStore.reducerName, globalNgrxStore.reducerFunc),
+        EffectsModule.forFeature([
+            GlobalEffects,
+        ]),
     ],
     exports: [
         FooterComponent,
@@ -64,6 +72,7 @@ import { globalNgrxStore } from "./ngrx-store/global-ngrx-store/global.reducer";
         CopyrightNewsletterComponent,
         CookiesNotificationComponent,
         SingleChoiceBoxInputComponent,
+        GlobalSuspenseLoaderComponent,
     ],
 })
 export class SharedModuleModule {}
