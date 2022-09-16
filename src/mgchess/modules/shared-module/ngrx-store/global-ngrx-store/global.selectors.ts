@@ -28,11 +28,3 @@ const selectorWithInjectedStore = (payload: (state: any, action?: any) => any) =
 );
 
 //----------------------------------------------------------------------------------------------------------------------
-
-export const sel_comboBoxState = selectorWithInjectedStore(state =>
-    state.comboListState
-);
-
-export const sel_comboBoxIsClose = selectorWithInjectedStore(state =>
-    !state.comboListState.isOpen
-);

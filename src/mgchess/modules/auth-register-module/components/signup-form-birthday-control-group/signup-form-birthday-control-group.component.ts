@@ -23,7 +23,6 @@ import { Store } from "@ngrx/store";
 import { Subject } from "rxjs";
 import { RxjsHelper } from "../../../../rxjs-helpers/rxjs.helper";
 
-import { ComboBoxType } from "../../../shared-module/types/combo-box.type";
 import { StaticDataReqResService } from "../../services/static-data-req-res.service";
 import { StaticCalendarDataResModel } from "../../models/static-calendar-data-res.model";
 import { AngularFormsHelper } from "../../../../angular-forms-helpers/angular-forms.helper";
@@ -49,10 +48,6 @@ export class SignupFormBirthdayControlGroupComponent implements OnDestroy {
     _serverResponseIsEmpty!: boolean;
 
     readonly _formHelper: AngularFormsHelper = new AngularFormsHelper();
-    readonly _dayComboBoxType: ComboBoxType = ComboBoxType.BIRTH_DAY_COMBO_BOX;
-    readonly _monthComboBoxType: ComboBoxType = ComboBoxType.BIRTH_MONTH_COMBO_BOX;
-    readonly _yearComboBoxType: ComboBoxType = ComboBoxType.BIRTH_YEAR_COMBO_BOX;
-
     private _ngUnsubscribe: Subject<void> = new Subject<void>();
 
     constructor(

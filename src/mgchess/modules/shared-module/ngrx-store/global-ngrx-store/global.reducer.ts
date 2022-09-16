@@ -16,33 +16,14 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-import { createReducer, on } from "@ngrx/store";
+import { createReducer } from "@ngrx/store";
 
 import { initialGlobalState } from "./global.initial";
-import { ComboBoxType } from "../../types/combo-box.type";
-import { ComboListStateModel } from "./ngrx-models/combo-list-state.model";
-
-import * as NgrxAction from "./global.actions";
 
 //----------------------------------------------------------------------------------------------------------------------
 
 const _globalReducer = createReducer(
     initialGlobalState,
-    on(NgrxAction.__closeComboList, state => {
-        return { ...state,
-            comboListState: new ComboListStateModel(false, ComboBoxType.NONE),
-        };
-    }),
-    on(NgrxAction.__toggleComboList, (state, action) => {
-        if (state.comboListState.type === action.comboType) {
-            return { ...state,
-                comboListState: new ComboListStateModel(!state.comboListState.isOpen, action.comboType),
-            };
-        }
-        return { ...state,
-            comboListState: new ComboListStateModel(true, action.comboType),
-        };
-    }),
 );
 
 //----------------------------------------------------------------------------------------------------------------------

@@ -16,17 +16,10 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-import { ComboBoxType } from "../../types/combo-box.type";
-import { ComboListStateModel } from "./ngrx-models/combo-list-state.model";
-
-//----------------------------------------------------------------------------------------------------------------------
-
 export interface GlobalStateTypes {
-    comboListState: ComboListStateModel;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 export const initialGlobalState: GlobalStateTypes = {
-    comboListState: new ComboListStateModel(false, ComboBoxType.NONE),
 };

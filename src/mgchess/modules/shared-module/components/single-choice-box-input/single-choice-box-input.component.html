@@ -16,7 +16,11 @@
   ~ COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
   -->
 
-<label class="mg-chess__standard-form-label__container">
+<label
+    class="mg-chess__standard-form-label__container"
+    closeOutsideClickComponent
+    (_clickOutisdeElement)="handleCloseComboBox()"
+>
     <span
         *ngIf="_topInfoLabel !== ''"
         [ngClass]="[ 'mgchess__standard-form-label__text-primary-color', _cssClasses.textContent ]"
@@ -26,26 +30,26 @@
     <div class="mg-chess__single-choicebox-container">
         <button
             type="button"
-            (mouseup)="handleShowItemList($event)"
+            (mouseup)="handleToggleComboBoxList()"
             [attr.data-is-active]="_selectedItemName !== _initialLabelText"
             [ngClass]="[ 'mg-chess__standard-form-select-primary-color', _cssClasses.input ]"
         >
             {{ _selectedItemName }}
             <span
-                [attr.data-is-active]="__comboBoxState"
+                [attr.data-is-active]="_isVisible"
                 class="material-symbols-outlined mg-chess__choicebox-more-icon"
             >
                 expand_more
             </span>
         </button>
         <ul
-            *ngIf="__comboBoxState"
+            *ngIf="_isVisible"
             [ngClass]="[ 'mg-chess__choicebox__list', _cssClasses.input ]"
         >
             <li *ngFor="let itemElement of _itemListWithDef">
                 <button
                     type="button"
-                    (mouseup)="handleFilledUpWithClickedInputData($event, itemElement)"
+                    (mouseup)="handleFilledUpWithClickedComboBoxData(itemElement)"
                     [title]="[ 'Click here to insert ' + itemElement.value ]"
                     [ngClass]="[ 'mg-chess__choicebox__list-element-button', _cssClasses.input ]"
                 >

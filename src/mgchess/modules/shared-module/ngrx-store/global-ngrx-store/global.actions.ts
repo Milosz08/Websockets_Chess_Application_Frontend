@@ -15,22 +15,3 @@
  * THE ABOVE COPYRIGHT NOTICE AND THIS PERMISSION NOTICE SHALL BE INCLUDED IN ALL
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
-
-import { createAction, props } from "@ngrx/store";
-import { ComboBoxType } from "../../types/combo-box.type";
-
-//----------------------------------------------------------------------------------------------------------------------
-
-const CLOSE_COMBO_LIST = "[GLOBAL] CLOSE COMBO LIST" as const;
-const TOGGLE_COMBO_LIST = "[GLOBAL] TOGGLE COMBO LIST" as const;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-export const __closeComboList = createAction(
-    CLOSE_COMBO_LIST,
-);
-
-export const __toggleComboList = createAction(
-    TOGGLE_COMBO_LIST,
-    props<{ comboType: ComboBoxType }>(),
-);

@@ -31,6 +31,8 @@ import { SingleChoiceBoxInputComponent } from "./components/single-choice-box-in
 
 import { ContentNotFoundPageComponent } from "./pages/content-not-found-page/content-not-found-page.component";
 
+import { CloseOutsideClickComponentDirective } from "./directives/close-outside-click-component.directive";
+
 import { globalNgrxStore } from "./ngrx-store/global-ngrx-store/global.reducer";
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -46,6 +48,8 @@ import { globalNgrxStore } from "./ngrx-store/global-ngrx-store/global.reducer";
         ContentNotFoundPageComponent,
         CookiesNotificationComponent,
         SingleChoiceBoxInputComponent,
+        // directives
+        CloseOutsideClickComponentDirective,
     ],
     imports: [
         CommonModule,

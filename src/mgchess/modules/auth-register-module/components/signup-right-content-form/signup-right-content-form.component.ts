@@ -23,7 +23,6 @@ import { Store } from "@ngrx/store";
 import { Subject } from "rxjs";
 import { RxjsHelper } from "../../../../rxjs-helpers/rxjs.helper";
 
-import { ComboBoxType } from "../../../shared-module/types/combo-box.type";
 import { StaticGenderDataResModel } from "../../models/static-gender-data-res.model";
 import { StaticDataReqResService } from "../../services/static-data-req-res.service";
 import { AngularFormsHelper } from "../../../../angular-forms-helpers/angular-forms.helper";
@@ -46,8 +45,6 @@ export class SignupRightContentFormComponent implements OnDestroy {
     _staticGenderData!: StaticGenderDataResModel;
 
     readonly _formHelper: AngularFormsHelper = new AngularFormsHelper();
-    readonly _genderComboBoxType: ComboBoxType = ComboBoxType.GENDER_COMBO_BOX;
-
     private _ngUnsubscribe: Subject<void> = new Subject<void>();
 
     constructor(
