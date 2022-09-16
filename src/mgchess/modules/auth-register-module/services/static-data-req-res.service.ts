@@ -38,14 +38,14 @@ export class StaticDataReqResService {
     };
 
     getRegisterCalendarData(): Observable<StaticCalendarDataResModel> {
-        return this._http.get<StaticCalendarDataResModel>(this._endpoint.REGISTER_CALENDAR_DATA);
+        return this._http.get<StaticCalendarDataResModel>(this._endpoint.SIGNUP_CALENDAR_DATA);
     };
 
     getRegisterGenderData(): Observable<StaticGenderDataResModel> {
-        return this._http.get<StaticGenderDataResModel>(this._endpoint.REGISTER_GENDER_DATA);
+        return this._http.get<StaticGenderDataResModel>(this._endpoint.SIGNUP_GENDER_DATA);
     };
 
     getRegisterCountryData(): Observable<StaticCountryDataResModel> {
-        return this._http.get<StaticCountryDataResModel>(this._endpoint.REGISTER_COUNTRY_DATA);
+        return this._http.get<StaticCountryDataResModel>(this._endpoint.SIGNUP_COUNTRY_DATA);
     };
 }

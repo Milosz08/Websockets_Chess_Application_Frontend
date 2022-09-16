@@ -34,13 +34,13 @@ export class CloseOutsideClickComponentDirective implements AfterViewInit, OnDes
     private _ngUnsubscribe: Subject<void> = new Subject<void>();
 
     constructor(
-        private element: ElementRef,
-        @Inject(DOCUMENT) private document: Document,
+        private _element: ElementRef,
+        @Inject(DOCUMENT) private _document: Document,
     ) {
     };
 
     ngAfterViewInit(): void {
-        fromEvent(this.document, "click").pipe(takeUntil(this._ngUnsubscribe), filter(e => {
+        fromEvent(this._document, "click").pipe(takeUntil(this._ngUnsubscribe), filter(e => {
             return !this.isInside(e.target as HTMLElement);
         })).subscribe(() => {
             this._clickOutisdeElement.emit();
@@ -52,6 +52,6 @@ export class CloseOutsideClickComponentDirective implements AfterViewInit, OnDes
     };
 
     private isInside(elementToCheck: HTMLElement): boolean {
-        return elementToCheck === this.element.nativeElement || this.element.nativeElement.contains(elementToCheck);
+        return elementToCheck === this._element.nativeElement || this._element.nativeElement.contains(elementToCheck);
     };
 }
