@@ -31,6 +31,7 @@ export class SignupRequestModel {
     gender: string;
     password: string;
     passwordRepeat: string;
+    newsletterAccept: boolean;
 
     constructor(registerForm: SignupFormModel) {
         const { birthDateDay, birthDateMonth, birthDateYear } = registerForm;
@@ -44,6 +45,7 @@ export class SignupRequestModel {
         this.gender = registerForm.gender!;
         this.password = registerForm.password;
         this.passwordRepeat = registerForm.passwordRepeat;
+        this.newsletterAccept = registerForm.hasNewsletterAccept;
     };
 
     private addBeforePad(value: number): string {
