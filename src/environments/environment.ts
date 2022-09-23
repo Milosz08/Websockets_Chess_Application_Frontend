@@ -19,5 +19,5 @@
 export const environment = {
     production: false,
     httpBackendURI: "http://localhost:9595/",
-    httpFrontEndURI: "http://localhost:4200/",
+    httpFrontEndURI: "http://localhost:4200",
 };

@@ -24,8 +24,13 @@ import { environment } from "../../environments/environment";
 @Injectable()
 export class Oauth2RequestEndpointsContants {
     private readonly BASIC_OAUTH2_ENDPOINT = environment.httpBackendURI + "oauth2/authorization/";
-    private readonly REDIRECT_URI = `?redirect_uri=${environment.httpFrontEndURI}auth/login`;
+    private readonly BASE_REDIRECT_URI = `?base_uri=${environment.httpFrontEndURI}`;
+    private readonly AFTER_LOGIN_REDIRECT_URI = "&after_login_uri=auth/login";
+    private readonly AFTER_SIGNUP_REDIRECT_URI = "&after_signup_uri=auth/activate-account";
 
-    readonly OAUTH_GOOGLE_URI = this.BASIC_OAUTH2_ENDPOINT + "google" + this.REDIRECT_URI;
-    readonly OAUTH_FACEBOOK_URI = this.BASIC_OAUTH2_ENDPOINT + "facebook" + this.REDIRECT_URI;
+    private readonly COMPUTED_REDIRECT = this.BASE_REDIRECT_URI + this.AFTER_LOGIN_REDIRECT_URI +
+        this.AFTER_SIGNUP_REDIRECT_URI;
+
+    readonly OAUTH_GOOGLE_URI = this.BASIC_OAUTH2_ENDPOINT + "google" + this.COMPUTED_REDIRECT;
+    readonly OAUTH_FACEBOOK_URI = this.BASIC_OAUTH2_ENDPOINT + "facebook" + this.COMPUTED_REDIRECT;
 }
