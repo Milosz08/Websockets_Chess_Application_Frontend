@@ -84,4 +84,10 @@
     >
         {{ _serverResponse.responseMessage }}
     </p>
+    <p
+        *ngIf="_oauth2ServerResponseError !== ''"
+        [ngClass]="_serverResReqHelper.responseReverseThemeCssClass(true)"
+    >
+        {{ _oauth2ServerResponseError }}
+    </p>
 </form>

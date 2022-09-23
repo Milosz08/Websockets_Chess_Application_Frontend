@@ -18,6 +18,7 @@
 
 import { Component } from "@angular/core";
 import { Meta, Title } from "@angular/platform-browser";
+import { ActivatedRoute } from "@angular/router";
 import { Store } from "@ngrx/store";
 
 import { BrowserThemeDetector } from "../../../../browster-utils/browser-theme.detector";
@@ -39,13 +40,18 @@ import * as NgrxAction_ATH from "../../ngrx-store/auth-ngrx-store/auth.actions";
 })
 export class LogInPageComponent extends BrowserMetaSerializatorLoader {
 
+    _oauth2ServerResponseError: string;
+
     constructor(
         private _metaService: Meta,
         private _titleService: Title,
+        private _route: ActivatedRoute,
         private _store: Store<AuthReducerType>,
         public _oauth2Constants: Oauth2RequestEndpointsContants,
     ) {
         super(_titleService, _metaService, SingleModuleType.AUTH_REGISTER_MODULE, SinglePageType.LOG_IN_PAGE);
+        this._oauth2ServerResponseError = this._route.snapshot.queryParams["error"];
+        if (this._oauth2ServerResponseError === undefined) this._oauth2ServerResponseError = "";
         this._store.dispatch(NgrxAction_ATH.__cleanServerResponse());
     };
 

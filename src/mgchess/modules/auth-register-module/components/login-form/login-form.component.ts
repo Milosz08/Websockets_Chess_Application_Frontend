@@ -16,7 +16,7 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-import { Component, OnDestroy, OnInit } from "@angular/core";
+import { Component, Input, OnDestroy, OnInit } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { Store } from "@ngrx/store";
 
@@ -26,6 +26,7 @@ import { RxjsHelper } from "../../../../rxjs-helpers/rxjs.helper";
 import { LoginFormModel } from "../../models/login-form.model";
 import { AngularFormsHelper } from "../../../../angular-forms-helpers/angular-forms.helper";
 import { ServerReqResHelper } from "../../../../http-request-helpers/server-req-res.helper";
+import { GlobalSuspenseService } from "../../../shared-module/services/global-suspense.service";
 import { SimpleMessageResWithErrorModel } from "../../../../models/simple-message-response.model";
 import { FormInputClassesConstants } from "../../../../misc-constants/form-input-classes.constants";
 import { ValidatorPatternConstants } from "../../../../validator-helpers/validator-pattern.constants";
@@ -39,9 +40,11 @@ import * as NgrxSelector_ATH from "../../ngrx-store/auth-ngrx-store/auth.selecto
 @Component({
     selector: "mgchess-login-form",
     templateUrl: "./login-form.component.html",
-    providers: [ ValidatorPatternConstants, FormInputClassesConstants ],
+    providers: [ ValidatorPatternConstants, FormInputClassesConstants, GlobalSuspenseService ],
 })
 export class LoginFormComponent implements OnInit, OnDestroy {
+
+    @Input() _oauth2ServerResponseError: string = "";
 
     _loginForm: FormGroup;
     _serverResponse!: SimpleMessageResWithErrorModel;
@@ -55,6 +58,7 @@ export class LoginFormComponent implements OnInit, OnDestroy {
     constructor(
         private _store: Store<AuthReducerType>,
         private _regex: ValidatorPatternConstants,
+        private _suspenseService: GlobalSuspenseService,
         public _cssConstants: FormInputClassesConstants,
     ) {
         this._loginForm = new FormGroup({
@@ -81,7 +85,14 @@ export class LoginFormComponent implements OnInit, OnDestroy {
     };
 
     clearLoginServerResponse(): void {
+        this.removeOAuth2ServerErrorQueryParam();
         if (this._serverResponse.responseMessage === "") return;
         this._store.dispatch(NgrxAction_ATH.__cleanServerResponse());
+    };
+
+    private removeOAuth2ServerErrorQueryParam(): void {
+        if (this._oauth2ServerResponseError === "") return;
+        this._suspenseService.removeQueryParams("error");
+        this._oauth2ServerResponseError = "";
     };
 }

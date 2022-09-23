@@ -43,4 +43,13 @@ export class GlobalSuspenseService {
             }
         });
     };
+
+    removeQueryParams(queryParamName: string): void {
+        this._router.navigate([], {
+            queryParams: {
+                [queryParamName]: null
+            },
+            queryParamsHandling: "merge"
+        }).then(r => r);
+    };
 }

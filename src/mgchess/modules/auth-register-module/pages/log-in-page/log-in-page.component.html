@@ -31,7 +31,10 @@
         <h2 class="mg-chess__standard-header-with-decorator header--smaller">
             <span class="text-content auth-form-header">Log into your account</span>
         </h2>
-        <mgchess-login-form class="login-form__form-container"></mgchess-login-form>
+        <mgchess-login-form
+            class="login-form__form-container"
+            [_oauth2ServerResponseError]="_oauth2ServerResponseError"
+        ></mgchess-login-form>
         <span class="mg-chess__separator-with-text-inside separator--prevent-remove-margin">
             <span class="separator-line"></span>
             <span class="text-content">or sign in via</span>
