@@ -66,9 +66,9 @@
                 "description": "In this page you have the opportunity to restore forgotten account password."
             },
             {
-                "pageId": "SUCCESSFUL_LOGIN_PAGE",
-                "title": "Welcome",
-                "description": "Successfull login page. You can redirect to main application page."
+                "pageId": "ACTIVATE_ACCOUNT_PAGE",
+                "title": "Activate Account",
+                "description": "On this page you can activate your account."
             }
         ],
         "dynamicAppModule": [

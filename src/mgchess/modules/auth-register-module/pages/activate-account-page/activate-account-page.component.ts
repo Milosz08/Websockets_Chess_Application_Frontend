@@ -1,8 +1,8 @@
 /*
  * Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
  *
- * File name: successful-login-page.component.ts
- * Last modified: 08/09/2022, 22:04
+ * File name: activate-account-page.component.ts
+ * Last modified: 23/09/2022, 20:27
  * Project name: chess-app-frontend
  *
  * Licensed under the MIT license; you may not use this file except in compliance with the License.
@@ -25,17 +25,17 @@ import { SingleModuleType, SinglePageType } from "../../../../browser-meta-seria
 //----------------------------------------------------------------------------------------------------------------------
 
 @Component({
-    selector: "mgchess-successfull-login-page",
-    templateUrl: "./successful-login-page.component.html",
-    styleUrls: [ "./successful-login-page.component.scss" ],
-    host: { class: "mg-chess__flex-safety-container" },
+    selector: "mgchess-activate-account-page",
+    templateUrl: "./activate-account-page.component.html",
+    styleUrls: [ "./activate-account-page.component.scss" ],
+    host: { class: "mg-chess__flex-safety-container remove-margin__small-devices" },
 })
-export class SuccessfulLoginPageComponent extends BrowserMetaSerializatorLoader {
+export class ActivateAccountPageComponent extends BrowserMetaSerializatorLoader {
 
     constructor(
         private _metaService: Meta,
         private _titleService: Title,
     ) {
-        super(_titleService, _metaService, SingleModuleType.AUTH_REGISTER_MODULE, SinglePageType.SUCCESSFUL_LOGIN_PAGE);
+        super(_titleService, _metaService, SingleModuleType.AUTH_REGISTER_MODULE, SinglePageType.ACTIVATE_ACCOUNT_PAGE);
     };
 }
