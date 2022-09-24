@@ -28,6 +28,7 @@ import { AngularFormsHelper } from "../../../../angular-forms-helpers/angular-fo
 import { ServerReqResHelper } from "../../../../http-request-helpers/server-req-res.helper";
 import { GlobalSuspenseService } from "../../../shared-module/services/global-suspense.service";
 import { SimpleMessageResWithErrorModel } from "../../../../models/simple-message-response.model";
+import { OAuthSupplier } from "../../../../http-request-helpers/oauth2-request-endpoints.contants";
 import { FormInputClassesConstants } from "../../../../misc-constants/form-input-classes.constants";
 import { ValidatorPatternConstants } from "../../../../validator-helpers/validator-pattern.constants";
 
@@ -44,6 +45,8 @@ import * as NgrxSelector_ATH from "../../ngrx-store/auth-ngrx-store/auth.selecto
 })
 export class LoginFormComponent implements OnInit, OnDestroy {
 
+    @Input() _oauth2ResSupplier: string = "";
+    @Input() _ifIncludesAnyQueryParams: boolean = false;
     @Input() _oauth2ServerResponseError: string = "";
 
     _loginForm: FormGroup;
@@ -94,5 +97,10 @@ export class LoginFormComponent implements OnInit, OnDestroy {
         if (this._oauth2ServerResponseError === "") return;
         this._suspenseService.removeQueryParams("error");
         this._oauth2ServerResponseError = "";
+    };
+
+    get __determinateLoadingSpinnerActive(): boolean {
+        return !Boolean(Object.values(OAuthSupplier).find(s => s === this._oauth2ResSupplier))
+            && this._serverResponse.responseMessage === '' && this._ifIncludesAnyQueryParams;
     };
 }

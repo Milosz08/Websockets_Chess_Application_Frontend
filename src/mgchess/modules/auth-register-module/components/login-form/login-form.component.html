@@ -74,7 +74,7 @@
     >
         Log in
         <div
-            *ngIf="(_suspenseLoader$ | async)"
+            *ngIf="(_suspenseLoader$ | async) || __determinateLoadingSpinnerActive"
             class="button__suspense-loading-spinner"
         ></div>
     </button>

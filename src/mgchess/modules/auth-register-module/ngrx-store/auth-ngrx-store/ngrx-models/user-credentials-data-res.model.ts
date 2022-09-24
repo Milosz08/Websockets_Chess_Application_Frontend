@@ -17,9 +17,13 @@
  */
 
 export class UserCredentialsDataResModel {
-    usernameOrLogin: string;
+    fullName: string;
+    jwtToken: string;
+    refreshToken: string;
 
-    constructor(usernameOrLogin: string) {
-        this.usernameOrLogin = usernameOrLogin;
+    constructor(fullName: string, jwtToken: string, refreshToken: string) {
+        this.fullName = fullName;
+        this.jwtToken = jwtToken;
+        this.refreshToken = refreshToken;
     };
 }

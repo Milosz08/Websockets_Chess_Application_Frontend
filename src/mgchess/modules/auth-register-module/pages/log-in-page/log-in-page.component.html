@@ -33,7 +33,9 @@
         </h2>
         <mgchess-login-form
             class="login-form__form-container"
-            [_oauth2ServerResponseError]="_oauth2ServerResponseError"
+            [_oauth2ServerResponseError]="_oauth2ResError"
+            [_ifIncludesAnyQueryParams]="!!_oauth2ResToken || !!_oauth2ResSupplier || !!_oauth2SuspenseActive"
+            [_oauth2ResSupplier]="_oauth2ResSupplier || ''"
         ></mgchess-login-form>
         <span class="mg-chess__separator-with-text-inside separator--prevent-remove-margin">
             <span class="separator-line"></span>
@@ -45,22 +47,34 @@
             title="Click to authorize access to the application via Google account"
             class="social-redirect-oauth2__anchor-link oauth2-link--signin-via-google"
         >
-            <img
-                src="assets/gfx/images/oauth2-google-logo.svg" alt=""
-                class="oauth2-link__image-content"
-            />
-            <span class="oauth2-link__text-content">Continue with Google</span>
+            <div class="oauth2-image-with-text__container">
+                <img
+                    src="assets/gfx/images/oauth2-google-logo.svg" alt=""
+                    class="oauth2-link__image-content"
+                />
+                <span class="oauth2-link__text-content">Continue with Google</span>
+            </div>
+            <div
+                *ngIf="_oauth2SuspenseActive && _oauth2ResSupplier === _googleSupplier"
+                class="oauth2-suspense-loader__spinner"
+            ></div>
         </a>
         <a
             [href]="_oauth2Constants.OAUTH_FACEBOOK_URI"
             title="Click to authorize access to the application via Facebook account"
             class="social-redirect-oauth2__anchor-link oauth2-link--signin-via-facebook"
         >
-            <img
-                src="assets/gfx/images/oauth2-facebook-logo.svg" alt=""
-                class="oauth2-link__image-content"
-            />
-            <span class="oauth2-link__text-content">Continue with Facebook</span>
+            <div class="oauth2-image-with-text__container">
+                <img
+                    src="assets/gfx/images/oauth2-facebook-logo.svg" alt=""
+                    class="oauth2-link__image-content"
+                />
+                <span class="oauth2-link__text-content">Continue with Facebook</span>
+            </div>
+            <div
+                *ngIf="_oauth2SuspenseActive && _oauth2ResSupplier === _facebookSupplier"
+                class="oauth2-suspense-loader__spinner"
+            ></div>
         </a>
         <div class="mg-chess__additional-auth-links__container">
             <a

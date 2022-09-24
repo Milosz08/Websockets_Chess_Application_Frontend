@@ -16,18 +16,23 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-import { Component } from "@angular/core";
+import { Component, OnDestroy } from "@angular/core";
 import { Meta, Title } from "@angular/platform-browser";
 import { ActivatedRoute } from "@angular/router";
 import { Store } from "@ngrx/store";
 
+import { Subject } from "rxjs";
+import { RxjsHelper } from "../../../../rxjs-helpers/rxjs.helper";
+
 import { BrowserThemeDetector } from "../../../../browster-utils/browser-theme.detector";
-import { Oauth2RequestEndpointsContants } from "../../../../http-request-helpers/oauth2-request-endpoints.contants";
 import { BrowserMetaSerializatorLoader } from "../../../../browser-meta-serialization/browser-meta-serializator.loader";
 import { SingleModuleType, SinglePageType } from "../../../../browser-meta-serialization/browser-meta-serializator.types";
+import { Oauth2RequestEndpointsContants, OAuthSupplier } from "../../../../http-request-helpers/oauth2-request-endpoints.contants";
 
 import { AuthReducerType } from "../../../../ngrx-helpers/ngrx-store.types";
 import * as NgrxAction_ATH from "../../ngrx-store/auth-ngrx-store/auth.actions";
+import * as NgrxSelector_ATH from "../../ngrx-store/auth-ngrx-store/auth.selectors";
+import { LoginViaOAuth2ReqModel } from "../../ngrx-store/auth-ngrx-store/ngrx-models/login-data-req.model";
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -38,9 +43,17 @@ import * as NgrxAction_ATH from "../../ngrx-store/auth-ngrx-store/auth.actions";
     host: { class: "mg-chess__flex-safety-container remove-margin__small-devices" },
     providers: [ Oauth2RequestEndpointsContants ],
 })
-export class LogInPageComponent extends BrowserMetaSerializatorLoader {
+export class LogInPageComponent extends BrowserMetaSerializatorLoader implements OnDestroy {
 
-    _oauth2ServerResponseError: string;
+    _oauth2ResError: string;
+    _oauth2ResToken: string | null;
+    _oauth2ResSupplier: string | null;
+    _oauth2SuspenseActive: boolean = false;
+
+    readonly _googleSupplier: OAuthSupplier = OAuthSupplier.GOOGLE;
+    readonly _facebookSupplier: OAuthSupplier = OAuthSupplier.FACEBOOK;
+
+    private _ngUnsubscribe: Subject<void> = new Subject<void>();
 
     constructor(
         private _metaService: Meta,
@@ -50,12 +63,26 @@ export class LogInPageComponent extends BrowserMetaSerializatorLoader {
         public _oauth2Constants: Oauth2RequestEndpointsContants,
     ) {
         super(_titleService, _metaService, SingleModuleType.AUTH_REGISTER_MODULE, SinglePageType.LOG_IN_PAGE);
-        this._oauth2ServerResponseError = this._route.snapshot.queryParams["error"];
-        if (this._oauth2ServerResponseError === undefined) this._oauth2ServerResponseError = "";
         this._store.dispatch(NgrxAction_ATH.__cleanServerResponse());
+        this._oauth2ResError = this._route.snapshot.queryParamMap.get("error") || "";
+        this._oauth2ResToken = this._route.snapshot.queryParamMap.get("token");
+        this._oauth2ResSupplier = this._route.snapshot.queryParamMap.get("supplier");
+        this.autoLoginViaOAuth2ServerResponsesParams();
+        RxjsHelper.subscribeData(this._store, NgrxSelector_ATH.sel_loginViaOAuth2Suspense, this._ngUnsubscribe)
+            .subscribe(data => this._oauth2SuspenseActive = data);
+    };
+
+    ngOnDestroy(): void {
+        RxjsHelper.cleanupExecutor(this._ngUnsubscribe);
     };
 
     selectApplicationLogoBasedCurrentTheme(): string {
         return BrowserThemeDetector.getLogoSrcBasedCurrentTheme();
+    };
+
+    private autoLoginViaOAuth2ServerResponsesParams(): void {
+        if (!Boolean(this._oauth2ResToken) || !Boolean(this._oauth2ResSupplier)) return;
+        const req = new LoginViaOAuth2ReqModel(this._oauth2ResToken!, this._oauth2ResSupplier!);
+        this._store.dispatch(NgrxAction_ATH.__attemptToLoginViaOAuth2({ req }));
     };
 }
