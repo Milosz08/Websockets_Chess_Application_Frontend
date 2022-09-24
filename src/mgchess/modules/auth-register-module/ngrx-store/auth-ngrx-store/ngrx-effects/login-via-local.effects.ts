@@ -18,6 +18,7 @@
 
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
+import { Router } from "@angular/router";
 import { Store } from "@ngrx/store";
 
 import { catchError, delay, map, mergeMap, of, tap } from "rxjs";
@@ -28,7 +29,7 @@ import { AuthReqResService } from "../../../services/auth-req-res.service";
 import { SuspenseLoader } from "../../../../../models/suspense-loader-res.model";
 
 import * as NgrxAction_ATH from "../auth.actions";
-import { LoginReqestModel } from "../ngrx-models/login-data-req.model";
+import { LoginReqModel } from "../ngrx-models/login-data-req.model";
 import { AuthReducerType } from "../../../../../ngrx-helpers/ngrx-store.types";
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -37,6 +38,7 @@ import { AuthReducerType } from "../../../../../ngrx-helpers/ngrx-store.types";
 export class LoginViaLocalEffects {
 
     constructor(
+        private _router: Router,
         private _actions$: Actions,
         private _httpService: AuthReqResService,
         private _store: Store<AuthReducerType>,
@@ -51,16 +53,16 @@ export class LoginViaLocalEffects {
             }),
             delay(RxjsConstants.DEF_DELAY_MILIS),
             mergeMap(({ loginForm }) => {
-                const req = LoginReqestModel.factoryLoginRequstModelFromForm(loginForm);
+                const req = LoginReqModel.factoryLoginRequstModelFromForm(loginForm);
                 return this._httpService.loginViaLocal(req).pipe(
                     map(credentialsData => {
                         if (loginForm.rememberAccount) {
                             // TODO: add saving account implementation
                         }
-                        return NgrxAction_ATH.__successfulLoginViaLocal({ credentialsData });
+                        return NgrxAction_ATH.__successfulLogin({ credentialsData });
                     }),
                     catchError(error => {
-                        return of(NgrxAction_ATH.__failureLoginViaLocal({
+                        return of(NgrxAction_ATH.__failureLogin({
                             serverResponse: RxjsHelper.serverResponseError(error) }));
                     }),
                 );
@@ -70,4 +72,37 @@ export class LoginViaLocalEffects {
             }),
         );
     });
+
+    loginViaOAuth2$ = createEffect(() => {
+        return this._actions$.pipe(
+            ofType(NgrxAction_ATH.__attemptToLoginViaOAuth2),
+            tap(({ req }) => {
+                this._store.dispatch(NgrxAction_ATH.__activeSuspense({ for: SuspenseLoader.ATTEMPT_LOGIN_VIA_OAUTH2 }));
+            }),
+            delay(RxjsConstants.DEF_DELAY_MILIS * 2),
+            mergeMap(({ req }) => {
+                return this._httpService.loginViaOAuth2(req).pipe(
+                    map(credentialsData => {
+                        return NgrxAction_ATH.__successfulLogin({ credentialsData });
+                    }),
+                    catchError(error => {
+                        return of(NgrxAction_ATH.__failureLogin({
+                            serverResponse: RxjsHelper.serverResponseError(error) }));
+                    }),
+                );
+            }),
+            tap(() => {
+                this._store.dispatch(NgrxAction_ATH.__disactiveSuspense());
+            }),
+        );
+    });
+
+    redirectToStartOnSuccessfulLogin$ = createEffect(() => {
+        return this._actions$.pipe(
+            ofType(NgrxAction_ATH.__successfulLogin),
+            tap(() => {
+                this._router.navigate([ "/" ]).then(r => r);
+            }),
+        );
+    }, { dispatch: false });
 }

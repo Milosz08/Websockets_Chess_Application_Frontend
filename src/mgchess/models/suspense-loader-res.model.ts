@@ -23,6 +23,7 @@ export enum SuspenseLoader {
     UNSUBSCRIBE_VIA_JWT = "UNSUBSCRIBE_VIA_JWT",
     ATTEMPT_LOGIN_VIA_LOCAL = "ATTEMPT_LOGIN_VIA_LOCAL",
     ATTEMPT_SIGNUP_VIA_LOCAL = "ATTEMPT_SIGNUP_VIA_LOCAL",
+    ATTEMPT_LOGIN_VIA_OAUTH2 = "ATTEMPT_LOGIN_VIA_OAUTH2",
 }
 
 //----------------------------------------------------------------------------------------------------------------------

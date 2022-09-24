@@ -28,12 +28,12 @@ import * as NgrxAction from "./auth.actions";
 
 const _authReducer = createReducer(
     initialAuthState,
-    on(NgrxAction.__successfulLoginViaLocal, (state, action) => {
+    on(NgrxAction.__successfulLogin, (state, action) => {
         return { ...state,
             userCredentialsData: action.credentialsData,
         };
     }),
-    on(NgrxAction.__failureLoginViaLocal, (state, action) => {
+    on(NgrxAction.__failureLogin, (state, action) => {
         return { ...state,
             serverResponse: new SimpleMessageResWithErrorModel(action.serverResponse, true),
         };

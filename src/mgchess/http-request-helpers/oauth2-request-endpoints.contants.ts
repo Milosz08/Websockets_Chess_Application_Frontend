@@ -34,3 +34,10 @@ export class Oauth2RequestEndpointsContants {
     readonly OAUTH_GOOGLE_URI = this.BASIC_OAUTH2_ENDPOINT + "google" + this.COMPUTED_REDIRECT;
     readonly OAUTH_FACEBOOK_URI = this.BASIC_OAUTH2_ENDPOINT + "facebook" + this.COMPUTED_REDIRECT;
 }
+
+//----------------------------------------------------------------------------------------------------------------------
+
+export enum OAuthSupplier {
+    GOOGLE = "google",
+    FACEBOOK = "facebook",
+}

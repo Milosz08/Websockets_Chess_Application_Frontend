@@ -29,7 +29,19 @@ export class LoginReqModel {
         this.password = password;
     };
 
-    static factoryLoginRequstModelFromForm(form: LoginFormModel): LoginReqestModel {
-        return new LoginReqestModel(form.usernameEmail, form.password);
+    static factoryLoginRequstModelFromForm(form: LoginFormModel): LoginReqModel {
+        return new LoginReqModel(form.usernameEmail, form.password);
+    };
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+export class LoginViaOAuth2ReqModel {
+    bearerToken: string;
+    oauth2supplier: string;
+
+    constructor(bearerToken: string, oauth2supplier: string) {
+        this.bearerToken = bearerToken;
+        this.oauth2supplier = oauth2supplier;
     };
 }
