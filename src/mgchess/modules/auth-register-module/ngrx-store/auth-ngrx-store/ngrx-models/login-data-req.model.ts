@@ -20,7 +20,7 @@ import { LoginFormModel } from "../../../models/login-form.model";
 
 //----------------------------------------------------------------------------------------------------------------------
 
-export class LoginReqestModel {
+export class LoginReqModel {
     usernameEmail: string;
     password: string;
 

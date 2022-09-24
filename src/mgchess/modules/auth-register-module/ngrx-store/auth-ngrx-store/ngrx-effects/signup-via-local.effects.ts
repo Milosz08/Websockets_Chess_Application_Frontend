@@ -28,7 +28,7 @@ import { AuthReqResService } from "../../../services/auth-req-res.service";
 import { SuspenseLoader } from "../../../../../models/suspense-loader-res.model";
 
 import * as NgrxAction_ATH from "../auth.actions";
-import { SignupRequestModel } from "../ngrx-models/signup-request.model";
+import { SignupReqModel } from "../ngrx-models/signup-req.model";
 import { AuthReducerType } from "../../../../../ngrx-helpers/ngrx-store.types";
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -51,7 +51,7 @@ export class SignupViaLocalEffects {
             }),
             delay(RxjsConstants.DEF_DELAY_MILIS),
             mergeMap(({ signupForm }) => {
-                const req = new SignupRequestModel(signupForm);
+                const req = new SignupReqModel(signupForm);
                 return this._httpService.signupViaLocal(req).pipe(
                     map(({ responseMessage }) => {
                         return NgrxAction_ATH.__successfulSingUpViaLocal({ serverResponse: responseMessage });

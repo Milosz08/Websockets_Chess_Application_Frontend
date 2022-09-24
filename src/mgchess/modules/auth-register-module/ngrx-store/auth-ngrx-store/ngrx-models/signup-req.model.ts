@@ -20,7 +20,7 @@ import { SignupFormModel } from "../../../models/signup-form.model";
 
 //----------------------------------------------------------------------------------------------------------------------
 
-export class SignupRequestModel {
+export class SignupReqModel {
     nickname: string;
     firstName: string;
     lastName: string;

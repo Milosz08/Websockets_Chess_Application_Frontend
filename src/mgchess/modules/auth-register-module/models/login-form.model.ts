@@ -16,11 +16,11 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-import { LoginReqestModel } from "../ngrx-store/auth-ngrx-store/ngrx-models/login-data-req.model";
+import { LoginReqModel } from "../ngrx-store/auth-ngrx-store/ngrx-models/login-data-req.model";
 
 //----------------------------------------------------------------------------------------------------------------------
 
-export class LoginFormModel extends LoginReqestModel {
+export class LoginFormModel extends LoginReqModel {
     rememberAccount: boolean;
 
     constructor(usernameEmail: string, password: string, rememberAccount: boolean) {
