@@ -35,7 +35,6 @@ import * as NgrxAction_ATH from "../../ngrx-store/auth-ngrx-store/auth.actions";
 @Component({
     selector: "mgchess-select-gender-box-input",
     templateUrl: "./select-gender-box-input.component.html",
-    styleUrls: [ "./select-gender-box-input.component.scss" ],
     providers: [ FormInputClassesConstants, StaticDataReqResService ],
 })
 export class SelectGenderBoxInputComponent implements OnInit, OnDestroy {

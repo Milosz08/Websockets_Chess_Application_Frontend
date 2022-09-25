@@ -23,15 +23,11 @@ import { Store } from "@ngrx/store";
 import { Observable, Subject } from "rxjs";
 import { RxjsHelper } from "../../../../rxjs-helpers/rxjs.helper";
 
-import { StaticDataReqResService } from "../../services/static-data-req-res.service";
-import { StaticCountryDataResModel } from "../../models/static-country-data-res.model";
 import { AngularFormsHelper } from "../../../../angular-forms-helpers/angular-forms.helper";
 import { ServerReqResHelper } from "../../../../http-request-helpers/server-req-res.helper";
 import { SimpleMessageResWithErrorModel } from "../../../../models/simple-message-response.model";
-import { FormInputClassesConstants } from "../../../../misc-constants/form-input-classes.constants";
 
 import { AuthReducerType } from "../../../../ngrx-helpers/ngrx-store.types";
-import * as NgrxAction_ATH from "../../ngrx-store/auth-ngrx-store/auth.actions";
 import * as NgrxSelector_ATH from "../../ngrx-store/auth-ngrx-store/auth.selectors";
 import * as NgrxSelector_GFX from "../../../shared-module/ngrx-store/gfx-ngrx-store/gfx.selectors";
 
@@ -40,13 +36,11 @@ import * as NgrxSelector_GFX from "../../../shared-module/ngrx-store/gfx-ngrx-st
 @Component({
     selector: "mgchess-singup-right-content-form",
     templateUrl: "./signup-right-content-form.component.html",
-    providers: [ StaticDataReqResService, FormInputClassesConstants ],
 })
 export class SignupRightContentFormComponent implements OnInit, OnDestroy {
 
     @Input() _signupForm!: FormGroup;
 
-    _staticCountryData!: StaticCountryDataResModel;
     _serverResponse!: SimpleMessageResWithErrorModel;
     _suspenseLoader$: Observable<boolean> = this._store.select(NgrxSelector_GFX.sel_signupViaLocalSuspense);
 
@@ -57,23 +51,15 @@ export class SignupRightContentFormComponent implements OnInit, OnDestroy {
 
     constructor(
         private _store: Store<AuthReducerType>,
-        private _resReqService: StaticDataReqResService,
-        public _cssConstants: FormInputClassesConstants,
     ) {
     };
 
     ngOnInit(): void {
-        RxjsHelper.subscribeObservable(this._resReqService.getRegisterCountryData(), this._ngUnsubscribe,
-                data => this._staticCountryData = data);
         RxjsHelper.subscribeData(this._store,NgrxSelector_ATH.sel_serverResponse, this._ngUnsubscribe,
                 data => this._serverResponse = data);
     };
 
     ngOnDestroy(): void {
         RxjsHelper.cleanupExecutor(this._ngUnsubscribe);
-    };
-
-    handleClearServerResponse(): void {
-        this._store.dispatch(NgrxAction_ATH.__clearServerResponse());
     };
 }
