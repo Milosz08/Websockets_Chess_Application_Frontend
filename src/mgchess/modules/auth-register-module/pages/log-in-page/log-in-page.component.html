@@ -33,9 +33,9 @@
         </h2>
         <mgchess-login-form
             class="login-form__form-container"
-            [_oauth2ServerResponseError]="_oauth2ResError"
-            [_ifIncludesAnyQueryParams]="!!_oauth2ResToken || !!_oauth2ResSupplier || !!_oauth2SuspenseActive"
-            [_oauth2ResSupplier]="_oauth2ResSupplier || ''"
+            [_oauth2ServerResponseError]="_validateOAuth2Service._oauth2ResError"
+            [_ifIncludesAnyQueryParams]="_validateOAuth2Service.__ifAnyQueryParamExist || !!_oauth2SuspenseActive"
+            [_oauth2ResSupplier]="_validateOAuth2Service._oauth2ResSupplier || ''"
         ></mgchess-login-form>
         <span class="mg-chess__separator-with-text-inside separator--prevent-remove-margin">
             <span class="separator-line"></span>
@@ -55,7 +55,7 @@
                 <span class="oauth2-link__text-content">Continue with Google</span>
             </div>
             <div
-                *ngIf="_oauth2SuspenseActive && _oauth2ResSupplier === _googleSupplier"
+                *ngIf="_oauth2SuspenseActive && _validateOAuth2Service.__isGoogleSupplierSuspenseActive"
                 class="oauth2-suspense-loader__spinner"
             ></div>
         </a>
@@ -72,7 +72,7 @@
                 <span class="oauth2-link__text-content">Continue with Facebook</span>
             </div>
             <div
-                *ngIf="_oauth2SuspenseActive && _oauth2ResSupplier === _facebookSupplier"
+                *ngIf="_oauth2SuspenseActive && _validateOAuth2Service.__isFacebookSupplierSuspenseActive"
                 class="oauth2-suspense-loader__spinner"
             ></div>
         </a>

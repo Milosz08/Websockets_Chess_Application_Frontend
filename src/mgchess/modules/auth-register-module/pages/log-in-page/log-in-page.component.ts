@@ -18,13 +18,14 @@
 
 import { Component, OnDestroy } from "@angular/core";
 import { Meta, Title } from "@angular/platform-browser";
-import { ActivatedRoute } from "@angular/router";
 import { Store } from "@ngrx/store";
 
 import { Subject } from "rxjs";
 import { RxjsHelper } from "../../../../rxjs-helpers/rxjs.helper";
 
+import { ValidateOauth2UserService } from "../../services/validate-oauth2-user.service";
 import { BrowserThemeDetector } from "../../../../browster-utils/browser-theme.detector";
+import { Oauth2RequestEndpointsContants } from "../../../../http-request-helpers/oauth2-request-endpoints.contants";
 import { BrowserMetaSerializatorLoader } from "../../../../browser-meta-serialization/browser-meta-serializator.loader";
 import { SingleModuleType, SinglePageType } from "../../../../browser-meta-serialization/browser-meta-serializator.types";
 
@@ -38,34 +39,23 @@ import * as NgrxSelector_GFX from "../../../shared-module/ngrx-store/gfx-ngrx-st
     templateUrl: "./log-in-page.component.html",
     styleUrls: [ "./log-in-page.component.scss" ],
     host: { class: "mg-chess__flex-safety-container remove-margin__small-devices" },
-    providers: [ Oauth2RequestEndpointsContants ],
+    providers: [ Oauth2RequestEndpointsContants, ValidateOauth2UserService ],
 })
 export class LogInPageComponent extends BrowserMetaSerializatorLoader implements OnDestroy {
 
-    _oauth2ResError: string;
-    _oauth2ResToken: string | null;
-    _oauth2ResSupplier: string | null;
     _oauth2SuspenseActive: boolean = false;
-
-    readonly _googleSupplier: OAuthSupplier = OAuthSupplier.GOOGLE;
-    readonly _facebookSupplier: OAuthSupplier = OAuthSupplier.FACEBOOK;
-
     private _ngUnsubscribe: Subject<void> = new Subject<void>();
 
     constructor(
         private _metaService: Meta,
         private _titleService: Title,
-        private _route: ActivatedRoute,
-        private _store: Store<AuthReducerType>,
+        private _store: Store<AuthWithGfxCombinedReducerTypes>,
         public _oauth2Constants: Oauth2RequestEndpointsContants,
+        public _validateOAuth2Service: ValidateOauth2UserService,
     ) {
         super(_titleService, _metaService, SingleModuleType.AUTH_REGISTER_MODULE, SinglePageType.LOG_IN_PAGE);
-        this._store.dispatch(NgrxAction_ATH.__cleanServerResponse());
-        this._oauth2ResError = this._route.snapshot.queryParamMap.get("error") || "";
-        this._oauth2ResToken = this._route.snapshot.queryParamMap.get("token");
-        this._oauth2ResSupplier = this._route.snapshot.queryParamMap.get("supplier");
-        this.autoLoginViaOAuth2ServerResponsesParams();
-        RxjsHelper.subscribeData(this._store, NgrxSelector_ATH.sel_loginViaOAuth2Suspense, this._ngUnsubscribe)
+        this._validateOAuth2Service.validateLogin();
+        RxjsHelper.subscribeData(this._store, NgrxSelector_GFX.sel_loginViaOAuth2Suspense, this._ngUnsubscribe)
             .subscribe(data => this._oauth2SuspenseActive = data);
     };
 
@@ -75,11 +65,5 @@ export class LogInPageComponent extends BrowserMetaSerializatorLoader implements
 
     selectApplicationLogoBasedCurrentTheme(): string {
         return BrowserThemeDetector.getLogoSrcBasedCurrentTheme();
-    };
-
-    private autoLoginViaOAuth2ServerResponsesParams(): void {
-        if (!Boolean(this._oauth2ResToken) || !Boolean(this._oauth2ResSupplier)) return;
-        const req = new LoginViaOAuth2ReqModel(this._oauth2ResToken!, this._oauth2ResSupplier!);
-        this._store.dispatch(NgrxAction_ATH.__attemptToLoginViaOAuth2({ req }));
     };
 }
