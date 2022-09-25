@@ -33,8 +33,10 @@ import { FormInputClassesConstants } from "../../../../misc-constants/form-input
 import { ValidatorPatternConstants } from "../../../../validator-helpers/validator-pattern.constants";
 
 import { AuthReducerType } from "../../../../ngrx-helpers/ngrx-store.types";
-import * as NgrxAction_ATH from "../../ngrx-store/auth-ngrx-store/auth.actions";
-import * as NgrxSelector_ATH from "../../ngrx-store/auth-ngrx-store/auth.selectors";
+
+import * as NgrxSelector_GFX from "../../../shared-module/ngrx-store/gfx-ngrx-store/gfx.selectors";
+import * as NgrxAction_SES from "../../../shared-module/ngrx-store/session-ngrx-store/session.actions";
+import * as NgrxSelector_SES from "../../../shared-module/ngrx-store/session-ngrx-store/session.selectors";
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -51,7 +53,7 @@ export class LoginFormComponent implements OnInit, OnDestroy {
 
     _loginForm: FormGroup;
     _serverResponse!: SimpleMessageResWithErrorModel;
-    _suspenseLoader$: Observable<boolean> = this._store.select(NgrxSelector_ATH.sel_loginViaLocalSupense);
+    _suspenseLoader$: Observable<boolean> = this._store.select(NgrxSelector_GFX.sel_loginViaLocalSupense);
 
     readonly _formHelper: AngularFormsHelper = new AngularFormsHelper();
     readonly _serverResReqHelper: ServerReqResHelper = new ServerReqResHelper();
@@ -73,7 +75,7 @@ export class LoginFormComponent implements OnInit, OnDestroy {
 
     ngOnInit(): void {
         this._formHelper.field("rememberAccount", this._loginForm).setValue(true);
-        RxjsHelper.subscribeData(this._store, NgrxSelector_ATH.sel_serverResponse, this._ngUnsubscribe)
+        RxjsHelper.subscribeData(this._store, NgrxSelector_SES.sel_serverResponse, this._ngUnsubscribe)
             .subscribe(data => this._serverResponse = data);
     };
 
@@ -83,14 +85,14 @@ export class LoginFormComponent implements OnInit, OnDestroy {
 
     handleSubmitCredentialsAndAttemptLoginUser(): void {
         const req = this._formHelper.extractFormFields<LoginFormModel>(this._loginForm, false);
-        this._store.dispatch(NgrxAction_ATH.__attemptToLoginViaLocal({ loginForm: req }));
+        this._store.dispatch(NgrxAction_SES.__attemptToLoginViaLocal({ loginForm: req }));
         this._loginForm.reset(new LoginFormModel("", "", false));
     };
 
     clearLoginServerResponse(): void {
         this.removeOAuth2ServerErrorQueryParam();
         if (this._serverResponse.responseMessage === "") return;
-        this._store.dispatch(NgrxAction_ATH.__cleanServerResponse());
+        this._store.dispatch(NgrxAction_SES.__clearServerResponse());
     };
 
     private removeOAuth2ServerErrorQueryParam(): void {

@@ -20,7 +20,6 @@ import { createReducer, on } from "@ngrx/store";
 
 import { initialAuthState } from "./auth.initial";
 import { SimpleMessageResWithErrorModel } from "../../../../models/simple-message-response.model";
-import { SuspenseLoader, SuspenseLoaderResModel } from "../../../../models/suspense-loader-res.model";
 
 import * as NgrxAction from "./auth.actions";
 
@@ -28,16 +27,6 @@ import * as NgrxAction from "./auth.actions";
 
 const _authReducer = createReducer(
     initialAuthState,
-    on(NgrxAction.__successfulLogin, (state, action) => {
-        return { ...state,
-            userCredentialsData: action.credentialsData,
-        };
-    }),
-    on(NgrxAction.__failureLogin, (state, action) => {
-        return { ...state,
-            serverResponse: new SimpleMessageResWithErrorModel(action.serverResponse, true),
-        };
-    }),
     on(NgrxAction.__successfulSingUpViaLocal, (state, action) => {
         return { ...state,
             serverResponse: new SimpleMessageResWithErrorModel(action.serverResponse, false),
@@ -48,19 +37,24 @@ const _authReducer = createReducer(
             serverResponse: new SimpleMessageResWithErrorModel(action.serverResponse, true),
         };
     }),
-    on(NgrxAction.__cleanServerResponse, state => {
+    on(NgrxAction.__successfulAttemptFinishSignupViaOAuth2, (state, action) => {
+        return { ...state,
+            finishSignupAccountDetails: action.finishAccountDetails,
+        };
+    }),
+    on(NgrxAction.__failureAttemptFinishSignupViaOAuth2, (state, action) => {
+        return { ...state,
+            serverResponse: new SimpleMessageResWithErrorModel(action.serverResponse, true),
+        };
+    }),
+    on(NgrxAction.__clearServerResponse, state => {
         return { ...state,
             serverResponse: new SimpleMessageResWithErrorModel("", false),
         };
     }),
-    on(NgrxAction.__activeSuspense, (state, action) => {
+    on(NgrxAction.__clearFinishSignupUserData, state => {
         return { ...state,
-            suspenseLoader: new SuspenseLoaderResModel(true, action.for),
-        };
-    }),
-    on(NgrxAction.__disactiveSuspense, state => {
-        return { ...state,
-            suspenseLoader: new SuspenseLoaderResModel(false, SuspenseLoader.INACTIVE),
+            finishSignupAccountDetails: null,
         };
     }),
 );

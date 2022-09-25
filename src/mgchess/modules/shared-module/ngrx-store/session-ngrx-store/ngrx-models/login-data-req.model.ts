@@ -1,8 +1,8 @@
 /*
  * Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
  *
- * File name: global.selectors.ts
- * Last modified: 15/09/2022, 21:34
+ * File name: login-data-req.model.ts
+ * Last modified: 25/09/2022, 02:47
  * Project name: chess-app-frontend
  *
  * Licensed under the MIT license; you may not use this file except in compliance with the License.
@@ -16,19 +16,20 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-import { createFeatureSelector, createSelector } from "@ngrx/store";
-
-import { globalNgrxStore } from "./global.reducer";
-import { GlobalStateTypes } from "./global.initial";
+import { LoginFormModel } from "../../../../auth-register-module/models/login-form.model";
 
 //----------------------------------------------------------------------------------------------------------------------
 
-const selectorWithInjectedStore = (payload: (state: any, action?: any) => any) => (
-    createSelector(createFeatureSelector<GlobalStateTypes>(globalNgrxStore.reducerName), payload)
-);
+export class LoginReqModel {
+    usernameEmail: string;
+    password: string;
 
-//----------------------------------------------------------------------------------------------------------------------
+    constructor(usernameEmail: string, password: string) {
+        this.usernameEmail = usernameEmail;
+        this.password = password;
+    };
 
-export const sel_globalSuspenseLoadingStatus = selectorWithInjectedStore(store =>
-    store.isGlobalLoadingSuspenseActive,
-);
+    static factoryLoginRequstModelFromForm(form: LoginFormModel): LoginReqModel {
+        return new LoginReqModel(form.usernameEmail, form.password);
+    };
+}

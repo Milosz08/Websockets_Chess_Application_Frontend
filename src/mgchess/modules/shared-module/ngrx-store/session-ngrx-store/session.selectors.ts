@@ -1,8 +1,8 @@
 /*
  * Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
  *
- * File name: global.actions.ts
- * Last modified: 15/09/2022, 21:32
+ * File name: session.selectors.ts
+ * Last modified: 25/09/2022, 04:09
  * Project name: chess-app-frontend
  *
  * Licensed under the MIT license; you may not use this file except in compliance with the License.
@@ -16,22 +16,19 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-import { createAction } from "@ngrx/store";
+import { createFeatureSelector, createSelector } from "@ngrx/store";
 
-const SUSPENSE_LOADING_STATUS_ACTIVE = "[GLOBAL] SUSPENSE LOADING STATUS ACTIVE";
-const SUSPENSE_LOADING_PREPEND_INACTIVE = "[GLOBAL] SUSPENSE LOADING PREPEND INACTIVE";
-const SUSPENSE_LOADING_STATUS_INACTIVE = "[GLOBAL] SUSPENSE LOADING STATUS INACTIVE";
+import { sessionNgrxStore } from "./session.reducer";
+import { SessionStateTypes } from "./session.initial";
 
 //----------------------------------------------------------------------------------------------------------------------
 
-export const __setSuspenseLoadingStatusActive = createAction(
-    SUSPENSE_LOADING_STATUS_ACTIVE,
+const selectorWithInjectedStore = (payload: (state: any, action?: any) => any) => (
+    createSelector(createFeatureSelector<SessionStateTypes>(sessionNgrxStore.reducerName), payload)
 );
 
-export const __setSuspenseLoadingPrependInactive = createAction(
-    SUSPENSE_LOADING_PREPEND_INACTIVE,
-);
+//----------------------------------------------------------------------------------------------------------------------
 
-export const __setSuspenseLoadingStatusInactive = createAction(
-    SUSPENSE_LOADING_STATUS_INACTIVE,
+export const sel_serverResponse = selectorWithInjectedStore(state =>
+    state.serverResponse,
 );

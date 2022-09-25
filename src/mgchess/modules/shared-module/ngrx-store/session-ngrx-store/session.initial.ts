@@ -1,8 +1,8 @@
 /*
  * Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
  *
- * File name: global.initial.ts
- * Last modified: 15/09/2022, 21:33
+ * File name: session.initial.ts
+ * Last modified: 25/09/2022, 04:08
  * Project name: chess-app-frontend
  *
  * Licensed under the MIT license; you may not use this file except in compliance with the License.
@@ -16,12 +16,19 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-export interface GlobalStateTypes {
-    isGlobalLoadingSuspenseActive: boolean;
+import { UserCredentialsDataResModel } from "./ngrx-models/user-credentials-data-res.model";
+import { SimpleMessageResWithErrorModel } from "../../../../models/simple-message-response.model";
+
+//----------------------------------------------------------------------------------------------------------------------
+
+export interface SessionStateTypes {
+    serverResponse: SimpleMessageResWithErrorModel;
+    userCredentialsData: UserCredentialsDataResModel | null;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-export const initialGlobalState: GlobalStateTypes = {
-    isGlobalLoadingSuspenseActive: false,
+export const initialSessionState: SessionStateTypes = {
+    serverResponse: new SimpleMessageResWithErrorModel("", false),
+    userCredentialsData: null,
 };

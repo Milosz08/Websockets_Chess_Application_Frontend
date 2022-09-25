@@ -21,7 +21,7 @@ import { Injectable } from "@angular/core";
 import { Store } from "@ngrx/store";
 
 import { GlobalReducerType } from "../../../ngrx-helpers/ngrx-store.types";
-import * as NgrxAction_GLB from "../ngrx-store/global-ngrx-store/global.actions";
+import * as NgrxAction_GLB from "../ngrx-store/gfx-ngrx-store/gfx.actions";
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -37,9 +37,9 @@ export class GlobalSuspenseService {
     toggleSuspenseLoaderComponent(): void {
         this._router.events.subscribe(e => {
             if (e instanceof RouteConfigLoadStart) {
-                this._store.dispatch(NgrxAction_GLB.__setSuspenseLoadingStatusActive());
+                this._store.dispatch(NgrxAction_GLB.__activeGlobalSuspense());
             } else if (e instanceof RouteConfigLoadEnd) {
-                this._store.dispatch(NgrxAction_GLB.__setSuspenseLoadingPrependInactive());
+                this._store.dispatch(NgrxAction_GLB.__prependInactiveGlobalSuspense());
             }
         });
     };

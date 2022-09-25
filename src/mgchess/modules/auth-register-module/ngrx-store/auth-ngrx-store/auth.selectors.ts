@@ -20,7 +20,6 @@ import { createFeatureSelector, createSelector } from "@ngrx/store";
 
 import { authNgrxStore } from "./auth.reducer";
 import { AuthStateTypes } from "./auth.initial";
-import { SuspenseLoader } from "../../../../models/suspense-loader-res.model";
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -29,18 +28,6 @@ const selectorWithInjectedStore = (payload: (state: any, action?: any) => any) =
 );
 
 //----------------------------------------------------------------------------------------------------------------------
-
-export const sel_loginViaLocalSupense = selectorWithInjectedStore(state =>
-    state.suspenseLoader.isSuspenseLoading && state.suspenseLoader.loadingFor === SuspenseLoader.ATTEMPT_LOGIN_VIA_LOCAL,
-);
-
-export const sel_signupViaLocalSuspense = selectorWithInjectedStore(state =>
-    state.suspenseLoader.isSuspenseLoading && state.suspenseLoader.loadingFor === SuspenseLoader.ATTEMPT_SIGNUP_VIA_LOCAL,
-);
-
-export const sel_loginViaOAuth2Suspense = selectorWithInjectedStore(state =>
-    state.suspenseLoader.isSuspenseLoading && state.suspenseLoader.loadingFor === SuspenseLoader.ATTEMPT_LOGIN_VIA_OAUTH2,
-);
 
 export const sel_serverResponse = selectorWithInjectedStore(state =>
     state.serverResponse,

@@ -60,9 +60,11 @@ import { GlobalEffects } from "./ngrx-store/global-ngrx-store/global-ngrx-effect
         RouterModule,
         ReactiveFormsModule,
         // ngrx store
-        StoreModule.forFeature(globalNgrxStore.reducerName, globalNgrxStore.reducerFunc),
+        StoreModule.forFeature(gfxNgrxStore.reducerName, gfxNgrxStore.reducerFunc),
+        StoreModule.forFeature(sessionNgrxStore.reducerName, sessionNgrxStore.reducerFunc),
         EffectsModule.forFeature([
-            GlobalEffects,
+            GfxEffects,
+            LoginEffects,
         ]),
     ],
     exports: [

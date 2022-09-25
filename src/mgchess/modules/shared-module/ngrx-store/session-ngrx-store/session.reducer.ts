@@ -1,8 +1,8 @@
 /*
  * Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
  *
- * File name: global.reducer.ts
- * Last modified: 15/09/2022, 21:33
+ * File name: session.reducer.ts
+ * Last modified: 25/09/2022, 04:08
  * Project name: chess-app-frontend
  *
  * Licensed under the MIT license; you may not use this file except in compliance with the License.
@@ -18,31 +18,37 @@
 
 import { createReducer, on } from "@ngrx/store";
 
-import { initialGlobalState } from "./global.initial";
+import { initialSessionState } from "./session.initial";
+import { SimpleMessageResWithErrorModel } from "../../../../models/simple-message-response.model";
 
-import * as NgrxAction from "./global.actions";
+import * as NgrxAction from "./session.actions";
 
 //----------------------------------------------------------------------------------------------------------------------
 
-const _globalReducer = createReducer(
-    initialGlobalState,
-    on(NgrxAction.__setSuspenseLoadingStatusActive, state => {
+const _sessionReducer = createReducer(
+    initialSessionState,
+    on(NgrxAction.__successfulLogin, (state, action) => {
         return { ...state,
-            isGlobalLoadingSuspenseActive: true,
+            userCredentialsData: action.credentialsData,
         };
     }),
-    on(NgrxAction.__setSuspenseLoadingStatusInactive, state => {
+    on(NgrxAction.__failureLogin, (state, action) => {
         return { ...state,
-            isGlobalLoadingSuspenseActive: false,
+            serverResponse: new SimpleMessageResWithErrorModel(action.serverResponse, true),
+        };
+    }),
+    on(NgrxAction.__clearServerResponse, state => {
+        return { ...state,
+            serverResponse: new SimpleMessageResWithErrorModel("", false),
         };
     }),
 );
 
 //----------------------------------------------------------------------------------------------------------------------
 
-export const globalNgrxStore = {
-    reducerName: "globalReducer" as const,
-    reducerFunc: function globalReducer(state: any, action: any) {
-        return _globalReducer(state, action);
+export const sessionNgrxStore = {
+    reducerName: "sessionReducer" as const,
+    reducerFunc: function sessionReducer(state: any, action: any) {
+        return _sessionReducer(state, action);
     },
 }

@@ -28,18 +28,17 @@ import { AuthReqResService } from "../../../services/auth-req-res.service";
 import { SuspenseLoader } from "../../../../../models/suspense-loader-res.model";
 
 import * as NgrxAction_ATH from "../auth.actions";
-import { SignupReqModel } from "../ngrx-models/signup-req.model";
-import { AuthReducerType } from "../../../../../ngrx-helpers/ngrx-store.types";
+import * as NgrxAction_GFX from "../../../../shared-module/ngrx-store/gfx-ngrx-store/gfx.actions"
 
 //----------------------------------------------------------------------------------------------------------------------
 
 @Injectable()
-export class SignupViaLocalEffects {
+export class SignupEffects {
 
     constructor(
         private _actions$: Actions,
         private _httpService: AuthReqResService,
-        private _store: Store<AuthReducerType>,
+        private _store: Store<AuthWithGfxCombinedReducerTypes>,
     ) {
     };
 
@@ -47,7 +46,7 @@ export class SignupViaLocalEffects {
         return this._actions$.pipe(
             ofType(NgrxAction_ATH.__attemptToSingUpViaLocal),
             tap(() => {
-                this._store.dispatch(NgrxAction_ATH.__activeSuspense({ for: SuspenseLoader.ATTEMPT_SIGNUP_VIA_LOCAL }));
+                this._store.dispatch(NgrxAction_GFX.__activeSuspense({ for: SuspenseLoader.ATTEMPT_SIGNUP_VIA_LOCAL }));
             }),
             delay(RxjsConstants.DEF_DELAY_MILIS),
             mergeMap(({ signupForm }) => {

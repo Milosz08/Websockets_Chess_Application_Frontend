@@ -27,12 +27,9 @@ import { RxjsHelper } from "../../../../rxjs-helpers/rxjs.helper";
 import { BrowserThemeDetector } from "../../../../browster-utils/browser-theme.detector";
 import { BrowserMetaSerializatorLoader } from "../../../../browser-meta-serialization/browser-meta-serializator.loader";
 import { SingleModuleType, SinglePageType } from "../../../../browser-meta-serialization/browser-meta-serializator.types";
-import { Oauth2RequestEndpointsContants, OAuthSupplier } from "../../../../http-request-helpers/oauth2-request-endpoints.contants";
 
-import { AuthReducerType } from "../../../../ngrx-helpers/ngrx-store.types";
-import * as NgrxAction_ATH from "../../ngrx-store/auth-ngrx-store/auth.actions";
-import * as NgrxSelector_ATH from "../../ngrx-store/auth-ngrx-store/auth.selectors";
-import { LoginViaOAuth2ReqModel } from "../../ngrx-store/auth-ngrx-store/ngrx-models/login-data-req.model";
+import { AuthWithGfxCombinedReducerTypes } from "../../../../ngrx-helpers/ngrx-store.types";
+import * as NgrxSelector_GFX from "../../../shared-module/ngrx-store/gfx-ngrx-store/gfx.selectors";
 
 //----------------------------------------------------------------------------------------------------------------------
 

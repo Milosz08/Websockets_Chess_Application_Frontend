@@ -16,7 +16,7 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-import { LoginReqModel } from "../ngrx-store/auth-ngrx-store/ngrx-models/login-data-req.model";
+import { LoginReqModel } from "../../shared-module/ngrx-store/session-ngrx-store/ngrx-models/login-data-req.model";
 
 //----------------------------------------------------------------------------------------------------------------------
 

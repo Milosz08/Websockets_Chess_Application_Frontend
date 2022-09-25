@@ -1,8 +1,8 @@
 /*
  * Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
  *
- * File name: auth-req-res.service.ts
- * Last modified: 09/09/2022, 15:06
+ * File name: session-req-res.service.ts
+ * Last modified: 25/09/2022, 04:15
  * Project name: chess-app-frontend
  *
  * Licensed under the MIT license; you may not use this file except in compliance with the License.
@@ -22,16 +22,15 @@ import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 
 import { HttpEndpointsHelper } from "../../../http-request-helpers/http-endpoints.helper";
-import { SimpleMessageResponseModel } from "../../../models/simple-message-response.model";
 import { LoginSignupViaOAuth2ReqModel } from "../../../models/login-signup-via-oauth2-req.model";
 
-import { SignupReqModel } from "../ngrx-store/auth-ngrx-store/ngrx-models/signup-req.model";
-import { FinishSignupAccountDataResModel } from "../ngrx-store/auth-ngrx-store/ngrx-models/finish-signup-account-data-res.model";
+import { LoginReqModel } from "../ngrx-store/session-ngrx-store/ngrx-models/login-data-req.model";
+import { UserCredentialsDataResModel } from "../ngrx-store/session-ngrx-store/ngrx-models/user-credentials-data-res.model";
 
 //----------------------------------------------------------------------------------------------------------------------
 
 @Injectable()
-export class AuthReqResService {
+export class SessionReqResService {
 
     constructor(
         private _http: HttpClient,
@@ -39,16 +38,16 @@ export class AuthReqResService {
     ) {
     };
 
-    signupViaLocal(req: SignupReqModel): Observable<SimpleMessageResponseModel> {
-        return this._http.post<SimpleMessageResponseModel>(
-            this._endpoint.SIGNUP_VIA_LOCAL,
+    loginViaLocal(req: LoginReqModel): Observable<UserCredentialsDataResModel> {
+        return this._http.post<UserCredentialsDataResModel>(
+            this._endpoint.LOGIN_VIA_LOCAL,
             req,
         );
     };
 
-    attemptToFinishSignupViaOAuth2(req: LoginSignupViaOAuth2ReqModel): Observable<FinishSignupAccountDataResModel> {
-        return this._http.post<FinishSignupAccountDataResModel>(
-            this._endpoint.ATTEMPT_FINISH_SIGNUP_VIA_OAUTH2,
+    loginViaOAuth2(req: LoginSignupViaOAuth2ReqModel): Observable<UserCredentialsDataResModel> {
+        return this._http.post<UserCredentialsDataResModel>(
+            this._endpoint.LOGIN_VIA_OAUTH2,
             req,
         );
     };

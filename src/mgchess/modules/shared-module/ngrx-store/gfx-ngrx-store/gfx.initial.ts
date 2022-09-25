@@ -1,8 +1,8 @@
 /*
  * Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
  *
- * File name: login-data-req.model.ts
- * Last modified: 09/09/2022, 17:19
+ * File name: gfx.initial.ts
+ * Last modified: 25/09/2022, 04:11
  * Project name: chess-app-frontend
  *
  * Licensed under the MIT license; you may not use this file except in compliance with the License.
@@ -16,32 +16,18 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-import { LoginFormModel } from "../../../models/login-form.model";
-
 //----------------------------------------------------------------------------------------------------------------------
 
-export class LoginReqModel {
-    usernameEmail: string;
-    password: string;
+import { SuspenseLoader, SuspenseLoaderResModel } from "../../../../models/suspense-loader-res.model";
 
-    constructor(usernameEmail: string, password: string) {
-        this.usernameEmail = usernameEmail;
-        this.password = password;
-    };
-
-    static factoryLoginRequstModelFromForm(form: LoginFormModel): LoginReqModel {
-        return new LoginReqModel(form.usernameEmail, form.password);
-    };
+export interface GfxStateTypes {
+    globalSuspenseActive: boolean;
+    suspenseStatus: SuspenseLoaderResModel;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-export class LoginViaOAuth2ReqModel {
-    bearerToken: string;
-    oauth2supplier: string;
-
-    constructor(bearerToken: string, oauth2supplier: string) {
-        this.bearerToken = bearerToken;
-        this.oauth2supplier = oauth2supplier;
-    };
-}
+export const initialGfxState: GfxStateTypes = {
+    globalSuspenseActive: false,
+    suspenseStatus: new SuspenseLoaderResModel(false, SuspenseLoader.INACTIVE),
+};

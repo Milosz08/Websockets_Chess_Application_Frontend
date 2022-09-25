@@ -16,22 +16,19 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-import { SuspenseLoader, SuspenseLoaderResModel } from "../../../../models/suspense-loader-res.model";
 import { SimpleMessageResWithErrorModel } from "../../../../models/simple-message-response.model";
-import { UserCredentialsDataResModel } from "./ngrx-models/user-credentials-data-res.model";
+import { FinishSignupAccountDataResModel } from "./ngrx-models/finish-signup-account-data-res.model";
 
 //----------------------------------------------------------------------------------------------------------------------
 
 export interface AuthStateTypes {
-    suspenseLoader: SuspenseLoaderResModel;
     serverResponse: SimpleMessageResWithErrorModel;
-    userCredentialsData: UserCredentialsDataResModel | null;
+    finishSignupAccountDetails: FinishSignupAccountDataResModel | null;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 export const initialAuthState: AuthStateTypes = {
-    suspenseLoader: new SuspenseLoaderResModel(false, SuspenseLoader.INACTIVE),
     serverResponse: new SimpleMessageResWithErrorModel("", false),
-    userCredentialsData: null,
+    finishSignupAccountDetails: null,
 };

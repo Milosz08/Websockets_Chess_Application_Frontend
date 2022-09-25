@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
  *
- * File name: global.effects.ts
+ * File name: gfx.effects.ts
  * Last modified: 16/09/2022, 17:55
  * Project name: chess-app-frontend
  *
@@ -23,12 +23,12 @@ import { DOCUMENT } from "@angular/common";
 import { delay, map, tap } from "rxjs";
 import { RxjsConstants } from "../../../../../rxjs-helpers/rxjs.constants";
 
-import * as NgrxAction from "../global.actions";
+import * as NgrxAction_GFX from "../gfx.actions";
 
 //----------------------------------------------------------------------------------------------------------------------
 
 @Injectable()
-export class GlobalEffects {
+export class GfxEffects {
 
     private readonly SCROLL_DISABLED_CSS = "scroll--disabled";
 
@@ -40,14 +40,14 @@ export class GlobalEffects {
 
     globalSuspenseLoaderOnEnd$ = createEffect(() => {
         return this._actions$.pipe(
-            ofType(NgrxAction.__setSuspenseLoadingPrependInactive),
+            ofType(NgrxAction_GFX.__prependInactiveGlobalSuspense),
             tap(() => {
                 this._document.body.classList.add(this.SCROLL_DISABLED_CSS);
             }),
             delay(RxjsConstants.DEF_SUSPENSE_MILIS),
             map(() => {
                 this._document.body.classList.remove(this.SCROLL_DISABLED_CSS);
-                return NgrxAction.__setSuspenseLoadingStatusInactive();
+                return NgrxAction_GFX.__inactiveGlobalSuspense();
             })
         );
     });
