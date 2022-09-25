@@ -40,7 +40,7 @@ import * as NgrxSelector_ATH from "../../ngrx-store/auth-ngrx-store/auth.selecto
     styleUrls: [ "./signup-password-control-group.component.scss" ],
     providers: [ PasswordStrengthMeterService, FormInputClassesConstants ],
 })
-export class SignupPasswordControlGroupComponent implements OnChanges, OnDestroy {
+export class SignupPasswordControlGroupComponent implements OnInit, OnChanges, OnDestroy {
 
     @Input() _singupForm!: FormGroup;
 
@@ -56,8 +56,11 @@ export class SignupPasswordControlGroupComponent implements OnChanges, OnDestroy
         public _cssConstants: FormInputClassesConstants,
         private _passwordMeterService: PasswordStrengthMeterService,
     ) {
-        RxjsHelper.subscribeData(this._store, NgrxSelector_ATH.sel_serverResponseIsEmpty, this._ngUnsubscribe)
-            .subscribe(data => this._serverResponseIsEmpty = data);
+    };
+
+    ngOnInit(): void {
+        RxjsHelper.subscribeData(this._store, NgrxSelector_ATH.sel_serverResponseIsEmpty, this._ngUnsubscribe,
+                data => this._serverResponseIsEmpty = data);
     };
 
     handleClearServerResponse(): void {

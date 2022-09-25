@@ -16,7 +16,7 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-import { Component, OnDestroy } from "@angular/core";
+import { Component, OnDestroy, OnInit } from "@angular/core";
 import { Meta, Title } from "@angular/platform-browser";
 import { Store } from "@ngrx/store";
 
@@ -41,7 +41,7 @@ import * as NgrxSelector_GFX from "../../../shared-module/ngrx-store/gfx-ngrx-st
     host: { class: "mg-chess__flex-safety-container remove-margin__small-devices" },
     providers: [ ValidateOauth2UserService ],
 })
-export class FinishSignUpPageComponent extends BrowserMetaSerializatorLoader implements OnDestroy {
+export class FinishSignUpPageComponent extends BrowserMetaSerializatorLoader implements OnInit, OnDestroy {
 
     _oauth2SuspenseActive: boolean = false;
     _serverResponse!: SimpleMessageResWithErrorModel;
@@ -61,10 +61,13 @@ export class FinishSignUpPageComponent extends BrowserMetaSerializatorLoader imp
     ) {
         super(_titleService, _metaService, SingleModuleType.AUTH_REGISTER_MODULE, SinglePageType.FINISH_SIGNUP_PAGE);
         this._validateOAuth2Service.validateFinishSignup();
-        RxjsHelper.subscribeData(this._store, NgrxSelector_GFX.sel_finishSignupViaOAuth2Suspense, this._ngUnsubscribe)
-            .subscribe(data => this._oauth2SuspenseActive = data);
-        RxjsHelper.subscribeData(this._store, NgrxSelector_ATH.sel_serverResponse, this._ngUnsubscribe)
-            .subscribe(data => this._serverResponse = data);
+    };
+
+    ngOnInit(): void {
+        RxjsHelper.subscribeData(this._store, NgrxSelector_GFX.sel_finishSignupViaOAuth2Suspense, this._ngUnsubscribe,
+                data => this._oauth2SuspenseActive = data);
+        RxjsHelper.subscribeData(this._store, NgrxSelector_ATH.sel_serverResponse, this._ngUnsubscribe,
+                data => this._serverResponse = data);
     };
 
     ngOnDestroy(): void {

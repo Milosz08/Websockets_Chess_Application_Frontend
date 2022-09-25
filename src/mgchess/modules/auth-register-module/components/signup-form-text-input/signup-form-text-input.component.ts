@@ -16,7 +16,7 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-import { Component, Input } from "@angular/core";
+import { Component, Input, OnDestroy, OnInit } from "@angular/core";
 import { FormGroup } from "@angular/forms";
 import { Store } from "@ngrx/store";
 
@@ -35,7 +35,7 @@ import * as NgrxSelector_ATH from "../../ngrx-store/auth-ngrx-store/auth.selecto
     selector: "mgchess-signup-form-text-input",
     templateUrl: "./signup-form-text-input.component.html",
 })
-export class SignupFormTextInputComponent {
+export class SignupFormTextInputComponent implements OnInit, OnDestroy {
 
     @Input() _singupForm!: FormGroup;
     @Input() _controlMaxLength: number = 30;
@@ -52,8 +52,15 @@ export class SignupFormTextInputComponent {
     constructor(
         private _store: Store<AuthReducerType>,
     ) {
-        RxjsHelper.subscribeData(this._store, NgrxSelector_ATH.sel_serverResponseIsEmpty, this._ngUnsubscribe)
-            .subscribe(data => this._serverResponseIsEmpty = data);
+    };
+
+    ngOnInit(): void {
+        RxjsHelper.subscribeData(this._store, NgrxSelector_ATH.sel_serverResponseIsEmpty, this._ngUnsubscribe,
+                data => this._serverResponseIsEmpty = data);
+    };
+
+    ngOnDestroy(): void {
+        RxjsHelper.cleanupExecutor(this._ngUnsubscribe);
     };
 
     handleClearServerResponse(): void {

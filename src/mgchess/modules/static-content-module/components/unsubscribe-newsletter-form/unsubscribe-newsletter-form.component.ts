@@ -75,8 +75,8 @@ export class UnsubscribeNewsletterFormComponent implements OnInit, OnDestroy {
     };
 
     ngOnInit(): void {
-        RxjsHelper.subscribeData(this._store, NgrxSelector_NWL.sel_emailTokenResponse, this._ngUnsubscribe)
-            .subscribe(data => { this._serverResponse = data });
+        RxjsHelper.subscribeData(this._store, NgrxSelector_NWL.sel_emailTokenResponse, this._ngUnsubscribe,
+                data => this._serverResponse = data);
     };
 
     ngOnDestroy(): void {

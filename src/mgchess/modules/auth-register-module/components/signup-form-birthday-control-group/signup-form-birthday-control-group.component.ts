@@ -16,7 +16,7 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-import { Component, Input, OnDestroy } from "@angular/core";
+import { Component, Input, OnDestroy, OnInit } from "@angular/core";
 import { FormGroup } from "@angular/forms";
 import { Store } from "@ngrx/store";
 
@@ -40,7 +40,7 @@ import * as NgrxSelector_ATH from "../../ngrx-store/auth-ngrx-store/auth.selecto
     styleUrls: [ "./signup-form-birthday-control-group.component.scss" ],
     providers: [ FormInputClassesConstants ],
 })
-export class SignupFormBirthdayControlGroupComponent implements OnDestroy {
+export class SignupFormBirthdayControlGroupComponent implements OnInit, OnDestroy {
 
     @Input() _signupForm!: FormGroup;
 
@@ -55,10 +55,13 @@ export class SignupFormBirthdayControlGroupComponent implements OnDestroy {
         private _resReqService: StaticDataReqResService,
         public _cssConstants: FormInputClassesConstants,
     ) {
-        RxjsHelper.subscribeObservable(this._resReqService.getRegisterCalendarData(), this._ngUnsubscribe)
-            .subscribe(data => this._staticCalendarData = data);
-        RxjsHelper.subscribeData(this._store, NgrxSelector_ATH.sel_serverResponseIsEmpty, this._ngUnsubscribe)
-            .subscribe(data => this._serverResponseIsEmpty = data);
+    };
+
+    ngOnInit(): void {
+        RxjsHelper.subscribeObservable(this._resReqService.getRegisterCalendarData(), this._ngUnsubscribe,
+                data => this._staticCalendarData = data);
+        RxjsHelper.subscribeData(this._store, NgrxSelector_ATH.sel_serverResponseIsEmpty, this._ngUnsubscribe,
+                data => this._serverResponseIsEmpty = data);
     };
 
     ngOnDestroy(): void {

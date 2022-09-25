@@ -16,7 +16,7 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Input, OnDestroy, OnInit } from "@angular/core";
 import { AbstractControl, FormGroup } from "@angular/forms";
 import { Store } from "@ngrx/store";
 
@@ -36,7 +36,7 @@ import * as NgrxSelector_ATH from "../../ngrx-store/auth-ngrx-store/auth.selecto
     templateUrl: "./signup-form-acceptable-control-group.component.html",
     styleUrls: [ "./signup-form-acceptable-control-group.component.scss" ],
 })
-export class SignupFormAcceptableControlGroupComponent implements OnInit {
+export class SignupFormAcceptableControlGroupComponent implements OnInit, OnDestroy {
 
     @Input() _signupForm!: FormGroup;
 
@@ -51,13 +51,17 @@ export class SignupFormAcceptableControlGroupComponent implements OnInit {
     constructor(
         private _store: Store<AuthReducerType>,
     ) {
-        RxjsHelper.subscribeData(this._store, NgrxSelector_ATH.sel_serverResponseIsEmpty, this._ngUnsubscribe)
-            .subscribe(data => this._serverResponseIsEmpty = data);
     };
 
     ngOnInit(): void {
         this._hasPrivacyPolicyAccept = this._formHelper.field("hasPrivacyPolicyAccept", this._signupForm);
         this._hasNewsletterAccept = this._formHelper.field("hasNewsletterAccept", this._signupForm);
+        RxjsHelper.subscribeData(this._store, NgrxSelector_ATH.sel_serverResponseIsEmpty, this._ngUnsubscribe,
+                data => this._serverResponseIsEmpty = data);
+    };
+
+    ngOnDestroy(): void {
+        RxjsHelper.cleanupExecutor(this._ngUnsubscribe);
     };
 
     handleSelectAllAcceptionFields(isChecked: boolean): void {

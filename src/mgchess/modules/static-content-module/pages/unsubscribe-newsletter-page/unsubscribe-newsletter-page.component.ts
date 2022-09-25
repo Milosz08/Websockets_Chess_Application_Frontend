@@ -65,8 +65,8 @@ export class UnsubscribeNewsletterPageComponent extends BrowserMetaSerializatorL
     ngOnInit(): void {
         this._store.dispatch(NgrxAction_NWL.__activeSuspense({ for: SuspenseLoader.UNSUBSCRIBE_VIA_JWT }));
         this._bearerToken = String(this._route.snapshot.paramMap.get("bearerToken"));
-        RxjsHelper.subscribeData(this._store, NgrxSelector_NWL.sel_jwtResponse, this._ngUnsubscribe)
-            .subscribe(data => this._serverJwtResponse = data);
+        RxjsHelper.subscribeData(this._store, NgrxSelector_NWL.sel_jwtResponse, this._ngUnsubscribe,
+                data => this._serverJwtResponse = data);
         this._store.dispatch(NgrxAction_NWL.__unsubscribeNewsletterViaJwt({ bearerToken: this._bearerToken }));
     };
 

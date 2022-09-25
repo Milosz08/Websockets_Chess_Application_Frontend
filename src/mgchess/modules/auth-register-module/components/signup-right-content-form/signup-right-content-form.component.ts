@@ -65,12 +65,10 @@ export class SignupRightContentFormComponent implements OnInit, OnDestroy {
     };
 
     ngOnInit(): void {
-        RxjsHelper.subscribeObservable(this._resReqService.getRegisterGenderData(), this._ngUnsubscribe)
-            .subscribe(data => this._staticGenderData = data);
-        RxjsHelper.subscribeObservable(this._resReqService.getRegisterCountryData(), this._ngUnsubscribe)
-            .subscribe(data => this._staticCountryData = data);
-        RxjsHelper.subscribeData(this._store,NgrxSelector_ATH.sel_serverResponse, this._ngUnsubscribe)
-            .subscribe(data => this._serverResponse = data);
+        RxjsHelper.subscribeObservable(this._resReqService.getRegisterCountryData(), this._ngUnsubscribe,
+                data => this._staticCountryData = data);
+        RxjsHelper.subscribeData(this._store,NgrxSelector_ATH.sel_serverResponse, this._ngUnsubscribe,
+                data => this._serverResponse = data);
     };
 
     ngOnDestroy(): void {

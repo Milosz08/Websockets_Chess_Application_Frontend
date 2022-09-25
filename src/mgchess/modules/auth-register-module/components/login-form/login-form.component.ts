@@ -75,8 +75,8 @@ export class LoginFormComponent implements OnInit, OnDestroy {
 
     ngOnInit(): void {
         this._formHelper.field("rememberAccount", this._loginForm).setValue(true);
-        RxjsHelper.subscribeData(this._store, NgrxSelector_SES.sel_serverResponse, this._ngUnsubscribe)
-            .subscribe(data => this._serverResponse = data);
+        RxjsHelper.subscribeData(this._store, NgrxSelector_SES.sel_serverResponse, this._ngUnsubscribe,
+                data => this._serverResponse = data);
     };
 
     ngOnDestroy(): void {

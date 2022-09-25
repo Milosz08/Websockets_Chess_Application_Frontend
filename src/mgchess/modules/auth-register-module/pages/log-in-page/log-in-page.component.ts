@@ -16,7 +16,7 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-import { Component, OnDestroy } from "@angular/core";
+import { Component, OnDestroy, OnInit } from "@angular/core";
 import { Meta, Title } from "@angular/platform-browser";
 import { Store } from "@ngrx/store";
 
@@ -41,7 +41,7 @@ import * as NgrxSelector_GFX from "../../../shared-module/ngrx-store/gfx-ngrx-st
     host: { class: "mg-chess__flex-safety-container remove-margin__small-devices" },
     providers: [ Oauth2RequestEndpointsContants, ValidateOauth2UserService ],
 })
-export class LogInPageComponent extends BrowserMetaSerializatorLoader implements OnDestroy {
+export class LogInPageComponent extends BrowserMetaSerializatorLoader implements OnInit, OnDestroy {
 
     _oauth2SuspenseActive: boolean = false;
     private _ngUnsubscribe: Subject<void> = new Subject<void>();
@@ -55,8 +55,11 @@ export class LogInPageComponent extends BrowserMetaSerializatorLoader implements
     ) {
         super(_titleService, _metaService, SingleModuleType.AUTH_REGISTER_MODULE, SinglePageType.LOG_IN_PAGE);
         this._validateOAuth2Service.validateLogin();
-        RxjsHelper.subscribeData(this._store, NgrxSelector_GFX.sel_loginViaOAuth2Suspense, this._ngUnsubscribe)
-            .subscribe(data => this._oauth2SuspenseActive = data);
+    };
+
+    ngOnInit(): void {
+        RxjsHelper.subscribeData(this._store, NgrxSelector_GFX.sel_loginViaOAuth2Suspense, this._ngUnsubscribe,
+                data => this._oauth2SuspenseActive = data);
     };
 
     ngOnDestroy(): void {

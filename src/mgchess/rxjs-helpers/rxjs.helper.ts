@@ -34,12 +34,16 @@ export class RxjsHelper {
         subject.complete();
     };
 
-    static subscribeData<T>(store: Store<T>, selector: Selector | any, unsubscribe: Subject<void>): Observable<any> {
-        return store.select(selector).pipe(takeUntil(unsubscribe));
+    static subscribeData<T>(
+        store: Store<T>, selector: Selector | any, unsubscribe: Subject<void>, callback: (d: any) => any
+    ): void {
+        store.select(selector).pipe(takeUntil(unsubscribe)).subscribe(callback);
     };
 
-    static subscribeObservable<T>(observableCollection: Observable<T>, unsubscribe: Subject<void>): Observable<T> {
-        return observableCollection.pipe(takeUntil(unsubscribe));
+    static subscribeObservable<T>(
+        observableCollection: Observable<T>, unsubscribe: Subject<void>, callback: (d: any) => any
+    ): void {
+        observableCollection.pipe(takeUntil(unsubscribe)).subscribe(callback);
     }
 
     static serverResponseError(error: any): string {
