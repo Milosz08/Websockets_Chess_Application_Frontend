@@ -77,6 +77,6 @@ export class SignupRightContentFormComponent implements OnInit, OnDestroy {
     };
 
     handleClearServerResponse(): void {
-        this._store.dispatch(NgrxAction_ATH.__cleanServerResponse());
+        this._store.dispatch(NgrxAction_ATH.__clearServerResponse());
     };
 }

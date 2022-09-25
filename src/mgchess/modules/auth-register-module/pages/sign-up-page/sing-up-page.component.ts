@@ -55,7 +55,7 @@ export class SingUpPageComponent extends BrowserMetaSerializatorLoader {
         private _regex: ValidatorPatternConstants,
     ) {
         super(_titleService, _metaService, SingleModuleType.AUTH_REGISTER_MODULE, SinglePageType.SIGN_UP_PAGE);
-        this._store.dispatch(NgrxAction_ATH.__cleanServerResponse());
+        this._store.dispatch(NgrxAction_ATH.__clearServerResponse());
         this._signupForm = new FormGroup({
             nickname: new FormControl("", [ Validators.required, Validators.pattern(_regex.NICKNAME_REGEX) ]),
             firstName: new FormControl("", [ Validators.required, Validators.pattern(_regex.USERNAME_REGEX) ]),

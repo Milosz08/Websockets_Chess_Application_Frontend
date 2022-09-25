@@ -67,6 +67,6 @@ export class SignupFormBirthdayControlGroupComponent implements OnDestroy {
 
     handleClearServerResponse(): void {
         if (this._serverResponseIsEmpty) return;
-        this._store.dispatch(NgrxAction_ATH.__cleanServerResponse());
+        this._store.dispatch(NgrxAction_ATH.__clearServerResponse());
     };
 }

@@ -68,7 +68,7 @@ export class SignupFormAcceptableControlGroupComponent implements OnInit {
 
     handleClearServerResponse(): void {
         if (this._serverResponseIsEmpty) return;
-        this._store.dispatch(NgrxAction_ATH.__cleanServerResponse());
+        this._store.dispatch(NgrxAction_ATH.__clearServerResponse());
     };
 
     get __globalAcceptCheckboxState(): boolean {
