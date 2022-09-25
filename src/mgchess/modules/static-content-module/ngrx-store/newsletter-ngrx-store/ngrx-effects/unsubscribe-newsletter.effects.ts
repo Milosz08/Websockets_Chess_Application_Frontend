@@ -27,13 +27,12 @@ import { RxjsHelper } from "../../../../../rxjs-helpers/rxjs.helper";
 import { newsletterNgrxStore } from "../newsletter.reducer";
 import { NewsletterReqResService } from "../../../services/newsletter-req-res.service";
 
-import * as NgrxAction_NWL from "../newsletter.actions";
 import { SuspenseLoader } from "../../../../../models/suspense-loader-res.model";
 import { NewsletterReducerType } from "../../../../../ngrx-helpers/ngrx-store.types";
+import { UnsubscribeNewsletterViaJwtReq, UnsubscribeNewsletterViaOtaReq } from "../ngrx-models/unsubscribe-newsletter-req-res.model";
 
-import {
-    UnsubscribeNewsletterViaJwtReq, UnsubscribeNewsletterViaOtaReq
-} from "../ngrx-models/unsubscribe-newsletter-req-res.model";
+import * as NgrxAction_NWL from "../newsletter.actions";
+import * as NgrxAction_GFX from "../../../../shared-module/ngrx-store/gfx-ngrx-store/gfx.actions";
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -51,7 +50,7 @@ export class UnsubscribeNewsletterEffects {
         return this._actions$.pipe(
             ofType(NgrxAction_NWL.__attemptToUnsubscribeNewsletter),
             tap(() => {
-                this._store.dispatch(NgrxAction_NWL.__activeSuspense({ for: SuspenseLoader.ATTEMPT_UNSUBSCRIBE }));
+                this._store.dispatch(NgrxAction_GFX.__activeSuspense({ for: SuspenseLoader.ATTEMPT_UNSUBSCRIBE }));
             }),
             mergeMap(({ emailReq }) => {
                 return this._httpService.attemptToUnsubscribeNewsletter(emailReq).pipe(
@@ -66,7 +65,7 @@ export class UnsubscribeNewsletterEffects {
                 );
             }),
             tap(() => {
-                this._store.dispatch(NgrxAction_NWL.__disactiveSuspense());
+                this._store.dispatch(NgrxAction_GFX.__inactiveSuspense());
             }),
         );
     });
@@ -75,7 +74,7 @@ export class UnsubscribeNewsletterEffects {
         return this._actions$.pipe(
             ofType(NgrxAction_NWL.__unsubscribeNewsletter),
             tap(() => {
-                this._store.dispatch(NgrxAction_NWL.__activeSuspense({ for: SuspenseLoader.UNSUBSCRIBE_VIA_OTA }));
+                this._store.dispatch(NgrxAction_GFX.__activeSuspense({ for: SuspenseLoader.UNSUBSCRIBE_VIA_OTA }));
             }),
             delay(RxjsConstants.DEF_DELAY_MILIS),
             withLatestFrom(this._store.select(newsletterNgrxStore.reducerName)),
@@ -93,7 +92,7 @@ export class UnsubscribeNewsletterEffects {
                 );
             }),
             tap(() => {
-                this._store.dispatch(NgrxAction_NWL.__disactiveSuspense());
+                this._store.dispatch(NgrxAction_GFX.__inactiveSuspense());
             }),
         );
     });
@@ -102,7 +101,7 @@ export class UnsubscribeNewsletterEffects {
         return this._actions$.pipe(
             ofType(NgrxAction_NWL.__unsubscribeNewsletterViaJwt),
             tap(() => {
-                this._store.dispatch(NgrxAction_NWL.__activeSuspense({ for: SuspenseLoader.UNSUBSCRIBE_VIA_JWT }));
+                this._store.dispatch(NgrxAction_GFX.__activeSuspense({ for: SuspenseLoader.UNSUBSCRIBE_VIA_JWT }));
             }),
             delay(RxjsConstants.DEF_DELAY_MILIS),
             mergeMap(({ bearerToken }) => {
@@ -119,7 +118,7 @@ export class UnsubscribeNewsletterEffects {
                 )
             }),
             tap(() => {
-                this._store.dispatch(NgrxAction_NWL.__disactiveSuspense());
+                this._store.dispatch(NgrxAction_GFX.__inactiveSuspense());
             }),
         );
     });

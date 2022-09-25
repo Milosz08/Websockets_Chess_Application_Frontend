@@ -20,7 +20,6 @@ import { createFeatureSelector, createSelector } from "@ngrx/store";
 
 import { newsletterNgrxStore } from "./newsletter.reducer";
 import { NewsletterStateTypes } from "./newsletter.initial";
-import { SuspenseLoader } from "../../../../models/suspense-loader-res.model";
 import { EmailAndTokenResModel } from "./ngrx-models/email-and-token-res.model";
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -47,14 +46,3 @@ export const sel_jwtResponse = selectorWithInjectedStore(state =>
     state.jwtServerResponse,
 );
 
-export const sel_attemptUnsubscribeLoading = selectorWithInjectedStore(({ suspenseLoader }) =>
-    suspenseLoader.isSuspenseLoading && suspenseLoader.loadingFor === SuspenseLoader.ATTEMPT_UNSUBSCRIBE
-);
-
-export const sel_unsubscribeLoadingViaOta = selectorWithInjectedStore(({ suspenseLoader }) =>
-    suspenseLoader.isSuspenseLoading && suspenseLoader.loadingFor === SuspenseLoader.UNSUBSCRIBE_VIA_OTA
-);
-
-export const sel_unsubscribeLoadingViaJwt = selectorWithInjectedStore(({ suspenseLoader }) =>
-    suspenseLoader.isSuspenseLoading && suspenseLoader.loadingFor === SuspenseLoader.UNSUBSCRIBE_VIA_JWT
-);

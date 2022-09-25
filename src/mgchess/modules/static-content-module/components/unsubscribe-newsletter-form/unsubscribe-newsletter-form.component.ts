@@ -30,6 +30,7 @@ import { ValidatorPatternConstants } from "../../../../validator-helpers/validat
 import { NewsletterReducerType } from "../../../../ngrx-helpers/ngrx-store.types";
 import * as NgrxAction_NWL from "../../ngrx-store/newsletter-ngrx-store/newsletter.actions";
 import * as NgrxSelector_NWL from "../../ngrx-store/newsletter-ngrx-store/newsletter.selectors";
+import * as NgrxSelector_GFX from "../../../shared-module/ngrx-store/gfx-ngrx-store/gfx.selectors";
 import { EmailAndTokenResModel } from "../../ngrx-store/newsletter-ngrx-store/ngrx-models/email-and-token-res.model";
 
 import {
@@ -51,8 +52,8 @@ export class UnsubscribeNewsletterFormComponent implements OnInit, OnDestroy {
     _unsubscribeTokenForm: FormGroup;
 
     _isTokenFieldVisible$: Observable<boolean> = this._store.select(NgrxSelector_NWL.sel_tokenFormVisibility);
-    _suspenseLoadingEmail$: Observable<boolean> = this._store.select(NgrxSelector_NWL.sel_attemptUnsubscribeLoading);
-    _suspenseLoadingToken$: Observable<boolean> = this._store.select(NgrxSelector_NWL.sel_unsubscribeLoadingViaOta);
+    _suspenseLoadingEmail$: Observable<boolean> = this._store.select(NgrxSelector_GFX.sel_attemptUnsubscribeLoading);
+    _suspenseLoadingToken$: Observable<boolean> = this._store.select(NgrxSelector_GFX.sel_unsubscribeLoadingViaOta);
     _hideForms$: Observable<boolean> = this._store.select(NgrxSelector_NWL.sel_successfullValidToken);
 
     _serverResponse!: EmailAndTokenResModel;

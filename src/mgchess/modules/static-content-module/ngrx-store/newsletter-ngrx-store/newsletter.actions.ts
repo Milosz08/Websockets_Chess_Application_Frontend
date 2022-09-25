@@ -18,7 +18,6 @@
 
 import { createAction, props } from "@ngrx/store";
 
-import { SuspenseLoader } from "../../../../models/suspense-loader-res.model";
 import { UnsubscribeNewsletterEmailReq, UnsubscribeNewsletterViaOtaReq } from "./ngrx-models/unsubscribe-newsletter-req-res.model";
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -38,9 +37,6 @@ const FAILURE_UNSUBSCRIBE_NEWSLETTER = "[NEWSLETTER] FAILURE UNSUBSCRIBE NEWSLET
 const UNSUBSCRIBE_NEWSLETTER_VIA_JWT = "[NEWSLETTER] UNSUBSCRIBE NEWSLETTER VIA JWT" as const;
 const SUCCESSFUL_UNSUBSCRIBE_NEWSLETTER_VIA_JWT = "[NEWSLETTER] SUCCESSFUL UNSUBSCRIBE NEWSLETTER VIA JWT" as const;
 const FAILURE_UNSUBSCRIBE_NEWSLETTER_VIA_JWT = "[NEWSLETTER] FAILURE UNSUBSCRIBE NEWSLETTER VIA JWT" as const;
-
-const ACTIVE_SUSPENSE_LOADER = "[NEWSLETTER] ACTIVE SUSPENSE LOADER" as const;
-const INACTIVE_SUSPENSE_LOADER = "[NEWSLETTER] INACTIVE SUSPENSE LOADER" as const;
 
 const INITIAL_CLEAR_ALL_STATE = "[NEWSLETTER] INITIAL CLEAR ALL STATE" as const;
 
@@ -102,15 +98,6 @@ export const __successfulUnsubscribeNewsletterViaJwt = createAction(
 export const __failureUnsubscribeNewsletterViaJwt = createAction(
     FAILURE_UNSUBSCRIBE_NEWSLETTER_VIA_JWT,
     props<{ serverResponse: string }>(),
-);
-
-export const __activeSuspense = createAction(
-    ACTIVE_SUSPENSE_LOADER,
-    props<{ for: SuspenseLoader }>(),
-);
-
-export const __disactiveSuspense = createAction(
-    INACTIVE_SUSPENSE_LOADER,
 );
 
 export const __initialClearAllState = createAction(

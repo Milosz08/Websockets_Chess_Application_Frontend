@@ -32,7 +32,9 @@ import { SingleModuleType, SinglePageType } from "../../../../browser-meta-seria
 
 import { NewsletterReducerType } from "../../../../ngrx-helpers/ngrx-store.types";
 import * as NgrxAction_NWL from "../../ngrx-store/newsletter-ngrx-store/newsletter.actions";
+import * as NgrxAction_GFX from "../../../shared-module/ngrx-store/gfx-ngrx-store/gfx.actions";
 import * as NgrxSelector_NWL from "../../ngrx-store/newsletter-ngrx-store/newsletter.selectors";
+import * as NgrxSelector_GFX from "../../../shared-module/ngrx-store/gfx-ngrx-store/gfx.selectors";
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -48,7 +50,7 @@ export class UnsubscribeNewsletterPageComponent extends BrowserMetaSerializatorL
     private _ngUnsubscribe: Subject<void> = new Subject<void>();
 
     _serverJwtResponse!: SimpleMessageResWithErrorModel;
-    _suspenseLoading$: Observable<boolean> = this._store.select(NgrxSelector_NWL.sel_unsubscribeLoadingViaJwt);
+    _suspenseLoading$: Observable<boolean> = this._store.select(NgrxSelector_GFX.sel_unsubscribeLoadingViaJwt);
 
     readonly _serverResReqHelper: ServerReqResHelper = new ServerReqResHelper();
 
@@ -63,7 +65,7 @@ export class UnsubscribeNewsletterPageComponent extends BrowserMetaSerializatorL
     };
 
     ngOnInit(): void {
-        this._store.dispatch(NgrxAction_NWL.__activeSuspense({ for: SuspenseLoader.UNSUBSCRIBE_VIA_JWT }));
+        this._store.dispatch(NgrxAction_GFX.__activeSuspense({ for: SuspenseLoader.UNSUBSCRIBE_VIA_JWT }));
         this._bearerToken = String(this._route.snapshot.paramMap.get("bearerToken"));
         RxjsHelper.subscribeData(this._store, NgrxSelector_NWL.sel_jwtResponse, this._ngUnsubscribe,
                 data => this._serverJwtResponse = data);

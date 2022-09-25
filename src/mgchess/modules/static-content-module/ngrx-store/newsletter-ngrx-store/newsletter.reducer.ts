@@ -76,16 +76,6 @@ const _newsletterReducer = createReducer(
             jwtServerResponse: new SimpleMessageResWithErrorModel(action.serverResponse, true),
         };
     }),
-    on(NgrxAction.__activeSuspense, (state, action) => {
-        return { ...state,
-            suspenseLoader: new SuspenseLoaderResModel(true, action.for),
-        };
-    }),
-    on(NgrxAction.__disactiveSuspense, state => {
-        return { ...state,
-            suspenseLoader: new SuspenseLoaderResModel(false, SuspenseLoader.INACTIVE),
-        };
-    }),
     on(NgrxAction.__initialClearAllState, state => {
         return { ...state,
             isTokenFormActive: false,

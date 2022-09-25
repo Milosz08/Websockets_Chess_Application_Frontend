@@ -17,7 +17,6 @@
  */
 
 import { SimpleMessageResWithErrorModel } from "../../../../models/simple-message-response.model";
-import { SuspenseLoader, SuspenseLoaderResModel } from "../../../../models/suspense-loader-res.model";
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -27,7 +26,6 @@ export interface NewsletterStateTypes {
     emailServerResponse: SimpleMessageResWithErrorModel;
     tokenServerResponse: SimpleMessageResWithErrorModel;
     jwtServerResponse: SimpleMessageResWithErrorModel;
-    suspenseLoader: SuspenseLoaderResModel;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -38,5 +36,4 @@ export const initialNewsletterState: NewsletterStateTypes = {
     emailServerResponse: new SimpleMessageResWithErrorModel("", false),
     tokenServerResponse: new SimpleMessageResWithErrorModel("", false),
     jwtServerResponse: new SimpleMessageResWithErrorModel("", false),
-    suspenseLoader: new SuspenseLoaderResModel(false, SuspenseLoader.INACTIVE),
 };
