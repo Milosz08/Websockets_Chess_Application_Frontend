@@ -18,22 +18,19 @@
 
 export class FinishSignupAccountDataResModel {
     nickname: string;
-    firstName: string;
-    lastName: string;
-    ifHasPhoto: boolean;
+    fullName: string;
     photoUrl: string;
+    initials: string;
     jwtToken: string;
     authSupplier: string;
 
     constructor(
-        nickname: string, firstName: string, lastName: string, ifHasPhoto: boolean, photoUrl: string, jwtToken: string,
-        authSupplier: string,
+        nickname: string, fullName: string, photoUrl: string, initials: string, jwtToken: string, authSupplier: string
     ) {
         this.nickname = nickname;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.ifHasPhoto = ifHasPhoto;
+        this.fullName = fullName;
         this.photoUrl = photoUrl;
+        this.initials = initials;
         this.jwtToken = jwtToken;
         this.authSupplier = authSupplier;
     };

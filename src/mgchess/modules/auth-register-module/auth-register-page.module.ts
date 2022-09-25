@@ -30,6 +30,7 @@ import { ActivateAccountPageComponent } from './pages/activate-account-page/acti
 
 import { LoginFormComponent } from "./components/login-form/login-form.component";
 import { LastLoginsComponent } from "./components/last-logins/last-logins.component";
+import { FinishSignupFormComponent } from './components/finish-signup-form/finish-signup-form.component';
 import { SignupFormTextInputComponent } from './components/signup-form-text-input/signup-form-text-input.component';
 import { SignupLeftContentFormComponent } from './components/signup-left-content-form/signup-left-content-form.component';
 import { SignupRightContentFormComponent } from './components/signup-right-content-form/signup-right-content-form.component';
@@ -57,6 +58,7 @@ import { PasswordStrengthMeterService } from "./services/password-strength-meter
         // pages
         LogInPageComponent,
         SingUpPageComponent,
+        FinishSignupFormComponent,
         FinishSignUpPageComponent,
         ForgotPasswordPageComponent,
         ActivateAccountPageComponent,

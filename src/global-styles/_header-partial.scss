@@ -61,6 +61,9 @@
     &.header--smaller {
         font-size: 1.4rem;
     }
+    &.header--center {
+        justify-content: center;
+    }
 }
 
 .mg-chess__application-logo {
