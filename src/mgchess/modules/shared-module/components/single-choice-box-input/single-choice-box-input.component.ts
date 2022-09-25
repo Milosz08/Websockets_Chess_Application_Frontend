@@ -67,7 +67,7 @@ export class SingleChoiceBoxInputComponent implements OnChanges, OnDestroy {
     synchronizedDataWithForm(): void {
         const field = this._formHelper.field(this._formControlName, this._formGroup);
         field.valueChanges.pipe(takeUntil(this._ngUnsubsribe)).subscribe(fieldData => {
-            if (fieldData === null) this._selectedItemName =  this._initialLabelText;
+            if (fieldData === null) this._selectedItemName = this._initialLabelText;
         });
     };
 

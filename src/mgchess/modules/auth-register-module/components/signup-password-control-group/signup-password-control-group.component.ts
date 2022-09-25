@@ -16,7 +16,7 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-import { Component, Input, OnChanges, OnDestroy } from "@angular/core";
+import { Component, Input, OnChanges, OnDestroy, OnInit } from "@angular/core";
 import { FormGroup } from "@angular/forms";
 import { Store } from "@ngrx/store";
 
@@ -49,6 +49,7 @@ export class SignupPasswordControlGroupComponent implements OnInit, OnChanges, O
 
     readonly _formHelper: AngularFormsHelper = new AngularFormsHelper();
     readonly _passwordSAreNotTheSame = ValidatorConstraint.PASSWORDS_ARE_NOT_THE_SAME;
+
     private _ngUnsubscribe: Subject<void> = new Subject<void>();
 
     constructor(
@@ -63,11 +64,6 @@ export class SignupPasswordControlGroupComponent implements OnInit, OnChanges, O
                 data => this._serverResponseIsEmpty = data);
     };
 
-    handleClearServerResponse(): void {
-        if (this._serverResponseIsEmpty) return;
-        this._store.dispatch(NgrxAction_ATH.__clearServerResponse());
-    };
-
     ngOnChanges(): void {
         this._formHelper.field("password", this._singupForm).valueChanges.pipe(takeUntil(this._ngUnsubscribe))
             .subscribe(data => this._passwordScore = this._passwordMeterService.computePasswordPower(data));
@@ -75,5 +71,10 @@ export class SignupPasswordControlGroupComponent implements OnInit, OnChanges, O
 
     ngOnDestroy(): void {
         RxjsHelper.cleanupExecutor(this._ngUnsubscribe);
+    };
+
+    handleClearServerResponse(): void {
+        if (this._serverResponseIsEmpty) return;
+        this._store.dispatch(NgrxAction_ATH.__clearServerResponse());
     };
 }

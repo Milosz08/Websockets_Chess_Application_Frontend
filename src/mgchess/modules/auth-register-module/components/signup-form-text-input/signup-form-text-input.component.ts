@@ -45,8 +45,8 @@ export class SignupFormTextInputComponent implements OnInit, OnDestroy {
     @Input() _controlErrorText: string = "";
 
     _serverResponseIsEmpty!: boolean;
-    readonly _formHelper: AngularFormsHelper = new AngularFormsHelper();
 
+    readonly _formHelper: AngularFormsHelper = new AngularFormsHelper();
     private _ngUnsubscribe: Subject<void> = new Subject<void>();
 
     constructor(

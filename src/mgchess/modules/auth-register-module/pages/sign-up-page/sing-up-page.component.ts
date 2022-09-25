@@ -70,7 +70,7 @@ export class SingUpPageComponent extends BrowserMetaSerializatorLoader {
             birthDateYear: new FormControl(null, [ Validators.required, Validators.min(1900) ]),
             countryName: new FormControl(null, [ Validators.required ]),
             hasNewsletterAccept: new FormControl(false),
-            hasPrivacyPolicyAccept: new FormControl(false, [ Validators.requiredTrue ])
+            hasPrivacyPolicyAccept: new FormControl(false, [ Validators.requiredTrue ]),
         }, {
             validators: [ _validator.passwordMismatchValidate, _validator.twoEmailAddressesAreNotEqualsValidate ],
         });
