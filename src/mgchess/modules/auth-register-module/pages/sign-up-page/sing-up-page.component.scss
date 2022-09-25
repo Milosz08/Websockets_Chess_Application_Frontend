@@ -48,25 +48,6 @@
     }
 }
 
-.sign-up-star-info__container {
-    margin: 20px 0;
-    .single-star-info__container {
-        display: flex;
-        margin: 10px 0;
-        .sign-up-star-info__stars,
-        .sign-up-star-info__paragraph {
-            font-size: .9rem;
-        }
-        .sign-up-star-info__stars {
-            min-width: 20px;
-            margin-right: 5px;
-        }
-        .sign-up-star-info__paragraph {
-            color: var(--secondary-form-text-and-border-color);
-        }
-    }
-}
-
 //----------------------------------------------------------------------------------------------------------------------
 
 @media only screen and (max-width: 790px) {
