@@ -45,6 +45,9 @@ import { LoginEffects } from "../shared-module/ngrx-store/session-ngrx-store/ngr
 import { SignupEffects } from "./ngrx-store/auth-ngrx-store/ngrx-effects/signup.effects";
 
 import { AuthReqResService } from "./services/auth-req-res.service";
+import { StaticDataReqResService } from "./services/static-data-req-res.service";
+import { ValidateOauth2UserService } from "./services/validate-oauth2-user.service";
+import { PasswordStrengthMeterService } from "./services/password-strength-meter.service";
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -81,6 +84,9 @@ import { AuthReqResService } from "./services/auth-req-res.service";
     providers: [
         // services
         AuthReqResService,
+        StaticDataReqResService,
+        ValidateOauth2UserService,
+        PasswordStrengthMeterService,
     ],
 })
 export class AuthRegisterPageModule {}

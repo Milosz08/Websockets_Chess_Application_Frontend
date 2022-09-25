@@ -35,8 +35,16 @@ import { ContentNotFoundPageComponent } from "./pages/content-not-found-page/con
 
 import { CloseOutsideClickComponentDirective } from "./directives/close-outside-click-component.directive";
 
-import { globalNgrxStore } from "./ngrx-store/global-ngrx-store/global.reducer";
-import { GlobalEffects } from "./ngrx-store/global-ngrx-store/global-ngrx-effects/global.effects";
+import { gfxNgrxStore } from "./ngrx-store/gfx-ngrx-store/gfx.reducer";
+import { sessionNgrxStore } from "./ngrx-store/session-ngrx-store/session.reducer";
+
+import { GfxEffects } from "./ngrx-store/gfx-ngrx-store/ngrx-effects/gfx.effects";
+import { LoginEffects } from "./ngrx-store/session-ngrx-store/ngrx-effects/login.effects";
+
+import { SessionReqResService } from "./services/session-req-res.service";
+import { GlobalSuspenseService } from "./services/global-suspense.service";
+import { AddToNewsletterHttpReqResService } from "./services/add-to-newsletter-http-req-res.service";
+import { CookiesNotificationLocalStorageService } from "./services/cookies-notification-local-storage.service";
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -75,6 +83,12 @@ import { GlobalEffects } from "./ngrx-store/global-ngrx-store/global-ngrx-effect
         CookiesNotificationComponent,
         SingleChoiceBoxInputComponent,
         GlobalSuspenseLoaderComponent,
+    ],
+    providers: [
+        SessionReqResService,
+        GlobalSuspenseService,
+        AddToNewsletterHttpReqResService,
+        CookiesNotificationLocalStorageService,
     ],
 })
 export class SharedModuleModule {}
