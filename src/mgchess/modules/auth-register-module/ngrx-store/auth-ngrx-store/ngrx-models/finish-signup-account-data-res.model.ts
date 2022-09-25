@@ -1,8 +1,8 @@
 /*
  * Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
  *
- * File name: user-credentials-data.model.ts
- * Last modified: 09/09/2022, 17:11
+ * File name: finish-signup-account-data-res.model.ts
+ * Last modified: 25/09/2022, 03:56
  * Project name: chess-app-frontend
  *
  * Licensed under the MIT license; you may not use this file except in compliance with the License.
@@ -16,14 +16,25 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-export class UserCredentialsDataResModel {
-    fullName: string;
+export class FinishSignupAccountDataResModel {
+    nickname: string;
+    firstName: string;
+    lastName: string;
+    ifHasPhoto: boolean;
+    photoUrl: string;
     jwtToken: string;
-    refreshToken: string;
+    authSupplier: string;
 
-    constructor(fullName: string, jwtToken: string, refreshToken: string) {
-        this.fullName = fullName;
+    constructor(
+        nickname: string, firstName: string, lastName: string, ifHasPhoto: boolean, photoUrl: string, jwtToken: string,
+        authSupplier: string,
+    ) {
+        this.nickname = nickname;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.ifHasPhoto = ifHasPhoto;
+        this.photoUrl = photoUrl;
         this.jwtToken = jwtToken;
-        this.refreshToken = refreshToken;
+        this.authSupplier = authSupplier;
     };
 }

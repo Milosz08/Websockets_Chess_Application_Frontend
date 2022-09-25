@@ -26,7 +26,7 @@ export class Oauth2RequestEndpointsContants {
     private readonly BASIC_OAUTH2_ENDPOINT = environment.httpBackendURI + "oauth2/authorization/";
     private readonly BASE_REDIRECT_URI = `?base_uri=${environment.httpFrontEndURI}`;
     private readonly AFTER_LOGIN_REDIRECT_URI = "&after_login_uri=auth/login";
-    private readonly AFTER_SIGNUP_REDIRECT_URI = "&after_signup_uri=auth/activate-account";
+    private readonly AFTER_SIGNUP_REDIRECT_URI = "&after_signup_uri=auth/finish-signup";
 
     private readonly COMPUTED_REDIRECT = this.BASE_REDIRECT_URI + this.AFTER_LOGIN_REDIRECT_URI +
         this.AFTER_SIGNUP_REDIRECT_URI;

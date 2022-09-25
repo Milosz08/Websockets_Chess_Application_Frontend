@@ -23,6 +23,7 @@ import { AuthRegisterPageComponent } from "./auth-register-page.component";
 
 import { LogInPageComponent } from "./pages/log-in-page/log-in-page.component";
 import { SingUpPageComponent } from "./pages/sign-up-page/sing-up-page.component";
+import { FinishSignUpPageComponent } from "./pages/finish-sign-up-page/finish-sign-up-page.component";
 import { ForgotPasswordPageComponent } from "./pages/forgot-password-page/forgot-password-page.component";
 import { ActivateAccountPageComponent } from "./pages/activate-account-page/activate-account-page.component";
 
@@ -35,6 +36,7 @@ const routes: Routes = [
         { path: "signup", component: SingUpPageComponent },
         { path: "forgot-password", component: ForgotPasswordPageComponent },
         { path: "activate-account", component: ActivateAccountPageComponent },
+        { path: "finish-signup", component: FinishSignUpPageComponent },
     ]},
 ];
 

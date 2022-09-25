@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
  *
- * File name: signup-via-local.effects.ts
+ * File name: signup.effects.ts
  * Last modified: 16/09/2022, 18:01
  * Project name: chess-app-frontend
  *
@@ -26,6 +26,9 @@ import { RxjsConstants } from "../../../../../rxjs-helpers/rxjs.constants";
 
 import { AuthReqResService } from "../../../services/auth-req-res.service";
 import { SuspenseLoader } from "../../../../../models/suspense-loader-res.model";
+
+import { SignupReqModel } from "../ngrx-models/signup-req.model";
+import { AuthWithGfxCombinedReducerTypes } from "../../../../../ngrx-helpers/ngrx-store.types";
 
 import * as NgrxAction_ATH from "../auth.actions";
 import * as NgrxAction_GFX from "../../../../shared-module/ngrx-store/gfx-ngrx-store/gfx.actions"
@@ -62,7 +65,31 @@ export class SignupEffects {
                 );
             }),
             tap(() => {
-                this._store.dispatch(NgrxAction_ATH.__disactiveSuspense());
+                this._store.dispatch(NgrxAction_GFX.__inactiveSuspense());
+            }),
+        );
+    });
+
+    attemptToFinishSignupViaOAuth2 = createEffect(() => {
+        return this._actions$.pipe(
+            ofType(NgrxAction_ATH.__attemptToFinishSignupViaOAuth2),
+            tap(() => {
+                this._store.dispatch(NgrxAction_GFX.__activeSuspense({ for: SuspenseLoader.ATTEMPT_FINISH_SIGNUP_VIA_OAUTH2 }));
+            }),
+            delay(RxjsConstants.DEF_DELAY_MILIS),
+            mergeMap(({ req }) => {
+                return this._httpService.attemptToFinishSignupViaOAuth2(req).pipe(
+                    map(res => {
+                        return NgrxAction_ATH.__successfulAttemptFinishSignupViaOAuth2({ finishAccountDetails: res });
+                    }),
+                    catchError(error => {
+                        return of(NgrxAction_ATH.__failureAttemptFinishSignupViaOAuth2({
+                            serverResponse: RxjsHelper.serverResponseError(error) }));
+                    }),
+                );
+            }),
+            tap(() => {
+                this._store.dispatch(NgrxAction_GFX.__inactiveSuspense());
             }),
         );
     });

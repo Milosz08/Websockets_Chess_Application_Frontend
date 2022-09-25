@@ -69,6 +69,11 @@
                 "pageId": "ACTIVATE_ACCOUNT_PAGE",
                 "title": "Activate Account",
                 "description": "On this page you can activate your account."
+            },
+            {
+                "pageId": "FINISH_SIGNUP_PAGE",
+                "title": "Finish signup",
+                "description": "On this page you can finished signup via google or facebook registration supplier."
             }
         ],
         "dynamicAppModule": [

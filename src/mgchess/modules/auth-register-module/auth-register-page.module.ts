@@ -24,6 +24,7 @@ import { StoreModule } from "@ngrx/store";
 
 import { LogInPageComponent } from "./pages/log-in-page/log-in-page.component";
 import { SingUpPageComponent } from "./pages/sign-up-page/sing-up-page.component";
+import { FinishSignUpPageComponent } from './pages/finish-sign-up-page/finish-sign-up-page.component';
 import { ForgotPasswordPageComponent } from "./pages/forgot-password-page/forgot-password-page.component";
 import { ActivateAccountPageComponent } from './pages/activate-account-page/activate-account-page.component';
 
@@ -56,6 +57,7 @@ import { PasswordStrengthMeterService } from "./services/password-strength-meter
         // pages
         LogInPageComponent,
         SingUpPageComponent,
+        FinishSignUpPageComponent,
         ForgotPasswordPageComponent,
         ActivateAccountPageComponent,
         // components

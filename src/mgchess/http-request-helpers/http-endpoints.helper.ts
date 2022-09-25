@@ -35,6 +35,8 @@ export class HttpEndpointsHelper {
     private readonly AUTH_LOCAL = this.BASIC_HTTP + "auth-local/";
     readonly LOGIN_VIA_LOCAL = this.AUTH_LOCAL + "login-via-local";
     readonly LOGIN_VIA_OAUTH2 = this.AUTH_LOCAL + "login-via-oauth";
+    readonly ATTEMPT_FINISH_SIGNUP_VIA_OAUTH2 = this.AUTH_LOCAL + "attempt-finish-signup-via-oauth";
+    readonly FINISH_SIGNUP_VIA_OAUTH2 = this.AUTH_LOCAL + "finish-signup-via-oauth";
     readonly SIGNUP_VIA_LOCAL = this.AUTH_LOCAL + "signup-via-local";
 
     private readonly RENEW_CREDETIALS_LOCAL = this.BASIC_HTTP + "renew-credentials/";
