@@ -17,14 +17,7 @@
   -->
 
 <div class="mg-chess__sign-up__left-right-container">
-    <mgchess-single-choice-box-input
-        _topInfoLabel="Select here your gender *"
-        _formControlName="gender"
-        [_cssClasses]="_cssConstants.authFormsClasses"
-        [_formGroup]="_signupForm"
-        [_choiceElements]="_staticGenderData ? _staticGenderData.genders : []"
-        (_emitClearServerResponse)="handleClearServerResponse()"
-    ></mgchess-single-choice-box-input>
+    <mgchess-select-gender-box-input [_formGroup]="_signupForm"></mgchess-select-gender-box-input>
     <mgchess-signup-form-birthday-control-group
         [_signupForm]="_signupForm"
     ></mgchess-signup-form-birthday-control-group>

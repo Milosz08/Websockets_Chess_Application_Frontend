@@ -32,6 +32,7 @@ import { LoginFormComponent } from "./components/login-form/login-form.component
 import { LastLoginsComponent } from "./components/last-logins/last-logins.component";
 import { FinishSignupFormComponent } from './components/finish-signup-form/finish-signup-form.component';
 import { SignupFormTextInputComponent } from './components/signup-form-text-input/signup-form-text-input.component';
+import { SelectGenderBoxInputComponent } from './components/select-gender-box-input/select-gender-box-input.component';
 import { SignupLeftContentFormComponent } from './components/signup-left-content-form/signup-left-content-form.component';
 import { SignupRightContentFormComponent } from './components/signup-right-content-form/signup-right-content-form.component';
 import { SignupPasswordControlGroupComponent } from './components/signup-password-control-group/signup-password-control-group.component';
@@ -66,6 +67,7 @@ import { PasswordStrengthMeterService } from "./services/password-strength-meter
         LoginFormComponent,
         LastLoginsComponent,
         SignupFormTextInputComponent,
+        SelectGenderBoxInputComponent,
         SignupLeftContentFormComponent,
         SignupRightContentFormComponent,
         SignupPasswordControlGroupComponent,
