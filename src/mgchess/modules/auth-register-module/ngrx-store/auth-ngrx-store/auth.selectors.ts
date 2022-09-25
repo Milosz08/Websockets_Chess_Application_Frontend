@@ -34,5 +34,21 @@ export const sel_serverResponse = selectorWithInjectedStore(state =>
 );
 
 export const sel_serverResponseIsEmpty = selectorWithInjectedStore(state =>
-    state.serverResponse.responseMessage === ""
-)
+    state.serverResponse.responseMessage === "",
+);
+
+export const sel_finishSignupUserPhoto = selectorWithInjectedStore(({ finishSignupAccountDetails }) =>
+    Boolean(finishSignupAccountDetails) ? finishSignupAccountDetails.photoUrl : "",
+);
+
+export const sel_finishSignupUserSupplier = selectorWithInjectedStore(({ finishSignupAccountDetails }) =>
+    Boolean(finishSignupAccountDetails) ? finishSignupAccountDetails.authSupplier : "",
+);
+
+export const sel_finishSignupUserFullName = selectorWithInjectedStore(({ finishSignupAccountDetails }) =>
+    Boolean(finishSignupAccountDetails) ? finishSignupAccountDetails.fullName : "",
+);
+
+export const sel_finishSignupUserInitials = selectorWithInjectedStore(({ finishSignupAccountDetails }) =>
+    Boolean(finishSignupAccountDetails) ? finishSignupAccountDetails.initials : "",
+);

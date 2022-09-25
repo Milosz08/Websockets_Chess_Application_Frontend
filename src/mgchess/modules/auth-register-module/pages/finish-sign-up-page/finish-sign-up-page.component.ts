@@ -20,13 +20,15 @@ import { Component, OnDestroy } from "@angular/core";
 import { Meta, Title } from "@angular/platform-browser";
 import { Store } from "@ngrx/store";
 
-import { Subject } from "rxjs";
+import { Observable, Subject } from "rxjs";
 import { RxjsHelper } from "../../../../rxjs-helpers/rxjs.helper";
 
 import { ValidateOauth2UserService } from "../../services/validate-oauth2-user.service";
+import { SimpleMessageResWithErrorModel } from "../../../../models/simple-message-response.model";
 import { BrowserMetaSerializatorLoader } from "../../../../browser-meta-serialization/browser-meta-serializator.loader";
 import { SingleModuleType, SinglePageType } from "../../../../browser-meta-serialization/browser-meta-serializator.types";
 
+import * as NgrxSelector_ATH from "../../ngrx-store/auth-ngrx-store/auth.selectors";
 import { AuthWithGfxCombinedReducerTypes } from "../../../../ngrx-helpers/ngrx-store.types";
 import * as NgrxSelector_GFX from "../../../shared-module/ngrx-store/gfx-ngrx-store/gfx.selectors";
 
@@ -42,6 +44,13 @@ import * as NgrxSelector_GFX from "../../../shared-module/ngrx-store/gfx-ngrx-st
 export class FinishSignUpPageComponent extends BrowserMetaSerializatorLoader implements OnDestroy {
 
     _oauth2SuspenseActive: boolean = false;
+    _serverResponse!: SimpleMessageResWithErrorModel;
+
+    _finishSignupUserPhoto$: Observable<string> = this._store.select(NgrxSelector_ATH.sel_finishSignupUserPhoto);
+    _finishSignupUserSupplier$: Observable<string> = this._store.select(NgrxSelector_ATH.sel_finishSignupUserSupplier);
+    _finishSignupUserFullName$: Observable<string> = this._store.select(NgrxSelector_ATH.sel_finishSignupUserFullName);
+    _finishSignupUserInitials$: Observable<string> = this._store.select(NgrxSelector_ATH.sel_finishSignupUserInitials);
+
     private _ngUnsubscribe: Subject<void> = new Subject<void>();
 
     constructor(
@@ -54,6 +63,8 @@ export class FinishSignUpPageComponent extends BrowserMetaSerializatorLoader imp
         this._validateOAuth2Service.validateFinishSignup();
         RxjsHelper.subscribeData(this._store, NgrxSelector_GFX.sel_finishSignupViaOAuth2Suspense, this._ngUnsubscribe)
             .subscribe(data => this._oauth2SuspenseActive = data);
+        RxjsHelper.subscribeData(this._store, NgrxSelector_ATH.sel_serverResponse, this._ngUnsubscribe)
+            .subscribe(data => this._serverResponse = data);
     };
 
     ngOnDestroy(): void {
