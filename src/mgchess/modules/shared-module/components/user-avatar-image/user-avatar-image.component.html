@@ -1,0 +1,36 @@
+<!--
+  ~ Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
+  ~
+  ~ File name: user-avatar-image.component.html
+  ~ Last modified: 25/09/2022, 05:43
+  ~ Project name: chess-app-frontend
+  ~
+  ~ Licensed under the MIT license; you may not use this file except in compliance with the License.
+  ~
+  ~ Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+  ~ documentation files (the "Software"), to deal in the Software without restriction, including without limitation the
+  ~ rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to
+  ~ permit persons to whom the Software is furnished to do so, subject to the following conditions:
+  ~
+  ~ THE ABOVE COPYRIGHT NOTICE AND THIS PERMISSION NOTICE SHALL BE INCLUDED IN ALL
+  ~ COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
+  -->
+
+<div class="user-avatar-image__container" [ngStyle]="__ngImageSizeStyle">
+    <img
+        *ngIf="_imageUrl !== ''; else showInitials"
+        [src]="_imageUrl" alt=""
+        class="user-avatar-image__real-image"
+    />
+    <ng-template #showInitials>
+        <div class="user-avatar-image__fake-generated-image">
+            {{ _initials }}
+        </div>
+    </ng-template>
+    <div [ngClass]="[ 'user-avatar-image__supplier-container', _backgroundMixedType ]" class="">
+        <img
+            [src]="__supplierImagePath" alt=""
+            class="supplier-image"
+        />
+    </div>
+</div>

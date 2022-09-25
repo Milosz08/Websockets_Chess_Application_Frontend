@@ -26,6 +26,7 @@ import { StoreModule } from "@ngrx/store";
 import { FooterComponent } from "./components/footer/footer.component";
 import { ThemeTogglerComponent } from "./components/theme-toggler/theme-toggler.component";
 import { PasswordInputComponent } from "./components/password-input/password-input.component";
+import { UserAvatarImageComponent } from './components/user-avatar-image/user-avatar-image.component';
 import { CopyrightNewsletterComponent } from "./components/copyright-newsletter/copyright-newsletter.component";
 import { CookiesNotificationComponent } from "./components/cookies-notification/cookies-notification.component";
 import { GlobalSuspenseLoaderComponent } from './components/global-suspense-loader/global-suspense-loader.component';
@@ -54,6 +55,7 @@ import { CookiesNotificationLocalStorageService } from "./services/cookies-notif
         FooterComponent,
         ThemeTogglerComponent,
         PasswordInputComponent,
+        UserAvatarImageComponent,
         CopyrightNewsletterComponent,
         CookiesNotificationComponent,
         GlobalSuspenseLoaderComponent,
@@ -79,6 +81,7 @@ import { CookiesNotificationLocalStorageService } from "./services/cookies-notif
         FooterComponent,
         ThemeTogglerComponent,
         PasswordInputComponent,
+        UserAvatarImageComponent,
         CopyrightNewsletterComponent,
         CookiesNotificationComponent,
         SingleChoiceBoxInputComponent,
