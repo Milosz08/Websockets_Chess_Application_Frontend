@@ -16,4 +16,45 @@
   ~ COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
   -->
 
-<p>finish-signup-form works!</p>
+<h2 class="mg-chess__standard-header-with-decorator header--smaller">
+    <span class="text-content auth-form-header">Finish registration</span>
+</h2>
+<form
+    [formGroup]="_finishSignupForm"
+    (ngSubmit)="handleSubmitSignupUserDetailsForm()"
+>
+    <mgchess-select-gender-box-input [_formGroup]="_finishSignupForm"></mgchess-select-gender-box-input>
+    <mgchess-signup-form-birthday-control-group
+        [_signupForm]="_finishSignupForm"
+    ></mgchess-signup-form-birthday-control-group>
+    <mgchess-select-country-box-input [_formGroup]="_finishSignupForm"></mgchess-select-country-box-input>
+    <mgchess-signup-form-acceptable-control-group
+        [_signupForm]="_finishSignupForm"
+    ></mgchess-signup-form-acceptable-control-group>
+    <button
+        type="submit"
+        [disabled]="!_finishSignupForm.valid"
+        title="Click to finish signup procedure"
+        class="mg-chess__standard-button button--thirdly-mixed-def-variant"
+    >
+        Finish registration
+        <div
+            *ngIf="(_suspenseLoader$ | async)"
+            class="button__suspense-loading-spinner"
+        ></div>
+    </button>
+    <p
+        *ngIf="_serverResponse.responseMessage !== ''"
+        [ngClass]="_serverReqResHelper.responseReverseThemeCssClass(_serverResponse.responseError)"
+    >
+        {{ _serverResponse.responseMessage }}
+    </p>
+    <ul class="mg-chess__star-bullet-list__container">
+        <li class="mg-chess__star-bullet-element__container">
+            <span class="mg-chess__star-bullet__pointer">*</span>
+            <p class="mg-chess__star-bullet__paragraph">
+                These fields are required for proper submission of the finish registration form.
+            </p>
+        </li>
+    </ul>
+</form>

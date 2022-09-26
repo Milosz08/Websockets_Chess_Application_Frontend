@@ -51,13 +51,17 @@ export const sel_finishSignupViaOAuth2Suspense = selectorWithInjectedStore(({ su
 );
 
 export const sel_attemptUnsubscribeLoading = selectorWithInjectedStore(({ suspenseStatus }) =>
-    suspenseStatus.isSuspenseLoading && suspenseStatus.loadingFor === SuspenseLoader.ATTEMPT_UNSUBSCRIBE
+    suspenseStatus.isSuspenseLoading && suspenseStatus.loadingFor === SuspenseLoader.ATTEMPT_UNSUBSCRIBE,
 );
 
 export const sel_unsubscribeLoadingViaOta = selectorWithInjectedStore(({ suspenseStatus }) =>
-    suspenseStatus.isSuspenseLoading && suspenseStatus.loadingFor === SuspenseLoader.UNSUBSCRIBE_VIA_OTA
+    suspenseStatus.isSuspenseLoading && suspenseStatus.loadingFor === SuspenseLoader.UNSUBSCRIBE_VIA_OTA,
 );
 
 export const sel_unsubscribeLoadingViaJwt = selectorWithInjectedStore(({ suspenseStatus }) =>
-    suspenseStatus.isSuspenseLoading && suspenseStatus.loadingFor === SuspenseLoader.UNSUBSCRIBE_VIA_JWT
+    suspenseStatus.isSuspenseLoading && suspenseStatus.loadingFor === SuspenseLoader.UNSUBSCRIBE_VIA_JWT,
+);
+
+export const sel_finishSignupViaOauth2 = selectorWithInjectedStore(({ suspenseStatus }) =>
+    suspenseStatus.isSuspenseLoading && suspenseStatus.loadingFor === SuspenseLoader.FINISH_SIGNUP_VIA_OAUTH2,
 );

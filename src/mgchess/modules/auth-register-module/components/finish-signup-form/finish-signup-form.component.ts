@@ -16,14 +16,71 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-import { Component } from "@angular/core";
+import { Component, OnDestroy, OnInit } from "@angular/core";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { Store } from "@ngrx/store";
+
+import { Observable, Subject } from "rxjs";
+import { RxjsHelper } from "../../../../rxjs-helpers/rxjs.helper";
+
+import { AngularFormsHelper } from "../../../../angular-forms-helpers/angular-forms.helper";
+
+import { AuthReducerType } from "../../../../ngrx-helpers/ngrx-store.types";
+import * as NgrxAction_ATH from "../../ngrx-store/auth-ngrx-store/auth.actions";
+import * as NgrxSelector_ATH from "../../ngrx-store/auth-ngrx-store/auth.selectors";
+import * as NgrxSelector_GFX from "../../../shared-module/ngrx-store/gfx-ngrx-store/gfx.selectors";
+import { FinishSignupFormModel } from "../../models/finish-signup-form.model";
+import { SimpleMessageResWithErrorModel } from "../../../../models/simple-message-response.model";
+import { ServerReqResHelper } from "../../../../http-request-helpers/server-req-res.helper";
 
 //----------------------------------------------------------------------------------------------------------------------
 
 @Component({
     selector: "mgchess-finish-signup-form",
     templateUrl: "./finish-signup-form.component.html",
-    styleUrls: [ "./finish-signup-form.component.scss" ],
 })
-export class FinishSignupFormComponent {
+export class FinishSignupFormComponent implements OnInit, OnDestroy {
+
+    _finishSignupForm: FormGroup;
+    _serverResponse!: SimpleMessageResWithErrorModel;
+    _suspenseLoader$: Observable<boolean> = this._store.select(NgrxSelector_GFX.sel_finishSignupViaOauth2);
+
+    readonly _formHelper: AngularFormsHelper = new AngularFormsHelper();
+    readonly _serverReqResHelper: ServerReqResHelper = new ServerReqResHelper();
+
+    private _ngUnsubscribe: Subject<void> = new Subject<void>();
+
+    constructor(
+        private _store: Store<AuthReducerType>,
+    ) {
+        this._finishSignupForm = new FormGroup({
+            gender: new FormControl(null, [ Validators.required ]),
+            birthDateDay: new FormControl(null, [ Validators.required, Validators.min(1), Validators.max(31) ]),
+            birthDateMonth: new FormControl(null, [ Validators.required, Validators.min(1), Validators.max(12) ]),
+            birthDateYear: new FormControl(null, [ Validators.required, Validators.min(1900) ]),
+            countryName: new FormControl(null, [ Validators.required ]),
+            hasNewsletterAccept: new FormControl(false),
+            hasPrivacyPolicyAccept: new FormControl(false, [ Validators.requiredTrue ]),
+        });
+    };
+
+    ngOnInit(): void {
+        RxjsHelper.subscribeData(this._store, NgrxSelector_ATH.sel_serverResponse, this._ngUnsubscribe,
+                data => this._serverResponse = data);
+    };
+
+    ngOnDestroy(): void {
+        RxjsHelper.cleanupExecutor(this._ngUnsubscribe);
+    };
+
+    handleSubmitSignupUserDetailsForm(): void {
+        const req = this._formHelper.extractFormFields<FinishSignupFormModel>(this._finishSignupForm, false);
+        this._store.dispatch(NgrxAction_ATH.__attemptToFinishSignupViaOAuth2({ finishSignupForm: req }));
+        this._finishSignupForm.reset(FinishSignupFormModel.getDefaultValues());
+    };
+
+    handleClearServerResponse(): void {
+        if (this._serverResponse.responseMessage !== "") return;
+        this._store.dispatch(NgrxAction_ATH.__clearServerResponse());
+    };
 }
