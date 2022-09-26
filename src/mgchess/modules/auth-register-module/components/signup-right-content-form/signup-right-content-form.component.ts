@@ -45,7 +45,7 @@ export class SignupRightContentFormComponent implements OnInit, OnDestroy {
     _suspenseLoader$: Observable<boolean> = this._store.select(NgrxSelector_GFX.sel_signupViaLocalSuspense);
 
     readonly _formHelper: AngularFormsHelper = new AngularFormsHelper();
-    readonly _serverResReqHelper: ServerReqResHelper = new ServerReqResHelper();
+    readonly _serverReqResHelper: ServerReqResHelper = new ServerReqResHelper();
 
     private _ngUnsubscribe: Subject<void> = new Subject<void>();
 

@@ -17,7 +17,7 @@
  */
 
 import { SimpleMessageResWithErrorModel } from "../../../../models/simple-message-response.model";
-import { FinishSignupAccountDataResModel } from "./ngrx-models/finish-signup-account-data-res.model";
+import { AttemptFinishSignupAccountDataResModel } from "./ngrx-models/attempt-finish-signup-account-data-res.model";
 
 //----------------------------------------------------------------------------------------------------------------------
 

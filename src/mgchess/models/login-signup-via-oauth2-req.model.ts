@@ -1,8 +1,8 @@
 /*
  * Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
  *
- * File name: login-data-req.model.ts
- * Last modified: 09/09/2022, 17:19
+ * File name: login-signup-via-oauth2-req.model.ts
+ * Last modified: 25/09/2022, 04:11
  * Project name: chess-app-frontend
  *
  * Licensed under the MIT license; you may not use this file except in compliance with the License.
@@ -17,11 +17,11 @@
  */
 
 export class LoginSignupViaOAuth2ReqModel {
-    bearerToken: string;
+    jwtToken: string;
     oauth2supplier: string;
 
     constructor(bearerToken: string, oauth2supplier: string) {
-        this.bearerToken = bearerToken;
+        this.jwtToken = bearerToken;
         this.oauth2supplier = oauth2supplier;
     };
 }

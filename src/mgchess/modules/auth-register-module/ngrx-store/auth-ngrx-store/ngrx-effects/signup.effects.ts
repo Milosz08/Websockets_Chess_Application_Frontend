@@ -72,7 +72,7 @@ export class SignupEffects {
 
     attemptToFinishSignupViaOAuth2 = createEffect(() => {
         return this._actions$.pipe(
-            ofType(NgrxAction_ATH.__attemptToFinishSignupViaOAuth2),
+            ofType(NgrxAction_ATH.__attemptToAttemptFinishSignupViaOAuth2),
             tap(() => {
                 this._store.dispatch(NgrxAction_GFX.__activeSuspense({ for: SuspenseLoader.ATTEMPT_FINISH_SIGNUP_VIA_OAUTH2 }));
             }),

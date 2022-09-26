@@ -41,7 +41,7 @@
                 <input
                     type="email"
                     id="newsletter__input-username"
-                    (input)="_serverResponseHelper.clearServerMessage(_serverResponse)"
+                    (input)="_serverReqResHelper.clearServerMessage(_serverResponse)"
                     autocomplete="off"
                     formControlName="userName"
                     placeholder="Username"
@@ -61,7 +61,7 @@
                 <input
                     type="email"
                     id="newsletter__input-email"
-                    (input)="_serverResponseHelper.clearServerMessage(_serverResponse)"
+                    (input)="_serverReqResHelper.clearServerMessage(_serverResponse)"
                     autocomplete="off"
                     formControlName="emailAddress"
                     placeholder="Email address"
@@ -90,7 +90,7 @@
         <p
             *ngIf="_serverResponse.responseMessage !== ''"
             [ngClass]="[
-                _serverResponseHelper.responseCssClass(_serverResponse.responseError),
+                _serverReqResHelper.responseCssClass(_serverResponse.responseError),
                 'newsletter-response__paragraph'
             ]"
         >

@@ -49,7 +49,7 @@ export class ValidateOauth2UserService {
     validateFinishSignup(): void {
         const req = new LoginSignupViaOAuth2ReqModel(this._oauth2ResToken, this._oauth2ResSupplier);
         this._store.dispatch(NgrxAction_ATH.__clearFinishSignupUserData());
-        this._store.dispatch(NgrxAction_ATH.__attemptToFinishSignupViaOAuth2({ req }));
+        this._store.dispatch(NgrxAction_ATH.__attemptToAttemptFinishSignupViaOAuth2({ req }));
     };
 
     validateLogin(): void {

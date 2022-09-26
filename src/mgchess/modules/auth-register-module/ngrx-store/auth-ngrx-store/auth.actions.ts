@@ -24,7 +24,7 @@ import { FinishSignupAccountDataResModel } from "./ngrx-models/finish-signup-acc
 
 //----------------------------------------------------------------------------------------------------------------------
 
-const ATTEMPT_TO_FINISH_SIGNUP_VIA_OAUTH2 = "[AUTH] ATTEMPT TO FINISH SIGNUP VIA OAUTH2" as const;
+const ATTEMPT_TO_ATTEMPT_FINISH_SIGNUP_VIA_OAUTH2 = "[AUTH] ATTEMPT TO ATTEMPT FINISH SIGNUP VIA OAUTH2" as const;
 const SUCCESSFUL_ATTEMPT_FINISH_SIGNUP_VIA_OAUTH2 = "[AUTH] SUCCESSFUL ATTEMPT FINISH SIGNUP VIA OAUTH2" as const;
 const FAILURE_ATTEMPT_FINISH_SIGNUP_VIA_OAUTH2 = "[AUTH] FAILURE ATTEMPT FINISH SIGNUP VIA OAUTH2" as const;
 
@@ -37,14 +37,14 @@ const CLEAR_FINISH_SIGNUP_USER_DATA = "[AUTH] CLEAR FINISH SIGNUP USER DATA" as 
 
 //----------------------------------------------------------------------------------------------------------------------
 
-export const __attemptToFinishSignupViaOAuth2 = createAction(
-    ATTEMPT_TO_FINISH_SIGNUP_VIA_OAUTH2,
+export const __attemptToAttemptFinishSignupViaOAuth2 = createAction(
+    ATTEMPT_TO_ATTEMPT_FINISH_SIGNUP_VIA_OAUTH2,
     props<{ req: LoginSignupViaOAuth2ReqModel }>(),
 );
 
 export const __successfulAttemptFinishSignupViaOAuth2 = createAction(
     SUCCESSFUL_ATTEMPT_FINISH_SIGNUP_VIA_OAUTH2,
-    props<{ finishAccountDetails: FinishSignupAccountDataResModel }>(),
+    props<{ finishAccountDetails: AttemptFinishSignupAccountDataResModel }>(),
 );
 
 export const __failureAttemptFinishSignupViaOAuth2 = createAction(

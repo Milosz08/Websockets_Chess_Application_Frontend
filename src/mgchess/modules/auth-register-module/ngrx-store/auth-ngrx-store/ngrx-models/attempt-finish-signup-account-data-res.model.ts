@@ -1,8 +1,8 @@
-/*!
+/*
  * Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
  *
- * File name: finish-signup-form.component.scss
- * Last modified: 25/09/2022, 07:59
+ * File name: attempt-finish-signup-account-data-res.model.ts
+ * Last modified: 25/09/2022, 03:56
  * Project name: chess-app-frontend
  *
  * Licensed under the MIT license; you may not use this file except in compliance with the License.
@@ -15,3 +15,23 @@
  * THE ABOVE COPYRIGHT NOTICE AND THIS PERMISSION NOTICE SHALL BE INCLUDED IN ALL
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
+
+export class AttemptFinishSignupAccountDataResModel {
+    nickname: string;
+    fullName: string;
+    photoUrl: string;
+    initials: string;
+    jwtToken: string;
+    authSupplier: string;
+
+    constructor(
+        nickname: string, fullName: string, photoUrl: string, initials: string, jwtToken: string, authSupplier: string
+    ) {
+        this.nickname = nickname;
+        this.fullName = fullName;
+        this.photoUrl = photoUrl;
+        this.initials = initials;
+        this.jwtToken = jwtToken;
+        this.authSupplier = authSupplier;
+    };
+}

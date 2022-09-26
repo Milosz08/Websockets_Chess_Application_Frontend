@@ -52,7 +52,7 @@ export class UnsubscribeNewsletterPageComponent extends BrowserMetaSerializatorL
     _serverJwtResponse!: SimpleMessageResWithErrorModel;
     _suspenseLoading$: Observable<boolean> = this._store.select(NgrxSelector_GFX.sel_unsubscribeLoadingViaJwt);
 
-    readonly _serverResReqHelper: ServerReqResHelper = new ServerReqResHelper();
+    readonly _serverReqResHelper: ServerReqResHelper = new ServerReqResHelper();
 
     constructor(
         private _metaService: Meta,

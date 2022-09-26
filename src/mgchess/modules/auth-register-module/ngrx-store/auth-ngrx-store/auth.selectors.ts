@@ -29,12 +29,12 @@ const selectorWithInjectedStore = (payload: (state: any, action?: any) => any) =
 
 //----------------------------------------------------------------------------------------------------------------------
 
-export const sel_serverResponse = selectorWithInjectedStore(state =>
-    state.serverResponse,
+export const sel_serverResponse = selectorWithInjectedStore(({ serverResponse }) =>
+    serverResponse,
 );
 
-export const sel_serverResponseIsEmpty = selectorWithInjectedStore(state =>
-    state.serverResponse.responseMessage === "",
+export const sel_serverResponseIsEmpty = selectorWithInjectedStore(({ serverResponse }) =>
+    serverResponse.responseMessage === "",
 );
 
 export const sel_finishSignupUserPhoto = selectorWithInjectedStore(({ finishSignupAccountDetails }) =>

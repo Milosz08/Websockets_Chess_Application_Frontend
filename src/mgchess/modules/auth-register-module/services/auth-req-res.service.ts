@@ -26,7 +26,8 @@ import { SimpleMessageResponseModel } from "../../../models/simple-message-respo
 import { LoginSignupViaOAuth2ReqModel } from "../../../models/login-signup-via-oauth2-req.model";
 
 import { SignupReqModel } from "../ngrx-store/auth-ngrx-store/ngrx-models/signup-req.model";
-import { FinishSignupAccountDataResModel } from "../ngrx-store/auth-ngrx-store/ngrx-models/finish-signup-account-data-res.model";
+import { FinishSignupAccountDataReqModel } from "../ngrx-store/auth-ngrx-store/ngrx-models/finish-signup-account-data-req.model";
+import { AttemptFinishSignupAccountDataResModel } from "../ngrx-store/auth-ngrx-store/ngrx-models/attempt-finish-signup-account-data-res.model";
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -46,8 +47,8 @@ export class AuthReqResService {
         );
     };
 
-    attemptToFinishSignupViaOAuth2(req: LoginSignupViaOAuth2ReqModel): Observable<FinishSignupAccountDataResModel> {
-        return this._http.post<FinishSignupAccountDataResModel>(
+    attemptToFinishSignupViaOAuth2(req: LoginSignupViaOAuth2ReqModel): Observable<AttemptFinishSignupAccountDataResModel> {
+        return this._http.post<AttemptFinishSignupAccountDataResModel>(
             this._endpoint.ATTEMPT_FINISH_SIGNUP_VIA_OAUTH2,
             req,
         );
