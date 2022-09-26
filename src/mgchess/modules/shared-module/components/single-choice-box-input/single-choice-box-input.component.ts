@@ -83,6 +83,7 @@ export class SingleChoiceBoxInputComponent implements OnChanges, OnDestroy {
         this._selectedItemName = clickedItem.value;
         this._formHelper.field(this._formControlName, this._formGroup).patchValue(clickedItem.id);
         this._isVisible = false;
+        this._emitClearServerResponse.emit();
     };
 
     get __fieldHasErrors(): boolean {

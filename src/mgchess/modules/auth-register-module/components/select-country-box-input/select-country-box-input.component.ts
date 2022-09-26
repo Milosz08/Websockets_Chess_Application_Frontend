@@ -29,6 +29,7 @@ import { FormInputClassesConstants } from "../../../../misc-constants/form-input
 
 import { AuthReducerType } from "../../../../ngrx-helpers/ngrx-store.types";
 import * as NgrxAction_ATH from "../../ngrx-store/auth-ngrx-store/auth.actions";
+import * as NgrxSelector_ATH from "../../ngrx-store/auth-ngrx-store/auth.selectors";
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -56,6 +57,8 @@ export class SelectCountryBoxInputComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
         RxjsHelper.subscribeObservable(this._reqResService.getRegisterCountryData(), this._ngUnsubscribe,
             data => this._staticCountryData = data);
+        RxjsHelper.subscribeData(this._store, NgrxSelector_ATH.sel_serverResponseIsEmpty, this._ngUnsubscribe,
+            data => this._serverResponseIsEmpty = data);
     };
 
     ngOnDestroy(): void {
