@@ -1,8 +1,8 @@
 /*
  * Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
  *
- * File name: register-data-req.model.ts
- * Last modified: 12/09/2022, 17:48
+ * File name: finish-signup-account-data-req.model.ts
+ * Last modified: 26/09/2022, 01:56
  * Project name: chess-app-frontend
  *
  * Licensed under the MIT license; you may not use this file except in compliance with the License.
@@ -16,35 +16,23 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-import { SignupFormModel } from "../../../models/signup-form.model";
 import { ConvertTimeHelper } from "../../../helpers/convert-time.helper";
+import { FinishSignupFormModel } from "../../../models/finish-signup-form.model";
 
 //----------------------------------------------------------------------------------------------------------------------
 
-export class SignupReqModel {
-    nickname: string;
-    firstName: string;
-    lastName: string;
-    emailAddress: string;
-    secondEmailAddress: string;
+export class FinishSignupAccountDataReqModel {
     birthDate: string;
     countryName: string;
     gender: string;
-    password: string;
-    passwordRepeat: string;
     newsletterAccept: boolean;
+    jwtToken: string;
 
-    constructor(registerForm: SignupFormModel) {
-        this.nickname = registerForm.nickname;
-        this.firstName = registerForm.firstName;
-        this.lastName = registerForm.lastName;
-        this.emailAddress = registerForm.emailAddress;
-        this.secondEmailAddress = registerForm.secondEmailAddress;
-        this.birthDate = ConvertTimeHelper.generateDateFormat(registerForm);
-        this.countryName = registerForm.countryName!;
-        this.gender = registerForm.gender!;
-        this.password = registerForm.password;
-        this.passwordRepeat = registerForm.passwordRepeat;
-        this.newsletterAccept = registerForm.hasNewsletterAccept;
+    constructor(finishSignupForm: FinishSignupFormModel, jwtToken: string) {
+        this.birthDate = ConvertTimeHelper.generateDateFormat(finishSignupForm);
+        this.countryName = finishSignupForm.countryName!;
+        this.gender = finishSignupForm.gender!;
+        this.newsletterAccept = finishSignupForm.hasNewsletterAccept;
+        this.jwtToken = jwtToken;
     };
 }

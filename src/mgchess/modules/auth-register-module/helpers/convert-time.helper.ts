@@ -1,8 +1,8 @@
 /*
  * Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
  *
- * File name: suspense-loader-res.model.ts
- * Last modified: 25/09/2022, 04:45
+ * File name: convert-time.helper.ts
+ * Last modified: 26/09/2022, 02:28
  * Project name: chess-app-frontend
  *
  * Licensed under the MIT license; you may not use this file except in compliance with the License.
@@ -16,26 +16,19 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-export enum SuspenseLoader {
-    INACTIVE = "INACTIVE",
-    ATTEMPT_UNSUBSCRIBE = "ATTEMPT_UNSUBSCRIBE",
-    UNSUBSCRIBE_VIA_OTA = "UNSUBSCRIBE_VIA_OTA",
-    UNSUBSCRIBE_VIA_JWT = "UNSUBSCRIBE_VIA_JWT",
-    ATTEMPT_LOGIN_VIA_LOCAL = "ATTEMPT_LOGIN_VIA_LOCAL",
-    ATTEMPT_SIGNUP_VIA_LOCAL = "ATTEMPT_SIGNUP_VIA_LOCAL",
-    ATTEMPT_FINISH_SIGNUP_VIA_OAUTH2 = "ATTEMPT_FINISH_SIGNUP_VIA_OAUTH2",
-    ATTEMPT_LOGIN_VIA_OAUTH2 = "ATTEMPT_LOGIN_VIA_OAUTH2",
-    FINISH_SIGNUP_VIA_OAUTH2 = "FINISH_SIGNUP_VIA_OAUTH2",
-}
+import { SignupFormModel } from "../models/signup-form.model";
+import { FinishSignupFormModel } from "../models/finish-signup-form.model";
 
 //----------------------------------------------------------------------------------------------------------------------
 
-export class SuspenseLoaderResModel {
-    isSuspenseLoading: boolean;
-    loadingFor: SuspenseLoader;
+export class ConvertTimeHelper {
 
-    constructor(isSuspenseLoading: boolean, loadingFor: SuspenseLoader) {
-        this.isSuspenseLoading = isSuspenseLoading;
-        this.loadingFor = loadingFor;
+    static generateDateFormat(registerForm: SignupFormModel | FinishSignupFormModel): string {
+        const { birthDateDay, birthDateMonth, birthDateYear } = registerForm;
+        return `${this.addBeforePad(birthDateDay!)}/${this.addBeforePad(birthDateMonth!)}/${birthDateYear}`;
     }
+
+    private static addBeforePad(value: number): string {
+        return value.toString().padStart(2, "0");
+    };
 }

@@ -16,21 +16,18 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-export class SignupFormModel {
+import { FinishSignupFormModel } from "./finish-signup-form.model";
+
+//----------------------------------------------------------------------------------------------------------------------
+
+export class SignupFormModel extends FinishSignupFormModel {
     nickname: string;
     firstName: string;
     lastName: string;
     emailAddress: string;
     secondEmailAddress: string;
-    birthDateDay: number | null;
-    birthDateMonth: number | null;
-    birthDateYear: number | null;
-    countryName: string | null;
-    gender: string | null;
     password: string;
     passwordRepeat: string;
-    hasNewsletterAccept: boolean;
-    hasPrivacyPolicyAccept: boolean;
 
     constructor(
         nickname: string, firstName: string, lastName: string, emailAddress: string, secondEmailAddress: string,
@@ -38,23 +35,17 @@ export class SignupFormModel {
         countryName: string | null, gender: string | null, password: string, passwordRepeat: string,
         hasNewsletterAccept: boolean, hasPrivacyPolicyAccept: boolean,
     ) {
+        super(birthDateDay, birthDateMonth, birthDateYear, countryName, gender, hasNewsletterAccept, hasPrivacyPolicyAccept);
         this.nickname = nickname;
         this.firstName = firstName;
         this.lastName = lastName;
         this.emailAddress = emailAddress;
         this.secondEmailAddress = secondEmailAddress;
-        this.birthDateDay = birthDateDay;
-        this.birthDateMonth = birthDateMonth;
-        this.birthDateYear = birthDateYear;
-        this.countryName = countryName;
-        this.gender = gender;
         this.password = password;
         this.passwordRepeat = passwordRepeat;
-        this.hasNewsletterAccept = hasNewsletterAccept;
-        this.hasPrivacyPolicyAccept = hasPrivacyPolicyAccept;
     };
 
-    static getDefaultValues(): SignupFormModel {
+    static override getDefaultValues(): SignupFormModel {
         return new SignupFormModel("", "", "", "", "", null, null, null, null, null, "", "", false, false);
     };
 }
