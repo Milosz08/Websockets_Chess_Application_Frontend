@@ -23,7 +23,8 @@ import { AttemptFinishSignupAccountDataResModel } from "./ngrx-models/attempt-fi
 
 export interface AuthStateTypes {
     serverResponse: SimpleMessageResWithErrorModel;
-    finishSignupAccountDetails: FinishSignupAccountDataResModel | null;
+    finishSignupAccountDetails: AttemptFinishSignupAccountDataResModel | null;
+    isFinishSignupFormTokenIsValid: boolean;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -31,4 +32,5 @@ export interface AuthStateTypes {
 export const initialAuthState: AuthStateTypes = {
     serverResponse: new SimpleMessageResWithErrorModel("", false),
     finishSignupAccountDetails: null,
+    isFinishSignupFormTokenIsValid: false,
 };

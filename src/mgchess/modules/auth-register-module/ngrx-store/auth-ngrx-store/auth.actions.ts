@@ -20,7 +20,8 @@ import { createAction, props } from "@ngrx/store";
 
 import { SignupFormModel } from "../../models/signup-form.model";
 import { LoginSignupViaOAuth2ReqModel } from "../../../../models/login-signup-via-oauth2-req.model";
-import { FinishSignupAccountDataResModel } from "./ngrx-models/finish-signup-account-data-res.model";
+import { AttemptFinishSignupAccountDataResModel } from "./ngrx-models/attempt-finish-signup-account-data-res.model";
+import { FinishSignupFormModel } from "../../models/finish-signup-form.model";
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -31,6 +32,10 @@ const FAILURE_ATTEMPT_FINISH_SIGNUP_VIA_OAUTH2 = "[AUTH] FAILURE ATTEMPT FINISH 
 const ATTEMPT_SIGNUP_VIA_LOCAL = "[AUTH] ATTEMPT SIGNUP VIA LOCAL" as const;
 const SUCCESSFUL_SIGNUP_VIA_LOCAL = "[AUTH] SUCCESSFUL SIGNUP VIA LOCAL" as const;
 const FAILURE_SIGNUP_VIA_LOCAL = "[AUTH] FAILURE SIGNUP VIA LOCAL" as const;
+
+const ATTEMPT_TO_FINISH_SIGNUP_VIA_OAUTH2 = "[AUTH] ATTEMPT TO FINISH SIGNUP VIA OAUTH2" as const;
+const SUCCESSFUL_FINISH_SIGNUP_VIA_OAUTH2 = "[AUTH] SUCCESSFUL FINISH SIGNUP VIA OAUTH2" as const;
+const FAILURE_FINISH_SIGNUP_VIA_OAUTH2 = "[AUTH] FAILURE FINISH SIGNUP VIA OAUTH2" as const;
 
 const CLEAR_SERVER_RESPONSE = "[AUTH] CLEAR SERVER RESPONSE" as const;
 const CLEAR_FINISH_SIGNUP_USER_DATA = "[AUTH] CLEAR FINISH SIGNUP USER DATA" as const;
@@ -49,6 +54,21 @@ export const __successfulAttemptFinishSignupViaOAuth2 = createAction(
 
 export const __failureAttemptFinishSignupViaOAuth2 = createAction(
     FAILURE_ATTEMPT_FINISH_SIGNUP_VIA_OAUTH2,
+    props<{ serverResponse: string }>(),
+);
+
+export const __attemptToFinishSignupViaOAuth2 = createAction(
+    ATTEMPT_TO_FINISH_SIGNUP_VIA_OAUTH2,
+    props<{ finishSignupForm: FinishSignupFormModel }>(),
+);
+
+export const __successfulFinishSignupViaOAuth2 = createAction(
+    SUCCESSFUL_FINISH_SIGNUP_VIA_OAUTH2,
+    props<{ serverResponse: string }>(),
+);
+
+export const __failureFinishSignupViaOAuth2 = createAction(
+    FAILURE_FINISH_SIGNUP_VIA_OAUTH2,
     props<{ serverResponse: string }>(),
 );
 

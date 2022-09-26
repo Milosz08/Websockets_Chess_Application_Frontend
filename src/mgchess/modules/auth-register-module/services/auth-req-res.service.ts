@@ -53,4 +53,11 @@ export class AuthReqResService {
             req,
         );
     };
+
+    finishSignupViaOAuth2(req: FinishSignupAccountDataReqModel): Observable<SimpleMessageResponseModel> {
+        return this._http.post<SimpleMessageResponseModel>(
+            this._endpoint.FINISH_SIGNUP_VIA_OAUTH2,
+            req,
+        );
+    };
 }

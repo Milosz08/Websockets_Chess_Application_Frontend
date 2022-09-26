@@ -52,3 +52,7 @@ export const sel_finishSignupUserFullName = selectorWithInjectedStore(({ finishS
 export const sel_finishSignupUserInitials = selectorWithInjectedStore(({ finishSignupAccountDetails }) =>
     Boolean(finishSignupAccountDetails) ? finishSignupAccountDetails.initials : "",
 );
+
+export const sel_isFinishSignupTokenInvalid = selectorWithInjectedStore(({ isFinishSignupFormTokenIsValid }) =>
+    !isFinishSignupFormTokenIsValid,
+);

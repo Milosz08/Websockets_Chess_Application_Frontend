@@ -37,14 +37,26 @@ const _authReducer = createReducer(
             serverResponse: new SimpleMessageResWithErrorModel(action.serverResponse, true),
         };
     }),
+    on(NgrxAction.__successfulFinishSignupViaOAuth2, (state, action) => {
+        return { ...state,
+            serverResponse: new SimpleMessageResWithErrorModel(action.serverResponse, false),
+        };
+    }),
+    on(NgrxAction.__failureFinishSignupViaOAuth2, (state, action) => {
+        return { ...state,
+            serverResponse: new SimpleMessageResWithErrorModel(action.serverResponse, true),
+        };
+    }),
     on(NgrxAction.__successfulAttemptFinishSignupViaOAuth2, (state, action) => {
         return { ...state,
             finishSignupAccountDetails: action.finishAccountDetails,
+            isFinishSignupFormTokenIsValid: true,
         };
     }),
     on(NgrxAction.__failureAttemptFinishSignupViaOAuth2, (state, action) => {
         return { ...state,
             serverResponse: new SimpleMessageResWithErrorModel(action.serverResponse, true),
+            isFinishSignupFormTokenIsValid: false,
         };
     }),
     on(NgrxAction.__clearServerResponse, state => {
@@ -55,6 +67,7 @@ const _authReducer = createReducer(
     on(NgrxAction.__clearFinishSignupUserData, state => {
         return { ...state,
             finishSignupAccountDetails: null,
+            isFinishSignupFormTokenIsValid: false,
         };
     }),
 );
