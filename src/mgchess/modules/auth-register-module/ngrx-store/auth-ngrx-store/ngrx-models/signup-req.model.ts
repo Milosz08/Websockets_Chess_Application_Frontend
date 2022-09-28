@@ -32,7 +32,7 @@ export class SignupReqModel {
     gender: string;
     password: string;
     passwordRepeat: string;
-    newsletterAccept: boolean;
+    hasNewsletterAccept: boolean;
 
     constructor(registerForm: SignupFormModel) {
         this.nickname = registerForm.nickname;
@@ -45,6 +45,6 @@ export class SignupReqModel {
         this.gender = registerForm.gender!;
         this.password = registerForm.password;
         this.passwordRepeat = registerForm.passwordRepeat;
-        this.newsletterAccept = registerForm.hasNewsletterAccept;
+        this.hasNewsletterAccept = registerForm.hasNewsletterAccept;
     };
 }

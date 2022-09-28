@@ -36,6 +36,7 @@ import { SelectGenderBoxInputComponent } from './components/select-gender-box-in
 import { SelectCountryBoxInputComponent } from './components/select-country-box-input/select-country-box-input.component';
 import { SignupLeftContentFormComponent } from './components/signup-left-content-form/signup-left-content-form.component';
 import { SignupRightContentFormComponent } from './components/signup-right-content-form/signup-right-content-form.component';
+import { ActivateAccountTokenFormComponent } from "./components/activate-account-token-form/activate-account-token-form.component";
 import { SignupPasswordControlGroupComponent } from './components/signup-password-control-group/signup-password-control-group.component';
 import { SignupFormBirthdayControlGroupComponent } from './components/signup-form-birthday-control-group/signup-form-birthday-control-group.component';
 import { SignupFormAcceptableControlGroupComponent } from './components/signup-form-acceptable-control-group/signup-form-acceptable-control-group.component';
@@ -72,6 +73,7 @@ import { PasswordStrengthMeterService } from "./services/password-strength-meter
         SignupLeftContentFormComponent,
         SelectCountryBoxInputComponent,
         SignupRightContentFormComponent,
+        ActivateAccountTokenFormComponent,
         SignupPasswordControlGroupComponent,
         SignupFormBirthdayControlGroupComponent,
         SignupFormAcceptableControlGroupComponent,

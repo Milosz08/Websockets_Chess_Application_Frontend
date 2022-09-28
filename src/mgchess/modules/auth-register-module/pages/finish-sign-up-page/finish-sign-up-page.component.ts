@@ -69,6 +69,7 @@ export class FinishSignUpPageComponent extends BrowserMetaSerializatorLoader imp
     };
 
     ngOnInit(): void {
+        this._store.dispatch(NgrxAction_ATH.__clearServerResponse());
         RxjsHelper.subscribeData(this._store, NgrxSelector_GFX.sel_finishSignupViaOAuth2Suspense, this._ngUnsubscribe,
                 data => this._oauth2SuspenseActive = data);
         RxjsHelper.subscribeData(this._store, NgrxSelector_ATH.sel_serverResponse, this._ngUnsubscribe,

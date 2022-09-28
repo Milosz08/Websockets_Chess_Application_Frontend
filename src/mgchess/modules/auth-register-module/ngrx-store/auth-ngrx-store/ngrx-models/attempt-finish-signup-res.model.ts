@@ -16,22 +16,27 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-export class AttemptFinishSignupAccountDataResModel {
+export class AttemptFinishSignupResModel {
     nickname: string;
     fullName: string;
     photoUrl: string;
     initials: string;
-    jwtToken: string;
+    dataFilled: boolean;
+    responseMessage: string;
     authSupplier: string;
+    hashedEmails: Array<string>;
 
     constructor(
-        nickname: string, fullName: string, photoUrl: string, initials: string, jwtToken: string, authSupplier: string
+        nickname: string, fullName: string, photoUrl: string, initials: string, dataFilled: boolean,
+        responseMessage: string, authSupplier: string, hashedEmails: Array<string>,
     ) {
         this.nickname = nickname;
         this.fullName = fullName;
         this.photoUrl = photoUrl;
         this.initials = initials;
-        this.jwtToken = jwtToken;
+        this.dataFilled = dataFilled;
+        this.responseMessage = responseMessage;
         this.authSupplier = authSupplier;
+        this.hashedEmails = hashedEmails;
     };
 }
