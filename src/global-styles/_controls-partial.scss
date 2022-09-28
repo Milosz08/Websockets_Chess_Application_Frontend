@@ -113,6 +113,9 @@
     &.paragraph--info-reverse-theme-change {
         color: var(--form-data-paragraph-info-reverse-color);
     }
+    &.paragraph--simple-margin {
+        margin: 15px 0;
+    }
 }
 
 .mg-chess__standard-button {
@@ -135,6 +138,11 @@
         color: var(--button-thirdly-mixed-color);
         background-color: var(--button-thirdly-mixed-background);
     }
+    &.button--thirdly-mixed-border-variant {
+        border: 1px solid var(--button-thirdly-mixed-background);
+        color: var(--button-thirdly-mixed-background);
+        background-color: transparent;
+    }
     &:disabled {
         cursor: not-allowed;
         opacity: .5;
@@ -155,6 +163,9 @@
     }
     &.button--thirdly-mixed-def-variant .button__suspense-loading-spinner {
         border-color: var(--button-thirdly-mixed-color) transparent transparent var(--button-thirdly-mixed-color);
+    }
+    &.button--thirdly-mixed-border-variant .button__suspense-loading-spinner {
+        border-color: var(--button-thirdly-mixed-background) transparent transparent var(--button-thirdly-mixed-background);
     }
     &.button--fitting {
         width: fit-content;
@@ -264,6 +275,12 @@
     }
     &.input--secondary-color {
         border-color: var(--secondary-form-text-and-border-color);
+    }
+}
+
+.mg-chess__form-container {
+    &.form-container--top-margin {
+        margin: 20px 0;
     }
 }
 
