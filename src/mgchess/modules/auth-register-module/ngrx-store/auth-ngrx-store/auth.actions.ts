@@ -19,9 +19,9 @@
 import { createAction, props } from "@ngrx/store";
 
 import { SignupFormModel } from "../../models/signup-form.model";
-import { LoginSignupViaOAuth2ReqModel } from "../../../../models/login-signup-via-oauth2-req.model";
-import { AttemptFinishSignupAccountDataResModel } from "./ngrx-models/attempt-finish-signup-account-data-res.model";
 import { FinishSignupFormModel } from "../../models/finish-signup-form.model";
+import { AttemptFinishSignupResModel } from "./ngrx-models/attempt-finish-signup-res.model";
+import { LoginSignupViaOAuth2ReqModel } from "../../../../models/login-signup-via-oauth2-req.model";
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -39,17 +39,19 @@ const FAILURE_FINISH_SIGNUP_VIA_OAUTH2 = "[AUTH] FAILURE FINISH SIGNUP VIA OAUTH
 
 const CLEAR_SERVER_RESPONSE = "[AUTH] CLEAR SERVER RESPONSE" as const;
 const CLEAR_FINISH_SIGNUP_USER_DATA = "[AUTH] CLEAR FINISH SIGNUP USER DATA" as const;
+const FILLED_FINISH_SIGNUP_RESPONSE_MESSAGE = "[AUTH] FILLED FINISH SIGNUP RESPONSE MESSAGE" as const;
+const FILLED_FINISH_SIGNUP_JWT_TOKEN = "[AUTH] FILLED FINISH SIGNUP JWT TOKEN" as const;
 
 //----------------------------------------------------------------------------------------------------------------------
 
 export const __attemptToAttemptFinishSignupViaOAuth2 = createAction(
     ATTEMPT_TO_ATTEMPT_FINISH_SIGNUP_VIA_OAUTH2,
-    props<{ req: LoginSignupViaOAuth2ReqModel }>(),
+    props<{ req: LoginSignupViaOAuth2ReqModel, jwtToken: string }>(),
 );
 
 export const __successfulAttemptFinishSignupViaOAuth2 = createAction(
     SUCCESSFUL_ATTEMPT_FINISH_SIGNUP_VIA_OAUTH2,
-    props<{ finishAccountDetails: AttemptFinishSignupAccountDataResModel }>(),
+    props<{ finishAccountDetails: AttemptFinishSignupResModel }>(),
 );
 
 export const __failureAttemptFinishSignupViaOAuth2 = createAction(
@@ -93,4 +95,14 @@ export const __clearServerResponse = createAction(
 
 export const __clearFinishSignupUserData = createAction(
     CLEAR_FINISH_SIGNUP_USER_DATA,
+);
+
+export const __filledFinishSignupResponseMessage = createAction(
+    FILLED_FINISH_SIGNUP_RESPONSE_MESSAGE,
+    props<{ serverResponse: string }>(),
+);
+
+export const __filledFinishSignupJwtToken = createAction(
+    FILLED_FINISH_SIGNUP_JWT_TOKEN,
+    props<{ jwtToken: string }>(),
 );

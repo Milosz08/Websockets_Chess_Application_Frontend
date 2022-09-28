@@ -28,8 +28,10 @@ import { SimpleMessageResWithErrorModel } from "../../../../models/simple-messag
 import { BrowserMetaSerializatorLoader } from "../../../../browser-meta-serialization/browser-meta-serializator.loader";
 import { SingleModuleType, SinglePageType } from "../../../../browser-meta-serialization/browser-meta-serializator.types";
 
-import * as NgrxSelector_ATH from "../../ngrx-store/auth-ngrx-store/auth.selectors";
 import { AuthWithGfxCombinedReducerTypes } from "../../../../ngrx-helpers/ngrx-store.types";
+
+import * as NgrxAction_ATH from "../../ngrx-store/auth-ngrx-store/auth.actions";
+import * as NgrxSelector_ATH from "../../ngrx-store/auth-ngrx-store/auth.selectors";
 import * as NgrxSelector_GFX from "../../../shared-module/ngrx-store/gfx-ngrx-store/gfx.selectors";
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -51,6 +53,8 @@ export class FinishSignUpPageComponent extends BrowserMetaSerializatorLoader imp
     _finishSignupUserSupplier$: Observable<string> = this._store.select(NgrxSelector_ATH.sel_finishSignupUserSupplier);
     _finishSignupUserFullName$: Observable<string> = this._store.select(NgrxSelector_ATH.sel_finishSignupUserFullName);
     _finishSignupUserInitials$: Observable<string> = this._store.select(NgrxSelector_ATH.sel_finishSignupUserInitials);
+    _finishSignupServerResponse$: Observable<string> = this._store.select(NgrxSelector_ATH.sel_finishSignupServerResponse);
+    _isFilledDataFormSkipped$: Observable<boolean> = this._store.select(NgrxSelector_ATH.sel_isFilledDataFormSkipped);
 
     private _ngUnsubscribe: Subject<void> = new Subject<void>();
 

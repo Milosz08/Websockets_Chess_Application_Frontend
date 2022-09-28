@@ -21,18 +21,16 @@ import { FinishSignupFormModel } from "../../../models/finish-signup-form.model"
 
 //----------------------------------------------------------------------------------------------------------------------
 
-export class FinishSignupAccountDataReqModel {
+export class FinishSignupReqModel {
     birthDate: string;
     countryName: string;
     gender: string;
     newsletterAccept: boolean;
-    jwtToken: string;
 
-    constructor(finishSignupForm: FinishSignupFormModel, jwtToken: string) {
+    constructor(finishSignupForm: FinishSignupFormModel) {
         this.birthDate = ConvertTimeHelper.generateDateFormat(finishSignupForm);
         this.countryName = finishSignupForm.countryName!;
         this.gender = finishSignupForm.gender!;
         this.newsletterAccept = finishSignupForm.hasNewsletterAccept;
-        this.jwtToken = jwtToken;
     };
 }

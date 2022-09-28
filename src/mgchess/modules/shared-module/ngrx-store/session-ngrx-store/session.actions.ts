@@ -40,7 +40,7 @@ export const __attemptToLoginViaLocal = createAction(
 
 export const __attemptToLoginViaOAuth2 = createAction(
     ATTEMPT_LOGIN_VIA_OAUTH2,
-    props<{ req: LoginSignupViaOAuth2ReqModel }>(),
+    props<{ req: LoginSignupViaOAuth2ReqModel, jwtToken: string }>(),
 );
 
 export const __successfulLogin = createAction(

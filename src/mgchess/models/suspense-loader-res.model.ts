@@ -26,6 +26,8 @@ export enum SuspenseLoader {
     ATTEMPT_FINISH_SIGNUP_VIA_OAUTH2 = "ATTEMPT_FINISH_SIGNUP_VIA_OAUTH2",
     ATTEMPT_LOGIN_VIA_OAUTH2 = "ATTEMPT_LOGIN_VIA_OAUTH2",
     FINISH_SIGNUP_VIA_OAUTH2 = "FINISH_SIGNUP_VIA_OAUTH2",
+    RESEND_ACTIVATE_ACCOUNT_LINK = "RESEND_ACTIVATE_ACCOUNT_LINK",
+    ACTIVATE_ACCOUNT_VIA_OTA = "ACTIVATE_ACCOUNT_VIA_OTA",
 }
 
 //----------------------------------------------------------------------------------------------------------------------

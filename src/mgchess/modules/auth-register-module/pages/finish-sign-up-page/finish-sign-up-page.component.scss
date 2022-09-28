@@ -25,7 +25,8 @@
     width: calc(100% - 60px);
     margin: 0 30px;
     .finish-sign-up__container,
-    .finish-sign-up__top-info-container {
+    .finish-sign-up__top-info-container,
+    .finish-sign-up__activate-account__container {
         padding: 20px 40px;
     }
 }
@@ -69,8 +70,8 @@
     }
 }
 
-.finish-sign-up__container {
-    min-height: 250px;
+.finish-sign-up__container,
+.finish-sign-up__activate-account__container {
     font-weight: var(--standard-font-weight);
     color: var(--auth-login-form-foreground);
     border-radius: 0 0 var(--standard-modal-border-radius) var(--standard-modal-border-radius);

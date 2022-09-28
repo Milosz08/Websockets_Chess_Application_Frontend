@@ -17,13 +17,13 @@
  */
 
 import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 
 import { Observable } from "rxjs";
 
 import { HttpEndpointsHelper } from "../../../http-request-helpers/http-endpoints.helper";
-import { LoginSignupViaOAuth2ReqModel } from "../../../models/login-signup-via-oauth2-req.model";
 
+import { LoginSignupViaOAuth2ReqModel } from "../../../models/login-signup-via-oauth2-req.model";
 import { LoginReqModel } from "../ngrx-store/session-ngrx-store/ngrx-models/login-data-req.model";
 import { UserCredentialsDataResModel } from "../ngrx-store/session-ngrx-store/ngrx-models/user-credentials-data-res.model";
 
@@ -45,10 +45,11 @@ export class SessionReqResService {
         );
     };
 
-    loginViaOAuth2(req: LoginSignupViaOAuth2ReqModel): Observable<UserCredentialsDataResModel> {
+    loginViaOAuth2(req: LoginSignupViaOAuth2ReqModel, jwtToken: string): Observable<UserCredentialsDataResModel> {
         return this._http.post<UserCredentialsDataResModel>(
             this._endpoint.LOGIN_VIA_OAUTH2,
             req,
+            { headers: new HttpHeaders({ "Authorization": `Bearer ${jwtToken}` }) },
         );
     };
 }

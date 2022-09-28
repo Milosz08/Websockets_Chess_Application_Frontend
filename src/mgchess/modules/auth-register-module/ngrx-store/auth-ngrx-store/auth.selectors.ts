@@ -33,6 +33,10 @@ export const sel_serverResponse = selectorWithInjectedStore(({ serverResponse })
     serverResponse,
 );
 
+export const sel_serverResponseMessage = selectorWithInjectedStore(({ serverResponse }) =>
+    serverResponse.responseMessage,
+);
+
 export const sel_serverResponseIsEmpty = selectorWithInjectedStore(({ serverResponse }) =>
     serverResponse.responseMessage === "",
 );
@@ -53,6 +57,18 @@ export const sel_finishSignupUserInitials = selectorWithInjectedStore(({ finishS
     Boolean(finishSignupAccountDetails) ? finishSignupAccountDetails.initials : "",
 );
 
+export const sel_finishSignupUserEmails = selectorWithInjectedStore(({ finishSignupAccountDetails }) =>
+    Boolean(finishSignupAccountDetails) ? finishSignupAccountDetails.hashedEmails : [],
+);
+
 export const sel_isFinishSignupTokenInvalid = selectorWithInjectedStore(({ isFinishSignupFormTokenIsValid }) =>
     !isFinishSignupFormTokenIsValid,
+);
+
+export const sel_finishSignupServerResponse = selectorWithInjectedStore(({ finishSignupReponseMessage }) =>
+    finishSignupReponseMessage,
+);
+
+export const sel_isFilledDataFormSkipped = selectorWithInjectedStore(({ finishSignupAccountDetails }) =>
+    Boolean(finishSignupAccountDetails) ? finishSignupAccountDetails.isDataFilled : false,
 );

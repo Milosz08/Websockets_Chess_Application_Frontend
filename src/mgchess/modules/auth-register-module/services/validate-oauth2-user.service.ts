@@ -47,16 +47,17 @@ export class ValidateOauth2UserService {
     };
 
     validateFinishSignup(): void {
-        const req = new LoginSignupViaOAuth2ReqModel(this._oauth2ResToken, this._oauth2ResSupplier);
+        const req = new LoginSignupViaOAuth2ReqModel(this._oauth2ResSupplier);
         this._store.dispatch(NgrxAction_ATH.__clearFinishSignupUserData());
-        this._store.dispatch(NgrxAction_ATH.__attemptToAttemptFinishSignupViaOAuth2({ req }));
+        this._store.dispatch(NgrxAction_ATH.__attemptToAttemptFinishSignupViaOAuth2({
+            req, jwtToken: this._oauth2ResToken }));
     };
 
     validateLogin(): void {
-        const req = new LoginSignupViaOAuth2ReqModel(this._oauth2ResToken, this._oauth2ResSupplier);
+        const req = new LoginSignupViaOAuth2ReqModel(this._oauth2ResSupplier);
         this._store.dispatch(NgrxAction_ATH.__clearServerResponse());
         if (!Boolean(this._oauth2ResToken) || !Boolean(this._oauth2ResSupplier)) return;
-        this._store.dispatch(NgrxAction_SES.__attemptToLoginViaOAuth2({ req }));
+        this._store.dispatch(NgrxAction_SES.__attemptToLoginViaOAuth2({ req, jwtToken: this._oauth2ResToken }));
     };
 
     get __isGoogleSupplierSuspenseActive(): boolean {

@@ -44,8 +44,8 @@
         ></div>
     </button>
     <p
-        *ngIf="_serverResponse.responseMessage !== ''"
-        [ngClass]="_serverReqResHelper.responseReverseThemeCssClass(_serverResponse.responseError)"
+        *ngIf="_serverResponse.responseMessage !== '' && _serverResponse.responseError"
+        [ngClass]="_serverReqResHelper.responseReverseThemeCssClass(true)"
     >
         {{ _serverResponse.responseMessage }}
     </p>

@@ -17,11 +17,9 @@
  */
 
 export class LoginSignupViaOAuth2ReqModel {
-    jwtToken: string;
     oauth2supplier: string;
 
-    constructor(bearerToken: string, oauth2supplier: string) {
-        this.jwtToken = bearerToken;
+    constructor(oauth2supplier: string) {
         this.oauth2supplier = oauth2supplier;
     };
 }

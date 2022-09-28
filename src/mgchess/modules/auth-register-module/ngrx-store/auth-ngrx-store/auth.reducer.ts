@@ -40,6 +40,7 @@ const _authReducer = createReducer(
     on(NgrxAction.__successfulFinishSignupViaOAuth2, (state, action) => {
         return { ...state,
             serverResponse: new SimpleMessageResWithErrorModel(action.serverResponse, false),
+            finishSignupReponseMessage: action.serverResponse,
         };
     }),
     on(NgrxAction.__failureFinishSignupViaOAuth2, (state, action) => {
@@ -64,10 +65,22 @@ const _authReducer = createReducer(
             serverResponse: new SimpleMessageResWithErrorModel("", false),
         };
     }),
+    on(NgrxAction.__filledFinishSignupResponseMessage, (state, action) => {
+        return { ...state,
+            finishSignupReponseMessage: action.serverResponse,
+        };
+    }),
+    on(NgrxAction.__filledFinishSignupJwtToken, (state, action) => {
+        return { ...state,
+            finishSignupJwtToken: action.jwtToken,
+        };
+    }),
     on(NgrxAction.__clearFinishSignupUserData, state => {
         return { ...state,
             finishSignupAccountDetails: null,
             isFinishSignupFormTokenIsValid: false,
+            finishSignupReponseMessage: "",
+            finishSignupJwtToken: "",
         };
     }),
 );

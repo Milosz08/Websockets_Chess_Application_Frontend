@@ -29,8 +29,8 @@ import { SuspenseLoader } from "../../../../../models/suspense-loader-res.model"
 
 import { authNgrxStore } from "../auth.reducer";
 import { SignupReqModel } from "../ngrx-models/signup-req.model";
+import { FinishSignupReqModel } from "../ngrx-models/finish-signup-req.model";
 import { AuthWithGfxCombinedReducerTypes } from "../../../../../ngrx-helpers/ngrx-store.types";
-import { FinishSignupAccountDataReqModel } from "../ngrx-models/finish-signup-account-data-req.model";
 
 import * as NgrxAction_ATH from "../auth.actions";
 import * as NgrxAction_GFX from "../../../../shared-module/ngrx-store/gfx-ngrx-store/gfx.actions"
@@ -75,13 +75,18 @@ export class SignupEffects {
     attemptToFinishSignupViaOAuth2 = createEffect(() => {
         return this._actions$.pipe(
             ofType(NgrxAction_ATH.__attemptToAttemptFinishSignupViaOAuth2),
-            tap(() => {
+            tap(({ req, jwtToken }) => {
+                this._store.dispatch(NgrxAction_ATH.__filledFinishSignupJwtToken({ jwtToken }));
                 this._store.dispatch(NgrxAction_GFX.__activeSuspense({ for: SuspenseLoader.ATTEMPT_FINISH_SIGNUP_VIA_OAUTH2 }));
             }),
             delay(RxjsConstants.DEF_DELAY_MILIS),
-            mergeMap(({ req }) => {
-                return this._httpService.attemptToFinishSignupViaOAuth2(req).pipe(
+            mergeMap(({ req, jwtToken }) => {
+                return this._httpService.attemptToFinishSignupViaOAuth2(req, jwtToken).pipe(
                     map(res => {
+                        if (res.dataFilled) {
+                            this._store.dispatch(NgrxAction_ATH.__filledFinishSignupResponseMessage({
+                                serverResponse: res.responseMessage }));
+                        }
                         return NgrxAction_ATH.__successfulAttemptFinishSignupViaOAuth2({ finishAccountDetails: res });
                     }),
                     catchError(error => {
@@ -105,9 +110,8 @@ export class SignupEffects {
             }),
             delay(RxjsConstants.DEF_DELAY_MILIS),
             mergeMap(([ aciton, state ]) => {
-                const jwtToken =  state.finishSignupAccountDetails!.jwtToken;
-                const req = new FinishSignupAccountDataReqModel(aciton.finishSignupForm, jwtToken);
-                return this._httpService.finishSignupViaOAuth2(req).pipe(
+                const req = new FinishSignupReqModel(aciton.finishSignupForm);
+                return this._httpService.finishSignupViaOAuth2(req, state.finishSignupJwtToken).pipe(
                     map(({ responseMessage }) => {
                         return NgrxAction_ATH.__successfulFinishSignupViaOAuth2({ serverResponse: responseMessage });
                     }),

@@ -17,14 +17,16 @@
  */
 
 import { SimpleMessageResWithErrorModel } from "../../../../models/simple-message-response.model";
-import { AttemptFinishSignupAccountDataResModel } from "./ngrx-models/attempt-finish-signup-account-data-res.model";
+import { AttemptFinishSignupResModel } from "./ngrx-models/attempt-finish-signup-res.model";
 
 //----------------------------------------------------------------------------------------------------------------------
 
 export interface AuthStateTypes {
     serverResponse: SimpleMessageResWithErrorModel;
-    finishSignupAccountDetails: AttemptFinishSignupAccountDataResModel | null;
+    finishSignupAccountDetails: AttemptFinishSignupResModel | null;
     isFinishSignupFormTokenIsValid: boolean;
+    finishSignupReponseMessage: string;
+    finishSignupJwtToken: string;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -33,4 +35,6 @@ export const initialAuthState: AuthStateTypes = {
     serverResponse: new SimpleMessageResWithErrorModel("", false),
     finishSignupAccountDetails: null,
     isFinishSignupFormTokenIsValid: false,
+    finishSignupReponseMessage: "",
+    finishSignupJwtToken: "",
 };

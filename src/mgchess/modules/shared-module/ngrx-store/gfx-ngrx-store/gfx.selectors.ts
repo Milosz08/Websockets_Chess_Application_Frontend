@@ -65,3 +65,12 @@ export const sel_unsubscribeLoadingViaJwt = selectorWithInjectedStore(({ suspens
 export const sel_finishSignupViaOauth2 = selectorWithInjectedStore(({ suspenseStatus }) =>
     suspenseStatus.isSuspenseLoading && suspenseStatus.loadingFor === SuspenseLoader.FINISH_SIGNUP_VIA_OAUTH2,
 );
+
+export const sel_resendActivateAccountLink = selectorWithInjectedStore(({ suspenseStatus }) =>
+    suspenseStatus.isSuspenseLoading && suspenseStatus.loadingFor === SuspenseLoader.RESEND_ACTIVATE_ACCOUNT_LINK,
+);
+
+export const sel_activateAccountViaOta = selectorWithInjectedStore(({ suspenseStatus }) =>
+    suspenseStatus.isSuspenseLoading && suspenseStatus.loadingFor === SuspenseLoader.ACTIVATE_ACCOUNT_VIA_OTA,
+);
+
