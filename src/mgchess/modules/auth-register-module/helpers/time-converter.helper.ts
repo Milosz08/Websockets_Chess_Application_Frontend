@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
  *
- * File name: convert-time.helper.ts
+ * File name: time-converter.helper.ts
  * Last modified: 26/09/2022, 02:28
  * Project name: chess-app-frontend
  *
@@ -21,7 +21,7 @@ import { FinishSignupFormModel } from "../models/finish-signup-form.model";
 
 //----------------------------------------------------------------------------------------------------------------------
 
-export class ConvertTimeHelper {
+export class TimeConverterHelper {
 
     static generateDateFormat(registerForm: SignupFormModel | FinishSignupFormModel): string {
         const { birthDateDay, birthDateMonth, birthDateYear } = registerForm;

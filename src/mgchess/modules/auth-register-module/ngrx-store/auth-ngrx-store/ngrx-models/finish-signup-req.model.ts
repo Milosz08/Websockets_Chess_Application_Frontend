@@ -16,7 +16,7 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-import { ConvertTimeHelper } from "../../../helpers/convert-time.helper";
+import { TimeConverterHelper } from "../../../helpers/time-converter.helper";
 import { FinishSignupFormModel } from "../../../models/finish-signup-form.model";
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -28,7 +28,7 @@ export class FinishSignupReqModel {
     newsletterAccept: boolean;
 
     constructor(finishSignupForm: FinishSignupFormModel) {
-        this.birthDate = ConvertTimeHelper.generateDateFormat(finishSignupForm);
+        this.birthDate = TimeConverterHelper.generateDateFormat(finishSignupForm);
         this.countryName = finishSignupForm.countryName!;
         this.gender = finishSignupForm.gender!;
         this.newsletterAccept = finishSignupForm.hasNewsletterAccept;

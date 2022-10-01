@@ -17,7 +17,7 @@
  */
 
 import { SignupFormModel } from "../../../models/signup-form.model";
-import { ConvertTimeHelper } from "../../../helpers/convert-time.helper";
+import { TimeConverterHelper } from "../../../helpers/time-converter.helper";
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -40,7 +40,7 @@ export class SignupReqModel {
         this.lastName = registerForm.lastName;
         this.emailAddress = registerForm.emailAddress;
         this.secondEmailAddress = registerForm.secondEmailAddress;
-        this.birthDate = ConvertTimeHelper.generateDateFormat(registerForm);
+        this.birthDate = TimeConverterHelper.generateDateFormat(registerForm);
         this.countryName = registerForm.countryName!;
         this.gender = registerForm.gender!;
         this.password = registerForm.password;
