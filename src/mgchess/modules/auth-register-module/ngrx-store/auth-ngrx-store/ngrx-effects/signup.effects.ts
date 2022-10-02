@@ -109,8 +109,8 @@ export class SignupEffects {
                 this._store.dispatch(NgrxAction_GFX.__activeSuspense({ for: SuspenseLoader.FINISH_SIGNUP_VIA_OAUTH2 }));
             }),
             delay(RxjsConstants.DEF_DELAY_MILIS),
-            mergeMap(([ aciton, state ]) => {
-                const req = new FinishSignupReqModel(aciton.finishSignupForm);
+            mergeMap(([ action, state ]) => {
+                const req = new FinishSignupReqModel(action.finishSignupForm);
                 return this._httpService.finishSignupViaOAuth2(req, state.finishSignupJwtToken).pipe(
                     map(({ responseMessage }) => {
                         return NgrxAction_ATH.__successfulFinishSignupViaOAuth2({ serverResponse: responseMessage });
@@ -126,5 +126,4 @@ export class SignupEffects {
             }),
         );
     });
-
 }
