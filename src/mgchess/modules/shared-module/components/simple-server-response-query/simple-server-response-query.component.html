@@ -1,8 +1,8 @@
 <!--
   ~ Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
   ~
-  ~ File name: unsubscribe-newsletter-page.component.html
-  ~ Last modified: 04/09/2022, 19:44
+  ~ File name: simple-server-response-query.component.html
+  ~ Last modified: 02/10/2022, 20:53
   ~ Project name: chess-app-frontend
   ~
   ~ Licensed under the MIT license; you may not use this file except in compliance with the License.
@@ -16,12 +16,18 @@
   ~ COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
   -->
 
-<mgchess-simple-server-response-query _header="Unsubscribe the newsletter">
-    <a
-        routerLink="/"
-        title="Click to return to start page"
-        class="mg-chess__standard-button button--primary-mixed-def-variant button--fitting button--small-full-width"
+<div class="mg-chess__flex-safety-container__wrapper simple-server-response-query-flex-full-space__container">
+    <h2 class="mg-chess__standard-header-with-decorator">
+        <span class="text-content">{{ _header }}</span>
+        <span class="separator"></span>
+    </h2>
+    <div
+        *ngIf="_serverResponseMessage !== ''"
+        class="simple-server-response-query-jwt__container"
     >
-        Return to start page
-    </a>
-</mgchess-simple-server-response-query>
+        <p [ngClass]="[ _serverReqResHelper.responseThemeCssClass(_responseError), 'simple-server-response-query-jwt__text-info' ]">
+            {{ _serverResponseMessage }}
+        </p>
+        <ng-content></ng-content>
+    </div>
+</div>

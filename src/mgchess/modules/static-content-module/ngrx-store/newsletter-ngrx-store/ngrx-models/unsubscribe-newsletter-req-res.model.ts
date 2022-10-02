@@ -44,12 +44,3 @@ export class UnsubscribeNewsletterViaOtaReq extends UnsubscribeNewsletterTokenRe
         this.emailAddress = emailAddress;
     };
 }
-
-//----------------------------------------------------------------------------------------------------------------------
-
-export class UnsubscribeNewsletterViaJwtReq extends UnsubscribeNewsletterTokenReq {
-
-    constructor(token: string) {
-        super(token);
-    };
-}

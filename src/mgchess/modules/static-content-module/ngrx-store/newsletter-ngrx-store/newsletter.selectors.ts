@@ -42,7 +42,3 @@ export const sel_emailTokenResponse = selectorWithInjectedStore(state =>
     new EmailAndTokenResModel(state.emailServerResponse, state.tokenServerResponse),
 );
 
-export const sel_jwtResponse = selectorWithInjectedStore(state =>
-    state.jwtServerResponse,
-);
-

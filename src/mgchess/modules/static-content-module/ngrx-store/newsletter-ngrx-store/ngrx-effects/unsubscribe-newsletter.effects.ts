@@ -29,7 +29,7 @@ import { NewsletterReqResService } from "../../../services/newsletter-req-res.se
 
 import { SuspenseLoader } from "../../../../../models/suspense-loader-res.model";
 import { NewsletterReducerType } from "../../../../../ngrx-helpers/ngrx-store.types";
-import { UnsubscribeNewsletterViaJwtReq, UnsubscribeNewsletterViaOtaReq } from "../ngrx-models/unsubscribe-newsletter-req-res.model";
+import { UnsubscribeNewsletterViaOtaReq } from "../ngrx-models/unsubscribe-newsletter-req-res.model";
 
 import * as NgrxAction_NWL from "../newsletter.actions";
 import * as NgrxAction_GFX from "../../../../shared-module/ngrx-store/gfx-ngrx-store/gfx.actions";
@@ -90,32 +90,6 @@ export class UnsubscribeNewsletterEffects {
                             serverResponse: RxjsHelper.serverResponseError(error) }));
                     }),
                 );
-            }),
-            tap(() => {
-                this._store.dispatch(NgrxAction_GFX.__inactiveSuspense());
-            }),
-        );
-    });
-
-    unsubscribeNewsletterViaJWT$ = createEffect(() => {
-        return this._actions$.pipe(
-            ofType(NgrxAction_NWL.__unsubscribeNewsletterViaJwt),
-            tap(() => {
-                this._store.dispatch(NgrxAction_GFX.__activeSuspense({ for: SuspenseLoader.UNSUBSCRIBE_VIA_JWT }));
-            }),
-            delay(RxjsConstants.DEF_DELAY_MILIS),
-            mergeMap(({ bearerToken }) => {
-                const tokenReq = new UnsubscribeNewsletterViaJwtReq(bearerToken);
-                return this._httpService.unsubscribeNewsletterViaJwt(tokenReq).pipe(
-                    map(response => {
-                        return NgrxAction_NWL.__successfulUnsubscribeNewsletterViaJwt({
-                            serverResponse: response.responseMessage });
-                    }),
-                    catchError(error => {
-                        return of(NgrxAction_NWL.__failureUnsubscribeNewsletterViaJwt({
-                            serverResponse: RxjsHelper.serverResponseError(error) }));
-                    }),
-                )
             }),
             tap(() => {
                 this._store.dispatch(NgrxAction_GFX.__inactiveSuspense());

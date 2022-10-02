@@ -25,7 +25,7 @@ import { HttpEndpointsHelper } from "../../../http-request-helpers/http-endpoint
 import { SimpleMessageResponseModel } from "../../../models/simple-message-response.model";
 
 import {
-    UnsubscribeNewsletterEmailReq, UnsubscribeNewsletterViaJwtReq, UnsubscribeNewsletterViaOtaReq
+    UnsubscribeNewsletterEmailReq, UnsubscribeNewsletterViaOtaReq
 } from "../ngrx-store/newsletter-ngrx-store/ngrx-models/unsubscribe-newsletter-req-res.model";
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -49,13 +49,6 @@ export class NewsletterReqResService {
     unsubscribeNewsletterViaOta(request: UnsubscribeNewsletterViaOtaReq): Observable<SimpleMessageResponseModel> {
         return this._http.delete<SimpleMessageResponseModel>(
             this._endpoint.NEWSLETTER_UNSUBSCRIBE_VIA_OTA,
-            { body: request },
-        );
-    };
-
-    unsubscribeNewsletterViaJwt(request: UnsubscribeNewsletterViaJwtReq): Observable<SimpleMessageResponseModel> {
-        return this._http.delete<SimpleMessageResponseModel>(
-            this._endpoint.NEWSLETTER_UNSUBSCRIBE_VIA_JWT,
             { body: request },
         );
     };

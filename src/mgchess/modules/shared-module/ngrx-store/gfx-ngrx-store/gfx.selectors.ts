@@ -58,10 +58,6 @@ export const sel_unsubscribeLoadingViaOta = selectorWithInjectedStore(({ suspens
     suspenseStatus.isSuspenseLoading && suspenseStatus.loadingFor === SuspenseLoader.UNSUBSCRIBE_VIA_OTA,
 );
 
-export const sel_unsubscribeLoadingViaJwt = selectorWithInjectedStore(({ suspenseStatus }) =>
-    suspenseStatus.isSuspenseLoading && suspenseStatus.loadingFor === SuspenseLoader.UNSUBSCRIBE_VIA_JWT,
-);
-
 export const sel_finishSignupViaOauth2 = selectorWithInjectedStore(({ suspenseStatus }) =>
     suspenseStatus.isSuspenseLoading && suspenseStatus.loadingFor === SuspenseLoader.FINISH_SIGNUP_VIA_OAUTH2,
 );

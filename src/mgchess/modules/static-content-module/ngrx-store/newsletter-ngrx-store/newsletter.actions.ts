@@ -34,10 +34,6 @@ const UNSUBSCRIBE_NEWSLETTER = "[NEWSLETTER] UNSUBSCRIBE NEWSLETTER" as const;
 const SUCCESSFUL_UNSUBSCRIBE_NEWSLETTER = "[NEWSLETTER] SUCCESSFUL UNSUBSCRIBE NEWSLETTER" as const;
 const FAILURE_UNSUBSCRIBE_NEWSLETTER = "[NEWSLETTER] FAILURE UNSUBSCRIBE NEWSLETTER" as const;
 
-const UNSUBSCRIBE_NEWSLETTER_VIA_JWT = "[NEWSLETTER] UNSUBSCRIBE NEWSLETTER VIA JWT" as const;
-const SUCCESSFUL_UNSUBSCRIBE_NEWSLETTER_VIA_JWT = "[NEWSLETTER] SUCCESSFUL UNSUBSCRIBE NEWSLETTER VIA JWT" as const;
-const FAILURE_UNSUBSCRIBE_NEWSLETTER_VIA_JWT = "[NEWSLETTER] FAILURE UNSUBSCRIBE NEWSLETTER VIA JWT" as const;
-
 const INITIAL_CLEAR_ALL_STATE = "[NEWSLETTER] INITIAL CLEAR ALL STATE" as const;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -82,21 +78,6 @@ export const __successfulUnsubscribeNewsletter = createAction(
 
 export const __failureUnsubscribeNewsletter = createAction(
     FAILURE_UNSUBSCRIBE_NEWSLETTER,
-    props<{ serverResponse: string }>(),
-);
-
-export const __unsubscribeNewsletterViaJwt = createAction(
-    UNSUBSCRIBE_NEWSLETTER_VIA_JWT,
-    props<{ bearerToken: string }>(),
-);
-
-export const __successfulUnsubscribeNewsletterViaJwt = createAction(
-    SUCCESSFUL_UNSUBSCRIBE_NEWSLETTER_VIA_JWT,
-    props<{ serverResponse: string }>(),
-);
-
-export const __failureUnsubscribeNewsletterViaJwt = createAction(
-    FAILURE_UNSUBSCRIBE_NEWSLETTER_VIA_JWT,
     props<{ serverResponse: string }>(),
 );
 

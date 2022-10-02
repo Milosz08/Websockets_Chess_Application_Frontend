@@ -66,23 +66,12 @@ const _newsletterReducer = createReducer(
             tokenServerResponse: new SimpleMessageResWithErrorModel(action.serverResponse, true),
         };
     }),
-    on(NgrxAction.__successfulUnsubscribeNewsletterViaJwt, (state, action) => {
-        return { ...state,
-            jwtServerResponse: new SimpleMessageResWithErrorModel(action.serverResponse, false),
-        };
-    }),
-    on(NgrxAction.__failureUnsubscribeNewsletterViaJwt, (state, action) => {
-        return { ...state,
-            jwtServerResponse: new SimpleMessageResWithErrorModel(action.serverResponse, true),
-        };
-    }),
     on(NgrxAction.__initialClearAllState, state => {
         return { ...state,
             isTokenFormActive: false,
             removingEmail: "",
             emailServerResponse: new SimpleMessageResWithErrorModel("", false),
             tokenServerResponse: new SimpleMessageResWithErrorModel("", false),
-            jwtServerResponse: new SimpleMessageResWithErrorModel("", false),
             suspenseLoader: new SuspenseLoaderResModel(false, SuspenseLoader.INACTIVE),
         };
     }),

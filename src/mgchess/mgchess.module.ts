@@ -32,6 +32,9 @@ import { MgchessComponent } from "./mgchess.component";
 import { MgchessRoutingModule } from "./mgchess-routing.module";
 import { SharedModuleModule } from "./modules/shared-module/shared-module.module";
 
+import { ColorThemeLocalStorageService } from "./services/color-theme-local-storage.service";
+import { OnEmptyRedirectParametersGuard } from "./guards/on-empty-redirect-parameters.guard";
+
 //----------------------------------------------------------------------------------------------------------------------
 
 @NgModule({
@@ -52,7 +55,10 @@ import { SharedModuleModule } from "./modules/shared-module/shared-module.module
         EffectsModule.forRoot([]),
         StoreDevtoolsModule.instrument({ logOnly: environment.production }),
     ],
-    providers: [],
+    providers: [
+        ColorThemeLocalStorageService,
+        OnEmptyRedirectParametersGuard,
+    ],
     bootstrap: [
         MgchessComponent,
     ],

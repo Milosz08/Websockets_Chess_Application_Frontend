@@ -1,8 +1,8 @@
 /*
  * Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
  *
- * File name: newsletter.initial.ts
- * Last modified: 04/09/2022, 16:19
+ * File name: on-empty-redirect-parameters.guard.ts
+ * Last modified: 02/10/2022, 17:53
  * Project name: chess-app-frontend
  *
  * Licensed under the MIT license; you may not use this file except in compliance with the License.
@@ -16,22 +16,24 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-import { SimpleMessageResWithErrorModel } from "../../../../models/simple-message-response.model";
+import { Injectable } from "@angular/core";
+import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from "@angular/router";
 
 //----------------------------------------------------------------------------------------------------------------------
 
-export interface NewsletterStateTypes {
-    isTokenFormActive: boolean;
-    removingEmail: string;
-    emailServerResponse: SimpleMessageResWithErrorModel;
-    tokenServerResponse: SimpleMessageResWithErrorModel;
+@Injectable()
+export class OnEmptyRedirectParametersGuard implements CanActivate {
+
+    constructor(
+        private _router: Router,
+    ) {
+    };
+
+    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+        if (Boolean(route.queryParamMap.get("message")) && Boolean(route.queryParamMap.get("error"))) {
+            return true;
+        }
+        this._router.navigate([ '/' ]).then(r => r);
+        return false;
+    };
 }
-
-//----------------------------------------------------------------------------------------------------------------------
-
-export const initialNewsletterState: NewsletterStateTypes = {
-    isTokenFormActive: false,
-    removingEmail: "",
-    emailServerResponse: new SimpleMessageResWithErrorModel("", false),
-    tokenServerResponse: new SimpleMessageResWithErrorModel("", false),
-};

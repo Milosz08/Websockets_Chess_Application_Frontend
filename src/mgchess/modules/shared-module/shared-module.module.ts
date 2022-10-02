@@ -31,6 +31,7 @@ import { CopyrightNewsletterComponent } from "./components/copyright-newsletter/
 import { CookiesNotificationComponent } from "./components/cookies-notification/cookies-notification.component";
 import { GlobalSuspenseLoaderComponent } from './components/global-suspense-loader/global-suspense-loader.component';
 import { SingleChoiceBoxInputComponent } from "./components/single-choice-box-input/single-choice-box-input.component";
+import { SimpleServerResponseQueryComponent } from './components/simple-server-response-query/simple-server-response-query.component';
 
 import { ContentNotFoundPageComponent } from "./pages/content-not-found-page/content-not-found-page.component";
 
@@ -60,6 +61,7 @@ import { CookiesNotificationLocalStorageService } from "./services/cookies-notif
         CookiesNotificationComponent,
         GlobalSuspenseLoaderComponent,
         SingleChoiceBoxInputComponent,
+        SimpleServerResponseQueryComponent,
         // pages
         ContentNotFoundPageComponent,
         // directives
@@ -86,6 +88,7 @@ import { CookiesNotificationLocalStorageService } from "./services/cookies-notif
         CookiesNotificationComponent,
         SingleChoiceBoxInputComponent,
         GlobalSuspenseLoaderComponent,
+        SimpleServerResponseQueryComponent,
     ],
     providers: [
         SessionReqResService,

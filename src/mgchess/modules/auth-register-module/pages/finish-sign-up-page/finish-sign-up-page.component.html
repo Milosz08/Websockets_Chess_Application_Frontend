@@ -64,8 +64,8 @@
                 </p>
             </div>
             <mgchess-activate-account-token-form
-                *ngIf="(!_serverResponse.responseError && (_finishSignupServerResponse$ | async) !== '')
-                        || (_isFilledDataFormSkipped$ | async); else showFinishForm"
+                *ngIf="(_isFilledDataFormSkipped$ | async) || (_finishSignupServerResponse$ | async) !== '';
+                        else showFinishForm"
                 [_cascadeResponseMessage]="(_finishSignupServerResponse$ | async) || ''"
                 class="finish-sign-up__activate-account__container"
             ></mgchess-activate-account-token-form>

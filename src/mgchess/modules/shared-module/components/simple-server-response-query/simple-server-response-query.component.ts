@@ -1,8 +1,8 @@
 /*
  * Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
  *
- * File name: unsubscribe-newsletter-page.component.ts
- * Last modified: 04/09/2022, 19:44
+ * File name: simple-server-response-query.component.ts
+ * Last modified: 02/10/2022, 20:53
  * Project name: chess-app-frontend
  *
  * Licensed under the MIT license; you may not use this file except in compliance with the License.
@@ -16,28 +16,34 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-import { Component } from "@angular/core";
-import { Meta, Title } from "@angular/platform-browser";
+import { Component, Input, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 
-import { BrowserMetaSerializatorLoader } from "../../../../browser-meta-serialization/browser-meta-serializator.loader";
-import { SingleModuleType, SinglePageType } from "../../../../browser-meta-serialization/browser-meta-serializator.types";
+import { ServerReqResHelper } from "../../../../http-request-helpers/server-req-res.helper";
 
 //----------------------------------------------------------------------------------------------------------------------
 
 @Component({
-    selector: "mgchess-unsubscribe-newsletter-via-email",
-    templateUrl: "./unsubscribe-newsletter-page.component.html",
-    host: { class: "mg-chess__flex-safety-container" },
+    selector: "mgchess-simple-server-response-query",
+    templateUrl: "./simple-server-response-query.component.html",
+    styleUrls: [ "./simple-server-response-query.component.scss" ]
 })
-export class UnsubscribeNewsletterPageComponent extends BrowserMetaSerializatorLoader {
+export class SimpleServerResponseQueryComponent implements OnInit {
+
+    @Input() _header: string = "";
+
+    _serverResponseMessage: string = "";
+    _responseError: boolean = false;
+
+    readonly _serverReqResHelper: ServerReqResHelper = new ServerReqResHelper();
 
     constructor(
-        private _metaService: Meta,
-        private _titleService: Title,
         private _route: ActivatedRoute,
     ) {
-        super(_titleService, _metaService, SingleModuleType.STATIC_CONTENT_MODULE,
-            SinglePageType.UNSUBSRIBE_NEWSLETTER_VIA_EMAIL_PAGE);
+    };
+
+    ngOnInit(): void {
+        this._serverResponseMessage = String(this._route.snapshot.queryParamMap.get("message"));
+        this._responseError = String(this._route.snapshot.queryParamMap.get("error")) === "true";
     };
 }

@@ -31,6 +31,8 @@ import { NewsletterPageComponent } from "./pages/newsletter-page/newsletter-page
 import { UnsubscribeNewsletterPageComponent } from "./pages/unsubscribe-newsletter-page/unsubscribe-newsletter-page.component";
 import { PrivacyPolicyPageComponent } from "./pages/privacy-policy-page/privacy-policy-page.component";
 
+import { OnEmptyRedirectParametersGuard } from "../../guards/on-empty-redirect-parameters.guard";
+
 //----------------------------------------------------------------------------------------------------------------------
 
 const routes: Routes = [
@@ -42,7 +44,7 @@ const routes: Routes = [
         { path: "report-a-bug", component: ReportABugPageComponent },
         { path: "contact-with-us", component: ContactWithUsPageComponent },
         { path: "newsletter", component: NewsletterPageComponent },
-        { path: "unsubscribe-newsletter/:bearerToken", component: UnsubscribeNewsletterPageComponent },
+        { path: "unsubscribe-newsletter", component: UnsubscribeNewsletterPageComponent, canActivate: [ OnEmptyRedirectParametersGuard ] },
         { path: "privacy-policy", component: PrivacyPolicyPageComponent },
     ]},
 ];
