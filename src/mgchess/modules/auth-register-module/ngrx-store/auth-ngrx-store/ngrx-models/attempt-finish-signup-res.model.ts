@@ -24,11 +24,11 @@ export class AttemptFinishSignupResModel {
     dataFilled: boolean;
     responseMessage: string;
     authSupplier: string;
-    hashedEmails: Array<string>;
+    userEmailAddresses: Array<EmailHashWithNormalModel>;
 
     constructor(
         nickname: string, fullName: string, photoUrl: string, initials: string, dataFilled: boolean,
-        responseMessage: string, authSupplier: string, hashedEmails: Array<string>,
+        responseMessage: string, authSupplier: string, userEmailAddresses: Array<EmailHashWithNormalModel>,
     ) {
         this.nickname = nickname;
         this.fullName = fullName;
@@ -37,6 +37,18 @@ export class AttemptFinishSignupResModel {
         this.dataFilled = dataFilled;
         this.responseMessage = responseMessage;
         this.authSupplier = authSupplier;
-        this.hashedEmails = hashedEmails;
+        this.userEmailAddresses = userEmailAddresses;
     };
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+export class EmailHashWithNormalModel {
+    hash: string;
+    normal: string;
+
+    constructor(hash: string, normal: string) {
+        this.hash = hash;
+        this.normal = normal;
+    }
 }

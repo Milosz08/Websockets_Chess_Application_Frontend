@@ -24,10 +24,12 @@ import { Observable, Subject } from "rxjs";
 import { RxjsHelper } from "../../../../rxjs-helpers/rxjs.helper";
 
 import { ServerReqResHelper } from "../../../../http-request-helpers/server-req-res.helper";
+import { AngularFormsHelper } from "../../../../angular-forms-helpers/angular-forms.helper";
 import { AuthWithGfxCombinedReducerTypes } from "../../../../ngrx-helpers/ngrx-store.types";
 import { SimpleMessageResWithErrorModel } from "../../../../models/simple-message-response.model";
 import { ValidatorPatternConstants } from "../../../../validator-helpers/validator-pattern.constants";
 
+import * as NgrxAction_ATH from "../../ngrx-store/auth-ngrx-store/auth.actions";
 import * as NgrxSelector_ATH from "../../ngrx-store/auth-ngrx-store/auth.selectors";
 import * as NgrxSelector_GFX from "../../../shared-module/ngrx-store/gfx-ngrx-store/gfx.selectors";
 
@@ -71,7 +73,9 @@ export class ActivateAccountTokenFormComponent implements OnInit, OnDestroy {
     };
 
     handleSubmitActivateAccountViaOtaToken(): void {
-        console.log("sending form...");
+        const token = AngularFormsHelper.field("otaToken", this._activateTokenForm).value;
+        this._store.dispatch(NgrxAction_ATH.__attemptToActivateAccountViaOta({ token }));
+        this._activateTokenForm.reset();
     };
 
     handleResendVerificationEmailMessage(): void {

@@ -20,6 +20,7 @@ import { createFeatureSelector, createSelector } from "@ngrx/store";
 
 import { authNgrxStore } from "./auth.reducer";
 import { AuthStateTypes } from "./auth.initial";
+import { EmailHashWithNormalModel } from "./ngrx-models/attempt-finish-signup-res.model";
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -58,7 +59,8 @@ export const sel_finishSignupUserInitials = selectorWithInjectedStore(({ finishS
 );
 
 export const sel_finishSignupUserEmails = selectorWithInjectedStore(({ finishSignupAccountDetails }) =>
-    Boolean(finishSignupAccountDetails) ? finishSignupAccountDetails.hashedEmails : [],
+    Boolean(finishSignupAccountDetails)
+        ? finishSignupAccountDetails.userEmailAddresses.map((e: EmailHashWithNormalModel) => e.hash) : [],
 );
 
 export const sel_isFinishSignupTokenInvalid = selectorWithInjectedStore(({ isFinishSignupFormTokenIsValid }) =>
@@ -70,5 +72,5 @@ export const sel_finishSignupServerResponse = selectorWithInjectedStore(({ finis
 );
 
 export const sel_isFilledDataFormSkipped = selectorWithInjectedStore(({ finishSignupAccountDetails }) =>
-    Boolean(finishSignupAccountDetails) ? finishSignupAccountDetails.isDataFilled : false,
+    Boolean(finishSignupAccountDetails) ? finishSignupAccountDetails.dataFilled : false,
 );

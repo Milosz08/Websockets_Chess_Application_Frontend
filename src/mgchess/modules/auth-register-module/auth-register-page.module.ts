@@ -46,8 +46,9 @@ import { AuthRegisterPageComponent } from "./auth-register-page.component";
 import { AuthRegisterPageRoutingModule } from "./auth-register-page-routing.module";
 
 import { authNgrxStore } from "./ngrx-store/auth-ngrx-store/auth.reducer";
-import { LoginEffects } from "../shared-module/ngrx-store/session-ngrx-store/ngrx-effects/login.effects";
 import { SignupEffects } from "./ngrx-store/auth-ngrx-store/ngrx-effects/signup.effects";
+import { LoginEffects } from "../shared-module/ngrx-store/session-ngrx-store/ngrx-effects/login.effects";
+import { SignupActivateEffects } from "./ngrx-store/auth-ngrx-store/ngrx-effects/signup-activate.effects";
 
 import { AuthReqResService } from "./services/auth-req-res.service";
 import { StaticDataReqResService } from "./services/static-data-req-res.service";
@@ -89,6 +90,7 @@ import { PasswordStrengthMeterService } from "./services/password-strength-meter
         EffectsModule.forFeature([
             LoginEffects,
             SignupEffects,
+            SignupActivateEffects,
         ]),
     ],
     providers: [

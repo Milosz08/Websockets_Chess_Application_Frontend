@@ -30,7 +30,6 @@ export class HttpEndpointsHelper {
     readonly NEWSLETTER_SUBSCRIBE = this.NEWSLETTER_EMAIL + "subscribe";
     readonly NEWSLETTER_ATTEMPT_UNSUBSCRIBE = this.NEWSLETTER_EMAIL + "attempt-unsubscribe";
     readonly NEWSLETTER_UNSUBSCRIBE_VIA_OTA = this.NEWSLETTER_EMAIL + "unsubscribe-via-ota";
-    readonly NEWSLETTER_UNSUBSCRIBE_VIA_JWT = this.NEWSLETTER_EMAIL + "unsubscribe-via-jwt";
 
     private readonly AUTH_LOCAL = this.BASIC_HTTP + "auth-local/";
     readonly LOGIN_VIA_LOCAL = this.AUTH_LOCAL + "login-via-local";
@@ -41,7 +40,10 @@ export class HttpEndpointsHelper {
 
     private readonly RENEW_CREDETIALS_LOCAL = this.BASIC_HTTP + "renew-credentials/";
     readonly ATTEMPT_TO_CHANGE_PASSWORD = this.AUTH_LOCAL + "attempt-to-change-password";
-    readonly CHANGE_PASSWORD_VIA_OTA = this.AUTH_LOCAL + "change-password-via-ota";
+
+    private readonly OTA_TOKEN_ENDPOINT = this.BASIC_HTTP + "ota-token/";
+    readonly CHANGE_PASSWORD = this.OTA_TOKEN_ENDPOINT + "change-password";
+    readonly ACTIVATE_ACCOUNT = this.OTA_TOKEN_ENDPOINT + "activate-account";
 
     private readonly EXPOSE_STATIC_DATA = this.BASIC_HTTP + "static-data/";
     readonly SIGNUP_CALENDAR_DATA = this.EXPOSE_STATIC_DATA + "signup-calendar-data";

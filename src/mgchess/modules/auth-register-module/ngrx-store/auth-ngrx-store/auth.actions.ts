@@ -37,6 +37,10 @@ const ATTEMPT_TO_FINISH_SIGNUP_VIA_OAUTH2 = "[AUTH] ATTEMPT TO FINISH SIGNUP VIA
 const SUCCESSFUL_FINISH_SIGNUP_VIA_OAUTH2 = "[AUTH] SUCCESSFUL FINISH SIGNUP VIA OAUTH2" as const;
 const FAILURE_FINISH_SIGNUP_VIA_OAUTH2 = "[AUTH] FAILURE FINISH SIGNUP VIA OAUTH2" as const;
 
+const ATTEMPT_TO_ACTIVATE_ACCOUNT_VIA_OTA = "[AUTH] ATTEMPT TO ACTIVATE ACCOUNT VIA OTA" as const;
+const SUCCESSFUL_ACTIVATE_ACCOUNT_VIA_OTA = "[AUTH] SUCCESSFUL ACTIVATE ACCOUNT VIA OTA" as const;
+const FAILURE_ACTIVATE_ACCOUNT_VIA_OTA = "[AUTH] FAILURE ACTIVATE ACCOUNT VIA OTA" as const;
+
 const CLEAR_SERVER_RESPONSE = "[AUTH] CLEAR SERVER RESPONSE" as const;
 const CLEAR_FINISH_SIGNUP_USER_DATA = "[AUTH] CLEAR FINISH SIGNUP USER DATA" as const;
 const FILLED_FINISH_SIGNUP_RESPONSE_MESSAGE = "[AUTH] FILLED FINISH SIGNUP RESPONSE MESSAGE" as const;
@@ -86,6 +90,21 @@ export const __successfulSingUpViaLocal = createAction(
 
 export const __failureSingUpViaLocal = createAction(
     FAILURE_SIGNUP_VIA_LOCAL,
+    props<{ serverResponse: string }>(),
+);
+
+export const __attemptToActivateAccountViaOta = createAction(
+    ATTEMPT_TO_ACTIVATE_ACCOUNT_VIA_OTA,
+    props<{ token: string }>(),
+);
+
+export const __successfulActivateAccountViaOta = createAction(
+    SUCCESSFUL_ACTIVATE_ACCOUNT_VIA_OTA,
+    props<{ serverResponse: string }>(),
+);
+
+export const __failureActivateAccountViaOta = createAction(
+    FAILURE_ACTIVATE_ACCOUNT_VIA_OTA,
     props<{ serverResponse: string }>(),
 );
 

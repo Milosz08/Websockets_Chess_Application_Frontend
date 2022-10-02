@@ -39,7 +39,7 @@ const _authReducer = createReducer(
     }),
     on(NgrxAction.__successfulFinishSignupViaOAuth2, (state, action) => {
         return { ...state,
-            serverResponse: new SimpleMessageResWithErrorModel(action.serverResponse, false),
+            serverResponse: new SimpleMessageResWithErrorModel("", false),
             finishSignupReponseMessage: action.serverResponse,
         };
     }),
@@ -58,6 +58,16 @@ const _authReducer = createReducer(
         return { ...state,
             serverResponse: new SimpleMessageResWithErrorModel(action.serverResponse, true),
             isFinishSignupFormTokenIsValid: false,
+        };
+    }),
+    on(NgrxAction.__successfulActivateAccountViaOta, (state, action) => {
+        return { ...state,
+            serverResponse: new SimpleMessageResWithErrorModel(action.serverResponse, false),
+        };
+    }),
+    on(NgrxAction.__failureActivateAccountViaOta, (state, action) => {
+        return { ...state,
+            serverResponse: new SimpleMessageResWithErrorModel(action.serverResponse, true),
         };
     }),
     on(NgrxAction.__clearServerResponse, state => {

@@ -29,6 +29,10 @@ export class AngularFormsHelper {
         return field;
     };
 
+    static field(fieldname: string, form: FormGroup): AbstractControl<any, any> {
+        return new AngularFormsHelper().field(fieldname, form);
+    }
+
     fieldHasAnyErrors(fieldname: string, form: FormGroup): boolean {
         return this.field(fieldname, form).touched && this.field(fieldname, form).dirty
             && !this.field(fieldname, form).valid;

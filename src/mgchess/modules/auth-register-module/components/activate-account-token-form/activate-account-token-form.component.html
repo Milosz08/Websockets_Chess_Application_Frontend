@@ -70,9 +70,17 @@
         ></div>
     </button>
     <p
-        *ngIf="_serverResponse.responseMessage !== '' && _serverResponse.responseError"
+        *ngIf="_serverResponse.responseMessage !== ''"
         [ngClass]="_serverReqResHelper.responseReverseThemeCssClass(_serverResponse.responseError)"
     >
         {{ _serverResponse.responseMessage }}
     </p>
 </form>
+<a
+    *ngIf="_serverResponse.responseMessage !== '' && !_serverResponse.responseError"
+    routerLink="/auth/login"
+    title="Click to goto login page"
+    class="mg-chess__standard-button button--thirdly-mixed-border-variant"
+>
+    Login on your account
+</a>
