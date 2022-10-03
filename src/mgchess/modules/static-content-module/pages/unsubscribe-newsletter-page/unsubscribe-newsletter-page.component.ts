@@ -18,7 +18,6 @@
 
 import { Component } from "@angular/core";
 import { Meta, Title } from "@angular/platform-browser";
-import { ActivatedRoute } from "@angular/router";
 
 import { BrowserMetaSerializatorLoader } from "../../../../browser-meta-serialization/browser-meta-serializator.loader";
 import { SingleModuleType, SinglePageType } from "../../../../browser-meta-serialization/browser-meta-serializator.types";
@@ -35,7 +34,6 @@ export class UnsubscribeNewsletterPageComponent extends BrowserMetaSerializatorL
     constructor(
         private _metaService: Meta,
         private _titleService: Title,
-        private _route: ActivatedRoute,
     ) {
         super(_titleService, _metaService, SingleModuleType.STATIC_CONTENT_MODULE,
             SinglePageType.UNSUBSRIBE_NEWSLETTER_VIA_EMAIL_PAGE);

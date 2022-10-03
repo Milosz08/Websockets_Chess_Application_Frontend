@@ -16,18 +16,16 @@
   ~ COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
   -->
 
-<div class="mg-chess__flex-safety-container__wrapper simple-server-response-query-flex-full-space__container">
-    <h2 class="mg-chess__standard-header-with-decorator">
-        <span class="text-content">{{ _header }}</span>
-        <span class="separator"></span>
-    </h2>
-    <div
-        *ngIf="_serverResponseMessage !== ''"
-        class="simple-server-response-query-jwt__container"
-    >
-        <p [ngClass]="[ _serverReqResHelper.responseThemeCssClass(_responseError), 'simple-server-response-query-jwt__text-info' ]">
-            {{ _serverResponseMessage }}
-        </p>
-        <ng-content></ng-content>
-    </div>
+<h2 class="mg-chess__standard-header-with-decorator">
+    <span class="text-content">{{ _header }}</span>
+    <span class="separator"></span>
+</h2>
+<div
+    *ngIf="_serverResponseMessage !== ''"
+    class="simple-server-response-query-jwt__container"
+>
+    <p [ngClass]="[ _serverReqResHelper.responseThemeCssClass(_responseError), 'simple-server-response-query-jwt__text-info' ]">
+        {{ _serverResponseMessage }}
+    </p>
+    <ng-content></ng-content>
 </div>

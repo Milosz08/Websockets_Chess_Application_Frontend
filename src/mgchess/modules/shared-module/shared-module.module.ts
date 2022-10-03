@@ -89,6 +89,7 @@ import { CookiesNotificationLocalStorageService } from "./services/cookies-notif
         SingleChoiceBoxInputComponent,
         GlobalSuspenseLoaderComponent,
         SimpleServerResponseQueryComponent,
+        CloseOutsideClickComponentDirective,
     ],
     providers: [
         SessionReqResService,
