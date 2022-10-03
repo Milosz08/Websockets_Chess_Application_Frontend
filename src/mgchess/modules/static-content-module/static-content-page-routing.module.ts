@@ -22,14 +22,15 @@ import { RouterModule, Routes } from "@angular/router";
 import { StaticContentPageComponent } from "./static-content-page.component";
 
 import { HomePageComponent } from "./pages/home-page/home-page.component";
-import { RankingsPageComponent } from "./pages/rankings-page/rankings-page.component";
 import { AboutPageComponent } from "./pages/about-page/about-page.component";
+import { RankingsPageComponent } from "./pages/rankings-page/rankings-page.component";
 import { GameRulesPageComponent } from "./pages/game-rules-page/game-rules-page.component";
-import { ReportABugPageComponent } from "./pages/report-a-bug-page/report-a-bug-page.component";
-import { ContactWithUsPageComponent } from "./pages/contact-with-us-page/contact-with-us-page.component";
 import { NewsletterPageComponent } from "./pages/newsletter-page/newsletter-page.component";
-import { UnsubscribeNewsletterPageComponent } from "./pages/unsubscribe-newsletter-page/unsubscribe-newsletter-page.component";
+import { ReportABugPageComponent } from "./pages/report-a-bug-page/report-a-bug-page.component";
 import { PrivacyPolicyPageComponent } from "./pages/privacy-policy-page/privacy-policy-page.component";
+import { ContactWithUsPageComponent } from "./pages/contact-with-us-page/contact-with-us-page.component";
+import { ActivateAccountPageComponent } from "./pages/activate-account-page/activate-account-page.component";
+import { UnsubscribeNewsletterPageComponent } from "./pages/unsubscribe-newsletter-page/unsubscribe-newsletter-page.component";
 
 import { OnEmptyRedirectParametersGuard } from "../../guards/on-empty-redirect-parameters.guard";
 
@@ -38,14 +39,15 @@ import { OnEmptyRedirectParametersGuard } from "../../guards/on-empty-redirect-p
 const routes: Routes = [
     { path: "", component: StaticContentPageComponent, children: [
         { path: "", component: HomePageComponent },
-        { path: "rankings", component: RankingsPageComponent },
         { path: "about", component: AboutPageComponent },
+        { path: "rankings", component: RankingsPageComponent },
         { path: "game-rules", component: GameRulesPageComponent },
-        { path: "report-a-bug", component: ReportABugPageComponent },
-        { path: "contact-with-us", component: ContactWithUsPageComponent },
         { path: "newsletter", component: NewsletterPageComponent },
-        { path: "unsubscribe-newsletter", component: UnsubscribeNewsletterPageComponent, canActivate: [ OnEmptyRedirectParametersGuard ] },
+        { path: "report-a-bug", component: ReportABugPageComponent },
         { path: "privacy-policy", component: PrivacyPolicyPageComponent },
+        { path: "contact-with-us", component: ContactWithUsPageComponent },
+        { path: "activate-account", component: ActivateAccountPageComponent, canActivate: [ OnEmptyRedirectParametersGuard ] },
+        { path: "unsubscribe-newsletter", component: UnsubscribeNewsletterPageComponent, canActivate: [ OnEmptyRedirectParametersGuard ] },
     ]},
 ];
 

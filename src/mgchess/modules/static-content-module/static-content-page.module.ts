@@ -31,6 +31,7 @@ import { NewsletterPageComponent } from './pages/newsletter-page/newsletter-page
 import { ReportABugPageComponent } from './pages/report-a-bug-page/report-a-bug-page.component';
 import { PrivacyPolicyPageComponent } from './pages/privacy-policy-page/privacy-policy-page.component';
 import { ContactWithUsPageComponent } from './pages/contact-with-us-page/contact-with-us-page.component';
+import { ActivateAccountPageComponent } from "./pages/activate-account-page/activate-account-page.component";
 import { UnsubscribeNewsletterPageComponent } from './pages/unsubscribe-newsletter-page/unsubscribe-newsletter-page.component';
 
 import { HeaderWithNavigationComponent } from "./components/header-with-navigation/header-with-navigation.component";
@@ -59,6 +60,7 @@ import { NewsletterReqResService } from "./services/newsletter-req-res.service";
         ReportABugPageComponent,
         PrivacyPolicyPageComponent,
         ContactWithUsPageComponent,
+        ActivateAccountPageComponent,
         UnsubscribeNewsletterPageComponent,
         // components
         HeaderWithNavigationComponent,
