@@ -24,11 +24,13 @@ export class AttemptFinishSignupResModel {
     dataFilled: boolean;
     responseMessage: string;
     authSupplier: string;
+    jwtToken: string;
     userEmailAddresses: Array<EmailHashWithNormalModel>;
 
     constructor(
         nickname: string, fullName: string, photoUrl: string, initials: string, dataFilled: boolean,
         responseMessage: string, authSupplier: string, userEmailAddresses: Array<EmailHashWithNormalModel>,
+        jwtToken: string,
     ) {
         this.nickname = nickname;
         this.fullName = fullName;
@@ -38,6 +40,7 @@ export class AttemptFinishSignupResModel {
         this.responseMessage = responseMessage;
         this.authSupplier = authSupplier;
         this.userEmailAddresses = userEmailAddresses;
+        this.jwtToken = jwtToken;
     };
 }
 

@@ -40,6 +40,10 @@ const ATTEMPT_TO_ACTIVATE_ACCOUNT_VIA_OTA = "[AUTH] ATTEMPT TO ACTIVATE ACCOUNT 
 const SUCCESSFUL_ACTIVATE_ACCOUNT_VIA_OTA = "[AUTH] SUCCESSFUL ACTIVATE ACCOUNT VIA OTA" as const;
 const FAILURE_ACTIVATE_ACCOUNT_VIA_OTA = "[AUTH] FAILURE ACTIVATE ACCOUNT VIA OTA" as const;
 
+const ATTEMPT_TO_ATTEMPT_ACTIVATE_ACCOUNT_VIA_OTA = "[AUTH] ATTEMPT TO ATTEMPT ACTIVATE ACCOUNT VIA OTA" as const;
+const SUCCESSFUL_ATTEMPT_ACTIVATE_ACCOUNT_VIA_OTA = "[AUTH] SUCCESSFUL ATTEMPT ACTIVATE ACCOUNT VIA OTA" as const;
+const FAILURE_ATTEMPT_ACTIVATE_ACCOUNT_VIA_OTA = "[AUTH] FAILURE ATTEMPT ACTIVATE ACCOUNT VIA OTA" as const;
+
 const CLEAR_SERVER_RESPONSE = "[AUTH] CLEAR SERVER RESPONSE" as const;
 const CLEAR_FINISH_SIGNUP_USER_DATA = "[AUTH] CLEAR FINISH SIGNUP USER DATA" as const;
 const FILLED_FINISH_SIGNUP_RESPONSE_MESSAGE = "[AUTH] FILLED FINISH SIGNUP RESPONSE MESSAGE" as const;
@@ -104,6 +108,21 @@ export const __successfulActivateAccountViaOta = createAction(
 
 export const __failureActivateAccountViaOta = createAction(
     FAILURE_ACTIVATE_ACCOUNT_VIA_OTA,
+    props<{ serverResponse: string }>(),
+);
+
+export const __attemptToAttemptActivateAccountViaOta = createAction(
+    ATTEMPT_TO_ATTEMPT_ACTIVATE_ACCOUNT_VIA_OTA,
+    props<{ jwtToken: string }>(),
+);
+
+export const __successfulAttemptActivateAccountViaOta = createAction(
+    SUCCESSFUL_ATTEMPT_ACTIVATE_ACCOUNT_VIA_OTA,
+    props<{ activateAccountDetails: AttemptFinishSignupResModel }>(),
+);
+
+export const __failureAttemptActivateAccountViaOta = createAction(
+    FAILURE_ATTEMPT_ACTIVATE_ACCOUNT_VIA_OTA,
     props<{ serverResponse: string }>(),
 );
 

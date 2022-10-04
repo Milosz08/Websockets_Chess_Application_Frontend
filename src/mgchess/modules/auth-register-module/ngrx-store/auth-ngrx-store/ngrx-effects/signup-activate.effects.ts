@@ -45,6 +45,30 @@ export class SignupActivateEffects {
     ) {
     };
 
+    attemptToActivateAccountViaOta = createEffect(() => {
+        return this._actions$.pipe(
+            ofType(NgrxAction_ATH.__attemptToAttemptActivateAccountViaOta),
+            tap(() => {
+                this._store.dispatch(NgrxAction_GFX.__activeSuspense({ for: SuspenseLoader.ATTEMPT_ACTIVATE_ACCOUNT_VIA_OTA }));
+            }),
+            delay(RxjsConstants.DEF_DELAY_MILIS),
+            mergeMap(({ jwtToken }) => {
+                return this._httpService.attemptToActivateAccountViaOta(jwtToken).pipe(
+                    map(res => {
+                        return NgrxAction_ATH.__successfulAttemptActivateAccountViaOta({ activateAccountDetails: res });
+                    }),
+                    catchError(error => {
+                        return of(NgrxAction_ATH.__failureActivateAccountViaOta({
+                            serverResponse: RxjsHelper.serverResponseError(error) }));
+                    }),
+                );
+            }),
+            tap(() => {
+                this._store.dispatch(NgrxAction_GFX.__inactiveSuspense());
+            }),
+        );
+    });
+
     activateAccountViaOta = createEffect(() => {
         return this._actions$.pipe(
             ofType(NgrxAction_ATH.__attemptToActivateAccountViaOta),

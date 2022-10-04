@@ -15,3 +15,20 @@
  * THE ABOVE COPYRIGHT NOTICE AND THIS PERMISSION NOTICE SHALL BE INCLUDED IN ALL
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
+
+.activate-local-account__container {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: center;
+    max-width: 500px;
+    width: calc(100% - 60px);
+    margin: 0 30px;
+    .activate-local-account__wrapper {
+        padding: 20px 40px;
+        font-weight: var(--standard-font-weight);
+        color: var(--auth-login-form-foreground);
+        border-radius: var(--standard-modal-border-radius);
+        background-color: var(--auth-container-background-with-border);
+    }
+}

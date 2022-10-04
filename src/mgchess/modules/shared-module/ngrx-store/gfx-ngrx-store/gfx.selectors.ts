@@ -70,3 +70,8 @@ export const sel_activateAccountViaOta = selectorWithInjectedStore(({ suspenseSt
     suspenseStatus.isSuspenseLoading && suspenseStatus.loadingFor === SuspenseLoader.ACTIVATE_ACCOUNT_VIA_OTA,
 );
 
+export const sel_attemptToactivateAccountViaOta = selectorWithInjectedStore(({ suspenseStatus }) =>
+    suspenseStatus.isSuspenseLoading && suspenseStatus.loadingFor === SuspenseLoader.ATTEMPT_ACTIVATE_ACCOUNT_VIA_OTA,
+);
+
+

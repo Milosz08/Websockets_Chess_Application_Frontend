@@ -16,4 +16,34 @@
   ~ COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
   -->
 
-<p>activate-account-page works!</p>
+<div class="activate-local-account__container">
+    <aside
+        *ngIf="(_isSuspenseActive$ | async)"
+        class="mg-chess__activate-account__suspense-loader"
+    >
+        <div class="mg-chess__activate-account__suspense-circle"></div>
+    </aside>
+    <div
+        *ngIf="_serverResponse.responseError && _serverResponse.responseMessage !== ''; else showFormContent"
+        class="mg-chess__activate-account__error-container"
+    >
+        <p class="mg-chess__activate-account__error-paragraph text-centered">
+            {{ _serverResponse.responseMessage }}
+        </p>
+        <a
+            routerLink="/auth/login"
+            title="Click to goto login page"
+            class="mg-chess__standard-button button--primary-mixed-def-variant button--fitting button--small-full-width"
+        >
+            Return to login page
+        </a>
+    </div>
+    <ng-template #showFormContent>
+        <ng-container *ngIf="!(_isSuspenseActive$ | async)">
+            <mgchess-activate-account-token-form
+                [_cascadeResponseMessage]="(_finishSignupServerResponse$ | async) || ''"
+                class="activate-local-account__wrapper"
+            ></mgchess-activate-account-token-form>
+        </ng-container>
+    </ng-template>
+</div>

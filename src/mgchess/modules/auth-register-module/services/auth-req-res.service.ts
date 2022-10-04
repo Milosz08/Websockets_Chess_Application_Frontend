@@ -63,6 +63,14 @@ export class AuthReqResService {
         );
     };
 
+    attemptToActivateAccountViaOta(jwtToken: string): Observable<AttemptFinishSignupResModel> {
+        return this._http.post<AttemptFinishSignupResModel>(
+            this._endpoint.ATTEMPT_ACTIVATE_ACCOUNT,
+            null,
+            { headers: new HttpHeaders({ "Authorization": `Bearer ${jwtToken}` }) },
+        );
+    };
+
     activateAccountViaOta(req: OtaTokenMutlipleEmailsReqModel): Observable<SimpleMessageResponseModel> {
         return this._http.post<SimpleMessageResponseModel>(
             this._endpoint.ACTIVATE_ACCOUNT,

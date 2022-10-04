@@ -16,11 +16,23 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-import { Component } from "@angular/core";
+import { Component, OnDestroy, OnInit } from "@angular/core";
 import { Meta, Title } from "@angular/platform-browser";
+import { ActivatedRoute } from "@angular/router";
+import { Store } from "@ngrx/store";
+
+import { Observable, Subject } from "rxjs";
+import { RxjsHelper } from "../../../../rxjs-helpers/rxjs.helper";
 
 import { BrowserMetaSerializatorLoader } from "../../../../browser-meta-serialization/browser-meta-serializator.loader";
 import { SingleModuleType, SinglePageType } from "../../../../browser-meta-serialization/browser-meta-serializator.types";
+
+import { AuthReducerType } from "../../../../ngrx-helpers/ngrx-store.types";
+import { SimpleMessageResWithErrorModel } from "../../../../models/simple-message-response.model";
+
+import * as NgrxAction_ATH from "../../ngrx-store/auth-ngrx-store/auth.actions";
+import * as NgrxSelector_ATH from "../../ngrx-store/auth-ngrx-store/auth.selectors";
+import * as NgrxSelector_GFX from "../../../shared-module/ngrx-store/gfx-ngrx-store/gfx.selectors";
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -30,12 +42,34 @@ import { SingleModuleType, SinglePageType } from "../../../../browser-meta-seria
     styleUrls: [ "./activate-account-page.component.scss" ],
     host: { class: "mg-chess__flex-safety-container remove-margin__small-devices" },
 })
-export class ActivateAccountPageComponent extends BrowserMetaSerializatorLoader {
+export class ActivateAccountPageComponent extends BrowserMetaSerializatorLoader implements OnInit, OnDestroy {
+
+    _jwtToken: string = "";
+    _serverResponse!: SimpleMessageResWithErrorModel;
+
+    _isSuspenseActive$: Observable<boolean> = this._store.select(NgrxSelector_GFX.sel_attemptToactivateAccountViaOta);
+    _finishSignupServerResponse$: Observable<string> = this._store.select(NgrxSelector_ATH.sel_activateAccountServerResponse);
+
+    private _ngUnsubscribe: Subject<void> = new Subject<void>();
 
     constructor(
         private _metaService: Meta,
         private _titleService: Title,
+        private _route: ActivatedRoute,
+        private _store: Store<AuthReducerType>,
     ) {
         super(_titleService, _metaService, SingleModuleType.AUTH_REGISTER_MODULE, SinglePageType.ACTIVATE_ACCOUNT_PAGE);
+    };
+
+    ngOnInit(): void {
+        this._store.dispatch(NgrxAction_ATH.__clearServerResponse());
+        RxjsHelper.subscribeData(this._store, NgrxSelector_ATH.sel_serverResponse, this._ngUnsubscribe,
+            data => this._serverResponse = data);
+        this._jwtToken = String(this._route.snapshot.queryParamMap.get("token"));
+        this._store.dispatch(NgrxAction_ATH.__attemptToAttemptActivateAccountViaOta({ jwtToken: this._jwtToken }));
+    };
+
+    ngOnDestroy(): void {
+        RxjsHelper.cleanupExecutor(this._ngUnsubscribe);
     };
 }
