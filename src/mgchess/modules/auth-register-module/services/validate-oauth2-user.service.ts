@@ -23,7 +23,6 @@ import { Store } from "@ngrx/store";
 import { OAuthSupplier } from "../../../http-request-helpers/oauth2-request-endpoints.contants";
 
 import { SessionWithAuthCombinedReducerTypes } from "../../../ngrx-helpers/ngrx-store.types";
-import { LoginSignupViaOAuth2ReqModel } from "../../../models/login-signup-via-oauth2-req.model";
 
 import * as NgrxAction_ATH from "../ngrx-store/auth-ngrx-store/auth.actions";
 import * as NgrxAction_SES from "../../shared-module/ngrx-store/session-ngrx-store/session.actions";
@@ -47,17 +46,14 @@ export class ValidateOauth2UserService {
     };
 
     validateFinishSignup(): void {
-        const req = new LoginSignupViaOAuth2ReqModel(this._oauth2ResSupplier);
         this._store.dispatch(NgrxAction_ATH.__clearFinishSignupUserData());
-        this._store.dispatch(NgrxAction_ATH.__attemptToAttemptFinishSignupViaOAuth2({
-            req, jwtToken: this._oauth2ResToken }));
+        this._store.dispatch(NgrxAction_ATH.__attemptToAttemptFinishSignupViaOAuth2({ jwtToken: this._oauth2ResToken }));
     };
 
     validateLogin(): void {
-        const req = new LoginSignupViaOAuth2ReqModel(this._oauth2ResSupplier);
         this._store.dispatch(NgrxAction_ATH.__clearServerResponse());
         if (!Boolean(this._oauth2ResToken) || !Boolean(this._oauth2ResSupplier)) return;
-        this._store.dispatch(NgrxAction_SES.__attemptToLoginViaOAuth2({ req, jwtToken: this._oauth2ResToken }));
+        this._store.dispatch(NgrxAction_SES.__attemptToLoginViaOAuth2({ jwtToken: this._oauth2ResToken }));
     };
 
     get __isGoogleSupplierSuspenseActive(): boolean {

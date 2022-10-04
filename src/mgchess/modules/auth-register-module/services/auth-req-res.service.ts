@@ -28,7 +28,6 @@ import { LoginSignupViaOAuth2ReqModel, } from "../../../models/login-signup-via-
 import { SignupReqModel } from "../ngrx-store/auth-ngrx-store/ngrx-models/signup-req.model";
 import { FinishSignupReqModel } from "../ngrx-store/auth-ngrx-store/ngrx-models/finish-signup-req.model";
 import { AttemptFinishSignupResModel } from "../ngrx-store/auth-ngrx-store/ngrx-models/attempt-finish-signup-res.model";
-import { OtaTokenMutlipleEmailsReqModel } from "../models/ota-token-mutliple-emails-req.model";
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -48,10 +47,10 @@ export class AuthReqResService {
         );
     };
 
-    attemptToFinishSignupViaOAuth2(req: LoginSignupViaOAuth2ReqModel, jwtToken: string): Observable<AttemptFinishSignupResModel> {
+    attemptToFinishSignupViaOAuth2(jwtToken: string): Observable<AttemptFinishSignupResModel> {
         return this._http.post<AttemptFinishSignupResModel>(
             this._endpoint.ATTEMPT_FINISH_SIGNUP_VIA_OAUTH2,
-            req,
+            null,
             { headers: new HttpHeaders({ "Authorization": `Bearer ${jwtToken}` }) },
         );
     };

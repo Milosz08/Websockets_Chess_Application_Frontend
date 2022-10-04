@@ -75,13 +75,13 @@ export class SignupEffects {
     attemptToFinishSignupViaOAuth2 = createEffect(() => {
         return this._actions$.pipe(
             ofType(NgrxAction_ATH.__attemptToAttemptFinishSignupViaOAuth2),
-            tap(({ req, jwtToken }) => {
+            tap(({ jwtToken }) => {
                 this._store.dispatch(NgrxAction_ATH.__filledFinishSignupJwtToken({ jwtToken }));
                 this._store.dispatch(NgrxAction_GFX.__activeSuspense({ for: SuspenseLoader.ATTEMPT_FINISH_SIGNUP_VIA_OAUTH2 }));
             }),
             delay(RxjsConstants.DEF_DELAY_MILIS),
-            mergeMap(({ req, jwtToken }) => {
-                return this._httpService.attemptToFinishSignupViaOAuth2(req, jwtToken).pipe(
+            mergeMap(({ jwtToken }) => {
+                return this._httpService.attemptToFinishSignupViaOAuth2(jwtToken).pipe(
                     map(res => {
                         if (res.dataFilled) {
                             this._store.dispatch(NgrxAction_ATH.__filledFinishSignupResponseMessage({

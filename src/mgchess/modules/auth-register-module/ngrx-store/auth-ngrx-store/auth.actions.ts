@@ -21,7 +21,6 @@ import { createAction, props } from "@ngrx/store";
 import { SignupFormModel } from "../../models/signup-form.model";
 import { FinishSignupFormModel } from "../../models/finish-signup-form.model";
 import { AttemptFinishSignupResModel } from "./ngrx-models/attempt-finish-signup-res.model";
-import { LoginSignupViaOAuth2ReqModel } from "../../../../models/login-signup-via-oauth2-req.model";
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -50,7 +49,7 @@ const FILLED_FINISH_SIGNUP_JWT_TOKEN = "[AUTH] FILLED FINISH SIGNUP JWT TOKEN" a
 
 export const __attemptToAttemptFinishSignupViaOAuth2 = createAction(
     ATTEMPT_TO_ATTEMPT_FINISH_SIGNUP_VIA_OAUTH2,
-    props<{ req: LoginSignupViaOAuth2ReqModel, jwtToken: string }>(),
+    props<{ jwtToken: string }>(),
 );
 
 export const __successfulAttemptFinishSignupViaOAuth2 = createAction(
@@ -85,7 +84,7 @@ export const __attemptToSingUpViaLocal = createAction(
 
 export const __successfulSingUpViaLocal = createAction(
     SUCCESSFUL_SIGNUP_VIA_LOCAL,
-    props<{ serverResponse: string }>(),
+    props<{ newAccountDetails: AttemptFinishSignupResModel }>(),
 );
 
 export const __failureSingUpViaLocal = createAction(

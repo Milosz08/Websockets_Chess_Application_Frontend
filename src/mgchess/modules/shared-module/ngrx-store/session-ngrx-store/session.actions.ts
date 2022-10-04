@@ -20,7 +20,6 @@ import { createAction, props } from "@ngrx/store";
 import { LoginFormModel } from "../../../auth-register-module/models/login-form.model";
 
 import { UserCredentialsDataResModel } from "./ngrx-models/user-credentials-data-res.model";
-import { LoginSignupViaOAuth2ReqModel } from "../../../../models/login-signup-via-oauth2-req.model";
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -40,7 +39,7 @@ export const __attemptToLoginViaLocal = createAction(
 
 export const __attemptToLoginViaOAuth2 = createAction(
     ATTEMPT_LOGIN_VIA_OAUTH2,
-    props<{ req: LoginSignupViaOAuth2ReqModel, jwtToken: string }>(),
+    props<{ jwtToken: string }>(),
 );
 
 export const __successfulLogin = createAction(

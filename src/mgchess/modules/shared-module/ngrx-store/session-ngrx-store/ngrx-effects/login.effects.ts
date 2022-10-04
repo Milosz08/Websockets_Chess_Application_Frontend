@@ -81,8 +81,8 @@ export class LoginEffects {
                 this._store.dispatch(NgrxAction_GFX.__activeSuspense({ for: SuspenseLoader.ATTEMPT_LOGIN_VIA_OAUTH2 }));
             }),
             delay(RxjsConstants.DEF_DELAY_MILIS * 2),
-            mergeMap(({ req, jwtToken }) => {
-                return this._httpService.loginViaOAuth2(req, jwtToken).pipe(
+            mergeMap(({ jwtToken }) => {
+                return this._httpService.loginViaOAuth2(jwtToken).pipe(
                     map(credentialsData => {
                         return NgrxAction_SES.__successfulLogin({ credentialsData });
                     }),
@@ -97,13 +97,4 @@ export class LoginEffects {
             }),
         );
     });
-
-    redirectToStartOnSuccessfulLogin$ = createEffect(() => {
-        return this._actions$.pipe(
-            ofType(NgrxAction_SES.__successfulLogin),
-            tap(() => {
-                this._router.navigate([ "/" ]).then(r => r);
-            }),
-        );
-    }, { dispatch: false });
 }
