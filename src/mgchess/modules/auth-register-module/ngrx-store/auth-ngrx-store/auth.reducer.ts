@@ -29,7 +29,7 @@ const _authReducer = createReducer(
     initialAuthState,
     on(NgrxAction.__successfulSingUpViaLocal, (state, action) => {
         return { ...state,
-            serverResponse: new SimpleMessageResWithErrorModel(action.serverResponse, false),
+            finishSignupAccountDetails: action.newAccountDetails,
         };
     }),
     on(NgrxAction.__failureSingUpViaLocal, (state, action) => {
@@ -66,6 +66,16 @@ const _authReducer = createReducer(
         };
     }),
     on(NgrxAction.__failureActivateAccountViaOta, (state, action) => {
+        return { ...state,
+            serverResponse: new SimpleMessageResWithErrorModel(action.serverResponse, true),
+        };
+    }),
+    on(NgrxAction.__successfulAttemptActivateAccountViaOta, (state, action) => {
+        return { ...state,
+            finishSignupAccountDetails: action.activateAccountDetails,
+        };
+    }),
+    on(NgrxAction.__failureAttemptActivateAccountViaOta, (state, action) => {
         return { ...state,
             serverResponse: new SimpleMessageResWithErrorModel(action.serverResponse, true),
         };

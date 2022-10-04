@@ -24,10 +24,11 @@ export class UserCredentialsDataResModel {
     photoUrl: string;
     jwtToken: string;
     refreshToken: string;
+    activated: boolean;
 
     constructor(
         nickname: string, firstName: string, lastName: string, ifHasPhoto: boolean, photoUrl: string, jwtToken: string,
-        refreshToken: string,
+        refreshToken: string, activated: boolean,
     ) {
         this.nickname = nickname;
         this.firstName = firstName;
@@ -36,5 +37,6 @@ export class UserCredentialsDataResModel {
         this.photoUrl = photoUrl;
         this.jwtToken = jwtToken;
         this.refreshToken = refreshToken;
+        this.activated = activated;
     };
 }

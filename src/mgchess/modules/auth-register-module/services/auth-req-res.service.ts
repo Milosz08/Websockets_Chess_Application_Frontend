@@ -23,7 +23,7 @@ import { Observable } from "rxjs";
 
 import { HttpEndpointsHelper } from "../../../http-request-helpers/http-endpoints.helper";
 import { SimpleMessageResponseModel } from "../../../models/simple-message-response.model";
-import { LoginSignupViaOAuth2ReqModel, } from "../../../models/login-signup-via-oauth2-req.model";
+import { OtaTokenMutlipleEmailsReqModel } from "../models/ota-token-mutliple-emails-req.model";
 
 import { SignupReqModel } from "../ngrx-store/auth-ngrx-store/ngrx-models/signup-req.model";
 import { FinishSignupReqModel } from "../ngrx-store/auth-ngrx-store/ngrx-models/finish-signup-req.model";
@@ -40,8 +40,8 @@ export class AuthReqResService {
     ) {
     };
 
-    signupViaLocal(req: SignupReqModel): Observable<SimpleMessageResponseModel> {
-        return this._http.post<SimpleMessageResponseModel>(
+    signupViaLocal(req: SignupReqModel): Observable<AttemptFinishSignupResModel> {
+        return this._http.post<AttemptFinishSignupResModel>(
             this._endpoint.SIGNUP_VIA_LOCAL,
             req,
         );

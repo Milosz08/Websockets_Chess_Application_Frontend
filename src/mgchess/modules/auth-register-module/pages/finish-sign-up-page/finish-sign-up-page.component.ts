@@ -48,7 +48,7 @@ export class FinishSignUpPageComponent extends BrowserMetaSerializatorLoader imp
     _oauth2SuspenseActive: boolean = false;
     _serverResponse!: SimpleMessageResWithErrorModel;
 
-    _isTokenInvalidValid$: Observable<boolean> = this._store.select(NgrxSelector_ATH.sel_isFinishSignupTokenInvalid);
+    _isTokenInvalid$: Observable<boolean> = this._store.select(NgrxSelector_ATH.sel_isFinishSignupTokenInvalid);
     _finishSignupUserPhoto$: Observable<string> = this._store.select(NgrxSelector_ATH.sel_finishSignupUserPhoto);
     _finishSignupUserSupplier$: Observable<string> = this._store.select(NgrxSelector_ATH.sel_finishSignupUserSupplier);
     _finishSignupUserFullName$: Observable<string> = this._store.select(NgrxSelector_ATH.sel_finishSignupUserFullName);
