@@ -148,6 +148,29 @@
     }
 }
 
+.mg-chess__activate-account__suspense-loader {
+    display: flex;
+    justify-content: center;
+    .mg-chess__activate-account__suspense-circle {
+        width: 70px;
+        height: 70px;
+        animation: spinner-animation .75s ease-out infinite;
+        border-radius: 50%;
+        border: .3em solid;
+        border-color: var(--primary-spinner-color) transparent transparent var(--primary-spinner-color);
+    }
+}
+
+.mg-chess__activate-account__error-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .mg-chess__activate-account__error-paragraph {
+        color: var(--form-data-paragraph-error-secondary-color);
+        margin-bottom: 20px;
+    }
+}
+
 //----------------------------------------------------------------------------------------------------------------------
 
 @media only screen and (max-width: 790px) {
@@ -179,5 +202,8 @@
         .mgchess__discrete-modal-section {
             padding: 0;
         }
+    }
+    .mg-chess__activate-account__suspense-loader {
+        margin: 100px 0;
     }
 }

@@ -19,16 +19,16 @@
 <div class="finish-sign-up__main-container">
     <aside
         *ngIf="_oauth2SuspenseActive"
-        class="finish-sign-up__suspense-container"
+        class="mg-chess__activate-account__suspense-loader"
     >
-        <div class="finish-sign-up__suspense-circle"></div>
+        <div class="mg-chess__activate-account__suspense-circle"></div>
     </aside>
     <div
         *ngIf="_serverResponse.responseError && _serverResponse.responseMessage !== ''
-                && (_isTokenInvalidValid$ | async) else showFormContent"
-        class="finish-sign-up__error-container"
+                && (_isTokenInvalid$ | async) else showFormContent"
+        class="mg-chess__activate-account__error-container"
     >
-        <p class="finish-sign-up__error-paragraph text-centered">
+        <p class="mg-chess__activate-account__error-paragraph text-centered">
             {{ _serverResponse.responseMessage }}
         </p>
         <a
