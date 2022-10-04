@@ -60,6 +60,13 @@ export class LoginEffects {
                         if (loginForm.rememberAccount) {
                             // TODO: add saving account implementation
                         }
+                        if (!credentialsData.activated) {
+                            this._router.navigate([ "/auth/activate-account" ],
+                                { queryParams: { token: credentialsData.jwtToken } }
+                            ).then(r => r);
+                        } else {
+                            this._router.navigate([ "/" ]).then(r => r);
+                        }
                         return NgrxAction_SES.__successfulLogin({ credentialsData });
                     }),
                     catchError(error => {
@@ -84,6 +91,7 @@ export class LoginEffects {
             mergeMap(({ jwtToken }) => {
                 return this._httpService.loginViaOAuth2(jwtToken).pipe(
                     map(credentialsData => {
+                        this._router.navigate([ "/" ]).then(r => r);
                         return NgrxAction_SES.__successfulLogin({ credentialsData });
                     }),
                     catchError(error => {

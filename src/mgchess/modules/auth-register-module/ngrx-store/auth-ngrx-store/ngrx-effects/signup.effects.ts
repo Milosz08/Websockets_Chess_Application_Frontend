@@ -18,6 +18,7 @@
 
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
+import { Router } from "@angular/router";
 import { Store } from "@ngrx/store";
 
 import { catchError, delay, map, mergeMap, of, tap, withLatestFrom } from "rxjs";
@@ -41,6 +42,7 @@ import * as NgrxAction_GFX from "../../../../shared-module/ngrx-store/gfx-ngrx-s
 export class SignupEffects {
 
     constructor(
+        private _router: Router,
         private _actions$: Actions,
         private _httpService: AuthReqResService,
         private _store: Store<AuthWithGfxCombinedReducerTypes>,
@@ -57,8 +59,10 @@ export class SignupEffects {
             mergeMap(({ signupForm }) => {
                 const req = new SignupReqModel(signupForm);
                 return this._httpService.signupViaLocal(req).pipe(
-                    map(({ responseMessage }) => {
-                        return NgrxAction_ATH.__successfulSingUpViaLocal({ serverResponse: responseMessage });
+                    map(res => {
+                        this._router.navigate([ "/auth/activate-account" ],
+                            { queryParams: { token: res.jwtToken } }).then(r => r);
+                        return NgrxAction_ATH.__successfulSingUpViaLocal({ newAccountDetails: res });
                     }),
                     catchError(error => {
                         return of(NgrxAction_ATH.__failureSingUpViaLocal({
