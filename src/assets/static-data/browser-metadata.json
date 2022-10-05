@@ -88,6 +88,18 @@
                 "description": "Online chess application grid page."
             }
         ],
+        "securedModule": [
+            {
+                "pageId": "MY_ACCOUNT_PAGE",
+                "title": "My Account",
+                "description": "On this page you can find and change your personal informations."
+            },
+            {
+                "pageId": "MY_ACCOUNT_DASHBOARD_PAGE",
+                "title": "My Account - Dashboard",
+                "description": "On this page you can find general informations about your account."
+            }
+        ],
         "sharedModule": [
             {
                 "pageId": "CONTENT_NOT_FOUND_PAGE",

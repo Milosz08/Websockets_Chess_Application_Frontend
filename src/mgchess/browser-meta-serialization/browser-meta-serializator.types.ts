@@ -20,6 +20,7 @@ export enum SingleModuleType {
     STATIC_CONTENT_MODULE = "staticContentModule",
     AUTH_REGISTER_MODULE = "authRegisterModule",
     DYNAMIC_APP_MODULE = "dynamicAppModule",
+    SECURED_MODULE = "securedModule",
     SHARED_MODULE = "sharedModule",
 }
 
@@ -43,4 +44,6 @@ export enum SinglePageType {
     ACTIVATE_ACCOUNT_PAGE = "ACTIVATE_ACCOUNT_PAGE",
     FINISH_SIGNUP_PAGE = "FINISH_SIGNUP_PAGE",
     ACTIVATE_ACCOUNT_VIA_EMAIL_PAGE = "ACTIVATE_ACCOUNT_VIA_EMAIL_PAGE",
+    MY_ACCOUNT_PAGE = "MY_ACCOUNT_PAGE",
+    MY_ACCOUNT_DASHBOARD_PAGE = "MY_ACCOUNT_DASHBOARD_PAGE",
 }
