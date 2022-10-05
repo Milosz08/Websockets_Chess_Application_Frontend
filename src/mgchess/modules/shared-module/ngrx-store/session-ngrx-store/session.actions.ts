@@ -28,6 +28,10 @@ const ATTEMPT_LOGIN_VIA_OAUTH2 = "[SESSION] ATTEMPT LOGIN VIA OAUTH2" as const;
 const SUCCESSFUL_LOGIN = "[SESSION] SUCCESSFUL LOGIN" as const;
 const FAILURE_LOGIN = "[SESSION] FAILURE LOGIN" as const;
 
+const ATTEMPT_TO_LOGOUT = "[SESSION] ATTEMPT TO LOGOUT" as const;
+const SUCCESSFUL_LOGOUT = "[SESSION] SUCCESSFUL LOGOUT" as const;
+const FAILURE_LOGOUT = "[SESSION] FAILURE LOGOUT" as const;
+
 const CLEAR_SERVER_RESPONSE = "[SESSION] CLEAR SERVER RESPONSE" as const;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -49,6 +53,19 @@ export const __successfulLogin = createAction(
 
 export const __failureLogin = createAction(
     FAILURE_LOGIN,
+    props<{ serverResponse: string }>(),
+);
+
+export const __attemptToLogout = createAction(
+    ATTEMPT_TO_LOGOUT,
+);
+
+export const __successfulLogout = createAction(
+    SUCCESSFUL_LOGOUT,
+);
+
+export const __failureLogout = createAction(
+    FAILURE_LOGOUT,
     props<{ serverResponse: string }>(),
 );
 

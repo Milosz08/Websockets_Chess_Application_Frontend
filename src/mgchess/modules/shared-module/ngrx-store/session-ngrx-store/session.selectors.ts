@@ -29,6 +29,18 @@ const selectorWithInjectedStore = (payload: (state: any, action?: any) => any) =
 
 //----------------------------------------------------------------------------------------------------------------------
 
-export const sel_serverResponse = selectorWithInjectedStore(state =>
-    state.serverResponse,
+export const sel_serverResponse = selectorWithInjectedStore(({ serverResponse }) =>
+    serverResponse,
+);
+
+export const sel_userIsNotLogged = selectorWithInjectedStore(({ isLogged, userCredentialsData }) =>
+    !isLogged || !Boolean(userCredentialsData),
+);
+
+export const sel_userAlreadyNotLogged = selectorWithInjectedStore(({ isLogged, userCredentialsData }) =>
+    isLogged && Boolean(userCredentialsData),
+);
+
+export const sel_userLoggedData = selectorWithInjectedStore(({ userCredentialsData }) =>
+    userCredentialsData,
 );

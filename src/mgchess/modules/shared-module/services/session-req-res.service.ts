@@ -51,4 +51,11 @@ export class SessionReqResService {
             { headers: new HttpHeaders({ "Authorization": `Bearer ${jwtToken}` }) },
         );
     };
+
+    logout(jwtToken: string): Observable<void> {
+        return this._http.delete<void>(
+            this._endpoint.LOGOUT,
+            { headers: new HttpHeaders({ "Authorization": `Bearer ${jwtToken}` }) },
+        );
+    };
 }

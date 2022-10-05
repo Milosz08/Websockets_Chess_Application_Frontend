@@ -18,25 +18,27 @@
 
 export class UserCredentialsDataResModel {
     nickname: string;
-    firstName: string;
-    lastName: string;
+    fullName: string;
+    initials: string;
     ifHasPhoto: boolean;
     photoUrl: string;
     jwtToken: string;
     refreshToken: string;
     activated: boolean;
+    credentialsSupplier: string;
 
     constructor(
-        nickname: string, firstName: string, lastName: string, ifHasPhoto: boolean, photoUrl: string, jwtToken: string,
-        refreshToken: string, activated: boolean,
+        nickname: string, fullName: string, initials: string, ifHasPhoto: boolean, photoUrl: string, jwtToken: string,
+        refreshToken: string, activated: boolean, credentialsSupplier: string,
     ) {
         this.nickname = nickname;
-        this.firstName = firstName;
-        this.lastName = lastName;
+        this.fullName = fullName;
+        this.initials = initials;
         this.ifHasPhoto = ifHasPhoto;
         this.photoUrl = photoUrl;
         this.jwtToken = jwtToken;
         this.refreshToken = refreshToken;
         this.activated = activated;
+        this.credentialsSupplier = credentialsSupplier;
     };
 }

@@ -16,22 +16,26 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-import { Injectable } from "@angular/core";
+import { Inject, Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
+import { DOCUMENT } from "@angular/common";
 import { Router } from "@angular/router";
 import { Store } from "@ngrx/store";
 
-import { catchError, delay, map, mergeMap, of, tap } from "rxjs";
+import { catchError, delay, map, mergeMap, of, tap, withLatestFrom } from "rxjs";
 import { RxjsHelper } from "../../../../../rxjs-helpers/rxjs.helper";
 import { RxjsConstants } from "../../../../../rxjs-helpers/rxjs.constants";
 
 import { SessionReqResService } from "../../../services/session-req-res.service";
 import { SuspenseLoader } from "../../../../../models/suspense-loader-res.model";
 
-import * as NgrxAction_SES from "../session.actions";
-import * as NgrxAction_GFX from "../../gfx-ngrx-store/gfx.actions";
+import { sessionNgrxStore } from "../session.reducer";
 import { LoginReqModel } from "../ngrx-models/login-data-req.model";
 import { SessionWithGfxCombinedReducerTypes } from "../../../../../ngrx-helpers/ngrx-store.types";
+
+import * as NgrxAction_SES from "../session.actions";
+import * as NgrxAction_GFX from "../../gfx-ngrx-store/gfx.actions";
+import { GfxEffects } from "../../gfx-ngrx-store/ngrx-effects/gfx.effects";
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -42,6 +46,7 @@ export class LoginEffects {
         private _router: Router,
         private _actions$: Actions,
         private _httpService: SessionReqResService,
+        @Inject(DOCUMENT) private _document: Document,
         private _store: Store<SessionWithGfxCombinedReducerTypes>,
     ) {
     };
@@ -105,4 +110,39 @@ export class LoginEffects {
             }),
         );
     });
+
+    logout$ = createEffect(() => {
+        return this._actions$.pipe(
+            ofType(NgrxAction_SES.__attemptToLogout),
+            withLatestFrom(this._store.select(sessionNgrxStore.reducerName)),
+            tap(() => {
+                this._document.body.classList.add(GfxEffects.SCROLL_DISABLED_CSS);
+                this._store.dispatch(NgrxAction_GFX.__activeGlobalSuspense());
+            }),
+            delay(RxjsConstants.DEF_DELAY_MILIS),
+            mergeMap(([ _, state ]) => {
+                return this._httpService.logout(state.userCredentialsData!.jwtToken).pipe(
+                    map(() => NgrxAction_SES.__successfulLogout()),
+                    catchError(error => {
+                        return of(NgrxAction_SES.__failureLogin({
+                            serverResponse: RxjsHelper.serverResponseError(error) }));
+                    }),
+                );
+            }),
+            tap(() => {
+                this._document.body.classList.remove(GfxEffects.SCROLL_DISABLED_CSS);
+                this._store.dispatch(NgrxAction_GFX.__inactiveGlobalSuspense());
+            }),
+        );
+    });
+
+    finishLogoutProcedure$ = createEffect(() => {
+        return this._actions$.pipe(
+            ofType(NgrxAction_SES.__successfulLogout),
+            tap(() => {
+                this._router.navigate([ "/" ]).then(r => r);
+                // TODO: Remove saved account from local storage
+            }),
+        );
+    }, { dispatch: false });
 }

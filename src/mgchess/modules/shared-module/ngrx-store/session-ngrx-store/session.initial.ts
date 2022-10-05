@@ -23,6 +23,7 @@ import { SimpleMessageResWithErrorModel } from "../../../../models/simple-messag
 
 export interface SessionStateTypes {
     serverResponse: SimpleMessageResWithErrorModel;
+    isLogged: boolean;
     userCredentialsData: UserCredentialsDataResModel | null;
 }
 
@@ -30,5 +31,6 @@ export interface SessionStateTypes {
 
 export const initialSessionState: SessionStateTypes = {
     serverResponse: new SimpleMessageResWithErrorModel("", false),
+    isLogged: true,
     userCredentialsData: null,
 };

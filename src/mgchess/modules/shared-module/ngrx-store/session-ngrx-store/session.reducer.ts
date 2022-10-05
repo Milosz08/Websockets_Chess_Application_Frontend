@@ -29,10 +29,22 @@ const _sessionReducer = createReducer(
     initialSessionState,
     on(NgrxAction.__successfulLogin, (state, action) => {
         return { ...state,
+            isLogged: true,
             userCredentialsData: action.credentialsData,
         };
     }),
     on(NgrxAction.__failureLogin, (state, action) => {
+        return { ...state,
+            serverResponse: new SimpleMessageResWithErrorModel(action.serverResponse, true),
+        };
+    }),
+    on(NgrxAction.__successfulLogout, state => {
+        return { ...state,
+            isLogged: false,
+            userCredentialsData: null,
+        };
+    }),
+    on(NgrxAction.__failureLogout, (state, action) => {
         return { ...state,
             serverResponse: new SimpleMessageResWithErrorModel(action.serverResponse, true),
         };
