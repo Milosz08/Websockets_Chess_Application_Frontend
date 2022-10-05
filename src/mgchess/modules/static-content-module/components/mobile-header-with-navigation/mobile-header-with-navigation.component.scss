@@ -16,8 +16,6 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-//----------------------------------------------------------------------------------------------------------------------
-
 .mobile-header__container {
     display: flex;
     justify-content: space-between;
@@ -133,7 +131,7 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 
-@media only screen and (min-width: 920px) {
+@media only screen and (min-width: 921px) {
     :host {
         display: none;
     }

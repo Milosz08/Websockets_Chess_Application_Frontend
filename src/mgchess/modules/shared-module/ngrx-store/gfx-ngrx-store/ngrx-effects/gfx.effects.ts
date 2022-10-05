@@ -30,7 +30,7 @@ import * as NgrxAction_GFX from "../gfx.actions";
 @Injectable()
 export class GfxEffects {
 
-    private readonly SCROLL_DISABLED_CSS = "scroll--disabled";
+    public static readonly SCROLL_DISABLED_CSS = "scroll--disabled";
 
     constructor(
         private _actions$: Actions,
@@ -42,11 +42,11 @@ export class GfxEffects {
         return this._actions$.pipe(
             ofType(NgrxAction_GFX.__prependInactiveGlobalSuspense),
             tap(() => {
-                this._document.body.classList.add(this.SCROLL_DISABLED_CSS);
+                this._document.body.classList.add(GfxEffects.SCROLL_DISABLED_CSS);
             }),
             delay(RxjsConstants.DEF_SUSPENSE_MILIS),
             map(() => {
-                this._document.body.classList.remove(this.SCROLL_DISABLED_CSS);
+                this._document.body.classList.remove(GfxEffects.SCROLL_DISABLED_CSS);
                 return NgrxAction_GFX.__inactiveGlobalSuspense();
             })
         );

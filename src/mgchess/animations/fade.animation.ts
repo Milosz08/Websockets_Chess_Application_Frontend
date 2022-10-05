@@ -29,3 +29,22 @@ export const FadeOutAnimation = trigger("FadeOutAnimation", [
         ],
     ),
 ]);
+
+//----------------------------------------------------------------------------------------------------------------------
+
+export const FadeInOutAnimation = trigger('FadeInOutAnimation', [
+    transition(
+        ':enter',
+        [
+            style({ opacity: 0 }),
+            animate('.2s ease-out', style({ opacity: 1 })),
+        ],
+    ),
+    transition(
+        ':leave',
+        [
+            style({ opacity: 1 }),
+            animate('.2s ease-out', style({ opacity: 0 })),
+        ],
+    ),
+]);

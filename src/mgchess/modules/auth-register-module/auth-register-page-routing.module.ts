@@ -27,15 +27,17 @@ import { FinishSignUpPageComponent } from "./pages/finish-sign-up-page/finish-si
 import { ForgotPasswordPageComponent } from "./pages/forgot-password-page/forgot-password-page.component";
 import { ActivateAccountPageComponent } from "./pages/activate-account-page/activate-account-page.component";
 
+import { OnAlreadyLoggedRedirectGuard } from "../../guards/on-already-logged-redirect.guard";
+
 //----------------------------------------------------------------------------------------------------------------------
 
 const routes: Routes = [
     { path: "", component: AuthRegisterPageComponent, children: [
         { path: "", redirectTo: "login", pathMatch: "full" },
-        { path: "login", component: LogInPageComponent },
+        { path: "login", component: LogInPageComponent, canActivate: [ OnAlreadyLoggedRedirectGuard ] },
         { path: "signup", component: SingUpPageComponent },
         { path: "forgot-password", component: ForgotPasswordPageComponent },
-        { path: "activate-account", component: ActivateAccountPageComponent },
+        { path: "activate-account", component: ActivateAccountPageComponent, canActivate: [ OnAlreadyLoggedRedirectGuard ] },
         { path: "finish-signup", component: FinishSignUpPageComponent },
     ]},
 ];
