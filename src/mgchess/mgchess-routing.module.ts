@@ -35,10 +35,15 @@ const dynamicAppPathLazyLoaderInitializer = () => (
     import("./modules/dynamic-app-module/dynamic-app-page.module").then(m => m.DynamicAppPageModule)
 );
 
+const securePathLazyLoaderInitializer = () => (
+    import("./modules/secure-module/secure-page.module").then(m => m.SecurePageModule)
+);
+
 const routes: Routes = [
     { path: "", loadChildren: absolutePathLazyLoaderInitializer },
     { path: "auth", loadChildren: authRegisterPathLazyLoaderInitializer },
     { path: "app", loadChildren: dynamicAppPathLazyLoaderInitializer },
+    { path: "secure", loadChildren: securePathLazyLoaderInitializer },
     { path: "**", component: ContentNotFoundPageComponent }
 ];
 

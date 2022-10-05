@@ -128,7 +128,10 @@
     &.button--primary-mixed-def-variant {
         color: var(--button-primary-mixed-color);
         background-color: var(--button-primary-mixed-background-color);
-        font-weight: var(--standard-font-weight);
+    }
+    &.button--primary-border-def-variant {
+        border-color: var(--button-primary-mixed-background-color);
+        color: var(--button-primary-mixed-background-color);
     }
     &.button--secondary-mixed-def-variant {
         color: var(--button-secondary-mixed-color);
@@ -139,9 +142,17 @@
         background-color: var(--button-thirdly-mixed-background);
     }
     &.button--thirdly-mixed-border-variant {
-        border: 1px solid var(--button-thirdly-mixed-background);
+        border-color: var(--button-thirdly-mixed-background);
         color: var(--button-thirdly-mixed-background);
+    }
+    &.button--primary-border-def-variant,
+    &.button--thirdly-mixed-border-variant{
+        border: 1px solid;
         background-color: transparent;
+    }
+    &.button--primary-mixed-def-variant,
+    &.button--primary-border-def-variant {
+        font-weight: var(--standard-font-weight);
     }
     &:disabled {
         cursor: not-allowed;
