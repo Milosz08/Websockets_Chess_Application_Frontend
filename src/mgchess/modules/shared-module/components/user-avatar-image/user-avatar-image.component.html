@@ -27,7 +27,11 @@
             {{ _initials }}
         </div>
     </ng-template>
-    <div [ngClass]="[ 'user-avatar-image__supplier-container', _backgroundMixedType ]" class="">
+    <div
+        *ngIf="_isSupplierNotLocal"
+        [ngStyle]="__ngSupplierImageSizeStyle"
+        [ngClass]="[ 'user-avatar-image__supplier-container', _backgroundMixedType ]"
+    >
         <img
             [src]="__supplierImagePath" alt=""
             class="supplier-image"

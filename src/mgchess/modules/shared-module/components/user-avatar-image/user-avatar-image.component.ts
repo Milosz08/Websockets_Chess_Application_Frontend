@@ -16,7 +16,9 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-import { Component, Input } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
+
+import { OAuthSupplier } from "../../../../http-request-helpers/oauth2-request-endpoints.contants";
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -25,7 +27,9 @@ import { Component, Input } from "@angular/core";
     templateUrl: "./user-avatar-image.component.html",
     styleUrls: [ "./user-avatar-image.component.scss" ],
 })
-export class UserAvatarImageComponent {
+export class UserAvatarImageComponent implements OnInit {
+
+    _isSupplierNotLocal: boolean = true;
 
     @Input() _imageSizePx: number = 80;
     @Input() _initials: string = "CH";
@@ -33,11 +37,20 @@ export class UserAvatarImageComponent {
     @Input() _oauth2Supplier: string = "";
     @Input() _backgroundMixedType: string = "";
 
+    ngOnInit(): void {
+        const allSuppliers = Object.keys(OAuthSupplier).map(s => OAuthSupplier[s as keyof typeof OAuthSupplier]);
+        this._isSupplierNotLocal = allSuppliers.some(s => s.toLowerCase() === this._oauth2Supplier);
+    };
+
     get __supplierImagePath(): string {
         return `assets/gfx/images/oauth2-${this._oauth2Supplier}-logo.svg`;
     };
 
     get __ngImageSizeStyle(): object {
         return { 'width': `${this._imageSizePx}px`, 'height': `${this._imageSizePx}px` };
+    };
+
+    get __ngSupplierImageSizeStyle(): object {
+        return { 'width': `${this._imageSizePx / 3.5}px`, 'height': `${this._imageSizePx / 3.5}px` };
     };
 }
