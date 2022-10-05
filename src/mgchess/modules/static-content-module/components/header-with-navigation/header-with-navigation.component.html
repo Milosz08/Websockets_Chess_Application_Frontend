@@ -47,7 +47,10 @@
         <span class="application-logo__text-content text-content--right text-content--login-form">online</span>
     </a>
     <nav class="header-with-navigation__aside-content-container aside-content-container--to-right">
-        <div class="header-navigation__links-container">
+        <div
+            *ngIf="(_isNotLogged$ | async); else showLoggedUserInfo"
+            class="header-navigation__links-container"
+        >
             <ng-container *ngFor="let authLink of _authNavigationList; index as i">
                 <a
                     [routerLink]="authLink.link"
@@ -62,6 +65,9 @@
                 ></span>
             </ng-container>
         </div>
+        <ng-template #showLoggedUserInfo>
+            <mgchess-logged-user-header-info></mgchess-logged-user-header-info>
+        </ng-template>
     </nav>
 </header>
 <div class="theme-toggler__container">

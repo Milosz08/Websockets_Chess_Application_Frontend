@@ -1,0 +1,69 @@
+<!--
+  ~ Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
+  ~
+  ~ File name: logged-user-header-info.component.html
+  ~ Last modified: 05/10/2022, 20:01
+  ~ Project name: chess-app-frontend
+  ~
+  ~ Licensed under the MIT license; you may not use this file except in compliance with the License.
+  ~
+  ~ Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+  ~ documentation files (the "Software"), to deal in the Software without restriction, including without limitation the
+  ~ rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to
+  ~ permit persons to whom the Software is furnished to do so, subject to the following conditions:
+  ~
+  ~ THE ABOVE COPYRIGHT NOTICE AND THIS PERMISSION NOTICE SHALL BE INCLUDED IN ALL
+  ~ COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
+  -->
+
+<button
+    closeOutsideClickComponent
+    (click)="handleToggleUserDetailsPopupMenu()"
+    (_clickOutisdeElement)="handleCloseUserDetailsPopupMenu()"
+    class="logged-user-header-info__button-container"
+>
+    <mgchess-user-avatar-image
+        [_imageSizePx]="_isMobileHeader ? 40 : 50"
+        [_initials]="_loggedUserData.initials"
+        [_imageUrl]="_loggedUserData.photoUrl"
+        [_oauth2Supplier]="_loggedUserData.credentialsSupplier"
+        _backgroundMixedType="supplier-container--first-variant"
+    ></mgchess-user-avatar-image>
+    <div class="logged-user-header-info__user-account-data">
+        <p class="logged-user-header-info__full-name-data">{{ _loggedUserData.fullName }}</p>
+        <p class="logged-user-header-info__nickname-data">{{ _loggedUserData.nickname }}</p>
+    </div>
+</button>
+<div
+    @FadeInOutAnimation
+    *ngIf="_isPopupMenuOpen"
+    class="mg-chess__discrete-modal-container logged-user-header-info__popup-container"
+>
+    <mgchess-user-avatar-image
+        [_imageSizePx]="70"
+        [_initials]="_loggedUserData.initials"
+        [_imageUrl]="_loggedUserData.photoUrl"
+        [_oauth2Supplier]="_loggedUserData.credentialsSupplier"
+        _backgroundMixedType="supplier-container--first-variant"
+    ></mgchess-user-avatar-image>
+    <div class="logged-user-header-info__text-content-container">
+        <p class="logged-user-header-info__popup-user-full-name">{{ _loggedUserData.fullName }}</p>
+        <p class="logged-user-header-info__popup-user-nickname">{{ _loggedUserData.nickname }}</p>
+    </div>
+    <div class="logged-user-header-info__buttons-navigation-container">
+        <a
+            routerLink="/secure/my-account"
+            title="Click to go to your account and personalize your data"
+            class="mg-chess__standard-button button--primary-mixed-def-variant logged-user-header-info__single-button"
+        >
+            My account
+        </a>
+        <button
+            (click)="handleLogoutFromSystem()"
+            title="Click to immediately logout from your account"
+            class="mg-chess__standard-button button--primary-border-def-variant logged-user-header-info__single-button"
+        >
+            Logout
+        </button>
+    </div>
+</div>

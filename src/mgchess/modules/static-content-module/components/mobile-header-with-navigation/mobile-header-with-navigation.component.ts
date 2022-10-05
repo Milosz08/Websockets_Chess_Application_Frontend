@@ -17,12 +17,18 @@
  */
 
 import { Component } from "@angular/core";
+import { Store } from "@ngrx/store";
+
+import { Observable } from "rxjs";
 
 import { NavigationLinksModel } from "../../../../models/navigation-links.model";
 import { HamburgerActivityCssClassesModel } from "../../models/hamburger-activity-css-classes.model";
 
 import * as NAVIGATION_LINKS from "../../../../../assets/static-data/main-navigation-links.json";
 import * as QUICK_AUTH_NAVIGATION_LINKS from "../../../../../assets/static-data/quick-start-navigation-links.json";
+
+import { SessionReducerType } from "../../../../ngrx-helpers/ngrx-store.types";
+import * as NgrxSelector_SES from "../../../shared-module/ngrx-store/session-ngrx-store/session.selectors";
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -38,10 +44,14 @@ export class MobileHeaderWithNavigationComponent {
     private readonly BASIC_MENU_CLASS = "hamburger-menu__container";
     private readonly MENU_ACTIVE_CLASS = this.BASIC_MENU_CLASS + " hamburger-menu--active";
 
+    _isNotLogged$: Observable<boolean> = this._store.select(NgrxSelector_SES.sel_userIsNotLogged);
+
     _hamburgerMenuActive: boolean = false;
     readonly _navigationLinks: Array<Array<NavigationLinksModel>>;
 
-    constructor() {
+    constructor(
+        private _store: Store<SessionReducerType>,
+    ) {
         this._navigationLinks = [ (NAVIGATION_LINKS as any).default, (QUICK_AUTH_NAVIGATION_LINKS as any).default ];
     };
 

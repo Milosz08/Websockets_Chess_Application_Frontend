@@ -18,11 +18,16 @@
 
 import { Component } from "@angular/core";
 import { Router } from "@angular/router";
+import { Store } from "@ngrx/store";
+
+import { Observable } from "rxjs";
 
 import { NavigationLinksModel } from "../../../../models/navigation-links.model";
-
 import * as NAVIGATION_LIST from "../../../../../assets/static-data/main-navigation-links.json";
 import * as QUICK_AND_AUTH_NAVIGATION_LIST from "../../../../../assets/static-data/quick-start-navigation-links.json";
+
+import { SessionReducerType } from "../../../../ngrx-helpers/ngrx-store.types";
+import * as NgrxSelector_SES from "../../../shared-module/ngrx-store/session-ngrx-store/session.selectors";
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -37,8 +42,11 @@ export class HeaderWithNavigationComponent {
     readonly _quickStartNavigationList: Array<NavigationLinksModel>;
     readonly _authNavigationList: Array<NavigationLinksModel>;
 
+    _isNotLogged$: Observable<boolean> = this._store.select(NgrxSelector_SES.sel_userIsNotLogged);
+
     constructor(
         public _router: Router,
+        private _store: Store<SessionReducerType>,
     ) {
         this._mainNavigationList = (NAVIGATION_LIST as any).default;
         this._quickStartNavigationList = this.filterQuickStartNavigationLinks(false);

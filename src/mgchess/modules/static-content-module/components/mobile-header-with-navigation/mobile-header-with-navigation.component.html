@@ -51,7 +51,10 @@
         <span class="mobile-header__text-content">chess<br>online</span>
     </a>
     <div class="mobile-header__auth-links-with-hamburger-container">
-        <nav class="mobile-header__links-container">
+        <nav
+            *ngIf="(_isNotLogged$ | async); else showLoggedUserInfo"
+            class="mobile-header__links-container"
+        >
             <a
                 routerLink="/auth/login"
                 class="link-list-element__anchor-element mobile-header__link-anchor-element"
@@ -65,6 +68,9 @@
                 <span class="material-symbols-outlined">person_add</span>
             </a>
         </nav>
+        <ng-template #showLoggedUserInfo>
+            <mgchess-logged-user-header-info [_isMobileHeader]="true"></mgchess-logged-user-header-info>
+        </ng-template>
         <mgchess-theme-toggler></mgchess-theme-toggler>
         <button
             (click)="handleToggleHamburgerMenuActive()"

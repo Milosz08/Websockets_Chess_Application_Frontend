@@ -35,6 +35,7 @@ import { ActivateAccountPageComponent } from "./pages/activate-account-page/acti
 import { UnsubscribeNewsletterPageComponent } from './pages/unsubscribe-newsletter-page/unsubscribe-newsletter-page.component';
 
 import { HeaderWithNavigationComponent } from "./components/header-with-navigation/header-with-navigation.component";
+import { LoggedUserHeaderInfoComponent } from './components/logged-user-header-info/logged-user-header-info.component';
 import { MobileHeaderWithNavigationComponent } from './components/mobile-header-with-navigation/mobile-header-with-navigation.component';
 import { UnsubscribeNewsletterFormComponent } from './components/unsubscribe-newsletter-form/unsubscribe-newsletter-form.component';
 
@@ -61,6 +62,7 @@ import { NewsletterReqResService } from "./services/newsletter-req-res.service";
         PrivacyPolicyPageComponent,
         ContactWithUsPageComponent,
         ActivateAccountPageComponent,
+        LoggedUserHeaderInfoComponent,
         UnsubscribeNewsletterPageComponent,
         // components
         HeaderWithNavigationComponent,
@@ -84,5 +86,9 @@ import { NewsletterReqResService } from "./services/newsletter-req-res.service";
         // services
         NewsletterReqResService,
     ],
+    exports: [
+        HeaderWithNavigationComponent,
+        MobileHeaderWithNavigationComponent,
+    ]
 })
 export class StaticContentPageModule {}

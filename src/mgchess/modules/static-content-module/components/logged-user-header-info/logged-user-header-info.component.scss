@@ -1,0 +1,94 @@
+/*!
+ * Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
+ *
+ * File name: logged-user-header-info.component.scss
+ * Last modified: 05/10/2022, 20:01
+ * Project name: chess-app-frontend
+ *
+ * Licensed under the MIT license; you may not use this file except in compliance with the License.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+ * documentation files (the "Software"), to deal in the Software without restriction, including without limitation the
+ * rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to
+ * permit persons to whom the Software is furnished to do so, subject to the following conditions:
+ *
+ * THE ABOVE COPYRIGHT NOTICE AND THIS PERMISSION NOTICE SHALL BE INCLUDED IN ALL
+ * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
+ */
+
+:host {
+    position: relative;
+}
+
+.logged-user-header-info__button-container {
+    display: flex;
+    align-items: center;
+    margin: 0 20px;
+}
+
+.logged-user-header-info__user-account-data {
+    margin-left: 15px;
+    text-align: left;
+    line-height: 1.3;
+    .logged-user-header-info__full-name-data {
+        font-size: 1.2rem;
+        font-family: "Noto Serif", serif;
+    }
+    .logged-user-header-info__nickname-data {
+        font-size: .8rem;
+        color: var(--secondary-tint-color);
+    }
+}
+
+.logged-user-header-info__popup-container {
+    position: absolute;
+    flex-direction: column;
+    width: 360px;
+    right: 0;
+    padding: 20px 30px;
+    margin: 20px 20px 0;
+}
+
+.logged-user-header-info__text-content-container {
+    margin: 15px 0;
+    .logged-user-header-info__popup-user-full-name {
+        font-size: 1.5rem;
+        font-family: "Noto Serif", serif;
+        text-align: center;
+    }
+    .logged-user-header-info__popup-user-nickname {
+        font-size: .9rem;
+        color: var(--secondary-tint-color);
+        text-align: center;
+    }
+}
+
+.logged-user-header-info__buttons-navigation-container {
+    display: flex;
+    width: 100%;
+    margin-top: 15px;
+    .logged-user-header-info__single-button {
+        margin: 0 10px;
+    }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+@media only screen and (max-width: 920px) {
+    :host {
+        position: initial;
+    }
+    .logged-user-header-info__button-container {
+        position: relative;
+    }
+    .logged-user-header-info__user-account-data {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .logged-user-header-info__popup-container {
+        width: calc(100% - 30px);
+        margin: 20px 15px 0;
+    }
+}
