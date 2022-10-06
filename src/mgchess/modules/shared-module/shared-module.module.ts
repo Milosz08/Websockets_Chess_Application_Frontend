@@ -29,6 +29,7 @@ import { PasswordInputComponent } from "./components/password-input/password-inp
 import { UserAvatarImageComponent } from './components/user-avatar-image/user-avatar-image.component';
 import { CopyrightNewsletterComponent } from "./components/copyright-newsletter/copyright-newsletter.component";
 import { CookiesNotificationComponent } from "./components/cookies-notification/cookies-notification.component";
+import { UserNotLoggedBannerComponent } from './components/user-not-logged-banner/user-not-logged-banner.component';
 import { GlobalSuspenseLoaderComponent } from './components/global-suspense-loader/global-suspense-loader.component';
 import { SingleChoiceBoxInputComponent } from "./components/single-choice-box-input/single-choice-box-input.component";
 import { SimpleServerResponseQueryComponent } from './components/simple-server-response-query/simple-server-response-query.component';
@@ -59,6 +60,7 @@ import { CookiesNotificationLocalStorageService } from "./services/cookies-notif
         UserAvatarImageComponent,
         CopyrightNewsletterComponent,
         CookiesNotificationComponent,
+        UserNotLoggedBannerComponent,
         GlobalSuspenseLoaderComponent,
         SingleChoiceBoxInputComponent,
         SimpleServerResponseQueryComponent,
@@ -85,6 +87,7 @@ import { CookiesNotificationLocalStorageService } from "./services/cookies-notif
         PasswordInputComponent,
         UserAvatarImageComponent,
         CopyrightNewsletterComponent,
+        UserNotLoggedBannerComponent,
         CookiesNotificationComponent,
         SingleChoiceBoxInputComponent,
         GlobalSuspenseLoaderComponent,

@@ -1,0 +1,74 @@
+/*!
+ * Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
+ *
+ *  File name: user-not-logged-banner.component.scss
+ *  Last modified: 06/10/2022, 09:51
+ *  Project name: chess-app-frontend
+ *
+ *  Licensed under the MIT license; you may not use this file except in compliance with the License.
+ *
+ *  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+ * documentation files (the "Software"), to deal in the Software without restriction, including without limitation the
+ * rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to
+ * permit persons to whom the Software is furnished to do so, subject to the following conditions:
+ *
+ *  THE ABOVE COPYRIGHT NOTICE AND THIS PERMISSION NOTICE SHALL BE INCLUDED IN ALL
+ *  COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
+ */
+
+.user-not-logged-banner__container {
+    display: flex;
+    justify-content: center;
+    color: var(--primary-dark-color);
+    background-color: var(--primary-tint-color);
+    padding: 20px 0;
+}
+
+.user-not-logged-banner__wrapper {
+    display: flex;
+    align-items: center;
+    width: var(--safety-width-medium-devices);
+    margin: 0 30px;
+    .user-not-logger-banner__text-content {
+        flex-grow: 1;
+    }
+}
+
+.user-not-logger-banner__buttons-container {
+    display: flex;
+    margin-left: 20px;
+    .not-logger-banner__button {
+        width: fit-content;
+        min-width: 150px;
+        &.button--login {
+            margin-right: 10px;
+        }
+    }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+@media only screen and (max-width: 790px) {
+    .user-not-logged-banner__wrapper {
+        flex-direction: column;
+        .user-not-logger-banner__text-content {
+            text-align: center;
+        }
+    }
+    .user-not-logger-banner__buttons-container {
+        margin: 20px 0 0;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .user-not-logger-banner__buttons-container {
+        flex-direction: column;
+        width: 100%;
+        .not-logger-banner__button {
+            width: 100%;
+            &.button--login {
+                margin: 0 0 10px;
+            }
+        }
+    }
+}

@@ -1,0 +1,45 @@
+<!--
+  ~ Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
+  ~
+  ~  File name: user-not-logged-banner.component.html
+  ~  Last modified: 06/10/2022, 09:59
+  ~  Project name: chess-app-frontend
+  ~
+  ~  Licensed under the MIT license; you may not use this file except in compliance with the License.
+  ~
+  ~  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+  ~ documentation files (the "Software"), to deal in the Software without restriction, including without limitation the
+  ~ rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to
+  ~ permit persons to whom the Software is furnished to do so, subject to the following conditions:
+  ~
+  ~  THE ABOVE COPYRIGHT NOTICE AND THIS PERMISSION NOTICE SHALL BE INCLUDED IN ALL
+  ~  COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
+  -->
+
+<aside
+    *ngIf="(_isNotLogged$ | async)"
+    class="user-not-logged-banner__container"
+>
+    <div class="user-not-logged-banner__wrapper">
+        <p class="user-not-logger-banner__text-content">
+            For unblock all application functions, please login on your account via right button. If you haven't yet
+            account in this application, please go to signup form via right button.
+        </p>
+        <div class="user-not-logger-banner__buttons-container">
+            <a
+                routerLink="/auth/login"
+                title="Click here if you already have account"
+                class="mg-chess__standard-button button--secondary-mixed-def-variant not-logger-banner__button button--login"
+            >
+                Log in
+            </a>
+            <a
+                routerLink="/auth/signup"
+                title="Click here if you don't have yet account"
+                class="mg-chess__standard-button button--secondary-border-def-variant not-logger-banner__button"
+            >
+                Sign up
+            </a>
+        </div>
+    </div>
+</aside>
