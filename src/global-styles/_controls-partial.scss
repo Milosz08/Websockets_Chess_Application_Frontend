@@ -137,20 +137,26 @@
         color: var(--button-secondary-mixed-color);
         background-color: var(--button-secondary-mixed-background);
     }
+    &.button--secondary-border-def-variant {
+        border-color: var(--button-secondary-mixed-background);
+        color: var(--button-secondary-mixed-background);
+    }
     &.button--thirdly-mixed-def-variant {
         color: var(--button-thirdly-mixed-color);
         background-color: var(--button-thirdly-mixed-background);
     }
-    &.button--thirdly-mixed-border-variant {
+    &.button--thirdly-border-def-variant {
         border-color: var(--button-thirdly-mixed-background);
         color: var(--button-thirdly-mixed-background);
     }
     &.button--primary-border-def-variant,
-    &.button--thirdly-mixed-border-variant{
+    &.button--secondary-border-def-variant,
+    &.button--thirdly-border-def-variant {
         border: 1px solid;
         background-color: transparent;
     }
     &.button--primary-mixed-def-variant,
+    button--secondary-border-def-variant,
     &.button--primary-border-def-variant {
         font-weight: var(--standard-font-weight);
     }
@@ -175,7 +181,7 @@
     &.button--thirdly-mixed-def-variant .button__suspense-loading-spinner {
         border-color: var(--button-thirdly-mixed-color) transparent transparent var(--button-thirdly-mixed-color);
     }
-    &.button--thirdly-mixed-border-variant .button__suspense-loading-spinner {
+    &.button--thirdly-border-def-variant .button__suspense-loading-spinner {
         border-color: var(--button-thirdly-mixed-background) transparent transparent var(--button-thirdly-mixed-background);
     }
     &.button--fitting {
