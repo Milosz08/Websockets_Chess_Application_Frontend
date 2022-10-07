@@ -17,6 +17,7 @@
  */
 
 export class UserCredentialsDataResModel {
+    userId: number;
     nickname: string;
     fullName: string;
     initials: string;
@@ -28,9 +29,10 @@ export class UserCredentialsDataResModel {
     credentialsSupplier: string;
 
     constructor(
-        nickname: string, fullName: string, initials: string, ifHasPhoto: boolean, photoUrl: string, jwtToken: string,
-        refreshToken: string, activated: boolean, credentialsSupplier: string,
+        userId: number, nickname: string, fullName: string, initials: string, ifHasPhoto: boolean, photoUrl: string,
+        jwtToken: string, refreshToken: string, activated: boolean, credentialsSupplier: string,
     ) {
+        this.userId = userId;
         this.nickname = nickname;
         this.fullName = fullName;
         this.initials = initials;
