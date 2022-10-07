@@ -54,7 +54,14 @@ export class SessionReqResService {
         );
     };
 
-    logout(jwtToken: string): Observable<void> {
+    autoLogin(req: AutoLoginUserReqModel): Observable<UserCredentialsDataResModel> {
+        return this._http.post<UserCredentialsDataResModel>(
+            this._endpoint.AUTO_LOGIN,
+            req,
+        );
+    };
+
+    logout(): Observable<void> {
         return this._http.delete<void>(
             this._endpoint.LOGOUT,
         );

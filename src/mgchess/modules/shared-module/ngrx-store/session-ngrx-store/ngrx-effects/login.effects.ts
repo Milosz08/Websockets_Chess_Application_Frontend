@@ -141,13 +141,31 @@ export class LoginEffects {
         );
     });
 
-    finishLogoutProcedure$ = createEffect(() => {
+    autoLogin$ = createEffect(() => {
         return this._actions$.pipe(
-            ofType(NgrxAction_SES.__successfulLogout),
+            ofType(NgrxAction_SES.__attemptToAutoLogin),
             tap(() => {
-                this._router.navigate([ "/" ]).then(r => r);
-                // TODO: Remove saved account from local storage
+                this._document.body.classList.add(GfxEffects.SCROLL_DISABLED_CSS);
+                this._store.dispatch(NgrxAction_GFX.__activeGlobalSuspense());
+            }),
+            mergeMap(() => {
+                return of(this._storageAutoLogin.getUserRefreshTokenFromLocalStorage());
+            }),
+            mergeMap(autoLoginCredentialsData => {
+                return this._httpService.autoLogin(new AutoLoginUserReqModel(autoLoginCredentialsData.refreshToken)).pipe(
+                    map(credentialsData => {
+                        return NgrxAction_SES.__successfulLogin({ credentialsData });
+                    }),
+                    catchError(error => {
+                        return of(NgrxAction_SES.__failureLogin({
+                            serverResponse: RxjsHelper.serverResponseError(error) }));
+                    }),
+                );
+            }),
+            tap(() => {
+                this._document.body.classList.remove(GfxEffects.SCROLL_DISABLED_CSS);
+                this._store.dispatch(NgrxAction_GFX.__inactiveGlobalSuspense());
             }),
         );
-    }, { dispatch: false });
+    });
 }

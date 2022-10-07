@@ -31,14 +31,16 @@ export class HttpEndpointsHelper {
     readonly NEWSLETTER_ATTEMPT_UNSUBSCRIBE = this.NEWSLETTER_EMAIL + "attempt-unsubscribe";
     readonly NEWSLETTER_UNSUBSCRIBE_VIA_OTA = this.NEWSLETTER_EMAIL + "unsubscribe-via-ota";
 
-    private readonly AUTH_LOCAL = this.BASIC_HTTP + "auth-local/";
-    readonly LOGIN_VIA_LOCAL = this.AUTH_LOCAL + "login-via-local";
-    readonly LOGIN_VIA_OAUTH2 = this.AUTH_LOCAL + "login-via-oauth";
-    readonly LOGOUT = this.AUTH_LOCAL + "logout";
-    readonly ATTEMPT_ACTIVATE_ACCOUNT = this.AUTH_LOCAL + "attempt-activate-account";
-    readonly ATTEMPT_FINISH_SIGNUP_VIA_OAUTH2 = this.AUTH_LOCAL + "attempt-finish-signup-via-oauth";
-    readonly FINISH_SIGNUP_VIA_OAUTH2 = this.AUTH_LOCAL + "finish-signup-via-oauth";
-    readonly SIGNUP_VIA_LOCAL = this.AUTH_LOCAL + "signup-via-local";
+    private readonly AUTH = this.BASIC_HTTP + "auth/";
+    readonly LOGIN_VIA_LOCAL = this.AUTH + "login-via-local";
+    readonly LOGIN_VIA_OAUTH2 = this.AUTH + "login-via-oauth";
+    readonly AUTO_LOGIN = this.AUTH + "auto-login";
+    readonly REFRESH_TOKEN = this.AUTH + "refresh-token";
+    readonly LOGOUT = this.AUTH + "logout";
+    readonly ATTEMPT_ACTIVATE_ACCOUNT = this.AUTH + "attempt-activate-account";
+    readonly ATTEMPT_FINISH_SIGNUP_VIA_OAUTH2 = this.AUTH + "attempt-finish-signup-via-oauth";
+    readonly FINISH_SIGNUP_VIA_OAUTH2 = this.AUTH + "finish-signup-via-oauth";
+    readonly SIGNUP_VIA_LOCAL = this.AUTH + "signup-via-local";
 
     private readonly RENEW_CREDETIALS_LOCAL = this.BASIC_HTTP + "renew-credentials/";
     readonly ATTEMPT_TO_CHANGE_PASSWORD = this.AUTH + "attempt-to-change-password";

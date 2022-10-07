@@ -43,6 +43,7 @@ import { sessionNgrxStore } from "./ngrx-store/session-ngrx-store/session.reduce
 
 import { GfxEffects } from "./ngrx-store/gfx-ngrx-store/ngrx-effects/gfx.effects";
 import { LoginEffects } from "./ngrx-store/session-ngrx-store/ngrx-effects/login.effects";
+import { LoginHelperEffects } from "./ngrx-store/session-ngrx-store/ngrx-effects/login-helper.effects";
 
 import { SessionReqResService } from "./services/session-req-res.service";
 import { GlobalSuspenseService } from "./services/global-suspense.service";
@@ -80,6 +81,7 @@ import { CookiesNotificationLocalStorageService } from "./services/cookies-notif
         EffectsModule.forFeature([
             GfxEffects,
             LoginEffects,
+            LoginHelperEffects,
         ]),
     ],
     exports: [

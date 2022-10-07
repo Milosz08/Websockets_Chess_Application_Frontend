@@ -19,6 +19,9 @@
 import { Inject, Injectable } from "@angular/core";
 import { DOCUMENT } from "@angular/common";
 
+import { StorageHelper } from "../../../../storage/storage.helper";
+import { AutoLoginUserStorageModel } from "../ngrx-store/session-ngrx-store/ngrx-models/auto-login-user-req.model";
+
 //----------------------------------------------------------------------------------------------------------------------
 
 @Injectable()
@@ -28,15 +31,34 @@ export class UserRememberStorageService {
     private readonly _storageKey: string = "SAVED_USER_LOGIN";
 
     constructor(
+        private _storageHelper: StorageHelper,
         @Inject(DOCUMENT) private _DOCUMENT: Document,
     ) {
     };
 
-    saveLoggedUserRefreshTokenInLocalStorage(): void {
-
+    saveLoggedUserRefreshTokenInLocalStorage(userCredentials: AutoLoginUserStorageModel): void {
+        this._storageHelper.updateStorageItem(this._storageKey, userCredentials);
     };
 
-    getUserRefreshTokenFromLocalStorage(): void {
+    checkIfUserIsNotLogged(): boolean {
+        return this.getUserRefreshTokenFromLocalStorage().refreshToken === "";
+    };
 
+    removeSavedUserAccount(): void {
+        this._localStorage.removeItem(this._storageKey);
+    };
+
+    getUserRefreshTokenFromLocalStorage(): AutoLoginUserStorageModel {
+        const refreshTokenBeforeParse = this._localStorage.getItem(this._storageKey);
+        if (refreshTokenBeforeParse == null) return new AutoLoginUserStorageModel("", "");
+        return JSON.parse(refreshTokenBeforeParse);
+    };
+
+    getUserToken(): string {
+        return this.getUserRefreshTokenFromLocalStorage().token;
+    };
+
+    getRefreshToken(): string {
+        return this.getUserRefreshTokenFromLocalStorage().refreshToken;
     };
 }

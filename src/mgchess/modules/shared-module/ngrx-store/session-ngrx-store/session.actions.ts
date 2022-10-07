@@ -20,11 +20,13 @@ import { createAction, props } from "@ngrx/store";
 import { LoginFormModel } from "../../../auth-register-module/models/login-form.model";
 
 import { UserCredentialsDataResModel } from "./ngrx-models/user-credentials-data-res.model";
+import { RefreshTokenResModel } from "./ngrx-models/refresh-token-res.model";
 
 //----------------------------------------------------------------------------------------------------------------------
 
 const ATTEMPT_LOGIN_VIA_LOCAL = "[SESSION] ATTEMPT LOGIN VIA LOCAL" as const;
 const ATTEMPT_LOGIN_VIA_OAUTH2 = "[SESSION] ATTEMPT LOGIN VIA OAUTH2" as const;
+const ATTEMPT_TO_AUTO_LOGIN = "[SESSION] ATTEMPT TO AUTO LOGIN" as const;
 const SUCCESSFUL_LOGIN = "[SESSION] SUCCESSFUL LOGIN" as const;
 const FAILURE_LOGIN = "[SESSION] FAILURE LOGIN" as const;
 
@@ -48,6 +50,10 @@ export const __attemptToLoginViaLocal = createAction(
 export const __attemptToLoginViaOAuth2 = createAction(
     ATTEMPT_LOGIN_VIA_OAUTH2,
     props<{ jwtToken: string }>(),
+);
+
+export const __attemptToAutoLogin = createAction(
+    ATTEMPT_TO_AUTO_LOGIN,
 );
 
 export const __successfulLogin = createAction(
