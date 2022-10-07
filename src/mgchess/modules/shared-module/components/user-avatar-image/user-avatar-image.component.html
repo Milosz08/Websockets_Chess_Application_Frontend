@@ -16,7 +16,10 @@
   ~ COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
   -->
 
-<div class="user-avatar-image__container" [ngStyle]="__ngImageSizeStyle">
+<div
+    [ngClass]="[ 'user-avatar-image__container', __ngImageBorderElement ]"
+    [ngStyle]="__ngImageSizeStyle"
+>
     <img
         *ngIf="_imageUrl !== null; else showInitials"
         [src]="_imageUrl" alt=""

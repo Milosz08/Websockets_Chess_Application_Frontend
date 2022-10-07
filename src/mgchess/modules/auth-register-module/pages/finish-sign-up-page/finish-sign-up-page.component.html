@@ -19,9 +19,9 @@
 <div class="finish-sign-up__main-container">
     <aside
         *ngIf="_oauth2SuspenseActive"
-        class="mg-chess__activate-account__suspense-loader"
+        class="mg-chess__suspense-loader"
     >
-        <div class="mg-chess__activate-account__suspense-circle"></div>
+        <div class="mg-chess__suspense-circle"></div>
     </aside>
     <div
         *ngIf="_serverResponse.responseError && _serverResponse.responseMessage !== ''

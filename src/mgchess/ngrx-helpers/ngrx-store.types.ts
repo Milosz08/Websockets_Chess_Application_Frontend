@@ -56,5 +56,5 @@ export type AuthWithGfxCombinedReducerTypes = {
 };
 
 export type SessionReducerType = {
-    [authNgrxStore.reducerName]: SessionStateTypes,
+    [sessionNgrxStore.reducerName]: SessionStateTypes,
 };

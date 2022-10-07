@@ -148,10 +148,10 @@
     }
 }
 
-.mg-chess__activate-account__suspense-loader {
+.mg-chess__suspense-loader {
     display: flex;
     justify-content: center;
-    .mg-chess__activate-account__suspense-circle {
+    .mg-chess__suspense-circle {
         width: 70px;
         height: 70px;
         animation: spinner-animation .75s ease-out infinite;
@@ -211,7 +211,7 @@
             padding: 0;
         }
     }
-    .mg-chess__activate-account__suspense-loader {
+    .mg-chess__suspense-loader {
         margin: 100px 0;
     }
 }

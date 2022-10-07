@@ -58,4 +58,8 @@ export class UserAvatarImageComponent implements OnInit {
     get __ngFakeImageFontSize(): object {
         return { 'font-size': `${this._imageSizePx / 2.5}px` };
     };
+
+    get __ngImageBorderElement(): string {
+        return this._hasImage ? "image__container--is-original-image-generator" : "";
+    };
 }

@@ -19,9 +19,9 @@
 <div class="activate-local-account__container">
     <aside
         *ngIf="(_isSuspenseActive$ | async)"
-        class="mg-chess__activate-account__suspense-loader"
+        class="mg-chess__suspense-loader"
     >
-        <div class="mg-chess__activate-account__suspense-circle"></div>
+        <div class="mg-chess__suspense-circle"></div>
     </aside>
     <div
         *ngIf="_serverResponse.responseError && _serverResponse.responseMessage !== ''; else showFormContent"

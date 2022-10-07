@@ -19,7 +19,6 @@
 .user-avatar-image__container {
     position: relative;
     border-radius: 50%;
-    border: 2px solid var(--fake-user-image-background);
     .user-avatar-image__real-image,
     .user-avatar-image__fake-generated-image {
         border-radius: 50%;
@@ -35,6 +34,9 @@
         background-color: var(--fake-user-image-background);
         color: var(--fake-user-image-color);
         text-transform: uppercase;
+    }
+    &.image__container--is-original-image-generator {
+        border: 2px solid var(--fake-user-image-background);
     }
 }
 
