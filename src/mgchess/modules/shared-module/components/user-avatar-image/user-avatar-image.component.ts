@@ -33,6 +33,7 @@ export class UserAvatarImageComponent implements OnInit {
 
     @Input() _imageSizePx: number = 80;
     @Input() _initials: string = "CH";
+    @Input() _hasImage: boolean = false;
     @Input() _imageUrl: string = "";
     @Input() _oauth2Supplier: string = "";
     @Input() _backgroundMixedType: string = "";
@@ -52,5 +53,9 @@ export class UserAvatarImageComponent implements OnInit {
 
     get __ngSupplierImageSizeStyle(): object {
         return { 'width': `${this._imageSizePx / 3.5}px`, 'height': `${this._imageSizePx / 3.5}px` };
+    };
+
+    get __ngFakeImageFontSize(): object {
+        return { 'font-size': `${this._imageSizePx / 2.5}px` };
     };
 }

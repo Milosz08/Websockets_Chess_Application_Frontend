@@ -43,6 +43,7 @@
         <ng-container *ngIf="!_oauth2SuspenseActive">
             <div class="finish-sign-up__top-info-container">
                 <mgchess-user-avatar-image
+                    [_hasImage]="(_finishSignupUserPhoto$ | async) !== ''"
                     [_initials]="(_finishSignupUserInitials$ | async)!"
                     [_imageUrl]="(_finishSignupUserPhoto$ | async)!"
                     [_oauth2Supplier]="(_finishSignupUserSupplier$ | async)!"

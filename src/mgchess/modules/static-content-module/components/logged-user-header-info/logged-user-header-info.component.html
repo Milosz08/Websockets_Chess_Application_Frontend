@@ -23,6 +23,7 @@
     class="logged-user-header-info__button-container"
 >
     <mgchess-user-avatar-image
+        [_hasImage]="_loggedUserData.ifHasPhoto"
         [_imageSizePx]="_isMobileHeader ? 40 : 50"
         [_initials]="_loggedUserData.initials"
         [_imageUrl]="_loggedUserData.photoUrl"
@@ -40,6 +41,7 @@
     class="mg-chess__discrete-modal-container logged-user-header-info__popup-container"
 >
     <mgchess-user-avatar-image
+        [_hasImage]="_loggedUserData.ifHasPhoto"
         [_imageSizePx]="70"
         [_initials]="_loggedUserData.initials"
         [_imageUrl]="_loggedUserData.photoUrl"
