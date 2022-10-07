@@ -78,3 +78,7 @@ export const sel_isFilledDataFormSkipped = selectorWithInjectedStore(({ finishSi
 export const sel_activateAccountServerResponse = selectorWithInjectedStore(({ finishSignupAccountDetails }) =>
     Boolean(finishSignupAccountDetails) ? finishSignupAccountDetails.responseMessage : "",
 );
+
+export const sel_initialLoginInLoginForm = selectorWithInjectedStore(({ initialUserLogin }) =>
+    initialUserLogin,
+);

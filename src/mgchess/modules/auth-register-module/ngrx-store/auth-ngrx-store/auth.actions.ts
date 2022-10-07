@@ -48,6 +48,7 @@ const CLEAR_SERVER_RESPONSE = "[AUTH] CLEAR SERVER RESPONSE" as const;
 const CLEAR_FINISH_SIGNUP_USER_DATA = "[AUTH] CLEAR FINISH SIGNUP USER DATA" as const;
 const FILLED_FINISH_SIGNUP_RESPONSE_MESSAGE = "[AUTH] FILLED FINISH SIGNUP RESPONSE MESSAGE" as const;
 const FILLED_FINISH_SIGNUP_JWT_TOKEN = "[AUTH] FILLED FINISH SIGNUP JWT TOKEN" as const;
+const FILLED_INITIAL_LOGIN_IN_LOGIN_FORM = "[AUTH] FILLED INITIAL LOGIN IN LOGIN FORM" as const;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -142,4 +143,9 @@ export const __filledFinishSignupResponseMessage = createAction(
 export const __filledFinishSignupJwtToken = createAction(
     FILLED_FINISH_SIGNUP_JWT_TOKEN,
     props<{ jwtToken: string }>(),
+);
+
+export const __filledInitialLoginInLoginForm = createAction(
+    FILLED_INITIAL_LOGIN_IN_LOGIN_FORM,
+    props<{ userLogin: string }>(),
 );

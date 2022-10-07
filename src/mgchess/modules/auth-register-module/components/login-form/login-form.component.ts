@@ -20,7 +20,7 @@ import { Component, Input, OnDestroy, OnInit } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { Store } from "@ngrx/store";
 
-import { Observable, Subject } from "rxjs";
+import { Observable, Subject, takeUntil } from "rxjs";
 import { RxjsHelper } from "../../../../rxjs-helpers/rxjs.helper";
 
 import { LoginFormModel } from "../../models/login-form.model";
@@ -32,8 +32,10 @@ import { OAuthSupplier } from "../../../../http-request-helpers/oauth2-request-e
 import { FormInputClassesConstants } from "../../../../misc-constants/form-input-classes.constants";
 import { ValidatorPatternConstants } from "../../../../validator-helpers/validator-pattern.constants";
 
-import { AuthReducerType } from "../../../../ngrx-helpers/ngrx-store.types";
+import { SessionWithAuthCombinedReducerTypes } from "../../../../ngrx-helpers/ngrx-store.types";
 
+import * as NgrxAction_ATH from "../../ngrx-store/auth-ngrx-store/auth.actions";
+import * as NgrxSelector_ATH from "../../ngrx-store/auth-ngrx-store/auth.selectors";
 import * as NgrxSelector_GFX from "../../../shared-module/ngrx-store/gfx-ngrx-store/gfx.selectors";
 import * as NgrxAction_SES from "../../../shared-module/ngrx-store/session-ngrx-store/session.actions";
 import * as NgrxSelector_SES from "../../../shared-module/ngrx-store/session-ngrx-store/session.selectors";
@@ -61,10 +63,10 @@ export class LoginFormComponent implements OnInit, OnDestroy {
     private _ngUnsubscribe: Subject<void> = new Subject<void>();
 
     constructor(
-        private _store: Store<AuthReducerType>,
         private _regex: ValidatorPatternConstants,
         private _suspenseService: GlobalSuspenseService,
         public _cssConstants: FormInputClassesConstants,
+        private _store: Store<SessionWithAuthCombinedReducerTypes>,
     ) {
         this._loginForm = new FormGroup({
             usernameEmail: new FormControl("", [ Validators.required ]),
@@ -77,6 +79,10 @@ export class LoginFormComponent implements OnInit, OnDestroy {
         this._formHelper.field("rememberAccount", this._loginForm).setValue(true);
         RxjsHelper.subscribeData(this._store, NgrxSelector_SES.sel_serverResponse, this._ngUnsubscribe,
                 data => this._serverResponse = data);
+        RxjsHelper.subscribeData(this._store, NgrxSelector_ATH.sel_initialLoginInLoginForm, this._ngUnsubscribe,
+                data => this._loginForm.setValue({ ...this._loginForm.getRawValue(), usernameEmail: data }));
+        this._formHelper.field("usernameEmail", this._loginForm).valueChanges.pipe(takeUntil(this._ngUnsubscribe))
+            .subscribe(data => this._store.dispatch(NgrxAction_ATH.__filledInitialLoginInLoginForm({ userLogin: data })));
     };
 
     ngOnDestroy(): void {
@@ -86,7 +92,7 @@ export class LoginFormComponent implements OnInit, OnDestroy {
     handleSubmitCredentialsAndAttemptLoginUser(): void {
         const req = this._formHelper.extractFormFields<LoginFormModel>(this._loginForm, false);
         this._store.dispatch(NgrxAction_SES.__attemptToLoginViaLocal({ loginForm: req }));
-        this._loginForm.reset(new LoginFormModel("", "", false));
+        this._loginForm.reset(new LoginFormModel("", "", true));
     };
 
     clearLoginServerResponse(): void {

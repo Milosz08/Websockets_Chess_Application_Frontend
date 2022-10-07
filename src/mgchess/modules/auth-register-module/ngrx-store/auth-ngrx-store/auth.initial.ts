@@ -28,6 +28,7 @@ export interface AuthStateTypes {
     finishSignupReponseMessage: string;
     finishSignupJwtToken: string;
     isFinishSignupOAuth2ActivateAccountActive: boolean;
+    initialUserLogin: string;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -39,4 +40,5 @@ export const initialAuthState: AuthStateTypes = {
     finishSignupReponseMessage: "",
     finishSignupJwtToken: "",
     isFinishSignupOAuth2ActivateAccountActive: false,
+    initialUserLogin: "",
 };

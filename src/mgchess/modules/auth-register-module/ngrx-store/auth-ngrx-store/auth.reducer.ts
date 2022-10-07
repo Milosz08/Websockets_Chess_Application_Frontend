@@ -95,6 +95,11 @@ const _authReducer = createReducer(
             finishSignupJwtToken: action.jwtToken,
         };
     }),
+    on(NgrxAction.__filledInitialLoginInLoginForm, (state, action) => {
+        return { ...state,
+            initialUserLogin: action.userLogin,
+        };
+    }),
     on(NgrxAction.__clearFinishSignupUserData, state => {
         return { ...state,
             finishSignupAccountDetails: null,
