@@ -21,10 +21,12 @@ import { HttpClient } from "@angular/common/http";
 
 import { Observable } from "rxjs";
 
+import { RememberUserStorageModel } from "../models/remember-user-storage.model";
 import { StaticGenderDataResModel } from "../models/static-gender-data-res.model";
 import { StaticCountryDataResModel } from "../models/static-country-data-res.model";
 import { StaticCalendarDataResModel } from "../models/static-calendar-data-res.model";
 import { HttpEndpointsHelper } from "../../../http-request-helpers/http-endpoints.helper";
+import { UserLoginDetailsStorageModel } from "../models/user-login-details-storage.model";
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -47,5 +49,12 @@ export class StaticDataReqResService {
 
     getRegisterCountryData(): Observable<StaticCountryDataResModel> {
         return this._http.get<StaticCountryDataResModel>(this._endpoint.SIGNUP_COUNTRY_DATA);
+    };
+
+    getRememberAccountsData(req: Array<RememberUserStorageModel>): Observable<Array<UserLoginDetailsStorageModel>> {
+        return this._http.post<Array<UserLoginDetailsStorageModel>>(
+            this._endpoint.REMEMBER_ACCOUNTS,
+            { accounts: req },
+        );
     };
 }

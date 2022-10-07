@@ -16,10 +16,19 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-import { Component } from "@angular/core";
+import { Component, OnDestroy, OnInit } from "@angular/core";
+import { Store } from "@ngrx/store";
 
+import { catchError, delay, map, of, Subject, takeUntil } from "rxjs";
+import { RxjsConstants } from "../../../../rxjs-helpers/rxjs.constants";
+import { RxjsHelper } from "../../../../rxjs-helpers/rxjs.helper";
+
+import { StaticDataReqResService } from "../../services/static-data-req-res.service";
 import { SaveUserLoginStorageService } from "../../services/save-user-login-storage.service";
 import { UserLoginDetailsStorageModel } from "../../models/user-login-details-storage.model";
+
+import { AuthReducerType } from "../../../../ngrx-helpers/ngrx-store.types";
+import * as NgrxAction_ATH from "../../ngrx-store/auth-ngrx-store/auth.actions";
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -29,20 +38,59 @@ import { UserLoginDetailsStorageModel } from "../../models/user-login-details-st
     styleUrls: [ "./last-logins.component.scss" ],
     providers: [ SaveUserLoginStorageService ],
 })
-export class LastLoginsComponent {
+export class LastLoginsComponent implements OnInit, OnDestroy {
 
-    _rememberAccounts: Array<UserLoginDetailsStorageModel> = this._storage.getAllSavedUserDetailsFromLocalStorage();
+    _suspenseLoader: boolean = false;
+    _rememberAccounts: Array<UserLoginDetailsStorageModel> = new Array<UserLoginDetailsStorageModel>();
+
+    private _ngUnsubscribe: Subject<void> = new Subject<void>();
 
     constructor(
+        private _store: Store<AuthReducerType>,
         private _storage: SaveUserLoginStorageService,
+        private _staticDataReqResService: StaticDataReqResService,
     ) {
+    };
+
+    ngOnInit(): void {
+        this.getUserDetailsFromDatabase();
+    };
+
+    ngOnDestroy(): void {
+        RxjsHelper.cleanupExecutor(this._ngUnsubscribe);
     };
 
     handleRemoveAllRememberAccounts(): void {
         this._storage.removeAllUsersFromLocalStorage();
+        this.getUserDetailsFromDatabase();
+    };
+
+    handleInsertUserLoginIntoForm(userLogin: string): void {
+        this._store.dispatch(NgrxAction_ATH.__filledInitialLoginInLoginForm({ userLogin }));
     };
 
     handleRemoveSingleSavedUserAccount(userId: number): void {
         this._storage.removeSingleUserDetailsFromLocalStorage(userId);
+        this.getUserDetailsFromDatabase();
+    };
+
+    private getUserDetailsFromDatabase(): void {
+        this._suspenseLoader = true;
+        this._staticDataReqResService.getRememberAccountsData(this._storage.getAllSavedUserDetails()).pipe(
+            takeUntil(this._ngUnsubscribe),
+            delay(RxjsConstants.DEF_SUSPENSE_MILIS),
+            map(data => data),
+            catchError(() => {
+                this._suspenseLoader = false;
+                return of(new Array<UserLoginDetailsStorageModel>());
+            }),
+        ).subscribe(data => {
+            this._suspenseLoader = false;
+            this._rememberAccounts = data;
+        });
+    };
+
+    ngRememberAccountTitle(userDetails: UserLoginDetailsStorageModel): string {
+        return `User: ${userDetails.fullName}. Click here to insert user login into login form.`;
     };
 }

@@ -20,7 +20,7 @@ import { Inject, Injectable } from "@angular/core";
 import { DOCUMENT } from "@angular/common";
 
 import { StorageHelper } from "../../../../storage/storage.helper";
-import { UserLoginDetailsStorageModel } from "../models/user-login-details-storage.model";
+import { RememberUserStorageModel } from "../models/remember-user-storage.model";
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -36,13 +36,14 @@ export class SaveUserLoginStorageService {
     ) {
     };
 
-    saveUserDetailsInLocalStorage(userDetails: UserLoginDetailsStorageModel): void {
+    saveUserDetailsInLocalStorage(userDetails: RememberUserStorageModel): void {
         const allUsersDetails = this.getAllUsersDetailsFromLocalStorage();
+        if (allUsersDetails.find(u => u.userId === userDetails.userId)) return;
         allUsersDetails.push(userDetails);
         this._storageHelper.updateStorageItem(this._storageKey, allUsersDetails);
     };
 
-    getAllSavedUserDetailsFromLocalStorage(): Array<UserLoginDetailsStorageModel> {
+    getAllSavedUserDetails(): Array<RememberUserStorageModel> {
         return this.getAllUsersDetailsFromLocalStorage();
     };
 
@@ -56,10 +57,10 @@ export class SaveUserLoginStorageService {
         this._localStorage.removeItem(this._storageKey);
     };
 
-    private getAllUsersDetailsFromLocalStorage(): Array<UserLoginDetailsStorageModel> {
+    private getAllUsersDetailsFromLocalStorage(): Array<RememberUserStorageModel> {
         const allUserDetailsBefParse: string | null = this._localStorage.getItem(this._storageKey);
         if (allUserDetailsBefParse == null) {
-            return new Array<UserLoginDetailsStorageModel>();
+            return new Array<RememberUserStorageModel>();
         }
         return JSON.parse(allUserDetailsBefParse);
     };

@@ -17,20 +17,27 @@
  */
 
 import { Component, OnInit } from "@angular/core";
+import { Store } from "@ngrx/store";
 
+import { SessionReducerType } from "./ngrx-helpers/ngrx-store.types";
 import { BrowserThemeDetector } from "./browster-utils/browser-theme.detector";
 import { ColorThemeLocalStorageService } from "./services/color-theme-local-storage.service";
+
+import * as NgrxAction_SES from "../mgchess/modules/shared-module/ngrx-store/session-ngrx-store/session.actions";
+import { UserRememberStorageService } from "./modules/shared-module/services/user-remember-storage.service";
 
 //----------------------------------------------------------------------------------------------------------------------
 
 @Component({
     selector: "mgchess-root",
     templateUrl: "./mgchess.component.html",
-    providers: [ ColorThemeLocalStorageService ],
+    providers: [ ColorThemeLocalStorageService, UserRememberStorageService ],
 })
 export class MgchessComponent implements OnInit {
 
     constructor(
+        private _store: Store<SessionReducerType>,
+        private _storage: UserRememberStorageService,
         private _service: ColorThemeLocalStorageService,
     ) {
     };
@@ -38,5 +45,7 @@ export class MgchessComponent implements OnInit {
     ngOnInit(): void {
         BrowserThemeDetector.detectBrowserThemeAndChangeFavicon();
         this._service.checkSavedColorThemeAndReturn();
+        if (this._storage.checkIfUserIsNotLogged()) return;
+        this._store.dispatch(NgrxAction_SES.__attemptToAutoLogin());
     };
 }

@@ -19,19 +19,54 @@
 <h2 class="mg-chess__standard-header-with-decorator header--smaller">
     <span class="text-content">Last logins</span>
 </h2>
-<ul
-    *ngIf="_rememberAccounts.length > 0; else lastLogins"
-    class="last-logins__grid-container"
+<div
+    *ngIf="_suspenseLoader; else lastLoginsContainer"
+    class="last-logins__no-remember-accounts__container"
 >
-    <li class="last-logins__single-account__container">account</li>
-</ul>
-<ng-template #lastLogins>
-    <div class="last-logins__no-remember-accounts__container">
-        <p class="no-remember-accounts__text-content">
-            You currently have no saved accounts. To save an account, log into it using the form with the "remember
-            account" option checked.
-        </p>
+    <div class="mg-chess__suspense-loader">
+        <div class="mg-chess__suspense-circle"></div>
     </div>
+</div>
+<ng-template #lastLoginsContainer>
+    <ul
+        *ngIf="_rememberAccounts.length > 0; else lastLoginsAreEmpty"
+        class="last-logins__grid-container"
+    >
+        <li
+            *ngFor="let account of _rememberAccounts"
+            class="last-logins__single-account__container"
+        >
+            <div class="last-logins__user-image__container">
+                <button
+                    (click)="handleInsertUserLoginIntoForm(account.userLogin)"
+                    [title]="[ ngRememberAccountTitle(account) ]"
+                >
+                    <mgchess-user-avatar-image
+                        [_imageSizePx]="65"
+                        [_initials]="account.initials"
+                        [_imageUrl]="account.photoUri"
+                        [_hasImage]="account.ifHasPhoto"
+                        _backgroundMixedType="supplier-container--first-variant"
+                    ></mgchess-user-avatar-image>
+                </button>
+            </div>
+            <button
+                (click)="handleRemoveSingleSavedUserAccount(account.userId)"
+                title="Click here to remove this remember account"
+                class="last-logins__single-account__remove-button"
+            >
+                Remove
+            </button>
+        </li>
+    </ul>
+    <ng-template #lastLoginsAreEmpty>
+        <div class="last-logins__no-remember-accounts__container">
+            <p class="no-remember-accounts__text-content">
+                You currently have no saved accounts. To save an account, log into it using the form with the "remember
+                account" option checked.
+            </p>
+        </div>
+    </ng-template>
 </ng-template>
 <div class="last-logins__remove-logins-button__container">
     <button

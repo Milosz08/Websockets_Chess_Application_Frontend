@@ -51,4 +51,5 @@ export class HttpEndpointsHelper {
     readonly SIGNUP_CALENDAR_DATA = this.EXPOSE_STATIC_DATA + "signup-calendar-data";
     readonly SIGNUP_GENDER_DATA = this.EXPOSE_STATIC_DATA + "signup-gender-data";
     readonly SIGNUP_COUNTRY_DATA = this.EXPOSE_STATIC_DATA + "signup-country-data";
+    readonly REMEMBER_ACCOUNTS = this.EXPOSE_STATIC_DATA + "remember-accounts";
 }

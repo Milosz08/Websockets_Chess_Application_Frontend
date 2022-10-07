@@ -37,11 +37,24 @@
 
 .last-logins__single-account__container {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid white;
+    flex-direction: column;
+    border: 1px solid var(--auth-container-background-with-border);
     border-radius: var(--standard-button-border-radius);
     height: 130px;
+    .last-logins__user-image__container,
+    .last-logins__single-account__remove-button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .last-logins__user-image__container {
+        flex-grow: 1;
+    }
+    .last-logins__single-account__remove-button {
+        height: 30px;
+        background-color: var(--auth-container-background-with-border);
+        color: var(--auth-login-form-foreground);
+    }
 }
 
 .last-logins__remove-logins-button__container {
