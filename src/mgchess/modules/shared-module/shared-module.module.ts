@@ -46,6 +46,7 @@ import { LoginEffects } from "./ngrx-store/session-ngrx-store/ngrx-effects/login
 
 import { SessionReqResService } from "./services/session-req-res.service";
 import { GlobalSuspenseService } from "./services/global-suspense.service";
+import { UserRememberStorageService } from "./services/user-remember-storage.service";
 import { AddToNewsletterHttpReqResService } from "./services/add-to-newsletter-http-req-res.service";
 import { CookiesNotificationLocalStorageService } from "./services/cookies-notification-local-storage.service";
 
@@ -97,6 +98,7 @@ import { CookiesNotificationLocalStorageService } from "./services/cookies-notif
     providers: [
         SessionReqResService,
         GlobalSuspenseService,
+        UserRememberStorageService,
         AddToNewsletterHttpReqResService,
         CookiesNotificationLocalStorageService,
     ],
