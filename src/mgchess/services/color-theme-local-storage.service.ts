@@ -26,7 +26,7 @@ import { BrowserThemeDetector } from "../browster-utils/browser-theme.detector";
 export class ColorThemeLocalStorageService {
 
     private readonly LOCAL_STORAGE = window.localStorage;
-    private readonly LOCAL_STORAGE_THEME_KEY = "color-theme-remember" as const;
+    private readonly LOCAL_STORAGE_THEME_KEY = "COLOR_THEME_REMEMBER" as const;
 
     rememberChooseTheme(isDarkTheme: boolean): void {
         if (this.LOCAL_STORAGE === null) return;

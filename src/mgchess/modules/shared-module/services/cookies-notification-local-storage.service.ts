@@ -24,7 +24,7 @@ import { Injectable } from "@angular/core";
 export class CookiesNotificationLocalStorageService {
 
     private readonly LOCAL_STORAGE = window.localStorage;
-    private readonly LOCAL_STORAGE_COOKIE_KEY = "cookie-notification-remember" as const;
+    private readonly LOCAL_STORAGE_COOKIE_KEY = "COOKIE_NOTIFICATION_REMEMBER" as const;
 
     rememberCookiePreferences() {
         if (this.LOCAL_STORAGE === null) return;
