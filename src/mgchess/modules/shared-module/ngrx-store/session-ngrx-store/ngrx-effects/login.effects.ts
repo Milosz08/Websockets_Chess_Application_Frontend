@@ -22,19 +22,20 @@ import { DOCUMENT } from "@angular/common";
 import { Router } from "@angular/router";
 import { Store } from "@ngrx/store";
 
-import { catchError, delay, map, mergeMap, of, tap, withLatestFrom } from "rxjs";
+import { catchError, delay, map, mergeMap, of, tap } from "rxjs";
 import { RxjsHelper } from "../../../../../rxjs-helpers/rxjs.helper";
 import { RxjsConstants } from "../../../../../rxjs-helpers/rxjs.constants";
 
 import { GfxEffects } from "../../gfx-ngrx-store/ngrx-effects/gfx.effects";
 import { SessionReqResService } from "../../../services/session-req-res.service";
 import { SuspenseLoader } from "../../../../../models/suspense-loader-res.model";
+import { UserRememberStorageService } from "../../../services/user-remember-storage.service";
 import { SaveUserLoginStorageService } from "../../../../auth-register-module/services/save-user-login-storage.service";
-import { UserLoginDetailsStorageModel } from "../../../../auth-register-module/models/user-login-details-storage.model";
 
-import { sessionNgrxStore } from "../session.reducer";
 import { LoginReqModel } from "../ngrx-models/login-data-req.model";
+import { AutoLoginUserReqModel } from "../ngrx-models/auto-login-user-req.model";
 import { SessionWithGfxCombinedReducerTypes } from "../../../../../ngrx-helpers/ngrx-store.types";
+import { RememberUserStorageModel } from "../../../../auth-register-module/models/remember-user-storage.model";
 
 import * as NgrxAction_SES from "../session.actions";
 import * as NgrxAction_GFX from "../../gfx-ngrx-store/gfx.actions";
@@ -49,7 +50,8 @@ export class LoginEffects {
         private _actions$: Actions,
         private _httpService: SessionReqResService,
         @Inject(DOCUMENT) private _document: Document,
-        private _storage: SaveUserLoginStorageService,
+        private _storageAccounts: SaveUserLoginStorageService,
+        private _storageAutoLogin: UserRememberStorageService,
         private _store: Store<SessionWithGfxCombinedReducerTypes>,
     ) {
     };
@@ -66,7 +68,8 @@ export class LoginEffects {
                 return this._httpService.loginViaLocal(req).pipe(
                     map(credentialsData => {
                         if (loginForm.rememberAccount) {
-                            this._storage.saveUserDetailsInLocalStorage(new UserLoginDetailsStorageModel(credentialsData));
+                            const userDetails = new RememberUserStorageModel(credentialsData);
+                            this._storageAccounts.saveUserDetailsInLocalStorage(userDetails);
                         }
                         if (!credentialsData.activated) {
                             this._router.navigate([ "/auth/activate-account" ],
@@ -117,14 +120,13 @@ export class LoginEffects {
     logout$ = createEffect(() => {
         return this._actions$.pipe(
             ofType(NgrxAction_SES.__attemptToLogout),
-            withLatestFrom(this._store.select(sessionNgrxStore.reducerName)),
             tap(() => {
                 this._document.body.classList.add(GfxEffects.SCROLL_DISABLED_CSS);
                 this._store.dispatch(NgrxAction_GFX.__activeGlobalSuspense());
             }),
             delay(RxjsConstants.DEF_DELAY_MILIS),
-            mergeMap(([ _, state ]) => {
-                return this._httpService.logout(state.userCredentialsData!.jwtToken).pipe(
+            mergeMap(() => {
+                return this._httpService.logout().pipe(
                     map(() => NgrxAction_SES.__successfulLogout()),
                     catchError(error => {
                         return of(NgrxAction_SES.__failureLogin({
