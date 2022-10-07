@@ -49,6 +49,19 @@ const _sessionReducer = createReducer(
             serverResponse: new SimpleMessageResWithErrorModel(action.serverResponse, true),
         };
     }),
+    on(NgrxAction.__successfulRefreshToken, (state, action) => {
+        return { ...state,
+            userCredentialsData: { ...state.userCredentialsData!,
+                jwtToken: action.refreshedData.token,
+                refreshToken: action.refreshedData.refreshToken,
+            },
+        };
+    }),
+    on(NgrxAction.__failureRefreshToken, (state, action) => {
+        return { ...state,
+            serverResponse: new SimpleMessageResWithErrorModel(action.serverResponse, true),
+        };
+    }),
     on(NgrxAction.__clearServerResponse, state => {
         return { ...state,
             serverResponse: new SimpleMessageResWithErrorModel("", false),

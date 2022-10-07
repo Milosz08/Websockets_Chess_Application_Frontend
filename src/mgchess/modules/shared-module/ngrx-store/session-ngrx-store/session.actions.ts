@@ -32,6 +32,10 @@ const ATTEMPT_TO_LOGOUT = "[SESSION] ATTEMPT TO LOGOUT" as const;
 const SUCCESSFUL_LOGOUT = "[SESSION] SUCCESSFUL LOGOUT" as const;
 const FAILURE_LOGOUT = "[SESSION] FAILURE LOGOUT" as const;
 
+const ATTEMPT_TO_REFRESH_TOKEN = "[SESSION] ATTEMPT TO REFRESH TOKEN" as const;
+const SUCCESSFUL_REFRESH_TOKEN = "[SESSION] SUCCESSFUL REFRESH TOKEN" as const;
+const FAILURE_REFRESH_TOKEN = "[SESSION] FAILURE REFRESH TOKEN" as const;
+
 const CLEAR_SERVER_RESPONSE = "[SESSION] CLEAR SERVER RESPONSE" as const;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -66,6 +70,20 @@ export const __successfulLogout = createAction(
 
 export const __failureLogout = createAction(
     FAILURE_LOGOUT,
+    props<{ serverResponse: string }>(),
+);
+
+export const __attemptToRefreshToken = createAction(
+    ATTEMPT_TO_REFRESH_TOKEN,
+);
+
+export const __successfulRefreshToken = createAction(
+    SUCCESSFUL_REFRESH_TOKEN,
+    props<{ refreshedData: RefreshTokenResModel }>(),
+);
+
+export const __failureRefreshToken = createAction(
+    FAILURE_REFRESH_TOKEN,
     props<{ serverResponse: string }>(),
 );
 

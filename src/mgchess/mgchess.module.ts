@@ -18,7 +18,7 @@
 
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
-import { HttpClientModule } from "@angular/common/http";
+import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from "@angular/router";
 
@@ -33,6 +33,7 @@ import { MgchessRoutingModule } from "./mgchess-routing.module";
 import { SharedModuleModule } from "./modules/shared-module/shared-module.module";
 
 import { StorageHelper } from "../storage/storage.helper";
+import { RefreshTokenInterceptor } from "./interceptors/refresh-token.interceptor";
 import { ColorThemeLocalStorageService } from "./services/color-theme-local-storage.service";
 
 import { OnNonLoggedRedirectGuard } from "./guards/on-non-logged-redirect.guard";
@@ -65,6 +66,8 @@ import { OnEmptyRedirectParametersGuard } from "./guards/on-empty-redirect-param
         OnAlreadyLoggedRedirectGuard,
         ColorThemeLocalStorageService,
         OnEmptyRedirectParametersGuard,
+        // interceptors & http brokers
+        { provide: HTTP_INTERCEPTORS, useClass: RefreshTokenInterceptor, multi: true },
     ],
     bootstrap: [
         MgchessComponent,

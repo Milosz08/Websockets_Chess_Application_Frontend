@@ -25,6 +25,8 @@ import { HttpEndpointsHelper } from "../../../http-request-helpers/http-endpoint
 
 import { LoginReqModel } from "../ngrx-store/session-ngrx-store/ngrx-models/login-data-req.model";
 import { UserCredentialsDataResModel } from "../ngrx-store/session-ngrx-store/ngrx-models/user-credentials-data-res.model";
+import { AutoLoginUserReqModel } from "../ngrx-store/session-ngrx-store/ngrx-models/auto-login-user-req.model";
+import { RefreshTokenResModel } from "../ngrx-store/session-ngrx-store/ngrx-models/refresh-token-res.model";
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -55,7 +57,14 @@ export class SessionReqResService {
     logout(jwtToken: string): Observable<void> {
         return this._http.delete<void>(
             this._endpoint.LOGOUT,
-            { headers: new HttpHeaders({ "Authorization": `Bearer ${jwtToken}` }) },
+        );
+    };
+
+    refreshToken(refreshToken: string): Observable<RefreshTokenResModel> {
+        return this._http.post<RefreshTokenResModel>(
+            this._endpoint.REFRESH_TOKEN,
+            null,
+            { headers: new HttpHeaders({ "Authorization": `Bearer ${refreshToken}` }) },
         );
     };
 }
