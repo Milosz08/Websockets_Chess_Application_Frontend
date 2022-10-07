@@ -32,6 +32,7 @@ import { MgchessComponent } from "./mgchess.component";
 import { MgchessRoutingModule } from "./mgchess-routing.module";
 import { SharedModuleModule } from "./modules/shared-module/shared-module.module";
 
+import { StorageHelper } from "../storage/storage.helper";
 import { ColorThemeLocalStorageService } from "./services/color-theme-local-storage.service";
 
 import { OnNonLoggedRedirectGuard } from "./guards/on-non-logged-redirect.guard";
@@ -59,6 +60,7 @@ import { OnEmptyRedirectParametersGuard } from "./guards/on-empty-redirect-param
         StoreDevtoolsModule.instrument({ logOnly: environment.production }),
     ],
     providers: [
+        StorageHelper,
         OnNonLoggedRedirectGuard,
         OnAlreadyLoggedRedirectGuard,
         ColorThemeLocalStorageService,

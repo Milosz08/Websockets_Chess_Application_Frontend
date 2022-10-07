@@ -26,8 +26,11 @@ import { catchError, delay, map, mergeMap, of, tap, withLatestFrom } from "rxjs"
 import { RxjsHelper } from "../../../../../rxjs-helpers/rxjs.helper";
 import { RxjsConstants } from "../../../../../rxjs-helpers/rxjs.constants";
 
+import { GfxEffects } from "../../gfx-ngrx-store/ngrx-effects/gfx.effects";
 import { SessionReqResService } from "../../../services/session-req-res.service";
 import { SuspenseLoader } from "../../../../../models/suspense-loader-res.model";
+import { SaveUserLoginStorageService } from "../../../../auth-register-module/services/save-user-login-storage.service";
+import { UserLoginDetailsStorageModel } from "../../../../auth-register-module/models/user-login-details-storage.model";
 
 import { sessionNgrxStore } from "../session.reducer";
 import { LoginReqModel } from "../ngrx-models/login-data-req.model";
@@ -35,7 +38,6 @@ import { SessionWithGfxCombinedReducerTypes } from "../../../../../ngrx-helpers/
 
 import * as NgrxAction_SES from "../session.actions";
 import * as NgrxAction_GFX from "../../gfx-ngrx-store/gfx.actions";
-import { GfxEffects } from "../../gfx-ngrx-store/ngrx-effects/gfx.effects";
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -47,6 +49,7 @@ export class LoginEffects {
         private _actions$: Actions,
         private _httpService: SessionReqResService,
         @Inject(DOCUMENT) private _document: Document,
+        private _storage: SaveUserLoginStorageService,
         private _store: Store<SessionWithGfxCombinedReducerTypes>,
     ) {
     };
@@ -63,7 +66,7 @@ export class LoginEffects {
                 return this._httpService.loginViaLocal(req).pipe(
                     map(credentialsData => {
                         if (loginForm.rememberAccount) {
-                            // TODO: add saving account implementation
+                            this._storage.saveUserDetailsInLocalStorage(new UserLoginDetailsStorageModel(credentialsData));
                         }
                         if (!credentialsData.activated) {
                             this._router.navigate([ "/auth/activate-account" ],

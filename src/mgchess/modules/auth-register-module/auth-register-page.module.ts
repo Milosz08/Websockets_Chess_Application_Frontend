@@ -53,6 +53,7 @@ import { SignupActivateEffects } from "./ngrx-store/auth-ngrx-store/ngrx-effects
 import { AuthReqResService } from "./services/auth-req-res.service";
 import { StaticDataReqResService } from "./services/static-data-req-res.service";
 import { ValidateOauth2UserService } from "./services/validate-oauth2-user.service";
+import { SaveUserLoginStorageService } from "./services/save-user-login-storage.service";
 import { PasswordStrengthMeterService } from "./services/password-strength-meter.service";
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -98,6 +99,7 @@ import { PasswordStrengthMeterService } from "./services/password-strength-meter
         AuthReqResService,
         StaticDataReqResService,
         ValidateOauth2UserService,
+        SaveUserLoginStorageService,
         PasswordStrengthMeterService,
     ],
 })

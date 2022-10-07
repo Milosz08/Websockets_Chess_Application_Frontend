@@ -18,18 +18,31 @@
 
 import { Component } from "@angular/core";
 
+import { SaveUserLoginStorageService } from "../../services/save-user-login-storage.service";
+import { UserLoginDetailsStorageModel } from "../../models/user-login-details-storage.model";
+
 //----------------------------------------------------------------------------------------------------------------------
 
 @Component({
     selector: "mgchess-last-logins",
     templateUrl: "./last-logins.component.html",
-    styleUrls: [ "./last-logins.component.scss" ]
+    styleUrls: [ "./last-logins.component.scss" ],
+    providers: [ SaveUserLoginStorageService ],
 })
 export class LastLoginsComponent {
 
-    _rememberAccounts: Array<String> = new Array<String>();
+    _rememberAccounts: Array<UserLoginDetailsStorageModel> = this._storage.getAllSavedUserDetailsFromLocalStorage();
+
+    constructor(
+        private _storage: SaveUserLoginStorageService,
+    ) {
+    };
 
     handleRemoveAllRememberAccounts(): void {
-        // TODO: remove all accounts from local storage
+        this._storage.removeAllUsersFromLocalStorage();
+    };
+
+    handleRemoveSingleSavedUserAccount(userId: number): void {
+        this._storage.removeSingleUserDetailsFromLocalStorage(userId);
     };
 }
