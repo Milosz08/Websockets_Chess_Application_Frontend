@@ -46,6 +46,10 @@
     }
 }
 
+.user-not-logged__close-banner-button {
+    margin-right: 20px;
+}
+
 //----------------------------------------------------------------------------------------------------------------------
 
 @media only screen and (max-width: 790px) {
@@ -57,6 +61,9 @@
     }
     .user-not-logger-banner__buttons-container {
         margin: 20px 0 0;
+    }
+    .user-not-logged__close-banner-button {
+        margin: 0 0 10px;
     }
 }
 

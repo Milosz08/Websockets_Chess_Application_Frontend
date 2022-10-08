@@ -17,10 +17,17 @@
   -->
 
 <aside
-    *ngIf="(_isNotLogged$ | async)"
+    *ngIf="(_isNotLogged$ | async) && !_isForcedBannerClosed"
     class="user-not-logged-banner__container"
 >
     <div class="user-not-logged-banner__wrapper">
+        <button
+            (click)="handleForceCloseNotLoggedBanner()"
+            title="Click here to forced close login/signup banner"
+            class="mg-chess__cross-close-struct__container user-not-logged__close-banner-button"
+        >
+            <div class="cross-close-struct__cross-element cross--primary-color-variant"></div>
+        </button>
         <p class="user-not-logger-banner__text-content">
             For unblock all application functions, please login on your account via 'log in' button. If you haven't yet
             account in this application, please go to signup form via 'sign up' button.

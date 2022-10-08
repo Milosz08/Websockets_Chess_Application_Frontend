@@ -33,10 +33,15 @@ import * as NgrxSelector_SES from "../../ngrx-store/session-ngrx-store/session.s
 })
 export class UserNotLoggedBannerComponent {
 
+    _isForcedBannerClosed: boolean = false;
     _isNotLogged$: Observable<boolean> = this._store.select(NgrxSelector_SES.sel_userIsNotLogged);
 
     constructor(
         private _store: Store<SessionReducerType>,
     ) {
+    };
+
+    handleForceCloseNotLoggedBanner(): void {
+        this._isForcedBannerClosed = true;
     };
 }
