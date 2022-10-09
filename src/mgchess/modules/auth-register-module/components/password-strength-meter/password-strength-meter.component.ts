@@ -1,8 +1,8 @@
 /*
  * Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
  *
- * File name: signup-password-control-group.component.ts
- * Last modified: 14/09/2022, 01:26
+ * File name: password-strength-meter.component.ts
+ * Last modified: 09/10/2022, 22:28
  * Project name: chess-app-frontend
  *
  * Licensed under the MIT license; you may not use this file except in compliance with the License.
@@ -16,57 +16,52 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-import { Component, Input, OnDestroy, OnInit } from "@angular/core";
+import { Component, Input, OnChanges, OnDestroy } from "@angular/core";
 import { FormGroup } from "@angular/forms";
 import { Store } from "@ngrx/store";
 
-import { Subject } from "rxjs";
+import { Subject, takeUntil } from "rxjs";
 import { RxjsHelper } from "../../../../rxjs-helpers/rxjs.helper";
 
-import { ValidatorConstraint } from "../../../../validator-helpers/angular-form.validator";
 import { AngularFormsHelper } from "../../../../angular-forms-helpers/angular-forms.helper";
-import { FormInputClassesConstants } from "../../../../misc-constants/form-input-classes.constants";
-import { PasswordStrengthMeterService } from "../../services/password-strength-meter.service";
+import { PasswordStrength, PasswordStrengthMeterService } from "../../services/password-strength-meter.service";
 
 import { AuthReducerType } from "../../../../ngrx-helpers/ngrx-store.types";
-import * as NgrxAction_ATH from "../../ngrx-store/auth-ngrx-store/auth.actions";
-import * as NgrxSelector_ATH from "../../ngrx-store/auth-ngrx-store/auth.selectors";
 
 //----------------------------------------------------------------------------------------------------------------------
 
 @Component({
-    selector: "mgchess-signup-password-control-group",
-    templateUrl: "./signup-password-control-group.component.html",
-    providers: [ PasswordStrengthMeterService, FormInputClassesConstants ],
+    selector: "mgchess-password-strength-meter",
+    templateUrl: "./password-strength-meter.component.html",
+    styleUrls: [ "./password-strength-meter.component.scss" ],
 })
-export class SignupPasswordControlGroupComponent implements OnInit, OnDestroy {
+export class PasswordStrengthMeterComponent implements OnChanges, OnDestroy {
 
     @Input() _formData!: FormGroup;
 
-    _serverResponseIsEmpty!: boolean;
+    _passwordScore: PasswordStrength = new PasswordStrength(0, "none");
 
     readonly _formHelper: AngularFormsHelper = new AngularFormsHelper();
-    readonly _passwordSAreNotTheSame = ValidatorConstraint.PASSWORDS_ARE_NOT_THE_SAME;
-
     private _ngUnsubscribe: Subject<void> = new Subject<void>();
 
     constructor(
         private _store: Store<AuthReducerType>,
-        public _cssConstants: FormInputClassesConstants,
+        private _passwordMeterService: PasswordStrengthMeterService,
     ) {
     };
 
-    ngOnInit(): void {
-        RxjsHelper.subscribeData(this._store, NgrxSelector_ATH.sel_serverResponseIsEmpty, this._ngUnsubscribe,
-                data => this._serverResponseIsEmpty = data);
+    ngOnChanges(): void {
+        this._formHelper.field("password", this._formData).valueChanges.pipe(takeUntil(this._ngUnsubscribe))
+            .subscribe(data => {
+                if (!Boolean(data)) {
+                    this._passwordScore = new PasswordStrength(0, "none");
+                } else {
+                    this._passwordScore = this._passwordMeterService.computePasswordPower(data)
+                }
+            });
     };
 
     ngOnDestroy(): void {
         RxjsHelper.cleanupExecutor(this._ngUnsubscribe);
-    };
-
-    handleClearServerResponse(): void {
-        if (this._serverResponseIsEmpty) return;
-        this._store.dispatch(NgrxAction_ATH.__clearServerResponse());
     };
 }
