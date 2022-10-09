@@ -1,8 +1,8 @@
 /*
  * Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
  *
- * File name: ota-token-req.model.ts
- * Last modified: 01/10/2022, 12:52
+ * File name: forgot-password-middleware-data.model.ts
+ * Last modified: 09/10/2022, 17:57
  * Project name: chess-app-frontend
  *
  * Licensed under the MIT license; you may not use this file except in compliance with the License.
@@ -16,24 +16,14 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-export class OtaTokenMutlipleEmailsReqModel {
-    token: string;
+export class ForgotPasswordMiddlewareDataModel {
+    forgotPasswordResponseMessage: string;
     emailAddresses: Array<string>;
+    userNicknameEmail: string;
 
-    constructor(token: string, emailAddresses: Array<string>) {
-        this.token = token;
+    constructor(forgotPasswordResponseMessage: string, emailAddresses: Array<string>, userNicknameEmail: string) {
+        this.forgotPasswordResponseMessage = forgotPasswordResponseMessage;
         this.emailAddresses = emailAddresses;
-    };
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-export class OtaTokenNicknameEmailReqModel {
-    token: string;
-    nicknameEmail: string;
-
-    constructor(token: string, nicknameEmail: string) {
-        this.token = token;
-        this.nicknameEmail = nicknameEmail;
+        this.userNicknameEmail = userNicknameEmail;
     };
 }

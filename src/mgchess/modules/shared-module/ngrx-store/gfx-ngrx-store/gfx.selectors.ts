@@ -74,4 +74,23 @@ export const sel_attemptToActivateAccountViaOtaSuspense = selectorWithInjectedSt
     suspenseStatus.isSuspenseLoading && suspenseStatus.loadingFor === SuspenseLoader.ATTEMPT_ACTIVATE_ACCOUNT_VIA_OTA,
 );
 
+export const sel_attemptToChangePasswordSuspense = selectorWithInjectedStore(({ suspenseStatus }) =>
+    suspenseStatus.isSuspenseLoading && suspenseStatus.loadingFor === SuspenseLoader.ATTEMPT_CHANGE_PASSWORD,
+);
+
+export const sel_validateChangePasswordOtaTokenSuspense = selectorWithInjectedStore(({ suspenseStatus }) =>
+    suspenseStatus.isSuspenseLoading && suspenseStatus.loadingFor === SuspenseLoader.VALIDATE_OTA_TOKEN_CHANGE_PASSWORD,
+);
+
+export const sel_validateChangePasswordJwtTokenSuspense = selectorWithInjectedStore(({ suspenseStatus }) =>
+    suspenseStatus.isSuspenseLoading && suspenseStatus.loadingFor === SuspenseLoader.VALIDATE_JWT_TOKEN_CHANGE_PASSWORD,
+);
+
+export const sel_changeForgotterPasswordSuspense = selectorWithInjectedStore(({ suspenseStatus }) =>
+    suspenseStatus.isSuspenseLoading && suspenseStatus.loadingFor === SuspenseLoader.CHANGE_FORGOTTER_PASSWORD,
+);
+
+export const sel_resendChangePasswordLinkSuspense = selectorWithInjectedStore(({ suspenseStatus }) =>
+    suspenseStatus.isSuspenseLoading && suspenseStatus.loadingFor === SuspenseLoader.RESEND_CHANGE_PASSWORD_LINK,
+);
 

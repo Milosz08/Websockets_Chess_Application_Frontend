@@ -23,11 +23,15 @@ import { Observable } from "rxjs";
 
 import { HttpEndpointsHelper } from "../../../http-request-helpers/http-endpoints.helper";
 import { SimpleMessageResponseModel } from "../../../models/simple-message-response.model";
-import { OtaTokenMutlipleEmailsReqModel } from "../models/ota-token-mutliple-emails-req.model";
+import { OtaTokenMutlipleEmailsReqModel, OtaTokenNicknameEmailReqModel } from "../models/ota-token-mutliple-emails-req.model";
 
 import { SignupReqModel } from "../ngrx-store/auth-ngrx-store/ngrx-models/signup-req.model";
 import { FinishSignupReqModel } from "../ngrx-store/auth-ngrx-store/ngrx-models/finish-signup-req.model";
 import { AttemptFinishSignupResModel } from "../ngrx-store/auth-ngrx-store/ngrx-models/attempt-finish-signup-res.model";
+import { ValidateChangePasswordResModel } from "../ngrx-store/change-password-ngrx-store/ngrx-models/validate-change-password-res.model";
+import { ChangeForgottenPasswordReqModel } from "../ngrx-store/change-password-ngrx-store/ngrx-models/change-forgotten-password-req.model";
+import { ChangePasswordUserDetailsResModel } from "../ngrx-store/change-password-ngrx-store/ngrx-models/change-password-user-details-res.model";
+import { EmailAddressesChangePasswordResModel } from "../ngrx-store/change-password-ngrx-store/ngrx-models/email-addresses-change-password-res.model";
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -75,6 +79,36 @@ export class AuthReqResService {
         return this._http.post<SimpleMessageResponseModel>(
             this._endpoint.ACTIVATE_ACCOUNT,
             req,
+        );
+    };
+
+    sendRequestToChangePassword(usernameEmailReq: string): Observable<EmailAddressesChangePasswordResModel> {
+        return this._http.post<EmailAddressesChangePasswordResModel>(
+            this._endpoint.ATTEMPT_TO_CHANGE_PASSWORD,
+            { usernameEmailAddress: usernameEmailReq },
+        );
+    };
+
+    validateChangePasswordRequestViaOta(req: OtaTokenNicknameEmailReqModel): Observable<ValidateChangePasswordResModel> {
+        return this._http.post<ValidateChangePasswordResModel>(
+            this._endpoint.VALIDATE_ATTEMPT_TO_CHANGE_PASSWORD,
+            req,
+        );
+    };
+
+    validateChangePasswordJwtAndReturnUserData(jwtToken: string): Observable<ChangePasswordUserDetailsResModel> {
+        return this._http.post<ChangePasswordUserDetailsResModel>(
+            this._endpoint.CHANGE_PASSWORD_CHECK_JWT,
+            null,
+            { headers: new HttpHeaders({ "Authorization": `Bearer ${jwtToken}` }) },
+        );
+    };
+
+    changeForgotterPassword(req: ChangeForgottenPasswordReqModel, jwtToken: string): Observable<SimpleMessageResponseModel> {
+        return this._http.post<SimpleMessageResponseModel>(
+            this._endpoint.CHANGE_FORGOTTEN_PASSWORD,
+            req,
+            { headers: new HttpHeaders({ "Authorization": `Bearer ${jwtToken}` }) },
         );
     };
 }

@@ -20,11 +20,13 @@ import { gfxNgrxStore } from "../modules/shared-module/ngrx-store/gfx-ngrx-store
 import { authNgrxStore } from "../modules/auth-register-module/ngrx-store/auth-ngrx-store/auth.reducer";
 import { sessionNgrxStore } from "../modules/shared-module/ngrx-store/session-ngrx-store/session.reducer";
 import { newsletterNgrxStore } from "../modules/static-content-module/ngrx-store/newsletter-ngrx-store/newsletter.reducer";
+import { changePasswordNgrxStore } from "../modules/auth-register-module/ngrx-store/change-password-ngrx-store/change-password.reducer";
 
 import { GfxStateTypes } from "../modules/shared-module/ngrx-store/gfx-ngrx-store/gfx.initial";
 import { AuthStateTypes } from "../modules/auth-register-module/ngrx-store/auth-ngrx-store/auth.initial";
 import { SessionStateTypes } from "../modules/shared-module/ngrx-store/session-ngrx-store/session.initial";
 import { NewsletterStateTypes } from "../modules/static-content-module/ngrx-store/newsletter-ngrx-store/newsletter.initial";
+import { ChangePasswordStateTypes } from "../modules/auth-register-module/ngrx-store/change-password-ngrx-store/change-password.initial";
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -57,4 +59,13 @@ export type AuthWithGfxCombinedReducerTypes = {
 
 export type SessionReducerType = {
     [sessionNgrxStore.reducerName]: SessionStateTypes,
+};
+
+export type ChangePasswordWithGfxCombinedReducerTypes = {
+    [changePasswordNgrxStore.reducerName]: ChangePasswordStateTypes,
+    [gfxNgrxStore.reducerName]: GfxStateTypes,
+};
+
+export type ChangePasswordReducerType = {
+    [changePasswordNgrxStore.reducerName]: ChangePasswordStateTypes,
 };
