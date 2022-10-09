@@ -86,34 +86,23 @@
             (ngSubmit)="handleSendTokenAndUnsubscribe()"
             class="unsubscribe-newsletter__form"
         >
-            <label
-                for="unsubscribe-newsletter__token-input"
-                class="mg-chess__standard-form-label__container"
+            <mgchess-password-input
+                [_form]="_unsubscribeTokenForm"
+                [_maxInputLength]="10"
+                _topInfoLabel="Insert here token from email"
+                _formControlName="token"
+                _inputId="unsubscribe-newsletter__ota-token-input"
+                _inputPlaceholder="ex. XcPOS8kv5o"
+                _errorPlaceholder="Please enter valid token."
+                (_emitCleanErrors)="cleanTokenServerResponse()"
             >
-                <span class="mgchess__standard-form-label__text-primary-color">Insert here OTA token</span>
-                <input
-                    type="text"
-                    id="unsubscribe-newsletter__token-input"
-                    (input)="cleanTokenServerResponse()"
-                    autocomplete="off"
-                    maxlength="10"
-                    formControlName="token"
-                    placeholder="ex. XcPOS8kv5o"
-                    class="mg-chess__standard-form-input-primary-color"
-                />
-                <p
-                    *ngIf="_formHelper.fieldHasAnyErrors('token', _unsubscribeTokenForm)"
-                    class="mg-chess__form-data-paragraph paragraph--error-theme-change"
-                >
-                    Please enter valid OTA token.
-                </p>
                 <p
                     *ngIf="_serverResponse.tokenResponse.responseMessage !== ''"
                     [ngClass]="_serverReqResHelper.responseThemeCssClass(_serverResponse.tokenResponse.responseError)"
                 >
                     {{ _serverResponse.tokenResponse.responseMessage }}
                 </p>
-            </label>
+            </mgchess-password-input>
             <button
                 type="submit"
                 [disabled]="!_unsubscribeTokenForm.valid"

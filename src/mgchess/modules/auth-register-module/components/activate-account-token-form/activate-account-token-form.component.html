@@ -47,16 +47,19 @@
 <form
     [formGroup]="_activateTokenForm"
     (ngSubmit)="handleSubmitActivateAccountViaOtaToken()"
-    class="mg-chess__form-container form-container--top-margin"
+    class="mg-chess__form-container form-container--top-bottom-margin"
 >
-    <mgchess-signup-form-text-input
-        [_singupForm]="_activateTokenForm"
-        [_controlMaxLength]="10"
+    <mgchess-password-input
+        [_form]="_activateTokenForm"
+        [_maxInputLength]="10"
+        _topInfoLabel="Insert here token from email"
         _formControlName="otaToken"
-        _formControlPlaceholder="ex. XcPOS8kv5o"
-        _additionalControlText="Insert here token from email"
-        _controlErrorText="Please enter valid token."
-    ></mgchess-signup-form-text-input>
+        _inputId="activate-account__ota-token-input"
+        _inputPlaceholder="ex. XcPOS8kv5o"
+        _errorPlaceholder="Please enter valid token."
+        (_emitCleanErrors)="handleClearServerResponse()"
+        [_cssClasses]="_cssConstants.authFormsClasses"
+    ></mgchess-password-input>
     <button
         type="submit"
         [disabled]="!_activateTokenForm.valid"

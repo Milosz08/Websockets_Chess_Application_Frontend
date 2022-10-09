@@ -27,6 +27,7 @@ import { ServerReqResHelper } from "../../../../http-request-helpers/server-req-
 import { AngularFormsHelper } from "../../../../angular-forms-helpers/angular-forms.helper";
 import { AuthWithGfxCombinedReducerTypes } from "../../../../ngrx-helpers/ngrx-store.types";
 import { SimpleMessageResWithErrorModel } from "../../../../models/simple-message-response.model";
+import { FormInputClassesConstants } from "../../../../misc-constants/form-input-classes.constants";
 import { ValidatorPatternConstants } from "../../../../validator-helpers/validator-pattern.constants";
 
 import * as NgrxAction_ATH from "../../ngrx-store/auth-ngrx-store/auth.actions";
@@ -56,6 +57,7 @@ export class ActivateAccountTokenFormComponent implements OnInit, OnDestroy {
 
     constructor(
         private _regex: ValidatorPatternConstants,
+        public _cssConstants: FormInputClassesConstants,
         private _store: Store<AuthWithGfxCombinedReducerTypes>,
     ) {
         this._activateTokenForm = new FormGroup({
@@ -76,6 +78,11 @@ export class ActivateAccountTokenFormComponent implements OnInit, OnDestroy {
         const token = AngularFormsHelper.field("otaToken", this._activateTokenForm).value;
         this._store.dispatch(NgrxAction_ATH.__attemptToActivateAccountViaOta({ token }));
         this._activateTokenForm.reset();
+    };
+
+    handleClearServerResponse(): void {
+        if (this._serverResponse.responseMessage === "") return;
+        this._store.dispatch(NgrxAction_ATH.__clearServerResponse());
     };
 
     handleResendVerificationEmailMessage(): void {
