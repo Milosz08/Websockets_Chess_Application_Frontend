@@ -16,7 +16,7 @@
   ~ COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
   -->
 
-<div class="finish-sign-up__main-container">
+<div class="mg-chess__standard-form-single-column__container">
     <aside
         *ngIf="_oauth2SuspenseActive"
         class="mg-chess__suspense-loader"
@@ -41,25 +41,25 @@
     </div>
     <ng-template #showFormContent>
         <ng-container *ngIf="!_oauth2SuspenseActive">
-            <div class="finish-sign-up__top-info-container">
+            <div class="form-single-column__top-boxed-container">
                 <mgchess-user-avatar-image
                     [_hasImage]="(_finishSignupUserPhoto$ | async) !== ''"
                     [_initials]="(_finishSignupUserInitials$ | async)!"
                     [_imageUrl]="(_finishSignupUserPhoto$ | async)!"
                     [_oauth2Supplier]="(_finishSignupUserSupplier$ | async)!"
                     _backgroundMixedType="supplier-container--first-variant"
-                    class="finish-sign-up__image-container"
+                    class="boxed-container__image-content"
                 ></mgchess-user-avatar-image>
                 <h2 class="mg-chess__standard-header-with-decorator header--smaller header--center">
                     <span class="text-content">Welcome {{ _finishSignupUserFullName$ | async }}!</span>
                 </h2>
-                <p class="finish-sign-up__top-paragraph-container text-centered">
+                <p class="boxed-container__paragraph-content text-centered">
                     To complete your registration with an external service add some of your details in the form below.
                     This data is processed in accordance with our
                     <a
                         routerLink="/privacy-policy"
-                        class="privacy-policy__anchor-link"
                         title="Click to goto our privacy policy document"
+                        class="paragraph__anchor-link"
                     >
                         Privacy Policy</a>.
                 </p>
@@ -68,11 +68,11 @@
                 *ngIf="(_isFilledDataFormSkipped$ | async) || (_finishSignupServerResponse$ | async) !== '';
                         else showFinishForm"
                 [_cascadeResponseMessage]="(_finishSignupServerResponse$ | async) || ''"
-                class="finish-sign-up__activate-account__container"
+                class="form-single-column__bottom-solid-container"
             ></mgchess-activate-account-token-form>
             <ng-template #showFinishForm>
                 <mgchess-finish-signup-form
-                    class="finish-sign-up__container"
+                    class="form-single-column__bottom-solid-container"
                 ></mgchess-finish-signup-form>
             </ng-template>
         </ng-container>

@@ -42,7 +42,7 @@ import * as NgrxSelector_ATH from "../../ngrx-store/auth-ngrx-store/auth.selecto
 })
 export class SignupPasswordControlGroupComponent implements OnInit, OnChanges, OnDestroy {
 
-    @Input() _singupForm!: FormGroup;
+    @Input() _formData!: FormGroup;
 
     _serverResponseIsEmpty!: boolean;
     _passwordScore: PasswordStrength = new PasswordStrength(0, "none");

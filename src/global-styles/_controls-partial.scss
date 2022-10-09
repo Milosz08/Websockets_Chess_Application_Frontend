@@ -116,6 +116,11 @@
     &.paragraph--simple-margin {
         margin: 15px 0;
     }
+    &.paragraph--simple-bottom-margin {
+        margin: 0 0 15px;
+        width: 100%;
+        text-align: left;
+    }
 }
 
 .mg-chess__standard-button {
@@ -186,6 +191,9 @@
     }
     &.button--fitting {
         width: fit-content;
+    }
+    &.button--margin-top {
+        margin-top: 20px;
     }
 }
 
@@ -296,8 +304,12 @@
 }
 
 .mg-chess__form-container {
-    &.form-container--top-margin {
+    width: 100%;
+    &.form-container--top-bottom-margin {
         margin: 20px 0;
+    }
+    &.form-container--bottom-margin {
+        margin-bottom: 20px;
     }
 }
 

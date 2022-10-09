@@ -39,11 +39,10 @@
         </a>
     </div>
     <ng-template #showFormContent>
-        <ng-container *ngIf="!(_isSuspenseActive$ | async)">
-            <mgchess-activate-account-token-form
-                [_cascadeResponseMessage]="(_finishSignupServerResponse$ | async) || ''"
-                class="form-single-column__content-wrapper"
-            ></mgchess-activate-account-token-form>
-        </ng-container>
+        <mgchess-activate-account-token-form
+            *ngIf="!(_isSuspenseActive$ | async)"
+            [_cascadeResponseMessage]="(_finishSignupServerResponse$ | async) || ''"
+            class="form-single-column__content-wrapper"
+        ></mgchess-activate-account-token-form>
     </ng-template>
 </div>

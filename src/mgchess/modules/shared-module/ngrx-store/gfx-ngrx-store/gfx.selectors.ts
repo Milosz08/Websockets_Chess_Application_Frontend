@@ -50,27 +50,27 @@ export const sel_finishSignupViaOAuth2Suspense = selectorWithInjectedStore(({ su
     suspenseStatus.isSuspenseLoading && suspenseStatus.loadingFor === SuspenseLoader.ATTEMPT_FINISH_SIGNUP_VIA_OAUTH2,
 );
 
-export const sel_attemptUnsubscribeLoading = selectorWithInjectedStore(({ suspenseStatus }) =>
+export const sel_attemptUnsubscribeLoadingSuspense = selectorWithInjectedStore(({ suspenseStatus }) =>
     suspenseStatus.isSuspenseLoading && suspenseStatus.loadingFor === SuspenseLoader.ATTEMPT_UNSUBSCRIBE,
 );
 
-export const sel_unsubscribeLoadingViaOta = selectorWithInjectedStore(({ suspenseStatus }) =>
+export const sel_unsubscribeLoadingViaOtaSuspense = selectorWithInjectedStore(({ suspenseStatus }) =>
     suspenseStatus.isSuspenseLoading && suspenseStatus.loadingFor === SuspenseLoader.UNSUBSCRIBE_VIA_OTA,
 );
 
-export const sel_finishSignupViaOauth2 = selectorWithInjectedStore(({ suspenseStatus }) =>
+export const sel_finishSignupViaOauth2Suspense = selectorWithInjectedStore(({ suspenseStatus }) =>
     suspenseStatus.isSuspenseLoading && suspenseStatus.loadingFor === SuspenseLoader.FINISH_SIGNUP_VIA_OAUTH2,
 );
 
-export const sel_resendActivateAccountLink = selectorWithInjectedStore(({ suspenseStatus }) =>
+export const sel_resendActivateAccountLinkSuspense = selectorWithInjectedStore(({ suspenseStatus }) =>
     suspenseStatus.isSuspenseLoading && suspenseStatus.loadingFor === SuspenseLoader.RESEND_ACTIVATE_ACCOUNT_LINK,
 );
 
-export const sel_activateAccountViaOta = selectorWithInjectedStore(({ suspenseStatus }) =>
+export const sel_activateAccountViaOtaSuspense = selectorWithInjectedStore(({ suspenseStatus }) =>
     suspenseStatus.isSuspenseLoading && suspenseStatus.loadingFor === SuspenseLoader.ACTIVATE_ACCOUNT_VIA_OTA,
 );
 
-export const sel_attemptToactivateAccountViaOta = selectorWithInjectedStore(({ suspenseStatus }) =>
+export const sel_attemptToActivateAccountViaOtaSuspense = selectorWithInjectedStore(({ suspenseStatus }) =>
     suspenseStatus.isSuspenseLoading && suspenseStatus.loadingFor === SuspenseLoader.ATTEMPT_ACTIVATE_ACCOUNT_VIA_OTA,
 );
 

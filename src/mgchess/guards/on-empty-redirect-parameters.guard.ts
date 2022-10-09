@@ -30,9 +30,7 @@ export class OnEmptyRedirectParametersGuard implements CanActivate {
     };
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-        if (Boolean(route.queryParamMap.get("message")) && Boolean(route.queryParamMap.get("error"))) {
-            return true;
-        }
+        if (Boolean(route.queryParamMap.get("message")) && Boolean(route.queryParamMap.get("error"))) return true;
         this._router.navigate([ '/' ]).then(r => r);
         return false;
     };

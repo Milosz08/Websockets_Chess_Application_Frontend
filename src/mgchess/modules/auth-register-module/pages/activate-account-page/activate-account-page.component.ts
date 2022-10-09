@@ -46,7 +46,7 @@ export class ActivateAccountPageComponent extends BrowserMetaSerializatorLoader 
     _jwtToken: string = "";
     _serverResponse!: SimpleMessageResWithErrorModel;
 
-    _isSuspenseActive$: Observable<boolean> = this._store.select(NgrxSelector_GFX.sel_attemptToactivateAccountViaOta);
+    _isSuspenseActive$: Observable<boolean> = this._store.select(NgrxSelector_GFX.sel_attemptToActivateAccountViaOtaSuspense);
     _finishSignupServerResponse$: Observable<string> = this._store.select(NgrxSelector_ATH.sel_activateAccountServerResponse);
 
     private _ngUnsubscribe: Subject<void> = new Subject<void>();

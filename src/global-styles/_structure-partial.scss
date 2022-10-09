@@ -121,7 +121,7 @@
     .mg-chess__star-bullet-element__container {
         display: flex;
         align-items: center;
-        margin: 10px 0;
+        margin: 5px 0;
         .mg-chess__star-bullet__pointer,
         .mg-chess__star-bullet__paragraph {
             font-size: .9rem;
@@ -187,13 +187,45 @@
     max-width: 500px;
     width: calc(100% - 60px);
     margin: 0 30px;
-    .form-single-column__content-wrapper {
+    .form-single-column__top-boxed-container,
+    .form-single-column__bottom-solid-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         padding: 20px 40px;
         font-weight: var(--standard-font-weight);
+    }
+    .form-single-column__top-boxed-container {
+        color: var(--secondary-tint-color);
+        border: 1px solid var(--auth-container-background-with-border);
+        border-radius: var(--standard-modal-border-radius) var(--standard-modal-border-radius) 0 0;
+        .boxed-container__image-content {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .boxed-container__paragraph-content {
+            color: var(--secondary-tint-color);
+            .paragraph__anchor-link {
+                color: var(--auth-container-background-with-border);
+            }
+        }
+    }
+    .form-single-column__content-wrapper,
+    .form-single-column__bottom-solid-container {
         color: var(--auth-login-form-foreground);
-        border-radius: var(--standard-modal-border-radius);
         background-color: var(--auth-container-background-with-border);
     }
+    .form-single-column__bottom-solid-container {
+        border-radius: 0 0 var(--standard-modal-border-radius) var(--standard-modal-border-radius);
+    }
+    .form-single-column__content-wrapper {
+        border-radius: var(--standard-modal-border-radius);
+    }
+}
+
+.mg-chess__full-size-container {
+    width: 100%;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -230,5 +262,22 @@
     }
     .mg-chess__suspense-loader {
         margin: 100px 0;
+    }
+    .mg-chess__standard-form-single-column__container {
+        width: 100%;
+        margin: 0;
+        .form-single-column__content-wrapper {
+            border-radius: 0;
+        }
+        .form-single-column__top-boxed-container {
+            border: none;
+        }
+        .form-single-column__top-boxed-container,
+        .form-single-column__bottom-solid-container {
+            border-radius: 0;
+        }
+        .form-single-column__bottom-solid-container {
+            padding-bottom: 0;
+        }
     }
 }

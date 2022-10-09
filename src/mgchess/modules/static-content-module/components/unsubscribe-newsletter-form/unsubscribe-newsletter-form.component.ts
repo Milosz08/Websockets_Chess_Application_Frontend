@@ -52,8 +52,8 @@ export class UnsubscribeNewsletterFormComponent implements OnInit, OnDestroy {
     _unsubscribeTokenForm: FormGroup;
 
     _isTokenFieldVisible$: Observable<boolean> = this._store.select(NgrxSelector_NWL.sel_tokenFormVisibility);
-    _suspenseLoadingEmail$: Observable<boolean> = this._store.select(NgrxSelector_GFX.sel_attemptUnsubscribeLoading);
-    _suspenseLoadingToken$: Observable<boolean> = this._store.select(NgrxSelector_GFX.sel_unsubscribeLoadingViaOta);
+    _suspenseLoadingToken$: Observable<boolean> = this._store.select(NgrxSelector_GFX.sel_unsubscribeLoadingViaOtaSuspense);
+    _suspenseLoadingEmail$: Observable<boolean> = this._store.select(NgrxSelector_GFX.sel_attemptUnsubscribeLoadingSuspense);
     _hideForms$: Observable<boolean> = this._store.select(NgrxSelector_NWL.sel_successfullValidToken);
 
     _serverResponse!: EmailAndTokenResModel;

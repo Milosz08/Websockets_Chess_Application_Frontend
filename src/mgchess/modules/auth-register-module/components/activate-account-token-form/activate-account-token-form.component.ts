@@ -47,8 +47,8 @@ export class ActivateAccountTokenFormComponent implements OnInit, OnDestroy {
     _activateTokenForm!: FormGroup;
     _serverResponse!: SimpleMessageResWithErrorModel;
 
-    _suspenseForActivate$: Observable<boolean> = this._store.select(NgrxSelector_GFX.sel_activateAccountViaOta);
-    _suspenseForResend$: Observable<boolean> = this._store.select(NgrxSelector_GFX.sel_resendActivateAccountLink);
+    _suspenseForActivate$: Observable<boolean> = this._store.select(NgrxSelector_GFX.sel_activateAccountViaOtaSuspense);
+    _suspenseForResend$: Observable<boolean> = this._store.select(NgrxSelector_GFX.sel_resendActivateAccountLinkSuspense);
     _userEmails$: Observable<Array<string>> = this._store.select(NgrxSelector_ATH.sel_finishSignupUserEmails);
 
     readonly _serverReqResHelper: ServerReqResHelper = new ServerReqResHelper();
@@ -79,6 +79,6 @@ export class ActivateAccountTokenFormComponent implements OnInit, OnDestroy {
     };
 
     handleResendVerificationEmailMessage(): void {
-        console.log("resending verification email...");
+        // TODO: Create endpoint for rensend email verification code message.
     };
 }

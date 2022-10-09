@@ -23,15 +23,15 @@ import { Store } from "@ngrx/store";
 import { Observable, Subject } from "rxjs";
 import { RxjsHelper } from "../../../../rxjs-helpers/rxjs.helper";
 
+import { FinishSignupFormModel } from "../../models/finish-signup-form.model";
+import { ServerReqResHelper } from "../../../../http-request-helpers/server-req-res.helper";
 import { AngularFormsHelper } from "../../../../angular-forms-helpers/angular-forms.helper";
+import { SimpleMessageResWithErrorModel } from "../../../../models/simple-message-response.model";
 
 import { AuthReducerType } from "../../../../ngrx-helpers/ngrx-store.types";
 import * as NgrxAction_ATH from "../../ngrx-store/auth-ngrx-store/auth.actions";
 import * as NgrxSelector_ATH from "../../ngrx-store/auth-ngrx-store/auth.selectors";
 import * as NgrxSelector_GFX from "../../../shared-module/ngrx-store/gfx-ngrx-store/gfx.selectors";
-import { FinishSignupFormModel } from "../../models/finish-signup-form.model";
-import { SimpleMessageResWithErrorModel } from "../../../../models/simple-message-response.model";
-import { ServerReqResHelper } from "../../../../http-request-helpers/server-req-res.helper";
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -43,7 +43,7 @@ export class FinishSignupFormComponent implements OnInit, OnDestroy {
 
     _finishSignupForm: FormGroup;
     _serverResponse!: SimpleMessageResWithErrorModel;
-    _suspenseLoader$: Observable<boolean> = this._store.select(NgrxSelector_GFX.sel_finishSignupViaOauth2);
+    _suspenseLoader$: Observable<boolean> = this._store.select(NgrxSelector_GFX.sel_finishSignupViaOauth2Suspense);
 
     readonly _formHelper: AngularFormsHelper = new AngularFormsHelper();
     readonly _serverReqResHelper: ServerReqResHelper = new ServerReqResHelper();
