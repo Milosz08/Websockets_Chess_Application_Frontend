@@ -39,7 +39,6 @@ import * as NgrxSelector_GFX from "../../../shared-module/ngrx-store/gfx-ngrx-st
 @Component({
     selector: "mgchess-activate-account-page",
     templateUrl: "./activate-account-page.component.html",
-    styleUrls: [ "./activate-account-page.component.scss" ],
     host: { class: "mg-chess__flex-safety-container remove-margin__small-devices" },
 })
 export class ActivateAccountPageComponent extends BrowserMetaSerializatorLoader implements OnInit, OnDestroy {

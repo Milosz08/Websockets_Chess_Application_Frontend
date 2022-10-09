@@ -16,7 +16,7 @@
   ~ COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
   -->
 
-<div class="activate-local-account__container">
+<div class="mg-chess__standard-form-single-column__container">
     <aside
         *ngIf="(_isSuspenseActive$ | async)"
         class="mg-chess__suspense-loader"
@@ -42,7 +42,7 @@
         <ng-container *ngIf="!(_isSuspenseActive$ | async)">
             <mgchess-activate-account-token-form
                 [_cascadeResponseMessage]="(_finishSignupServerResponse$ | async) || ''"
-                class="activate-local-account__wrapper"
+                class="form-single-column__content-wrapper"
             ></mgchess-activate-account-token-form>
         </ng-container>
     </ng-template>
