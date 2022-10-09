@@ -1,8 +1,8 @@
-/*!
+/*
  * Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
  *
- * File name: forgot-password-page.component.scss
- * Last modified: 08/09/2022, 17:26
+ * File name: on-empty-token-parameter-redirect.guard.ts
+ * Last modified: 09/10/2022, 18:50
  * Project name: chess-app-frontend
  *
  * Licensed under the MIT license; you may not use this file except in compliance with the License.
@@ -15,3 +15,23 @@
  * THE ABOVE COPYRIGHT NOTICE AND THIS PERMISSION NOTICE SHALL BE INCLUDED IN ALL
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
+
+import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from "@angular/router";
+import { Injectable } from "@angular/core";
+
+//----------------------------------------------------------------------------------------------------------------------
+
+@Injectable()
+export class OnEmptyTokenParameterRedirectGuard implements CanActivate {
+
+    constructor(
+        private _router: Router,
+    ) {
+    };
+
+    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+        if (Boolean(route.queryParamMap.get("token"))) return true;
+        this._router.navigate([ '/' ]).then(r => r);
+        return false;
+    };
+}

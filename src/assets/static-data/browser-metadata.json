@@ -79,6 +79,11 @@
                 "pageId": "FINISH_SIGNUP_PAGE",
                 "title": "Finish Signup",
                 "description": "On this page you can finished signup via google or facebook registration supplier."
+            },
+            {
+                "pageId": "CHANGE_PASSWORD_PAGE",
+                "title": "Change Password",
+                "description": "On this page you can finish changing password procedure."
             }
         ],
         "dynamicAppModule": [

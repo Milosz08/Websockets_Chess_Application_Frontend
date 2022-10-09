@@ -25,9 +25,11 @@ import { LogInPageComponent } from "./pages/log-in-page/log-in-page.component";
 import { SingUpPageComponent } from "./pages/sign-up-page/sing-up-page.component";
 import { FinishSignUpPageComponent } from "./pages/finish-sign-up-page/finish-sign-up-page.component";
 import { ForgotPasswordPageComponent } from "./pages/forgot-password-page/forgot-password-page.component";
+import { ChangePasswordPageComponent } from "./pages/change-password-page/change-password-page.component";
 import { ActivateAccountPageComponent } from "./pages/activate-account-page/activate-account-page.component";
 
 import { OnAlreadyLoggedRedirectGuard } from "../../guards/on-already-logged-redirect.guard";
+import { OnEmptyTokenParameterRedirectGuard } from "../../guards/on-empty-token-parameter-redirect.guard";
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -37,6 +39,7 @@ const routes: Routes = [
         { path: "login", component: LogInPageComponent, canActivate: [ OnAlreadyLoggedRedirectGuard ] },
         { path: "signup", component: SingUpPageComponent },
         { path: "forgot-password", component: ForgotPasswordPageComponent },
+        { path: "change-password", component: ChangePasswordPageComponent, canActivate: [ OnEmptyTokenParameterRedirectGuard ] },
         { path: "activate-account", component: ActivateAccountPageComponent, canActivate: [ OnAlreadyLoggedRedirectGuard ] },
         { path: "finish-signup", component: FinishSignUpPageComponent },
     ]},

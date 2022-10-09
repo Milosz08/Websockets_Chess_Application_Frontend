@@ -16,26 +16,44 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { Meta, Title } from "@angular/platform-browser";
+import { Store } from "@ngrx/store";
 
+import { Observable } from "rxjs";
+
+import { BrowserThemeDetector } from "../../../../browster-utils/browser-theme.detector";
 import { BrowserMetaSerializatorLoader } from "../../../../browser-meta-serialization/browser-meta-serializator.loader";
 import { SingleModuleType, SinglePageType } from "../../../../browser-meta-serialization/browser-meta-serializator.types";
+
+import { ChangePasswordReducerType } from "../../../../ngrx-helpers/ngrx-store.types";
+import * as NgrxAction_CPA from "../../ngrx-store/change-password-ngrx-store/change-password.actions";
+import * as NgrxSelector_CPA from "../../ngrx-store/change-password-ngrx-store/change-password.selectors";
 
 //----------------------------------------------------------------------------------------------------------------------
 
 @Component({
     selector: "mgchess-forgot-password-page",
     templateUrl: "./forgot-password-page.component.html",
-    styleUrls: [ "./forgot-password-page.component.scss" ],
     host: { class: "mg-chess__flex-safety-container remove-margin__small-devices" },
 })
-export class ForgotPasswordPageComponent extends BrowserMetaSerializatorLoader {
+export class ForgotPasswordPageComponent extends BrowserMetaSerializatorLoader implements OnInit {
+
+    _forgotPasswordResponse$: Observable<string> = this._store.select(NgrxSelector_CPA.sel_forgotPasswordServerResponse);
 
     constructor(
         private _metaService: Meta,
         private _titleService: Title,
+        private _store: Store<ChangePasswordReducerType>,
     ) {
         super(_titleService, _metaService, SingleModuleType.AUTH_REGISTER_MODULE, SinglePageType.FORGOT_PASSWORD_PAGE);
+    };
+
+    ngOnInit(): void {
+        this._store.dispatch(NgrxAction_CPA.__clearChangePasswordData());
+    };
+
+    selectApplicationLogoBasedCurrentTheme(): string {
+        return BrowserThemeDetector.getLogoSrcBasedCurrentTheme();
     };
 }

@@ -39,6 +39,7 @@ import { ColorThemeLocalStorageService } from "./services/color-theme-local-stor
 import { OnNonLoggedRedirectGuard } from "./guards/on-non-logged-redirect.guard";
 import { OnAlreadyLoggedRedirectGuard } from "./guards/on-already-logged-redirect.guard";
 import { OnEmptyRedirectParametersGuard } from "./guards/on-empty-redirect-parameters.guard";
+import { OnEmptyTokenParameterRedirectGuard } from "./guards/on-empty-token-parameter-redirect.guard";
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -66,6 +67,7 @@ import { OnEmptyRedirectParametersGuard } from "./guards/on-empty-redirect-param
         OnAlreadyLoggedRedirectGuard,
         ColorThemeLocalStorageService,
         OnEmptyRedirectParametersGuard,
+        OnEmptyTokenParameterRedirectGuard,
         // interceptors & http brokers
         { provide: HTTP_INTERCEPTORS, useClass: RefreshTokenInterceptor, multi: true },
     ],
