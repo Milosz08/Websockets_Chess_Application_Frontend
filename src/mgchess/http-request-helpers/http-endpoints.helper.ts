@@ -49,10 +49,14 @@ export class HttpEndpointsHelper {
     //------------------------------------------------------------------------------------------------------------------
 
     private readonly RENEW_CREDETIALS_LOCAL = this.BASIC_HTTP + "renew-credentials/";
-    readonly ATTEMPT_TO_CHANGE_PASSWORD = this.AUTH + "attempt-to-change-password";
+    readonly ATTEMPT_TO_CHANGE_PASSWORD = this.RENEW_CREDETIALS_LOCAL + "attempt-to-change-password";
+    readonly CHANGE_PASSWORD_CHECK_JWT = this.RENEW_CREDETIALS_LOCAL + "change-password-check-jwt";
+    readonly CHANGE_FORGOTTEN_PASSWORD = this.RENEW_CREDETIALS_LOCAL + "change-forgotten-password";
+
+    //------------------------------------------------------------------------------------------------------------------
 
     private readonly OTA_TOKEN_ENDPOINT = this.BASIC_HTTP + "ota-token/";
-    readonly CHANGE_PASSWORD = this.OTA_TOKEN_ENDPOINT + "change-password";
+    readonly VALIDATE_ATTEMPT_TO_CHANGE_PASSWORD = this.OTA_TOKEN_ENDPOINT + "change-password";
     readonly ACTIVATE_ACCOUNT = this.OTA_TOKEN_ENDPOINT + "activate-account";
 
     //------------------------------------------------------------------------------------------------------------------
