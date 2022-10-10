@@ -32,6 +32,8 @@ export class AngularFormValidator {
         } : null;
     };
 
+    //------------------------------------------------------------------------------------------------------------------
+
     twoEmailAddressesAreNotEqualsValidate: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
         const emailAddress = control.get("emailAddress");
         const secondEmailAddress = control.get("secondEmailAddress");

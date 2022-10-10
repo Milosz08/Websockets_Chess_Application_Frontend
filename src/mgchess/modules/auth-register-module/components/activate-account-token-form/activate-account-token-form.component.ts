@@ -55,6 +55,8 @@ export class ActivateAccountTokenFormComponent implements OnInit, OnDestroy {
     readonly _serverReqResHelper: ServerReqResHelper = new ServerReqResHelper();
     private _ngUnsubscribe: Subject<void> = new Subject<void>();
 
+    //------------------------------------------------------------------------------------------------------------------
+
     constructor(
         private _regex: ValidatorPatternConstants,
         public _cssConstants: FormInputClassesConstants,
@@ -64,6 +66,8 @@ export class ActivateAccountTokenFormComponent implements OnInit, OnDestroy {
             otaToken: new FormControl("", [ Validators.required, Validators.pattern(_regex.OTA_TOKEN_REGEX) ]),
         });
     };
+
+    //------------------------------------------------------------------------------------------------------------------
 
     ngOnInit(): void {
         RxjsHelper.subscribeData(this._store, NgrxSelector_ATH.sel_serverResponse, this._ngUnsubscribe,

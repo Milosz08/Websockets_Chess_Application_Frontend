@@ -38,6 +38,8 @@ export class AddToNewsletterHttpReqResService {
     ) {
     };
 
+    //------------------------------------------------------------------------------------------------------------------
+
     addEmailToNewsletter(request: NewsletterRequestModel): Observable<SimpleMessageResWithErrorModel> {
         return this._http.post<SimpleMessageResponseModel>(this._endpoint.NEWSLETTER_SUBSCRIBE, request).pipe(
             map(({ responseMessage }) => {
