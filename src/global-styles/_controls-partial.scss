@@ -51,7 +51,7 @@
         background-color: transparent;
         width: 100%;
         padding: var(--standard-controls-padding);
-        border-radius: var(--standard-button-border-radius);
+        border-radius: var(--standard-buttons-gfx-borders);
         &.input--secondary-color {
             border-color: var(--secondary-form-text-and-border-color);
             &::placeholder {
@@ -124,7 +124,7 @@
 }
 
 .mg-chess__standard-button {
-    border-radius: var(--standard-button-border-radius);
+    border-radius: var(--standard-buttons-gfx-borders);
     padding: var(--standard-controls-padding);
     width: 100%;
     display: flex;
@@ -269,7 +269,7 @@
     margin: 0 30px;
     padding: 4px 12px 5px;
     font-weight: var(--standard-font-weight);
-    border-radius: var(--standard-button-border-radius);
+    border-radius: var(--standard-buttons-gfx-borders);
     color: var(--button-primary-mixed-color);
     background-color: var(--button-primary-mixed-background-color);
 }
