@@ -63,6 +63,7 @@ import { AuthReqResService } from "./services/auth-req-res.service";
 import { StaticDataReqResService } from "./services/static-data-req-res.service";
 import { ValidateOauth2UserService } from "./services/validate-oauth2-user.service";
 import { SaveUserLoginStorageService } from "./services/save-user-login-storage.service";
+import { ChangePasswordReqResService } from "./services/change-password-req-res.service";
 import { PasswordStrengthMeterService } from "./services/password-strength-meter.service";
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -118,6 +119,7 @@ import { PasswordStrengthMeterService } from "./services/password-strength-meter
         StaticDataReqResService,
         ValidateOauth2UserService,
         SaveUserLoginStorageService,
+        ChangePasswordReqResService,
         PasswordStrengthMeterService,
     ],
 })

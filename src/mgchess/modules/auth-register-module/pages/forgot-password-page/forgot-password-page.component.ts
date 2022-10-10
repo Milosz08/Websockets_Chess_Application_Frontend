@@ -22,7 +22,6 @@ import { Store } from "@ngrx/store";
 
 import { Observable } from "rxjs";
 
-import { BrowserThemeDetector } from "../../../../browster-utils/browser-theme.detector";
 import { BrowserMetaSerializatorLoader } from "../../../../browser-meta-serialization/browser-meta-serializator.loader";
 import { SingleModuleType, SinglePageType } from "../../../../browser-meta-serialization/browser-meta-serializator.types";
 
@@ -55,9 +54,5 @@ export class ForgotPasswordPageComponent extends BrowserMetaSerializatorLoader i
 
     ngOnInit(): void {
         this._store.dispatch(NgrxAction_CPA.__clearChangePasswordData());
-    };
-
-    selectApplicationLogoBasedCurrentTheme(): string {
-        return BrowserThemeDetector.getLogoSrcBasedCurrentTheme();
     };
 }

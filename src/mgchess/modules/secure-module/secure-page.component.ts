@@ -22,7 +22,7 @@ import { Component } from "@angular/core";
 
 @Component({
     selector: "mg-chess-secure-page",
-    templateUrl: "secure.page.component.html",
+    templateUrl: "secure-page.component.html",
     host: { class: "mg-chess-flex-pull-up__container" },
 })
 export class SecurePageComponent {}

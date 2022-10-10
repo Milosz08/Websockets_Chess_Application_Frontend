@@ -32,7 +32,7 @@ import { MgchessComponent } from "./mgchess.component";
 import { MgchessRoutingModule } from "./mgchess-routing.module";
 import { SharedModuleModule } from "./modules/shared-module/shared-module.module";
 
-import { StorageHelper } from "../storage/storage.helper";
+import { StorageHelper } from "./storage/storage.helper";
 import { RefreshTokenInterceptor } from "./interceptors/refresh-token.interceptor";
 import { ColorThemeLocalStorageService } from "./services/color-theme-local-storage.service";
 
