@@ -24,9 +24,8 @@ import { catchError, delay, map, mergeMap, of, tap } from "rxjs";
 import { RxjsHelper } from "../../../../../rxjs-helpers/rxjs.helper";
 import { RxjsConstants } from "../../../../../rxjs-helpers/rxjs.constants";
 
-import { AuthReqResService } from "../../../services/auth-req-res.service";
 import { SuspenseLoader } from "../../../../../models/suspense-loader-res.model";
-
+import { ChangePasswordReqResService } from "../../../services/change-password-req-res.service";
 import { ChangePasswordWithGfxCombinedReducerTypes } from "../../../../../ngrx-helpers/ngrx-store.types";
 
 import * as NgrxAction_CPA from "../change-password.actions";
@@ -39,7 +38,7 @@ export class ChangePasswordEffects {
 
     constructor(
         private _actions$: Actions,
-        private _httpService: AuthReqResService,
+        private _httpService: ChangePasswordReqResService,
         private _store: Store<ChangePasswordWithGfxCombinedReducerTypes>,
     ) {
     };

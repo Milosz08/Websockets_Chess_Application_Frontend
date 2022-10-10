@@ -25,8 +25,8 @@ import { catchError, delay, map, mergeMap, of, tap, withLatestFrom } from "rxjs"
 import { RxjsConstants } from "../../../../../rxjs-helpers/rxjs.constants";
 import { RxjsHelper } from "../../../../../rxjs-helpers/rxjs.helper";
 
-import { AuthReqResService } from "../../../services/auth-req-res.service";
 import { SuspenseLoader } from "../../../../../models/suspense-loader-res.model";
+import { ChangePasswordReqResService } from "../../../services/change-password-req-res.service";
 import { OtaTokenNicknameEmailReqModel } from "../../../models/ota-token-mutliple-emails-req.model";
 
 import { changePasswordNgrxStore } from "../change-password.reducer";
@@ -44,7 +44,7 @@ export class AttemptToChangePasswordEffects {
     constructor(
         private _router: Router,
         private _actions$: Actions,
-        private _httpService: AuthReqResService,
+        private _httpService: ChangePasswordReqResService,
         private _store: Store<ChangePasswordWithGfxCombinedReducerTypes>,
     ) {
     };
