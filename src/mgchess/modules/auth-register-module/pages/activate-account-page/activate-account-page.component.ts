@@ -51,6 +51,8 @@ export class ActivateAccountPageComponent extends BrowserMetaSerializatorLoader 
 
     private _ngUnsubscribe: Subject<void> = new Subject<void>();
 
+    //------------------------------------------------------------------------------------------------------------------
+
     constructor(
         private _metaService: Meta,
         private _titleService: Title,
@@ -59,6 +61,8 @@ export class ActivateAccountPageComponent extends BrowserMetaSerializatorLoader 
     ) {
         super(_titleService, _metaService, SingleModuleType.AUTH_REGISTER_MODULE, SinglePageType.ACTIVATE_ACCOUNT_PAGE);
     };
+
+    //------------------------------------------------------------------------------------------------------------------
 
     ngOnInit(): void {
         this._store.dispatch(NgrxAction_ATH.__clearServerResponse());
