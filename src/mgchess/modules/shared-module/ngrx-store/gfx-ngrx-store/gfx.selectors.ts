@@ -94,3 +94,12 @@ export const sel_resendChangePasswordLinkSuspense = selectorWithInjectedStore(({
     suspenseStatus.isSuspenseLoading && suspenseStatus.loadingFor === SuspenseLoader.RESEND_CHANGE_PASSWORD_LINK,
 );
 
+export const sel_resendUnsubscribeNewsletterLinkSuspense = selectorWithInjectedStore(({ suspenseStatus }) =>
+    suspenseStatus.isSuspenseLoading && suspenseStatus.loadingFor === SuspenseLoader.RESEND_UNSUBSCRIBE_NEWSLETTER_LINK,
+);
+
+export const sel_globalResponseModalData = selectorWithInjectedStore(({ globalResponseModal }) =>
+    globalResponseModal,
+);
+
+

@@ -1,8 +1,8 @@
 <!--
   ~ Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
   ~
-  ~ File name: mgchess.component.html
-  ~ Last modified: 21/08/2022, 18:40
+  ~ File name: global-server-response-modal.component.html
+  ~ Last modified: 10/10/2022, 17:07
   ~ Project name: chess-app-frontend
   ~
   ~ Licensed under the MIT license; you may not use this file except in compliance with the License.
@@ -16,10 +16,21 @@
   ~ COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
   -->
 
-<mgchess-global-suspense-loader></mgchess-global-suspense-loader>
-<mgchess-global-server-response-modal></mgchess-global-server-response-modal>
-<div class="mg-chess__not-logged-with-cookie-notification__container">
-    <mgchess-user-not-logged-banner></mgchess-user-not-logged-banner>
-    <mgchess-cookies-notification></mgchess-cookies-notification>
+<div
+    @SlideBottomTopAnimation
+    *ngIf="_globalResponseModalData.ifOpen"
+    class="global-server-response-modal__container"
+>
+    <div [ngClass]="[ 'global-server-response-modal__text-wrapper', __ngIfErrorCssClass ]">
+        {{ _globalResponseModalData.responseMessage }}
+    </div>
+    <button
+        (click)="handleForceCloseModalBox()"
+        title="Click here to force closed modal"
+        class="global-server-response-modal__close-button"
+    >
+        <div class="mg-chess__cross-close-struct__container cross-struct--auto-width">
+            <div class="cross-close-struct__cross-element cross--secondary-color-variant"></div>
+        </div>
+    </button>
 </div>
-<router-outlet></router-outlet>

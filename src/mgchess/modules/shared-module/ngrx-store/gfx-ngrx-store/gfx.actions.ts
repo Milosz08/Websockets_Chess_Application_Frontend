@@ -28,6 +28,13 @@ const INACTIVE_GLOBAL_SUSPENSE_LOADER = "[GFX] INACTIVE GLOBAL SUSPENSE LOADER";
 const ACTIVE_SUSPENSE_LOADER = "[GFX] ACTIVE SUSPENSE LOADER";
 const INACTIVE_SUSPENSE_LOADER = "[GFX] INACTIVE SUSPENSE LOADER";
 
+const ATTEMPT_RESEND_EMAIL_FOR_UNSUBSCRIBE_NEWSLETTER = "[GFX] ATTEMPT RESEND EMAIL FOR UNSUBSCRIBE NEWSLETTER";
+const ATTEMPT_RESEND_EMAIL_FOR_ACTIVATE_ACCOUNT = "[GFX] ATTEMPT RESEND EMAIL FOR ACTIVATE ACCOUNT";
+const ATTEMPT_RESEND_EMAIL_FOR_CHANGE_PASSWORD = "[GFX] ATTEMPT RESEND EMAIL FOR CHANGE PASSWORD";
+
+const OPEN_GLOBAL_MESSAGE_MODAL = "[GFX] OPEN GLOBAL MESSAGE MODAL";
+const CLOSE_GLOBAL_MESSAGE_MODAL = "[GFX] CLOSE GLOBAL MESSAGE MODAL";
+
 //----------------------------------------------------------------------------------------------------------------------
 
 export const __activeGlobalSuspense = createAction(
@@ -49,4 +56,28 @@ export const __activeSuspense = createAction(
 
 export const __inactiveSuspense = createAction(
     INACTIVE_SUSPENSE_LOADER,
+);
+
+export const __attemptResendEmailForUnsubscribeNewsletter = createAction(
+    ATTEMPT_RESEND_EMAIL_FOR_UNSUBSCRIBE_NEWSLETTER,
+    props<{ emailAddress: string }>(),
+);
+
+export const __attemptResendEmailForActivateAccount = createAction(
+    ATTEMPT_RESEND_EMAIL_FOR_ACTIVATE_ACCOUNT,
+    props<{ emailAddress: string }>(),
+);
+
+export const __attemptResendEmailForChangePassword = createAction(
+    ATTEMPT_RESEND_EMAIL_FOR_CHANGE_PASSWORD,
+    props<{ emailAddress: string }>(),
+);
+
+export const __openGlobalMessageModal = createAction(
+    OPEN_GLOBAL_MESSAGE_MODAL,
+    props<{ message: string, ifError: boolean }>(),
+);
+
+export const __closeGlobalMessageModal = createAction(
+    CLOSE_GLOBAL_MESSAGE_MODAL,
 );

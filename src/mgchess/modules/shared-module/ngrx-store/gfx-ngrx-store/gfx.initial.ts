@@ -16,13 +16,15 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-//----------------------------------------------------------------------------------------------------------------------
-
+import { GlobalResponseModalModel } from "./ngrx-models/global-response-modal.model";
 import { SuspenseLoader, SuspenseLoaderResModel } from "../../../../models/suspense-loader-res.model";
+
+//----------------------------------------------------------------------------------------------------------------------
 
 export interface GfxStateTypes {
     globalSuspenseActive: boolean;
     suspenseStatus: SuspenseLoaderResModel;
+    globalResponseModal: GlobalResponseModalModel;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -30,4 +32,5 @@ export interface GfxStateTypes {
 export const initialGfxState: GfxStateTypes = {
     globalSuspenseActive: false,
     suspenseStatus: new SuspenseLoaderResModel(false, SuspenseLoader.INACTIVE),
+    globalResponseModal: new GlobalResponseModalModel(false, "", false),
 };

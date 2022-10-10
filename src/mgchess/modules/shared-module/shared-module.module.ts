@@ -43,11 +43,13 @@ import { sessionNgrxStore } from "./ngrx-store/session-ngrx-store/session.reduce
 import { GfxEffects } from "./ngrx-store/gfx-ngrx-store/ngrx-effects/gfx.effects";
 import { LoginEffects } from "./ngrx-store/session-ngrx-store/ngrx-effects/login.effects";
 import { LoginHelperEffects } from "./ngrx-store/session-ngrx-store/ngrx-effects/login-helper.effects";
+import { ResendEmailGfxEffects } from "./ngrx-store/gfx-ngrx-store/ngrx-effects/resend-email-gfx.effects";
 
 import { SessionReqResService } from "./services/session-req-res.service";
 import { GlobalSuspenseService } from "./services/global-suspense.service";
 import { UserRememberStorageService } from "./services/user-remember-storage.service";
 import { AddToNewsletterHttpReqResService } from "./services/add-to-newsletter-http-req-res.service";
+import { ResendVerificationLinkReqResService } from "./services/resend-verification-link-req-res.service";
 import { CookiesNotificationLocalStorageService } from "./services/cookies-notification-local-storage.service";
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -80,6 +82,7 @@ import { CookiesNotificationLocalStorageService } from "./services/cookies-notif
             GfxEffects,
             LoginEffects,
             LoginHelperEffects,
+            ResendEmailGfxEffects,
         ]),
     ],
     exports: [
@@ -93,6 +96,7 @@ import { CookiesNotificationLocalStorageService } from "./services/cookies-notif
         SingleChoiceBoxInputComponent,
         GlobalSuspenseLoaderComponent,
         SimpleServerResponseQueryComponent,
+        GlobalServerResponseModalComponent,
         CloseOutsideClickComponentDirective,
     ],
     providers: [
@@ -100,6 +104,7 @@ import { CookiesNotificationLocalStorageService } from "./services/cookies-notif
         GlobalSuspenseService,
         UserRememberStorageService,
         AddToNewsletterHttpReqResService,
+        ResendVerificationLinkReqResService,
         CookiesNotificationLocalStorageService,
     ],
 })
