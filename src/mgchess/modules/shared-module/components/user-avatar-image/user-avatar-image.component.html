@@ -17,8 +17,8 @@
   -->
 
 <div
-    [ngClass]="[ 'user-avatar-image__container', __ngImageBorderElement ]"
-    [ngStyle]="__ngImageSizeStyle"
+    [ngClass]="[ 'user-avatar-image__container', _ngImageBorderElement ]"
+    [ngStyle]="_ngImageSizeStyle"
 >
     <img
         *ngIf="_imageUrl !== null; else showInitials"
@@ -27,7 +27,7 @@
     />
     <ng-template #showInitials>
         <div
-            [ngStyle]="__ngFakeImageFontSize"
+            [ngStyle]="_ngFakeImageFontSize"
             class="user-avatar-image__fake-generated-image"
         >
             {{ _initials }}
@@ -35,11 +35,11 @@
     </ng-template>
     <div
         *ngIf="_isSupplierNotLocal"
-        [ngStyle]="__ngSupplierImageSizeStyle"
+        [ngStyle]="_ngSupplierImageStyleSize"
         [ngClass]="[ 'user-avatar-image__supplier-container', _backgroundMixedType ]"
     >
         <img
-            [src]="__supplierImagePath" alt=""
+            [src]="_supplierImagePath" alt=""
             class="supplier-image"
         />
     </div>
