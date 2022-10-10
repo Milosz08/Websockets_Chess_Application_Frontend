@@ -91,6 +91,8 @@ export class LastLoginsComponent implements OnInit, OnDestroy {
         ).subscribe(data => {
             this._suspenseLoader = false;
             this._rememberAccounts = data;
+            if (this._rememberAccounts.length === 0) this._storage.removeAllUsersFromLocalStorage();
+            this._rememberAccounts.forEach(account => this._storage.saveUserDetailsInLocalStorage(account));
         });
     };
 
