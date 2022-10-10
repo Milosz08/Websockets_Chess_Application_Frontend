@@ -118,6 +118,7 @@
 
 .mg-chess__star-bullet-list__container {
     margin: 20px 0;
+    width: 100%;
     .mg-chess__star-bullet-element__container {
         display: flex;
         align-items: center;
@@ -194,6 +195,9 @@
         align-items: center;
         padding: 20px 40px;
         font-weight: var(--standard-font-weight);
+        &.solid-container--bordered-full {
+            border-radius: var(--standard-modal-border-radius);
+        }
     }
     .form-single-column__top-boxed-container {
         color: var(--secondary-tint-color);

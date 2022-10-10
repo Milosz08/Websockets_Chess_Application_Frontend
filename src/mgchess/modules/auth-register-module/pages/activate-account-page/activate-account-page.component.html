@@ -42,7 +42,7 @@
         <mgchess-activate-account-token-form
             *ngIf="!(_isSuspenseActive$ | async)"
             [_cascadeResponseMessage]="(_finishSignupServerResponse$ | async) || ''"
-            class="form-single-column__content-wrapper"
+            class="form-single-column__bottom-solid-container solid-container--bordered-full"
         ></mgchess-activate-account-token-form>
     </ng-template>
 </div>
