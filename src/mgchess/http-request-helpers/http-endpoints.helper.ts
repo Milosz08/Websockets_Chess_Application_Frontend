@@ -32,6 +32,7 @@ export class HttpEndpointsHelper {
     readonly NEWSLETTER_SUBSCRIBE = this.NEWSLETTER_EMAIL + "subscribe";
     readonly NEWSLETTER_ATTEMPT_UNSUBSCRIBE = this.NEWSLETTER_EMAIL + "attempt-unsubscribe";
     readonly NEWSLETTER_UNSUBSCRIBE_VIA_OTA = this.NEWSLETTER_EMAIL + "unsubscribe-via-ota";
+    readonly NEWSLETTER_UNSUBSCRIBE_RESEND_EMAIL = this.NEWSLETTER_EMAIL + "unsubscribe-resend-email";
 
     //------------------------------------------------------------------------------------------------------------------
 
@@ -45,6 +46,7 @@ export class HttpEndpointsHelper {
     readonly ATTEMPT_FINISH_SIGNUP_VIA_OAUTH2 = this.AUTH + "attempt-finish-signup-via-oauth";
     readonly FINISH_SIGNUP_VIA_OAUTH2 = this.AUTH + "finish-signup-via-oauth";
     readonly SIGNUP_VIA_LOCAL = this.AUTH + "signup-via-local";
+    readonly ATTEMPT_FINISH_SIGNUP_RESEND_EMAIL = this.AUTH + "attempt-finish-signup-resend-email";
 
     //------------------------------------------------------------------------------------------------------------------
 
@@ -52,6 +54,7 @@ export class HttpEndpointsHelper {
     readonly ATTEMPT_TO_CHANGE_PASSWORD = this.RENEW_CREDETIALS_LOCAL + "attempt-to-change-password";
     readonly CHANGE_PASSWORD_CHECK_JWT = this.RENEW_CREDETIALS_LOCAL + "change-password-check-jwt";
     readonly CHANGE_FORGOTTEN_PASSWORD = this.RENEW_CREDETIALS_LOCAL + "change-forgotten-password";
+    readonly CHANGE_PASSWORD_RESEND_EMAIL = this.RENEW_CREDETIALS_LOCAL + "change-password-resend-email";
 
     //------------------------------------------------------------------------------------------------------------------
 

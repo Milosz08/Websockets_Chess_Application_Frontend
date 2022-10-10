@@ -33,6 +33,7 @@ export enum SuspenseLoader {
     VALIDATE_JWT_TOKEN_CHANGE_PASSWORD = "VALIDATE_JWT_TOKEN_CHANGE_PASSWORD",
     CHANGE_FORGOTTER_PASSWORD = "CHANGE_FORGOTTER_PASSWORD",
     RESEND_CHANGE_PASSWORD_LINK = "RESEND_CHANGE_PASSWORD_LINK",
+    RESEND_UNSUBSCRIBE_NEWSLETTER_LINK = "RESEND_UNSUBSCRIBE_NEWSLETTER_LINK",
 }
 
 //----------------------------------------------------------------------------------------------------------------------

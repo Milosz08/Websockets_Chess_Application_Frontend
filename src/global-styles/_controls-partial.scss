@@ -189,6 +189,9 @@
     &.button--thirdly-border-def-variant .button__suspense-loading-spinner {
         border-color: var(--button-thirdly-mixed-background) transparent transparent var(--button-thirdly-mixed-background);
     }
+    &.button--primary-border-def-variant .button__suspense-loading-spinner {
+        border-color: var(--button-primary-mixed-background-color) transparent transparent var(--button-primary-mixed-background-color);
+    }
     &.button--fitting {
         width: fit-content;
     }
@@ -323,6 +326,10 @@
     .cross-close-struct__cross-element.cross--primary-color-variant::after {
         background-color: var(--primary-dark-color);
     }
+    .cross-close-struct__cross-element.cross--secondary-color-variant,
+    .cross-close-struct__cross-element.cross--secondary-color-variant::after {
+        background-color: var(--button-thirdly-mixed-background);
+    }
     .cross-close-struct__cross-element {
         position: relative;
         width: 20px;
@@ -337,6 +344,9 @@
             left: 0;
             transform: rotate(90deg);
         }
+    }
+    &.cross-struct--auto-width {
+        width: auto;
     }
 }
 
