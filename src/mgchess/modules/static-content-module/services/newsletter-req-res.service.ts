@@ -41,19 +41,19 @@ export class NewsletterReqResService {
 
     //------------------------------------------------------------------------------------------------------------------
 
-    attemptToUnsubscribeNewsletter(request: UnsubscribeNewsletterEmailReq): Observable<SimpleMessageResponseModel> {
+    attemptToUnsubscribeNewsletter(req: UnsubscribeNewsletterEmailReq): Observable<SimpleMessageResponseModel> {
         return this._http.post<SimpleMessageResponseModel>(
             this._endpoint.NEWSLETTER_ATTEMPT_UNSUBSCRIBE,
-            request,
+            req,
         );
     };
 
     //------------------------------------------------------------------------------------------------------------------
 
-    unsubscribeNewsletterViaOta(request: UnsubscribeNewsletterViaOtaReq): Observable<SimpleMessageResponseModel> {
+    unsubscribeNewsletterViaOta(req: UnsubscribeNewsletterViaOtaReq): Observable<SimpleMessageResponseModel> {
         return this._http.delete<SimpleMessageResponseModel>(
             this._endpoint.NEWSLETTER_UNSUBSCRIBE_VIA_OTA,
-            { body: request },
+            { body: req },
         );
     };
 }

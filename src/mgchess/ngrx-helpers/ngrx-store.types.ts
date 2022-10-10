@@ -38,7 +38,7 @@ export type AuthReducerType = {
     [authNgrxStore.reducerName]: AuthStateTypes,
 };
 
-export type GlobalReducerType = {
+export type GfxReducerType = {
     [gfxNgrxStore.reducerName]: GfxStateTypes,
 };
 

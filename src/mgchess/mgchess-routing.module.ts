@@ -19,8 +19,6 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 
-import { ContentNotFoundPageComponent } from "./modules/shared-module/pages/content-not-found-page/content-not-found-page.component";
-
 //----------------------------------------------------------------------------------------------------------------------
 
 const absolutePathLazyLoaderInitializer = () => (
@@ -44,7 +42,7 @@ const routes: Routes = [
     { path: "auth", loadChildren: authRegisterPathLazyLoaderInitializer },
     { path: "app", loadChildren: dynamicAppPathLazyLoaderInitializer },
     { path: "secure", loadChildren: securePathLazyLoaderInitializer },
-    { path: "**", component: ContentNotFoundPageComponent }
+    { path: "**", redirectTo: "/" }
 ];
 
 //----------------------------------------------------------------------------------------------------------------------

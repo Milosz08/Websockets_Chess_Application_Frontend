@@ -24,7 +24,7 @@ import { Observable } from "rxjs";
 import { FadeOutAnimation } from "../../../../animations/fade.animation";
 import { GlobalSuspenseService } from "../../services/global-suspense.service";
 
-import { GlobalReducerType } from "../../../../ngrx-helpers/ngrx-store.types";
+import { GfxReducerType } from "../../../../ngrx-helpers/ngrx-store.types";
 import * as NgrxSelector_GFX from "../../ngrx-store/gfx-ngrx-store/gfx.selectors";
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -43,7 +43,7 @@ export class GlobalSuspenseLoaderComponent {
     //------------------------------------------------------------------------------------------------------------------
 
     constructor(
-        private _store: Store<GlobalReducerType>,
+        private _store: Store<GfxReducerType>,
         private _suspenseService: GlobalSuspenseService,
     ) {
         this._suspenseService.toggleSuspenseLoaderComponent();

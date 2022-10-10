@@ -20,7 +20,7 @@ import { RouteConfigLoadEnd, RouteConfigLoadStart, Router } from "@angular/route
 import { Injectable } from "@angular/core";
 import { Store } from "@ngrx/store";
 
-import { GlobalReducerType } from "../../../ngrx-helpers/ngrx-store.types";
+import { GfxReducerType } from "../../../ngrx-helpers/ngrx-store.types";
 import * as NgrxAction_GLB from "../ngrx-store/gfx-ngrx-store/gfx.actions";
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -30,7 +30,7 @@ export class GlobalSuspenseService {
 
     constructor(
         private _router: Router,
-        private _store: Store<GlobalReducerType>,
+        private _store: Store<GfxReducerType>,
     ) {
     };
 
