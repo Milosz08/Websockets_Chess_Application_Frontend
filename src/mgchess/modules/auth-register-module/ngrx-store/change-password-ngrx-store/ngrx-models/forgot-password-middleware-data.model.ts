@@ -16,16 +16,22 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
+import { EmailAddressesChangePasswordResModel } from "./email-addresses-change-password-res.model";
+
+//----------------------------------------------------------------------------------------------------------------------
+
 export class ForgotPasswordMiddlewareDataModel {
+    primaryUserEmailAddress: string;
     forgotPasswordResponseMessage: string;
     emailAddresses: Array<string>;
     userNicknameEmail: string;
 
     //------------------------------------------------------------------------------------------------------------------
 
-    constructor(forgotPasswordResponseMessage: string, emailAddresses: Array<string>, userNicknameEmail: string) {
-        this.forgotPasswordResponseMessage = forgotPasswordResponseMessage;
-        this.emailAddresses = emailAddresses;
+    constructor(res: EmailAddressesChangePasswordResModel, userNicknameEmail: string) {
+        this.primaryUserEmailAddress = res.primaryEmailAddress;
+        this.forgotPasswordResponseMessage = res.responseMessage;
+        this.emailAddresses = res.emailAddresses;
         this.userNicknameEmail = userNicknameEmail;
     };
 }

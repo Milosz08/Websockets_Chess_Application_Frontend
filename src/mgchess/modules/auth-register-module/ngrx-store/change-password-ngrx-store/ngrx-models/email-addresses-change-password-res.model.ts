@@ -17,12 +17,14 @@
  */
 
 export class EmailAddressesChangePasswordResModel {
+    primaryEmailAddress: string;
     emailAddresses: Array<string>;
     responseMessage: string;
 
     //------------------------------------------------------------------------------------------------------------------
 
-    constructor(emailAddresses: Array<string>, responseMessage: string) {
+    constructor(primaryEmailAddress: string, emailAddresses: Array<string>, responseMessage: string) {
+        this.primaryEmailAddress = primaryEmailAddress;
         this.emailAddresses = emailAddresses;
         this.responseMessage = responseMessage;
     };

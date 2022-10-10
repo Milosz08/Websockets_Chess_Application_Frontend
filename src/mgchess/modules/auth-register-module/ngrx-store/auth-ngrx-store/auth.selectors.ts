@@ -82,3 +82,7 @@ export const sel_activateAccountServerResponse = selectorWithInjectedStore(({ fi
 export const sel_initialLoginInLoginForm = selectorWithInjectedStore(({ initialUserLogin }) =>
     initialUserLogin,
 );
+
+export const sel_finishSignupPrimaryUserEmail = selectorWithInjectedStore(({ finishSignupAccountDetails }) =>
+    Boolean(finishSignupAccountDetails) ? finishSignupAccountDetails.userPrimaryEmailAddress : "",
+);

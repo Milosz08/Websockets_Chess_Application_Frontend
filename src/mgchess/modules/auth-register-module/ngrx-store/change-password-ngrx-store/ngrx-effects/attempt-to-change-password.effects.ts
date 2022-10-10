@@ -60,8 +60,7 @@ export class AttemptToChangePasswordEffects {
             mergeMap(action => {
                 return this._httpService.sendRequestToChangePassword(action.usernameEmail).pipe(
                     map(res => {
-                        const resDto = new ForgotPasswordMiddlewareDataModel(res.responseMessage, res.emailAddresses,
-                            action.usernameEmail);
+                        const resDto = new ForgotPasswordMiddlewareDataModel(res, action.usernameEmail);
                         return NgrxAction_CPA.__successfulSendRequestToChangePassword({ serverResponse: resDto });
                     }),
                     catchError(error => {

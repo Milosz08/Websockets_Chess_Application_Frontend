@@ -20,6 +20,7 @@ import { createFeatureSelector, createSelector } from "@ngrx/store";
 
 import { changePasswordNgrxStore } from "./change-password.reducer";
 import { ChangePasswordStateTypes } from "./change-password.initial";
+import { EmailHashWithNormalModel } from "../auth-ngrx-store/ngrx-models/attempt-finish-signup-res.model";
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -46,5 +47,10 @@ export const sel_changePasswordResponseActive = selectorWithInjectedStore(({ cha
 );
 
 export const sel_changePasswordUserEmails = selectorWithInjectedStore(({ forgotPasswordResponse }) =>
-    Boolean(forgotPasswordResponse) ? forgotPasswordResponse.emailAddresses : [],
+    Boolean(forgotPasswordResponse)
+        ? forgotPasswordResponse.emailAddresses.map((e: EmailHashWithNormalModel) => e.hash) : [],
+);
+
+export const sel_changePasswordPrimaryUserEmail = selectorWithInjectedStore(({ forgotPasswordResponse }) =>
+    Boolean(forgotPasswordResponse) ? forgotPasswordResponse.primaryUserEmailAddress : "",
 );

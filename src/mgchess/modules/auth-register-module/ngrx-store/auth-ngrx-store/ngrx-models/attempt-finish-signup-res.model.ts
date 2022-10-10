@@ -25,6 +25,7 @@ export class AttemptFinishSignupResModel {
     responseMessage: string;
     authSupplier: string;
     jwtToken: string;
+    userPrimaryEmailAddress: string;
     userEmailAddresses: Array<EmailHashWithNormalModel>;
 
     //------------------------------------------------------------------------------------------------------------------
@@ -32,17 +33,18 @@ export class AttemptFinishSignupResModel {
     constructor(
         nickname: string, fullName: string, photoUrl: string, initials: string, dataFilled: boolean,
         responseMessage: string, authSupplier: string, userEmailAddresses: Array<EmailHashWithNormalModel>,
-        jwtToken: string,
+        jwtToken: string, userPrimaryEmailAddress: string,
     ) {
         this.nickname = nickname;
         this.fullName = fullName;
         this.photoUrl = photoUrl;
         this.initials = initials;
+        this.jwtToken = jwtToken;
         this.dataFilled = dataFilled;
         this.responseMessage = responseMessage;
         this.authSupplier = authSupplier;
         this.userEmailAddresses = userEmailAddresses;
-        this.jwtToken = jwtToken;
+        this.userPrimaryEmailAddress = userPrimaryEmailAddress;
     };
 }
 
