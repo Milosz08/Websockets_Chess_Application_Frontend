@@ -23,6 +23,8 @@ import { SimpleDataTupleModel } from "../../../models/simple-data-tuple.model";
 export class StaticGenderDataResModel {
     genders: Array<SimpleDataTupleModel<string>>;
 
+    //------------------------------------------------------------------------------------------------------------------
+
     constructor(genders: Array<SimpleDataTupleModel<string>>) {
         this.genders = genders;
     };

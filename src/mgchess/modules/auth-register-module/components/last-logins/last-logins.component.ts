@@ -45,12 +45,16 @@ export class LastLoginsComponent implements OnInit, OnDestroy {
 
     private _ngUnsubscribe: Subject<void> = new Subject<void>();
 
+    //------------------------------------------------------------------------------------------------------------------
+
     constructor(
         private _store: Store<AuthReducerType>,
         private _storage: SaveUserLoginStorageService,
         private _staticDataReqResService: StaticDataReqResService,
     ) {
     };
+
+    //------------------------------------------------------------------------------------------------------------------
 
     ngOnInit(): void {
         this.getUserDetailsFromDatabase();

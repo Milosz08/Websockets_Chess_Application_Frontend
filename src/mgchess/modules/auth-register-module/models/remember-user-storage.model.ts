@@ -24,6 +24,8 @@ export class RememberUserStorageModel {
     userId: number;
     userLogin: string;
 
+    //------------------------------------------------------------------------------------------------------------------
+
     constructor(credentialsData: UserCredentialsDataResModel) {
         this.userId = credentialsData.userId;
         this.userLogin = credentialsData.nickname;

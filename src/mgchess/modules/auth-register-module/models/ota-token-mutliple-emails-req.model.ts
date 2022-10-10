@@ -20,6 +20,8 @@ export class OtaTokenMutlipleEmailsReqModel {
     token: string;
     emailAddresses: Array<string>;
 
+    //------------------------------------------------------------------------------------------------------------------
+
     constructor(token: string, emailAddresses: Array<string>) {
         this.token = token;
         this.emailAddresses = emailAddresses;
@@ -31,6 +33,8 @@ export class OtaTokenMutlipleEmailsReqModel {
 export class OtaTokenNicknameEmailReqModel {
     token: string;
     nicknameEmail: string;
+
+    //------------------------------------------------------------------------------------------------------------------
 
     constructor(token: string, nicknameEmail: string) {
         this.token = token;

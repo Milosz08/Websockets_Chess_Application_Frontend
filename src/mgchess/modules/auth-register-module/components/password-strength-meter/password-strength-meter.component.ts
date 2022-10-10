@@ -44,11 +44,15 @@ export class PasswordStrengthMeterComponent implements OnChanges, OnDestroy {
     readonly _formHelper: AngularFormsHelper = new AngularFormsHelper();
     private _ngUnsubscribe: Subject<void> = new Subject<void>();
 
+    //------------------------------------------------------------------------------------------------------------------
+
     constructor(
         private _store: Store<AuthReducerType>,
         private _passwordMeterService: PasswordStrengthMeterService,
     ) {
     };
+
+    //------------------------------------------------------------------------------------------------------------------
 
     ngOnChanges(): void {
         this._formHelper.field("password", this._formData).valueChanges.pipe(takeUntil(this._ngUnsubscribe))
@@ -56,7 +60,7 @@ export class PasswordStrengthMeterComponent implements OnChanges, OnDestroy {
                 if (!Boolean(data)) {
                     this._passwordScore = new PasswordStrength(0, "none");
                 } else {
-                    this._passwordScore = this._passwordMeterService.computePasswordPower(data)
+                    this._passwordScore = this._passwordMeterService.computePasswordPower(data);
                 }
             });
     };

@@ -48,10 +48,14 @@ export class SignupFormAcceptableControlGroupComponent implements OnInit, OnDest
 
     private _ngUnsubscribe: Subject<void> = new Subject<void>();
 
+    //------------------------------------------------------------------------------------------------------------------
+
     constructor(
         private _store: Store<AuthReducerType>,
     ) {
     };
+
+    //------------------------------------------------------------------------------------------------------------------
 
     ngOnInit(): void {
         this._hasPrivacyPolicyAccept = this._formHelper.field("hasPrivacyPolicyAccept", this._signupForm);

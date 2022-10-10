@@ -56,6 +56,8 @@ export class LoginEffects {
     ) {
     };
 
+    //------------------------------------------------------------------------------------------------------------------
+
     loginViaLocal$ = createEffect(() => {
         return this._actions$.pipe(
             ofType(NgrxAction_SES.__attemptToLoginViaLocal),
@@ -92,6 +94,8 @@ export class LoginEffects {
         );
     });
 
+    //------------------------------------------------------------------------------------------------------------------
+
     loginViaOAuth2$ = createEffect(() => {
         return this._actions$.pipe(
             ofType(NgrxAction_SES.__attemptToLoginViaOAuth2),
@@ -117,6 +121,8 @@ export class LoginEffects {
         );
     });
 
+    //------------------------------------------------------------------------------------------------------------------
+
     logout$ = createEffect(() => {
         return this._actions$.pipe(
             ofType(NgrxAction_SES.__attemptToLogout),
@@ -140,6 +146,8 @@ export class LoginEffects {
             }),
         );
     });
+
+    //------------------------------------------------------------------------------------------------------------------
 
     autoLogin$ = createEffect(() => {
         return this._actions$.pipe(

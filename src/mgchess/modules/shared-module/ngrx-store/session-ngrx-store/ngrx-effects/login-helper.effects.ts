@@ -46,6 +46,8 @@ export class LoginHelperEffects {
     ) {
     };
 
+    //------------------------------------------------------------------------------------------------------------------
+
     refreshToken$ = createEffect(() => {
         return this._actions$.pipe(
             ofType(NgrxAction_SES.__attemptToRefreshToken),
@@ -67,6 +69,8 @@ export class LoginHelperEffects {
         );
     });
 
+    //------------------------------------------------------------------------------------------------------------------
+
     finishLoginProcedure$ = createEffect(() => {
         return this._actions$.pipe(
             ofType(NgrxAction_SES.__successfulLogin),
@@ -77,6 +81,8 @@ export class LoginHelperEffects {
             }),
         );
     }, { dispatch: false });
+
+    //------------------------------------------------------------------------------------------------------------------
 
     finishLogoutProcedure$ = createEffect(() => {
         return this._actions$.pipe(

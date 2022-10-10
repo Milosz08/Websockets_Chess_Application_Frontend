@@ -43,6 +43,8 @@ export class ChangePasswordEffects {
     ) {
     };
 
+    //------------------------------------------------------------------------------------------------------------------
+
     validateJwtTokenFromChangePasswordPage$ = createEffect(() => {
         return this._actions$.pipe(
             ofType(NgrxAction_CPA.__attemptToValidateJwtFromChangePassword),
@@ -66,6 +68,8 @@ export class ChangePasswordEffects {
             }),
         );
     });
+
+    //------------------------------------------------------------------------------------------------------------------
 
     changeForgottenPassword$ = createEffect(() => {
         return this._actions$.pipe(

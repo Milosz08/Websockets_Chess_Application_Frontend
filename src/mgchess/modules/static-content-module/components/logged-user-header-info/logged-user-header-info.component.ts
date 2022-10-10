@@ -46,10 +46,14 @@ export class LoggedUserHeaderInfoComponent implements OnInit, OnDestroy {
 
     private _ngUnsubscribe: Subject<void> = new Subject<void>();
 
+    //------------------------------------------------------------------------------------------------------------------
+
     constructor(
         private _store: Store<SessionReducerType>,
     ) {
     };
+
+    //------------------------------------------------------------------------------------------------------------------
 
     ngOnInit(): void {
         RxjsHelper.subscribeData(this._store, NgrxSelector_SES.sel_userLoggedData, this._ngUnsubscribe,

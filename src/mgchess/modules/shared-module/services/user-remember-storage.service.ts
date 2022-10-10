@@ -19,7 +19,7 @@
 import { Inject, Injectable } from "@angular/core";
 import { DOCUMENT } from "@angular/common";
 
-import { StorageHelper } from "../../../../storage/storage.helper";
+import { StorageHelper } from "../../../storage/storage.helper";
 import { AutoLoginUserStorageModel } from "../ngrx-store/session-ngrx-store/ngrx-models/auto-login-user-req.model";
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -30,23 +30,33 @@ export class UserRememberStorageService {
     private readonly _localStorage: Storage = this._DOCUMENT.defaultView!.localStorage;
     private readonly _storageKey: string = "SAVED_USER_LOGIN";
 
+    //------------------------------------------------------------------------------------------------------------------
+
     constructor(
         private _storageHelper: StorageHelper,
         @Inject(DOCUMENT) private _DOCUMENT: Document,
     ) {
     };
 
+    //------------------------------------------------------------------------------------------------------------------
+
     saveLoggedUserRefreshTokenInLocalStorage(userCredentials: AutoLoginUserStorageModel): void {
         this._storageHelper.updateStorageItem(this._storageKey, userCredentials);
     };
+
+    //------------------------------------------------------------------------------------------------------------------
 
     checkIfUserIsNotLogged(): boolean {
         return this.getUserRefreshTokenFromLocalStorage().refreshToken === "";
     };
 
+    //------------------------------------------------------------------------------------------------------------------
+
     removeSavedUserAccount(): void {
         this._localStorage.removeItem(this._storageKey);
     };
+
+    //------------------------------------------------------------------------------------------------------------------
 
     getUserRefreshTokenFromLocalStorage(): AutoLoginUserStorageModel {
         const refreshTokenBeforeParse = this._localStorage.getItem(this._storageKey);
@@ -54,9 +64,13 @@ export class UserRememberStorageService {
         return JSON.parse(refreshTokenBeforeParse);
     };
 
+    //------------------------------------------------------------------------------------------------------------------
+
     getUserToken(): string {
         return this.getUserRefreshTokenFromLocalStorage().token;
     };
+
+    //------------------------------------------------------------------------------------------------------------------
 
     getRefreshToken(): string {
         return this.getUserRefreshTokenFromLocalStorage().refreshToken;

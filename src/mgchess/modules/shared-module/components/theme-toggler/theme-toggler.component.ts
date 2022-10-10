@@ -35,10 +35,14 @@ export class ThemeTogglerComponent implements OnInit {
 
     _isDarkThemeSet: boolean = false;
 
+    //------------------------------------------------------------------------------------------------------------------
+
     constructor(
         private _storageService: ColorThemeLocalStorageService
     ) {
     };
+
+    //------------------------------------------------------------------------------------------------------------------
 
     ngOnInit(): void {
         this._isDarkThemeSet = this._storageService.checkSavedColorThemeAndReturn();

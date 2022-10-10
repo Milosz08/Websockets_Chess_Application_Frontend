@@ -27,12 +27,16 @@ export class BrowserThemeDetector {
     public static readonly LIGHT_LOGO = "assets/gfx/images/main-light-logo.svg" as const;
     public static readonly DARK_LOGO = "assets/gfx/images/main-dark-logo.svg" as const;
 
+    //------------------------------------------------------------------------------------------------------------------
+
     static detectBrowserThemeAndChangeFavicon(): void {
         if (!window.matchMedia) return;
         const preferColorScheme = window.matchMedia("(prefers-color-scheme: dark)");
         this.changeFaviconListenerCallback(preferColorScheme.matches);
         preferColorScheme.addEventListener("change", e => this.changeFaviconListenerCallback(e.matches));
     };
+
+    //------------------------------------------------------------------------------------------------------------------
 
     private static changeFaviconListenerCallback(isDark: boolean) {
         if (isDark) {
@@ -46,14 +50,20 @@ export class BrowserThemeDetector {
         }
     };
 
+    //------------------------------------------------------------------------------------------------------------------
+
     private static setFavicon(imagePath: string): void {
         const linkElement = document.querySelector("link[rel=icon]") as HTMLLinkElement;
         linkElement.href = imagePath;
     };
 
+    //------------------------------------------------------------------------------------------------------------------
+
     static isDarkThemeActive(): boolean {
         return document.body.classList.contains(this.CSS_DARK_CLASS);
     };
+
+    //------------------------------------------------------------------------------------------------------------------
 
     static getLogoSrcBasedCurrentTheme(): string {
         return this.isDarkThemeActive() ? this.DARK_LOGO : this.LIGHT_LOGO;

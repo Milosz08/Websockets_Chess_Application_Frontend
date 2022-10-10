@@ -47,12 +47,16 @@ export class SelectCountryBoxInputComponent implements OnInit, OnDestroy {
 
     private _ngUnsubscribe: Subject<void> = new Subject<void>();
 
+    //------------------------------------------------------------------------------------------------------------------
+
     constructor(
         private _store: Store<AuthReducerType>,
         public _cssConstants: FormInputClassesConstants,
         private _reqResService: StaticDataReqResService,
     ) {
     };
+
+    //------------------------------------------------------------------------------------------------------------------
 
     ngOnInit(): void {
         RxjsHelper.subscribeObservable(this._reqResService.getRegisterCountryData(), this._ngUnsubscribe,

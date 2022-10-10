@@ -19,6 +19,8 @@
 export class SimpleMessageResponseModel {
     responseMessage: string;
 
+    //------------------------------------------------------------------------------------------------------------------
+
     constructor(responseMessage: string) {
         this.responseMessage = responseMessage;
     };
@@ -28,6 +30,8 @@ export class SimpleMessageResponseModel {
 
 export class SimpleMessageResWithErrorModel extends SimpleMessageResponseModel {
     responseError: boolean;
+
+    //------------------------------------------------------------------------------------------------------------------
 
     constructor(responseMessage: string, responseError: boolean) {
         super(responseMessage);

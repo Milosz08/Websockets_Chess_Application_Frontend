@@ -33,11 +33,15 @@ export class CloseOutsideClickComponentDirective implements AfterViewInit, OnDes
 
     private _ngUnsubscribe: Subject<void> = new Subject<void>();
 
+    //------------------------------------------------------------------------------------------------------------------
+
     constructor(
         private _element: ElementRef,
         @Inject(DOCUMENT) private _document: Document,
     ) {
     };
+
+    //------------------------------------------------------------------------------------------------------------------
 
     ngAfterViewInit(): void {
         fromEvent(this._document, "click").pipe(takeUntil(this._ngUnsubscribe), filter(e => {

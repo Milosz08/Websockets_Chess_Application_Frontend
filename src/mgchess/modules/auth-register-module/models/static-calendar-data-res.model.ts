@@ -25,6 +25,8 @@ export class StaticCalendarDataResModel {
     months: Array<SimpleDataTupleModel<number>>;
     years: Array<SimpleDataTupleModel<number>>;
 
+    //------------------------------------------------------------------------------------------------------------------
+
     constructor(
         days: Array<SimpleDataTupleModel<number>>, months: Array<SimpleDataTupleModel<number>>,
         years: Array<SimpleDataTupleModel<number>>

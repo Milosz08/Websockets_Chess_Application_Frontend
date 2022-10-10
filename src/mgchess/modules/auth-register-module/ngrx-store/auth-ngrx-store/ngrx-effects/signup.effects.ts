@@ -49,6 +49,8 @@ export class SignupEffects {
     ) {
     };
 
+    //------------------------------------------------------------------------------------------------------------------
+
     singupViaLocal$ = createEffect(() => {
         return this._actions$.pipe(
             ofType(NgrxAction_ATH.__attemptToSingUpViaLocal),
@@ -75,6 +77,8 @@ export class SignupEffects {
             }),
         );
     });
+
+    //------------------------------------------------------------------------------------------------------------------
 
     attemptToFinishSignupViaOAuth2 = createEffect(() => {
         return this._actions$.pipe(
@@ -104,6 +108,8 @@ export class SignupEffects {
             }),
         );
     });
+
+    //------------------------------------------------------------------------------------------------------------------
 
     finishSignupViaOAuth2 = createEffect(() => {
         return this._actions$.pipe(

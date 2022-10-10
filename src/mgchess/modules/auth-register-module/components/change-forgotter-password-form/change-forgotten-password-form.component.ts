@@ -60,6 +60,8 @@ export class ChangeForgottenPasswordFormComponent implements OnInit, OnDestroy {
     readonly _formHelper: AngularFormsHelper = new AngularFormsHelper();
     readonly _ngUnsubscribe: Subject<void> = new Subject<void>();
 
+    //------------------------------------------------------------------------------------------------------------------
+
     constructor(
         private _validator: AngularFormValidator,
         private _regex: ValidatorPatternConstants,
@@ -73,6 +75,8 @@ export class ChangeForgottenPasswordFormComponent implements OnInit, OnDestroy {
             validators: [ _validator.passwordMismatchValidate ],
         });
     };
+
+    //------------------------------------------------------------------------------------------------------------------
 
     ngOnInit(): void {
         RxjsHelper.subscribeData(this._store, NgrxSelector_CPA.sel_changePasswordUserDetails, this._ngUnsubscribe,

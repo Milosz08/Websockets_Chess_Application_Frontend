@@ -49,11 +49,15 @@ export class MobileHeaderWithNavigationComponent {
     _hamburgerMenuActive: boolean = false;
     readonly _navigationLinks: Array<Array<NavigationLinksModel>>;
 
+    //------------------------------------------------------------------------------------------------------------------
+
     constructor(
         private _store: Store<SessionReducerType>,
     ) {
         this._navigationLinks = [ (NAVIGATION_LINKS as any).default, (QUICK_AUTH_NAVIGATION_LINKS as any).default ];
     };
+
+    //------------------------------------------------------------------------------------------------------------------
 
     handleToggleHamburgerMenuActive(): void {
         this._hamburgerMenuActive = !this._hamburgerMenuActive;

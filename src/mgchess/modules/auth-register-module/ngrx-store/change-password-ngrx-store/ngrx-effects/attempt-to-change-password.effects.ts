@@ -49,6 +49,8 @@ export class AttemptToChangePasswordEffects {
     ) {
     };
 
+    //------------------------------------------------------------------------------------------------------------------
+
     sendRequestToChangePassword$ = createEffect(() => {
         return this._actions$.pipe(
             ofType(NgrxAction_CPA.__attemptToSendRequestToChangePassword),
@@ -73,6 +75,8 @@ export class AttemptToChangePasswordEffects {
             }),
         );
     });
+
+    //------------------------------------------------------------------------------------------------------------------
 
     validateChangePasswordEmailViaOta$ = createEffect(() => {
         return this._actions$.pipe(
@@ -99,6 +103,8 @@ export class AttemptToChangePasswordEffects {
             }),
         );
     });
+
+    //------------------------------------------------------------------------------------------------------------------
 
     redirectToChangePasswordAfterValidatedOtaToken$ = createEffect(() => {
         return this._actions$.pipe(

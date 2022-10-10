@@ -36,6 +36,8 @@ export class ValidateOauth2UserService {
     _oauth2ResToken: string = "";
     _oauth2ResSupplier: string = "";
 
+    //------------------------------------------------------------------------------------------------------------------
+
     constructor(
         private _route: ActivatedRoute,
         private _store: Store<SessionWithAuthCombinedReducerTypes>,
@@ -45,10 +47,14 @@ export class ValidateOauth2UserService {
         this._oauth2ResSupplier = this._route.snapshot.queryParamMap.get("supplier") || "";
     };
 
+    //------------------------------------------------------------------------------------------------------------------
+
     validateFinishSignup(): void {
         this._store.dispatch(NgrxAction_ATH.__clearFinishSignupUserData());
         this._store.dispatch(NgrxAction_ATH.__attemptToAttemptFinishSignupViaOAuth2({ jwtToken: this._oauth2ResToken }));
     };
+
+    //------------------------------------------------------------------------------------------------------------------
 
     validateLogin(): void {
         this._store.dispatch(NgrxAction_ATH.__clearServerResponse());
@@ -56,13 +62,19 @@ export class ValidateOauth2UserService {
         this._store.dispatch(NgrxAction_SES.__attemptToLoginViaOAuth2({ jwtToken: this._oauth2ResToken }));
     };
 
+    //------------------------------------------------------------------------------------------------------------------
+
     get __isGoogleSupplierSuspenseActive(): boolean {
         return this._oauth2ResSupplier === OAuthSupplier.GOOGLE;
     };
 
+    //------------------------------------------------------------------------------------------------------------------
+
     get __isFacebookSupplierSuspenseActive(): boolean {
         return this._oauth2ResSupplier === OAuthSupplier.FACEBOOK;
     };
+
+    //------------------------------------------------------------------------------------------------------------------
 
     get __ifAnyQueryParamExist(): boolean {
         return !!this._oauth2ResToken || !!this._oauth2ResSupplier;

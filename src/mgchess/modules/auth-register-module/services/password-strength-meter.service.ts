@@ -26,6 +26,8 @@ export class PasswordStrengthMeterService {
     private readonly _strongRegex: RegExp = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])");
     private readonly _mediumRegex: RegExp = new RegExp("^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))");
 
+    //------------------------------------------------------------------------------------------------------------------
+
     computePasswordPower(password: string): PasswordStrength {
         let strength: PasswordStrength;
         if (password === "") {

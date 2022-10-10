@@ -45,6 +45,8 @@ export class SignupActivateEffects {
     ) {
     };
 
+    //------------------------------------------------------------------------------------------------------------------
+
     attemptToActivateAccountViaOta = createEffect(() => {
         return this._actions$.pipe(
             ofType(NgrxAction_ATH.__attemptToAttemptActivateAccountViaOta),
@@ -68,6 +70,8 @@ export class SignupActivateEffects {
             }),
         );
     });
+
+    //------------------------------------------------------------------------------------------------------------------
 
     activateAccountViaOta = createEffect(() => {
         return this._actions$.pipe(

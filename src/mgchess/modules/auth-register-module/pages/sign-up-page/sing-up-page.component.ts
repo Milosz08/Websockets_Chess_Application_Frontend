@@ -47,6 +47,8 @@ export class SingUpPageComponent extends BrowserMetaSerializatorLoader {
 
     readonly _formHelper: AngularFormsHelper = new AngularFormsHelper();
 
+    //------------------------------------------------------------------------------------------------------------------
+
     constructor(
         private _metaService: Meta,
         private _titleService: Title,
@@ -75,6 +77,8 @@ export class SingUpPageComponent extends BrowserMetaSerializatorLoader {
             validators: [ _validator.passwordMismatchValidate, _validator.twoEmailAddressesAreNotEqualsValidate ],
         });
     };
+
+    //------------------------------------------------------------------------------------------------------------------
 
     selectApplicationLogoBasedCurrentTheme(): string {
         return BrowserThemeDetector.getLogoSrcBasedCurrentTheme();

@@ -51,6 +51,8 @@ export class ChangePasswordPageComponent extends BrowserMetaSerializatorLoader i
 
     readonly _ngUnsubscribe: Subject<void> = new Subject<void>();
 
+    //------------------------------------------------------------------------------------------------------------------
+
     constructor(
         private _metaService: Meta,
         private _titleService: Title,
@@ -59,6 +61,8 @@ export class ChangePasswordPageComponent extends BrowserMetaSerializatorLoader i
     ) {
         super(_titleService, _metaService, SingleModuleType.AUTH_REGISTER_MODULE, SinglePageType.CHANGE_PASSWORD_PAGE);
     };
+
+    //------------------------------------------------------------------------------------------------------------------
 
     ngOnInit(): void {
         this._bearerToken = String(this._route.snapshot.queryParamMap.get("token"));

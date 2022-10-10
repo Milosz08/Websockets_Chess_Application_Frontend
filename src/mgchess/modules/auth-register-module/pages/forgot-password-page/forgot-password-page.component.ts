@@ -41,6 +41,8 @@ export class ForgotPasswordPageComponent extends BrowserMetaSerializatorLoader i
 
     _forgotPasswordResponse$: Observable<string> = this._store.select(NgrxSelector_CPA.sel_forgotPasswordServerResponse);
 
+    //------------------------------------------------------------------------------------------------------------------
+
     constructor(
         private _metaService: Meta,
         private _titleService: Title,
@@ -48,6 +50,8 @@ export class ForgotPasswordPageComponent extends BrowserMetaSerializatorLoader i
     ) {
         super(_titleService, _metaService, SingleModuleType.AUTH_REGISTER_MODULE, SinglePageType.FORGOT_PASSWORD_PAGE);
     };
+
+    //------------------------------------------------------------------------------------------------------------------
 
     ngOnInit(): void {
         this._store.dispatch(NgrxAction_CPA.__clearChangePasswordData());

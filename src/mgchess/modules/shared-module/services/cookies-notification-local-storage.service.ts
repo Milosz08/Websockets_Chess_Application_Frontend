@@ -26,10 +26,14 @@ export class CookiesNotificationLocalStorageService {
     private readonly LOCAL_STORAGE = window.localStorage;
     private readonly LOCAL_STORAGE_COOKIE_KEY = "COOKIE_NOTIFICATION_REMEMBER" as const;
 
+    //------------------------------------------------------------------------------------------------------------------
+
     rememberCookiePreferences() {
         if (this.LOCAL_STORAGE === null) return;
         this.LOCAL_STORAGE.setItem(this.LOCAL_STORAGE_COOKIE_KEY, "TRUE");
     };
+
+    //------------------------------------------------------------------------------------------------------------------
 
     checkIfPreferencedAreRemembered(): boolean {
         if (this.LOCAL_STORAGE === null) return false;

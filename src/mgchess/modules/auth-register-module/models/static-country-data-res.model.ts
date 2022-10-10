@@ -23,6 +23,8 @@ import { SimpleDataTupleModel } from "../../../models/simple-data-tuple.model";
 export class StaticCountryDataResModel {
     countries: Array<SimpleDataTupleModel<string>>;
 
+    //------------------------------------------------------------------------------------------------------------------
+
     constructor(countries: Array<SimpleDataTupleModel<string>>) {
         this.countries = countries;
     };

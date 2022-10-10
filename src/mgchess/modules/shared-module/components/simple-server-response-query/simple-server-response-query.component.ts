@@ -37,10 +37,14 @@ export class SimpleServerResponseQueryComponent implements OnInit {
 
     readonly _serverReqResHelper: ServerReqResHelper = new ServerReqResHelper();
 
+    //------------------------------------------------------------------------------------------------------------------
+
     constructor(
         private _route: ActivatedRoute,
     ) {
     };
+
+    //------------------------------------------------------------------------------------------------------------------
 
     ngOnInit(): void {
         this._serverResponseMessage = String(this._route.snapshot.queryParamMap.get("message"));

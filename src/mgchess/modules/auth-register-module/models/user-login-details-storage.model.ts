@@ -28,6 +28,8 @@ export class UserLoginDetailsStorageModel {
     photoUri: string;
     userLogin: string;
 
+    //------------------------------------------------------------------------------------------------------------------
+
     constructor(userDetailsFromServer: UserCredentialsDataResModel) {
         this.userId = userDetailsFromServer.userId;
         this.initials = userDetailsFromServer.initials;

@@ -32,11 +32,15 @@ export class GfxEffects {
 
     public static readonly SCROLL_DISABLED_CSS = "scroll--disabled";
 
+    //------------------------------------------------------------------------------------------------------------------
+
     constructor(
         private _actions$: Actions,
         @Inject(DOCUMENT) private _document: Document,
     ) {
     };
+
+    //------------------------------------------------------------------------------------------------------------------
 
     globalSuspenseLoaderOnEnd$ = createEffect(() => {
         return this._actions$.pipe(

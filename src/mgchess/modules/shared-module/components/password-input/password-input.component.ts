@@ -44,6 +44,8 @@ export class PasswordInputComponent {
 
     @Output() _emitCleanErrors: EventEmitter<void> = new EventEmitter<void>();
 
+    //------------------------------------------------------------------------------------------------------------------
+
     handleDisposeDefaultState(): void {
         if (this._formHelper.field(this._formControlName, this._form).value === "") {
             this._isFieldContentVisible = false;

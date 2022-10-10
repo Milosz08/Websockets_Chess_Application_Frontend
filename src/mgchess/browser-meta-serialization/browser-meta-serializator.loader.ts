@@ -33,6 +33,8 @@ export abstract class BrowserMetaSerializatorLoader {
 
     private serializedData: BrowserMetaSerializatorModel | null = null;
 
+    //------------------------------------------------------------------------------------------------------------------
+
     protected constructor(
         titleService: Title, metaService: Meta, module: SingleModuleType, page: SinglePageType,
         prefixActive: boolean = true
@@ -45,6 +47,8 @@ export abstract class BrowserMetaSerializatorLoader {
         this.updateMetaWebContentData(prefixActive);
     };
 
+    //------------------------------------------------------------------------------------------------------------------
+
     private deserializeData() {
         const { separator, prefix, metaContent } = META_DATA;
         const pagesData: Map<SingleModuleType, Array<SinglePageMetaContent>> = new Map();
@@ -56,6 +60,8 @@ export abstract class BrowserMetaSerializatorLoader {
         });
         this.serializedData = new BrowserMetaSerializatorModel(separator, prefix, pagesData);
     };
+
+    //------------------------------------------------------------------------------------------------------------------
 
     private updateMetaWebContentData(prefixActive: boolean): void {
         if (this.serializedData === null) return;

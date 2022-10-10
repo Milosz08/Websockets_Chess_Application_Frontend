@@ -29,14 +29,20 @@ export class AngularFormsHelper {
         return field;
     };
 
+    //------------------------------------------------------------------------------------------------------------------
+
     static field(fieldname: string, form: FormGroup): AbstractControl<any, any> {
         return new AngularFormsHelper().field(fieldname, form);
-    }
+    };
+
+    //------------------------------------------------------------------------------------------------------------------
 
     fieldHasAnyErrors(fieldname: string, form: FormGroup): boolean {
         return this.field(fieldname, form).touched && this.field(fieldname, form).dirty
             && !this.field(fieldname, form).valid;
     };
+
+    //------------------------------------------------------------------------------------------------------------------
 
     extractFormFields<T>(form: FormGroup, activeReset: boolean = true): T {
         if (!form) throw new Error("Form group is not valid");
@@ -48,9 +54,13 @@ export class AngularFormsHelper {
         return fieldsObject;
     };
 
+    //------------------------------------------------------------------------------------------------------------------
+
     static extractFormFields<T>(form: FormGroup, activeReset: boolean = true): T {
         return new AngularFormsHelper().extractFormFields<T>(form, activeReset);
     };
+
+    //------------------------------------------------------------------------------------------------------------------
 
     checkCustomError(form: FormGroup, errorName: string): boolean {
         if (!form) throw new Error("Form grounp is not valid");

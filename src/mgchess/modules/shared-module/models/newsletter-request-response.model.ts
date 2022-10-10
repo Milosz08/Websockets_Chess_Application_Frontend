@@ -20,6 +20,8 @@ export class NewsletterRequestModel {
     userName: string;
     emailAddress: string;
 
+    //------------------------------------------------------------------------------------------------------------------
+
     constructor(userName: string, emailAddress: string) {
         this.userName = userName;
         this.emailAddress = emailAddress;

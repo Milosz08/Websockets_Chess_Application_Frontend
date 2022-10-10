@@ -44,6 +44,8 @@ export class NewsletterPageComponent extends BrowserMetaSerializatorLoader imple
         super(_titleService, _metaService, SingleModuleType.STATIC_CONTENT_MODULE, SinglePageType.NEWSLETTER_PAGE);
     };
 
+    //------------------------------------------------------------------------------------------------------------------
+
     ngOnInit(): void {
         this._store.dispatch(NgrxAction_NWL.__initialClearAllState());
     };

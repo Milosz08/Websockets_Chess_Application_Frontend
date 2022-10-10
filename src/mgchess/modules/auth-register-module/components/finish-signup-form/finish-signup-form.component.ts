@@ -50,6 +50,8 @@ export class FinishSignupFormComponent implements OnInit, OnDestroy {
 
     private _ngUnsubscribe: Subject<void> = new Subject<void>();
 
+    //------------------------------------------------------------------------------------------------------------------
+
     constructor(
         private _store: Store<AuthReducerType>,
     ) {
@@ -63,6 +65,8 @@ export class FinishSignupFormComponent implements OnInit, OnDestroy {
             hasPrivacyPolicyAccept: new FormControl(false, [ Validators.requiredTrue ]),
         });
     };
+
+    //------------------------------------------------------------------------------------------------------------------
 
     ngOnInit(): void {
         RxjsHelper.subscribeData(this._store, NgrxSelector_ATH.sel_serverResponse, this._ngUnsubscribe,

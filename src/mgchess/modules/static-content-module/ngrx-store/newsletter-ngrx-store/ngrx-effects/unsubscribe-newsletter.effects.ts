@@ -46,6 +46,8 @@ export class UnsubscribeNewsletterEffects {
     ) {
     };
 
+    //------------------------------------------------------------------------------------------------------------------
+
     attemptToUnsubscribeNewsletter$ = createEffect(() => {
         return this._actions$.pipe(
             ofType(NgrxAction_NWL.__attemptToUnsubscribeNewsletter),
@@ -69,6 +71,8 @@ export class UnsubscribeNewsletterEffects {
             }),
         );
     });
+
+    //------------------------------------------------------------------------------------------------------------------
 
     unsubscribeNewsletter$ = createEffect(() => {
         return this._actions$.pipe(

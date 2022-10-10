@@ -24,6 +24,8 @@ export class SimpleDataTupleModel<T extends TupleIdType> {
     id: T;
     value: string;
 
+    //------------------------------------------------------------------------------------------------------------------
+
     constructor(id: T, value: string) {
         this.id = id;
         this.value = value;

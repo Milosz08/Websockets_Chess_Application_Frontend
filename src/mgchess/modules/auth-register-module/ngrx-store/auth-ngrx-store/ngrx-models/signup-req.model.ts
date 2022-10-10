@@ -34,6 +34,8 @@ export class SignupReqModel {
     passwordRepeat: string;
     hasNewsletterAccept: boolean;
 
+    //------------------------------------------------------------------------------------------------------------------
+
     constructor(registerForm: SignupFormModel) {
         this.nickname = registerForm.nickname;
         this.firstName = registerForm.firstName;

@@ -40,12 +40,16 @@ export class AuthReqResService {
     ) {
     };
 
+    //------------------------------------------------------------------------------------------------------------------
+
     signupViaLocal(req: SignupReqModel): Observable<AttemptFinishSignupResModel> {
         return this._http.post<AttemptFinishSignupResModel>(
             this._endpoint.SIGNUP_VIA_LOCAL,
             req,
         );
     };
+
+    //------------------------------------------------------------------------------------------------------------------
 
     attemptToFinishSignupViaOAuth2(jwtToken: string): Observable<AttemptFinishSignupResModel> {
         return this._http.post<AttemptFinishSignupResModel>(
@@ -55,6 +59,8 @@ export class AuthReqResService {
         );
     };
 
+    //------------------------------------------------------------------------------------------------------------------
+
     finishSignupViaOAuth2(req: FinishSignupReqModel, jwtToken: string): Observable<SimpleMessageResponseModel> {
         return this._http.post<SimpleMessageResponseModel>(
             this._endpoint.FINISH_SIGNUP_VIA_OAUTH2,
@@ -63,6 +69,8 @@ export class AuthReqResService {
         );
     };
 
+    //------------------------------------------------------------------------------------------------------------------
+
     attemptToActivateAccountViaOta(jwtToken: string): Observable<AttemptFinishSignupResModel> {
         return this._http.post<AttemptFinishSignupResModel>(
             this._endpoint.ATTEMPT_ACTIVATE_ACCOUNT,
@@ -70,6 +78,8 @@ export class AuthReqResService {
             { headers: new HttpHeaders({ "Authorization": `Bearer ${jwtToken}` }) },
         );
     };
+
+    //------------------------------------------------------------------------------------------------------------------
 
     activateAccountViaOta(req: OtaTokenMutlipleEmailsReqModel): Observable<SimpleMessageResponseModel> {
         return this._http.post<SimpleMessageResponseModel>(

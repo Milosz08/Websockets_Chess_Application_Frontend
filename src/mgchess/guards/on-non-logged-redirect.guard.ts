@@ -32,11 +32,15 @@ export class OnNonLoggedRedirectGuard implements CanActivate {
 
     private readonly _isNotLogged$: Observable<boolean> = this._store.select(NgrxSelector_SES.sel_userIsNotLogged);
 
+    //------------------------------------------------------------------------------------------------------------------
+
     constructor(
         private _router: Router,
         private _store: Store<SessionReducerType>,
     ) {
     };
+
+    //------------------------------------------------------------------------------------------------------------------
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
         return this._isNotLogged$.pipe(map(notLogged => {

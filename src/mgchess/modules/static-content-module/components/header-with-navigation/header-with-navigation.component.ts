@@ -44,6 +44,8 @@ export class HeaderWithNavigationComponent {
 
     _isNotLogged$: Observable<boolean> = this._store.select(NgrxSelector_SES.sel_userIsNotLogged);
 
+    //------------------------------------------------------------------------------------------------------------------
+
     constructor(
         public _router: Router,
         private _store: Store<SessionReducerType>,
@@ -52,6 +54,8 @@ export class HeaderWithNavigationComponent {
         this._quickStartNavigationList = this.filterQuickStartNavigationLinks(false);
         this._authNavigationList = this.filterQuickStartNavigationLinks(true);
     };
+
+    //------------------------------------------------------------------------------------------------------------------
 
     private filterQuickStartNavigationLinks(isAuth: boolean): Array<NavigationLinksModel> {
         return (QUICK_AND_AUTH_NAVIGATION_LIST as any).default

@@ -19,6 +19,8 @@
 export class AutoLoginUserReqModel {
     refreshToken: string;
 
+    //------------------------------------------------------------------------------------------------------------------
+
     constructor(refreshToken: string) {
         this.refreshToken = refreshToken;
     };
@@ -28,6 +30,8 @@ export class AutoLoginUserReqModel {
 
 export class AutoLoginUserStorageModel extends AutoLoginUserReqModel {
     token: string;
+
+    //------------------------------------------------------------------------------------------------------------------
 
     constructor(refreshToken: string, token: string) {
         super(refreshToken);

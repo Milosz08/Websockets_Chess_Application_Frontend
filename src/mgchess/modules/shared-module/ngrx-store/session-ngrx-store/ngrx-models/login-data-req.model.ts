@@ -24,10 +24,14 @@ export class LoginReqModel {
     usernameEmail: string;
     password: string;
 
+    //------------------------------------------------------------------------------------------------------------------
+
     constructor(usernameEmail: string, password: string) {
         this.usernameEmail = usernameEmail;
         this.password = password;
     };
+
+    //------------------------------------------------------------------------------------------------------------------
 
     static factoryLoginRequstModelFromForm(form: LoginFormModel): LoginReqModel {
         return new LoginReqModel(form.usernameEmail, form.password);

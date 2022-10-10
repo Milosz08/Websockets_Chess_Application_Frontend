@@ -46,6 +46,8 @@ export class LogInPageComponent extends BrowserMetaSerializatorLoader implements
     _oauth2SuspenseActive: boolean = false;
     private _ngUnsubscribe: Subject<void> = new Subject<void>();
 
+    //------------------------------------------------------------------------------------------------------------------
+
     constructor(
         private _metaService: Meta,
         private _titleService: Title,
@@ -56,6 +58,8 @@ export class LogInPageComponent extends BrowserMetaSerializatorLoader implements
         super(_titleService, _metaService, SingleModuleType.AUTH_REGISTER_MODULE, SinglePageType.LOG_IN_PAGE);
         this._validateOAuth2Service.validateLogin();
     };
+
+    //------------------------------------------------------------------------------------------------------------------
 
     ngOnInit(): void {
         RxjsHelper.subscribeData(this._store, NgrxSelector_GFX.sel_loginViaOAuth2Suspense, this._ngUnsubscribe,

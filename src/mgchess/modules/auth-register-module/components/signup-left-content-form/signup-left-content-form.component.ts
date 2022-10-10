@@ -37,6 +37,8 @@ export class SignupLeftContentFormComponent {
     readonly _formHelper: AngularFormsHelper = new AngularFormsHelper();
     readonly _emailAddressesAreTheSame = ValidatorConstraint.EMAIL_ADDRESSES_ARE_THE_SAME;
 
+    //------------------------------------------------------------------------------------------------------------------
+
     handleToggleSecondEmailInputVisibility(): void {
         this._secondEmailInputVisibility = !this._secondEmailInputVisibility;
         this._formHelper.field("secondEmailAddress", this._signupForm).setValue("");

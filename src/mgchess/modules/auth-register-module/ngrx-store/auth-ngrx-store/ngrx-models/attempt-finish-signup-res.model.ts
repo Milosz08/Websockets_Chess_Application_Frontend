@@ -27,6 +27,8 @@ export class AttemptFinishSignupResModel {
     jwtToken: string;
     userEmailAddresses: Array<EmailHashWithNormalModel>;
 
+    //------------------------------------------------------------------------------------------------------------------
+
     constructor(
         nickname: string, fullName: string, photoUrl: string, initials: string, dataFilled: boolean,
         responseMessage: string, authSupplier: string, userEmailAddresses: Array<EmailHashWithNormalModel>,
@@ -49,6 +51,8 @@ export class AttemptFinishSignupResModel {
 export class EmailHashWithNormalModel {
     hash: string;
     normal: string;
+
+    //------------------------------------------------------------------------------------------------------------------
 
     constructor(hash: string, normal: string) {
         this.hash = hash;

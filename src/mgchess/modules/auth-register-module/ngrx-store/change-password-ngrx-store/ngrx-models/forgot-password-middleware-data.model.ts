@@ -21,6 +21,8 @@ export class ForgotPasswordMiddlewareDataModel {
     emailAddresses: Array<string>;
     userNicknameEmail: string;
 
+    //------------------------------------------------------------------------------------------------------------------
+
     constructor(forgotPasswordResponseMessage: string, emailAddresses: Array<string>, userNicknameEmail: string) {
         this.forgotPasswordResponseMessage = forgotPasswordResponseMessage;
         this.emailAddresses = emailAddresses;

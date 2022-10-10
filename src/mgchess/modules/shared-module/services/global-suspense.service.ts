@@ -34,6 +34,8 @@ export class GlobalSuspenseService {
     ) {
     };
 
+    //------------------------------------------------------------------------------------------------------------------
+
     toggleSuspenseLoaderComponent(): void {
         this._router.events.subscribe(e => {
             if (e instanceof RouteConfigLoadStart) {
@@ -43,6 +45,8 @@ export class GlobalSuspenseService {
             }
         });
     };
+
+    //------------------------------------------------------------------------------------------------------------------
 
     removeQueryParams(queryParamName: string): void {
         this._router.navigate([], {

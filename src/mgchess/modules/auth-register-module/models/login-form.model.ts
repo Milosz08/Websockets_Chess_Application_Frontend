@@ -23,6 +23,8 @@ import { LoginReqModel } from "../../shared-module/ngrx-store/session-ngrx-store
 export class LoginFormModel extends LoginReqModel {
     rememberAccount: boolean;
 
+    //------------------------------------------------------------------------------------------------------------------
+
     constructor(usernameEmail: string, password: string, rememberAccount: boolean) {
         super(usernameEmail, password);
         this.rememberAccount = rememberAccount;

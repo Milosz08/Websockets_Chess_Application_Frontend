@@ -19,6 +19,8 @@
 export class UnsubscribeNewsletterEmailReq {
     emailAddress: string;
 
+    //------------------------------------------------------------------------------------------------------------------
+
     constructor(emailAddress: string) {
         this.emailAddress = emailAddress;
     };
@@ -29,6 +31,8 @@ export class UnsubscribeNewsletterEmailReq {
 export class UnsubscribeNewsletterTokenReq {
     token: string;
 
+    //------------------------------------------------------------------------------------------------------------------
+
     constructor(token: string) {
         this.token = token;
     };
@@ -38,6 +42,8 @@ export class UnsubscribeNewsletterTokenReq {
 
 export class UnsubscribeNewsletterViaOtaReq extends UnsubscribeNewsletterTokenReq {
     emailAddress: string;
+
+    //------------------------------------------------------------------------------------------------------------------
 
     constructor(token: string, emailAddress: string) {
         super(token);

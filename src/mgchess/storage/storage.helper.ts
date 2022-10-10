@@ -26,10 +26,14 @@ export class StorageHelper {
 
     private _localStorage: Storage = this._DOCUMENT.defaultView!.localStorage;
 
+    //------------------------------------------------------------------------------------------------------------------
+
     constructor(
         @Inject(DOCUMENT) private _DOCUMENT: Document,
     ) {
     };
+
+    //------------------------------------------------------------------------------------------------------------------
 
     updateStorageItem(storageKey: string, storageItem: any): void {
         this._localStorage.removeItem(storageKey);

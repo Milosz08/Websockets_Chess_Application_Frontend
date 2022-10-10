@@ -42,6 +42,8 @@ export class MgchessComponent implements OnInit {
     ) {
     };
 
+    //------------------------------------------------------------------------------------------------------------------
+
     ngOnInit(): void {
         BrowserThemeDetector.detectBrowserThemeAndChangeFavicon();
         this._service.checkSavedColorThemeAndReturn();

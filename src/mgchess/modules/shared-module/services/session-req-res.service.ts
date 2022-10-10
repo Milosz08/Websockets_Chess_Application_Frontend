@@ -39,12 +39,16 @@ export class SessionReqResService {
     ) {
     };
 
+    //------------------------------------------------------------------------------------------------------------------
+
     loginViaLocal(req: LoginReqModel): Observable<UserCredentialsDataResModel> {
         return this._http.post<UserCredentialsDataResModel>(
             this._endpoint.LOGIN_VIA_LOCAL,
             req,
         );
     };
+
+    //------------------------------------------------------------------------------------------------------------------
 
     loginViaOAuth2(jwtToken: string): Observable<UserCredentialsDataResModel> {
         return this._http.post<UserCredentialsDataResModel>(
@@ -54,6 +58,8 @@ export class SessionReqResService {
         );
     };
 
+    //------------------------------------------------------------------------------------------------------------------
+
     autoLogin(req: AutoLoginUserReqModel): Observable<UserCredentialsDataResModel> {
         return this._http.post<UserCredentialsDataResModel>(
             this._endpoint.AUTO_LOGIN,
@@ -61,11 +67,15 @@ export class SessionReqResService {
         );
     };
 
+    //------------------------------------------------------------------------------------------------------------------
+
     logout(): Observable<void> {
         return this._http.delete<void>(
             this._endpoint.LOGOUT,
         );
     };
+
+    //------------------------------------------------------------------------------------------------------------------
 
     refreshToken(refreshToken: string): Observable<RefreshTokenResModel> {
         return this._http.post<RefreshTokenResModel>(

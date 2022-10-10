@@ -20,6 +20,8 @@ export class EmailAddressesChangePasswordResModel {
     emailAddresses: Array<string>;
     responseMessage: string;
 
+    //------------------------------------------------------------------------------------------------------------------
+
     constructor(emailAddresses: Array<string>, responseMessage: string) {
         this.emailAddresses = emailAddresses;
         this.responseMessage = responseMessage;

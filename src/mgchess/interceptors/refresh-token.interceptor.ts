@@ -41,11 +41,13 @@ export class RefreshTokenInterceptor implements HttpInterceptor {
     ) {
     };
 
+    //------------------------------------------------------------------------------------------------------------------
+
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<Object>> {
         if (!Boolean(this._storageService.getUserToken())) {
             return next.handle(req);
         }
-        const reqWithAuthHeader = this.insertTokenHeader(req, this._storageService.getUserToken());
+        const reqWithAuthHeader = RefreshTokenInterceptor.insertTokenHeader(req, this._storageService.getUserToken());
         return next.handle(reqWithAuthHeader).pipe(
             catchError(err => {
                 if (err instanceof HttpErrorResponse && err.status === 401) {
@@ -55,7 +57,7 @@ export class RefreshTokenInterceptor implements HttpInterceptor {
                             const userTokens = new AutoLoginUserStorageModel(refreshToken, token);
                             this._store.dispatch(NgrxAction_SES.__successfulRefreshToken({ refreshedData }));
                             this._storageService.saveLoggedUserRefreshTokenInLocalStorage(userTokens);
-                            return next.handle(this.insertTokenHeader(req, refreshedData.token));
+                            return next.handle(RefreshTokenInterceptor.insertTokenHeader(req, refreshedData.token));
                         }),
                         catchError(err => {
                             this._store.dispatch(NgrxAction_SES.__successfulLogout());
@@ -68,7 +70,9 @@ export class RefreshTokenInterceptor implements HttpInterceptor {
         );
     };
 
-    private insertTokenHeader(req: HttpRequest<any>, token: string): HttpRequest<any> {
+    //------------------------------------------------------------------------------------------------------------------
+
+    private static insertTokenHeader(req: HttpRequest<any>, token: string): HttpRequest<any> {
         return req.clone({ headers: req.headers.set("Authorization", `Bearer ${token}`) });
     };
 }

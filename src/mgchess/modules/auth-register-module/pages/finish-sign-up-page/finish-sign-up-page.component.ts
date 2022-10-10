@@ -58,6 +58,8 @@ export class FinishSignUpPageComponent extends BrowserMetaSerializatorLoader imp
 
     private _ngUnsubscribe: Subject<void> = new Subject<void>();
 
+    //------------------------------------------------------------------------------------------------------------------
+
     constructor(
         private _metaService: Meta,
         private _titleService: Title,
@@ -67,6 +69,8 @@ export class FinishSignUpPageComponent extends BrowserMetaSerializatorLoader imp
         super(_titleService, _metaService, SingleModuleType.AUTH_REGISTER_MODULE, SinglePageType.FINISH_SIGNUP_PAGE);
         this._validateOAuth2Service.validateFinishSignup();
     };
+
+    //------------------------------------------------------------------------------------------------------------------
 
     ngOnInit(): void {
         this._store.dispatch(NgrxAction_ATH.__clearServerResponse());

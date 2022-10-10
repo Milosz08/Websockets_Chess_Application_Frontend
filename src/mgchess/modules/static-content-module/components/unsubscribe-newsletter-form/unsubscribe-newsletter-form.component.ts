@@ -63,6 +63,8 @@ export class UnsubscribeNewsletterFormComponent implements OnInit, OnDestroy {
 
     private _ngUnsubscribe: Subject<void> = new Subject<void>();
 
+    //------------------------------------------------------------------------------------------------------------------
+
     constructor(
         private _regex: ValidatorPatternConstants,
         private _store: Store<NewsletterReducerType>,
@@ -74,6 +76,8 @@ export class UnsubscribeNewsletterFormComponent implements OnInit, OnDestroy {
             token: new FormControl("", [ Validators.required, Validators.pattern(_regex.OTA_TOKEN_REGEX) ]),
         });
     };
+
+    //------------------------------------------------------------------------------------------------------------------
 
     ngOnInit(): void {
         RxjsHelper.subscribeData(this._store, NgrxSelector_NWL.sel_emailTokenResponse, this._ngUnsubscribe,

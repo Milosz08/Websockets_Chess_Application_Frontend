@@ -29,6 +29,8 @@ export class SignupFormModel extends FinishSignupFormModel {
     password: string;
     passwordRepeat: string;
 
+    //------------------------------------------------------------------------------------------------------------------
+
     constructor(
         nickname: string, firstName: string, lastName: string, emailAddress: string, secondEmailAddress: string,
         birthDateDay: number | null, birthDateMonth: number | null, birthDateYear: number | null,
@@ -44,6 +46,8 @@ export class SignupFormModel extends FinishSignupFormModel {
         this.password = password;
         this.passwordRepeat = passwordRepeat;
     };
+
+    //------------------------------------------------------------------------------------------------------------------
 
     static override getDefaultValues(): SignupFormModel {
         return new SignupFormModel("", "", "", "", "", null, null, null, null, null, "", "", false, false);

@@ -25,11 +25,15 @@ export class BrowserMetaSerializatorModel {
     private readonly prefix: string;
     private metaContent: Map<SingleModuleType, Array<SinglePageMetaContent>> = new Map();
 
+    //------------------------------------------------------------------------------------------------------------------
+
     constructor(separator: string, prefix: string, metaContent: Map<SingleModuleType, Array<SinglePageMetaContent>>) {
         this.separator = separator;
         this.prefix = prefix;
         this.metaContent = metaContent;
     };
+
+    //------------------------------------------------------------------------------------------------------------------
 
     extractMetaContentBasePageAndModuleType(module: SingleModuleType, page: SinglePageType): ExtractedMetaTypes {
         const findPages = this.metaContent.get(module)
@@ -41,14 +45,20 @@ export class BrowserMetaSerializatorModel {
         }
     };
 
+    //------------------------------------------------------------------------------------------------------------------
+
     get __separator(): string {
         return this.separator;
     };
+
+    //------------------------------------------------------------------------------------------------------------------
 
     get __prefix(): string {
         return this.prefix;
     };
 }
+
+//----------------------------------------------------------------------------------------------------------------------
 
 export interface ExtractedMetaTypes {
     title: string;
@@ -62,19 +72,27 @@ export class SinglePageMetaContent {
     private readonly title: string;
     private readonly description: string;
 
+    //------------------------------------------------------------------------------------------------------------------
+
     constructor(pageId: SinglePageType, title: string, description: string) {
         this.pageId = pageId;
         this.title = title;
         this.description = description;
     };
 
+    //------------------------------------------------------------------------------------------------------------------
+
     get __title(): string {
         return this.title;
     };
 
+    //------------------------------------------------------------------------------------------------------------------
+
     get __description(): string {
         return this.description;
     };
+
+    //------------------------------------------------------------------------------------------------------------------
 
     get __pageId(): SinglePageType {
         return this.pageId;

@@ -33,17 +33,25 @@ export class ServerReqResHelper {
     private readonly ERROR_REVERSE_THEME_FIELD_CLASS = this.BASIC_FIELD_CLASS + " paragraph--error-reverse-theme-change";
     private readonly INFO_REVERSE_THEME_FIELD_CLASS = this.BASIC_FIELD_CLASS + " paragraph--info-reverse-theme-change";
 
+    //------------------------------------------------------------------------------------------------------------------
+
     responseCssClass(ifError: boolean): string {
         return ifError ? this.ERROR_FIELD_CLASS : this.INFO_FIELD_CLASS;
     };
+
+    //------------------------------------------------------------------------------------------------------------------
 
     responseThemeCssClass(ifError: boolean): string {
         return ifError ? this.ERROR_THEME_FIELD_CLASS : this.INFO_THEME_FIELD_CLASS;
     };
 
+    //------------------------------------------------------------------------------------------------------------------
+
     responseReverseThemeCssClass(ifError: boolean): string {
         return ifError ? this.ERROR_REVERSE_THEME_FIELD_CLASS : this.INFO_REVERSE_THEME_FIELD_CLASS;
     };
+
+    //------------------------------------------------------------------------------------------------------------------
 
     clearServerMessage(messageData: SimpleMessageResWithErrorModel): void {
         messageData.responseMessage = "";

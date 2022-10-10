@@ -41,6 +41,8 @@ export class SuspenseLoaderResModel {
     isSuspenseLoading: boolean;
     loadingFor: SuspenseLoader;
 
+    //------------------------------------------------------------------------------------------------------------------
+
     constructor(isSuspenseLoading: boolean, loadingFor: SuspenseLoader) {
         this.isSuspenseLoading = isSuspenseLoading;
         this.loadingFor = loadingFor;

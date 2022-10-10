@@ -24,6 +24,8 @@ export class EmailAndTokenResModel {
     emailResponse: SimpleMessageResWithErrorModel;
     tokenResponse: SimpleMessageResWithErrorModel;
 
+    //------------------------------------------------------------------------------------------------------------------
+
     constructor(emailResponse: SimpleMessageResWithErrorModel, tokenResponse: SimpleMessageResWithErrorModel) {
         this.emailResponse = emailResponse;
         this.tokenResponse = tokenResponse;

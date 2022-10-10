@@ -19,7 +19,7 @@
 import { Inject, Injectable } from "@angular/core";
 import { DOCUMENT } from "@angular/common";
 
-import { StorageHelper } from "../../../../storage/storage.helper";
+import { StorageHelper } from "../../../storage/storage.helper";
 import { RememberUserStorageModel } from "../models/remember-user-storage.model";
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -30,11 +30,15 @@ export class SaveUserLoginStorageService {
     private readonly _localStorage: Storage = this._DOCUMENT.defaultView!.localStorage;
     private readonly _storageKey: string = "SAVED_USERS_DETAILS";
 
+    //------------------------------------------------------------------------------------------------------------------
+
     constructor(
         @Inject(DOCUMENT) private _DOCUMENT: Document,
         private _storageHelper: StorageHelper,
     ) {
     };
+
+    //------------------------------------------------------------------------------------------------------------------
 
     saveUserDetailsInLocalStorage(userDetails: RememberUserStorageModel): void {
         const allUsersDetails = this.getAllUsersDetailsFromLocalStorage();
@@ -43,9 +47,13 @@ export class SaveUserLoginStorageService {
         this._storageHelper.updateStorageItem(this._storageKey, allUsersDetails);
     };
 
+    //------------------------------------------------------------------------------------------------------------------
+
     getAllSavedUserDetails(): Array<RememberUserStorageModel> {
         return this.getAllUsersDetailsFromLocalStorage();
     };
+
+    //------------------------------------------------------------------------------------------------------------------
 
     removeSingleUserDetailsFromLocalStorage(userId: number): void {
         const allUsers = this.getAllUsersDetailsFromLocalStorage();
@@ -53,9 +61,13 @@ export class SaveUserLoginStorageService {
         this._storageHelper.updateStorageItem(this._storageKey, allUsersWithoutRemoved);
     };
 
+    //------------------------------------------------------------------------------------------------------------------
+
     removeAllUsersFromLocalStorage(): void {
         this._localStorage.removeItem(this._storageKey);
     };
+
+    //------------------------------------------------------------------------------------------------------------------
 
     private getAllUsersDetailsFromLocalStorage(): Array<RememberUserStorageModel> {
         const allUserDetailsBefParse: string | null = this._localStorage.getItem(this._storageKey);

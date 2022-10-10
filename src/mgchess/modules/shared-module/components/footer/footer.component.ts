@@ -35,6 +35,8 @@ export class FooterComponent {
     readonly _mainNavigationList: Array<NavigationLinksModel>;
     readonly _quickStartNavigationList: Array<NavigationLinksModel>;
 
+    //------------------------------------------------------------------------------------------------------------------
+
     constructor() {
         this._mainNavigationList = (NAVIGATION_LIST as any).default;
         this._quickStartNavigationList = (QUICK_START_NAVIGATION_LIST as any).default;

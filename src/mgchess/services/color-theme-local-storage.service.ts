@@ -28,6 +28,8 @@ export class ColorThemeLocalStorageService {
     private readonly LOCAL_STORAGE = window.localStorage;
     private readonly LOCAL_STORAGE_THEME_KEY = "COLOR_THEME_REMEMBER" as const;
 
+    //------------------------------------------------------------------------------------------------------------------
+
     rememberChooseTheme(isDarkTheme: boolean): void {
         if (this.LOCAL_STORAGE === null) return;
         this.LOCAL_STORAGE.removeItem(this.LOCAL_STORAGE_THEME_KEY);
@@ -38,6 +40,8 @@ export class ColorThemeLocalStorageService {
             document.body.classList.remove(BrowserThemeDetector.CSS_DARK_CLASS);
         }
     };
+
+    //------------------------------------------------------------------------------------------------------------------
 
     checkSavedColorThemeAndReturn(): boolean {
         if (this.LOCAL_STORAGE === null) return false;
@@ -50,6 +54,8 @@ export class ColorThemeLocalStorageService {
         return false;
     };
 }
+
+//----------------------------------------------------------------------------------------------------------------------
 
 export enum ColorTheme {
     LIGHT = 'LIGHT',

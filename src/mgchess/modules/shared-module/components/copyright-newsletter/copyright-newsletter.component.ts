@@ -54,6 +54,8 @@ export class CopyrightNewsletterComponent implements OnDestroy {
 
     private _ngUnsubscribe: Subject<void> = new Subject<void>();
 
+    //------------------------------------------------------------------------------------------------------------------
+
     constructor(
         private _regex: ValidatorPatternConstants,
         public _httpService: AddToNewsletterHttpReqResService,
@@ -63,6 +65,8 @@ export class CopyrightNewsletterComponent implements OnDestroy {
             emailAddress: new FormControl("", [ Validators.required, Validators.email, Validators.max(100) ]),
         });
     };
+
+    //------------------------------------------------------------------------------------------------------------------
 
     @HostListener("document:click", [])
     handleClearServerMessage() {

@@ -23,6 +23,8 @@ export class ChangePasswordUserDetailsResModel {
     initials: string;
     photoUrl: string;
 
+    //------------------------------------------------------------------------------------------------------------------
+
     constructor(userId: number, fullName: string, ifHasPhoto: boolean, initials: string, photoUrl: string) {
         this.userId = userId;
         this.fullName = fullName;

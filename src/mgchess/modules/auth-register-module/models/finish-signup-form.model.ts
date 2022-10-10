@@ -25,6 +25,8 @@ export class FinishSignupFormModel {
     hasNewsletterAccept: boolean;
     hasPrivacyPolicyAccept: boolean;
 
+    //------------------------------------------------------------------------------------------------------------------
+
     constructor(
         birthDateDay: number | null, birthDateMonth: number | null, birthDateYear: number | null,
         countryName: string | null, gender: string | null, hasNewsletterAccept: boolean, hasPrivacyPolicyAccept: boolean
@@ -37,6 +39,8 @@ export class FinishSignupFormModel {
         this.hasNewsletterAccept = hasNewsletterAccept;
         this.hasPrivacyPolicyAccept = hasPrivacyPolicyAccept;
     };
+
+    //------------------------------------------------------------------------------------------------------------------
 
     static getDefaultValues(): FinishSignupFormModel {
         return new FinishSignupFormModel(null, null, null, null, null, false, false);

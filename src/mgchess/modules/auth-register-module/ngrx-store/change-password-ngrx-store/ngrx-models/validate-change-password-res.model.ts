@@ -19,6 +19,8 @@
 export class ValidateChangePasswordResModel {
     bearerToken: string;
 
+    //------------------------------------------------------------------------------------------------------------------
+
     constructor(bearerToken: string) {
         this.bearerToken = bearerToken;
     };

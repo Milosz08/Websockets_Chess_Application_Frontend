@@ -20,6 +20,8 @@ export class HamburgerActivityCssClassesModel {
     hamburgerClass: string;
     menuClass: string;
 
+    //------------------------------------------------------------------------------------------------------------------
+
     constructor(hamburgerClass: string, menuClass: string) {
         this.hamburgerClass = hamburgerClass;
         this.menuClass = menuClass;

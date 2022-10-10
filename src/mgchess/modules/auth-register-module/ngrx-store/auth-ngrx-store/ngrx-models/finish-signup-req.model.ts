@@ -27,6 +27,8 @@ export class FinishSignupReqModel {
     gender: string;
     newsletterAccept: boolean;
 
+    //------------------------------------------------------------------------------------------------------------------
+
     constructor(finishSignupForm: FinishSignupFormModel) {
         this.birthDate = TimeConverterHelper.generateDateFormat(finishSignupForm);
         this.countryName = finishSignupForm.countryName!;

@@ -52,6 +52,8 @@ export class SingleChoiceBoxInputComponent implements OnChanges, OnDestroy {
     _itemListWithDef: Array<SimpleDataTupleModel<TupleIdType>> = [];
     _selectedItemName: string = this._initialLabelText;
 
+    //------------------------------------------------------------------------------------------------------------------
+
     ngOnChanges(): void {
         this._initialLabelText = this._selectItemLabel !== "" ? this._selectItemLabel : "Click to select value";
         this._selectedItemName = this._initialLabelText;

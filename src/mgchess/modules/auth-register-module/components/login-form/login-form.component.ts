@@ -62,6 +62,8 @@ export class LoginFormComponent implements OnInit, OnDestroy {
 
     private _ngUnsubscribe: Subject<void> = new Subject<void>();
 
+    //------------------------------------------------------------------------------------------------------------------
+
     constructor(
         private _regex: ValidatorPatternConstants,
         private _suspenseService: GlobalSuspenseService,
@@ -74,6 +76,8 @@ export class LoginFormComponent implements OnInit, OnDestroy {
             rememberAccount: new FormControl(true),
         });
     };
+
+    //------------------------------------------------------------------------------------------------------------------
 
     ngOnInit(): void {
         this._formHelper.field("rememberAccount", this._loginForm).setValue(true);

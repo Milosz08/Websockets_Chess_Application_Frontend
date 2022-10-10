@@ -28,6 +28,8 @@ export class TimeConverterHelper {
         return `${this.addBeforePad(birthDateDay!)}/${this.addBeforePad(birthDateMonth!)}/${birthDateYear}`;
     }
 
+    //------------------------------------------------------------------------------------------------------------------
+
     private static addBeforePad(value: number): string {
         return value.toString().padStart(2, "0");
     };

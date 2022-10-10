@@ -51,6 +51,8 @@ export class ForgotPasswordNicknameEmailFormComponent implements OnInit, OnDestr
     readonly _serverReqResHelper: ServerReqResHelper = new ServerReqResHelper();
     private _ngUnsubscribe: Subject<void> = new Subject<void>();
 
+    //------------------------------------------------------------------------------------------------------------------
+
     constructor(
         private _regex: ValidatorPatternConstants,
         private _store: Store<ChangePasswordWithGfxCombinedReducerTypes>,
@@ -59,6 +61,8 @@ export class ForgotPasswordNicknameEmailFormComponent implements OnInit, OnDestr
             nicknameEmail: new FormControl("", [ Validators.required, Validators.max(100) ])
         });
     };
+
+    //------------------------------------------------------------------------------------------------------------------
 
     ngOnInit(): void {
         RxjsHelper.subscribeData(this._store, NgrxSelector_CPA.sel_serverResponse, this._ngUnsubscribe,

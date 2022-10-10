@@ -29,6 +29,8 @@ export class OnEmptyTokenParameterRedirectGuard implements CanActivate {
     ) {
     };
 
+    //------------------------------------------------------------------------------------------------------------------
+
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
         if (Boolean(route.queryParamMap.get("token"))) return true;
         this._router.navigate([ '/' ]).then(r => r);

@@ -35,6 +35,8 @@ export class CookiesNotificationComponent {
     ) {
     };
 
+    //------------------------------------------------------------------------------------------------------------------
+
     handleAcceptCookies(): void {
         this._notificationLocalStorageService.rememberCookiePreferences();
     };

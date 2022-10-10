@@ -32,11 +32,15 @@ export class OnAlreadyLoggedRedirectGuard implements CanActivate {
 
     private readonly _isAlreadyLogged$: Observable<boolean> = this._store.select(NgrxSelector_SES.sel_userAlreadyNotLogged);
 
+    //------------------------------------------------------------------------------------------------------------------
+
     constructor(
         private _router: Router,
         private _store: Store<SessionReducerType>,
     ) {
     };
+
+    //------------------------------------------------------------------------------------------------------------------
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
         return this._isAlreadyLogged$.pipe(map(alreadyLogged => {

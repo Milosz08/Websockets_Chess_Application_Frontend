@@ -40,6 +40,8 @@ export class GlobalSuspenseLoaderComponent {
 
     _isActive$: Observable<boolean> = this._store.select(NgrxSelector_GFX.sel_globalSuspenseLoadingStatus);
 
+    //------------------------------------------------------------------------------------------------------------------
+
     constructor(
         private _store: Store<GlobalReducerType>,
         private _suspenseService: GlobalSuspenseService,

@@ -50,12 +50,16 @@ export class SignupFormBirthdayControlGroupComponent implements OnInit, OnDestro
     readonly _formHelper: AngularFormsHelper = new AngularFormsHelper();
     private _ngUnsubscribe: Subject<void> = new Subject<void>();
 
+    //------------------------------------------------------------------------------------------------------------------
+
     constructor(
         private _store: Store<AuthReducerType>,
         private _resReqService: StaticDataReqResService,
         public _cssConstants: FormInputClassesConstants,
     ) {
     };
+
+    //------------------------------------------------------------------------------------------------------------------
 
     ngOnInit(): void {
         RxjsHelper.subscribeObservable(this._resReqService.getRegisterCalendarData(), this._ngUnsubscribe,

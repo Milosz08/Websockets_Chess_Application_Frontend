@@ -21,6 +21,8 @@ export class FormInputClassesModel {
     input: string;
     paragraph: string;
 
+    //------------------------------------------------------------------------------------------------------------------
+
     constructor(textContent: string, input: string, paragraph: string) {
         this.textContent = textContent;
         this.input = input;

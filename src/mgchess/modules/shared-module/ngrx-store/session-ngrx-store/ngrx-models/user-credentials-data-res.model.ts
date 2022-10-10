@@ -28,6 +28,8 @@ export class UserCredentialsDataResModel {
     activated: boolean;
     credentialsSupplier: string;
 
+    //------------------------------------------------------------------------------------------------------------------
+
     constructor(
         userId: number, nickname: string, fullName: string, initials: string, ifHasPhoto: boolean, photoUrl: string,
         jwtToken: string, refreshToken: string, activated: boolean, credentialsSupplier: string,
