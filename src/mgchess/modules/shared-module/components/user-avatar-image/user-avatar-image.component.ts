@@ -38,16 +38,30 @@ export class UserAvatarImageComponent implements OnInit {
     @Input() _oauth2Supplier: string = "";
     @Input() _backgroundMixedType: string = "";
 
-    _supplierImagePath: string = `assets/gfx/images/oauth2-${this._oauth2Supplier}-logo.svg`;
-    _ngImageSizeStyle: object = { 'width': `${this._imageSizePx}px`, 'height': `${this._imageSizePx}px` };
-    _ngSupplierImageStyleSize: object = { 'width': `${this._imageSizePx / 3.5}px`, 'height': `${this._imageSizePx / 3.5}px` };
-    _ngFakeImageFontSize: object = { 'font-size': `${this._imageSizePx / 2.5}px` };
-    _ngImageBorderElement: string = this._hasImage ? "image__container--is-original-image-generator" : "";
-
     //------------------------------------------------------------------------------------------------------------------
 
     ngOnInit(): void {
         const allSuppliers = Object.keys(OAuthSupplier).map(s => OAuthSupplier[s as keyof typeof OAuthSupplier]);
         this._isSupplierNotLocal = allSuppliers.some(s => s.toLowerCase() === this._oauth2Supplier);
+    };
+
+    get __supplierImagePath(): string {
+        return `assets/gfx/images/oauth2-${this._oauth2Supplier}-logo.svg`;
+    };
+
+    get __ngImageSizeStyle(): object {
+        return { 'width': `${this._imageSizePx}px`, 'height': `${this._imageSizePx}px` };
+    };
+
+    get __ngSupplierImageSizeStyle(): object {
+        return { 'width': `${this._imageSizePx / 3.5}px`, 'height': `${this._imageSizePx / 3.5}px` };
+    };
+
+    get __ngFakeImageFontSize(): object {
+        return { 'font-size': `${this._imageSizePx / 2.5}px` };
+    };
+
+    get __ngImageBorderElement(): string {
+        return this._hasImage ? "image__container--is-original-image-generator" : "";
     };
 }
