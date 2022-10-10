@@ -76,11 +76,22 @@
         </button>
     </form>
     <ng-container *ngIf="(_isTokenFieldVisible$ | async)">
-    <span class="mg-chess__separator-with-text-inside">
-        <span class="separator-line"></span>
-        <span class="text-content">click link or type token below</span>
-        <span class="separator-line"></span>
-    </span>
+        <span class="mg-chess__separator-with-text-inside">
+            <span class="separator-line"></span>
+            <span class="text-content">click link or type token below</span>
+            <span class="separator-line"></span>
+        </span>
+        <button
+            (click)="handleResendEmailVerificationLink()"
+            title="Click here to resend email verification message"
+            class="mg-chess__standard-button button--primary-border-def-variant unsubscribe-newsletter__resend-button"
+        >
+            Resend email message
+            <div
+                *ngIf="(_suspenseResend$ | async)"
+                class="button__suspense-loading-spinner"
+            ></div>
+        </button>
         <form
             [formGroup]="_unsubscribeTokenForm"
             (ngSubmit)="handleSendTokenAndUnsubscribe()"

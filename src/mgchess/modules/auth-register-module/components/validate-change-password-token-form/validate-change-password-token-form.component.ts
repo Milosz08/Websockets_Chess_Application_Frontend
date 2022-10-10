@@ -31,6 +31,7 @@ import { ServerReqResHelper } from "../../../../http-request-helpers/server-req-
 import { SimpleMessageResWithErrorModel } from "../../../../models/simple-message-response.model";
 import { ChangePasswordWithGfxCombinedReducerTypes } from "../../../../ngrx-helpers/ngrx-store.types";
 
+import * as NgrxAction_GFX from "../../../shared-module/ngrx-store/gfx-ngrx-store/gfx.actions";
 import * as NgrxSelector_GFX from "../../../shared-module/ngrx-store/gfx-ngrx-store/gfx.selectors";
 import * as NgrxAction_CPA from "../../ngrx-store/change-password-ngrx-store/change-password.actions";
 import * as NgrxSelector_CPA from "../../ngrx-store/change-password-ngrx-store/change-password.selectors";
@@ -44,6 +45,7 @@ import * as NgrxSelector_CPA from "../../ngrx-store/change-password-ngrx-store/c
 })
 export class ValidateChangePasswordTokenFormComponent implements OnInit, OnDestroy {
 
+    _userEmail: string = "";
     _validateTokenForm!: FormGroup;
     _serverResponse!: SimpleMessageResWithErrorModel;
 
@@ -71,7 +73,9 @@ export class ValidateChangePasswordTokenFormComponent implements OnInit, OnDestr
 
     ngOnInit(): void {
         RxjsHelper.subscribeData(this._store, NgrxSelector_CPA.sel_serverResponse, this._ngUnsubscribe,
-            data => this._serverResponse = data);
+                data => this._serverResponse = data);
+        RxjsHelper.subscribeData(this._store, NgrxSelector_CPA.sel_changePasswordPrimaryUserEmail, this._ngUnsubscribe,
+                data => this._userEmail = data);
     };
 
     ngOnDestroy(): void {
@@ -89,6 +93,6 @@ export class ValidateChangePasswordTokenFormComponent implements OnInit, OnDestr
     };
 
     handleResendVerificationEmailMessage(): void {
-        // TODO: Create endpoint for rensend email verification code message.
+        this._store.dispatch(NgrxAction_GFX.__attemptResendEmailForChangePassword({ emailAddress: this._userEmail }));
     };
 }

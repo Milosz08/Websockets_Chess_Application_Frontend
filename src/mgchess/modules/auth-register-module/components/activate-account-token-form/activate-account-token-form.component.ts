@@ -32,6 +32,7 @@ import { ValidatorPatternConstants } from "../../../../validator-helpers/validat
 
 import * as NgrxAction_ATH from "../../ngrx-store/auth-ngrx-store/auth.actions";
 import * as NgrxSelector_ATH from "../../ngrx-store/auth-ngrx-store/auth.selectors";
+import * as NgrxAction_GFX from "../../../shared-module/ngrx-store/gfx-ngrx-store/gfx.actions";
 import * as NgrxSelector_GFX from "../../../shared-module/ngrx-store/gfx-ngrx-store/gfx.selectors";
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -39,12 +40,13 @@ import * as NgrxSelector_GFX from "../../../shared-module/ngrx-store/gfx-ngrx-st
 @Component({
     selector: "mgchess-activate-account-token-form",
     templateUrl: "./activate-account-token-form.component.html",
-    providers: [ ValidatorPatternConstants ],
+    providers: [ ValidatorPatternConstants, FormInputClassesConstants ],
 })
 export class ActivateAccountTokenFormComponent implements OnInit, OnDestroy {
 
     @Input() _cascadeResponseMessage: string = "";
 
+    _userEmail: string = "";
     _activateTokenForm!: FormGroup;
     _serverResponse!: SimpleMessageResWithErrorModel;
 
@@ -72,6 +74,8 @@ export class ActivateAccountTokenFormComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
         RxjsHelper.subscribeData(this._store, NgrxSelector_ATH.sel_serverResponse, this._ngUnsubscribe,
             data => this._serverResponse = data);
+        RxjsHelper.subscribeData(this._store, NgrxSelector_ATH.sel_finishSignupPrimaryUserEmail, this._ngUnsubscribe,
+                data => this._userEmail = data);
     };
 
     ngOnDestroy(): void {
@@ -90,6 +94,6 @@ export class ActivateAccountTokenFormComponent implements OnInit, OnDestroy {
     };
 
     handleResendVerificationEmailMessage(): void {
-        // TODO: Create endpoint for rensend email verification code message.
+        this._store.dispatch(NgrxAction_GFX.__attemptResendEmailForActivateAccount({ emailAddress: this._userEmail }));
     };
 }

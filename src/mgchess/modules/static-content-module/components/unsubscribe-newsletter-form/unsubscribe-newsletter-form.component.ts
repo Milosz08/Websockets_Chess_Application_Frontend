@@ -28,10 +28,12 @@ import { ServerReqResHelper } from "../../../../http-request-helpers/server-req-
 import { ValidatorPatternConstants } from "../../../../validator-helpers/validator-pattern.constants";
 
 import { NewsletterReducerType } from "../../../../ngrx-helpers/ngrx-store.types";
+import { EmailAndTokenResModel } from "../../ngrx-store/newsletter-ngrx-store/ngrx-models/email-and-token-res.model";
+
 import * as NgrxAction_NWL from "../../ngrx-store/newsletter-ngrx-store/newsletter.actions";
+import * as NgrxAction_GFX from "../../../shared-module/ngrx-store/gfx-ngrx-store/gfx.actions";
 import * as NgrxSelector_NWL from "../../ngrx-store/newsletter-ngrx-store/newsletter.selectors";
 import * as NgrxSelector_GFX from "../../../shared-module/ngrx-store/gfx-ngrx-store/gfx.selectors";
-import { EmailAndTokenResModel } from "../../ngrx-store/newsletter-ngrx-store/ngrx-models/email-and-token-res.model";
 
 import {
     UnsubscribeNewsletterEmailReq, UnsubscribeNewsletterViaOtaReq
@@ -51,11 +53,14 @@ export class UnsubscribeNewsletterFormComponent implements OnInit, OnDestroy {
     _unsubscribeEmailForm: FormGroup;
     _unsubscribeTokenForm: FormGroup;
 
+    _hideForms$: Observable<boolean> = this._store.select(NgrxSelector_NWL.sel_successfullValidToken);
     _isTokenFieldVisible$: Observable<boolean> = this._store.select(NgrxSelector_NWL.sel_tokenFormVisibility);
+
+    _suspenseResend$: Observable<boolean> = this._store.select(NgrxSelector_GFX.sel_resendUnsubscribeNewsletterLinkSuspense);
     _suspenseLoadingToken$: Observable<boolean> = this._store.select(NgrxSelector_GFX.sel_unsubscribeLoadingViaOtaSuspense);
     _suspenseLoadingEmail$: Observable<boolean> = this._store.select(NgrxSelector_GFX.sel_attemptUnsubscribeLoadingSuspense);
-    _hideForms$: Observable<boolean> = this._store.select(NgrxSelector_NWL.sel_successfullValidToken);
 
+    _userEmail: string = "";
     _serverResponse!: EmailAndTokenResModel;
 
     readonly _formHelper: AngularFormsHelper = new AngularFormsHelper();
@@ -85,6 +90,7 @@ export class UnsubscribeNewsletterFormComponent implements OnInit, OnDestroy {
     };
 
     ngOnDestroy(): void {
+        this._userEmail = "";
         RxjsHelper.cleanupExecutor(this._ngUnsubscribe);
     };
 
@@ -102,11 +108,16 @@ export class UnsubscribeNewsletterFormComponent implements OnInit, OnDestroy {
 
     handleAttemptToUnusubscribe(): void {
         const emailReq = AngularFormsHelper.extractFormFields<UnsubscribeNewsletterEmailReq>(this._unsubscribeEmailForm);
+        this._userEmail = emailReq.emailAddress;
         this._store.dispatch(NgrxAction_NWL.__attemptToUnsubscribeNewsletter({ emailReq }));
     };
 
     handleSendTokenAndUnsubscribe(): void {
         const tokenReq = AngularFormsHelper.extractFormFields<UnsubscribeNewsletterViaOtaReq>(this._unsubscribeTokenForm);
         this._store.dispatch(NgrxAction_NWL.__unsubscribeNewsletter({ tokenReq }));
+    };
+
+    handleResendEmailVerificationLink(): void {
+        this._store.dispatch(NgrxAction_GFX.__attemptResendEmailForUnsubscribeNewsletter({ emailAddress: this._userEmail }));
     };
 }
