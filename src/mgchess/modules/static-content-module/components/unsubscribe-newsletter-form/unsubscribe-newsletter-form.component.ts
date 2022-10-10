@@ -95,15 +95,13 @@ export class UnsubscribeNewsletterFormComponent implements OnInit, OnDestroy {
     };
 
     cleanEmailServerResponse(): void {
-        if (this._serverResponse.emailResponse.responseMessage !== '') {
-            this._store.dispatch(NgrxAction_NWL.__cleanupEmailServerResponse());
-        }
+        if (this._serverResponse.emailResponse.responseMessage === "") return;
+        this._store.dispatch(NgrxAction_NWL.__cleanupEmailServerResponse());
     };
 
     cleanTokenServerResponse(): void {
-        if (this._serverResponse.tokenResponse.responseMessage !== '') {
-            this._store.dispatch(NgrxAction_NWL.__cleanupTokenServerResponse());
-        }
+        if (this._serverResponse.tokenResponse.responseMessage === "") return;
+        this._store.dispatch(NgrxAction_NWL.__cleanupTokenServerResponse());
     };
 
     handleAttemptToUnusubscribe(): void {

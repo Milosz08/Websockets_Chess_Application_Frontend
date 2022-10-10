@@ -26,15 +26,14 @@ import { StoreModule } from "@ngrx/store";
 import { FooterComponent } from "./components/footer/footer.component";
 import { ThemeTogglerComponent } from "./components/theme-toggler/theme-toggler.component";
 import { PasswordInputComponent } from "./components/password-input/password-input.component";
-import { UserAvatarImageComponent } from './components/user-avatar-image/user-avatar-image.component';
+import { UserAvatarImageComponent } from "./components/user-avatar-image/user-avatar-image.component";
 import { CopyrightNewsletterComponent } from "./components/copyright-newsletter/copyright-newsletter.component";
 import { CookiesNotificationComponent } from "./components/cookies-notification/cookies-notification.component";
-import { UserNotLoggedBannerComponent } from './components/user-not-logged-banner/user-not-logged-banner.component';
-import { GlobalSuspenseLoaderComponent } from './components/global-suspense-loader/global-suspense-loader.component';
+import { UserNotLoggedBannerComponent } from "./components/user-not-logged-banner/user-not-logged-banner.component";
+import { GlobalSuspenseLoaderComponent } from "./components/global-suspense-loader/global-suspense-loader.component";
 import { SingleChoiceBoxInputComponent } from "./components/single-choice-box-input/single-choice-box-input.component";
-import { SimpleServerResponseQueryComponent } from './components/simple-server-response-query/simple-server-response-query.component';
-
-import { ContentNotFoundPageComponent } from "./pages/content-not-found-page/content-not-found-page.component";
+import { SimpleServerResponseQueryComponent } from "./components/simple-server-response-query/simple-server-response-query.component";
+import { GlobalServerResponseModalComponent } from "./components/global-server-response-modal/global-server-response-modal.component";
 
 import { CloseOutsideClickComponentDirective } from "./directives/close-outside-click-component.directive";
 
@@ -66,8 +65,7 @@ import { CookiesNotificationLocalStorageService } from "./services/cookies-notif
         GlobalSuspenseLoaderComponent,
         SingleChoiceBoxInputComponent,
         SimpleServerResponseQueryComponent,
-        // pages
-        ContentNotFoundPageComponent,
+        GlobalServerResponseModalComponent,
         // directives
         CloseOutsideClickComponentDirective,
     ],
