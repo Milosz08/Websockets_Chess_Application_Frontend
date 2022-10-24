@@ -167,8 +167,12 @@ export class LoginEffects {
                         return NgrxAction_SES.__successfulLogin({ credentialsData, isLogged: true });
                     }),
                     catchError(error => {
-                        return of(NgrxAction_SES.__failureLogin({
-                            serverResponse: RxjsHelper.serverResponseError(error) }));
+                        setTimeout(() => {
+                            this._store.dispatch(NgrxAction_GFX.__closeGlobalMessageModal());
+                        }, RxjsConstants.DEF_DELAY_GLOBAL_MODAL_MILIS);
+                        this._storageAutoLogin.removeSavedUserAccount();
+                        return of(NgrxAction_GFX.__openGlobalMessageModal({
+                            message: RxjsHelper.serverResponseError(error), ifError: true }));
                     }),
                 );
             }),
