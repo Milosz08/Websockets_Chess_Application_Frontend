@@ -20,19 +20,21 @@
     [ngClass]="[ 'user-avatar-image__container', __ngImageBorderElement ]"
     [ngStyle]="__ngImageSizeStyle"
 >
-    <img
-        *ngIf="_imageUrl !== null; else showInitials"
-        [src]="_imageUrl" alt=""
-        class="user-avatar-image__real-image"
-    />
-    <ng-template #showInitials>
+    <div class="user-avatar-image__absolute-wrapper">
+        <img
+            *ngIf="_imageUrl !== null"
+            [src]="_imageUrl" alt=""
+            class="user-avatar-image__real-image"
+            (load)="handleImageLoaded()"
+        />
         <div
+            *ngIf="!_imageIsLoaded"
             [ngStyle]="__ngFakeImageFontSize"
             class="user-avatar-image__fake-generated-image"
         >
             {{ _initials }}
         </div>
-    </ng-template>
+    </div>
     <div
         *ngIf="_isSupplierNotLocal"
         [ngStyle]="__ngSupplierImageSizeStyle"

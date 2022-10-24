@@ -38,11 +38,17 @@ export class UserAvatarImageComponent implements OnInit {
     @Input() _oauth2Supplier: string = "";
     @Input() _backgroundMixedType: string = "";
 
+    _imageIsLoaded: boolean = false;
+
     //------------------------------------------------------------------------------------------------------------------
 
     ngOnInit(): void {
         const allSuppliers = Object.keys(OAuthSupplier).map(s => OAuthSupplier[s as keyof typeof OAuthSupplier]);
         this._isSupplierNotLocal = allSuppliers.some(s => s.toLowerCase() === this._oauth2Supplier);
+    };
+
+    handleImageLoaded(): void {
+        this._imageIsLoaded = true;
     };
 
     get __supplierImagePath(): string {

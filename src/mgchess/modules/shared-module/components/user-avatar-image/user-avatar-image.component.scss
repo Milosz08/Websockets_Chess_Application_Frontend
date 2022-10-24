@@ -19,8 +19,21 @@
 .user-avatar-image__container {
     position: relative;
     border-radius: 50%;
+    &.image__container--is-original-image-generator {
+        border: 2px solid var(--fake-user-image-background);
+    }
+}
+
+.user-avatar-image__absolute-wrapper {
+    position: relative;
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
     .user-avatar-image__real-image,
     .user-avatar-image__fake-generated-image {
+        position: absolute;
+        left: 0;
+        top: 0;
         border-radius: 50%;
         width: 100%;
         height: 100%;
@@ -34,9 +47,6 @@
         background-color: var(--fake-user-image-background);
         color: var(--fake-user-image-color);
         text-transform: uppercase;
-    }
-    &.image__container--is-original-image-generator {
-        border: 2px solid var(--fake-user-image-background);
     }
 }
 
