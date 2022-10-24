@@ -21,13 +21,16 @@ import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest
 import { Store } from "@ngrx/store";
 
 import { catchError, Observable, switchMap, throwError } from "rxjs";
+import { RxjsHelper } from "../rxjs-helpers/rxjs.helper";
 
 import { SessionReqResService } from "../modules/shared-module/services/session-req-res.service";
 import { UserRememberStorageService } from "../modules/shared-module/services/user-remember-storage.service";
 
-import { SessionReducerType } from "../ngrx-helpers/ngrx-store.types";
-import * as NgrxAction_SES from "../../mgchess/modules/shared-module/ngrx-store/session-ngrx-store/session.actions";
+import { SessionWithGfxCombinedReducerTypes } from "../ngrx-helpers/ngrx-store.types";
 import { AutoLoginUserStorageModel } from "../modules/shared-module/ngrx-store/session-ngrx-store/ngrx-models/auto-login-user-req.model";
+
+import * as NgrxAction_GFX from "../../mgchess/modules/shared-module/ngrx-store/gfx-ngrx-store/gfx.actions";
+import * as NgrxAction_SES from "../../mgchess/modules/shared-module/ngrx-store/session-ngrx-store/session.actions";
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -35,9 +38,9 @@ import { AutoLoginUserStorageModel } from "../modules/shared-module/ngrx-store/s
 export class RefreshTokenInterceptor implements HttpInterceptor {
 
     constructor(
-        private _store: Store<SessionReducerType>,
         private _httpService: SessionReqResService,
         private _storageService: UserRememberStorageService,
+        private _store: Store<SessionWithGfxCombinedReducerTypes>,
     ) {
     };
 
@@ -61,6 +64,8 @@ export class RefreshTokenInterceptor implements HttpInterceptor {
                         }),
                         catchError(err => {
                             this._store.dispatch(NgrxAction_SES.__successfulLogout());
+                            this._store.dispatch(NgrxAction_GFX.__openGlobalMessageModal({
+                                message: RxjsHelper.serverResponseError(err), ifError: true }));
                             return throwError(err);
                         }),
                     );
