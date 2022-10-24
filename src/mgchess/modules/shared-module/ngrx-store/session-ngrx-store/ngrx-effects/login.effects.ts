@@ -69,18 +69,20 @@ export class LoginEffects {
                 const req = LoginReqModel.factoryLoginRequstModelFromForm(loginForm);
                 return this._httpService.loginViaLocal(req).pipe(
                     map(credentialsData => {
+                        let isLogged: boolean = true;
                         if (loginForm.rememberAccount) {
                             const userDetails = new RememberUserStorageModel(credentialsData);
                             this._storageAccounts.saveUserDetailsInLocalStorage(userDetails);
                         }
                         if (!credentialsData.activated) {
+                            isLogged = false;
                             this._router.navigate([ "/auth/activate-account" ],
                                 { queryParams: { token: credentialsData.jwtToken } }
                             ).then(r => r);
                         } else {
                             this._router.navigate([ "/" ]).then(r => r);
                         }
-                        return NgrxAction_SES.__successfulLogin({ credentialsData });
+                        return NgrxAction_SES.__successfulLogin({ credentialsData, isLogged });
                     }),
                     catchError(error => {
                         return of(NgrxAction_SES.__failureLogin({
@@ -107,7 +109,7 @@ export class LoginEffects {
                 return this._httpService.loginViaOAuth2(jwtToken).pipe(
                     map(credentialsData => {
                         this._router.navigate([ "/" ]).then(r => r);
-                        return NgrxAction_SES.__successfulLogin({ credentialsData });
+                        return NgrxAction_SES.__successfulLogin({ credentialsData, isLogged: true });
                     }),
                     catchError(error => {
                         return of(NgrxAction_SES.__failureLogin({
@@ -162,7 +164,7 @@ export class LoginEffects {
             mergeMap(autoLoginCredentialsData => {
                 return this._httpService.autoLogin(new AutoLoginUserReqModel(autoLoginCredentialsData.refreshToken)).pipe(
                     map(credentialsData => {
-                        return NgrxAction_SES.__successfulLogin({ credentialsData });
+                        return NgrxAction_SES.__successfulLogin({ credentialsData, isLogged: true });
                     }),
                     catchError(error => {
                         return of(NgrxAction_SES.__failureLogin({

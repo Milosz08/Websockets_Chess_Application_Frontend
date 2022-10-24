@@ -37,7 +37,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 100px;
+        flex-basis: 50px;
         background-color: var(--primary-foreground);
         border-radius: 0 0 var(--standard-modal-border-radius) 0;
     }

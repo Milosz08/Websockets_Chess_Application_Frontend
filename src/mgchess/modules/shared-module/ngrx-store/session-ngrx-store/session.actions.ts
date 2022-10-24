@@ -58,7 +58,7 @@ export const __attemptToAutoLogin = createAction(
 
 export const __successfulLogin = createAction(
     SUCCESSFUL_LOGIN,
-    props<{ credentialsData: UserCredentialsDataResModel }>(),
+    props<{ credentialsData: UserCredentialsDataResModel, isLogged: boolean }>(),
 );
 
 export const __failureLogin = createAction(

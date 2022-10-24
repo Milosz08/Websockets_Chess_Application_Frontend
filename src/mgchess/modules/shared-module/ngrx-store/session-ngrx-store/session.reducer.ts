@@ -29,7 +29,7 @@ const _sessionReducer = createReducer(
     initialSessionState,
     on(NgrxAction.__successfulLogin, (state, action) => {
         return { ...state,
-            isLogged: true,
+            isLogged: action.isLogged,
             userCredentialsData: action.credentialsData,
         };
     }),
