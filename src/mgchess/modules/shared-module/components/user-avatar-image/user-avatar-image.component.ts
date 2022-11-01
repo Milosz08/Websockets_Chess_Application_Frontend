@@ -32,23 +32,14 @@ export class UserAvatarImageComponent implements OnInit {
     _isSupplierNotLocal: boolean = true;
 
     @Input() _imageSizePx: number = 80;
-    @Input() _initials: string = "CH";
-    @Input() _hasImage: boolean = false;
     @Input() _imageUrl: string = "";
     @Input() _oauth2Supplier: string = "";
-    @Input() _backgroundMixedType: string = "";
-
-    _imageIsLoaded: boolean = false;
 
     //------------------------------------------------------------------------------------------------------------------
 
     ngOnInit(): void {
         const allSuppliers = Object.keys(OAuthSupplier).map(s => OAuthSupplier[s as keyof typeof OAuthSupplier]);
         this._isSupplierNotLocal = allSuppliers.some(s => s.toLowerCase() === this._oauth2Supplier);
-    };
-
-    handleImageLoaded(): void {
-        this._imageIsLoaded = true;
     };
 
     get __supplierImagePath(): string {
@@ -61,13 +52,5 @@ export class UserAvatarImageComponent implements OnInit {
 
     get __ngSupplierImageSizeStyle(): object {
         return { 'width': `${this._imageSizePx / 3.5}px`, 'height': `${this._imageSizePx / 3.5}px` };
-    };
-
-    get __ngFakeImageFontSize(): object {
-        return { 'font-size': `${this._imageSizePx / 2.5}px` };
-    };
-
-    get __ngImageBorderElement(): string {
-        return this._hasImage ? "image__container--is-original-image-generator" : "";
     };
 }

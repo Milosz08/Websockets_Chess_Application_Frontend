@@ -23,12 +23,9 @@
     class="logged-user-header-info__button-container"
 >
     <mgchess-user-avatar-image
-        [_hasImage]="_loggedUserData.ifHasPhoto"
         [_imageSizePx]="_isMobileHeader ? 40 : 50"
-        [_initials]="_loggedUserData.initials"
         [_imageUrl]="_loggedUserData.photoUrl"
         [_oauth2Supplier]="_loggedUserData.credentialsSupplier"
-        _backgroundMixedType="supplier-container--first-variant"
     ></mgchess-user-avatar-image>
     <div class="logged-user-header-info__user-account-data">
         <p class="logged-user-header-info__full-name-data">{{ _loggedUserData.fullName }}</p>
@@ -46,7 +43,6 @@
         [_initials]="_loggedUserData.initials"
         [_imageUrl]="_loggedUserData.photoUrl"
         [_oauth2Supplier]="_loggedUserData.credentialsSupplier"
-        _backgroundMixedType="supplier-container--first-variant"
     ></mgchess-user-avatar-image>
     <div class="logged-user-header-info__text-content-container">
         <p class="logged-user-header-info__popup-user-full-name">{{ _loggedUserData.fullName }}</p>

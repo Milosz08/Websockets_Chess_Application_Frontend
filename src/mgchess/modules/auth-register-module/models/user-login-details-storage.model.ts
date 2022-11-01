@@ -22,9 +22,7 @@ import { UserCredentialsDataResModel } from "../../shared-module/ngrx-store/sess
 
 export class UserLoginDetailsStorageModel {
     userId: number;
-    initials: string;
     fullName: string;
-    ifHasPhoto: boolean;
     photoUri: string;
     userLogin: string;
 
@@ -32,9 +30,7 @@ export class UserLoginDetailsStorageModel {
 
     constructor(userDetailsFromServer: UserCredentialsDataResModel) {
         this.userId = userDetailsFromServer.userId;
-        this.initials = userDetailsFromServer.initials;
         this.fullName = userDetailsFromServer.fullName;
-        this.ifHasPhoto = userDetailsFromServer.ifHasPhoto;
         this.photoUri = userDetailsFromServer.photoUrl;
         this.userLogin = userDetailsFromServer.nickname;
     };

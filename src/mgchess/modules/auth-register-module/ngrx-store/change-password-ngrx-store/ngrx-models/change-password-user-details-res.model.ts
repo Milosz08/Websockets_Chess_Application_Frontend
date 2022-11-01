@@ -19,17 +19,13 @@
 export class ChangePasswordUserDetailsResModel {
     userId: number;
     fullName: string;
-    ifHasPhoto: boolean;
-    initials: string;
     photoUrl: string;
 
     //------------------------------------------------------------------------------------------------------------------
 
-    constructor(userId: number, fullName: string, ifHasPhoto: boolean, initials: string, photoUrl: string) {
+    constructor(userId: number, fullName: string, photoUrl: string) {
         this.userId = userId;
         this.fullName = fullName;
-        this.ifHasPhoto = ifHasPhoto;
-        this.initials = initials;
         this.photoUrl = photoUrl;
     };
 }
