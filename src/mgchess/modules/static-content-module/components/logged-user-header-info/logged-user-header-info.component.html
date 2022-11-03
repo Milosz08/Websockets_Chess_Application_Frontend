@@ -22,11 +22,11 @@
     (_clickOutisdeElement)="handleCloseUserDetailsPopupMenu()"
     class="logged-user-header-info__button-container"
 >
-    <mgchess-user-avatar-image
+    <mgchess-user-profile-image
         [_imageSizePx]="_isMobileHeader ? 40 : 50"
         [_imageUrl]="_loggedUserData.photoUrl"
         [_oauth2Supplier]="_loggedUserData.credentialsSupplier"
-    ></mgchess-user-avatar-image>
+    ></mgchess-user-profile-image>
     <div class="logged-user-header-info__user-account-data">
         <p class="logged-user-header-info__full-name-data">{{ _loggedUserData.fullName }}</p>
         <p class="logged-user-header-info__nickname-data">{{ _loggedUserData.nickname }}</p>
@@ -37,11 +37,11 @@
     *ngIf="_isPopupMenuOpen"
     class="mg-chess__discrete-modal-container logged-user-header-info__popup-container"
 >
-    <mgchess-user-avatar-image
+    <mgchess-user-profile-image
         [_imageSizePx]="80"
         [_imageUrl]="_loggedUserData.photoUrl"
         [_oauth2Supplier]="_loggedUserData.credentialsSupplier"
-    ></mgchess-user-avatar-image>
+    ></mgchess-user-profile-image>
     <div class="logged-user-header-info__text-content-container">
         <p class="logged-user-header-info__popup-user-full-name">{{ _loggedUserData.fullName }}</p>
         <p class="logged-user-header-info__popup-user-nickname">{{ _loggedUserData.nickname }}</p>

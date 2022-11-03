@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
  *
- * File name: user-avatar-image.component.ts
+ * File name: user-profile-image.component.ts
  * Last modified: 25/09/2022, 05:43
  * Project name: chess-app-frontend
  *
@@ -23,11 +23,11 @@ import { OAuthSupplier } from "../../../../http-request-helpers/oauth2-request-e
 //----------------------------------------------------------------------------------------------------------------------
 
 @Component({
-    selector: "mgchess-user-avatar-image",
-    templateUrl: "./user-avatar-image.component.html",
-    styleUrls: [ "./user-avatar-image.component.scss" ],
+    selector: "mgchess-user-profile-image",
+    templateUrl: "./user-profile-image.component.html",
+    styleUrls: [ "./user-profile-image.component.scss" ],
 })
-export class UserAvatarImageComponent implements OnInit {
+export class UserProfileImageComponent implements OnInit {
 
     _isSupplierNotLocal: boolean = true;
 
