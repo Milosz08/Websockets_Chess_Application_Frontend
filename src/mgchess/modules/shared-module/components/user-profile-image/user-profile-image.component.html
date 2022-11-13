@@ -24,6 +24,14 @@
         [src]="_imageUrl" alt=""
         class="user-avatar-image__real-image"
     />
+    <button
+        *ngIf="!_isSupplierNotLocal && !_isUserNotLogged"
+        (click)="handleOpenChangeProfileImageModal()"
+        title="Click here to change your profile image"
+        class="mg-chess__change-image-hover-effect"
+    >
+        <img src="assets/gfx/icons/camera-icon.svg" alt="" class="change-image__camera-image"/>
+    </button>
     <div
         *ngIf="_isSupplierNotLocal"
         [ngStyle]="__ngSupplierImageSizeStyle"

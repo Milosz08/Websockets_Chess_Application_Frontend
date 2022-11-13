@@ -16,9 +16,16 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Input, OnDestroy, OnInit } from "@angular/core";
+import { Store } from "@ngrx/store";
 
+import { Subject } from "rxjs";
+import { RxjsHelper } from "../../../../rxjs-helpers/rxjs.helper";
+
+import { SessionReducerType } from "../../../../ngrx-helpers/ngrx-store.types";
 import { OAuthSupplier } from "../../../../http-request-helpers/oauth2-request-endpoints.contants";
+
+import * as NgrxSelector_SES from "../../ngrx-store/session-ngrx-store/session.selectors";
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -27,19 +34,41 @@ import { OAuthSupplier } from "../../../../http-request-helpers/oauth2-request-e
     templateUrl: "./user-profile-image.component.html",
     styleUrls: [ "./user-profile-image.component.scss" ],
 })
-export class UserProfileImageComponent implements OnInit {
+export class UserProfileImageComponent implements OnInit, OnDestroy {
 
+    _isUserNotLogged: boolean = false;
     _isSupplierNotLocal: boolean = true;
 
     @Input() _imageSizePx: number = 80;
     @Input() _imageUrl: string = "";
     @Input() _oauth2Supplier: string = "";
 
+    private _ngUnsubscribe: Subject<void> = new Subject<void>();
+
+    //------------------------------------------------------------------------------------------------------------------
+
+    constructor(
+        private _store: Store<SessionReducerType>,
+    ) {
+    };
+
     //------------------------------------------------------------------------------------------------------------------
 
     ngOnInit(): void {
         const allSuppliers = Object.keys(OAuthSupplier).map(s => OAuthSupplier[s as keyof typeof OAuthSupplier]);
         this._isSupplierNotLocal = allSuppliers.some(s => s.toLowerCase() === this._oauth2Supplier);
+        RxjsHelper.subscribeData(this._store, NgrxSelector_SES.sel_userIsNotLogged, this._ngUnsubscribe,
+            data => this._isUserNotLogged = data);
+    };
+
+    ngOnDestroy(): void {
+        RxjsHelper.cleanupExecutor(this._ngUnsubscribe);
+    };
+
+    handleOpenChangeProfileImageModal(): void {
+        if (!this._isUserNotLogged) {
+            // TODO: Open change profile image modal
+        }
     };
 
     get __supplierImagePath(): string {
