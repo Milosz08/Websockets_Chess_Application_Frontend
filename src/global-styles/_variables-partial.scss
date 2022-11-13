@@ -28,6 +28,7 @@
     --thirdly-dark-tint-color: #454545;
     --primary-tint-color: #d9c0b1;
     --secondary-tint-color: #898075;
+    --half-transparent-tint-dark-color: rgba(0, 0, 0, .5);
 
     --standard-transition-duration: .3s;
     --smooth-transition-duration: 1.2s;
@@ -90,8 +91,11 @@ body {
     --signup-aside-form-content-color: var(--secondary-tint-color);
     --global-suspense-loader-background: var(--primary-dark-tint-color);
     --global-suspense-loader-spinner-color: var(--primary-tint-color);
-    --fake-user-image-background: var(--primary-dark-tint-color);
-    --fake-user-image-color: var(--primary-light-color);
+    --user-profile-fullname-color: var(--primary-light-color);
+
+    @media only screen and (max-width: 790px) {
+        --user-profile-fullname-color: var(--primary-dark-tint-color);
+    }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -135,6 +139,10 @@ body.dark-theme--active {
     --signup-aside-form-content-color: var(--secondary-tint-color);
     --global-suspense-loader-background: var(--secondary-dark-tint-color);
     --global-suspense-loader-spinner-color: var(--primary-light-color);
-    --fake-user-image-background: var(--primary-tint-color);
-    --fake-user-image-color: var(--secondary-dark-tint-color);
+
+    --user-profile-fullname-color: var(--primary-light-color);
+
+    @media only screen and (max-width: 790px) {
+        --user-profile-fullname-color: var(--primary-light-color);
+    }
 }

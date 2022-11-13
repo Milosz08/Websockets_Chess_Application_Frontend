@@ -21,6 +21,8 @@ import { createFeatureSelector, createSelector } from "@ngrx/store";
 import { sessionNgrxStore } from "./session.reducer";
 import { SessionStateTypes } from "./session.initial";
 
+import { OAuthSupplier } from "../../../../http-request-helpers/oauth2-request-endpoints.contants";
+
 //----------------------------------------------------------------------------------------------------------------------
 
 const selectorWithInjectedStore = (payload: (state: any, action?: any) => any) => (
@@ -43,4 +45,8 @@ export const sel_userAlreadyNotLogged = selectorWithInjectedStore(({ isLogged, u
 
 export const sel_userLoggedData = selectorWithInjectedStore(({ userCredentialsData }) =>
     userCredentialsData,
+);
+
+export const sel_supplierIsLocal = selectorWithInjectedStore(({ userCredentialsData }) =>
+    !Boolean(Object.values(OAuthSupplier).find(s => s === userCredentialsData.credentialsSupplier)),
 );

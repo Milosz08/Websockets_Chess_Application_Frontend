@@ -34,6 +34,7 @@ import { GlobalSuspenseLoaderComponent } from "./components/global-suspense-load
 import { SingleChoiceBoxInputComponent } from "./components/single-choice-box-input/single-choice-box-input.component";
 import { SimpleServerResponseQueryComponent } from "./components/simple-server-response-query/simple-server-response-query.component";
 import { GlobalServerResponseModalComponent } from "./components/global-server-response-modal/global-server-response-modal.component";
+import { UserBannerWithAvatarAccountComponent } from './components/user-banner-with-avatar-account/user-banner-with-avatar-account.component';
 
 import { CloseOutsideClickComponentDirective } from "./directives/close-outside-click-component.directive";
 
@@ -68,6 +69,7 @@ import { CookiesNotificationLocalStorageService } from "./services/cookies-notif
         SingleChoiceBoxInputComponent,
         SimpleServerResponseQueryComponent,
         GlobalServerResponseModalComponent,
+        UserBannerWithAvatarAccountComponent,
         // directives
         CloseOutsideClickComponentDirective,
     ],
@@ -98,6 +100,7 @@ import { CookiesNotificationLocalStorageService } from "./services/cookies-notif
         SimpleServerResponseQueryComponent,
         GlobalServerResponseModalComponent,
         CloseOutsideClickComponentDirective,
+        UserBannerWithAvatarAccountComponent,
     ],
     providers: [
         SessionReqResService,
