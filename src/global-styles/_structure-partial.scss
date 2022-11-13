@@ -232,6 +232,50 @@
     width: 100%;
 }
 
+.mg-chess__change-image-hover-effect {
+    position: absolute;
+    opacity: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    z-index: 3;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--half-transparent-tint-dark-color);
+    border-radius: 50%;
+    transition: var(--standard-transition-duration);
+    .change-image__camera-image {
+        width: 35%;
+        height: auto;
+    }
+    .change-image__text-content {
+        color: var(--primary-light-color);
+    }
+    &:hover {
+        opacity: 1;
+    }
+}
+
+.mg-chess__supplier-image__container {
+    position: absolute;
+    z-index: 3;
+    bottom: -3px;
+    right: -3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    box-sizing: content-box;
+    background-color: var(--clean-white);
+    .supplier-image {
+        width: 100%;
+        height: 100%;
+    }
+}
+
 //----------------------------------------------------------------------------------------------------------------------
 
 @media only screen and (max-width: 790px) {

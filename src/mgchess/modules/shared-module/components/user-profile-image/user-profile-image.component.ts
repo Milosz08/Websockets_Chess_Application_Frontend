@@ -80,6 +80,6 @@ export class UserProfileImageComponent implements OnInit, OnDestroy {
     };
 
     get __ngSupplierImageSizeStyle(): object {
-        return { 'width': `${this._imageSizePx / 3.5}px`, 'height': `${this._imageSizePx / 3.5}px` };
+        return { 'width': `${this._imageSizePx / 3}px`, 'height': `${this._imageSizePx / 3}px` };
     };
 }

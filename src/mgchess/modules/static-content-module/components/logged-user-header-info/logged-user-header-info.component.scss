@@ -42,6 +42,7 @@
 
 .logged-user-header-info__popup-container {
     position: absolute;
+    z-index: 5;
     flex-direction: column;
     width: 360px;
     right: 0;
