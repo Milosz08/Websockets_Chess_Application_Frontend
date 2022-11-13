@@ -16,7 +16,7 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-import { Component, OnInit } from "@angular/core";
+import { Component, HostListener, OnInit } from "@angular/core";
 
 import { ColorThemeLocalStorageService } from "../../../../services/color-theme-local-storage.service";
 
@@ -43,6 +43,13 @@ export class ThemeTogglerComponent implements OnInit {
     };
 
     //------------------------------------------------------------------------------------------------------------------
+
+    @HostListener('window:resize')
+    onResize() {
+        if (this._isDarkThemeSet !== this._storageService.checkSavedColorThemeAndReturn()) {
+            this._isDarkThemeSet = this._storageService.checkSavedColorThemeAndReturn();
+        }
+    }
 
     ngOnInit(): void {
         this._isDarkThemeSet = this._storageService.checkSavedColorThemeAndReturn();
