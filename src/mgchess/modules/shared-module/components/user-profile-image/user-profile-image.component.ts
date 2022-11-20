@@ -22,10 +22,13 @@ import { Store } from "@ngrx/store";
 import { Subject } from "rxjs";
 import { RxjsHelper } from "../../../../rxjs-helpers/rxjs.helper";
 
-import { SessionReducerType } from "../../../../ngrx-helpers/ngrx-store.types";
+import { SessionWithGfxCombinedReducerTypes } from "../../../../ngrx-helpers/ngrx-store.types";
 import { OAuthSupplier } from "../../../../http-request-helpers/oauth2-request-endpoints.contants";
 
+import * as NgrxAction_GFX from "../../ngrx-store/gfx-ngrx-store/gfx.actions";
 import * as NgrxSelector_SES from "../../ngrx-store/session-ngrx-store/session.selectors";
+import { ModalWindowType } from "../../ngrx-store/gfx-ngrx-store/ngrx-models/action-window-modal.model";
+
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -42,13 +45,14 @@ export class UserProfileImageComponent implements OnInit, OnDestroy {
     @Input() _imageSizePx: number = 80;
     @Input() _imageUrl: string = "";
     @Input() _oauth2Supplier: string = "";
+    @Input() _disableChangeImageButton: boolean = false;
 
     private _ngUnsubscribe: Subject<void> = new Subject<void>();
 
     //------------------------------------------------------------------------------------------------------------------
 
     constructor(
-        private _store: Store<SessionReducerType>,
+        private _store: Store<SessionWithGfxCombinedReducerTypes>,
     ) {
     };
 
@@ -65,9 +69,10 @@ export class UserProfileImageComponent implements OnInit, OnDestroy {
         RxjsHelper.cleanupExecutor(this._ngUnsubscribe);
     };
 
-    handleOpenChangeProfileImageModal(): void {
-        if (!this._isUserNotLogged) {
-            // TODO: Open change profile image modal
+    handleOpenChangeProfileImageModal(e: Event): void {
+        e.stopImmediatePropagation();
+        if (!this._isUserNotLogged && !this._disableChangeImageButton) {
+            this._store.dispatch(NgrxAction_GFX.__openActionWindowModal({ modalType: ModalWindowType.CHANGE_PROFILE_IMAGE }))
         }
     };
 

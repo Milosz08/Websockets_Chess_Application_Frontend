@@ -25,8 +25,8 @@
         class="user-avatar-image__real-image"
     />
     <button
-        *ngIf="!_isSupplierNotLocal && !_isUserNotLogged"
-        (click)="handleOpenChangeProfileImageModal()"
+        *ngIf="!_isSupplierNotLocal && !_isUserNotLogged && !_disableChangeImageButton"
+        (click)="handleOpenChangeProfileImageModal($event)"
         title="Click here to change your profile image"
         class="mg-chess__change-image-hover-effect"
     >
