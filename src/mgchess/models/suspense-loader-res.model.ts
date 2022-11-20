@@ -34,6 +34,8 @@ export enum SuspenseLoader {
     CHANGE_FORGOTTER_PASSWORD = "CHANGE_FORGOTTER_PASSWORD",
     RESEND_CHANGE_PASSWORD_LINK = "RESEND_CHANGE_PASSWORD_LINK",
     RESEND_UNSUBSCRIBE_NEWSLETTER_LINK = "RESEND_UNSUBSCRIBE_NEWSLETTER_LINK",
+    CHANGE_USER_PROFILE_IMAGE = "CHANGE_USER_PROFILE_IMAGE",
+    CHANGE_USER_BANNER_IMAGE = "CHANGE_USER_BANNER_IMAGE",
 }
 
 //----------------------------------------------------------------------------------------------------------------------

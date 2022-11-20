@@ -17,6 +17,7 @@
  */
 
 import { GlobalResponseModalModel } from "./ngrx-models/global-response-modal.model";
+import { ActionWindowModalModel, ModalWindowType } from "./ngrx-models/action-window-modal.model";
 import { SuspenseLoader, SuspenseLoaderResModel } from "../../../../models/suspense-loader-res.model";
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -25,6 +26,7 @@ export interface GfxStateTypes {
     globalSuspenseActive: boolean;
     suspenseStatus: SuspenseLoaderResModel;
     globalResponseModal: GlobalResponseModalModel;
+    actionWindowModal: ActionWindowModalModel;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -33,4 +35,5 @@ export const initialGfxState: GfxStateTypes = {
     globalSuspenseActive: false,
     suspenseStatus: new SuspenseLoaderResModel(false, SuspenseLoader.INACTIVE),
     globalResponseModal: new GlobalResponseModalModel(false, "", false),
+    actionWindowModal: new ActionWindowModalModel(true, ModalWindowType.CHANGE_PROFILE_IMAGE),
 };

@@ -20,6 +20,7 @@ import { createReducer, on } from "@ngrx/store";
 
 import { initialGfxState } from "./gfx.initial";
 import { GlobalResponseModalModel } from "./ngrx-models/global-response-modal.model";
+import { ActionWindowModalModel, ModalWindowType } from "./ngrx-models/action-window-modal.model";
 import { SuspenseLoader, SuspenseLoaderResModel } from "../../../../models/suspense-loader-res.model";
 
 import * as NgrxAction from "./gfx.actions";
@@ -56,6 +57,16 @@ const _gfxReducer = createReducer(
     on(NgrxAction.__closeGlobalMessageModal, state => {
         return { ...state,
             globalResponseModal: new GlobalResponseModalModel(false, "", false),
+        };
+    }),
+    on(NgrxAction.__openActionWindowModal, (state, action) => {
+        return { ...state,
+            actionWindowModal: new ActionWindowModalModel(true, action.modalType),
+        };
+    }),
+    on(NgrxAction.__closeActionWindowModal, state => {
+        return { ...state,
+            actionWindowModal: new ActionWindowModalModel(false, ModalWindowType.MODAL_INACTIVE),
         };
     }),
 );

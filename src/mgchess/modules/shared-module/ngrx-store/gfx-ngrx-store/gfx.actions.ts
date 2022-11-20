@@ -18,6 +18,7 @@
 
 import { createAction, props } from "@ngrx/store";
 import { SuspenseLoader } from "../../../../models/suspense-loader-res.model";
+import { ModalWindowType } from "./ngrx-models/action-window-modal.model";
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -34,6 +35,8 @@ const ATTEMPT_RESEND_EMAIL_FOR_CHANGE_PASSWORD = "[GFX] ATTEMPT RESEND EMAIL FOR
 
 const OPEN_GLOBAL_MESSAGE_MODAL = "[GFX] OPEN GLOBAL MESSAGE MODAL";
 const CLOSE_GLOBAL_MESSAGE_MODAL = "[GFX] CLOSE GLOBAL MESSAGE MODAL";
+const OPEN_ACTION_WINDOW_MODAL = "[GFX] OPEN ACTION WINDOW MODAL";
+const CLOSE_ACTION_WINDOW_MODAL = "[GFX] CLOSE ACTION WINDOW MODAL";
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -80,4 +83,13 @@ export const __openGlobalMessageModal = createAction(
 
 export const __closeGlobalMessageModal = createAction(
     CLOSE_GLOBAL_MESSAGE_MODAL,
+);
+
+export const __openActionWindowModal = createAction(
+    OPEN_ACTION_WINDOW_MODAL,
+    props<{ modalType: ModalWindowType }>(),
+);
+
+export const __closeActionWindowModal = createAction(
+    CLOSE_ACTION_WINDOW_MODAL,
 );

@@ -55,4 +55,26 @@ export class GfxEffects {
             })
         );
     });
+
+    //------------------------------------------------------------------------------------------------------------------
+
+    onOpenWindowModal$ = createEffect(() => {
+        return this._actions$.pipe(
+            ofType(NgrxAction_GFX.__openActionWindowModal),
+            tap(() => {
+                this._document.body.classList.add(GfxEffects.SCROLL_DISABLED_CSS);
+            }),
+        );
+    }, { dispatch: false });
+
+    //------------------------------------------------------------------------------------------------------------------
+
+    onCloseWindowModal$ = createEffect(() => {
+        return this._actions$.pipe(
+            ofType(NgrxAction_GFX.__closeActionWindowModal),
+            tap(() => {
+                this._document.body.classList.remove(GfxEffects.SCROLL_DISABLED_CSS);
+            }),
+        );
+    }, { dispatch: false })
 }

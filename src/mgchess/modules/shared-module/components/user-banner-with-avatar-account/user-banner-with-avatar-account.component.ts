@@ -23,7 +23,10 @@ import { Subject } from "rxjs";
 import { RxjsHelper } from "../../../../rxjs-helpers/rxjs.helper";
 
 import { SessionReducerType } from "../../../../ngrx-helpers/ngrx-store.types";
-import * as NgrxSelector_SES from '../../ngrx-store/session-ngrx-store/session.selectors';
+import { ModalWindowType } from "../../ngrx-store/gfx-ngrx-store/ngrx-models/action-window-modal.model";
+
+import * as NgrxAction_GFX from "../../ngrx-store/gfx-ngrx-store/gfx.actions";
+import * as NgrxSelector_SES from "../../ngrx-store/session-ngrx-store/session.selectors";
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -67,11 +70,11 @@ export class UserBannerWithAvatarAccountComponent implements OnInit, OnDestroy {
     };
 
     handleOpenChangeBannerImageModal(): void {
-        // TODO: open change banner image modal
+        this._store.dispatch(NgrxAction_GFX.__openActionWindowModal({ modalType: ModalWindowType.CHANGE_BANNER_IMAGE }));
     };
 
     handleOpenChangeProfileImageModal(): void {
-        // TODO: open change profile image modal
+        this._store.dispatch(NgrxAction_GFX.__openActionWindowModal({ modalType: ModalWindowType.CHANGE_PROFILE_IMAGE }));
     };
 
     get __supplierImagePath(): string {
@@ -87,7 +90,7 @@ export class UserBannerWithAvatarAccountComponent implements OnInit, OnDestroy {
 
     get __profileImageUrl(): string {
         if (this._userProfileUrl !== "") {
-            return `url("${this._userProfileUrl}") center`;
+            return `url("${this._userProfileUrl}")`;
         }
         return "var(--primary-light-color)";
     };
