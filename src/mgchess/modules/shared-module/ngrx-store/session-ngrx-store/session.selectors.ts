@@ -22,7 +22,6 @@ import { sessionNgrxStore } from "./session.reducer";
 import { SessionStateTypes } from "./session.initial";
 
 import { OAuthSupplier } from "../../../../http-request-helpers/oauth2-request-endpoints.contants";
-import { UserImagesModel } from "./ngrx-models/user-credentials-data-res.model";
 
 //----------------------------------------------------------------------------------------------------------------------
 
