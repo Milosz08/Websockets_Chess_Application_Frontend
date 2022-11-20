@@ -66,4 +66,8 @@ export class ChangeProfileImageWindowModalComponent implements OnInit, OnDestroy
     handleChangeProfileImageAndCloseModal(): void {
         // TODO: set user profile image
     };
+
+    handleRemoveProfileImageAndCloseModal(): void {
+        // TODO: remove user profile image (generate default)
+    };
 }

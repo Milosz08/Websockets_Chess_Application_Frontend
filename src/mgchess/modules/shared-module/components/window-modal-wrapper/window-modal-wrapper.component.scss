@@ -54,9 +54,6 @@
     .bottom-buttons__buttons-wrapper {
         display: flex;
         flex-shrink: 0;
-        button:nth-child(1) {
-            margin: 0 20px;
-        }
     }
 }
 
@@ -81,11 +78,5 @@
     .window-modal__bottom-buttons-container .bottom-buttons__buttons-wrapper {
         flex-direction: column;
         width: 100%;
-        button {
-            width: 100%;
-            &:nth-child(1) {
-                margin: 0 0 10px;
-            }
-        }
     }
 }

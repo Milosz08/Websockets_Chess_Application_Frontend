@@ -66,4 +66,8 @@ export class ChangeBannerImageWindowModalComponent implements OnInit, OnDestroy 
     handleChangeBannerImageAndCloseModal(): void {
         // TODO: set user banner image
     };
+
+    handleRemoveBannerImageAndCloseModal(): void {
+        // TODO: remove user banner image
+    };
 }

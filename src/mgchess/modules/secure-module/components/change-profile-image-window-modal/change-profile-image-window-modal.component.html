@@ -24,5 +24,16 @@
     [_suspenseLoaderActive$] = "_suspenseLoader$"
     (_emitCustomAction)="handleChangeProfileImageAndCloseModal()"
 >
-    <p>change-profile-image-window-modal works!</p>
+    <div main_content>
+        center modal content for change profile image
+    </div>
+    <ng-container custom_buttons>
+        <button
+            (click)="handleRemoveProfileImageAndCloseModal()"
+            title="Click to remove profile image from your account and close window"
+            class="mg-chess__standard-button button--danger-border-def-variant button--fitting button--separate"
+        >
+            Remove image
+        </button>
+    </ng-container>
 </mgchess-window-modal-wrapper>

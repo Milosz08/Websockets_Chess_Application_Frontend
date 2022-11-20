@@ -36,7 +36,7 @@
             </button>
         </div>
         <div class="window-modal__custom-content-container">
-            <ng-content></ng-content>
+            <ng-content select="[main_content]"></ng-content>
         </div>
         <div class="window-modal__bottom-buttons-container">
             <p
@@ -49,14 +49,14 @@
                 <button
                     (click)="handleCloseWindowModal()"
                     title="Discard changes and close window"
-                    class="mg-chess__standard-button button--primary-mixed-def-variant button--fitting"
+                    class="mg-chess__standard-button button--primary-mixed-def-variant button--fitting button--separate"
                 >
                     Discard and close
                 </button>
                 <button
                     (click)="handlePrepareCustomAction()"
                     [title]="_customActionButtonTitle"
-                    class="mg-chess__standard-button button--primary-border-def-variant button--fitting"
+                    class="mg-chess__standard-button button--primary-border-def-variant button--fitting button--separate"
                 >
                     {{ _customActionButtonText }}
                     <div
@@ -64,6 +64,7 @@
                         class="button__suspense-loading-spinner"
                     ></div>
                 </button>
+                <ng-content select="[custom_buttons]"></ng-content>
             </div>
         </div>
     </div>

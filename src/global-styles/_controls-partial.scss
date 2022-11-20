@@ -157,9 +157,14 @@
         border-color: var(--button-thirdly-mixed-background);
         color: var(--button-thirdly-mixed-background);
     }
+    &.button--danger-border-def-variant {
+        border-color: var(--form-data-paragraph-error-secondary-color);
+        color: var(--form-data-paragraph-error-secondary-color);
+    }
     &.button--primary-border-def-variant,
     &.button--secondary-border-def-variant,
-    &.button--thirdly-border-def-variant {
+    &.button--thirdly-border-def-variant,
+    &.button--danger-border-def-variant {
         border: 1px solid;
         background-color: transparent;
     }
@@ -195,11 +200,22 @@
     &.button--primary-border-def-variant .button__suspense-loading-spinner {
         border-color: var(--button-primary-mixed-background-color) transparent transparent var(--button-primary-mixed-background-color);
     }
+    &.button--danger-border-def-variant .button__suspense-loading-spinner {
+        border-color: var(--form-data-paragraph-error-secondary-color) transparent transparent var(--form-data-paragraph-error-secondary-color);
+    }
     &.button--fitting {
         width: fit-content;
     }
+    &.button--margin-left {
+        margin-left: 10px;
+    }
     &.button--margin-top {
         margin-top: 20px;
+    }
+    &.button--separate {
+        width: fit-content;
+        min-height: 40px;
+        margin: 0 0 0 10px;
     }
 }
 
@@ -361,6 +377,10 @@
 
 @media only screen and (max-width: 500px) {
     .mg-chess__standard-button.button--small-full-width {
+        width: 100%;
+    }
+    .mg-chess__standard-button.button--separate {
+        margin: 10px 0 0;
         width: 100%;
     }
 }
