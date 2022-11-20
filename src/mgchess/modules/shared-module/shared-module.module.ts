@@ -27,6 +27,7 @@ import { FooterComponent } from "./components/footer/footer.component";
 import { ThemeTogglerComponent } from "./components/theme-toggler/theme-toggler.component";
 import { PasswordInputComponent } from "./components/password-input/password-input.component";
 import { UserProfileImageComponent } from "./components/user-profile-image/user-profile-image.component";
+import { WindowModalWrapperComponent } from "./components/window-modal-wrapper/window-modal-wrapper.component";
 import { CopyrightNewsletterComponent } from "./components/copyright-newsletter/copyright-newsletter.component";
 import { CookiesNotificationComponent } from "./components/cookies-notification/cookies-notification.component";
 import { UserNotLoggedBannerComponent } from "./components/user-not-logged-banner/user-not-logged-banner.component";
@@ -34,7 +35,7 @@ import { GlobalSuspenseLoaderComponent } from "./components/global-suspense-load
 import { SingleChoiceBoxInputComponent } from "./components/single-choice-box-input/single-choice-box-input.component";
 import { SimpleServerResponseQueryComponent } from "./components/simple-server-response-query/simple-server-response-query.component";
 import { GlobalServerResponseModalComponent } from "./components/global-server-response-modal/global-server-response-modal.component";
-import { UserBannerWithAvatarAccountComponent } from './components/user-banner-with-avatar-account/user-banner-with-avatar-account.component';
+import { UserBannerWithAvatarAccountComponent } from "./components/user-banner-with-avatar-account/user-banner-with-avatar-account.component";
 
 import { CloseOutsideClickComponentDirective } from "./directives/close-outside-click-component.directive";
 
@@ -62,6 +63,7 @@ import { CookiesNotificationLocalStorageService } from "./services/cookies-notif
         ThemeTogglerComponent,
         PasswordInputComponent,
         UserProfileImageComponent,
+        WindowModalWrapperComponent,
         CopyrightNewsletterComponent,
         CookiesNotificationComponent,
         UserNotLoggedBannerComponent,
@@ -101,6 +103,7 @@ import { CookiesNotificationLocalStorageService } from "./services/cookies-notif
         GlobalServerResponseModalComponent,
         CloseOutsideClickComponentDirective,
         UserBannerWithAvatarAccountComponent,
+        WindowModalWrapperComponent,
     ],
     providers: [
         SessionReqResService,

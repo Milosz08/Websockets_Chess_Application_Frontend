@@ -19,6 +19,9 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 
+import { ChangeBannerImageWindowModalComponent } from "./components/change-banner-image-window-modal/change-banner-image-window-modal.component";
+import { ChangeProfileImageWindowModalComponent } from "./components/change-profile-image-window-modal/change-profile-image-window-modal.component";
+
 import { MyAccountPageComponent } from "./pages/my-account-page/my-account-page.component";
 import { MyAccountDashboardPageComponent } from "./pages/my-account-dashboard-page/my-account-dashboard-page.component";
 
@@ -32,6 +35,9 @@ import { StaticContentPageModule } from "../static-content-module/static-content
 
 @NgModule({
     declarations: [
+        // components
+        ChangeBannerImageWindowModalComponent,
+        ChangeProfileImageWindowModalComponent,
         // pages
         MyAccountPageComponent,
         MyAccountDashboardPageComponent,

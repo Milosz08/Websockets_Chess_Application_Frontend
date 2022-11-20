@@ -1,8 +1,8 @@
 <!--
   ~ Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
   ~
-  ~ File name: secure-page.component.html
-  ~ Last modified: 05/10/2022, 22:05
+  ~ File name: change-banner-image-window-modal.component.html
+  ~ Last modified: 19.11.2022, 18:06
   ~ Project name: chess-app-frontend
   ~
   ~ Licensed under the MIT license; you may not use this file except in compliance with the License.
@@ -16,10 +16,13 @@
   ~ COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
   -->
 
-<mgchess-change-profile-image-window-modal></mgchess-change-profile-image-window-modal>
-<mgchess-change-banner-image-window-modal></mgchess-change-banner-image-window-modal>
-<mgchess-mobile-header-with-navigation></mgchess-mobile-header-with-navigation>
-<mgchess-header-with-navigation></mgchess-header-with-navigation>
-<router-outlet></router-outlet>
-<mgchess-footer></mgchess-footer>
-<mgchess-copyright-newsletter></mgchess-copyright-newsletter>
+<mgchess-window-modal-wrapper
+    _customActionButtonText="Set banner image"
+    _customActionButtonTitle="Click to set banner image for your account and close window"
+    [_modalType]="_modalType"
+    [_errorResponse] = "_errorResponse"
+    [_suspenseLoaderActive$] = "_suspenseLoader$"
+    (_emitCustomAction)="handleChangeBannerImageAndCloseModal()"
+>
+    <p>change-banner-image-window-modal works!</p>
+</mgchess-window-modal-wrapper>

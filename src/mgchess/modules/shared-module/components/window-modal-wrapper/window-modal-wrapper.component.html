@@ -1,0 +1,70 @@
+<!--
+  ~ Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
+  ~
+  ~ File name: window-modal-wrapper.component.html
+  ~ Last modified: 19.11.2022, 17:39
+  ~ Project name: chess-app-frontend
+  ~
+  ~ Licensed under the MIT license; you may not use this file except in compliance with the License.
+  ~
+  ~ Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+  ~ documentation files (the "Software"), to deal in the Software without restriction, including without limitation the
+  ~ rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to
+  ~ permit persons to whom the Software is furnished to do so, subject to the following conditions:
+  ~
+  ~ THE ABOVE COPYRIGHT NOTICE AND THIS PERMISSION NOTICE SHALL BE INCLUDED IN ALL
+  ~ COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
+  -->
+
+<div
+    @FadeInOutAnimation
+    *ngIf="_modalProperties.isOpen && _modalProperties.modalType === _modalType"
+    class="window-modal__container"
+>
+    <div class="window-modal__wrapper">
+        <div class="window-modal__top-header">
+            <h2 class="mg-chess__standard-header-with-decorator header--smaller header--remove-margin">
+                <span class="text-content">{{ _customActionButtonText }}</span>
+                <span class="separator"></span>
+            </h2>
+            <button
+                (click)="handleCloseWindowModal()"
+                title="Discard changes and close window"
+                class="mg-chess__cross-close-struct__container"
+            >
+                <span class="cross-close-struct__cross-element cross--thirdly-color-variant"></span>
+            </button>
+        </div>
+        <div class="window-modal__custom-content-container">
+            <ng-content></ng-content>
+        </div>
+        <div class="window-modal__bottom-buttons-container">
+            <p
+                *ngIf="_errorResponse !== ''"
+                class="mg-chess__form-data-paragraph paragraph--error-theme-change paragraph--without-margin"
+            >
+                {{ _errorResponse }}
+            </p>
+            <div class="bottom-buttons__buttons-wrapper">
+                <button
+                    (click)="handleCloseWindowModal()"
+                    title="Discard changes and close window"
+                    class="mg-chess__standard-button button--primary-mixed-def-variant button--fitting"
+                >
+                    Discard and close
+                </button>
+                <button
+                    (click)="handlePrepareCustomAction()"
+                    [title]="_customActionButtonTitle"
+                    class="mg-chess__standard-button button--primary-border-def-variant button--fitting"
+                >
+                    {{ _customActionButtonText }}
+                    <div
+                        *ngIf="(_suspenseLoaderActive$ | async)"
+                        class="button__suspense-loading-spinner"
+                    ></div>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
