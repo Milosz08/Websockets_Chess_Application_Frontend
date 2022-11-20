@@ -22,6 +22,7 @@ import { sessionNgrxStore } from "./session.reducer";
 import { SessionStateTypes } from "./session.initial";
 
 import { OAuthSupplier } from "../../../../http-request-helpers/oauth2-request-endpoints.contants";
+import { UserImagesModel } from "./ngrx-models/user-credentials-data-res.model";
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -49,4 +50,16 @@ export const sel_userLoggedData = selectorWithInjectedStore(({ userCredentialsDa
 
 export const sel_supplierIsLocal = selectorWithInjectedStore(({ userCredentialsData }) =>
     !Boolean(Object.values(OAuthSupplier).find(s => s === userCredentialsData.credentialsSupplier)),
+);
+
+export const sel_userImages = selectorWithInjectedStore(({ userCredentialsData }) =>
+    new UserImagesModel(userCredentialsData.photoUrl, userCredentialsData.bannerUrl),
+);
+
+export const sel_userProfileImage = selectorWithInjectedStore(({ userCredentialsData }) =>
+    userCredentialsData.photoUrl,
+);
+
+export const sel_userBannerImage = selectorWithInjectedStore(({ userCredentialsData }) =>
+    userCredentialsData.bannerUrl,
 );

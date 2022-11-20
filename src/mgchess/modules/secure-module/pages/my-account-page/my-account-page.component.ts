@@ -16,11 +16,20 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-import { Component } from "@angular/core";
+import { Component, OnDestroy, OnInit } from "@angular/core";
 import { Meta, Title } from "@angular/platform-browser";
+import { Store } from "@ngrx/store";
+
+import { Subject } from "rxjs";
+import { RxjsHelper } from "../../../../rxjs-helpers/rxjs.helper";
 
 import { BrowserMetaSerializatorLoader } from "../../../../browser-meta-serialization/browser-meta-serializator.loader";
 import { SingleModuleType, SinglePageType } from "../../../../browser-meta-serialization/browser-meta-serializator.types";
+
+import { SessionReducerType } from "../../../../ngrx-helpers/ngrx-store.types";
+import { UserImagesModel } from "../../../shared-module/ngrx-store/session-ngrx-store/ngrx-models/user-credentials-data-res.model";
+
+import * as NgrxSelector_SES from "../../../shared-module/ngrx-store/session-ngrx-store/session.selectors";
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -29,12 +38,30 @@ import { SingleModuleType, SinglePageType } from "../../../../browser-meta-seria
     templateUrl: "./my-account-page.component.html",
     host: { class: "mg-chess__flex-safety-container" },
 })
-export class MyAccountPageComponent extends BrowserMetaSerializatorLoader {
+export class MyAccountPageComponent extends BrowserMetaSerializatorLoader implements OnInit, OnDestroy {
+
+    _userImagesUrls: UserImagesModel = new UserImagesModel("", "");
+
+    private _ngUnsubscribe: Subject<void> = new Subject<void>();
+
+    //------------------------------------------------------------------------------------------------------------------
 
     constructor(
         private _metaService: Meta,
         private _titleService: Title,
+        private _store: Store<SessionReducerType>,
     ) {
         super(_titleService, _metaService, SingleModuleType.SECURED_MODULE, SinglePageType.MY_ACCOUNT_PAGE);
+    };
+
+    //------------------------------------------------------------------------------------------------------------------
+
+    ngOnInit(): void {
+        RxjsHelper.subscribeData(this._store, NgrxSelector_SES.sel_userImages, this._ngUnsubscribe,
+            data => this._userImagesUrls = data);
+    };
+
+    ngOnDestroy(): void {
+        RxjsHelper.cleanupExecutor(this._ngUnsubscribe);
     };
 }

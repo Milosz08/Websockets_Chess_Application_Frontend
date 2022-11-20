@@ -16,11 +16,22 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-export class UserCredentialsDataResModel {
+export class UserImagesModel {
+    photoUrl: string;
+    bannerUrl: string;
+
+    constructor(photoUrl: string, bannerUrl: string) {
+        this.photoUrl = photoUrl;
+        this.bannerUrl = bannerUrl;
+    }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+export class UserCredentialsDataResModel extends UserImagesModel {
     userId: number;
     nickname: string;
     fullName: string;
-    photoUrl: string;
     jwtToken: string;
     refreshToken: string;
     activated: boolean;
@@ -29,13 +40,13 @@ export class UserCredentialsDataResModel {
     //------------------------------------------------------------------------------------------------------------------
 
     constructor(
-        userId: number, nickname: string, fullName: string, photoUrl: string, jwtToken: string, refreshToken: string,
-        activated: boolean, credentialsSupplier: string,
+        userId: number, nickname: string, fullName: string, photoUrl: string, bannerUrl: string, jwtToken: string,
+        refreshToken: string, activated: boolean, credentialsSupplier: string,
     ) {
+        super(photoUrl, bannerUrl);
         this.userId = userId;
         this.nickname = nickname;
         this.fullName = fullName;
-        this.photoUrl = photoUrl;
         this.jwtToken = jwtToken;
         this.refreshToken = refreshToken;
         this.activated = activated;
