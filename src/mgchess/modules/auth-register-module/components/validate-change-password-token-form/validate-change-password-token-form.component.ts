@@ -23,6 +23,7 @@ import { Store } from "@ngrx/store";
 import { Observable, Subject } from "rxjs";
 import { RxjsHelper } from "../../../../rxjs-helpers/rxjs.helper";
 
+import { SuspenseLoader } from "../../../../models/suspense-loader-res.model";
 import { AngularFormsHelper } from "../../../../angular-forms-helpers/angular-forms.helper";
 import { FormInputClassesConstants } from "../../../../misc-constants/form-input-classes.constants";
 import { ValidatorPatternConstants } from "../../../../validator-helpers/validator-pattern.constants";
@@ -50,8 +51,10 @@ export class ValidateChangePasswordTokenFormComponent implements OnInit, OnDestr
     _serverResponse!: SimpleMessageResWithErrorModel;
 
     _userEmails$: Observable<Array<string>> = this._store.select(NgrxSelector_CPA.sel_changePasswordUserEmails);
-    _resendSuspense$: Observable<boolean> = this._store.select(NgrxSelector_GFX.sel_resendChangePasswordLinkSuspense);
-    _suspenseLoader$: Observable<boolean> = this._store.select(NgrxSelector_GFX.sel_validateChangePasswordOtaTokenSuspense);
+    _resendSuspense$: Observable<boolean> = this._store.select(NgrxSelector_GFX.getCurrActiveSuspense(
+        SuspenseLoader.RESEND_CHANGE_PASSWORD_LINK));
+    _suspenseLoader$: Observable<boolean> = this._store.select(NgrxSelector_GFX.getCurrActiveSuspense(
+        SuspenseLoader.VALIDATE_OTA_TOKEN_CHANGE_PASSWORD));
 
     readonly _serverReqResHelper: ServerReqResHelper = new ServerReqResHelper();
     readonly _formHelper: AngularFormsHelper = new AngularFormsHelper();

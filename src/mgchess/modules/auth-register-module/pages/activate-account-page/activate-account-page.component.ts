@@ -24,6 +24,7 @@ import { Store } from "@ngrx/store";
 import { Observable, Subject } from "rxjs";
 import { RxjsHelper } from "../../../../rxjs-helpers/rxjs.helper";
 
+import { SuspenseLoader } from "../../../../models/suspense-loader-res.model";
 import { BrowserMetaSerializatorLoader } from "../../../../browser-meta-serialization/browser-meta-serializator.loader";
 import { SingleModuleType, SinglePageType } from "../../../../browser-meta-serialization/browser-meta-serializator.types";
 
@@ -46,7 +47,8 @@ export class ActivateAccountPageComponent extends BrowserMetaSerializatorLoader 
     _jwtToken: string = "";
     _serverResponse!: SimpleMessageResWithErrorModel;
 
-    _isSuspenseActive$: Observable<boolean> = this._store.select(NgrxSelector_GFX.sel_attemptToActivateAccountViaOtaSuspense);
+    _isSuspenseActive$: Observable<boolean> = this._store.select(NgrxSelector_GFX.getCurrActiveSuspense(
+        SuspenseLoader.ATTEMPT_ACTIVATE_ACCOUNT_VIA_OTA));
     _finishSignupServerResponse$: Observable<string> = this._store.select(NgrxSelector_ATH.sel_activateAccountServerResponse);
 
     private _ngUnsubscribe: Subject<void> = new Subject<void>();

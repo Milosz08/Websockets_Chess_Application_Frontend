@@ -23,6 +23,7 @@ import { Store } from "@ngrx/store";
 import { Observable, Subject } from "rxjs";
 import { RxjsHelper } from "../../../../rxjs-helpers/rxjs.helper";
 
+import { SuspenseLoader } from "../../../../models/suspense-loader-res.model";
 import { ValidateOauth2UserService } from "../../services/validate-oauth2-user.service";
 import { SimpleMessageResWithErrorModel } from "../../../../models/simple-message-response.model";
 import { BrowserMetaSerializatorLoader } from "../../../../browser-meta-serialization/browser-meta-serializator.loader";
@@ -74,10 +75,12 @@ export class FinishSignUpPageComponent extends BrowserMetaSerializatorLoader imp
 
     ngOnInit(): void {
         this._store.dispatch(NgrxAction_ATH.__clearServerResponse());
-        RxjsHelper.subscribeData(this._store, NgrxSelector_GFX.sel_finishSignupViaOAuth2Suspense, this._ngUnsubscribe,
-                data => this._oauth2SuspenseActive = data);
+        RxjsHelper.subscribeData(this._store,
+            NgrxSelector_GFX.getCurrActiveSuspense(SuspenseLoader.ATTEMPT_FINISH_SIGNUP_VIA_OAUTH2),
+            this._ngUnsubscribe,
+            data => this._oauth2SuspenseActive = data);
         RxjsHelper.subscribeData(this._store, NgrxSelector_ATH.sel_serverResponse, this._ngUnsubscribe,
-                data => this._serverResponse = data);
+            data => this._serverResponse = data);
     };
 
     ngOnDestroy(): void {

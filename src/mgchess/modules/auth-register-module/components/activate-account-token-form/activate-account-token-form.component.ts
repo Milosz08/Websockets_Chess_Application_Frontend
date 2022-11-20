@@ -23,6 +23,7 @@ import { Store } from "@ngrx/store";
 import { Observable, Subject } from "rxjs";
 import { RxjsHelper } from "../../../../rxjs-helpers/rxjs.helper";
 
+import { SuspenseLoader } from "../../../../models/suspense-loader-res.model";
 import { ServerReqResHelper } from "../../../../http-request-helpers/server-req-res.helper";
 import { AngularFormsHelper } from "../../../../angular-forms-helpers/angular-forms.helper";
 import { AuthWithGfxCombinedReducerTypes } from "../../../../ngrx-helpers/ngrx-store.types";
@@ -50,8 +51,10 @@ export class ActivateAccountTokenFormComponent implements OnInit, OnDestroy {
     _activateTokenForm!: FormGroup;
     _serverResponse!: SimpleMessageResWithErrorModel;
 
-    _suspenseForActivate$: Observable<boolean> = this._store.select(NgrxSelector_GFX.sel_activateAccountViaOtaSuspense);
-    _suspenseForResend$: Observable<boolean> = this._store.select(NgrxSelector_GFX.sel_resendActivateAccountLinkSuspense);
+    _suspenseForActivate$: Observable<boolean> = this._store.select(NgrxSelector_GFX.getCurrActiveSuspense(
+        SuspenseLoader.ACTIVATE_ACCOUNT_VIA_OTA));
+    _suspenseForResend$: Observable<boolean> = this._store.select(NgrxSelector_GFX.getCurrActiveSuspense(
+        SuspenseLoader.RESEND_ACTIVATE_ACCOUNT_LINK));
     _userEmails$: Observable<Array<string>> = this._store.select(NgrxSelector_ATH.sel_finishSignupUserEmails);
 
     readonly _serverReqResHelper: ServerReqResHelper = new ServerReqResHelper();

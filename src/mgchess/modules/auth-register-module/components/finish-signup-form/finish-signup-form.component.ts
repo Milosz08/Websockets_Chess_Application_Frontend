@@ -23,6 +23,7 @@ import { Store } from "@ngrx/store";
 import { Observable, Subject } from "rxjs";
 import { RxjsHelper } from "../../../../rxjs-helpers/rxjs.helper";
 
+import { SuspenseLoader } from "../../../../models/suspense-loader-res.model";
 import { FinishSignupFormModel } from "../../models/finish-signup-form.model";
 import { ServerReqResHelper } from "../../../../http-request-helpers/server-req-res.helper";
 import { AngularFormsHelper } from "../../../../angular-forms-helpers/angular-forms.helper";
@@ -43,7 +44,8 @@ export class FinishSignupFormComponent implements OnInit, OnDestroy {
 
     _finishSignupForm: FormGroup;
     _serverResponse!: SimpleMessageResWithErrorModel;
-    _suspenseLoader$: Observable<boolean> = this._store.select(NgrxSelector_GFX.sel_finishSignupViaOauth2Suspense);
+    _suspenseLoader$: Observable<boolean> = this._store.select(NgrxSelector_GFX.getCurrActiveSuspense(
+        SuspenseLoader.FINISH_SIGNUP_VIA_OAUTH2));
 
     readonly _formHelper: AngularFormsHelper = new AngularFormsHelper();
     readonly _serverReqResHelper: ServerReqResHelper = new ServerReqResHelper();

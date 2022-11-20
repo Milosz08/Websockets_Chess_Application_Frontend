@@ -23,6 +23,7 @@ import { Store } from "@ngrx/store";
 import { Observable, Subject } from "rxjs";
 import { RxjsHelper } from "../../../../rxjs-helpers/rxjs.helper";
 
+import { SuspenseLoader } from "../../../../models/suspense-loader-res.model";
 import { ServerReqResHelper } from "../../../../http-request-helpers/server-req-res.helper";
 import { AngularFormsHelper } from "../../../../angular-forms-helpers/angular-forms.helper";
 import { FormInputClassesConstants } from "../../../../misc-constants/form-input-classes.constants";
@@ -53,7 +54,8 @@ export class ChangeForgottenPasswordFormComponent implements OnInit, OnDestroy {
     _serverResponse!: SimpleMessageResWithErrorModel;
     _userDetails!: ChangePasswordUserDetailsResModel;
 
-    _suspenseLoader$: Observable<boolean> = this._store.select(NgrxSelector_GFX.sel_changeForgotterPasswordSuspense);
+    _suspenseLoader$: Observable<boolean> = this._store.select(NgrxSelector_GFX.getCurrActiveSuspense(
+        SuspenseLoader.CHANGE_FORGOTTER_PASSWORD));
 
     readonly _passwordSAreNotTheSame = ValidatorConstraint.PASSWORDS_ARE_NOT_THE_SAME;
     readonly _serverReqResHelper: ServerReqResHelper = new ServerReqResHelper();

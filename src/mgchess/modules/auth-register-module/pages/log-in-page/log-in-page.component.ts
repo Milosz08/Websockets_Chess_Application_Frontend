@@ -23,6 +23,7 @@ import { Store } from "@ngrx/store";
 import { Subject } from "rxjs";
 import { RxjsHelper } from "../../../../rxjs-helpers/rxjs.helper";
 
+import { SuspenseLoader } from "../../../../models/suspense-loader-res.model";
 import { ValidateOauth2UserService } from "../../services/validate-oauth2-user.service";
 import { BrowserThemeDetector } from "../../../../browster-utils/browser-theme.detector";
 import { Oauth2RequestEndpointsContants } from "../../../../http-request-helpers/oauth2-request-endpoints.contants";
@@ -62,8 +63,10 @@ export class LogInPageComponent extends BrowserMetaSerializatorLoader implements
     //------------------------------------------------------------------------------------------------------------------
 
     ngOnInit(): void {
-        RxjsHelper.subscribeData(this._store, NgrxSelector_GFX.sel_loginViaOAuth2Suspense, this._ngUnsubscribe,
-                data => this._oauth2SuspenseActive = data);
+        RxjsHelper.subscribeData(this._store,
+            NgrxSelector_GFX.getCurrActiveSuspense(SuspenseLoader.ATTEMPT_LOGIN_VIA_OAUTH2),
+            this._ngUnsubscribe,
+            data => this._oauth2SuspenseActive = data);
     };
 
     ngOnDestroy(): void {

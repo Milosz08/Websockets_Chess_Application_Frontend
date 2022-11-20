@@ -23,6 +23,7 @@ import { Store } from "@ngrx/store";
 import { Observable, Subject } from "rxjs";
 import { RxjsHelper } from "../../../../rxjs-helpers/rxjs.helper";
 
+import { SuspenseLoader } from "../../../../models/suspense-loader-res.model";
 import { AngularFormsHelper } from "../../../../angular-forms-helpers/angular-forms.helper";
 import { ServerReqResHelper } from "../../../../http-request-helpers/server-req-res.helper";
 import { ValidatorPatternConstants } from "../../../../validator-helpers/validator-pattern.constants";
@@ -56,9 +57,12 @@ export class UnsubscribeNewsletterFormComponent implements OnInit, OnDestroy {
     _hideForms$: Observable<boolean> = this._store.select(NgrxSelector_NWL.sel_successfullValidToken);
     _isTokenFieldVisible$: Observable<boolean> = this._store.select(NgrxSelector_NWL.sel_tokenFormVisibility);
 
-    _suspenseResend$: Observable<boolean> = this._store.select(NgrxSelector_GFX.sel_resendUnsubscribeNewsletterLinkSuspense);
-    _suspenseLoadingToken$: Observable<boolean> = this._store.select(NgrxSelector_GFX.sel_unsubscribeLoadingViaOtaSuspense);
-    _suspenseLoadingEmail$: Observable<boolean> = this._store.select(NgrxSelector_GFX.sel_attemptUnsubscribeLoadingSuspense);
+    _suspenseResend$: Observable<boolean> = this._store.select(NgrxSelector_GFX.getCurrActiveSuspense(
+        SuspenseLoader.RESEND_UNSUBSCRIBE_NEWSLETTER_LINK));
+    _suspenseLoadingToken$: Observable<boolean> = this._store.select(NgrxSelector_GFX.getCurrActiveSuspense(
+        SuspenseLoader.UNSUBSCRIBE_VIA_OTA));
+    _suspenseLoadingEmail$: Observable<boolean> = this._store.select(NgrxSelector_GFX.getCurrActiveSuspense(
+        SuspenseLoader.ATTEMPT_UNSUBSCRIBE));
 
     _userEmail: string = "";
     _serverResponse!: EmailAndTokenResModel;

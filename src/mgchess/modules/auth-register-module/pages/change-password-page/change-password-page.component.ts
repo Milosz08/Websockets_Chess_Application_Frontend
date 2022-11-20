@@ -24,6 +24,7 @@ import { Store } from "@ngrx/store";
 import { Observable, Subject } from "rxjs";
 import { RxjsHelper } from "../../../../rxjs-helpers/rxjs.helper";
 
+import { SuspenseLoader } from "../../../../models/suspense-loader-res.model";
 import { SimpleMessageResWithErrorModel } from "../../../../models/simple-message-response.model";
 import { ChangePasswordWithGfxCombinedReducerTypes } from "../../../../ngrx-helpers/ngrx-store.types";
 import { BrowserMetaSerializatorLoader } from "../../../../browser-meta-serialization/browser-meta-serializator.loader";
@@ -47,7 +48,8 @@ export class ChangePasswordPageComponent extends BrowserMetaSerializatorLoader i
     _serverResponse!: SimpleMessageResWithErrorModel;
 
     _isForgotActive$: Observable<boolean> = this._store.select(NgrxSelector_CPA.sel_changePasswordResponseActive);
-    _suspenseLoader$: Observable<boolean> = this._store.select(NgrxSelector_GFX.sel_validateChangePasswordJwtTokenSuspense);
+    _suspenseLoader$: Observable<boolean> = this._store.select(NgrxSelector_GFX.getCurrActiveSuspense(
+        SuspenseLoader.VALIDATE_JWT_TOKEN_CHANGE_PASSWORD));
 
     readonly _ngUnsubscribe: Subject<void> = new Subject<void>();
 

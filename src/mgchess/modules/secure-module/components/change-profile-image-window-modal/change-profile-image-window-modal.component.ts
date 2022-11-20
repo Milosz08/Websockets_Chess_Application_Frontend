@@ -22,6 +22,7 @@ import { Store } from "@ngrx/store";
 import { Observable, Subject } from "rxjs";
 import { RxjsHelper } from "../../../../rxjs-helpers/rxjs.helper";
 
+import { SuspenseLoader } from "../../../../models/suspense-loader-res.model";
 import { SessionWithGfxCombinedReducerTypes } from "../../../../ngrx-helpers/ngrx-store.types";
 import { ModalWindowType } from "../../../shared-module/ngrx-store/gfx-ngrx-store/ngrx-models/action-window-modal.model";
 
@@ -37,8 +38,10 @@ import * as NgrxSelector_SES from "../../../shared-module/ngrx-store/session-ngr
 })
 export class ChangeProfileImageWindowModalComponent implements OnInit, OnDestroy {
 
-    _suspenseLoader$: Observable<boolean> = this._store.select(NgrxSelector_GFX.sel_changeUserProfileImageSuspense);
-    _suspenseDeleteLoader$: Observable<boolean> = this._store.select(NgrxSelector_GFX.sel_deleteUserProfileImageSuspense);
+    _suspenseLoader$: Observable<boolean> = this._store.select(NgrxSelector_GFX.getCurrActiveSuspense(
+        SuspenseLoader.CHANGE_USER_PROFILE_IMAGE));
+    _suspenseDeleteLoader$: Observable<boolean> = this._store.select(NgrxSelector_GFX.getCurrActiveSuspense(
+        SuspenseLoader.DELETE_USER_PROFILE_IMAGE));
 
     _userProfileImageUrl: string = "";
     _errorResponse: string = "";

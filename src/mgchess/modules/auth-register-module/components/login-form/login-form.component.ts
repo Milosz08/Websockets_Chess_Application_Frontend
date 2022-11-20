@@ -24,6 +24,7 @@ import { Observable, Subject, takeUntil } from "rxjs";
 import { RxjsHelper } from "../../../../rxjs-helpers/rxjs.helper";
 
 import { LoginFormModel } from "../../models/login-form.model";
+import { SuspenseLoader } from "../../../../models/suspense-loader-res.model";
 import { AngularFormsHelper } from "../../../../angular-forms-helpers/angular-forms.helper";
 import { ServerReqResHelper } from "../../../../http-request-helpers/server-req-res.helper";
 import { GlobalSuspenseService } from "../../../shared-module/services/global-suspense.service";
@@ -55,7 +56,8 @@ export class LoginFormComponent implements OnInit, OnDestroy {
 
     _loginForm: FormGroup;
     _serverResponse!: SimpleMessageResWithErrorModel;
-    _suspenseLoader$: Observable<boolean> = this._store.select(NgrxSelector_GFX.sel_loginViaLocalSupense);
+    _suspenseLoader$: Observable<boolean> = this._store.select(NgrxSelector_GFX.getCurrActiveSuspense(
+        SuspenseLoader.ATTEMPT_LOGIN_VIA_LOCAL));
 
     readonly _formHelper: AngularFormsHelper = new AngularFormsHelper();
     readonly _serverResReqHelper: ServerReqResHelper = new ServerReqResHelper();
