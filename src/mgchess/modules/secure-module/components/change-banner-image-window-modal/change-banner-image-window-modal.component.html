@@ -34,6 +34,10 @@
             class="mg-chess__standard-button button--danger-border-def-variant button--fitting button--separate"
         >
             Remove image
+            <div
+                *ngIf="(_suspenseDeleteLoader$ | async)"
+                class="button__suspense-loading-spinner"
+            ></div>
         </button>
     </ng-container>
 </mgchess-window-modal-wrapper>

@@ -102,8 +102,16 @@ export const sel_changeUserProfileImageSuspense = selectorWithInjectedStore(({ s
     suspenseStatus.isSuspenseLoading && suspenseStatus.loadingFor === SuspenseLoader.CHANGE_USER_PROFILE_IMAGE,
 );
 
+export const sel_deleteUserProfileImageSuspense = selectorWithInjectedStore(({ suspenseStatus }) =>
+    suspenseStatus.isSuspenseLoading && suspenseStatus.loadingFor === SuspenseLoader.DELETE_USER_PROFILE_IMAGE,
+);
+
 export const sel_changeUserBannerImageSuspense = selectorWithInjectedStore(({ suspenseStatus }) =>
     suspenseStatus.isSuspenseLoading && suspenseStatus.loadingFor === SuspenseLoader.CHANGE_USER_BANNER_IMAGE,
+);
+
+export const sel_deleteUserBannerImageSuspense = selectorWithInjectedStore(({ suspenseStatus }) =>
+    suspenseStatus.isSuspenseLoading && suspenseStatus.loadingFor === SuspenseLoader.DELETE_USER_BANNER_IMAGE,
 );
 
 export const sel_globalResponseModalData = selectorWithInjectedStore(({ globalResponseModal }) =>

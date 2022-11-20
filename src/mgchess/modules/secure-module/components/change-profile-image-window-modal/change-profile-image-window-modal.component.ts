@@ -38,6 +38,7 @@ import * as NgrxSelector_SES from "../../../shared-module/ngrx-store/session-ngr
 export class ChangeProfileImageWindowModalComponent implements OnInit, OnDestroy {
 
     _suspenseLoader$: Observable<boolean> = this._store.select(NgrxSelector_GFX.sel_changeUserProfileImageSuspense);
+    _suspenseDeleteLoader$: Observable<boolean> = this._store.select(NgrxSelector_GFX.sel_deleteUserProfileImageSuspense);
 
     _userProfileImageUrl: string = "";
     _errorResponse: string = "";

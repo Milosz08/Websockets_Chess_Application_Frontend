@@ -38,6 +38,7 @@ import * as NgrxSelector_SES from "../../../shared-module/ngrx-store/session-ngr
 export class ChangeBannerImageWindowModalComponent implements OnInit, OnDestroy {
 
     _suspenseLoader$: Observable<boolean> = this._store.select(NgrxSelector_GFX.sel_changeUserBannerImageSuspense);
+    _suspenseDeleteLoader$: Observable<boolean> = this._store.select(NgrxSelector_GFX.sel_deleteUserBannerImageSuspense);
 
     _userBannerImageUrl: string = "";
     _errorResponse: string = "";
