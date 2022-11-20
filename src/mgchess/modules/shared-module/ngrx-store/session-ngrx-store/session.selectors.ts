@@ -52,10 +52,6 @@ export const sel_supplierIsLocal = selectorWithInjectedStore(({ userCredentialsD
     !Boolean(Object.values(OAuthSupplier).find(s => s === userCredentialsData.credentialsSupplier)),
 );
 
-export const sel_userImages = selectorWithInjectedStore(({ userCredentialsData }) =>
-    new UserImagesModel(userCredentialsData.photoUrl, userCredentialsData.bannerUrl),
-);
-
 export const sel_userProfileImage = selectorWithInjectedStore(({ userCredentialsData }) =>
     userCredentialsData.photoUrl,
 );

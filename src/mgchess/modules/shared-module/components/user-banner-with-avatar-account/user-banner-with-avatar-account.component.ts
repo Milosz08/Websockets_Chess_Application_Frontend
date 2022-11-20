@@ -39,6 +39,8 @@ export class UserBannerWithAvatarAccountComponent implements OnInit, OnDestroy {
 
     @Input() _userProfileUrl: string = "";
     @Input() _userBannerUrl: string = "";
+    @Input() _userFirstLastName: string = "";
+    @Input() _userNickname: string = "";
 
     _isNotLogged: boolean = true;
     _credentialsSupplier: string = "";

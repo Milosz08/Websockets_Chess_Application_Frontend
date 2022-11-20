@@ -27,7 +27,7 @@ import { BrowserMetaSerializatorLoader } from "../../../../browser-meta-serializ
 import { SingleModuleType, SinglePageType } from "../../../../browser-meta-serialization/browser-meta-serializator.types";
 
 import { SessionReducerType } from "../../../../ngrx-helpers/ngrx-store.types";
-import { UserImagesModel } from "../../../shared-module/ngrx-store/session-ngrx-store/ngrx-models/user-credentials-data-res.model";
+import { UserCredentialsDataResModel } from "../../../shared-module/ngrx-store/session-ngrx-store/ngrx-models/user-credentials-data-res.model";
 
 import * as NgrxSelector_SES from "../../../shared-module/ngrx-store/session-ngrx-store/session.selectors";
 
@@ -40,7 +40,7 @@ import * as NgrxSelector_SES from "../../../shared-module/ngrx-store/session-ngr
 })
 export class MyAccountPageComponent extends BrowserMetaSerializatorLoader implements OnInit, OnDestroy {
 
-    _userImagesUrls: UserImagesModel = new UserImagesModel("", "");
+    _userLoggedData!: UserCredentialsDataResModel;
 
     private _ngUnsubscribe: Subject<void> = new Subject<void>();
 
@@ -57,8 +57,8 @@ export class MyAccountPageComponent extends BrowserMetaSerializatorLoader implem
     //------------------------------------------------------------------------------------------------------------------
 
     ngOnInit(): void {
-        RxjsHelper.subscribeData(this._store, NgrxSelector_SES.sel_userImages, this._ngUnsubscribe,
-            data => this._userImagesUrls = data);
+        RxjsHelper.subscribeData(this._store, NgrxSelector_SES.sel_userLoggedData, this._ngUnsubscribe,
+            data => this._userLoggedData = data);
     };
 
     ngOnDestroy(): void {
