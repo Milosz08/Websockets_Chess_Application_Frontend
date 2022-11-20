@@ -116,6 +116,9 @@
     &.paragraph--simple-margin {
         margin: 15px 0;
     }
+    &.paragraph--without-margin {
+        margin: 0;
+    }
     &.paragraph--simple-bottom-margin {
         margin: 0 0 15px;
         width: 100%;
@@ -329,6 +332,10 @@
     .cross-close-struct__cross-element.cross--secondary-color-variant,
     .cross-close-struct__cross-element.cross--secondary-color-variant::after {
         background-color: var(--button-thirdly-mixed-background);
+    }
+    .cross-close-struct__cross-element.cross--thirdly-color-variant,
+    .cross-close-struct__cross-element.cross--thirdly-color-variant::after {
+        background-color: var(--button-thirdly-mixed-color);
     }
     .cross-close-struct__cross-element {
         position: relative;

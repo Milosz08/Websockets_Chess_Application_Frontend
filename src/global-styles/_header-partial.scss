@@ -28,6 +28,7 @@
         font-weight: 500;
         color: var(--primary-foreground);
         font-family: "Noto Serif", serif;
+        z-index: 1;
         &::before {
             position: absolute;
             content: "";
@@ -63,6 +64,9 @@
     }
     &.header--center {
         justify-content: center;
+    }
+    &.header--remove-margin {
+        margin-bottom: 0;
     }
 }
 
