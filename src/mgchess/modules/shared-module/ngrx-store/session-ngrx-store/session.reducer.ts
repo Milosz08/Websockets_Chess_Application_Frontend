@@ -62,6 +62,20 @@ const _sessionReducer = createReducer(
             serverResponse: new SimpleMessageResWithErrorModel(action.serverResponse, true),
         };
     }),
+    on(NgrxAction.__updateUserProfileImage, (state, action) => {
+        return { ...state,
+            userCredentialsData: { ...state.userCredentialsData!,
+                photoUrl: action.imageUrl,
+            },
+        };
+    }),
+    on(NgrxAction.__updateUserBannerImage, (state, action) => {
+        return { ...state,
+            userCredentialsData: { ...state.userCredentialsData!,
+                bannerUrl: action.imageUrl,
+            },
+        };
+    }),
     on(NgrxAction.__clearServerResponse, state => {
         return { ...state,
             serverResponse: new SimpleMessageResWithErrorModel("", false),

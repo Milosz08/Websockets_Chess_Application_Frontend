@@ -38,6 +38,9 @@ const ATTEMPT_TO_REFRESH_TOKEN = "[SESSION] ATTEMPT TO REFRESH TOKEN" as const;
 const SUCCESSFUL_REFRESH_TOKEN = "[SESSION] SUCCESSFUL REFRESH TOKEN" as const;
 const FAILURE_REFRESH_TOKEN = "[SESSION] FAILURE REFRESH TOKEN" as const;
 
+const UPDATE_USER_PROFILE_IMAGE = "[SESSION] UPDATE USER PROFILE IMAGE" as const;
+const UPDATE_USER_BANNER_IMAGE = "[SESSION] UPDATE USER BANNER IMAGE" as const;
+
 const CLEAR_SERVER_RESPONSE = "[SESSION] CLEAR SERVER RESPONSE" as const;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -95,4 +98,14 @@ export const __failureRefreshToken = createAction(
 
 export const __clearServerResponse = createAction(
     CLEAR_SERVER_RESPONSE,
+);
+
+export const __updateUserProfileImage = createAction(
+    UPDATE_USER_PROFILE_IMAGE,
+    props<{ imageUrl: string }>(),
+);
+
+export const __updateUserBannerImage = createAction(
+    UPDATE_USER_BANNER_IMAGE,
+    props<{ imageUrl: string }>(),
 );
