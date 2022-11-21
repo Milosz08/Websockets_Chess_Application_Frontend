@@ -21,8 +21,10 @@ import { CommonModule } from "@angular/common";
 import { EffectsModule } from "@ngrx/effects";
 import { StoreModule } from "@ngrx/store";
 
-import { ChangeBannerImageWindowModalComponent } from "./components/change-banner-image-window-modal/change-banner-image-window-modal.component";
-import { ChangeProfileImageWindowModalComponent } from "./components/change-profile-image-window-modal/change-profile-image-window-modal.component";
+import { UploadImageZoneBoxComponent } from "./components/upload-image-zone-box/upload-image-zone-box.component";
+import { ChangeBannerImageWindowModalComponent } from "./components/change-banner-image-window-modal.component";
+import { ChangeProfileImageWindowModalComponent } from "./components/change-profile-image-window-modal.component";
+import { UniversalChangeUserImageModalComponent } from "./components/universal-change-user-image-modal/universal-change-user-image-modal.component";
 
 import { SecurePageComponent } from "./secure-page.component";
 import { MyAccountPageComponent } from "./pages/my-account-page/my-account-page.component";
@@ -44,8 +46,10 @@ import { UserImagesHttpReqResService } from "./services/user-images-http-req-res
 @NgModule({
     declarations: [
         // components
+        UploadImageZoneBoxComponent,
         ChangeBannerImageWindowModalComponent,
         ChangeProfileImageWindowModalComponent,
+        UniversalChangeUserImageModalComponent,
         // pages
         MyAccountPageComponent,
         MyAccountDashboardPageComponent,

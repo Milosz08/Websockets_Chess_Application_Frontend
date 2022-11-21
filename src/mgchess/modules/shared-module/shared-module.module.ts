@@ -37,6 +37,7 @@ import { SimpleServerResponseQueryComponent } from "./components/simple-server-r
 import { GlobalServerResponseModalComponent } from "./components/global-server-response-modal/global-server-response-modal.component";
 import { UserBannerWithAvatarAccountComponent } from "./components/user-banner-with-avatar-account/user-banner-with-avatar-account.component";
 
+import { UploadFilesMouseEventsDirective } from "./directives/upload-files-mouse-events.directive";
 import { CloseOutsideClickComponentDirective } from "./directives/close-outside-click-component.directive";
 
 import { gfxNgrxStore } from "./ngrx-store/gfx-ngrx-store/gfx.reducer";
@@ -73,6 +74,7 @@ import { CookiesNotificationLocalStorageService } from "./services/cookies-notif
         GlobalServerResponseModalComponent,
         UserBannerWithAvatarAccountComponent,
         // directives
+        UploadFilesMouseEventsDirective,
         CloseOutsideClickComponentDirective,
     ],
     imports: [
@@ -94,16 +96,17 @@ import { CookiesNotificationLocalStorageService } from "./services/cookies-notif
         ThemeTogglerComponent,
         PasswordInputComponent,
         UserProfileImageComponent,
+        WindowModalWrapperComponent,
         CopyrightNewsletterComponent,
         UserNotLoggedBannerComponent,
         CookiesNotificationComponent,
         SingleChoiceBoxInputComponent,
         GlobalSuspenseLoaderComponent,
+        UploadFilesMouseEventsDirective,
         SimpleServerResponseQueryComponent,
         GlobalServerResponseModalComponent,
         CloseOutsideClickComponentDirective,
         UserBannerWithAvatarAccountComponent,
-        WindowModalWrapperComponent,
     ],
     providers: [
         SessionReqResService,

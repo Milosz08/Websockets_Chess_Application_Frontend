@@ -276,6 +276,23 @@
     }
 }
 
+.mg-chess__preview-image-container {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    box-shadow: var(--discrete-modal-back-noise-shadow);
+    &.preview-profile {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+    }
+    &.preview-banner {
+        width: 100%;
+        padding-top: 25%;
+        border-radius: var(--standard-modal-border-radius);
+    }
+}
+
 //----------------------------------------------------------------------------------------------------------------------
 
 @media only screen and (max-width: 790px) {

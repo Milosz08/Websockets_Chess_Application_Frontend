@@ -74,6 +74,8 @@ body {
     --button-thirdly-mixed-background: var(--primary-tint-color);
     --checkbox-secondary-mixed-color: var(--secondary-tint-color);
     --choicebox-primary-select-hover-background: var(--primary-tint-color);
+    --file-input-disactive-color: var(--primary-light-tint-color);
+    --file-input-active-color: var(--primary-dark-tint-color);
 
     // spinners and loaders
     --primary-spinner-color: var(--primary-dark-tint-color);
@@ -122,6 +124,8 @@ body.dark-theme--active {
     --button-thirdly-mixed-background: var(--secondary-dark-color);
     --checkbox-secondary-mixed-color: var(--secondary-tint-color);
     --choicebox-primary-select-hover-background: var(--secondary-dark-color);
+    --file-input-disactive-color: var(--secondary-tint-color);
+    --file-input-active-color: var(--primary-light-tint-color);
 
     // spinners and loaders
     --primary-spinner-color: var(--primary-light-color);
