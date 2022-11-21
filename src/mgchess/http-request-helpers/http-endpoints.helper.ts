@@ -69,4 +69,11 @@ export class HttpEndpointsHelper {
     readonly SIGNUP_GENDER_DATA = this.EXPOSE_STATIC_DATA + "signup-gender-data";
     readonly SIGNUP_COUNTRY_DATA = this.EXPOSE_STATIC_DATA + "signup-country-data";
     readonly REMEMBER_ACCOUNTS = this.EXPOSE_STATIC_DATA + "remember-accounts";
+
+    //------------------------------------------------------------------------------------------------------------------
+
+    private readonly USER_IMAGE_ENDPOINT = this.BASIC_HTTP + "user-image/";
+    readonly USER_IMAGES_ALL = this.USER_IMAGE_ENDPOINT + "images-all";
+    readonly PROFILE_IMAGE = this.USER_IMAGE_ENDPOINT + "profile";
+    readonly BANNER_IMAGE = this.USER_IMAGE_ENDPOINT + "banner";
 }

@@ -18,6 +18,8 @@
 
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
+import { EffectsModule } from "@ngrx/effects";
+import { StoreModule } from "@ngrx/store";
 
 import { ChangeBannerImageWindowModalComponent } from "./components/change-banner-image-window-modal/change-banner-image-window-modal.component";
 import { ChangeProfileImageWindowModalComponent } from "./components/change-profile-image-window-modal/change-profile-image-window-modal.component";
@@ -31,6 +33,11 @@ import { FlattedImageExtensionsPipe } from "./pipes/flatted-image-extensions.pip
 import { SecurePageRoutingModule } from "./secure-page-routing.module";
 import { SharedModuleModule } from "../shared-module/shared-module.module";
 import { StaticContentPageModule } from "../static-content-module/static-content-page.module";
+
+import { userImagesNgrxStore } from "./ngrx-store/user-images-ngrx-store/user-images.reducer";
+import { UserImagesEffects } from "./ngrx-store/user-images-ngrx-store/ngrx-effects/user-images.effects";
+
+import { UserImagesHttpReqResService } from "./services/user-images-http-req-res.service";
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -52,6 +59,14 @@ import { StaticContentPageModule } from "../static-content-module/static-content
         SharedModuleModule,
         SecurePageRoutingModule,
         StaticContentPageModule,
+        // ngrx store
+        StoreModule.forFeature(userImagesNgrxStore.reducerName, userImagesNgrxStore.reducerFunc),
+        EffectsModule.forFeature([
+            UserImagesEffects,
+        ]),
+    ],
+    providers: [
+        UserImagesHttpReqResService,
     ],
 })
 export class SecurePageModule {}

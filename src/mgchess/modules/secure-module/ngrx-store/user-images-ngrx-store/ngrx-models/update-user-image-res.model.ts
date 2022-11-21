@@ -1,8 +1,8 @@
-/*!
+                     /*
  * Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
  *
- * File name: change-banner-image-window-modal.component.scss
- * Last modified: 19.11.2022, 18:06
+ * File name: update-user-image-res.model.ts
+ * Last modified: 21.11.2022, 00:59
  * Project name: chess-app-frontend
  *
  * Licensed under the MIT license; you may not use this file except in compliance with the License.
@@ -15,3 +15,13 @@
  * THE ABOVE COPYRIGHT NOTICE AND THIS PERMISSION NOTICE SHALL BE INCLUDED IN ALL
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
+
+export class UpdateUserImageResModel {
+    imageUrl: string;
+    responseMessage: string;
+
+    constructor(imageUrl: string, responseMessage: string) {
+        this.imageUrl = imageUrl;
+        this.responseMessage = responseMessage;
+    };
+}
