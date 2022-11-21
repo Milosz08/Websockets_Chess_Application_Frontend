@@ -161,6 +161,10 @@
         border-color: var(--form-data-paragraph-error-secondary-color);
         color: var(--form-data-paragraph-error-secondary-color);
     }
+    &.button--danger-opaque-def-variant {
+        color: var(--primary-light-color);
+        background-color: var(--form-data-paragraph-error-secondary-color);
+    }
     &.button--primary-border-def-variant,
     &.button--secondary-border-def-variant,
     &.button--thirdly-border-def-variant,
@@ -202,6 +206,9 @@
     }
     &.button--danger-border-def-variant .button__suspense-loading-spinner {
         border-color: var(--form-data-paragraph-error-secondary-color) transparent transparent var(--form-data-paragraph-error-secondary-color);
+    }
+    &.button--danger-opaque-def-variant .button__suspense-loading-spinner {
+        border-color: var(--primary-light-color) transparent transparent var(--primary-light-color);
     }
     &.button--fitting {
         width: fit-content;
