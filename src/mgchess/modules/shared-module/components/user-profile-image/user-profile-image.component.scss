@@ -19,6 +19,7 @@
 .user-avatar-image__container {
     position: relative;
     border-radius: 50%;
+    box-shadow: var(--discrete-modal-back-noise-shadow);
 }
 
 .user-avatar-image__real-image {

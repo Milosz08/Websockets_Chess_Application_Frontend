@@ -22,10 +22,11 @@ import { CommonModule } from "@angular/common";
 import { ChangeBannerImageWindowModalComponent } from "./components/change-banner-image-window-modal/change-banner-image-window-modal.component";
 import { ChangeProfileImageWindowModalComponent } from "./components/change-profile-image-window-modal/change-profile-image-window-modal.component";
 
+import { SecurePageComponent } from "./secure-page.component";
 import { MyAccountPageComponent } from "./pages/my-account-page/my-account-page.component";
 import { MyAccountDashboardPageComponent } from "./pages/my-account-dashboard-page/my-account-dashboard-page.component";
 
-import { SecurePageComponent } from "./secure-page.component";
+import { FlattedImageExtensionsPipe } from "./pipes/flatted-image-extensions.pipe";
 
 import { SecurePageRoutingModule } from "./secure-page-routing.module";
 import { SharedModuleModule } from "../shared-module/shared-module.module";
@@ -41,6 +42,8 @@ import { StaticContentPageModule } from "../static-content-module/static-content
         // pages
         MyAccountPageComponent,
         MyAccountDashboardPageComponent,
+        // pipes
+        FlattedImageExtensionsPipe,
         // others
         SecurePageComponent,
     ],

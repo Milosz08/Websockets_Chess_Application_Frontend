@@ -26,6 +26,7 @@
         [_imageSizePx]="_isMobileHeader ? 40 : 50"
         [_imageUrl]="_loggedUserData.photoUrl"
         [_oauth2Supplier]="_loggedUserData.credentialsSupplier"
+        [_disableChangeImageButton]="_isMobileHeader"
     ></mgchess-user-profile-image>
     <div class="logged-user-header-info__user-account-data">
         <p class="logged-user-header-info__full-name-data">{{ _loggedUserData.fullName }}</p>

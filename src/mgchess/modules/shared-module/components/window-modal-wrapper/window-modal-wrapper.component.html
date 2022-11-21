@@ -56,6 +56,7 @@
                 <button
                     (click)="handlePrepareCustomAction()"
                     [title]="_customActionButtonTitle"
+                    [disabled]="_submitButtonDisabled"
                     class="mg-chess__standard-button button--primary-border-def-variant button--fitting button--separate"
                 >
                     {{ _customActionButtonText }}

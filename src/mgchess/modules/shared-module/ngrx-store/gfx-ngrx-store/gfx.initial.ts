@@ -35,5 +35,5 @@ export const initialGfxState: GfxStateTypes = {
     globalSuspenseActive: false,
     suspenseStatus: new SuspenseLoaderResModel(false, SuspenseLoader.INACTIVE),
     globalResponseModal: new GlobalResponseModalModel(false, "", false),
-    actionWindowModal: new ActionWindowModalModel(true, ModalWindowType.CHANGE_PROFILE_IMAGE),
+    actionWindowModal: new ActionWindowModalModel(false, ModalWindowType.MODAL_INACTIVE),
 };

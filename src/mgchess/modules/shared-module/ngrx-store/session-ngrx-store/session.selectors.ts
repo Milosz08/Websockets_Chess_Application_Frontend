@@ -52,9 +52,9 @@ export const sel_supplierIsLocal = selectorWithInjectedStore(({ userCredentialsD
 );
 
 export const sel_userProfileImage = selectorWithInjectedStore(({ userCredentialsData }) =>
-    userCredentialsData.photoUrl,
+    Boolean(userCredentialsData) ? userCredentialsData.photoUrl : "",
 );
 
 export const sel_userBannerImage = selectorWithInjectedStore(({ userCredentialsData }) =>
-    userCredentialsData.bannerUrl,
+    Boolean(userCredentialsData) ? userCredentialsData.bannerUrl : "",
 );

@@ -18,9 +18,9 @@
 
 .window-modal__container {
     position: fixed;
+    overflow-y: auto;
     display: flex;
     justify-content: center;
-    align-items: center;
     background-color: var(--half-transparent-tint-dark-color);
     width: 100%;
     height: 100vh;
@@ -29,8 +29,10 @@
         background-color: var(--primary-background);
         border-radius: var(--standard-modal-border-radius);
         padding: 30px;
+        margin: 120px 15px 15px;
         max-width: 1000px;
         width: calc(100% - 30px);
+        height: fit-content;
     }
 }
 
@@ -60,11 +62,8 @@
 //----------------------------------------------------------------------------------------------------------------------
 
 @media only screen and (max-width: 970px) {
-    .window-modal__container {
-        align-items: flex-start;
-        .window-modal__wrapper {
-            margin-top: 15px;
-        }
+    .window-modal__container .window-modal__wrapper {
+        margin: 15px;
     }
     .window-modal__bottom-buttons-container {
         flex-direction: column;
