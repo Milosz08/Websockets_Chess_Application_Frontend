@@ -1,8 +1,8 @@
-/*!
+/*
  * Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
  *
- * File name: change-profile-image-window-modal.component.scss
- * Last modified: 19.11.2022, 18:06
+ * File name: flatted-image-extensions.pipe.ts
+ * Last modified: 20.11.2022, 22:08
  * Project name: chess-app-frontend
  *
  * Licensed under the MIT license; you may not use this file except in compliance with the License.
@@ -15,3 +15,17 @@
  * THE ABOVE COPYRIGHT NOTICE AND THIS PERMISSION NOTICE SHALL BE INCLUDED IN ALL
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
+
+import { Pipe, PipeTransform } from "@angular/core";
+
+//----------------------------------------------------------------------------------------------------------------------
+
+@Pipe({
+    name: "flattedImageExtensions",
+})
+export class FlattedImageExtensionsPipe implements PipeTransform {
+
+    transform(imageExtensions: Array<string>): string {
+        return imageExtensions.map(ex => `.${ex}`).join(",");
+    };
+}
