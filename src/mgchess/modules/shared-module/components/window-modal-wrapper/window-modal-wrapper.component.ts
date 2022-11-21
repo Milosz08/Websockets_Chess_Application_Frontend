@@ -24,6 +24,7 @@ import { RxjsHelper } from "../../../../rxjs-helpers/rxjs.helper";
 import { FadeInOutAnimation } from "../../../../animations/fade.animation";
 
 import { GfxReducerType } from "../../../../ngrx-helpers/ngrx-store.types";
+import { SimpleMessageResWithErrorModel } from "../../../../models/simple-message-response.model";
 import { ActionWindowModalModel, ModalWindowType } from "../../ngrx-store/gfx-ngrx-store/ngrx-models/action-window-modal.model";
 
 import * as NgrxAction_GFX from "../../ngrx-store/gfx-ngrx-store/gfx.actions";
@@ -42,10 +43,12 @@ export class WindowModalWrapperComponent implements OnInit, OnDestroy {
     @Input() _modalType: ModalWindowType = ModalWindowType.MODAL_INACTIVE;
     @Input() _customActionButtonTitle: string = "";
     @Input() _customActionButtonText: string = "";
-    @Input() _errorResponse: string = "";
+    @Input() _serverResponse: SimpleMessageResWithErrorModel = new SimpleMessageResWithErrorModel("", false);
+    @Input() _submitButtonDisabled: boolean = false;
     @Input() _suspenseLoaderActive$: Observable<boolean> = new Observable<boolean>();
 
     @Output() _emitCustomAction: EventEmitter<void> = new EventEmitter<void>();
+    @Output() _emitCloseModal: EventEmitter<void> = new EventEmitter<void>();
 
     _modalProperties!: ActionWindowModalModel;
 
@@ -71,10 +74,10 @@ export class WindowModalWrapperComponent implements OnInit, OnDestroy {
 
     handleCloseWindowModal(): void {
         this._store.dispatch(NgrxAction_GFX.__closeActionWindowModal());
+        this._emitCloseModal.emit();
     };
 
     handlePrepareCustomAction(): void {
-        this.handleCloseWindowModal();
         this._emitCustomAction.emit();
     };
 }

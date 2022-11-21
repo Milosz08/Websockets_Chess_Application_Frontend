@@ -40,10 +40,10 @@
         </div>
         <div class="window-modal__bottom-buttons-container">
             <p
-                *ngIf="_errorResponse !== ''"
+                *ngIf="_serverResponse.responseMessage !== '' && _serverResponse.responseError"
                 class="mg-chess__form-data-paragraph paragraph--error-theme-change paragraph--without-margin"
             >
-                {{ _errorResponse }}
+                {{ _serverResponse.responseMessage }}
             </p>
             <div class="bottom-buttons__buttons-wrapper">
                 <button
