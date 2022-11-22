@@ -10,6 +10,11 @@ log in and track statistics of your games.
 See live application at: [chess.miloszgilga.pl](https://chess.miloszgilga.pl/)<br>
 See backend (server layer): [Websockets Chess Application Backend](https://github.com/Milosz08/Websockets_Chess_Application_Backend)
 
+> NOTE: All static resources are placed on a remote server. Make sure you have access to the Internet before 
+running the application. Alternatively, you can put the resources in the `/assets` folder and refer to them like regular static files.
+
+Static resources remove server: [cdn.miloszgilga.pl/chess-app-static-resources](https://cdn.miloszgilga.pl/chess-app-static-resources/)
+
 ## Table of content
 * [Clone and install](#clone-and-install)
 * [Run in development mode](#run-in-development-mode)
