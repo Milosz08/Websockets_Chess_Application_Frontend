@@ -19,9 +19,15 @@
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { Inject, Injectable } from "@angular/core";
 import { DOCUMENT } from "@angular/common";
+import { Router } from "@angular/router";
+import { Store } from "@ngrx/store";
 
-import { delay, map, tap } from "rxjs";
+import { delay, map, tap, withLatestFrom } from "rxjs";
 import { RxjsConstants } from "../../../../../rxjs-helpers/rxjs.constants";
+
+import { ModalWindowType } from "../ngrx-models/action-window-modal.model";
+import { sessionNgrxStore } from "../../session-ngrx-store/session.reducer";
+import { SessionWithGfxCombinedReducerTypes } from "../../../../../ngrx-helpers/ngrx-store.types";
 
 import * as NgrxAction_GFX from "../gfx.actions";
 
@@ -32,11 +38,17 @@ export class GfxEffects {
 
     public static readonly SCROLL_DISABLED_CSS = "scroll--disabled";
 
+    private readonly REDIR_MODALS: Array<ModalWindowType> = [
+        ModalWindowType.CHANGE_PROFILE_IMAGE, ModalWindowType.CHANGE_BANNER_IMAGE,
+    ];
+
     //------------------------------------------------------------------------------------------------------------------
 
     constructor(
+        private _router: Router,
         private _actions$: Actions,
         @Inject(DOCUMENT) private _document: Document,
+        private _store: Store<SessionWithGfxCombinedReducerTypes>,
     ) {
     };
 
@@ -76,5 +88,23 @@ export class GfxEffects {
                 this._document.body.classList.remove(GfxEffects.SCROLL_DISABLED_CSS);
             }),
         );
-    }, { dispatch: false })
+    }, { dispatch: false });
+
+    //------------------------------------------------------------------------------------------------------------------
+
+    onOpenChangeImageModalRedirect$ = createEffect(() => {
+        return this._actions$.pipe(
+            ofType(NgrxAction_GFX.__openActionWindowModal),
+            withLatestFrom(this._store.select(sessionNgrxStore.reducerName)),
+            tap(([ action, state ]) => {
+                if (!Boolean(state.userCredentialsData)) {
+                    this._router.navigate([ '/' ]).then(r => r);
+                    return;
+                }
+                if (this.REDIR_MODALS.some(t => t === action.modalType)) {
+                    this._router.navigate([ '/secure/my-account/dashboard' ]).then(r => r);
+                }
+            }),
+        );
+    }, { dispatch: false });
 }
