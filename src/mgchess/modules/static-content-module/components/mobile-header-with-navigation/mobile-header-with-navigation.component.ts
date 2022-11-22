@@ -35,7 +35,7 @@ import * as NgrxSelector_SES from "../../../shared-module/ngrx-store/session-ngr
 @Component({
     selector: "mgchess-mobile-header-with-navigation",
     templateUrl: "./mobile-header-with-navigation.component.html",
-    styleUrls: [ "./mobile-header-with-navigation.component.scss" ]
+    styleUrls: [ "./mobile-header-with-navigation.component.scss" ],
 })
 export class MobileHeaderWithNavigationComponent {
 

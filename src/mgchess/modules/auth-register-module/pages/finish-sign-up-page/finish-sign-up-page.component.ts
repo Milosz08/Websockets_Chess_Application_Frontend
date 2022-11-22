@@ -40,7 +40,6 @@ import * as NgrxSelector_GFX from "../../../shared-module/ngrx-store/gfx-ngrx-st
 @Component({
     selector: "mgchess-finish-sign-up-page",
     templateUrl: "./finish-sign-up-page.component.html",
-    styleUrls: [ "./finish-sign-up-page.component.scss" ],
     host: { class: "mg-chess__flex-safety-container remove-margin__small-devices" },
     providers: [ ValidateOauth2UserService ],
 })

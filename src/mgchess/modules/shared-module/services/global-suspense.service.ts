@@ -51,9 +51,9 @@ export class GlobalSuspenseService {
     removeQueryParams(queryParamName: string): void {
         this._router.navigate([], {
             queryParams: {
-                [queryParamName]: null
+                [queryParamName]: null,
             },
-            queryParamsHandling: "merge"
+            queryParamsHandling: "merge",
         }).then(r => r);
     };
 }

@@ -2,7 +2,7 @@
  * Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
  *
  * File name: select-country-box-input.component.ts
- * Last modified: 26/09/2022, 01:23
+ * Last modified: 22.11.2022, 03:03
  * Project name: chess-app-frontend
  *
  * Licensed under the MIT license; you may not use this file except in compliance with the License.
@@ -21,21 +21,30 @@ import { FormGroup } from "@angular/forms";
 import { Store } from "@ngrx/store";
 
 import { Subject } from "rxjs";
-import { RxjsHelper } from "../../../../rxjs-helpers/rxjs.helper";
+import { RxjsHelper } from "../../../rxjs-helpers/rxjs.helper";
 
-import { StaticDataReqResService } from "../../services/static-data-req-res.service";
-import { StaticCountryDataResModel } from "../../models/static-country-data-res.model";
-import { FormInputClassesConstants } from "../../../../misc-constants/form-input-classes.constants";
+import { StaticDataReqResService } from "../services/static-data-req-res.service";
+import { StaticCountryDataResModel } from "../models/static-country-data-res.model";
+import { FormInputClassesConstants } from "../../../misc-constants/form-input-classes.constants";
 
-import { AuthReducerType } from "../../../../ngrx-helpers/ngrx-store.types";
-import * as NgrxAction_ATH from "../../ngrx-store/auth-ngrx-store/auth.actions";
-import * as NgrxSelector_ATH from "../../ngrx-store/auth-ngrx-store/auth.selectors";
+import { AuthReducerType } from "../../../ngrx-helpers/ngrx-store.types";
+import * as NgrxAction_ATH from "../ngrx-store/auth-ngrx-store/auth.actions";
+import * as NgrxSelector_ATH from "../ngrx-store/auth-ngrx-store/auth.selectors";
 
 //----------------------------------------------------------------------------------------------------------------------
 
 @Component({
     selector: "mgchess-select-country-box-input",
-    templateUrl: "./select-country-box-input.component.html",
+    template: `
+        <mgchess-single-choice-box-input
+            _topInfoLabel="Select here your country *"
+            _formControlName="countryName"
+            [_cssClasses]="_cssConstants.authFormsClasses"
+            [_formGroup]="_formGroup"
+            [_choiceElements]="_staticCountryData ? _staticCountryData.countries : []"
+            (_emitClearServerResponse)="handleClearServerResponse()"
+        ></mgchess-single-choice-box-input>
+    `,
     providers: [ FormInputClassesConstants, StaticDataReqResService ],
 })
 export class SelectCountryBoxInputComponent implements OnInit, OnDestroy {

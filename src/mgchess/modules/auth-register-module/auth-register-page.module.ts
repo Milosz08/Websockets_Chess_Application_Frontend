@@ -31,11 +31,11 @@ import { ActivateAccountPageComponent } from "./pages/activate-account-page/acti
 
 import { LoginFormComponent } from "./components/login-form/login-form.component";
 import { LastLoginsComponent } from "./components/last-logins/last-logins.component";
+import { SelectGenderBoxInputComponent } from "./components/select-gender-box-input.component";
+import { SelectCountryBoxInputComponent } from "./components/select-country-box-input.component";
 import { FinishSignupFormComponent } from "./components/finish-signup-form/finish-signup-form.component";
 import { SignupFormTextInputComponent } from "./components/signup-form-text-input/signup-form-text-input.component";
-import { SelectGenderBoxInputComponent } from "./components/select-gender-box-input/select-gender-box-input.component";
 import { PasswordStrengthMeterComponent } from "./components/password-strength-meter/password-strength-meter.component";
-import { SelectCountryBoxInputComponent } from "./components/select-country-box-input/select-country-box-input.component";
 import { SignupLeftContentFormComponent } from "./components/signup-left-content-form/signup-left-content-form.component";
 import { SignupRightContentFormComponent } from "./components/signup-right-content-form/signup-right-content-form.component";
 import { ActivateAccountTokenFormComponent } from "./components/activate-account-token-form/activate-account-token-form.component";

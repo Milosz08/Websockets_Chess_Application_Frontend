@@ -23,7 +23,7 @@ import { AbstractControl, FormGroup } from "@angular/forms";
 export class AngularFormsHelper {
 
     field(fieldname: string, form: FormGroup): AbstractControl<any, any> {
-        if (!form) throw new Error("Form grounp is not valid");
+        if (!form) throw new Error("Form group is not valid");
         const field = form.get(fieldname);
         if (!field) throw new Error(`Field ${fieldname} not exist in selected form group`);
         return field;
@@ -63,7 +63,7 @@ export class AngularFormsHelper {
     //------------------------------------------------------------------------------------------------------------------
 
     checkCustomError(form: FormGroup, errorName: string): boolean {
-        if (!form) throw new Error("Form grounp is not valid");
+        if (!form) throw new Error("Form group is not valid");
         return form.errors?.[errorName];
     };
 }

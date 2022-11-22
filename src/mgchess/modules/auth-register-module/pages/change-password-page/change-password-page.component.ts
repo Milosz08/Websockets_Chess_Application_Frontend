@@ -39,7 +39,6 @@ import * as NgrxSelector_CPA from "../../ngrx-store/change-password-ngrx-store/c
 @Component({
     selector: "mgchess-change-password-page",
     templateUrl: "./change-password-page.component.html",
-    styleUrls: [ "./change-password-page.component.scss" ],
     host: { class: "mg-chess__flex-safety-container remove-margin__small-devices" },
 })
 export class ChangePasswordPageComponent extends BrowserMetaSerializatorLoader implements OnInit, OnDestroy {

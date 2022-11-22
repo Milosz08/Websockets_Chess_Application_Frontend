@@ -89,6 +89,6 @@ import { NewsletterReqResService } from "./services/newsletter-req-res.service";
     exports: [
         HeaderWithNavigationComponent,
         MobileHeaderWithNavigationComponent,
-    ]
+    ],
 })
 export class StaticContentPageModule {}
