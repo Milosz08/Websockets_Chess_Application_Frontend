@@ -20,4 +20,5 @@ export const environment = {
     production: true,
     httpBackendURI: "https://springboot.miloszgilga.pl/chess-online-backend/",
     httpFrontEndURI: "https://chess.miloszgilga.pl/",
+    cdnURI: "https://cdn.miloszgilga.pl/chess-app-static-resources/",
 };

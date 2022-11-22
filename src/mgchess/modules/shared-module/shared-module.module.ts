@@ -40,6 +40,8 @@ import { UserBannerWithAvatarAccountComponent } from "./components/user-banner-w
 import { UploadFilesMouseEventsDirective } from "./directives/upload-files-mouse-events.directive";
 import { CloseOutsideClickComponentDirective } from "./directives/close-outside-click-component.directive";
 
+import { InjectCdnUrlPrefixPipe } from "./pipes/inject-cdn-url-prefix.pipe";
+
 import { gfxNgrxStore } from "./ngrx-store/gfx-ngrx-store/gfx.reducer";
 import { sessionNgrxStore } from "./ngrx-store/session-ngrx-store/session.reducer";
 
@@ -76,6 +78,8 @@ import { CookiesNotificationLocalStorageService } from "./services/cookies-notif
         // directives
         UploadFilesMouseEventsDirective,
         CloseOutsideClickComponentDirective,
+        // pipes
+        InjectCdnUrlPrefixPipe,
     ],
     imports: [
         CommonModule,
@@ -92,6 +96,7 @@ import { CookiesNotificationLocalStorageService } from "./services/cookies-notif
         ]),
     ],
     exports: [
+        // components
         FooterComponent,
         ThemeTogglerComponent,
         PasswordInputComponent,
@@ -102,11 +107,14 @@ import { CookiesNotificationLocalStorageService } from "./services/cookies-notif
         CookiesNotificationComponent,
         SingleChoiceBoxInputComponent,
         GlobalSuspenseLoaderComponent,
-        UploadFilesMouseEventsDirective,
         SimpleServerResponseQueryComponent,
         GlobalServerResponseModalComponent,
-        CloseOutsideClickComponentDirective,
         UserBannerWithAvatarAccountComponent,
+        // directives
+        UploadFilesMouseEventsDirective,
+        CloseOutsideClickComponentDirective,
+        // pipes
+        InjectCdnUrlPrefixPipe,
     ],
     providers: [
         SessionReqResService,

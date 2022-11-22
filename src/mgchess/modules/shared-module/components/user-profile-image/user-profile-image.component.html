@@ -30,7 +30,9 @@
         title="Click here to change your profile image"
         class="mg-chess__change-image-hover-effect"
     >
-        <img src="assets/gfx/icons/camera-icon.svg" alt="" class="change-image__camera-image"/>
+        <img
+            [src]="'assets/gfx/icons/camera-icon.svg' | injectCdnUrlPrefix" alt=""
+            class="change-image__camera-image"/>
     </button>
     <div
         *ngIf="_isSupplierNotLocal"

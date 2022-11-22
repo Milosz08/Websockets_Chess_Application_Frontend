@@ -1,8 +1,8 @@
-/*!
+/*
  * Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
  *
- * File name: finish-sign-up-page.component.scss
- * Last modified: 25/09/2022, 01:52
+ * File name: inject-cdn-url-prefix.pipe.ts
+ * Last modified: 22.11.2022, 03:10
  * Project name: chess-app-frontend
  *
  * Licensed under the MIT license; you may not use this file except in compliance with the License.
@@ -16,3 +16,17 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
+import { Pipe, PipeTransform } from "@angular/core";
+import { environment } from "../../../../environments/environment";
+
+//----------------------------------------------------------------------------------------------------------------------
+
+@Pipe({
+    name: "injectCdnUrlPrefix",
+})
+export class InjectCdnUrlPrefixPipe implements PipeTransform {
+
+    transform(postFixResourceUrl: string): string {
+        return environment.cdnURI + postFixResourceUrl;
+    };
+}

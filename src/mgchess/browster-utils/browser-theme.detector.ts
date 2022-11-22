@@ -16,16 +16,20 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
+import { environment } from "../../environments/environment";
+
+//----------------------------------------------------------------------------------------------------------------------
+
 export class BrowserThemeDetector {
 
-    private static readonly FAV_DIR: string = "../assets/gfx/favicons/" as const;
+    private static readonly FAV_DIR: string = environment.cdnURI + "assets/gfx/favicons/";
     public static readonly CSS_DARK_CLASS: string = "dark-theme--active" as const;
 
     private static readonly FAV_LIGHT: string = this.FAV_DIR + "favicon-light.png";
     private static readonly FAV_DARK: string = this.FAV_DIR + "favicon-dark.png";
 
-    public static readonly LIGHT_LOGO = "assets/gfx/images/main-light-logo.svg" as const;
-    public static readonly DARK_LOGO = "assets/gfx/images/main-dark-logo.svg" as const;
+    public static readonly LIGHT_LOGO = environment.cdnURI + "assets/gfx/images/main-light-logo.svg";
+    public static readonly DARK_LOGO = environment.cdnURI + "assets/gfx/images/main-dark-logo.svg";
 
     //------------------------------------------------------------------------------------------------------------------
 

@@ -1,0 +1,11 @@
+{
+    "/cdn": {
+        "tacdnrget":  {
+            "host": "https://cdn.miloszgilga.pl/chess-app-static-resources/",
+            "port": 443
+        },
+        "secure": true,
+        "changeOrigin": false,
+        "logLevel": "info"
+    }
+}

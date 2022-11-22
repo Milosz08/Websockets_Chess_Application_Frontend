@@ -56,7 +56,10 @@
             </label>
         </div>
         <div class="upload-image__content-show-on-dropped__container">
-            <img src="assets/gfx/icons/photos-icon.svg" alt="" class="on-dropper__layered-icon"/>
+            <img
+                [src]="'assets/gfx/icons/photos-icon.svg' | injectCdnUrlPrefix" alt=""
+                class="on-dropper__layered-icon"
+            />
         </div>
     </div>
     <p

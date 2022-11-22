@@ -28,7 +28,10 @@
             class="user-banner__edit-button"
         >
             <span class="change-banner__text-content">Edit banner</span>
-            <img src="assets/gfx/icons/camera-icon.svg" alt="" class="change-banner__camera-image"/>
+            <img
+                [src]="'assets/gfx/icons/camera-icon.svg' | injectCdnUrlPrefix" alt=""
+                class="change-banner__camera-image"
+            />
         </button>
     </div>
     <div class="user-banner__personal-image-and-text__container">
@@ -43,7 +46,10 @@
                 title="Click here to change your profile image"
                 class="mg-chess__change-image-hover-effect"
             >
-                <img src="assets/gfx/icons/camera-icon.svg" alt="" class="change-image__camera-image"/>
+                <img
+                    [src]="'assets/gfx/icons/camera-icon.svg' | injectCdnUrlPrefix" alt=""
+                    class="change-image__camera-image"
+                />
                 <span class="change-image__text-content">Edit photo</span>
             </button>
             <div
