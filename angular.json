@@ -29,7 +29,10 @@
                         "styles": [
                             "src/global-styles/computed.scss"
                         ],
-                        "scripts": []
+                        "scripts": [],
+                        "allowedCommonJsDependencies": [
+                            "moment"
+                        ]
                     },
                     "configurations": {
                         "production": {
