@@ -25,6 +25,7 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { UploadImageZoneBoxComponent } from "./components/upload-image-zone-box/upload-image-zone-box.component";
 import { ChangeBannerImageWindowModalComponent } from "./components/change-banner-image-window-modal.component";
 import { ChangeProfileImageWindowModalComponent } from "./components/change-profile-image-window-modal.component";
+import { UserChangeAccountDescriptionComponent } from "./components/user-change-account-description/user-change-account-description.component";
 import { UniversalChangeUserImageModalComponent } from "./components/universal-change-user-image-modal/universal-change-user-image-modal.component";
 
 import { SecurePageComponent } from "./secure-page.component";
@@ -56,6 +57,7 @@ import { UserManipulatorHttpReqResService } from "./services/user-manipulator-ht
         // components
         UploadImageZoneBoxComponent,
         ChangeBannerImageWindowModalComponent,
+        UserChangeAccountDescriptionComponent,
         ChangeProfileImageWindowModalComponent,
         UniversalChangeUserImageModalComponent,
         // pages

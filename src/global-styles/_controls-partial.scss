@@ -93,6 +93,20 @@
     }
 }
 
+.mg-chess__standard-textarea {
+    border: 1px solid;
+    background-color: transparent;
+    width: 100%;
+    padding: var(--standard-controls-padding);
+    border-radius: var(--standard-buttons-gfx-borders);
+    resize: none;
+    max-height: 150px;
+    padding-bottom: 20px;
+    &.textarea--primary-color {
+        border-color: var(--primary-form-input-border-color);
+    }
+}
+
 .mg-chess__form-data-paragraph {
     margin: 5px 0 0 10px;
     &.paragraph--error {
