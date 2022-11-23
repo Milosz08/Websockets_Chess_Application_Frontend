@@ -21,6 +21,7 @@ import { authNgrxStore } from "../modules/auth-register-module/ngrx-store/auth-n
 import { sessionNgrxStore } from "../modules/shared-module/ngrx-store/session-ngrx-store/session.reducer";
 import { userImagesNgrxStore } from "../modules/secure-module/ngrx-store/user-images-ngrx-store/user-images.reducer";
 import { newsletterNgrxStore } from "../modules/static-content-module/ngrx-store/newsletter-ngrx-store/newsletter.reducer";
+import { userManipulatorNgrxStore } from "../modules/secure-module/ngrx-store/user-manipulator-ngrx-store/user-manipulator.reducer";
 import { changePasswordNgrxStore } from "../modules/auth-register-module/ngrx-store/change-password-ngrx-store/change-password.reducer";
 
 import { GfxStateTypes } from "../modules/shared-module/ngrx-store/gfx-ngrx-store/gfx.initial";
@@ -28,6 +29,7 @@ import { AuthStateTypes } from "../modules/auth-register-module/ngrx-store/auth-
 import { SessionStateTypes } from "../modules/shared-module/ngrx-store/session-ngrx-store/session.initial";
 import { UserImagesStateTypes } from "../modules/secure-module/ngrx-store/user-images-ngrx-store/user-images.initial";
 import { NewsletterStateTypes } from "../modules/static-content-module/ngrx-store/newsletter-ngrx-store/newsletter.initial";
+import { UserManipulatorStateTypes } from "../modules/secure-module/ngrx-store/user-manipulator-ngrx-store/user-manipulator.initial";
 import { ChangePasswordStateTypes } from "../modules/auth-register-module/ngrx-store/change-password-ngrx-store/change-password.initial";
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -83,6 +85,17 @@ export type UserImagesWithGfxReducerType = {
 
 export type UserImagesWithSessionWithGfxReducerType = {
     [userImagesNgrxStore.reducerName]: UserImagesStateTypes,
+    [gfxNgrxStore.reducerName]: GfxStateTypes,
+    [sessionNgrxStore.reducerName]: SessionStateTypes,
+};
+
+export type UserManipulatorWithGfxReducerType = {
+    [userManipulatorNgrxStore.reducerName]: UserManipulatorStateTypes,
+    [gfxNgrxStore.reducerName]: GfxStateTypes,
+};
+
+export type UserManipulatorWithSessionWithGfxReducerType = {
+    [userManipulatorNgrxStore.reducerName]: UserManipulatorStateTypes,
     [gfxNgrxStore.reducerName]: GfxStateTypes,
     [sessionNgrxStore.reducerName]: SessionStateTypes,
 };

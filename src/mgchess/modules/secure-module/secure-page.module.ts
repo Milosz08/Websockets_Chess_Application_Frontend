@@ -41,9 +41,13 @@ import { SharedModuleModule } from "../shared-module/shared-module.module";
 import { StaticContentPageModule } from "../static-content-module/static-content-page.module";
 
 import { userImagesNgrxStore } from "./ngrx-store/user-images-ngrx-store/user-images.reducer";
+import { userManipulatorNgrxStore } from "./ngrx-store/user-manipulator-ngrx-store/user-manipulator.reducer";
+
 import { UserImagesEffects } from "./ngrx-store/user-images-ngrx-store/ngrx-effects/user-images.effects";
+import { UserManipulatorEffects } from "./ngrx-store/user-manipulator-ngrx-store/ngrx-effects/user-manipulator.effects";
 
 import { UserImagesHttpReqResService } from "./services/user-images-http-req-res.service";
+import { UserManipulatorHttpReqResService } from "./services/user-manipulator-http-req-res.service";
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -72,12 +76,15 @@ import { UserImagesHttpReqResService } from "./services/user-images-http-req-res
         StaticContentPageModule,
         // ngrx store
         StoreModule.forFeature(userImagesNgrxStore.reducerName, userImagesNgrxStore.reducerFunc),
+        StoreModule.forFeature(userManipulatorNgrxStore.reducerName, userManipulatorNgrxStore.reducerFunc),
         EffectsModule.forFeature([
             UserImagesEffects,
+            UserManipulatorEffects,
         ]),
     ],
     providers: [
         UserImagesHttpReqResService,
+        UserManipulatorHttpReqResService,
     ],
 })
 export class SecurePageModule {}

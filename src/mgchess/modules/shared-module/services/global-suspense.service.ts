@@ -56,4 +56,13 @@ export class GlobalSuspenseService {
             queryParamsHandling: "merge",
         }).then(r => r);
     };
+
+    //------------------------------------------------------------------------------------------------------------------
+
+    reloadAngularPageWithRouter(): void {
+        const currentUrl = this._router.url;
+        this._router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+            this._router.navigateByUrl(currentUrl).then(r => r);
+        });
+    };
 }

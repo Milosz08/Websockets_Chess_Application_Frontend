@@ -38,6 +38,7 @@ export enum SuspenseLoader {
     DELETE_USER_PROFILE_IMAGE = "DELETE_USER_PROFILE_IMAGE",
     CHANGE_USER_BANNER_IMAGE = "CHANGE_USER_BANNER_IMAGE",
     DELETE_USER_BANNER_IMAGE = "DELETE_USER_BANNER_IMAGE",
+    CHANGE_ACCOUNT_DESCRIPTION = "CHANGE_ACCOUNT_DESCRIPTION",
 }
 
 //----------------------------------------------------------------------------------------------------------------------
