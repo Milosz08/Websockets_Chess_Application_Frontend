@@ -1,0 +1,81 @@
+/*!
+ * Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
+ *
+ * File name: my-account-page.component.scss
+ * Last modified: 23.11.2022, 00:34
+ * Project name: chess-app-frontend
+ *
+ * Licensed under the MIT license; you may not use this file except in compliance with the License.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+ * documentation files (the "Software"), to deal in the Software without restriction, including without limitation the
+ * rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to
+ * permit persons to whom the Software is furnished to do so, subject to the following conditions:
+ *
+ * THE ABOVE COPYRIGHT NOTICE AND THIS PERMISSION NOTICE SHALL BE INCLUDED IN ALL
+ * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
+ */
+
+.user-panel-top-menu__navigation-container {
+    width: 100%;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: var(--discrete-modal-background);
+    box-shadow: var(--discrete-modal-back-noise-shadow);
+    border-radius: var(--standard-modal-border-radius);
+}
+
+.user-panel-top-menu__navigation-wrapper {
+    padding: 15px 0 20px;
+}
+
+.user-panel-top-menu__navigation-list {
+    display: flex;
+    justify-content: center;
+}
+
+.top-menu__navigation-list-element {
+    margin: 0 20px;
+    padding: 6px 10px 7px;
+    &.link--active {
+        background-color: var(--button-primary-mixed-background-color);
+        color: var(--discrete-modal-background);
+        border-radius: var(--standard-buttons-gfx-borders);
+        font-weight: var(--standard-font-weight);
+    }
+    .top-menu-navigation__icon {
+        position: relative;
+        top: 4px;
+        margin-right: 5px;
+        font-size: 1.3rem;
+    }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+@media only screen and (max-width: 765px) {
+    .user-panel-top-menu__navigation-list {
+        flex-wrap: wrap;
+        li {
+            flex-basis: 50%;
+            margin: 10px 0;
+        }
+    }
+    .top-menu__navigation-list-element {
+        display: block;
+        width: calc(100% - 40px);
+        margin: 0 20px;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .user-panel-top-menu__navigation-container {
+        padding: 0 0 20px;
+    }
+    .user-panel-top-menu__navigation-list li {
+        flex-basis: 100%;
+        margin: 5px 0;
+    }
+}

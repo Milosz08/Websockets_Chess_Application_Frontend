@@ -102,7 +102,7 @@ export class GfxEffects {
                     return;
                 }
                 if (this.REDIR_MODALS.some(t => t === action.modalType)) {
-                    this._router.navigate([ '/secure/my-account/dashboard' ]).then(r => r);
+                    this._router.navigate([ '/secure/my-account' ]).then(r => r);
                 }
             }),
         );

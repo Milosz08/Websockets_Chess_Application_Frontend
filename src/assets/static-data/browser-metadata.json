@@ -100,16 +100,24 @@
                 "description": "On this page you can find and change your personal informations."
             },
             {
-                "pageId": "MY_ACCOUNT_DASHBOARD_PAGE",
-                "title": "My Account - Dashboard",
+                "pageId": "MY_ACCOUNT_ABOUT_ME_PAGE",
+                "title": "My Account - About me",
                 "description": "On this page you can find general informations about your account."
-            }
-        ],
-        "sharedModule": [
+            },
             {
-                "pageId": "CONTENT_NOT_FOUND_PAGE",
-                "title": "404",
-                "description": "The page you are trying to access to does not exist."
+                "pageId": "MY_ACCOUNT_LAST_GAMES_PAGE",
+                "title": "My Account - Last games",
+                "description": "On this page you can find your last games history."
+            },
+            {
+                "pageId": "MY_ACCOUNT_FRIENDS_PAGE",
+                "title": "My Account - Friends",
+                "description": "On this page you can find your friends."
+            },
+            {
+                "pageId": "MY_ACCOUNT_SETTINGS_PAGE",
+                "title": "My Account - Account Settings",
+                "description": "On this page you can change your account settings including delete account."
             }
         ]
     }

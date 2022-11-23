@@ -1,0 +1,26 @@
+[
+    {
+        "name": "About me",
+        "link": "/secure/my-account/about-me",
+        "metadataTitle": "Click to go to dashboard page",
+        "iconReference": "person"
+    },
+    {
+        "name": "Last games",
+        "link": "/secure/my-account/last-games",
+        "metadataTitle": "Click to go to your last games statistics",
+        "iconReference": "extension"
+    },
+    {
+        "name": "Friends",
+        "link": "/secure/my-account/friends",
+        "metadataTitle": "Click to go to your friends",
+        "iconReference": "group"
+    },
+    {
+        "name": "Account settings",
+        "link": "/secure/my-account/settings",
+        "metadataTitle": "Click to edit your account settings",
+        "iconReference": "manage_accounts"
+    }
+]

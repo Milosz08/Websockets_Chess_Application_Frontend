@@ -28,7 +28,10 @@ import { UniversalChangeUserImageModalComponent } from "./components/universal-c
 
 import { SecurePageComponent } from "./secure-page.component";
 import { MyAccountPageComponent } from "./pages/my-account-page/my-account-page.component";
-import { MyAccountDashboardPageComponent } from "./pages/my-account-dashboard-page/my-account-dashboard-page.component";
+import { MyAccountFriendsPageComponent } from "./pages/my-account-friends-page/my-account-friends-page.component";
+import { MyAccountSettingsPageComponent } from "./pages/my-account-settings-page/my-account-settings-page.component";
+import { MyAccountAboutMePageComponent } from "./pages/my-account-about-me-page/my-account-about-me-page.component";
+import { MyAccountLastGamesPageComponent } from "./pages/my-account-last-games-page/my-account-last-games-page.component";
 
 import { FlattedImageExtensionsPipe } from "./pipes/flatted-image-extensions.pipe";
 
@@ -51,12 +54,14 @@ import { UserImagesHttpReqResService } from "./services/user-images-http-req-res
         ChangeProfileImageWindowModalComponent,
         UniversalChangeUserImageModalComponent,
         // pages
+        SecurePageComponent,
         MyAccountPageComponent,
-        MyAccountDashboardPageComponent,
+        MyAccountAboutMePageComponent,
+        MyAccountFriendsPageComponent,
+        MyAccountSettingsPageComponent,
+        MyAccountLastGamesPageComponent,
         // pipes
         FlattedImageExtensionsPipe,
-        // others
-        SecurePageComponent,
     ],
     imports: [
         CommonModule,

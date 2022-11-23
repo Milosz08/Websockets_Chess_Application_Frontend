@@ -2,7 +2,7 @@
   ~ Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
   ~
   ~ File name: my-account-page.component.html
-  ~ Last modified: 05/10/2022, 22:16
+  ~ Last modified: 22.11.2022, 17:59
   ~ Project name: chess-app-frontend
   ~
   ~ Licensed under the MIT license; you may not use this file except in compliance with the License.
@@ -16,11 +16,30 @@
   ~ COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
   -->
 
-<mgchess-user-banner-with-avatar-account
-    [_userProfileUrl]="_userLoggedData.photoUrl"
-    [_userBannerUrl]="_userLoggedData.bannerUrl"
-    [_userFirstLastName]="_userLoggedData.fullName"
-    [_userNickname]="_userLoggedData.nickname"
-></mgchess-user-banner-with-avatar-account>
-<router-outlet></router-outlet>
-<h1>this is together fragment</h1>
+<div class="mg-chess__flex-safety-container__wrapper">
+    <mgchess-user-banner-with-avatar-account
+        [_userProfileUrl]="_userLoggedData.photoUrl"
+        [_userBannerUrl]="_userLoggedData.bannerUrl"
+        [_userFirstLastName]="_userLoggedData.fullName"
+        [_userNickname]="_userLoggedData.nickname"
+    ></mgchess-user-banner-with-avatar-account>
+    <div class="user-panel-top-menu__navigation-container">
+        <mgchess-user-change-account-description></mgchess-user-change-account-description>
+        <nav class="user-panel-top-menu__navigation-wrapper">
+            <ul class="user-panel-top-menu__navigation-list">
+                <li *ngFor="let link of _navigationLinks">
+                    <a
+                        [routerLink]="link.link"
+                        routerLinkActive="link--active"
+                        [title]="link.metadataTitle"
+                        class="top-menu__navigation-list-element"
+                    >
+                        <span class="material-symbols-outlined top-menu-navigation__icon">{{ link.iconReference }}</span>
+                        {{ link.name }}
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <router-outlet></router-outlet>
+</div>

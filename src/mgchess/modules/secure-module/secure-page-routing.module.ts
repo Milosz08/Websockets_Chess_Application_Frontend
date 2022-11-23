@@ -22,7 +22,10 @@ import { RouterModule, Routes } from "@angular/router";
 import { SecurePageComponent } from "./secure-page.component";
 
 import { MyAccountPageComponent } from "./pages/my-account-page/my-account-page.component";
-import { MyAccountDashboardPageComponent } from "./pages/my-account-dashboard-page/my-account-dashboard-page.component";
+import { MyAccountFriendsPageComponent } from "./pages/my-account-friends-page/my-account-friends-page.component";
+import { MyAccountSettingsPageComponent } from "./pages/my-account-settings-page/my-account-settings-page.component";
+import { MyAccountAboutMePageComponent } from "./pages/my-account-about-me-page/my-account-about-me-page.component";
+import { MyAccountLastGamesPageComponent } from "./pages/my-account-last-games-page/my-account-last-games-page.component";
 
 import { OnNonLoggedRedirectGuard } from "../../guards/on-non-logged-redirect.guard";
 
@@ -32,8 +35,11 @@ const routes: Routes = [
     { path: "", component: SecurePageComponent, children: [
         { path: "", redirectTo: "secure", pathMatch: "full" },
         { path: "my-account", component: MyAccountPageComponent, canActivate: [ OnNonLoggedRedirectGuard ], children: [
-            { path: "", redirectTo: "dashboard", pathMatch: "full" },
-            { path: "dashboard", component: MyAccountDashboardPageComponent },
+            { path: "", redirectTo: "about-me", pathMatch: "full" },
+            { path: "about-me", component: MyAccountAboutMePageComponent },
+            { path: "last-games", component: MyAccountLastGamesPageComponent },
+            { path: "friends", component: MyAccountFriendsPageComponent },
+            { path: "settings", component: MyAccountSettingsPageComponent },
         ]},
     ]},
 ];

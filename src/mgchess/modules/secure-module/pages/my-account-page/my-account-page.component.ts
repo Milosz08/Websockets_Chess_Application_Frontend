@@ -2,7 +2,7 @@
  * Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
  *
  * File name: my-account-page.component.ts
- * Last modified: 05/10/2022, 22:16
+ * Last modified: 22.11.2022, 18:01
  * Project name: chess-app-frontend
  *
  * Licensed under the MIT license; you may not use this file except in compliance with the License.
@@ -23,6 +23,8 @@ import { Store } from "@ngrx/store";
 import { Subject } from "rxjs";
 import { RxjsHelper } from "../../../../rxjs-helpers/rxjs.helper";
 
+import { NavigationLinksWithIconsModel } from "../../../../models/navigation-links-with-icons.model";
+import * as NAVIGATION_LINKS from "../../../../../assets/static-data/secure-user-panel-navigation-links.json";
 import { BrowserMetaSerializatorLoader } from "../../../../browser-meta-serialization/browser-meta-serializator.loader";
 import { SingleModuleType, SinglePageType } from "../../../../browser-meta-serialization/browser-meta-serializator.types";
 
@@ -36,11 +38,13 @@ import * as NgrxSelector_SES from "../../../shared-module/ngrx-store/session-ngr
 @Component({
     selector: "mgchess-my-account-page",
     templateUrl: "./my-account-page.component.html",
+    styleUrls: [ "./my-account-page.component.scss" ],
     host: { class: "mg-chess__flex-safety-container" },
 })
 export class MyAccountPageComponent extends BrowserMetaSerializatorLoader implements OnInit, OnDestroy {
 
     _userLoggedData!: UserCredentialsDataResModel;
+    readonly _navigationLinks: Array<NavigationLinksWithIconsModel>;
 
     private _ngUnsubscribe: Subject<void> = new Subject<void>();
 
@@ -52,6 +56,7 @@ export class MyAccountPageComponent extends BrowserMetaSerializatorLoader implem
         private _store: Store<SessionReducerType>,
     ) {
         super(_titleService, _metaService, SingleModuleType.SECURED_MODULE, SinglePageType.MY_ACCOUNT_PAGE);
+        this._navigationLinks = (NAVIGATION_LINKS as any).default;
     };
 
     //------------------------------------------------------------------------------------------------------------------

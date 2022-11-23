@@ -1,8 +1,8 @@
-/*!
+/*
  * Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
  *
- * File name: my-account-dashboard-page.component.scss
- * Last modified: 05/10/2022, 22:28
+ * File name: navigation-links-with-icons.model.ts
+ * Last modified: 22.11.2022, 21:31
  * Project name: chess-app-frontend
  *
  * Licensed under the MIT license; you may not use this file except in compliance with the License.
@@ -15,3 +15,11 @@
  * THE ABOVE COPYRIGHT NOTICE AND THIS PERMISSION NOTICE SHALL BE INCLUDED IN ALL
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
+
+import { NavigationLinksModel } from "./navigation-links.model";
+
+//----------------------------------------------------------------------------------------------------------------------
+
+export interface NavigationLinksWithIconsModel extends NavigationLinksModel {
+    iconReference: string;
+}

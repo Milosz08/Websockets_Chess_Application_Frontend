@@ -1,8 +1,8 @@
 /*
  * Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
  *
- * File name: my-account-dashboard-page.component.ts
- * Last modified: 05/10/2022, 22:28
+ * File name: my-account-last-games-page.component.ts
+ * Last modified: 22.11.2022, 20:41
  * Project name: chess-app-frontend
  *
  * Licensed under the MIT license; you may not use this file except in compliance with the License.
@@ -25,16 +25,16 @@ import { SingleModuleType, SinglePageType } from "../../../../browser-meta-seria
 //----------------------------------------------------------------------------------------------------------------------
 
 @Component({
-    selector: "mgchess-my-account-dashboard-page",
-    templateUrl: "./my-account-dashboard-page.component.html",
-    styleUrls: [ "./my-account-dashboard-page.component.scss" ],
+    selector: "mgchess-my-account-last-games-page",
+    templateUrl: "./my-account-last-games-page.component.html",
+    styleUrls: [ "./my-account-last-games-page.component.scss" ],
 })
-export class MyAccountDashboardPageComponent extends BrowserMetaSerializatorLoader {
+export class MyAccountLastGamesPageComponent extends BrowserMetaSerializatorLoader {
 
     constructor(
         private _metaService: Meta,
         private _titleService: Title,
     ) {
-        super(_titleService, _metaService, SingleModuleType.SECURED_MODULE, SinglePageType.MY_ACCOUNT_DASHBOARD_PAGE);
+        super(_titleService, _metaService, SingleModuleType.SECURED_MODULE, SinglePageType.MY_ACCOUNT_LAST_GAMES_PAGE);
     };
 }
