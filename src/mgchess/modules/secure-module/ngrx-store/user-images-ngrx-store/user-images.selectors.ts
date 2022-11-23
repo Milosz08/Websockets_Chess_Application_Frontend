@@ -19,12 +19,12 @@
 import { createFeatureSelector, createSelector } from "@ngrx/store";
 
 import { userImagesNgrxStore } from "./user-images.reducer";
-import { GfxStateTypes } from "../../../shared-module/ngrx-store/gfx-ngrx-store/gfx.initial";
+import { UserImagesStateTypes } from "./user-images.initial";
 
 //----------------------------------------------------------------------------------------------------------------------
 
 const selectorWithInjectedStore = (payload: (state: any, action?: any) => any) => (
-    createSelector(createFeatureSelector<GfxStateTypes>(userImagesNgrxStore.reducerName), payload)
+    createSelector(createFeatureSelector<UserImagesStateTypes>(userImagesNgrxStore.reducerName), payload)
 );
 
 //----------------------------------------------------------------------------------------------------------------------

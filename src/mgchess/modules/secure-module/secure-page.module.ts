@@ -17,9 +17,10 @@
  */
 
 import { NgModule } from "@angular/core";
-import { CommonModule } from "@angular/common";
-import { EffectsModule } from "@ngrx/effects";
 import { StoreModule } from "@ngrx/store";
+import { EffectsModule } from "@ngrx/effects";
+import { CommonModule } from "@angular/common";
+import { ReactiveFormsModule } from "@angular/forms";
 
 import { UploadImageZoneBoxComponent } from "./components/upload-image-zone-box/upload-image-zone-box.component";
 import { ChangeBannerImageWindowModalComponent } from "./components/change-banner-image-window-modal.component";
@@ -66,6 +67,7 @@ import { UserImagesHttpReqResService } from "./services/user-images-http-req-res
     imports: [
         CommonModule,
         SharedModuleModule,
+        ReactiveFormsModule,
         SecurePageRoutingModule,
         StaticContentPageModule,
         // ngrx store

@@ -17,9 +17,8 @@
  */
 
 :host {
-    max-width: var(--safety-width-medium-devices);
-    width: calc(100% - 30px);
     position: relative;
+    width: 100%;
 }
 
 .user-banner__banner-container {
@@ -109,7 +108,7 @@
 
 @media only screen and (max-width: 790px) {
     .user-banner__banner-container {
-        height: 130px;
+        height: 110px;
         margin-bottom: 150px;
     }
     .user-banner__personal-image-container {

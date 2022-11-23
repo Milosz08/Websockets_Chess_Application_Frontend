@@ -22,6 +22,7 @@ import { Store } from "@ngrx/store";
 import { Subject } from "rxjs";
 import { RxjsHelper } from "../../../../rxjs-helpers/rxjs.helper";
 
+import { environment } from "../../../../../environments/environment";
 import { SessionReducerType } from "../../../../ngrx-helpers/ngrx-store.types";
 import { ModalWindowType } from "../../ngrx-store/gfx-ngrx-store/ngrx-models/action-window-modal.model";
 
@@ -80,7 +81,7 @@ export class UserBannerWithAvatarAccountComponent implements OnInit, OnDestroy {
     };
 
     get __supplierImagePath(): string {
-        return `assets/gfx/images/oauth2-${this._credentialsSupplier}-logo.svg`;
+        return `${environment.cdnURI}assets/gfx/images/oauth2-${this._credentialsSupplier}-logo.svg`;
     };
 
     get __bannerImageUrl(): string {

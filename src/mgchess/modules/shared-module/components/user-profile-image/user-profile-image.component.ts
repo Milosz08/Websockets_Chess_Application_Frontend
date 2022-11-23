@@ -22,6 +22,7 @@ import { Store } from "@ngrx/store";
 import { Subject } from "rxjs";
 import { RxjsHelper } from "../../../../rxjs-helpers/rxjs.helper";
 
+import { environment } from "../../../../../environments/environment";
 import { SessionWithGfxCombinedReducerTypes } from "../../../../ngrx-helpers/ngrx-store.types";
 import { OAuthSupplier } from "../../../../http-request-helpers/oauth2-request-endpoints.contants";
 
@@ -77,7 +78,7 @@ export class UserProfileImageComponent implements OnInit, OnDestroy {
     };
 
     get __supplierImagePath(): string {
-        return `assets/gfx/images/oauth2-${this._oauth2Supplier}-logo.svg`;
+        return `${environment.cdnURI}assets/gfx/images/oauth2-${this._oauth2Supplier}-logo.svg`;
     };
 
     get __ngImageSizeStyle(): object {

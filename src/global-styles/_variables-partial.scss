@@ -89,7 +89,7 @@ body {
     --auth-login-form-foreground: var(--primary-light-color);
     --auth-login-form-header-decorator-background: var(--secondary-tint-color);
     --aside-text-info-color: var(--primary-light-tint-color);
-    --signup-separator-element-color: var(--secondary-dark-secondary-tint-color);
+    --separator-element-color: var(--secondary-dark-secondary-tint-color);
     --signup-aside-form-content-color: var(--secondary-tint-color);
     --global-suspense-loader-background: var(--primary-dark-tint-color);
     --global-suspense-loader-spinner-color: var(--primary-tint-color);
@@ -139,7 +139,7 @@ body.dark-theme--active {
     --auth-login-form-foreground: var(--secondary-dark-tint-color);
     --auth-login-form-header-decorator-background: var(--primary-light-color);
     --aside-text-info-color: var(--thirdly-dark-tint-color);
-    --signup-separator-element-color: var(--secondary-tint-color);
+    --separator-element-color: var(--secondary-tint-color);
     --signup-aside-form-content-color: var(--secondary-tint-color);
     --global-suspense-loader-background: var(--secondary-dark-tint-color);
     --global-suspense-loader-spinner-color: var(--primary-light-color);
