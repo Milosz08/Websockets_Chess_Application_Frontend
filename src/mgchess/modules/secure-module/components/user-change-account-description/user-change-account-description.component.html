@@ -65,9 +65,11 @@
         </form>
     </div>
     <ng-template #showNonEditableContent>
-        <p *ngIf="_fetchedDescription !== ''; else noDescriptionContent" class="text-centered">
-            {{ _fetchedDescription }}
-        </p>
+        <p
+            *ngIf="_fetchedDescription !== ''; else noDescriptionContent"
+            [innerHTML]="_fetchedDescription"
+            class="text-centered"
+        ></p>
         <ng-template #noDescriptionContent>
             <p class="description--no-content text-centered">
                 You don't have an account description set up yet. Click on the link below to set a new account

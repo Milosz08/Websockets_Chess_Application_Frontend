@@ -97,7 +97,7 @@ export class UserChangeAccountDescriptionComponent implements OnInit, OnDestroy 
     };
 
     handleOpenAccountDescriptionEditor(): void {
-        this._editDescriptionForm.patchValue({ "description": this._fetchedDescription });
+        this._editDescriptionForm.patchValue({ "description": this._fetchedDescription.replace(/<br>/g, "\n") });
         this._charactersCount = this._fetchedDescription.length;
         this._store.dispatch(NgrxAction_USM.__editUserDescriptionVisible());
     };
