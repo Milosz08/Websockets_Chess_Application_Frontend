@@ -40,7 +40,7 @@
                 <input
                     type="email"
                     id="newsletter__input-username"
-                    (input)="_serverReqResHelper.clearServerMessage(_serverResponse)"
+                    (input)="handleClearServerMessage()"
                     autocomplete="off"
                     formControlName="userName"
                     placeholder="Username"
@@ -60,7 +60,7 @@
                 <input
                     type="email"
                     id="newsletter__input-email"
-                    (input)="_serverReqResHelper.clearServerMessage(_serverResponse)"
+                    (input)="handleClearServerMessage()"
                     autocomplete="off"
                     formControlName="emailAddress"
                     placeholder="Email address"

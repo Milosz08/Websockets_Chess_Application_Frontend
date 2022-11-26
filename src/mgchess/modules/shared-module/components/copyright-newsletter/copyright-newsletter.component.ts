@@ -67,7 +67,10 @@ export class CopyrightNewsletterComponent implements OnDestroy {
 
     @HostListener("document:click", [])
     handleClearServerMessage() {
-        if (!this._serverResponse.responseError) this._serverResponse.responseMessage = "";
+        if (!this._serverResponse.responseError) {
+            this._serverResponse.responseMessage = "";
+            this._serverResponse.responseError = false;
+        }
     };
 
     copyYearsConcate(): string {
