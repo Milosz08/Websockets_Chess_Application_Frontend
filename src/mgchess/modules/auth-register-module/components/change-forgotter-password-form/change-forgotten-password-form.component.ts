@@ -58,8 +58,6 @@ export class ChangeForgottenPasswordFormComponent implements OnInit, OnDestroy {
         SuspenseLoader.CHANGE_FORGOTTER_PASSWORD));
 
     readonly _passwordSAreNotTheSame = ValidatorConstraint.PASSWORDS_ARE_NOT_THE_SAME;
-    readonly _serverReqResHelper: ServerReqResHelper = new ServerReqResHelper();
-    readonly _formHelper: AngularFormsHelper = new AngularFormsHelper();
     readonly _ngUnsubscribe: Subject<void> = new Subject<void>();
 
     //------------------------------------------------------------------------------------------------------------------

@@ -24,7 +24,6 @@ import { Store } from "@ngrx/store";
 import { SignupFormModel } from "../../models/signup-form.model";
 import { BrowserThemeDetector } from "../../../../browster-utils/browser-theme.detector";
 import { AngularFormValidator } from "../../../../validator-helpers/angular-form.validator";
-import { AngularFormsHelper } from "../../../../angular-forms-helpers/angular-forms.helper";
 import { ValidatorPatternConstants } from "../../../../validator-helpers/validator-pattern.constants";
 import { BrowserMetaSerializatorLoader } from "../../../../browser-meta-serialization/browser-meta-serializator.loader";
 import { SingleModuleType, SinglePageType } from "../../../../browser-meta-serialization/browser-meta-serializator.types";
