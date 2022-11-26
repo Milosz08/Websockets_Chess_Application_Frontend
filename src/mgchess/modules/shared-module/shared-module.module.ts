@@ -41,6 +41,7 @@ import { UploadFilesMouseEventsDirective } from "./directives/upload-files-mouse
 import { CloseOutsideClickComponentDirective } from "./directives/close-outside-click-component.directive";
 
 import { InjectCdnUrlPrefixPipe } from "./pipes/inject-cdn-url-prefix.pipe";
+import { FormInputStyleClassPipe } from "./pipes/form-input-style-class.pipe";
 
 import { gfxNgrxStore } from "./ngrx-store/gfx-ngrx-store/gfx.reducer";
 import { sessionNgrxStore } from "./ngrx-store/session-ngrx-store/session.reducer";
@@ -80,6 +81,7 @@ import { CookiesNotificationLocalStorageService } from "./services/cookies-notif
         CloseOutsideClickComponentDirective,
         // pipes
         InjectCdnUrlPrefixPipe,
+        FormInputStyleClassPipe,
     ],
     imports: [
         CommonModule,
@@ -115,6 +117,7 @@ import { CookiesNotificationLocalStorageService } from "./services/cookies-notif
         CloseOutsideClickComponentDirective,
         // pipes
         InjectCdnUrlPrefixPipe,
+        FormInputStyleClassPipe,
     ],
     providers: [
         SessionReqResService,

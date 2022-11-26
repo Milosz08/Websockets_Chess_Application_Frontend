@@ -57,7 +57,7 @@
             </p>
             <p
                 *ngIf="_serverResponse.emailResponse.responseMessage !== ''"
-                [ngClass]="_serverReqResHelper.responseThemeCssClass(_serverResponse.emailResponse.responseError)"
+                [ngClass]="_serverResponse.emailResponse.responseError | formInputStyleClass"
             >
                 {{ _serverResponse.emailResponse.responseMessage }}
             </p>
@@ -109,7 +109,7 @@
             >
                 <p
                     *ngIf="_serverResponse.tokenResponse.responseMessage !== ''"
-                    [ngClass]="_serverReqResHelper.responseThemeCssClass(_serverResponse.tokenResponse.responseError)"
+                    [ngClass]="_serverResponse.tokenResponse.responseError | formInputStyleClass"
                 >
                     {{ _serverResponse.tokenResponse.responseMessage }}
                 </p>

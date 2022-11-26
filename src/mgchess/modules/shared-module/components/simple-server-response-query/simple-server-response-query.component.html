@@ -24,7 +24,7 @@
     *ngIf="_serverResponseMessage !== ''"
     class="simple-server-response-query-jwt__container"
 >
-    <p [ngClass]="[ _serverReqResHelper.responseThemeCssClass(_responseError), 'simple-server-response-query-jwt__text-info' ]">
+    <p [ngClass]="[ _responseError | formInputStyleClass, 'simple-server-response-query-jwt__text-info' ]">
         {{ _serverResponseMessage }}
     </p>
     <ng-content></ng-content>

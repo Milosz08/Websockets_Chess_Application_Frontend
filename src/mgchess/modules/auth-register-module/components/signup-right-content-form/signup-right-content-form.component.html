@@ -39,7 +39,7 @@
     </button>
     <p
         *ngIf="_serverResponse.responseMessage !== ''"
-        [ngClass]="_serverReqResHelper.responseReverseThemeCssClass(_serverResponse.responseError)"
+        [ngClass]="_serverResponse.responseError | formInputStyleClass: 'reversed-themed'"
     >
         {{ _serverResponse.responseMessage }}
     </p>

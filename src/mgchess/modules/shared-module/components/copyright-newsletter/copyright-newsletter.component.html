@@ -89,8 +89,7 @@
         <p
             *ngIf="_serverResponse.responseMessage !== ''"
             [ngClass]="[
-                _serverReqResHelper.responseCssClass(_serverResponse.responseError),
-                'newsletter-response__paragraph'
+                _serverResponse.responseError | formInputStyleClass: 'non-themed', 'newsletter-response__paragraph'
             ]"
         >
             {{ _serverResponse.responseMessage }}

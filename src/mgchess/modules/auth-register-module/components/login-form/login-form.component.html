@@ -80,13 +80,13 @@
     </button>
     <p
         *ngIf="_serverResponse.responseMessage !== '' && _serverResponse.responseError"
-        [ngClass]="_serverResReqHelper.responseReverseThemeCssClass(_serverResponse.responseError)"
+        [ngClass]="_serverResponse.responseError | formInputStyleClass: 'reversed-themed'"
     >
         {{ _serverResponse.responseMessage }}
     </p>
     <p
         *ngIf="_oauth2ServerResponseError !== ''"
-        [ngClass]="_serverResReqHelper.responseReverseThemeCssClass(true)"
+        [ngClass]="true | formInputStyleClass: 'reversed-themed'"
     >
         {{ _oauth2ServerResponseError }}
     </p>

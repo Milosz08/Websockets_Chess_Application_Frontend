@@ -57,7 +57,6 @@ export class ActivateAccountTokenFormComponent implements OnInit, OnDestroy {
         SuspenseLoader.RESEND_ACTIVATE_ACCOUNT_LINK));
     _userEmails$: Observable<Array<string>> = this._store.select(NgrxSelector_ATH.sel_finishSignupUserEmails);
 
-    readonly _serverReqResHelper: ServerReqResHelper = new ServerReqResHelper();
     private _ngUnsubscribe: Subject<void> = new Subject<void>();
 
     //------------------------------------------------------------------------------------------------------------------

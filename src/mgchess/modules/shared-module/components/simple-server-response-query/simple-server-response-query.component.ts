@@ -19,8 +19,6 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 
-import { ServerReqResHelper } from "../../../../http-request-helpers/server-req-res.helper";
-
 //----------------------------------------------------------------------------------------------------------------------
 
 @Component({
@@ -34,8 +32,6 @@ export class SimpleServerResponseQueryComponent implements OnInit {
 
     _serverResponseMessage: string = "";
     _responseError: boolean = false;
-
-    readonly _serverReqResHelper: ServerReqResHelper = new ServerReqResHelper();
 
     //------------------------------------------------------------------------------------------------------------------
 
