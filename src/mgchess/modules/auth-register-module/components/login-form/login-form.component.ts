@@ -25,8 +25,7 @@ import { RxjsHelper } from "../../../../rxjs-helpers/rxjs.helper";
 
 import { LoginFormModel } from "../../models/login-form.model";
 import { SuspenseLoader } from "../../../../models/suspense-loader-res.model";
-import { AngularFormsHelper } from "../../../../angular-forms-helpers/angular-forms.helper";
-import { ServerReqResHelper } from "../../../../http-request-helpers/server-req-res.helper";
+import { NgFormsService } from "../../../shared-module/services/ng-forms.service";
 import { GlobalSuspenseService } from "../../../shared-module/services/global-suspense.service";
 import { SimpleMessageResWithErrorModel } from "../../../../models/simple-message-response.model";
 import { OAuthSupplier } from "../../../../http-request-helpers/oauth2-request-endpoints.contants";
@@ -46,7 +45,7 @@ import * as NgrxSelector_SES from "../../../shared-module/ngrx-store/session-ngr
 @Component({
     selector: "mgchess-login-form",
     templateUrl: "./login-form.component.html",
-    providers: [ ValidatorPatternConstants, FormInputClassesConstants, GlobalSuspenseService ],
+    providers: [ NgFormsService, ValidatorPatternConstants, FormInputClassesConstants, GlobalSuspenseService ],
 })
 export class LoginFormComponent implements OnInit, OnDestroy {
 
@@ -64,6 +63,7 @@ export class LoginFormComponent implements OnInit, OnDestroy {
     //------------------------------------------------------------------------------------------------------------------
 
     constructor(
+        private _ngFormsService: NgFormsService,
         private _regex: ValidatorPatternConstants,
         private _suspenseService: GlobalSuspenseService,
         public _cssConstants: FormInputClassesConstants,
@@ -93,7 +93,7 @@ export class LoginFormComponent implements OnInit, OnDestroy {
     };
 
     handleSubmitCredentialsAndAttemptLoginUser(): void {
-        const req = this._formHelper.extractFormFields<LoginFormModel>(this._loginForm, false);
+        const req = this._ngFormsService.extractFormFields<LoginFormModel>(this._loginForm, false);
         this._store.dispatch(NgrxAction_SES.__attemptToLoginViaLocal({ loginForm: req }));
         this._loginForm.reset(new LoginFormModel("", "", true));
     };

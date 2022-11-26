@@ -24,6 +24,7 @@ import { Observable, Subject, takeUntil } from "rxjs";
 import { RxjsHelper } from "../../../../rxjs-helpers/rxjs.helper";
 
 import { SuspenseLoader } from "../../../../models/suspense-loader-res.model";
+import { NgFormsService } from "../../../shared-module/services/ng-forms.service";
 import { ChangeDescriptionFormModel } from "../../models/change-description-form.model";
 import { UserManipulatorWithGfxReducerType } from "../../../../ngrx-helpers/ngrx-store.types";
 import { SimpleMessageResWithErrorModel } from "../../../../models/simple-message-response.model";
@@ -58,6 +59,7 @@ export class UserChangeAccountDescriptionComponent implements OnInit, OnDestroy 
     //------------------------------------------------------------------------------------------------------------------
 
     constructor(
+        private _ngFormsService: NgFormsService,
         private _store: Store<UserManipulatorWithGfxReducerType>,
         private _reqResService: UserManipulatorHttpReqResService,
     ) {
@@ -98,7 +100,7 @@ export class UserChangeAccountDescriptionComponent implements OnInit, OnDestroy 
     };
 
     handleChangeAccountDescription(): void {
-        const description = AngularFormsHelper.extractFormFields<ChangeDescriptionFormModel>(this._editDescriptionForm, false);
+        const description = this._ngFormsService.extractFormFields<ChangeDescriptionFormModel>(this._editDescriptionForm, false);
         this._store.dispatch(NgrxAction_USM.__attemptToEditUserDescription({ description }));
     };
 

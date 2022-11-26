@@ -24,6 +24,7 @@ import { delay, Subject, takeUntil } from "rxjs";
 import { RxjsHelper } from "../../../../rxjs-helpers/rxjs.helper";
 import { RxjsConstants } from "../../../../rxjs-helpers/rxjs.constants";
 
+import { NgFormsService } from "../../services/ng-forms.service";
 import { NewsletterRequestModel } from "../../models/newsletter-request-response.model";
 import { SimpleMessageResWithErrorModel } from "../../../../models/simple-message-response.model";
 
@@ -36,7 +37,7 @@ import { AddToNewsletterHttpReqResService } from "../../services/add-to-newslett
     selector: "mgchess-copyright-newsletter",
     templateUrl: "./copyright-newsletter.component.html",
     styleUrls: [ "./copyright-newsletter.component.scss" ],
-    providers: [ ValidatorPatternConstants, AddToNewsletterHttpReqResService ],
+    providers: [ NgFormsService, ValidatorPatternConstants, AddToNewsletterHttpReqResService ],
 })
 export class CopyrightNewsletterComponent implements OnDestroy {
 
@@ -52,6 +53,7 @@ export class CopyrightNewsletterComponent implements OnDestroy {
     //------------------------------------------------------------------------------------------------------------------
 
     constructor(
+        private _ngFormsService: NgFormsService,
         private _regex: ValidatorPatternConstants,
         public _httpService: AddToNewsletterHttpReqResService,
     ) {
@@ -74,7 +76,7 @@ export class CopyrightNewsletterComponent implements OnDestroy {
 
     handleSubmitNewsletterEmail(): void {
         this._suspenseActive = true;
-        const request = this._formHelper.extractFormFields<NewsletterRequestModel>(this._newsletterForm);
+        const request = this._ngFormsService.extractFormFields<NewsletterRequestModel>(this._newsletterForm);
         this._httpService.addEmailToNewsletter(request)
             .pipe(
                 takeUntil(this._ngUnsubscribe),

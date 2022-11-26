@@ -25,8 +25,7 @@ import { RxjsHelper } from "../../../../rxjs-helpers/rxjs.helper";
 
 import { SuspenseLoader } from "../../../../models/suspense-loader-res.model";
 import { FinishSignupFormModel } from "../../models/finish-signup-form.model";
-import { ServerReqResHelper } from "../../../../http-request-helpers/server-req-res.helper";
-import { AngularFormsHelper } from "../../../../angular-forms-helpers/angular-forms.helper";
+import { NgFormsService } from "../../../shared-module/services/ng-forms.service";
 import { SimpleMessageResWithErrorModel } from "../../../../models/simple-message-response.model";
 
 import { AuthReducerType } from "../../../../ngrx-helpers/ngrx-store.types";
@@ -39,6 +38,7 @@ import * as NgrxSelector_GFX from "../../../shared-module/ngrx-store/gfx-ngrx-st
 @Component({
     selector: "mgchess-finish-signup-form",
     templateUrl: "./finish-signup-form.component.html",
+    providers: [ NgFormsService ],
 })
 export class FinishSignupFormComponent implements OnInit, OnDestroy {
 
@@ -53,6 +53,7 @@ export class FinishSignupFormComponent implements OnInit, OnDestroy {
 
     constructor(
         private _store: Store<AuthReducerType>,
+        private _ngFormsService: NgFormsService,
     ) {
         this._finishSignupForm = new FormGroup({
             gender: new FormControl(null, [ Validators.required ]),
@@ -77,7 +78,7 @@ export class FinishSignupFormComponent implements OnInit, OnDestroy {
     };
 
     handleSubmitSignupUserDetailsForm(): void {
-        const req = this._formHelper.extractFormFields<FinishSignupFormModel>(this._finishSignupForm, false);
+        const req = this._ngFormsService.extractFormFields<FinishSignupFormModel>(this._finishSignupForm, false);
         this._store.dispatch(NgrxAction_ATH.__attemptToFinishSignupViaOAuth2({ finishSignupForm: req }));
         this._finishSignupForm.reset(FinishSignupFormModel.getDefaultValues());
     };

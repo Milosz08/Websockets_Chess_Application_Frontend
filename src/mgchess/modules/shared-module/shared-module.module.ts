@@ -53,6 +53,7 @@ import { LoginEffects } from "./ngrx-store/session-ngrx-store/ngrx-effects/login
 import { LoginHelperEffects } from "./ngrx-store/session-ngrx-store/ngrx-effects/login-helper.effects";
 import { ResendEmailGfxEffects } from "./ngrx-store/gfx-ngrx-store/ngrx-effects/resend-email-gfx.effects";
 
+import { NgFormsService } from "./services/ng-forms.service";
 import { SessionReqResService } from "./services/session-req-res.service";
 import { GlobalSuspenseService } from "./services/global-suspense.service";
 import { UserRememberStorageService } from "./services/user-remember-storage.service";
@@ -126,6 +127,7 @@ import { CookiesNotificationLocalStorageService } from "./services/cookies-notif
         FormInputStyleClassPipe,
     ],
     providers: [
+        NgFormsService,
         SessionReqResService,
         GlobalSuspenseService,
         UserRememberStorageService,

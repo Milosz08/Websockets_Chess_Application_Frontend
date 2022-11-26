@@ -24,8 +24,7 @@ import { Observable, Subject } from "rxjs";
 import { RxjsHelper } from "../../../../rxjs-helpers/rxjs.helper";
 
 import { SuspenseLoader } from "../../../../models/suspense-loader-res.model";
-import { AngularFormsHelper } from "../../../../angular-forms-helpers/angular-forms.helper";
-import { ServerReqResHelper } from "../../../../http-request-helpers/server-req-res.helper";
+import { NgFormsService } from "../../../shared-module/services/ng-forms.service";
 import { ValidatorPatternConstants } from "../../../../validator-helpers/validator-pattern.constants";
 
 import { NewsletterReducerType } from "../../../../ngrx-helpers/ngrx-store.types";
@@ -47,7 +46,7 @@ import {
     templateUrl: "./unsubscribe-newsletter-form.component.html",
     styleUrls: [ "./unsubscribe-newsletter-form.component.scss" ],
     host: { class: "mgchess__flex-safety-container" },
-    providers: [ ValidatorPatternConstants ],
+    providers: [ NgFormsService, ValidatorPatternConstants ],
 })
 export class UnsubscribeNewsletterFormComponent implements OnInit, OnDestroy {
 
@@ -72,6 +71,7 @@ export class UnsubscribeNewsletterFormComponent implements OnInit, OnDestroy {
     //------------------------------------------------------------------------------------------------------------------
 
     constructor(
+        private _ngFormsService: NgFormsService,
         private _regex: ValidatorPatternConstants,
         private _store: Store<NewsletterReducerType>,
     ) {
@@ -106,13 +106,13 @@ export class UnsubscribeNewsletterFormComponent implements OnInit, OnDestroy {
     };
 
     handleAttemptToUnusubscribe(): void {
-        const emailReq = AngularFormsHelper.extractFormFields<UnsubscribeNewsletterEmailReq>(this._unsubscribeEmailForm);
+        const emailReq = this._ngFormsService.extractFormFields<UnsubscribeNewsletterEmailReq>(this._unsubscribeEmailForm);
         this._userEmail = emailReq.emailAddress;
         this._store.dispatch(NgrxAction_NWL.__attemptToUnsubscribeNewsletter({ emailReq }));
     };
 
     handleSendTokenAndUnsubscribe(): void {
-        const tokenReq = AngularFormsHelper.extractFormFields<UnsubscribeNewsletterViaOtaReq>(this._unsubscribeTokenForm);
+        const tokenReq = this._ngFormsService.extractFormFields<UnsubscribeNewsletterViaOtaReq>(this._unsubscribeTokenForm);
         this._store.dispatch(NgrxAction_NWL.__unsubscribeNewsletter({ tokenReq }));
     };
 

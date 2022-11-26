@@ -24,8 +24,7 @@ import { Observable, Subject } from "rxjs";
 import { RxjsHelper } from "../../../../rxjs-helpers/rxjs.helper";
 
 import { SuspenseLoader } from "../../../../models/suspense-loader-res.model";
-import { ServerReqResHelper } from "../../../../http-request-helpers/server-req-res.helper";
-import { AngularFormsHelper } from "../../../../angular-forms-helpers/angular-forms.helper";
+import { NgFormsService } from "../../../shared-module/services/ng-forms.service";
 import { FormInputClassesConstants } from "../../../../misc-constants/form-input-classes.constants";
 import { ValidatorPatternConstants } from "../../../../validator-helpers/validator-pattern.constants";
 import { AngularFormValidator, ValidatorConstraint } from "../../../../validator-helpers/angular-form.validator";
@@ -44,7 +43,7 @@ import * as NgrxSelector_CPA from "../../ngrx-store/change-password-ngrx-store/c
 @Component({
     selector: "mgchess-change-forgotten-password-form",
     templateUrl: "./change-forgotten-password-form.component.html",
-    providers: [ AngularFormValidator, ValidatorPatternConstants, FormInputClassesConstants ],
+    providers: [ NgFormsService, AngularFormValidator, ValidatorPatternConstants, FormInputClassesConstants ],
 })
 export class ChangeForgottenPasswordFormComponent implements OnInit, OnDestroy {
 
@@ -63,6 +62,7 @@ export class ChangeForgottenPasswordFormComponent implements OnInit, OnDestroy {
     //------------------------------------------------------------------------------------------------------------------
 
     constructor(
+        private _ngFormsService: NgFormsService,
         private _validator: AngularFormValidator,
         private _regex: ValidatorPatternConstants,
         public _cssConstants: FormInputClassesConstants,
@@ -95,7 +95,7 @@ export class ChangeForgottenPasswordFormComponent implements OnInit, OnDestroy {
     };
 
     handleSubmitChangedForgotterPassword(): void {
-        const req = AngularFormsHelper.extractFormFields<ChangeForgottenPasswordReqModel>(this._renewPasswordForm, true);
+        const req = this._ngFormsService.extractFormFields<ChangeForgottenPasswordReqModel>(this._renewPasswordForm, true);
         this._store.dispatch(NgrxAction_CPA.__attemptToChangeForgottenPassword({
             credentials: req, jwtToken: this._bearerToken }));
     };

@@ -22,6 +22,7 @@ import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { Store } from "@ngrx/store";
 
 import { SignupFormModel } from "../../models/signup-form.model";
+import { NgFormsService } from "../../../shared-module/services/ng-forms.service";
 import { BrowserThemeDetector } from "../../../../browster-utils/browser-theme.detector";
 import { AngularFormValidator } from "../../../../validator-helpers/angular-form.validator";
 import { ValidatorPatternConstants } from "../../../../validator-helpers/validator-pattern.constants";
@@ -38,7 +39,7 @@ import * as NgrxAction_ATH from "../../ngrx-store/auth-ngrx-store/auth.actions";
     templateUrl: "./sing-up-page.component.html",
     styleUrls: [ "./sing-up-page.component.scss" ],
     host: { class: "mg-chess__flex-safety-container remove-margin__small-devices" },
-    providers: [ AngularFormValidator, ValidatorPatternConstants ],
+    providers: [ AngularFormValidator, ValidatorPatternConstants, NgFormsService ],
 })
 export class SingUpPageComponent extends BrowserMetaSerializatorLoader {
 
@@ -50,6 +51,7 @@ export class SingUpPageComponent extends BrowserMetaSerializatorLoader {
         private _metaService: Meta,
         private _titleService: Title,
         private _store: Store<AuthReducerType>,
+        private _ngFormsService: NgFormsService,
         private _validator: AngularFormValidator,
         private _regex: ValidatorPatternConstants,
     ) {
@@ -82,7 +84,7 @@ export class SingUpPageComponent extends BrowserMetaSerializatorLoader {
     };
 
     handleSubmitRegisterFormData(): void {
-        const req = this._formHelper.extractFormFields<SignupFormModel>(this._signupForm, false);
+        const req = this._ngFormsService.extractFormFields<SignupFormModel>(this._signupForm, false);
         this._store.dispatch(NgrxAction_ATH.__attemptToSingUpViaLocal({ signupForm: req }));
         this._signupForm.reset(SignupFormModel.getDefaultValues());
     };
