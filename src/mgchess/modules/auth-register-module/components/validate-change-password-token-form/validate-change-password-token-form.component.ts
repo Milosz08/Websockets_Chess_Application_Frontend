@@ -56,8 +56,6 @@ export class ValidateChangePasswordTokenFormComponent implements OnInit, OnDestr
     _suspenseLoader$: Observable<boolean> = this._store.select(NgrxSelector_GFX.getCurrActiveSuspense(
         SuspenseLoader.VALIDATE_OTA_TOKEN_CHANGE_PASSWORD));
 
-    readonly _serverReqResHelper: ServerReqResHelper = new ServerReqResHelper();
-    readonly _formHelper: AngularFormsHelper = new AngularFormsHelper();
     private _ngUnsubscribe: Subject<void> = new Subject<void>();
 
     //------------------------------------------------------------------------------------------------------------------

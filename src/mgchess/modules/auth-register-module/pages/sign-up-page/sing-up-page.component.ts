@@ -45,8 +45,6 @@ export class SingUpPageComponent extends BrowserMetaSerializatorLoader {
 
     _signupForm: FormGroup;
 
-    readonly _formHelper: AngularFormsHelper = new AngularFormsHelper();
-
     //------------------------------------------------------------------------------------------------------------------
 
     constructor(

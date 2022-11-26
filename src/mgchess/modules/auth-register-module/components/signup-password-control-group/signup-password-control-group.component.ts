@@ -24,7 +24,6 @@ import { Subject } from "rxjs";
 import { RxjsHelper } from "../../../../rxjs-helpers/rxjs.helper";
 
 import { ValidatorConstraint } from "../../../../validator-helpers/angular-form.validator";
-import { AngularFormsHelper } from "../../../../angular-forms-helpers/angular-forms.helper";
 import { FormInputClassesConstants } from "../../../../misc-constants/form-input-classes.constants";
 import { PasswordStrengthMeterService } from "../../services/password-strength-meter.service";
 
@@ -44,8 +43,6 @@ export class SignupPasswordControlGroupComponent implements OnInit, OnDestroy {
     @Input() _formData!: FormGroup;
 
     _serverResponseIsEmpty!: boolean;
-
-    readonly _formHelper: AngularFormsHelper = new AngularFormsHelper();
     readonly _passwordSAreNotTheSame = ValidatorConstraint.PASSWORDS_ARE_NOT_THE_SAME;
 
     private _ngUnsubscribe: Subject<void> = new Subject<void>();

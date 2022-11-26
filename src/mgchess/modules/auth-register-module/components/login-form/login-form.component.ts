@@ -59,9 +59,6 @@ export class LoginFormComponent implements OnInit, OnDestroy {
     _suspenseLoader$: Observable<boolean> = this._store.select(NgrxSelector_GFX.getCurrActiveSuspense(
         SuspenseLoader.ATTEMPT_LOGIN_VIA_LOCAL));
 
-    readonly _formHelper: AngularFormsHelper = new AngularFormsHelper();
-    readonly _serverResReqHelper: ServerReqResHelper = new ServerReqResHelper();
-
     private _ngUnsubscribe: Subject<void> = new Subject<void>();
 
     //------------------------------------------------------------------------------------------------------------------

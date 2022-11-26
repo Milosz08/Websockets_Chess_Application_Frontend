@@ -24,8 +24,6 @@ import { Observable, Subject } from "rxjs";
 import { RxjsHelper } from "../../../../rxjs-helpers/rxjs.helper";
 
 import { SuspenseLoader } from "../../../../models/suspense-loader-res.model";
-import { AngularFormsHelper } from "../../../../angular-forms-helpers/angular-forms.helper";
-import { ServerReqResHelper } from "../../../../http-request-helpers/server-req-res.helper";
 import { SimpleMessageResWithErrorModel } from "../../../../models/simple-message-response.model";
 
 import { AuthReducerType } from "../../../../ngrx-helpers/ngrx-store.types";
@@ -45,9 +43,6 @@ export class SignupRightContentFormComponent implements OnInit, OnDestroy {
     _serverResponse!: SimpleMessageResWithErrorModel;
     _suspenseLoader$: Observable<boolean> = this._store.select(NgrxSelector_GFX.getCurrActiveSuspense(
         SuspenseLoader.ATTEMPT_SIGNUP_VIA_LOCAL));
-
-    readonly _formHelper: AngularFormsHelper = new AngularFormsHelper();
-    readonly _serverReqResHelper: ServerReqResHelper = new ServerReqResHelper();
 
     private _ngUnsubscribe: Subject<void> = new Subject<void>();
 

@@ -20,7 +20,6 @@ import { Component, EventEmitter, Input, Output } from "@angular/core";
 import { FormGroup } from "@angular/forms";
 
 import { FormInputClassesModel } from "../../../../models/form-input-classes.model";
-import { AngularFormsHelper } from "../../../../angular-forms-helpers/angular-forms.helper";
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -31,7 +30,6 @@ import { AngularFormsHelper } from "../../../../angular-forms-helpers/angular-fo
 export class PasswordInputComponent {
 
     _isFieldContentVisible: boolean = false;
-    readonly _formHelper: AngularFormsHelper = new AngularFormsHelper();
 
     @Input() _form!: FormGroup;
     @Input() _topInfoLabel: string = "";

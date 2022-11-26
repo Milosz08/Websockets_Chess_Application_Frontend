@@ -25,7 +25,6 @@ import { RxjsHelper } from "../../../../rxjs-helpers/rxjs.helper";
 
 import { StaticDataReqResService } from "../../services/static-data-req-res.service";
 import { StaticCalendarDataResModel } from "../../models/static-calendar-data-res.model";
-import { AngularFormsHelper } from "../../../../angular-forms-helpers/angular-forms.helper";
 import { FormInputClassesConstants } from "../../../../misc-constants/form-input-classes.constants";
 
 import { AuthReducerType } from "../../../../ngrx-helpers/ngrx-store.types";
@@ -47,7 +46,6 @@ export class SignupFormBirthdayControlGroupComponent implements OnInit, OnDestro
     _staticCalendarData!: StaticCalendarDataResModel;
     _serverResponseIsEmpty!: boolean;
 
-    readonly _formHelper: AngularFormsHelper = new AngularFormsHelper();
     private _ngUnsubscribe: Subject<void> = new Subject<void>();
 
     //------------------------------------------------------------------------------------------------------------------

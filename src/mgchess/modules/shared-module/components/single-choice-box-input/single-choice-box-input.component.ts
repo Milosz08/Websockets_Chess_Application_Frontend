@@ -45,7 +45,6 @@ export class SingleChoiceBoxInputComponent implements OnChanges, OnDestroy {
     @Output() _emitClearServerResponse: EventEmitter<void> = new EventEmitter<void>();
 
     private _ngUnsubsribe: Subject<void> = new Subject<void>();
-    readonly _formHelper: AngularFormsHelper = new AngularFormsHelper();
 
     _isVisible: boolean = false;
     _initialLabelText: string = "";

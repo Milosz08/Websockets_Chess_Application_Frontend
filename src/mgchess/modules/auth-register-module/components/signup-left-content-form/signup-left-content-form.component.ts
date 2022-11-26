@@ -20,7 +20,6 @@ import { Component, Input } from "@angular/core";
 import { FormGroup } from "@angular/forms";
 
 import { ValidatorConstraint } from "../../../../validator-helpers/angular-form.validator";
-import { AngularFormsHelper } from "../../../../angular-forms-helpers/angular-forms.helper";
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -33,8 +32,6 @@ export class SignupLeftContentFormComponent {
     @Input() _signupForm!: FormGroup;
 
     _secondEmailInputVisibility: boolean = false;
-
-    readonly _formHelper: AngularFormsHelper = new AngularFormsHelper();
     readonly _emailAddressesAreTheSame = ValidatorConstraint.EMAIL_ADDRESSES_ARE_THE_SAME;
 
     //------------------------------------------------------------------------------------------------------------------

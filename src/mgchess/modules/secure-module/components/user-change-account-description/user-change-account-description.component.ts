@@ -25,8 +25,6 @@ import { RxjsHelper } from "../../../../rxjs-helpers/rxjs.helper";
 
 import { SuspenseLoader } from "../../../../models/suspense-loader-res.model";
 import { ChangeDescriptionFormModel } from "../../models/change-description-form.model";
-import { AngularFormsHelper } from "../../../../angular-forms-helpers/angular-forms.helper";
-import { ServerReqResHelper } from "../../../../http-request-helpers/server-req-res.helper";
 import { UserManipulatorWithGfxReducerType } from "../../../../ngrx-helpers/ngrx-store.types";
 import { SimpleMessageResWithErrorModel } from "../../../../models/simple-message-response.model";
 import { UserManipulatorHttpReqResService } from "../../services/user-manipulator-http-req-res.service";
@@ -55,9 +53,6 @@ export class UserChangeAccountDescriptionComponent implements OnInit, OnDestroy 
     _serverResponse: SimpleMessageResWithErrorModel = new SimpleMessageResWithErrorModel("", false);
 
     readonly _maxTextareaLenght: number = 2000;
-    readonly _formHelper: AngularFormsHelper = new AngularFormsHelper();
-    readonly _serverReqResHelper: ServerReqResHelper = new ServerReqResHelper();
-
     private _ngUnsubscribe: Subject<void> = new Subject<void>();
 
     //------------------------------------------------------------------------------------------------------------------

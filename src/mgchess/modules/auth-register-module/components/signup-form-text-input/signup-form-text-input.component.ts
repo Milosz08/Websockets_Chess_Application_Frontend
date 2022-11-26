@@ -23,8 +23,6 @@ import { Store } from "@ngrx/store";
 import { Subject } from "rxjs";
 import { RxjsHelper } from "../../../../rxjs-helpers/rxjs.helper";
 
-import { AngularFormsHelper } from "../../../../angular-forms-helpers/angular-forms.helper";
-
 import { AuthReducerType } from "../../../../ngrx-helpers/ngrx-store.types";
 import * as NgrxAction_ATH from "../../ngrx-store/auth-ngrx-store/auth.actions";
 import * as NgrxSelector_ATH from "../../ngrx-store/auth-ngrx-store/auth.selectors";
@@ -45,8 +43,6 @@ export class SignupFormTextInputComponent implements OnInit, OnDestroy {
     @Input() _controlErrorText: string = "";
 
     _serverResponseIsEmpty!: boolean;
-
-    readonly _formHelper: AngularFormsHelper = new AngularFormsHelper();
     private _ngUnsubscribe: Subject<void> = new Subject<void>();
 
     //------------------------------------------------------------------------------------------------------------------

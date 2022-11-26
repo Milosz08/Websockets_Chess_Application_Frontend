@@ -23,7 +23,6 @@ import { Store } from "@ngrx/store";
 import { Subject, takeUntil } from "rxjs";
 import { RxjsHelper } from "../../../../rxjs-helpers/rxjs.helper";
 
-import { AngularFormsHelper } from "../../../../angular-forms-helpers/angular-forms.helper";
 import { PasswordStrength, PasswordStrengthMeterService } from "../../services/password-strength-meter.service";
 
 import { AuthReducerType } from "../../../../ngrx-helpers/ngrx-store.types";
@@ -40,8 +39,6 @@ export class PasswordStrengthMeterComponent implements OnChanges, OnDestroy {
     @Input() _formData!: FormGroup;
 
     _passwordScore: PasswordStrength = new PasswordStrength(0, "none");
-
-    readonly _formHelper: AngularFormsHelper = new AngularFormsHelper();
     private _ngUnsubscribe: Subject<void> = new Subject<void>();
 
     //------------------------------------------------------------------------------------------------------------------

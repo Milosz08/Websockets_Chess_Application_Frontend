@@ -47,9 +47,6 @@ export class FinishSignupFormComponent implements OnInit, OnDestroy {
     _suspenseLoader$: Observable<boolean> = this._store.select(NgrxSelector_GFX.getCurrActiveSuspense(
         SuspenseLoader.FINISH_SIGNUP_VIA_OAUTH2));
 
-    readonly _formHelper: AngularFormsHelper = new AngularFormsHelper();
-    readonly _serverReqResHelper: ServerReqResHelper = new ServerReqResHelper();
-
     private _ngUnsubscribe: Subject<void> = new Subject<void>();
 
     //------------------------------------------------------------------------------------------------------------------
