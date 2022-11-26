@@ -18,7 +18,6 @@
 
 import { Component, HostListener, OnDestroy } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
-import * as moment from "moment";
 
 import { delay, Subject, takeUntil } from "rxjs";
 import { RxjsHelper } from "../../../../rxjs-helpers/rxjs.helper";
@@ -45,9 +44,6 @@ export class CopyrightNewsletterComponent implements OnDestroy {
     _suspenseActive: boolean = false;
 
     readonly _newsletterForm: FormGroup;
-    readonly _initialYear: number = 2022;
-    readonly _currYear: number = moment().year();
-
     private _ngUnsubscribe: Subject<void> = new Subject<void>();
 
     //------------------------------------------------------------------------------------------------------------------
@@ -71,10 +67,6 @@ export class CopyrightNewsletterComponent implements OnDestroy {
             this._serverResponse.responseMessage = "";
             this._serverResponse.responseError = false;
         }
-    };
-
-    copyYearsConcate(): string {
-        return this._currYear > this._initialYear ? `${this._initialYear} - ${this._currYear}` : String(this._currYear);
     };
 
     handleSubmitNewsletterEmail(): void {

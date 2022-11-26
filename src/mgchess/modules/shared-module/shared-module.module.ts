@@ -40,6 +40,7 @@ import { UserBannerWithAvatarAccountComponent } from "./components/user-banner-w
 import { UploadFilesMouseEventsDirective } from "./directives/upload-files-mouse-events.directive";
 import { CloseOutsideClickComponentDirective } from "./directives/close-outside-click-component.directive";
 
+import { FormatYearFromToPipe } from "./pipes/format-year-from-to.pipe";
 import { FormInputHasErrorsPipe } from "./pipes/form-input-has-errors.pipe";
 import { FormHasCustomErrorPipe } from "./pipes/form-has-custom-error.pipe";
 import { InjectCdnUrlPrefixPipe } from "./pipes/inject-cdn-url-prefix.pipe";
@@ -83,6 +84,7 @@ import { CookiesNotificationLocalStorageService } from "./services/cookies-notif
         UploadFilesMouseEventsDirective,
         CloseOutsideClickComponentDirective,
         // pipes
+        FormatYearFromToPipe,
         FormInputHasErrorsPipe,
         FormHasCustomErrorPipe,
         InjectCdnUrlPrefixPipe,
