@@ -55,7 +55,7 @@ export class PasswordStrengthMeterComponent implements OnChanges, OnDestroy {
     //------------------------------------------------------------------------------------------------------------------
 
     ngOnChanges(): void {
-        this._formHelper.field("password", this._formData).valueChanges.pipe(takeUntil(this._ngUnsubscribe))
+        this._formData.get("password")!.valueChanges.pipe(takeUntil(this._ngUnsubscribe))
             .subscribe(data => {
                 if (!Boolean(data)) {
                     this._passwordScore = new PasswordStrength(0, "none");

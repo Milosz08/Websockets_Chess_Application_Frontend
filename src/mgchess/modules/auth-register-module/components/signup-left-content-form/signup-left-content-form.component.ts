@@ -41,6 +41,6 @@ export class SignupLeftContentFormComponent {
 
     handleToggleSecondEmailInputVisibility(): void {
         this._secondEmailInputVisibility = !this._secondEmailInputVisibility;
-        this._formHelper.field("secondEmailAddress", this._signupForm).setValue("");
+        this._signupForm.get("secondEmailAddress")!.setValue("");
     };
 }

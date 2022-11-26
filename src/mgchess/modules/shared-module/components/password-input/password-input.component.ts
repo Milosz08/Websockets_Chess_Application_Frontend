@@ -47,14 +47,14 @@ export class PasswordInputComponent {
     //------------------------------------------------------------------------------------------------------------------
 
     handleDisposeDefaultState(): void {
-        if (this._formHelper.field(this._formControlName, this._form).value === "") {
+        if (this._form.get(this._formControlName)!.value === "") {
             this._isFieldContentVisible = false;
         }
         this._emitCleanErrors.emit();
     };
 
     handleToggleInputVisibility(): void {
-        if (this._formHelper.field(this._formControlName, this._form).value !== "") {
+        if (this._form.get(this._formControlName)!.value !== "") {
             this._isFieldContentVisible = !this._isFieldContentVisible;
         }
     };

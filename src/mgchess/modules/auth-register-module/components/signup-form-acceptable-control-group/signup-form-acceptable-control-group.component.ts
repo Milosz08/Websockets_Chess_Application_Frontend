@@ -58,8 +58,8 @@ export class SignupFormAcceptableControlGroupComponent implements OnInit, OnDest
     //------------------------------------------------------------------------------------------------------------------
 
     ngOnInit(): void {
-        this._hasPrivacyPolicyAccept = this._formHelper.field("hasPrivacyPolicyAccept", this._signupForm);
-        this._hasNewsletterAccept = this._formHelper.field("hasNewsletterAccept", this._signupForm);
+        this._hasPrivacyPolicyAccept = this._signupForm.get("hasPrivacyPolicyAccept")!;
+        this._hasNewsletterAccept = this._signupForm.get("hasNewsletterAccept")!;
         RxjsHelper.subscribeData(this._store, NgrxSelector_ATH.sel_serverResponseIsEmpty, this._ngUnsubscribe,
                 data => this._serverResponseIsEmpty = data);
     };

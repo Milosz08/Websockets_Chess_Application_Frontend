@@ -40,6 +40,8 @@ import { UserBannerWithAvatarAccountComponent } from "./components/user-banner-w
 import { UploadFilesMouseEventsDirective } from "./directives/upload-files-mouse-events.directive";
 import { CloseOutsideClickComponentDirective } from "./directives/close-outside-click-component.directive";
 
+import { FormInputHasErrorsPipe } from "./pipes/form-input-has-errors.pipe";
+import { FormHasCustomErrorPipe } from "./pipes/form-has-custom-error.pipe";
 import { InjectCdnUrlPrefixPipe } from "./pipes/inject-cdn-url-prefix.pipe";
 import { FormInputStyleClassPipe } from "./pipes/form-input-style-class.pipe";
 
@@ -80,6 +82,8 @@ import { CookiesNotificationLocalStorageService } from "./services/cookies-notif
         UploadFilesMouseEventsDirective,
         CloseOutsideClickComponentDirective,
         // pipes
+        FormInputHasErrorsPipe,
+        FormHasCustomErrorPipe,
         InjectCdnUrlPrefixPipe,
         FormInputStyleClassPipe,
     ],
@@ -116,6 +120,8 @@ import { CookiesNotificationLocalStorageService } from "./services/cookies-notif
         UploadFilesMouseEventsDirective,
         CloseOutsideClickComponentDirective,
         // pipes
+        FormInputHasErrorsPipe,
+        FormHasCustomErrorPipe,
         InjectCdnUrlPrefixPipe,
         FormInputStyleClassPipe,
     ],

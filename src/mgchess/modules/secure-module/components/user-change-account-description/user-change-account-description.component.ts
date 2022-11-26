@@ -109,6 +109,6 @@ export class UserChangeAccountDescriptionComponent implements OnInit, OnDestroy 
 
     private clearTextarea(): void {
         this._charactersCount = 0;
-        AngularFormsHelper.field("description", this._editDescriptionForm).setValue("");
+        this._editDescriptionForm.get("description")!.setValue("");
     };
 }

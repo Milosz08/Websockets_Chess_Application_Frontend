@@ -85,7 +85,7 @@ export class ActivateAccountTokenFormComponent implements OnInit, OnDestroy {
     };
 
     handleSubmitActivateAccountViaOtaToken(): void {
-        const token = AngularFormsHelper.field("otaToken", this._activateTokenForm).value;
+        const token = this._activateTokenForm.get("otaToken")!.value;
         this._store.dispatch(NgrxAction_ATH.__attemptToActivateAccountViaOta({ token }));
         this._activateTokenForm.reset();
     };

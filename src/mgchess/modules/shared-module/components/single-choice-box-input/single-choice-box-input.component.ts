@@ -67,7 +67,7 @@ export class SingleChoiceBoxInputComponent implements OnChanges, OnDestroy {
     };
 
     synchronizedDataWithForm(): void {
-        const field = this._formHelper.field(this._formControlName, this._formGroup);
+        const field = this._formGroup.get(this._formControlName)!;
         field.valueChanges.pipe(takeUntil(this._ngUnsubsribe)).subscribe(fieldData => {
             if (fieldData === null) this._selectedItemName = this._initialLabelText;
         });
@@ -83,13 +83,8 @@ export class SingleChoiceBoxInputComponent implements OnChanges, OnDestroy {
 
     handleFilledUpWithClickedComboBoxData(clickedItem: SimpleDataTupleModel<TupleIdType>): void {
         this._selectedItemName = clickedItem.value;
-        this._formHelper.field(this._formControlName, this._formGroup).patchValue(clickedItem.id);
+        this._formGroup.get(this._formControlName)!.patchValue(clickedItem.id);
         this._isVisible = false;
         this._emitClearServerResponse.emit();
-    };
-
-    get __fieldHasErrors(): boolean {
-        return this._formHelper.field(this._formControlName, this._formGroup).value !== null
-            && this._selectedItemName === this._initialLabelText;
     };
 }

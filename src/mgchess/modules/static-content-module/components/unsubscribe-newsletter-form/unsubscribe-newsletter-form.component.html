@@ -50,7 +50,7 @@
                 class="mg-chess__standard-form-input-primary-color"
             />
             <p
-                *ngIf="_formHelper.fieldHasAnyErrors('emailAddress', _unsubscribeEmailForm)"
+                *ngIf="_unsubscribeEmailForm | formInputHasErrors: 'emailAddress'"
                 class="mg-chess__form-data-paragraph paragraph--error-theme-change"
             >
                 Please enter valid email address.

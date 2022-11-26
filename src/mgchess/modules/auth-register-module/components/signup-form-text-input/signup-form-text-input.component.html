@@ -35,7 +35,7 @@
         class="mg-chess__standard-form-input-primary-color input--secondary-color"
     />
     <p
-        *ngIf="_formHelper.fieldHasAnyErrors(_formControlName, _singupForm)"
+        *ngIf="_singupForm | formInputHasErrors: _formControlName"
         class="mg-chess__form-data-paragraph paragraph--error-reverse-theme-change"
     >
         {{ _controlErrorText }}

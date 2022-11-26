@@ -81,7 +81,7 @@ export class ForgotPasswordNicknameEmailFormComponent implements OnInit, OnDestr
     };
 
     handleSubmitAttemptToChangePassword(): void {
-        const usernameEmail = AngularFormsHelper.field("nicknameEmail", this._attemptToChangePasswordForm).value;
+        const usernameEmail = this._attemptToChangePasswordForm.get("nicknameEmail")!.value;
         this._store.dispatch(NgrxAction_CPA.__attemptToSendRequestToChangePassword({ usernameEmail }));
         this._attemptToChangePasswordForm.reset();
     };

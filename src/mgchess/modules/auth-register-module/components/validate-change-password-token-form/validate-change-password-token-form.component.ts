@@ -91,7 +91,7 @@ export class ValidateChangePasswordTokenFormComponent implements OnInit, OnDestr
     };
 
     handleSubmitValidateOtaTokenForChangePassword(): void {
-        const req = AngularFormsHelper.field("otaToken", this._validateTokenForm).value;
+        const req = this._validateTokenForm.get("otaToken")!.value;
         this._store.dispatch(NgrxAction_CPA.__attemptToValidateChangePasswordViaOta({ otaToken: req }));
     };
 

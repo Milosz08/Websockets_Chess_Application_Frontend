@@ -35,7 +35,7 @@
             class="mg-chess__standard-form-input-primary-color input--secondary-color"
         />
         <p
-            *ngIf="_formHelper.fieldHasAnyErrors('usernameEmail', _loginForm)"
+            *ngIf="_loginForm | formInputHasErrors: 'usernameEmail'"
             class="mg-chess__form-data-paragraph paragraph--error-reverse-theme-change"
         >
             Please enter username/email address.

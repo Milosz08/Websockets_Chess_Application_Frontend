@@ -75,7 +75,7 @@
         _controlErrorText="Please enter valid second email address."
     >
         <p
-            *ngIf="_formHelper.checkCustomError(_signupForm, _emailAddressesAreTheSame)"
+            *ngIf="_signupForm | formHasCustomError: _emailAddressesAreTheSame"
             class="mg-chess__form-data-paragraph paragraph--error-reverse-theme-change"
         >
             The second email address cannot be the same as the first one.
