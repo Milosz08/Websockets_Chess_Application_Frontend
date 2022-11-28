@@ -19,6 +19,9 @@
 import { Component } from "@angular/core";
 import { Meta, Title } from "@angular/platform-browser";
 
+import { NavigationLinksWithIconsModel } from "../../../../models/navigation-links-with-icons.model";
+import * as NAVIGATION_LINKS from "../../../../../assets/static-data/secure-account-settings-navigation-links.json";
+
 import { BrowserMetaSerializatorLoader } from "../../../../browser-meta-serialization/browser-meta-serializator.loader";
 import { SingleModuleType, SinglePageType } from "../../../../browser-meta-serialization/browser-meta-serializator.types";
 
@@ -31,10 +34,13 @@ import { SingleModuleType, SinglePageType } from "../../../../browser-meta-seria
 })
 export class MyAccountSettingsPageComponent extends BrowserMetaSerializatorLoader {
 
+    readonly _navigationLinks: Array<NavigationLinksWithIconsModel>;
+
     constructor(
         private _metaService: Meta,
         private _titleService: Title,
     ) {
         super(_titleService, _metaService, SingleModuleType.SECURED_MODULE, SinglePageType.MY_ACCOUNT_SETTINGS_PAGE);
+        this._navigationLinks = (NAVIGATION_LINKS as any).default;
     };
 }

@@ -15,3 +15,74 @@
  * THE ABOVE COPYRIGHT NOTICE AND THIS PERMISSION NOTICE SHALL BE INCLUDED IN ALL
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
+
+:host {
+    width: 100%;
+}
+
+.account-settings-page__container {
+    display: flex;
+    .account-settings-page__left-navigation-container {
+        margin-right: 10px;
+    }
+    .account-settings-page__router-outlet-container {
+        flex-grow: 1;
+        border: 1px solid var(--secondary-tint-color);
+        border-radius: var(--standard-modal-border-radius);
+        padding: 30px;
+    }
+}
+
+.account-settings-page__navigation-link {
+    margin: 15px 0;
+}
+
+.account-settings-page__navigation-anchor {
+    display: flex;
+    align-items: center;
+    margin: 0 20px;
+    padding: 0 15px;
+    min-height: 40px;
+    &.current-path--active {
+        background-color: var(--button-primary-mixed-background-color);
+        color: var(--discrete-modal-background);
+        border-radius: var(--standard-buttons-gfx-borders);
+        font-weight: var(--standard-font-weight);
+    }
+    .top-menu-navigation__icon {
+        display: block;
+        margin-right: 10px;
+        font-size: 1.3rem;
+    }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+@media only screen and (max-width: 970px) {
+    .account-settings-page__container {
+        flex-direction: column;
+        .account-settings-page__left-navigation-container {
+            margin: 0 0 20px;
+        }
+    }
+    .account-settings__navigation-list {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .account-settings-page__navigation-link {
+        flex-basis: 50%;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .account-settings__navigation-list {
+        flex-direction: column;
+    }
+    .account-settings-page__navigation-link {
+        margin: 0;
+    }
+    .account-settings-page__navigation-anchor {
+        min-height: 50px;
+        margin: 0;
+    }
+}

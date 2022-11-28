@@ -16,4 +16,26 @@
   ~ COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
   -->
 
-<p>my-account-settings-page works!</p>
+<div class="account-settings-page__container">
+    <nav class="account-settings-page__left-navigation-container">
+        <ul class="account-settings__navigation-list">
+            <li
+                *ngFor="let link of _navigationLinks"
+                class="account-settings-page__navigation-link"
+            >
+                <a
+                    [routerLink]="link.link"
+                    routerLinkActive="current-path--active"
+                    [title]="link.metadataTitle"
+                    class="account-settings-page__navigation-anchor"
+                >
+                    <span class="material-symbols-outlined top-menu-navigation__icon">{{ link.iconReference }}</span>
+                    <span>{{ link.name }}</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <div class="account-settings-page__router-outlet-container">
+        <router-outlet></router-outlet>
+    </div>
+</div>
