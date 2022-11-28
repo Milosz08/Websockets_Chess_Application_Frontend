@@ -65,11 +65,19 @@
 }
 
 .logged-user-header-info__buttons-navigation-container {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
     width: 100%;
     margin-top: 15px;
-    .logged-user-header-info__single-button {
-        margin: 0 10px;
+    .logged-user-header-info__account-settings-button {
+        grid-column: span 2;
+        .account-settings-icon {
+            position: relative;
+            top: 1px;
+            margin-right: 5px;
+            font-size: 1.3rem;
+        }
     }
 }
 

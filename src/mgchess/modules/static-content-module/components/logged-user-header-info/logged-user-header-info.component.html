@@ -51,16 +51,24 @@
         <a
             routerLink="/secure/my-account"
             title="Click to go to your account and personalize your data"
-            class="mg-chess__standard-button button--primary-mixed-def-variant logged-user-header-info__single-button"
+            class="mg-chess__standard-button button--primary-mixed-def-variant"
         >
             My account
         </a>
         <button
             (click)="handleLogoutFromSystem()"
             title="Click to immediately logout from your account"
-            class="mg-chess__standard-button button--primary-border-def-variant logged-user-header-info__single-button"
+            class="mg-chess__standard-button button--primary-border-def-variant"
         >
             Logout
         </button>
+        <a
+            routerLink="/secure/my-account/settings"
+            title="Click to go to your account settings"
+            class="mg-chess__standard-button button--darker-mixed-def-variant logged-user-header-info__account-settings-button"
+        >
+            <span class="material-symbols-outlined account-settings-icon">settings</span>
+            Account settings
+        </a>
     </div>
 </div>
