@@ -1,0 +1,26 @@
+[
+    {
+        "name": "Personal data and general",
+        "link": "/secure/my-account/settings/personal-with-general",
+        "metadataTitle": "Click to go to personal data and general settings",
+        "iconReference": "manage_accounts"
+    },
+    {
+        "name": "Sign in and security",
+        "link": "/secure/my-account/settings/sign-in-and-security",
+        "metadataTitle": "Click to go to your sign in and account security settings",
+        "iconReference": "key"
+    },
+    {
+        "name": "Privacy and visibility",
+        "link": "/secure/my-account/settings/privacy-and-visibility",
+        "metadataTitle": "Click to go to your privacy and visibility account settings",
+        "iconReference": "disabled_visible"
+    },
+    {
+        "name": "Notifications",
+        "link": "/secure/my-account/settings/notifications",
+        "metadataTitle": "Click to go to your account notifications settings",
+        "iconReference": "notifications_active"
+    }
+]
