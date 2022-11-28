@@ -21,6 +21,7 @@
     --deep-black: #000000;
     --primary-light-color: #f4f2ed;
     --primary-light-tint-color: #bfbaba;
+    --secondary-light-tint-color: #d4cdcd;
     --primary-dark-tint-color: #3b1302;
     --secondary-dark-secondary-tint-color: #573f3f;
     --secondary-dark-color: #212121;
@@ -72,6 +73,7 @@ body {
     --button-secondary-mixed-background: var(--primary-dark-tint-color);
     --button-thirdly-mixed-color: var(--primary-dark-tint-color);
     --button-thirdly-mixed-background: var(--primary-tint-color);
+    --button-darker-mixed-color: var(--primary-dark-tint-color);
     --checkbox-secondary-mixed-color: var(--secondary-tint-color);
     --choicebox-primary-select-hover-background: var(--primary-tint-color);
     --file-input-disactive-color: var(--primary-light-tint-color);
@@ -122,6 +124,7 @@ body.dark-theme--active {
     --button-secondary-mixed-background: var(--secondary-dark-color);
     --button-thirdly-mixed-color: var(--primary-light-color);
     --button-thirdly-mixed-background: var(--secondary-dark-color);
+    --button-darker-mixed-color: var(--secondary-dark-color);
     --checkbox-secondary-mixed-color: var(--secondary-tint-color);
     --choicebox-primary-select-hover-background: var(--secondary-dark-color);
     --file-input-disactive-color: var(--secondary-tint-color);

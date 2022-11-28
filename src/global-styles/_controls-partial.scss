@@ -179,6 +179,10 @@
         color: var(--primary-light-color);
         background-color: var(--form-data-paragraph-error-secondary-color);
     }
+    &.button--darker-mixed-def-variant {
+        color: var(--button-darker-mixed-color);
+        background-color: var(--secondary-light-tint-color);
+    }
     &.button--primary-border-def-variant,
     &.button--secondary-border-def-variant,
     &.button--thirdly-border-def-variant,

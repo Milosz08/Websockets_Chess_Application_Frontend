@@ -21,6 +21,6 @@
         "name": "Account settings",
         "link": "/secure/my-account/settings",
         "metadataTitle": "Click to edit your account settings",
-        "iconReference": "manage_accounts"
+        "iconReference": "settings"
     }
 ]
