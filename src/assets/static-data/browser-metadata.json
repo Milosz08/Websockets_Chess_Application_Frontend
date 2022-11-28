@@ -118,6 +118,26 @@
                 "pageId": "MY_ACCOUNT_SETTINGS_PAGE",
                 "title": "My Account - Account Settings",
                 "description": "On this page you can change your account settings including delete account."
+            },
+            {
+                "pageId": "SETTINGS_PERSONAL_DATA_AND_GENERAL",
+                "title": "Personal data and general - Account Settings",
+                "description": "On this page you can change your personal account informations and other general data."
+            },
+            {
+                "pageId": "SETTINGS_SIGN_IN_AND_SECURITY",
+                "title": "Sign in and security - Account Settings",
+                "description": "On this page you can change your account emails, nickname and password data."
+            },
+            {
+                "pageId": "SETTINGS_PRIVACY_AND_VISIBILITY",
+                "title": "Privacy and visibility - Account Settings",
+                "description": "On this page you can change your account sharing data preferences."
+            },
+            {
+                "pageId": "SETTINGS_NOTIFICATIONS",
+                "title": "Notifications - Account Settings",
+                "description": "On this page you can change your account notifications details."
             }
         ]
     }

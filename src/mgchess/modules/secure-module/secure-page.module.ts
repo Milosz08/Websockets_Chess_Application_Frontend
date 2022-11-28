@@ -35,6 +35,11 @@ import { MyAccountSettingsPageComponent } from "./pages/my-account-settings-page
 import { MyAccountAboutMePageComponent } from "./pages/my-account-about-me-page/my-account-about-me-page.component";
 import { MyAccountLastGamesPageComponent } from "./pages/my-account-last-games-page/my-account-last-games-page.component";
 
+import { SettingNotificationsPageComponent } from "./pages/setting-notifications-page/setting-notifications-page.component";
+import { SettingSignInAndSecurityPageComponent } from "./pages/setting-sign-in-and-security-page/setting-sign-in-and-security-page.component";
+import { SettingPrivacyAndVisibilityPageComponent } from "./pages/setting-privacy-and-visibility-page/setting-privacy-and-visibility-page.component";
+import { SettingPersonalDataAndGeneralPageComponent } from "./pages/setting-personal-data-and-general-page/setting-personal-data-and-general-page.component";
+
 import { FlattedImageExtensionsPipe } from "./pipes/flatted-image-extensions.pipe";
 
 import { SecurePageRoutingModule } from "./secure-page-routing.module";
@@ -67,6 +72,10 @@ import { UserManipulatorHttpReqResService } from "./services/user-manipulator-ht
         MyAccountFriendsPageComponent,
         MyAccountSettingsPageComponent,
         MyAccountLastGamesPageComponent,
+        SettingNotificationsPageComponent,
+        SettingSignInAndSecurityPageComponent,
+        SettingPrivacyAndVisibilityPageComponent,
+        SettingPersonalDataAndGeneralPageComponent,
         // pipes
         FlattedImageExtensionsPipe,
     ],

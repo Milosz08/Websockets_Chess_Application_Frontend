@@ -27,6 +27,11 @@ import { MyAccountSettingsPageComponent } from "./pages/my-account-settings-page
 import { MyAccountAboutMePageComponent } from "./pages/my-account-about-me-page/my-account-about-me-page.component";
 import { MyAccountLastGamesPageComponent } from "./pages/my-account-last-games-page/my-account-last-games-page.component";
 
+import { SettingNotificationsPageComponent } from "./pages/setting-notifications-page/setting-notifications-page.component";
+import { SettingSignInAndSecurityPageComponent } from "./pages/setting-sign-in-and-security-page/setting-sign-in-and-security-page.component";
+import { SettingPrivacyAndVisibilityPageComponent } from "./pages/setting-privacy-and-visibility-page/setting-privacy-and-visibility-page.component";
+import { SettingPersonalDataAndGeneralPageComponent } from "./pages/setting-personal-data-and-general-page/setting-personal-data-and-general-page.component";
+
 import { OnNonLoggedRedirectGuard } from "../../guards/on-non-logged-redirect.guard";
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -39,7 +44,13 @@ const routes: Routes = [
             { path: "about-me", component: MyAccountAboutMePageComponent },
             { path: "last-games", component: MyAccountLastGamesPageComponent },
             { path: "friends", component: MyAccountFriendsPageComponent },
-            { path: "settings", component: MyAccountSettingsPageComponent },
+            { path: "settings", component: MyAccountSettingsPageComponent, children: [
+                { path: "", redirectTo: "personal-with-general", pathMatch: "full" },
+                { path: "personal-with-general", component: SettingPersonalDataAndGeneralPageComponent },
+                { path: "sign-in-and-security", component: SettingSignInAndSecurityPageComponent },
+                { path: "privacy-and-visibility", component: SettingPrivacyAndVisibilityPageComponent },
+                { path: "notifications", component: SettingNotificationsPageComponent },
+            ]},
         ]},
     ]},
 ];
