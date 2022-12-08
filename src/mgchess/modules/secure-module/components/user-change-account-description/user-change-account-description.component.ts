@@ -47,6 +47,8 @@ export class UserChangeAccountDescriptionComponent implements OnInit, OnDestroy 
     _isEditIsOpen$: Observable<boolean> = this._store.select(NgrxSelector_USM.sel_changeDescriptionIsOpen);
     _suspenseLoader$: Observable<boolean> = this._store.select(NgrxSelector_GFX.getCurrActiveSuspense(
         SuspenseLoader.CHANGE_ACCOUNT_DESCRIPTION));
+    _suspenseRemoveLoader$: Observable<boolean> = this._store.select(NgrxSelector_GFX.getCurrActiveSuspense(
+        SuspenseLoader.REMOVE_ACCOUNT_DESCRIPTION));
 
     _charactersCount: number = 0;
     _fetchedDescription: string = "";
@@ -102,6 +104,10 @@ export class UserChangeAccountDescriptionComponent implements OnInit, OnDestroy 
     handleChangeAccountDescription(): void {
         const description = this._ngFormsService.extractFormFields<ChangeDescriptionFormModel>(this._editDescriptionForm, false);
         this._store.dispatch(NgrxAction_USM.__attemptToEditUserDescription({ description }));
+    };
+
+    handleCloseValueBoxAndRemove(): void {
+        this._store.dispatch(NgrxAction_USM.__attemptToRemoveUserDescription());
     };
 
     private clearTextarea(): void {

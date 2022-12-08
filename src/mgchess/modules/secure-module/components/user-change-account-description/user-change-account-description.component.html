@@ -42,6 +42,18 @@
                 <div class="editable-component__submit-buttons-container">
                     <button
                         type="button"
+                        (click)="handleCloseValueBoxAndRemove()"
+                        title="Click to remove selected property and close editable content section"
+                        class="mg-chess__standard-button button--danger-opaque-def-variant button--fitting button--separate"
+                    >
+                        Remove
+                        <div
+                            *ngIf="(_suspenseRemoveLoader$ | async)"
+                            class="button__suspense-loading-spinner"
+                        ></div>
+                    </button>
+                    <button
+                        type="button"
                         (click)="handleDiscardChangesOfAccountDescription()"
                         title="Click to discard changes of your account description"
                         class="mg-chess__standard-button button--primary-border-def-variant button--fitting button--separate"

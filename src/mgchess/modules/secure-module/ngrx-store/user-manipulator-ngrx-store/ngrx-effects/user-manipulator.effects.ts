@@ -20,13 +20,12 @@ import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { Store } from "@ngrx/store";
 
-import { catchError, delay, map, mergeMap, of, tap, withLatestFrom } from "rxjs";
+import { catchError, delay, map, mergeMap, of, tap } from "rxjs";
 import { RxjsHelper } from "../../../../../rxjs-helpers/rxjs.helper";
 import { RxjsConstants } from "../../../../../rxjs-helpers/rxjs.constants";
 
 import { SuspenseLoader } from "../../../../../models/suspense-loader-res.model";
 import { GlobalSuspenseService } from "../../../../shared-module/services/global-suspense.service";
-import { sessionNgrxStore } from "../../../../shared-module/ngrx-store/session-ngrx-store/session.reducer";
 import { UserManipulatorHttpReqResService } from "../../../services/user-manipulator-http-req-res.service";
 import { UserManipulatorWithSessionWithGfxReducerType } from "../../../../../ngrx-helpers/ngrx-store.types";
 
@@ -46,24 +45,19 @@ export class UserManipulatorEffects {
     ) {
     };
 
+    //------------------------------------------------------------------------------------------------------------------
+
     editUserDescription$ = createEffect(() => {
         return this._actions$.pipe(
             ofType(NgrxAction_UMP.__attemptToEditUserDescription),
-            withLatestFrom(this._store.select(sessionNgrxStore.reducerName)),
             tap(() => {
                 this._store.dispatch(NgrxAction_GFX.__activeSuspense({ for: SuspenseLoader.CHANGE_ACCOUNT_DESCRIPTION }));
             }),
             delay(RxjsConstants.DEF_DELAY_MILIS),
-            mergeMap(([ action, state ]) => {
-                return this._reqResService.changeUserAccountDescription(action.description).pipe(
+            mergeMap(({ description }) => {
+                return this._reqResService.changeUserAccountDescription(description).pipe(
                     map(({ responseMessage }) => {
-                        setTimeout(() => {
-                            this._store.dispatch(NgrxAction_GFX.__closeGlobalMessageModal());
-                        }, RxjsConstants.DEF_DELAY_GLOBAL_MODAL_MILIS);
-                        this._store.dispatch(NgrxAction_GFX.__openGlobalMessageModal({
-                            message: responseMessage, ifError: false }));
-                        this._globalSuspenseService.reloadAngularPageWithRouter();
-                        return NgrxAction_UMP.__editUserDescriptionHidden();
+                        return this.changeUserDescriptionPipeline(responseMessage);
                     }),
                     catchError(error => {
                         return of(NgrxAction_UMP.__failureEditUserDescription({
@@ -76,4 +70,41 @@ export class UserManipulatorEffects {
             }),
         );
     });
+
+    //------------------------------------------------------------------------------------------------------------------
+
+    removeUserDescription$ = createEffect(() => {
+        return this._actions$.pipe(
+            ofType(NgrxAction_UMP.__attemptToRemoveUserDescription),
+            tap(() => {
+                this._store.dispatch(NgrxAction_GFX.__activeSuspense({ for: SuspenseLoader.REMOVE_ACCOUNT_DESCRIPTION }));
+            }),
+            delay(RxjsConstants.DEF_DELAY_MILIS),
+            mergeMap(() => {
+                return this._reqResService.removeUserAccountDescription().pipe(
+                    map(({ responseMessage }) => {
+                        return this.changeUserDescriptionPipeline(responseMessage);
+                    }),
+                    catchError(error => {
+                        return of(NgrxAction_UMP.__failureEditUserDescription({
+                            serverResponse: RxjsHelper.serverResponseError(error) }));
+                    }),
+                );
+            }),
+            tap(() => {
+                this._store.dispatch(NgrxAction_GFX.__inactiveSuspense());
+            }),
+        );
+    });
+
+    //------------------------------------------------------------------------------------------------------------------
+
+    private changeUserDescriptionPipeline(responseMessage: string): any {
+        setTimeout(() => {
+            this._store.dispatch(NgrxAction_GFX.__closeGlobalMessageModal());
+        }, RxjsConstants.DEF_DELAY_GLOBAL_MODAL_MILIS);
+        this._store.dispatch(NgrxAction_GFX.__openGlobalMessageModal({ message: responseMessage, ifError: false }));
+        this._globalSuspenseService.reloadAngularPageWithRouter();
+        return NgrxAction_UMP.__editUserDescriptionHidden();
+    };
 }

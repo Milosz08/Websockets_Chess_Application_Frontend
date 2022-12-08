@@ -27,6 +27,9 @@ const EDIT_USER_DESCRIPTION_HIDDEN = "[USER MANIPULATOR] EDIT USER DESCRIPTION H
 const ATTEMPT_TO_EDIT_USER_DESCRIPTION = "[USER MANIPULATOR] ATTEMPT TO EDIT USER DESCRIPTION" as const;
 const FAILURE_EDIT_USER_DESCRIPTION = "[USER MANIPULATOR] FAILURE EDIT USER DESCRIPTION" as const;
 
+const ATTEMPT_TO_REMOVE_USER_DESCRIPTION = "[USER MANIPULATOR] ATTEMPT TO REMOVE USER DESCRIPTION" as const;
+const FAILURE_REMOVE_USER_DESCRIPTION = "[USER MANIPULATOR] FAILURE REMOVE USER DESCRIPTION" as const;
+
 const CLEAR_SERVER_RESPONSE = "[USER MANIPULATOR] CLEAR SERVER RESPONSE" as const;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -46,6 +49,15 @@ export const __attemptToEditUserDescription = createAction(
 
 export const __failureEditUserDescription = createAction(
     FAILURE_EDIT_USER_DESCRIPTION,
+    props<{ serverResponse: string }>(),
+);
+
+export const __attemptToRemoveUserDescription = createAction(
+    ATTEMPT_TO_REMOVE_USER_DESCRIPTION,
+);
+
+export const __failureRemoveUserDescription = createAction(
+    FAILURE_REMOVE_USER_DESCRIPTION,
     props<{ serverResponse: string }>(),
 );
 

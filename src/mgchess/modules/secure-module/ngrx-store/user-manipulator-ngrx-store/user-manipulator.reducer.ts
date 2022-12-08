@@ -43,6 +43,11 @@ const _userManipulatorReducer = createReducer(
             serverResponse: new SimpleMessageResWithErrorModel(action.serverResponse, true),
         };
     }),
+    on(NgrxAction.__failureRemoveUserDescription, (state, action) => {
+        return { ...state,
+            serverResponse: new SimpleMessageResWithErrorModel(action.serverResponse, true),
+        };
+    }),
     on(NgrxAction.__clearServerResponse, state => {
         return { ...state,
             serverResponse: new SimpleMessageResWithErrorModel("", false),

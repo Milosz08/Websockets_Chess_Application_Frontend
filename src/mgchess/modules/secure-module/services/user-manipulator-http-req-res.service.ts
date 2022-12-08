@@ -52,4 +52,12 @@ export class UserManipulatorHttpReqResService {
             req,
         );
     };
+
+    //------------------------------------------------------------------------------------------------------------------
+
+    removeUserAccountDescription(): Observable<SimpleMessageResponseModel> {
+        return this._http.delete<SimpleMessageResponseModel>(
+            this._endpoint.LOGGED_ACCOUNT_DESCRIPTION,
+        );
+    };
 }
