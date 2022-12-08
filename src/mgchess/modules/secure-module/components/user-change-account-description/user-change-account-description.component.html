@@ -77,16 +77,31 @@
         </form>
     </div>
     <ng-template #showNonEditableContent>
-        <p
-            *ngIf="_fetchedDescription !== ''; else noDescriptionContent"
-            [innerHTML]="_fetchedDescription"
-            class="text-centered"
-        ></p>
-        <ng-template #noDescriptionContent>
-            <p class="description--no-content text-centered">
-                You don't have an account description set up yet. Click on the link below to set a new account
-                description.
-            </p>
+        <div
+            *ngIf="_fetchedDescriptionSuspense; else loadDescriptionData"
+            class="mg-chess__suspense-loader user-account-description__suspense-container"
+        >
+            <div class="mg-chess__suspense-circle user-account-description__suspens-circle"></div>
+        </div>
+        <ng-template #loadDescriptionData>
+            <ng-container *ngIf="!_fetchedDescription.responseError; else issueWithDescriptionFetching">
+                <p
+                    *ngIf="_fetchedDescription.responseMessage !== ''; else noDescriptionContent"
+                    class="text-centered"
+                    [innerHTML]="_fetchedDescription.responseMessage"
+                ></p>
+                <ng-template #noDescriptionContent>
+                    <p class="description--no-content text-centered">
+                        You don't have an account description set up yet. Click on the link below to set a new account
+                        description.
+                    </p>
+                </ng-template>
+            </ng-container>
+            <ng-template #issueWithDescriptionFetching>
+                <p class="mg-chess__form-data-paragraph paragraph--error-theme-change paragraph--without-margin text-centered">
+                    {{ _fetchedDescription.responseMessage }}
+                </p>
+            </ng-template>
         </ng-template>
     </ng-template>
     <div class="user-account-description__separator-with-edit-button">

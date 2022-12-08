@@ -20,7 +20,7 @@ import { Component, OnDestroy, OnInit } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { Store } from "@ngrx/store";
 
-import { Observable, Subject, takeUntil } from "rxjs";
+import { Observable, Subject } from "rxjs";
 import { RxjsHelper } from "../../../../rxjs-helpers/rxjs.helper";
 
 import { SuspenseLoader } from "../../../../models/suspense-loader-res.model";
@@ -28,7 +28,7 @@ import { NgFormsService } from "../../../shared-module/services/ng-forms.service
 import { ChangeDescriptionFormModel } from "../../models/change-description-form.model";
 import { UserManipulatorWithGfxReducerType } from "../../../../ngrx-helpers/ngrx-store.types";
 import { SimpleMessageResWithErrorModel } from "../../../../models/simple-message-response.model";
-import { UserManipulatorHttpReqResService } from "../../services/user-manipulator-http-req-res.service";
+import { StaticUserDetailsFetcherService } from "../../services/static-user-details-fetcher.service";
 
 import * as NgrxSelector_GFX from "../../../shared-module/ngrx-store/gfx-ngrx-store/gfx.selectors";
 import * as NgrxAction_USM from "../../ngrx-store/user-manipulator-ngrx-store/user-manipulator.actions";
@@ -40,7 +40,7 @@ import * as NgrxSelector_USM from "../../ngrx-store/user-manipulator-ngrx-store/
     selector: "mgchess-user-change-account-description",
     templateUrl: "./user-change-account-description.component.html",
     styleUrls: [ "./user-change-account-description.component.scss" ],
-    providers: [ UserManipulatorHttpReqResService ],
+    providers: [ StaticUserDetailsFetcherService ],
 })
 export class UserChangeAccountDescriptionComponent implements OnInit, OnDestroy {
 
@@ -51,8 +51,9 @@ export class UserChangeAccountDescriptionComponent implements OnInit, OnDestroy 
         SuspenseLoader.REMOVE_ACCOUNT_DESCRIPTION));
 
     _charactersCount: number = 0;
-    _fetchedDescription: string = "";
     _editDescriptionForm: FormGroup;
+    _fetchedDescriptionSuspense: boolean = true;
+    _fetchedDescription: SimpleMessageResWithErrorModel = new SimpleMessageResWithErrorModel("", false);
     _serverResponse: SimpleMessageResWithErrorModel = new SimpleMessageResWithErrorModel("", false);
 
     readonly _maxTextareaLenght: number = 2000;
@@ -63,7 +64,7 @@ export class UserChangeAccountDescriptionComponent implements OnInit, OnDestroy 
     constructor(
         private _ngFormsService: NgFormsService,
         private _store: Store<UserManipulatorWithGfxReducerType>,
-        private _reqResService: UserManipulatorHttpReqResService,
+        private _staticUserDetailsReqService: StaticUserDetailsFetcherService,
     ) {
         this._editDescriptionForm = new FormGroup({
             "description": new FormControl("", [ Validators.maxLength(2000) ]),
@@ -75,8 +76,11 @@ export class UserChangeAccountDescriptionComponent implements OnInit, OnDestroy 
     ngOnInit(): void {
         RxjsHelper.subscribeData(this._store, NgrxSelector_USM.sel_serverResponse, this._ngUnsubscribe,
             data => this._serverResponse = data);
-        this._reqResService.getUserAccountDescription().pipe(takeUntil(this._ngUnsubscribe))
-            .subscribe(data => this._fetchedDescription = data.description);
+        this._staticUserDetailsReqService.getUserDescription(this._ngUnsubscribe)
+            .subscribe(data => {
+                this._fetchedDescription = data;
+                this._fetchedDescriptionSuspense = false;
+            });
     };
 
     ngOnDestroy(): void {
@@ -96,8 +100,9 @@ export class UserChangeAccountDescriptionComponent implements OnInit, OnDestroy 
     };
 
     handleOpenAccountDescriptionEditor(): void {
-        this._editDescriptionForm.patchValue({ "description": this._fetchedDescription.replace(/<br>/g, "\n") });
-        this._charactersCount = this._fetchedDescription.length;
+        this._editDescriptionForm
+            .patchValue({ "description": this._fetchedDescription.responseMessage.replace(/<br>/g, "\n") });
+        this._charactersCount = this._fetchedDescription.responseMessage.length;
         this._store.dispatch(NgrxAction_USM.__editUserDescriptionVisible());
     };
 

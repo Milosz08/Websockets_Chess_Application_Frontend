@@ -79,6 +79,6 @@ export class HttpEndpointsHelper {
 
     //------------------------------------------------------------------------------------------------------------------
 
-    private readonly USER_MANIPULATOR_ENDPOINT = this.BASIC_HTTP + "user-manipulator/";
-    readonly LOGGED_ACCOUNT_DESCRIPTION = this.USER_MANIPULATOR_ENDPOINT + "description";
+    private readonly USER_DESCRIPTION_ENDPOINT = this.BASIC_HTTP + "user-description/";
+    readonly LOGGED_ACCOUNT_DESCRIPTION = this.USER_DESCRIPTION_ENDPOINT + "description";
 }
