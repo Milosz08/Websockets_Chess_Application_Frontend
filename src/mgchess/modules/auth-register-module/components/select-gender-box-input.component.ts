@@ -23,7 +23,7 @@ import { Store } from "@ngrx/store";
 import { Subject } from "rxjs";
 import { RxjsHelper } from "../../../rxjs-helpers/rxjs.helper";
 
-import { StaticDataReqResService } from "../services/static-data-req-res.service";
+import { StaticDataReqResService } from "../../shared-module/services/static-data-req-res.service";
 import { StaticGenderDataResModel } from "../models/static-gender-data-res.model";
 import { FormInputClassesConstants } from "../../../misc-constants/form-input-classes.constants";
 
@@ -68,7 +68,7 @@ export class SelectGenderBoxInputComponent implements OnInit, OnDestroy {
     //------------------------------------------------------------------------------------------------------------------
 
     ngOnInit(): void {
-        RxjsHelper.subscribeObservable(this._reqResService.getRegisterGenderData(), this._ngUnsubscribe,
+        RxjsHelper.subscribeObservable(this._reqResService.getGenderData(), this._ngUnsubscribe,
                 data => this._staticGenderData = data);
         RxjsHelper.subscribeData(this._store, NgrxSelector_ATH.sel_serverResponseIsEmpty, this._ngUnsubscribe,
             data => this._serverResponseIsEmpty = data);

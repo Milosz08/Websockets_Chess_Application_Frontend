@@ -57,6 +57,7 @@ import { ResendEmailGfxEffects } from "./ngrx-store/gfx-ngrx-store/ngrx-effects/
 import { NgFormsService } from "./services/ng-forms.service";
 import { SessionReqResService } from "./services/session-req-res.service";
 import { GlobalSuspenseService } from "./services/global-suspense.service";
+import { StaticDataReqResService } from "./services/static-data-req-res.service";
 import { UserRememberStorageService } from "./services/user-remember-storage.service";
 import { AddToNewsletterHttpReqResService } from "./services/add-to-newsletter-http-req-res.service";
 import { ResendVerificationLinkReqResService } from "./services/resend-verification-link-req-res.service";
@@ -132,6 +133,7 @@ import { CookiesNotificationLocalStorageService } from "./services/cookies-notif
         NgFormsService,
         SessionReqResService,
         GlobalSuspenseService,
+        StaticDataReqResService,
         UserRememberStorageService,
         AddToNewsletterHttpReqResService,
         ResendVerificationLinkReqResService,

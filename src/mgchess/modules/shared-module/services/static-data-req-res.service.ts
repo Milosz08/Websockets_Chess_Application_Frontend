@@ -2,7 +2,7 @@
  * Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
  *
  * File name: static-data-req-res.service.ts
- * Last modified: 15/09/2022, 18:01
+ * Last modified: 10.10.2022, 13:54
  * Project name: chess-app-frontend
  *
  * Licensed under the MIT license; you may not use this file except in compliance with the License.
@@ -21,12 +21,12 @@ import { HttpClient } from "@angular/common/http";
 
 import { Observable } from "rxjs";
 
-import { RememberUserStorageModel } from "../models/remember-user-storage.model";
-import { StaticGenderDataResModel } from "../models/static-gender-data-res.model";
-import { StaticCountryDataResModel } from "../models/static-country-data-res.model";
-import { StaticCalendarDataResModel } from "../models/static-calendar-data-res.model";
 import { HttpEndpointsHelper } from "../../../http-request-helpers/http-endpoints.helper";
-import { UserLoginDetailsStorageModel } from "../models/user-login-details-storage.model";
+import { RememberUserStorageModel } from "../../auth-register-module/models/remember-user-storage.model";
+import { StaticGenderDataResModel } from "../../auth-register-module/models/static-gender-data-res.model";
+import { StaticCountryDataResModel } from "../../auth-register-module/models/static-country-data-res.model";
+import { StaticCalendarDataResModel } from "../../auth-register-module/models/static-calendar-data-res.model";
+import { UserLoginDetailsStorageModel } from "../../auth-register-module/models/user-login-details-storage.model";
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -41,19 +41,19 @@ export class StaticDataReqResService {
 
     //------------------------------------------------------------------------------------------------------------------
 
-    getRegisterCalendarData(): Observable<StaticCalendarDataResModel> {
+    getCalendarData(): Observable<StaticCalendarDataResModel> {
         return this._http.get<StaticCalendarDataResModel>(this._endpoint.SIGNUP_CALENDAR_DATA);
     };
 
     //------------------------------------------------------------------------------------------------------------------
 
-    getRegisterGenderData(): Observable<StaticGenderDataResModel> {
+    getGenderData(): Observable<StaticGenderDataResModel> {
         return this._http.get<StaticGenderDataResModel>(this._endpoint.SIGNUP_GENDER_DATA);
     };
 
     //------------------------------------------------------------------------------------------------------------------
 
-    getRegisterCountryData(): Observable<StaticCountryDataResModel> {
+    getCountryData(): Observable<StaticCountryDataResModel> {
         return this._http.get<StaticCountryDataResModel>(this._endpoint.SIGNUP_COUNTRY_DATA);
     };
 

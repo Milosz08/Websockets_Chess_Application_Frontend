@@ -23,7 +23,7 @@ import { catchError, delay, map, of, Subject, takeUntil } from "rxjs";
 import { RxjsConstants } from "../../../../rxjs-helpers/rxjs.constants";
 import { RxjsHelper } from "../../../../rxjs-helpers/rxjs.helper";
 
-import { StaticDataReqResService } from "../../services/static-data-req-res.service";
+import { StaticDataReqResService } from "../../../shared-module/services/static-data-req-res.service";
 import { SaveUserLoginStorageService } from "../../services/save-user-login-storage.service";
 import { UserLoginDetailsStorageModel } from "../../models/user-login-details-storage.model";
 

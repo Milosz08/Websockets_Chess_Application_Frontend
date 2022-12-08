@@ -41,7 +41,7 @@
     display: flex;
     align-items: center;
     margin: 0 20px;
-    padding: 0 15px;
+    padding: 3px 15px 4px;
     min-height: 40px;
     &.current-path--active {
         background-color: var(--button-primary-mixed-background-color);

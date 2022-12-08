@@ -23,7 +23,7 @@ import { Store } from "@ngrx/store";
 import { Subject } from "rxjs";
 import { RxjsHelper } from "../../../../rxjs-helpers/rxjs.helper";
 
-import { StaticDataReqResService } from "../../services/static-data-req-res.service";
+import { StaticDataReqResService } from "../../../shared-module/services/static-data-req-res.service";
 import { StaticCalendarDataResModel } from "../../models/static-calendar-data-res.model";
 import { FormInputClassesConstants } from "../../../../misc-constants/form-input-classes.constants";
 
@@ -36,7 +36,6 @@ import * as NgrxSelector_ATH from "../../ngrx-store/auth-ngrx-store/auth.selecto
 @Component({
     selector: "mgchess-signup-form-birthday-control-group",
     templateUrl: "./signup-form-birthday-control-group.component.html",
-    styleUrls: [ "./signup-form-birthday-control-group.component.scss" ],
     providers: [ FormInputClassesConstants ],
 })
 export class SignupFormBirthdayControlGroupComponent implements OnInit, OnDestroy {
@@ -60,7 +59,7 @@ export class SignupFormBirthdayControlGroupComponent implements OnInit, OnDestro
     //------------------------------------------------------------------------------------------------------------------
 
     ngOnInit(): void {
-        RxjsHelper.subscribeObservable(this._resReqService.getRegisterCalendarData(), this._ngUnsubscribe,
+        RxjsHelper.subscribeObservable(this._resReqService.getCalendarData(), this._ngUnsubscribe,
                 data => this._staticCalendarData = data);
         RxjsHelper.subscribeData(this._store, NgrxSelector_ATH.sel_serverResponseIsEmpty, this._ngUnsubscribe,
                 data => this._serverResponseIsEmpty = data);

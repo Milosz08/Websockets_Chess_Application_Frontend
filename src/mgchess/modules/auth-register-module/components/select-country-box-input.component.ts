@@ -23,9 +23,9 @@ import { Store } from "@ngrx/store";
 import { Subject } from "rxjs";
 import { RxjsHelper } from "../../../rxjs-helpers/rxjs.helper";
 
-import { StaticDataReqResService } from "../services/static-data-req-res.service";
 import { StaticCountryDataResModel } from "../models/static-country-data-res.model";
 import { FormInputClassesConstants } from "../../../misc-constants/form-input-classes.constants";
+import { StaticDataReqResService } from "../../shared-module/services/static-data-req-res.service";
 
 import { AuthReducerType } from "../../../ngrx-helpers/ngrx-store.types";
 import * as NgrxAction_ATH from "../ngrx-store/auth-ngrx-store/auth.actions";
@@ -68,7 +68,7 @@ export class SelectCountryBoxInputComponent implements OnInit, OnDestroy {
     //------------------------------------------------------------------------------------------------------------------
 
     ngOnInit(): void {
-        RxjsHelper.subscribeObservable(this._reqResService.getRegisterCountryData(), this._ngUnsubscribe,
+        RxjsHelper.subscribeObservable(this._reqResService.getCountryData(), this._ngUnsubscribe,
             data => this._staticCountryData = data);
         RxjsHelper.subscribeData(this._store, NgrxSelector_ATH.sel_serverResponseIsEmpty, this._ngUnsubscribe,
             data => this._serverResponseIsEmpty = data);

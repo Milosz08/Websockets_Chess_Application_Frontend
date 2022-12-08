@@ -101,8 +101,9 @@ export class GfxEffects {
                     this._router.navigate([ '/' ]).then(r => r);
                     return;
                 }
-                if (this.REDIR_MODALS.some(t => t === action.modalType)) {
-                    this._router.navigate([ '/secure/my-account' ]).then(r => r);
+                const redirLink = "/secure/my-account" as const;
+                if (this.REDIR_MODALS.some(t => t === action.modalType) && !this._router.url.includes(redirLink)) {
+                    this._router.navigate([ redirLink ]).then(r => r);
                 }
             }),
         );
