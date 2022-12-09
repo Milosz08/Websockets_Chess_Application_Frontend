@@ -82,6 +82,7 @@ export class SingleChoiceBoxInputComponent implements OnChanges, OnDestroy {
     handleFilledUpWithClickedComboBoxData(clickedItem: SimpleDataTupleModel<TupleIdType>): void {
         this._selectedItemName = clickedItem.value;
         this._formGroup.get(this._formControlName)!.patchValue(clickedItem.id);
+        if (this._selectedItemName === this._initialLabelText) this._formGroup.setErrors({ error: true });
         this._isVisible = false;
         this._emitClearServerResponse.emit();
     };
