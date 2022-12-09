@@ -22,6 +22,7 @@
     --primary-light-color: #f4f2ed;
     --primary-light-tint-color: #bfbaba;
     --secondary-light-tint-color: #d4cdcd;
+    --thirdly-light-tint-color: #ece8e5;
     --primary-dark-tint-color: #3b1302;
     --secondary-dark-secondary-tint-color: #573f3f;
     --secondary-dark-color: #212121;
@@ -78,6 +79,7 @@ body {
     --choicebox-primary-select-hover-background: var(--primary-tint-color);
     --file-input-disactive-color: var(--primary-light-tint-color);
     --file-input-active-color: var(--primary-dark-tint-color);
+    --edit-user-settings-choicebox-list-background-hover: var(--primary-foreground);
 
     // spinners and loaders
     --primary-spinner-color: var(--primary-dark-tint-color);
@@ -96,6 +98,7 @@ body {
     --global-suspense-loader-background: var(--primary-dark-tint-color);
     --global-suspense-loader-spinner-color: var(--primary-tint-color);
     --user-profile-fullname-color: var(--primary-light-color);
+    --edit-light-blend-background: var(--thirdly-light-tint-color);
 
     @media only screen and (max-width: 790px) {
         --user-profile-fullname-color: var(--primary-dark-tint-color);
@@ -129,6 +132,7 @@ body.dark-theme--active {
     --choicebox-primary-select-hover-background: var(--secondary-dark-color);
     --file-input-disactive-color: var(--secondary-tint-color);
     --file-input-active-color: var(--primary-light-tint-color);
+    --edit-user-settings-choicebox-list-background-hover: var(--primary-tint-color);
 
     // spinners and loaders
     --primary-spinner-color: var(--primary-light-color);
@@ -146,6 +150,7 @@ body.dark-theme--active {
     --signup-aside-form-content-color: var(--secondary-tint-color);
     --global-suspense-loader-background: var(--secondary-dark-tint-color);
     --global-suspense-loader-spinner-color: var(--primary-light-color);
+    --edit-light-blend-background: var(--secondary-dark-tint-color);
 
     --user-profile-fullname-color: var(--primary-light-color);
 

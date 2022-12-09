@@ -45,23 +45,6 @@
             transform: rotate(180deg);
         }
     }
-    .mg-chess__standard-form-input-primary-color,
-    .mg-chess__standard-form-select-primary-color {
-        border: 1px solid var(--primary-form-input-border-color);
-        background-color: transparent;
-        width: 100%;
-        padding: var(--standard-controls-padding);
-        border-radius: var(--standard-buttons-gfx-borders);
-        &.input--secondary-color {
-            border-color: var(--secondary-form-text-and-border-color);
-            &::placeholder {
-                color: var(--secondary-form-text-and-border-color);
-            }
-        }
-        &::placeholder {
-            color: var(--primary-form-text-color);
-        }
-    }
     .mg-chess__standard-form-select-primary-color {
         text-align: left;
         color: var(--primary-form-text-color);
@@ -90,6 +73,28 @@
     }
     &.form-label--remove-bottom-margin {
         margin-bottom: 0;
+    }
+}
+
+.mg-chess__standard-form-input-primary-color,
+.mg-chess__standard-form-select-primary-color {
+    border: 1px solid var(--primary-form-input-border-color);
+    background-color: transparent;
+    width: 100%;
+    padding: var(--standard-controls-padding);
+    border-radius: var(--standard-buttons-gfx-borders);
+    &.input--secondary-color,
+    &.input--account-modify-input {
+        border-color: var(--secondary-form-text-and-border-color);
+        &::placeholder {
+            color: var(--secondary-form-text-and-border-color);
+        }
+    }
+    &.input--account-modify-input {
+        background-color: var(--primary-background);
+    }
+    &::placeholder {
+        color: var(--primary-form-text-color);
     }
 }
 
@@ -345,8 +350,18 @@
             font-weight: 500;
         }
     }
-    &.input--secondary-color {
+    &.input--secondary-color,
+    &.input--account-modify-input {
         border-color: var(--secondary-form-text-and-border-color);
+    }
+    &.input--account-modify-input {
+        background-color: var(--edit-light-blend-background);
+        color: var(--primary-foreground);
+        .mg-chess__choicebox__list-element-button:hover {
+            color: var(--primary-background);
+            font-weight: var(--standard-font-weight);
+            background-color: var(--edit-user-settings-choicebox-list-background-hover);
+        }
     }
 }
 

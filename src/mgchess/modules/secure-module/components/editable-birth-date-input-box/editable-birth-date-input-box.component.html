@@ -1,0 +1,70 @@
+<!--
+  ~ Copyright (c) 2022 by MILOSZ GILGA <https://miloszgilga.pl>
+  ~
+  ~ File name: editable-born-date-input-box.component.html
+  ~ Last modified: 08.12.2022, 00:48
+  ~ Project name: chess-app-frontend
+  ~
+  ~ Licensed under the MIT license; you may not use this file except in compliance with the License.
+  ~
+  ~ Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+  ~ documentation files (the "Software"), to deal in the Software without restriction, including without limitation the
+  ~ rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to
+  ~ permit persons to whom the Software is furnished to do so, subject to the following conditions:
+  ~
+  ~ THE ABOVE COPYRIGHT NOTICE AND THIS PERMISSION NOTICE SHALL BE INCLUDED IN ALL
+  ~ COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
+  -->
+
+<mgchess-editable-scaffold-box
+    [_formGroup]="_birthDateFormGroup"
+    [_editableValue]="_birthDateValue.birthDateString"
+    [_serverResponse]="_serverResponse"
+    [_suspenseLoader]="_suspenseLoader"
+    _descriptionLabel="Birth date"
+    (_emitNewValue)="handleCloseValueBoxAndSaveChanges()"
+    (_emitRemoveValue)="handleCloseValueBoxAndRemove()"
+    (_emitOpenBox)="handleSetDefaultValues()"
+>
+    <div
+        [formGroup]="_birthDateFormGroup"
+        class="mg-chess__editable-text-input-box__form-label-with-input__container"
+    >
+        <label class="mg-chess__editable-text-input-box__form-label">Birth date</label>
+        <div class="mg-chess__birth-date-choiceboxes-container">
+            <mgchess-single-choice-box-input
+                _formControlName="birthDateDay"
+                _selectItemLabel="Day"
+                _errorTextLabel="Select day"
+                [_initialSelectedValue]="_birthDateValue!.birthDateDay"
+                [_cssClasses]="_cssConstants.accountFormsClasses"
+                [_formGroup]="_birthDateFormGroup"
+                [_choiceElements]="_staticCalendarData ? _staticCalendarData.days : []"
+                (_emitClearServerResponse)="handleClearServerResponse()"
+                class="birth-date__day-container"
+            ></mgchess-single-choice-box-input>
+            <mgchess-single-choice-box-input
+                _formControlName="birthDateMonth"
+                _selectItemLabel="Month"
+                _errorTextLabel="Select month"
+                [_initialSelectedValue]="_birthDateValue!.birthDateMonth"
+                [_cssClasses]="_cssConstants.accountFormsClasses"
+                [_formGroup]="_birthDateFormGroup"
+                [_choiceElements]="_staticCalendarData ? _staticCalendarData.months : []"
+                (_emitClearServerResponse)="handleClearServerResponse()"
+                class="birth-date__month-container"
+            ></mgchess-single-choice-box-input>
+            <mgchess-single-choice-box-input
+                _formControlName="birthDateYear"
+                _selectItemLabel="Year"
+                _errorTextLabel="Select year"
+                [_initialSelectedValue]="_birthDateValue!.birthDateYear"
+                [_cssClasses]="_cssConstants.accountFormsClasses"
+                [_formGroup]="_birthDateFormGroup"
+                [_choiceElements]="_staticCalendarData ? _staticCalendarData.years : []"
+                (_emitClearServerResponse)="handleClearServerResponse()"
+                class="birth-date__year-container"
+            ></mgchess-single-choice-box-input>
+        </div>
+    </div>
+</mgchess-editable-scaffold-box>

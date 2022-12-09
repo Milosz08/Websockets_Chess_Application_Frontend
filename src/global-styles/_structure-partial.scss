@@ -293,6 +293,49 @@
     }
 }
 
+.mg-chess__editable-text-input-box__form-label-with-input__container {
+    display: grid;
+    row-gap: 10px;
+    grid-template-columns: .7fr 1fr;
+    grid-template-rows: repeat(1, 1fr);
+    max-width: 550px;
+    .mg-chess__editable-text-input-box__form-label {
+        display: flex;
+        align-items: center;
+    }
+}
+
+.mg-chess__standard-separator {
+    display: block;
+    width: 100%;
+    margin: 30px 0;
+    height: 1px;
+    background-color: var(--secondary-tint-color);
+}
+
+.mg-chess__birth-date-choiceboxes-container {
+    display: flex;
+    .birth-date__day-container,
+    .birth-date__month-container {
+        flex-basis: 26%;
+        flex-shrink: 0;
+    }
+    .birth-date__month-container {
+        flex-basis: 33%;
+        margin: 0 10px;
+    }
+    .birth-date__year-container {
+        flex-grow: 1;
+    }
+}
+
+.mg-chess__flex-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
 //----------------------------------------------------------------------------------------------------------------------
 
 @media only screen and (max-width: 790px) {
@@ -344,5 +387,8 @@
         .form-single-column__bottom-solid-container {
             padding-bottom: 0;
         }
+    }
+    .mg-chess__editable-text-input-box__form-label-with-input__container {
+        grid-template-columns: 1fr;
     }
 }

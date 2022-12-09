@@ -30,4 +30,10 @@ export class FormInputClassesConstants {
         "input--secondary-color",
         "paragraph--error-reverse-theme-change"
     );
+
+    readonly accountFormsClasses: FormInputClassesModel = new FormInputClassesModel(
+        "",
+        "input--account-modify-input",
+        "paragraph--error-theme-change"
+    );
 }
