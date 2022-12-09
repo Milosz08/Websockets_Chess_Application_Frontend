@@ -93,9 +93,3 @@ export type UserManipulatorWithGfxReducerType = {
     [userManipulatorNgrxStore.reducerName]: UserManipulatorStateTypes,
     [gfxNgrxStore.reducerName]: GfxStateTypes,
 };
-
-export type UserManipulatorWithSessionWithGfxReducerType = {
-    [userManipulatorNgrxStore.reducerName]: UserManipulatorStateTypes,
-    [gfxNgrxStore.reducerName]: GfxStateTypes,
-    [sessionNgrxStore.reducerName]: SessionStateTypes,
-};

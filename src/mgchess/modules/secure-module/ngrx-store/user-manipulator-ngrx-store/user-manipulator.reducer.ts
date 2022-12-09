@@ -68,7 +68,7 @@ const _userManipulatorReducer = createReducer(
 //----------------------------------------------------------------------------------------------------------------------
 
 export const userManipulatorNgrxStore = {
-    reducerName: "userImagesReducer" as const,
+    reducerName: "userManipulatorReducer" as const,
     reducerFunc: function userManipulatorReducer(state: any, action: any) {
         return _userManipulatorReducer(state, action);
     },
