@@ -30,6 +30,9 @@
         border: 1px solid var(--secondary-tint-color);
         border-radius: var(--standard-modal-border-radius);
         padding: 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
 }
 

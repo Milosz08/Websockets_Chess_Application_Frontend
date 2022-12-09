@@ -16,4 +16,41 @@
   ~  COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
   -->
 
-<p>setting-personal-data-and-general-page works!</p>
+<div
+    *ngIf="(_suspenseLoader$ | async); else showContent"
+    class="mg-chess__suspense-loader"
+>
+    <div class="mg-chess__suspense-circle"></div>
+</div>
+<ng-template #showContent>
+    <p
+        *ngIf="(_serverResponseActive$ | async); else showLoadedContent"
+        class="mg-chess__form-data-paragraph paragraph--error-theme-change paragraph--without-margin text-centered"
+    >
+        {{ _serverResponse$ | async }}
+    </p>
+    <ng-template #showLoadedContent>
+        <h2 class="mg-chess__standard-header-with-decorator header--smaller">
+            <span class="text-content">Personal data</span>
+        </h2>
+        <div class="mg-chess__simple-form-grid__container">
+            <mgchess-editable-first-last-name-input-box
+                [_firstNameValue]="(_personalSettings$ | async)!.firstName"
+                [_lastNameValue]="(_personalSettings$ | async)!.lastName"
+            ></mgchess-editable-first-last-name-input-box>
+            <mgchess-editable-gender-input-box
+                [_genderValue]="(_personalSettings$ | async)!.gender"
+            ></mgchess-editable-gender-input-box>
+            <mgchess-editable-country-input-box
+                [_countryValue]="(_personalSettings$ | async)!.countryName"
+            ></mgchess-editable-country-input-box>
+            <mgchess-editable-birth-date-input-box
+                [_birthDateValue]="(_personalSettings$ | async)!.birthDate"
+            ></mgchess-editable-birth-date-input-box>
+        </div>
+        <span class="mg-chess__standard-separator"></span>
+        <h2 class="mg-chess__standard-header-with-decorator header--smaller">
+            <span class="text-content">Additional informations</span>
+        </h2>
+    </ng-template>
+</ng-template>

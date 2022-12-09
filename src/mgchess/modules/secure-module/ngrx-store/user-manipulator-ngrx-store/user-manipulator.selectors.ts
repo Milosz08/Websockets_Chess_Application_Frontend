@@ -34,7 +34,11 @@ export const sel_serverResponse = selectorWithInjectedStore(({ serverResponse })
 );
 
 export const sel_loadDataServerResponse = selectorWithInjectedStore(({ loadedDataSettingsResponse }) =>
-    loadedDataSettingsResponse,
+    loadedDataSettingsResponse.responseMessage,
+);
+
+export const sel_loadDataServerResponseActive = selectorWithInjectedStore(({ loadedDataSettingsResponse }) =>
+    loadedDataSettingsResponse.responseMessage !== "" && loadedDataSettingsResponse.responseError,
 );
 
 export const sel_userPersonalSettings = selectorWithInjectedStore(({ personalDataSettings }) =>

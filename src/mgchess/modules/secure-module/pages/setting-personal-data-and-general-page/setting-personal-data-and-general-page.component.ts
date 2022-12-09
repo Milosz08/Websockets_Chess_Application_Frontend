@@ -16,11 +16,21 @@
  *  COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { Meta, Title } from "@angular/platform-browser";
+import { Store } from "@ngrx/store";
 
+import { Observable } from "rxjs";
+
+import { SuspenseLoader } from "../../../../models/suspense-loader-res.model";
+import { UserPersonalDataResModel } from "../../models/user-personal-data-res.model";
+import { UserManipulatorWithGfxReducerType } from "../../../../ngrx-helpers/ngrx-store.types";
 import { BrowserMetaSerializatorLoader } from "../../../../browser-meta-serialization/browser-meta-serializator.loader";
 import { SingleModuleType, SinglePageType } from "../../../../browser-meta-serialization/browser-meta-serializator.types";
+
+import * as NgrxSelector_GFX from "../../../shared-module/ngrx-store/gfx-ngrx-store/gfx.selectors";
+import * as NgrxAction_UMP from "../../ngrx-store/user-manipulator-ngrx-store/user-manipulator.actions";
+import * as NgrxSelector_UMP from "../../ngrx-store/user-manipulator-ngrx-store/user-manipulator.selectors";
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -29,12 +39,28 @@ import { SingleModuleType, SinglePageType } from "../../../../browser-meta-seria
     templateUrl: "./setting-personal-data-and-general-page.component.html",
     styleUrls: [ "./setting-personal-data-and-general-page.component.scss" ],
 })
-export class SettingPersonalDataAndGeneralPageComponent extends BrowserMetaSerializatorLoader {
+export class SettingPersonalDataAndGeneralPageComponent extends BrowserMetaSerializatorLoader implements OnInit {
+
+    _serverResponse$: Observable<string> = this._store.select(NgrxSelector_UMP.sel_loadDataServerResponse);
+    _serverResponseActive$: Observable<boolean> = this._store.select(NgrxSelector_UMP.sel_loadDataServerResponseActive);
+    _personalSettings$: Observable<UserPersonalDataResModel> = this._store.select(NgrxSelector_UMP.sel_userPersonalSettings);
+
+    _suspenseLoader$: Observable<boolean> = this._store.select(NgrxSelector_GFX.getCurrActiveSuspense(
+        SuspenseLoader.LOAD_USER_PERSONAL_SETTINGS_DATA));
+
+    //------------------------------------------------------------------------------------------------------------------
 
     constructor(
         private _metaService: Meta,
         private _titleService: Title,
+        private _store: Store<UserManipulatorWithGfxReducerType>,
     ) {
         super(_titleService, _metaService, SingleModuleType.SECURED_MODULE, SinglePageType.SETTINGS_PERSONAL_DATA_AND_GENERAL);
+    }
+
+    //------------------------------------------------------------------------------------------------------------------
+
+    ngOnInit(): void {
+        this._store.dispatch(NgrxAction_UMP.__attemptToLoadPersonalDataSettings());
     };
 }
