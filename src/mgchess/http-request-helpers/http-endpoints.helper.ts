@@ -81,4 +81,9 @@ export class HttpEndpointsHelper {
 
     private readonly USER_DESCRIPTION_ENDPOINT = this.BASIC_HTTP + "user-description/";
     readonly LOGGED_ACCOUNT_DESCRIPTION = this.USER_DESCRIPTION_ENDPOINT + "description";
+
+    //------------------------------------------------------------------------------------------------------------------
+
+    private readonly USER_SETTINGS_DATA = this.BASIC_HTTP + "user-settings/";
+    readonly PERSONAL_SETTINGS_DATA = this.USER_SETTINGS_DATA + "personal-settings-data";
 }

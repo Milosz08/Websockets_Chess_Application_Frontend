@@ -21,6 +21,7 @@ import { HttpClient } from "@angular/common/http";
 
 import { Observable } from "rxjs";
 
+import { UserPersonalDataResModel } from "../models/user-personal-data-res.model";
 import { ChangeDescriptionFormModel } from "../models/change-description-form.model";
 import { HttpEndpointsHelper } from "../../../http-request-helpers/http-endpoints.helper";
 import { SimpleMessageResponseModel } from "../../../models/simple-message-response.model";
@@ -58,6 +59,14 @@ export class UserManipulatorHttpReqResService {
     removeUserAccountDescription(): Observable<SimpleMessageResponseModel> {
         return this._http.delete<SimpleMessageResponseModel>(
             this._endpoint.LOGGED_ACCOUNT_DESCRIPTION,
+        );
+    };
+
+    //------------------------------------------------------------------------------------------------------------------
+
+    getUserPersonalSettingsData(): Observable<UserPersonalDataResModel> {
+        return this._http.get<UserPersonalDataResModel>(
+            this._endpoint.PERSONAL_SETTINGS_DATA,
         );
     };
 }

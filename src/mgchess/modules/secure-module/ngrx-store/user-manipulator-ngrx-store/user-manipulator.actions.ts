@@ -17,6 +17,8 @@
  */
 
 import { createAction, props } from "@ngrx/store";
+
+import { UserPersonalDataResModel } from "../../models/user-personal-data-res.model";
 import { ChangeDescriptionFormModel } from "../../models/change-description-form.model";
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -29,6 +31,10 @@ const FAILURE_EDIT_USER_DESCRIPTION = "[USER MANIPULATOR] FAILURE EDIT USER DESC
 
 const ATTEMPT_TO_REMOVE_USER_DESCRIPTION = "[USER MANIPULATOR] ATTEMPT TO REMOVE USER DESCRIPTION" as const;
 const FAILURE_REMOVE_USER_DESCRIPTION = "[USER MANIPULATOR] FAILURE REMOVE USER DESCRIPTION" as const;
+
+const ATTEMPT_TO_LOAD_PERSONAL_DATA_SETTINGS = "[USER MANIPULATOR] ATTEMPT TO LOAD PERSONAL DATA SETTINGS" as const;
+const SUCCESSFUL_LOAD_PERSONAL_DATA_SETTINGS = "[USER MANIPULATOR] SUCCESSFUL LOAD PERSONAL DATA SETTINGS" as const;
+const FAILURE_LOAD_PERSONAL_DATA_SETTINGS = "[USER MANIPULATOR] FAILURE LOAD PERSONAL DATA SETTINGS" as const;
 
 const CLEAR_SERVER_RESPONSE = "[USER MANIPULATOR] CLEAR SERVER RESPONSE" as const;
 
@@ -58,6 +64,20 @@ export const __attemptToRemoveUserDescription = createAction(
 
 export const __failureRemoveUserDescription = createAction(
     FAILURE_REMOVE_USER_DESCRIPTION,
+    props<{ serverResponse: string }>(),
+);
+
+export const __attemptToLoadPersonalDataSettings = createAction(
+    ATTEMPT_TO_LOAD_PERSONAL_DATA_SETTINGS,
+);
+
+export const __successfulLoadPersonalDataSettings = createAction(
+    SUCCESSFUL_LOAD_PERSONAL_DATA_SETTINGS,
+    props<{ personalData: UserPersonalDataResModel }>(),
+);
+
+export const __failureLoadPersonalDataSettings = createAction(
+    FAILURE_LOAD_PERSONAL_DATA_SETTINGS,
     props<{ serverResponse: string }>(),
 );
 

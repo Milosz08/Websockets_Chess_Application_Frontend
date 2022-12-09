@@ -33,6 +33,14 @@ export const sel_serverResponse = selectorWithInjectedStore(({ serverResponse })
     serverResponse,
 );
 
+export const sel_loadDataServerResponse = selectorWithInjectedStore(({ loadedDataSettingsResponse }) =>
+    loadedDataSettingsResponse,
+);
+
+export const sel_userPersonalSettings = selectorWithInjectedStore(({ personalDataSettings }) =>
+    personalDataSettings,
+);
+
 export const sel_changeDescriptionIsOpen = selectorWithInjectedStore(({ changeDescriptionIsOpen }) =>
     changeDescriptionIsOpen,
 );

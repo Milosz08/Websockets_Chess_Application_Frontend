@@ -48,6 +48,16 @@ const _userManipulatorReducer = createReducer(
             serverResponse: new SimpleMessageResWithErrorModel(action.serverResponse, true),
         };
     }),
+    on(NgrxAction.__successfulLoadPersonalDataSettings, (state, action) => {
+        return { ...state,
+            personalDataSettings: action.personalData,
+        };
+    }),
+    on(NgrxAction.__failureLoadPersonalDataSettings, (state, action) => {
+        return { ...state,
+            loadedDataSettingsResponse: new SimpleMessageResWithErrorModel(action.serverResponse, true),
+        };
+    }),
     on(NgrxAction.__clearServerResponse, state => {
         return { ...state,
             serverResponse: new SimpleMessageResWithErrorModel("", false),

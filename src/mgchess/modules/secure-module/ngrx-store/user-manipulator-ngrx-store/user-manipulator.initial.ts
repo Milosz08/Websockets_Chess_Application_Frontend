@@ -16,6 +16,7 @@
  * COPIES OR SUBSTANTIAL PORTIONS OF THE SOFTWARE.
  */
 
+import { UserPersonalDataResModel } from "../../models/user-personal-data-res.model";
 import { SimpleMessageResWithErrorModel } from "../../../../models/simple-message-response.model";
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -23,6 +24,8 @@ import { SimpleMessageResWithErrorModel } from "../../../../models/simple-messag
 export interface UserManipulatorStateTypes {
     serverResponse: SimpleMessageResWithErrorModel;
     changeDescriptionIsOpen: boolean;
+    loadedDataSettingsResponse: SimpleMessageResWithErrorModel;
+    personalDataSettings: UserPersonalDataResModel | null;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -30,4 +33,6 @@ export interface UserManipulatorStateTypes {
 export const initialUserManipulatorState: UserManipulatorStateTypes = {
     serverResponse: new SimpleMessageResWithErrorModel("", false),
     changeDescriptionIsOpen: false,
+    loadedDataSettingsResponse: new SimpleMessageResWithErrorModel("", false),
+    personalDataSettings: null,
 };
