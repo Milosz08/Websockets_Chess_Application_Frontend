@@ -22,11 +22,16 @@ import { EffectsModule } from "@ngrx/effects";
 import { CommonModule } from "@angular/common";
 import { ReactiveFormsModule } from "@angular/forms";
 
-import { UploadImageZoneBoxComponent } from "./components/upload-image-zone-box/upload-image-zone-box.component";
 import { ChangeBannerImageWindowModalComponent } from "./components/change-banner-image-window-modal.component";
+import { UploadImageZoneBoxComponent } from "./components/upload-image-zone-box/upload-image-zone-box.component";
 import { ChangeProfileImageWindowModalComponent } from "./components/change-profile-image-window-modal.component";
+import { EditableScaffoldBoxComponent } from "./components/editable-scaffold-box/editable-scaffold-box.component";
+import { EditableGenderInputBoxComponent } from "./components/editable-gender-input-box/editable-gender-input-box.component";
+import { EditableCountryInputBoxComponent } from "./components/editable-country-input-box/editable-country-input-box.component";
+import { EditableBirthDateInputBoxComponent } from "./components/editable-birth-date-input-box/editable-birth-date-input-box.component";
 import { UserChangeAccountDescriptionComponent } from "./components/user-change-account-description/user-change-account-description.component";
 import { UniversalChangeUserImageModalComponent } from "./components/universal-change-user-image-modal/universal-change-user-image-modal.component";
+import { EditableFirstLastNameInputBoxComponent } from "./components/editable-first-last-name-input-box/editable-first-last-name-input-box.component";
 
 import { SecurePageComponent } from "./secure-page.component";
 import { MyAccountPageComponent } from "./pages/my-account-page/my-account-page.component";
@@ -50,9 +55,11 @@ import { userImagesNgrxStore } from "./ngrx-store/user-images-ngrx-store/user-im
 import { userManipulatorNgrxStore } from "./ngrx-store/user-manipulator-ngrx-store/user-manipulator.reducer";
 
 import { UserImagesEffects } from "./ngrx-store/user-images-ngrx-store/ngrx-effects/user-images.effects";
-import { UserManipulatorEffects } from "./ngrx-store/user-manipulator-ngrx-store/ngrx-effects/user-manipulator.effects";
+import { UserPersonalDataSettingsEffects } from "./ngrx-store/user-manipulator-ngrx-store/ngrx-effects/user-personal-data-settings.effects";
+import { UserDescriptionManipulatorEffects } from "./ngrx-store/user-manipulator-ngrx-store/ngrx-effects/user-description-manipulator.effects";
 
 import { UserImagesHttpReqResService } from "./services/user-images-http-req-res.service";
+import { StaticUserDetailsFetcherService } from "./services/static-user-details-fetcher.service";
 import { UserManipulatorHttpReqResService } from "./services/user-manipulator-http-req-res.service";
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -61,8 +68,13 @@ import { UserManipulatorHttpReqResService } from "./services/user-manipulator-ht
     declarations: [
         // components
         UploadImageZoneBoxComponent,
+        EditableScaffoldBoxComponent,
+        EditableGenderInputBoxComponent,
+        EditableCountryInputBoxComponent,
+        EditableBirthDateInputBoxComponent,
         ChangeBannerImageWindowModalComponent,
         UserChangeAccountDescriptionComponent,
+        EditableFirstLastNameInputBoxComponent,
         ChangeProfileImageWindowModalComponent,
         UniversalChangeUserImageModalComponent,
         // pages
@@ -90,11 +102,13 @@ import { UserManipulatorHttpReqResService } from "./services/user-manipulator-ht
         StoreModule.forFeature(userManipulatorNgrxStore.reducerName, userManipulatorNgrxStore.reducerFunc),
         EffectsModule.forFeature([
             UserImagesEffects,
-            UserManipulatorEffects,
+            UserPersonalDataSettingsEffects,
+            UserDescriptionManipulatorEffects,
         ]),
     ],
     providers: [
         UserImagesHttpReqResService,
+        StaticUserDetailsFetcherService,
         UserManipulatorHttpReqResService,
     ],
 })
