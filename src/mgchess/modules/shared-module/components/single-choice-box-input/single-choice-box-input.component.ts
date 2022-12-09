@@ -37,6 +37,7 @@ export class SingleChoiceBoxInputComponent implements OnChanges, OnDestroy {
     @Input() _formControlName: string = "";
     @Input() _topInfoLabel: string = "";
     @Input() _selectItemLabel: string = "";
+    @Input() _initialSelectedValue!: SimpleDataTupleModel<number | string>;
     @Input() _errorTextLabel: string = "Please select a value other than the default.";
     @Input() _choiceElements: Array<SimpleDataTupleModel<number | string>> = [];
     @Input() _cssClasses: FormInputClassesModel = new FormInputClassesModel("", "", "");
@@ -54,9 +55,8 @@ export class SingleChoiceBoxInputComponent implements OnChanges, OnDestroy {
 
     ngOnChanges(): void {
         this._initialLabelText = this._selectItemLabel !== "" ? this._selectItemLabel : "Click to select value";
-        this._selectedItemName = this._initialLabelText;
-        this._itemListWithDef = [...this._choiceElements];
-        this._itemListWithDef.unshift(new SimpleDataTupleModel(this._selectedItemName, this._selectedItemName));
+        this._itemListWithDef = [ ...this._choiceElements ];
+        this._itemListWithDef.unshift(new SimpleDataTupleModel(this._initialLabelText, this._initialLabelText));
         this.synchronizedDataWithForm();
     };
 
@@ -64,10 +64,17 @@ export class SingleChoiceBoxInputComponent implements OnChanges, OnDestroy {
         RxjsHelper.cleanupExecutor(this._ngUnsubsribe);
     };
 
-    synchronizedDataWithForm(): void {
+    private synchronizedDataWithForm(): void {
         const field = this._formGroup.get(this._formControlName)!;
         field.valueChanges.pipe(takeUntil(this._ngUnsubsribe)).subscribe(fieldData => {
-            if (fieldData === null) this._selectedItemName = this._initialLabelText;
+            if (fieldData !== null) return;
+            if (!Boolean(this._initialSelectedValue)) {
+                this._selectedItemName = this._initialLabelText;
+                field.patchValue(this._initialLabelText, { emitEvent: false });
+            } else {
+                this._selectedItemName = this._initialSelectedValue.value;
+                field.patchValue(this._initialSelectedValue.id, { emitEvent: false });
+            }
         });
     };
 
