@@ -13,7 +13,7 @@ See backend (server layer): [Websockets Chess Application Backend](https://githu
 > NOTE: All static resources are placed on a remote server. Make sure you have access to the Internet before 
 running the application. Alternatively, you can put the resources in the `/assets` folder and refer to them like regular static files.
 
-Static resources remove server: [cdn.miloszgilga.pl/chess-app-static-resources](https://cdn.miloszgilga.pl/chess-app-static-resources/)
+Static resources remote server: [cdn.miloszgilga.pl/chess-app-static-resources](https://cdn.miloszgilga.pl/chess-app-static-resources/)
 
 ## Table of content
 * [Clone and install](#clone-and-install)
